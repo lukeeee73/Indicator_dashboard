@@ -47,6 +47,69 @@ const INDICATOR_META = {
   },
 };
 
+// 비교 자산(Assets) UI 메타데이터.
+// fetch_fred.py 의 ASSETS 와 대응.
+const ASSET_META = {
+  GOLDAMGBD228NLBM: { displayName: "금 (Gold)",              unit: "$", decimals: 0, color: "#d4af37" },
+  DTWEXBGS:         { displayName: "달러 지수",              unit: "",  decimals: 2, color: "#7dd3fc" },
+  SP500:            { displayName: "S&P 500",                unit: "",  decimals: 2, color: "#c084fc" },
+  DGS10:            { displayName: "10년 국채금리",          unit: "%", decimals: 2, color: "#fb923c" },
+  VIXCLS:           { displayName: "VIX (공포지수)",         unit: "",  decimals: 2, color: "#f87171" },
+  DEXKOUS:          { displayName: "원/달러 환율",           unit: "₩", decimals: 2, color: "#86efac" },
+  BAMLH0A0HYM2:     { displayName: "미국 하이일드 스프레드", unit: "%", decimals: 2, color: "#fca5a5" },
+};
+
+// 지표별 "추천 비교 대상". 4분면 프레임워크 논리에 따라 1/2순위 구성.
+// primary 는 select 의 "추천" optgroup 에 표시, secondary 는 "관련".
+const COMPARE_RECOMMENDATIONS = {
+  T10Y2Y: {
+    primary:   ["SP500", "BAMLH0A0HYM2", "VIXCLS"],
+    secondary: ["GOLDAMGBD228NLBM", "DGS10"],
+    note: "장단기 금리 역전은 침체 선행 신호. 주식·신용스프레드·VIX 가 어떻게 반응했는지 비교.",
+  },
+  T10YIE: {
+    primary:   ["GOLDAMGBD228NLBM", "DGS10"],
+    secondary: ["DTWEXBGS", "SP500"],
+    note: "기대 인플레이션이 오를 때 금·명목금리는 동행, 달러는 역행하는 경향.",
+  },
+  CPIAUCSL: {
+    primary:   ["GOLDAMGBD228NLBM", "DTWEXBGS", "DGS10"],
+    secondary: ["DEXKOUS", "SP500"],
+    note: "실제 인플레이션 상승기 → 금·원자재 강세, 달러·장기채 약세 경향.",
+  },
+  INDPRO: {
+    primary:   ["SP500", "BAMLH0A0HYM2"],
+    secondary: ["DGS10", "VIXCLS"],
+    note: "생산 확장기엔 주식 상승·HY 스프레드 축소, 수축기엔 반대 흐름.",
+  },
+  DCOILWTICO: {
+    primary:   ["DTWEXBGS", "GOLDAMGBD228NLBM"],
+    secondary: ["SP500", "DEXKOUS"],
+    note: "유가는 달러와 역상관, 인플레와 동행. 1·2차 오일쇼크·2008·COVID 전후가 관전 포인트.",
+  },
+};
+
+// 주요 역사적 이벤트. 차트에 수직 점선 + 라벨로 표시.
+// 범위(range)를 가진 이벤트는 [start, end] 구간으로 처리할 수도 있으나,
+// 여기서는 "시작 시점"만 점선으로 남기고 라벨로 설명한다.
+const EVENTS = [
+  { date: "1914-07-28", label: "1차 세계대전 발발" },
+  { date: "1929-10-29", label: "대공황 (Black Tuesday)" },
+  { date: "1939-09-01", label: "2차 세계대전 발발" },
+  { date: "1945-09-02", label: "2차 세계대전 종전" },
+  { date: "1971-08-15", label: "닉슨 쇼크 (금본위 붕괴)" },
+  { date: "1973-10-06", label: "1차 오일쇼크" },
+  { date: "1979-11-04", label: "2차 오일쇼크" },
+  { date: "1987-10-19", label: "Black Monday" },
+  { date: "1997-07-02", label: "아시아 외환위기" },
+  { date: "2000-03-10", label: "닷컴 버블 정점" },
+  { date: "2001-09-11", label: "9/11 테러" },
+  { date: "2008-09-15", label: "리먼 파산 (글로벌 금융위기)" },
+  { date: "2011-08-05", label: "미국 신용등급 강등" },
+  { date: "2020-03-11", label: "COVID-19 팬데믹 선언" },
+  { date: "2022-02-24", label: "러시아-우크라이나 전쟁" },
+];
+
 // 카테고리별 차트 색 (CSS 변수와 일치시킴)
 const CATEGORY_COLOR = {
   growth:    "#5ab0f0",
@@ -72,6 +135,14 @@ const TIMEFRAMES = [
 const DEFAULT_TIMEFRAME_KEY = "1Y";
 
 
+// 전역 상태: 이벤트 마커 표시 여부 + 각 카드의 "redraw" 콜백.
+// 헤더 체크박스가 바뀌면 등록된 모든 카드가 자기 자신을 다시 그린다.
+const APP_STATE = {
+  showEvents: true,
+  cardRedraws: [],  // 각 카드의 redraw() 함수 모음
+};
+
+
 // ---------- 진입점 ------------------------------------------
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -80,10 +151,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     render(data);
+    wireEventsToggle();
   } catch (err) {
     renderError(err);
   }
 });
+
+function wireEventsToggle() {
+  const checkbox = document.getElementById("toggle-events");
+  if (!checkbox) return;
+  APP_STATE.showEvents = checkbox.checked;
+  checkbox.addEventListener("change", () => {
+    APP_STATE.showEvents = checkbox.checked;
+    APP_STATE.cardRedraws.forEach((fn) => fn());
+  });
+}
 
 
 // ---------- 렌더링 -----------------------------------------
@@ -91,6 +173,7 @@ function render(data) {
   renderLastUpdated(data.last_updated);
 
   const indicators = data.indicators || {};
+  const assets     = data.assets     || {};
   const growthHost    = document.getElementById("growth-cards");
   const inflationHost = document.getElementById("inflation-cards");
 
@@ -104,7 +187,7 @@ function render(data) {
   for (const [code, payload] of Object.entries(indicators)) {
     if (!payload.series || payload.series.length === 0) continue;
     const host = payload.category === "growth" ? growthHost : inflationHost;
-    host.appendChild(renderCard(code, payload));
+    host.appendChild(renderCard(code, payload, assets));
   }
 }
 
@@ -123,14 +206,16 @@ function renderLastUpdated(iso) {
   el.textContent = `마지막 갱신: ${kst} (KST)`;
 }
 
-function renderCard(code, payload) {
+function renderCard(code, payload, assets) {
   const meta = INDICATOR_META[code] ?? {
     displayName: code, description: "", unit: "", decimals: 2,
   };
-  const series = payload.series;
-  const latest = series[series.length - 1];
-  const prior  = findPriorPoint(series, latest.date, CHANGE_WINDOW_DAYS);
-  const change = prior ? latest.value - prior.value : null;
+  const series   = payload.series;
+  const category = payload.category;
+  const latest   = series[series.length - 1];
+  const prior    = findPriorPoint(series, latest.date, CHANGE_WINDOW_DAYS);
+  const change   = prior ? latest.value - prior.value : null;
+  const recs     = COMPARE_RECOMMENDATIONS[code] ?? { primary: [], secondary: [], note: "" };
 
   const card = document.createElement("article");
   card.className = "card";
@@ -139,12 +224,14 @@ function renderCard(code, payload) {
   const changeClass = change == null ? "" : change >= 0 ? "up" : "down";
 
   // 실제로 선택 가능한 타임프레임만 버튼으로 노출한다.
-  // (ex. 데이터가 3년뿐인 지표에 100년 버튼을 달면 혼란스러우므로 숨긴다.)
   const availableFrames = filterAvailableTimeframes(series);
-  const buttonsHtml = availableFrames.map((tf) => {
+  const tfButtonsHtml = availableFrames.map((tf) => {
     const active = tf.key === DEFAULT_TIMEFRAME_KEY ? " active" : "";
     return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
   }).join("");
+
+  // 비교 자산 select: 추천 / 관련 / 기타로 그룹화. assets 에 존재하는 코드만 옵션으로 노출.
+  const compareSelectHtml = buildCompareSelectHtml(recs, assets);
 
   card.innerHTML = `
     <header class="card-header">
@@ -156,29 +243,162 @@ function renderCard(code, payload) {
       <span class="card-change ${changeClass}" title="약 ${CHANGE_WINDOW_DAYS}일 전 대비">${changeStr}</span>
     </div>
     <p class="card-desc">${meta.description}</p>
-    <div class="tf-selector" role="group" aria-label="차트 기간 선택">${buttonsHtml}</div>
-    <div class="card-chart"><canvas></canvas></div>
+    <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
+    <div class="card-chart main-chart"><canvas></canvas></div>
+
+    <div class="compare-bar">
+      <label class="compare-label">
+        <span>비교:</span>
+        <select class="compare-select">${compareSelectHtml}</select>
+      </label>
+      <div class="mode-toggle" role="group" aria-label="비교 표시 방식" hidden>
+        <button type="button" class="mode-btn active" data-mode="overlay">겹쳐보기</button>
+        <button type="button" class="mode-btn"        data-mode="stacked">나란히</button>
+      </div>
+    </div>
+    <p class="compare-note" hidden>${escapeHtml(recs.note || "")}</p>
+    <div class="card-chart compare-chart" hidden><canvas></canvas></div>
   `;
 
-  const canvas   = card.querySelector("canvas");
-  const selector = card.querySelector(".tf-selector");
+  const mainCanvas    = card.querySelector(".main-chart canvas");
+  const compareCanvas = card.querySelector(".compare-chart canvas");
+  const compareBox    = card.querySelector(".compare-chart");
+  const compareNote   = card.querySelector(".compare-note");
+  const compareSelect = card.querySelector(".compare-select");
+  const modeToggle    = card.querySelector(".mode-toggle");
+  const tfSelector    = card.querySelector(".tf-selector");
+
   const initialKey = availableFrames.some((tf) => tf.key === DEFAULT_TIMEFRAME_KEY)
     ? DEFAULT_TIMEFRAME_KEY
     : availableFrames[availableFrames.length - 1].key;
 
-  // 최초 렌더링 + 버튼 클릭 시 다시 그리기
-  const chartState = { chart: null };
-  drawChartForTimeframe(canvas, series, payload.category, initialKey, chartState);
+  const state = {
+    tfKey:       initialKey,
+    compareCode: null,
+    compareMode: "overlay",
+  };
+  const chartState = { main: null, compare: null };
 
-  selector.addEventListener("click", (e) => {
+  function redraw() {
+    const tf = TIMEFRAMES.find((t) => t.key === state.tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
+    const mainSliced = sliceSeriesByMonths(series, tf.months);
+
+    // 표시 범위 내 이벤트만 추출해서 annotation 으로 전달
+    const rangeStart = mainSliced[0]?.date;
+    const rangeEnd   = mainSliced[mainSliced.length - 1]?.date;
+    const events = APP_STATE.showEvents
+      ? EVENTS.filter((e) => rangeStart && rangeEnd && e.date >= rangeStart && e.date <= rangeEnd)
+      : [];
+
+    // 기존 차트 파괴
+    if (chartState.main)    { chartState.main.destroy();    chartState.main = null; }
+    if (chartState.compare) { chartState.compare.destroy(); chartState.compare = null; }
+
+    // 비교 자산 준비
+    const cmpPayload = state.compareCode ? assets[state.compareCode] : null;
+    const cmpMeta    = state.compareCode ? (ASSET_META[state.compareCode] ?? null) : null;
+
+    if (cmpPayload && state.compareMode === "overlay") {
+      // 겹쳐보기: 같은 차트에 이중 Y축
+      chartState.main = renderChart(mainCanvas, mainSliced, category, {
+        overlay: {
+          series: cmpPayload.series,
+          meta:   cmpMeta,
+          name:   cmpMeta?.displayName ?? state.compareCode,
+        },
+        events,
+        primaryMeta: meta,
+      });
+      compareBox.hidden = true;
+    } else {
+      chartState.main = renderChart(mainCanvas, mainSliced, category, {
+        events,
+        primaryMeta: meta,
+      });
+
+      if (cmpPayload && state.compareMode === "stacked") {
+        // 나란히 보기: 메인과 같은 기간으로 잘라 별도 차트
+        const cmpSliced = sliceByDateRange(cmpPayload.series, rangeStart, rangeEnd);
+        compareBox.hidden = false;
+        chartState.compare = renderChart(compareCanvas, cmpSliced, null, {
+          events,
+          assetColor: cmpMeta?.color,
+          primaryMeta: cmpMeta,
+        });
+      } else {
+        compareBox.hidden = true;
+      }
+    }
+  }
+
+  // ---------- 이벤트 핸들러 ----------
+  tfSelector.addEventListener("click", (e) => {
     const btn = e.target.closest("button.tf-btn");
     if (!btn) return;
-    selector.querySelectorAll(".tf-btn").forEach((b) => b.classList.remove("active"));
+    tfSelector.querySelectorAll(".tf-btn").forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
-    drawChartForTimeframe(canvas, series, payload.category, btn.dataset.tf, chartState);
+    state.tfKey = btn.dataset.tf;
+    redraw();
   });
 
+  compareSelect.addEventListener("change", () => {
+    state.compareCode = compareSelect.value || null;
+    modeToggle.hidden = !state.compareCode;
+    compareNote.hidden = !(state.compareCode && recs.note);
+    redraw();
+  });
+
+  modeToggle.addEventListener("click", (e) => {
+    const btn = e.target.closest("button.mode-btn");
+    if (!btn) return;
+    modeToggle.querySelectorAll(".mode-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    state.compareMode = btn.dataset.mode;
+    redraw();
+  });
+
+  // 최초 렌더링 + 전역 이벤트 토글에 반응할 수 있도록 등록
+  redraw();
+  APP_STATE.cardRedraws.push(redraw);
+
   return card;
+}
+
+/** 비교 자산 select 의 <option> HTML 을 조립한다. 추천/관련/기타 순으로 그룹화. */
+function buildCompareSelectHtml(recs, assets) {
+  const availableCodes = new Set(
+    Object.entries(assets)
+      .filter(([, p]) => p.series && p.series.length > 0)
+      .map(([code]) => code),
+  );
+  if (availableCodes.size === 0) {
+    return `<option value="">비교 자산 데이터 없음</option>`;
+  }
+
+  const primary   = (recs.primary   || []).filter((c) => availableCodes.has(c));
+  const secondary = (recs.secondary || []).filter((c) => availableCodes.has(c));
+  const listed    = new Set([...primary, ...secondary]);
+  const others    = [...availableCodes].filter((c) => !listed.has(c));
+
+  const optionFor = (code) => {
+    const m = ASSET_META[code] ?? { displayName: code };
+    return `<option value="${code}">${escapeHtml(m.displayName)}</option>`;
+  };
+  const group = (label, codes) =>
+    codes.length === 0 ? "" : `<optgroup label="${escapeHtml(label)}">${codes.map(optionFor).join("")}</optgroup>`;
+
+  return [
+    `<option value="">— 비교하지 않음 —</option>`,
+    group("추천 (4분면 프레임워크 기반)", primary),
+    group("관련", secondary),
+    group("기타 자산", others),
+  ].join("");
+}
+
+/** 기간 시작/끝 날짜(YYYY-MM-DD) 사이의 데이터만 남긴다. */
+function sliceByDateRange(series, startDate, endDate) {
+  if (!series || series.length === 0 || !startDate || !endDate) return series || [];
+  return series.filter((p) => p.date >= startDate && p.date <= endDate);
 }
 
 /**
@@ -211,21 +431,6 @@ function renderError(err) {
 
 // ---------- Chart.js ----------------------------------------
 /**
- * 선택된 타임프레임에 맞춰 시계열을 잘라 차트를 (다시) 그린다.
- * chartState.chart 에 기존 인스턴스를 저장해 두어, 재호출 시 파괴 후 재생성한다.
- */
-function drawChartForTimeframe(canvas, fullSeries, category, tfKey, chartState) {
-  const tf = TIMEFRAMES.find((t) => t.key === tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
-  const sliced = sliceSeriesByMonths(fullSeries, tf.months);
-
-  if (chartState.chart) {
-    chartState.chart.destroy();
-    chartState.chart = null;
-  }
-  chartState.chart = renderChart(canvas, sliced, category);
-}
-
-/**
  * 시계열의 마지막 날짜 기준으로 최근 `months` 개월치만 남긴다.
  * months 가 null 이면 원본을 그대로 반환 (ALL).
  */
@@ -235,69 +440,142 @@ function sliceSeriesByMonths(series, months) {
   const cutoff = new Date(last);
   cutoff.setMonth(cutoff.getMonth() - months);
   const cutoffStr = cutoff.toISOString().slice(0, 10);
-  // 이진 탐색 대신 선형 — FRED 시리즈는 일간 기준 최대 수만 포인트라 충분히 빠르다.
   const start = series.findIndex((p) => p.date >= cutoffStr);
   return start === -1 ? series.slice(-1) : series.slice(start);
 }
 
-function renderChart(canvas, series, category) {
-  const color = CATEGORY_COLOR[category] || "#9aa0a9";
-  const labels = series.map((p) => p.date);
-  const values = series.map((p) => p.value);
+/**
+ * 공용 차트 렌더러.
+ *   - opts.overlay: { series, meta, name } → 이중 Y축으로 오버레이
+ *   - opts.events:  [{date, label}, ...]   → 수직 점선 + 라벨 (annotation 플러그인)
+ *   - opts.assetColor: asset 단독 차트일 때 선 색
+ *   - opts.primaryMeta: tooltip 숫자 포맷용
+ */
+function renderChart(canvas, series, category, opts = {}) {
+  const baseColor  = opts.assetColor || CATEGORY_COLOR[category] || "#9aa0a9";
+  const labels     = series.map((p) => p.date);
+  const values     = series.map((p) => p.value);
+  const primaryMeta = opts.primaryMeta || { decimals: 2, unit: "" };
+
+  const datasets = [{
+    label: primaryMeta.displayName || "",
+    data: values,
+    borderColor: baseColor,
+    backgroundColor: baseColor + "22",
+    borderWidth: 1.5,
+    fill: !opts.overlay,  // 오버레이 시엔 채우면 가독성 떨어져서 끔
+    pointRadius: 0,
+    pointHoverRadius: 4,
+    tension: 0.2,
+    yAxisID: "y",
+  }];
+
+  // 오버레이 데이터셋: 메인 라벨(날짜) 에 정렬해서 그린다.
+  let overlayMeta = null;
+  if (opts.overlay && opts.overlay.series && opts.overlay.series.length > 0) {
+    overlayMeta = opts.overlay.meta || { decimals: 2, unit: "", color: "#d4af37" };
+    const aligned = alignSeriesToLabels(opts.overlay.series, labels);
+    datasets.push({
+      label: opts.overlay.name || "비교",
+      data: aligned,
+      borderColor: overlayMeta.color || "#d4af37",
+      backgroundColor: "transparent",
+      borderWidth: 1.5,
+      borderDash: [3, 3],
+      fill: false,
+      pointRadius: 0,
+      pointHoverRadius: 4,
+      tension: 0.2,
+      yAxisID: "y1",
+      spanGaps: true,
+    });
+  }
+
+  // 이벤트 annotations: x 축이 category 타입이므로 labels 내의 정확한 문자열로 snap.
+  const annotations = {};
+  (opts.events || []).forEach((evt, i) => {
+    const snapped = snapEventToLabel(evt.date, labels);
+    if (!snapped) return;
+    annotations[`evt_${i}`] = {
+      type: "line",
+      xMin: snapped,
+      xMax: snapped,
+      borderColor: "rgba(230, 230, 230, 0.45)",
+      borderWidth: 1,
+      borderDash: [4, 4],
+      label: {
+        display: true,
+        content: evt.label,
+        position: "start",
+        backgroundColor: "rgba(20, 20, 20, 0.8)",
+        color: "#e4e6eb",
+        font: { size: 9, weight: "500" },
+        padding: { top: 2, bottom: 2, left: 4, right: 4 },
+        yAdjust: -4,
+      },
+    };
+  });
+
+  const scales = {
+    x: {
+      ticks: {
+        color: "#9aa0a9",
+        maxTicksLimit: 5,
+        autoSkip: true,
+        callback(v) {
+          const raw = this.getLabelForValue(v);
+          return labels.length > 0 && spansOverAYear(labels) ? raw.slice(0, 4) : raw.slice(0, 7);
+        },
+      },
+      grid: { color: "#2a2f3a", tickLength: 0 },
+    },
+    y: {
+      position: "left",
+      ticks: { color: "#9aa0a9" },
+      grid:  { color: "#2a2f3a" },
+    },
+  };
+  if (overlayMeta) {
+    scales.y1 = {
+      position: "right",
+      ticks: { color: overlayMeta.color || "#d4af37" },
+      grid:  { display: false },
+    };
+  }
 
   // eslint-disable-next-line no-undef
   return new Chart(canvas, {
     type: "line",
-    data: {
-      labels,
-      datasets: [{
-        data: values,
-        borderColor: color,
-        backgroundColor: color + "22",  // 13% alpha 로 영역 채움
-        borderWidth: 1.5,
-        fill: true,
-        pointRadius: 0,
-        pointHoverRadius: 4,
-        tension: 0.2,
-      }],
-    },
+    data: { labels, datasets },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       animation: { duration: 400 },
       interaction: { intersect: false, mode: "index" },
       plugins: {
-        legend: { display: false },
+        legend: {
+          display: !!overlayMeta,
+          labels: { color: "#9aa0a9", boxWidth: 10, boxHeight: 10, font: { size: 10 } },
+        },
         tooltip: {
           callbacks: {
             title: (items) => items[0].label,
-            label: (ctx) => ctx.parsed.y.toFixed(2),
-          },
-        },
-      },
-      scales: {
-        x: {
-          ticks: {
-            color: "#9aa0a9",
-            maxTicksLimit: 5,
-            autoSkip: true,
-            callback(v) {
-              // 전체 데이터 범위에 따라 축 표기 단위를 바꾼다.
-              // - 1년 이하: YYYY-MM
-              // - 그 이상:   YYYY
-              const raw = this.getLabelForValue(v);
-              return labels.length > 0 && spansOverAYear(labels)
-                ? raw.slice(0, 4)
-                : raw.slice(0, 7);
+            label: (ctx) => {
+              const m = ctx.datasetIndex === 1 && overlayMeta ? overlayMeta : primaryMeta;
+              const dec = m.decimals ?? 2;
+              const unit = m.unit || "";
+              const v = ctx.parsed.y.toFixed(dec);
+              const prefix = ctx.dataset.label ? `${ctx.dataset.label}: ` : "";
+              if (unit === "$") return `${prefix}$${v}`;
+              if (unit === "%") return `${prefix}${v}%`;
+              if (unit === "₩") return `${prefix}₩${v}`;
+              return `${prefix}${v}`;
             },
           },
-          grid: { color: "#2a2f3a", tickLength: 0 },
         },
-        y: {
-          ticks: { color: "#9aa0a9" },
-          grid:  { color: "#2a2f3a" },
-        },
+        annotation: { annotations },
       },
+      scales,
     },
   });
 }
@@ -307,6 +585,43 @@ function spansOverAYear(labels) {
   const first = new Date(labels[0]);
   const last  = new Date(labels[labels.length - 1]);
   return (last - first) > 365 * 24 * 3600 * 1000;
+}
+
+/**
+ * 오버레이용 시리즈를 메인 차트의 labels(날짜 배열)에 정렬.
+ * labels[i] 날짜에 대해: target 시리즈에서 "그 날짜 이하" 의 가장 최근 값을 채운다.
+ * labels[i] 가 target 시리즈 시작 전이면 null (Chart.js 에서 gap).
+ */
+function alignSeriesToLabels(targetSeries, labels) {
+  if (!targetSeries || targetSeries.length === 0) return labels.map(() => null);
+  const out = new Array(labels.length).fill(null);
+  let j = 0;
+  for (let i = 0; i < labels.length; i++) {
+    const label = labels[i];
+    while (j + 1 < targetSeries.length && targetSeries[j + 1].date <= label) j++;
+    if (targetSeries[j] && targetSeries[j].date <= label) {
+      out[i] = targetSeries[j].value;
+    }
+  }
+  return out;
+}
+
+/** 이벤트 날짜를 현재 차트 라벨(정확한 문자열) 중 가장 가까운 것으로 스냅. 범위 밖이면 null. */
+function snapEventToLabel(eventDate, labels) {
+  if (!labels || labels.length === 0) return null;
+  if (eventDate < labels[0] || eventDate > labels[labels.length - 1]) return null;
+  // 첫 번째 "labels[i] >= eventDate" 를 찾고, labels[i-1] 과 비교해 더 가까운 쪽 선택.
+  for (let i = 0; i < labels.length; i++) {
+    if (labels[i] >= eventDate) {
+      if (i === 0) return labels[0];
+      const prev = labels[i - 1];
+      const curr = labels[i];
+      const dPrev = new Date(eventDate) - new Date(prev);
+      const dCurr = new Date(curr) - new Date(eventDate);
+      return dCurr < dPrev ? curr : prev;
+    }
+  }
+  return labels[labels.length - 1];
 }
 
 
