@@ -1,5 +1,6 @@
 name: Update FRED Indicators
 
+# 주 1회 FRED API 호출 → data/indicators.json 갱신 → 변경 시 자동 커밋
 # 매주 월요일 09:00 UTC (= 한국시간 월요일 18:00) 자동 실행 + 수동 실행 가능
 on:
   schedule:
