@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dalio Dashboard — 경제 지표 모니터링</title>
+  <meta name="description" content="성장 × 인플레이션 4분면 기반 경제 지표 개인 대시보드">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Dalio Dashboard</h1>
+    <p class="subtitle">성장 × 인플레이션 4분면 모니터링</p>
+    <p class="last-updated" id="last-updated">Loading…</p>
+  </header>
+
+  <main>
+    <!-- 4분면 참조 카드: 지금 어느 분면인지는 수동 판단 -->
+    <section class="framework">
+      <h2>4분면 프레임워크</h2>
+      <div class="quadrant-grid">
+        <div class="quadrant">
+          <span class="label">성장 ↑ · 인플레 ↑</span>
+          <span class="hint">원자재 · 신흥국 주식 · 인플레 연동채</span>
+        </div>
+        <div class="quadrant">
+          <span class="label">성장 ↑ · 인플레 ↓</span>
+          <span class="hint">선진국 주식 · 회사채</span>
+        </div>
+        <div class="quadrant">
+          <span class="label">성장 ↓ · 인플레 ↑</span>
+          <span class="hint">금 · 인플레 연동채 · 원자재</span>
+        </div>
+        <div class="quadrant">
+          <span class="label">성장 ↓ · 인플레 ↓</span>
+          <span class="hint">장기 국채 · 현금</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 지표 카드: JS 가 fetch 후 동적으로 채움 -->
+    <section class="category">
+      <h2>성장 지표</h2>
+      <div class="cards" id="growth-cards"></div>
+    </section>
+
+    <section class="category">
+      <h2>인플레이션 지표</h2>
+      <div class="cards" id="inflation-cards"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>데이터: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED (St. Louis Fed)</a> · 주 1회 자동 갱신</p>
+    <p class="note">주간 판단 노트는 별도 Obsidian vault(<code>luke-wiki</code>)에서 관리합니다.</p>
+  </footer>
+
+  <!-- Chart.js: CDN 에서 버전 고정해서 재현성 확보 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* -------------------------------------------------------------
+   색상/간격 토큰. 나중에 라이트 테마를 만들고 싶으면 여기만 바꾸면 됨.
+   ------------------------------------------------------------- */
+:root {
+  --bg:            #0f1116;
+  --bg-elev:       #181b22;
+  --bg-card:       #1f232c;
+  --border:        #2a2f3a;
+  --text:          #e4e6eb;
+  --text-dim:      #9aa0a9;
+  --accent-growth:    #5ab0f0;  /* 성장 카테고리 차트/포인트 */
+  --accent-inflation: #f08c5a;  /* 인플레 카테고리 차트/포인트 */
+  --up:            #4ade80;     /* 최근 대비 상승 */
+  --down:          #f87171;     /* 최근 대비 하락 */
+  --radius:        0.5rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Apple SD Gothic Neo",
+               "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 헤더 ---------- */
+.site-header {
+  padding: 2rem 1.5rem 1.25rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.site-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.subtitle     { margin: 0; color: var(--text-dim); font-size: 0.95rem; }
+.last-updated {
+  margin: 0.6rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 메인 레이아웃 ---------- */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+section { margin-bottom: 2.5rem; }
+section h2 {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- 4분면 카드 ---------- */
+.quadrant-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.quadrant {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.quadrant .label { font-weight: 600; font-size: 0.95rem; }
+.quadrant .hint  { font-size: 0.8rem;  color: var(--text-dim); }
+
+/* ---------- 지표 카드 ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  animation: fadeIn 0.4s ease-out both;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #3a4150;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+.card-title { font-weight: 600; font-size: 1rem; }
+.card-code  {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.02em;
+}
+
+.card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.card-change {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-left: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+.card-change.up   { color: var(--up); }
+.card-change.down { color: var(--down); }
+
+.card-desc {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.card-chart {
+  margin-top: 0.75rem;
+  height: 150px;
+  position: relative;
+}
+
+/* ---------- 풋터 ---------- */
+.site-footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--accent-growth); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer .note { margin-top: 0.5rem; font-size: 0.75rem; }
+.site-footer code {
+  background: var(--bg-elev);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+/* ---------- 상태 메시지 ---------- */
+.error {
+  background: #3a1f23;
+  color: #fca5a5;
+  border: 1px solid #6b2028;
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.empty {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  padding: 1rem;
+  text-align: center;
+  background: var(--bg-elev);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+/* ---------- 모바일 ---------- */
+@media (max-width: 600px) {
+  .quadrant-grid { grid-template-columns: 1fr; }
+  .cards         { grid-template-columns: 1fr; }
+  .site-header h1 { font-size: 1.5rem; }
+  .card-value     { font-size: 1.5rem; }
+}

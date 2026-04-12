@@ -34,6 +34,9 @@
 dalio-dashboard/
 ├── README.md
 ├── .gitignore
+├── index.html               # 대시보드 진입점 (Chart.js CDN 로드)
+├── style.css                # 다크 테마 + 반응형 카드 레이아웃
+├── app.js                   # indicators.json fetch & 차트 렌더링
 ├── data/
 │   └── indicators.json      # 수집된 시계열 (GitHub Actions가 갱신)
 ├── scripts/
@@ -59,6 +62,17 @@ python scripts/fetch_fred.py
 ```
 
 실행이 끝나면 `data/indicators.json` 이 갱신되고, 각 지표별로 `Fetching T10Y2Y... OK (520 points)` 형태의 로그가 찍힙니다.
+
+### 대시보드 미리보기 (로컬)
+
+정적 파일이라 어떤 HTTP 서버로도 띄울 수 있습니다. 파이썬 내장 서버가 가장 간편합니다.
+
+```bash
+python -m http.server 8000
+# 브라우저에서 http://localhost:8000 접속
+```
+
+> ⚠️ `file://` 로 직접 `index.html` 을 열면 `fetch("data/indicators.json")` 이 CORS 정책에 막혀 데이터가 안 보입니다. 반드시 HTTP 서버로 띄우세요.
 
 ---
 
@@ -87,9 +101,9 @@ Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 �
 
 ## 로드맵
 
-- [x] **1단계 — 데이터 파이프라인** (현재)
+- [x] **1단계 — 데이터 파이프라인**
   FRED 호출 스크립트 + GitHub Actions 주간 자동 수집
-- [ ] **2단계 — 시각화**
-  `index.html` + `app.js` + `style.css` + Chart.js 기반 4분면 대시보드
+- [x] **2단계 — 시각화** (현재)
+  `index.html` + `app.js` + `style.css` + Chart.js 기반 카드형 대시보드
 - [ ] **3단계 — 배포**
   Vercel 연동 (GitHub 푸시 시 자동 재배포), 개인 도메인 연결
