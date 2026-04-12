@@ -146,6 +146,35 @@ section h2 {
   position: relative;
 }
 
+/* ---------- 타임프레임 선택 버튼 ---------- */
+.tf-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+}
+.tf-btn {
+  background: var(--bg-elev);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.72rem;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.tf-btn:hover {
+  color: var(--text);
+  border-color: #3a4150;
+}
+.tf-btn.active {
+  background: var(--border);
+  color: var(--text);
+  border-color: #3a4150;
+}
+
 /* ---------- 풋터 ---------- */
 .site-footer {
   padding: 2rem 1.5rem;

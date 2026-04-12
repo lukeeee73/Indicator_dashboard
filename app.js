@@ -56,6 +56,21 @@ const CATEGORY_COLOR = {
 // 최근 변화 계산 기준 (일)
 const CHANGE_WINDOW_DAYS = 30;
 
+// 차트 타임프레임 선택지. null 이면 전체 데이터를 보여준다.
+const TIMEFRAMES = [
+  { key: "3M",   label: "3개월", months: 3    },
+  { key: "1Y",   label: "1년",   months: 12   },
+  { key: "5Y",   label: "5년",   months: 60   },
+  { key: "10Y",  label: "10년",  months: 120  },
+  { key: "30Y",  label: "30년",  months: 360  },
+  { key: "50Y",  label: "50년",  months: 600  },
+  { key: "100Y", label: "100년", months: 1200 },
+  { key: "ALL",  label: "전체",  months: null },
+];
+
+// 카드를 처음 열었을 때 보여줄 기본 타임프레임
+const DEFAULT_TIMEFRAME_KEY = "1Y";
+
 
 // ---------- 진입점 ------------------------------------------
 document.addEventListener("DOMContentLoaded", async () => {
@@ -123,6 +138,14 @@ function renderCard(code, payload) {
   const changeStr   = formatChange(change, meta);
   const changeClass = change == null ? "" : change >= 0 ? "up" : "down";
 
+  // 실제로 선택 가능한 타임프레임만 버튼으로 노출한다.
+  // (ex. 데이터가 3년뿐인 지표에 100년 버튼을 달면 혼란스러우므로 숨긴다.)
+  const availableFrames = filterAvailableTimeframes(series);
+  const buttonsHtml = availableFrames.map((tf) => {
+    const active = tf.key === DEFAULT_TIMEFRAME_KEY ? " active" : "";
+    return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
+  }).join("");
+
   card.innerHTML = `
     <header class="card-header">
       <span class="card-title">${meta.displayName}</span>
@@ -133,11 +156,51 @@ function renderCard(code, payload) {
       <span class="card-change ${changeClass}" title="약 ${CHANGE_WINDOW_DAYS}일 전 대비">${changeStr}</span>
     </div>
     <p class="card-desc">${meta.description}</p>
+    <div class="tf-selector" role="group" aria-label="차트 기간 선택">${buttonsHtml}</div>
     <div class="card-chart"><canvas></canvas></div>
   `;
 
-  renderChart(card.querySelector("canvas"), series, payload.category);
+  const canvas   = card.querySelector("canvas");
+  const selector = card.querySelector(".tf-selector");
+  const initialKey = availableFrames.some((tf) => tf.key === DEFAULT_TIMEFRAME_KEY)
+    ? DEFAULT_TIMEFRAME_KEY
+    : availableFrames[availableFrames.length - 1].key;
+
+  // 최초 렌더링 + 버튼 클릭 시 다시 그리기
+  const chartState = { chart: null };
+  drawChartForTimeframe(canvas, series, payload.category, initialKey, chartState);
+
+  selector.addEventListener("click", (e) => {
+    const btn = e.target.closest("button.tf-btn");
+    if (!btn) return;
+    selector.querySelectorAll(".tf-btn").forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    drawChartForTimeframe(canvas, series, payload.category, btn.dataset.tf, chartState);
+  });
+
   return card;
+}
+
+/**
+ * 주어진 시계열이 실제로 커버할 수 있는 타임프레임만 반환한다.
+ * 예: 2년치 데이터만 있으면 3M, 1Y, ALL 만 보여준다.
+ * (단, ALL 과 데이터 범위를 포함하는 가장 큰 타임프레임은 항상 포함한다.)
+ */
+function filterAvailableTimeframes(series) {
+  if (!series || series.length === 0) return [TIMEFRAMES[TIMEFRAMES.length - 1]];
+  const spanMonths = monthsBetween(series[0].date, series[series.length - 1].date);
+  const available = TIMEFRAMES.filter((tf) => tf.months == null || tf.months <= spanMonths);
+  // 가장 큰 타임프레임이 데이터 범위를 아예 초과하는 경우에도, "전체" 는 항상 제공.
+  if (!available.some((tf) => tf.months == null)) {
+    available.push(TIMEFRAMES[TIMEFRAMES.length - 1]);
+  }
+  return available;
+}
+
+function monthsBetween(startIso, endIso) {
+  const s = new Date(startIso);
+  const e = new Date(endIso);
+  return (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth());
 }
 
 function renderError(err) {
@@ -147,13 +210,43 @@ function renderError(err) {
 
 
 // ---------- Chart.js ----------------------------------------
+/**
+ * 선택된 타임프레임에 맞춰 시계열을 잘라 차트를 (다시) 그린다.
+ * chartState.chart 에 기존 인스턴스를 저장해 두어, 재호출 시 파괴 후 재생성한다.
+ */
+function drawChartForTimeframe(canvas, fullSeries, category, tfKey, chartState) {
+  const tf = TIMEFRAMES.find((t) => t.key === tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
+  const sliced = sliceSeriesByMonths(fullSeries, tf.months);
+
+  if (chartState.chart) {
+    chartState.chart.destroy();
+    chartState.chart = null;
+  }
+  chartState.chart = renderChart(canvas, sliced, category);
+}
+
+/**
+ * 시계열의 마지막 날짜 기준으로 최근 `months` 개월치만 남긴다.
+ * months 가 null 이면 원본을 그대로 반환 (ALL).
+ */
+function sliceSeriesByMonths(series, months) {
+  if (months == null || series.length === 0) return series;
+  const last = new Date(series[series.length - 1].date);
+  const cutoff = new Date(last);
+  cutoff.setMonth(cutoff.getMonth() - months);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+  // 이진 탐색 대신 선형 — FRED 시리즈는 일간 기준 최대 수만 포인트라 충분히 빠르다.
+  const start = series.findIndex((p) => p.date >= cutoffStr);
+  return start === -1 ? series.slice(-1) : series.slice(start);
+}
+
 function renderChart(canvas, series, category) {
   const color = CATEGORY_COLOR[category] || "#9aa0a9";
   const labels = series.map((p) => p.date);
   const values = series.map((p) => p.value);
 
   // eslint-disable-next-line no-undef
-  new Chart(canvas, {
+  return new Chart(canvas, {
     type: "line",
     data: {
       labels,
@@ -171,7 +264,7 @@ function renderChart(canvas, series, category) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: { duration: 600 },
+      animation: { duration: 400 },
       interaction: { intersect: false, mode: "index" },
       plugins: {
         legend: { display: false },
@@ -189,8 +282,13 @@ function renderChart(canvas, series, category) {
             maxTicksLimit: 5,
             autoSkip: true,
             callback(v) {
-              // YYYY-MM 까지만 표시해서 축이 깔끔
-              return this.getLabelForValue(v).slice(0, 7);
+              // 전체 데이터 범위에 따라 축 표기 단위를 바꾼다.
+              // - 1년 이하: YYYY-MM
+              // - 그 이상:   YYYY
+              const raw = this.getLabelForValue(v);
+              return labels.length > 0 && spansOverAYear(labels)
+                ? raw.slice(0, 4)
+                : raw.slice(0, 7);
             },
           },
           grid: { color: "#2a2f3a", tickLength: 0 },
@@ -202,6 +300,13 @@ function renderChart(canvas, series, category) {
       },
     },
   });
+}
+
+function spansOverAYear(labels) {
+  if (labels.length < 2) return false;
+  const first = new Date(labels[0]);
+  const last  = new Date(labels[labels.length - 1]);
+  return (last - first) > 365 * 24 * 3600 * 1000;
 }
 
 

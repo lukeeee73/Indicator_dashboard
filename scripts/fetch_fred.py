@@ -18,7 +18,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
@@ -74,11 +74,11 @@ FRED_BASE_URL = "https://api.stlouisfed.org/fred/series/observations"
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_PATH = REPO_ROOT / "data" / "indicators.json"
 
-# 최근 2년치만 결과에 남긴다.
-LOOKBACK_DAYS = 365 * 2
-# YoY 변환을 위해서는 12개월 이전 값이 필요하므로, CPI는 추가로 1년을 더 조회한다.
-YOY_EXTRA_DAYS = 370  # 윤년/월 경계 보수적으로 여유
-REQUEST_TIMEOUT = 30  # 초
+# FRED에서 가져올 수 있는 최대한의 과거 데이터를 받는다.
+# FRED 시계열은 최대 1800년대 후반까지 존재하므로, 충분히 과거의 날짜를 시작점으로 지정한다.
+# 실제로는 각 시계열의 최초 관측일 이후 데이터만 반환되므로 문제없다.
+FRED_EARLIEST_DATE = "1776-07-04"
+REQUEST_TIMEOUT = 60  # 초 (과거 데이터까지 조회하므로 여유 있게)
 
 
 # --------------------------------------------------------------------------
@@ -132,9 +132,6 @@ def compute_yoy_pct(series: list[dict]) -> list[dict]:
     return result
 
 
-def trim_to_lookback(series: list[dict], cutoff_date: str) -> list[dict]:
-    """cutoff_date(YYYY-MM-DD) 이후 데이터만 남긴다."""
-    return [point for point in series if point["date"] >= cutoff_date]
 
 
 # --------------------------------------------------------------------------
@@ -168,10 +165,6 @@ def main() -> int:
         return 1
 
     now_utc = datetime.now(timezone.utc)
-    lookback_cutoff = (now_utc - timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
-    yoy_start = (
-        now_utc - timedelta(days=LOOKBACK_DAYS + YOY_EXTRA_DAYS)
-    ).strftime("%Y-%m-%d")
 
     # 실패한 지표는 기존 데이터 유지(없어지지 않도록)
     existing = load_existing(OUTPUT_PATH)
@@ -180,15 +173,12 @@ def main() -> int:
     success_count = 0
     for code, meta in INDICATORS.items():
         needs_yoy = meta["transform"] == "yoy_pct"
-        start_date = yoy_start if needs_yoy else lookback_cutoff
 
         print(f"Fetching {code}...", end=" ", flush=True)
         try:
-            raw = fetch_series(code, api_key, start_date)
-            if needs_yoy:
-                series = trim_to_lookback(compute_yoy_pct(raw), lookback_cutoff)
-            else:
-                series = raw
+            # 항상 FRED가 보유한 최대한의 과거 데이터를 조회한다.
+            raw = fetch_series(code, api_key, FRED_EARLIEST_DATE)
+            series = compute_yoy_pct(raw) if needs_yoy else raw
 
             merged_indicators[code] = {
                 "name": meta["name"],
