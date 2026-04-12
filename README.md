@@ -1,0 +1,95 @@
+# Dalio Dashboard
+
+레이 달리오의 All Weather Portfolio 프레임워크를 참고해, **현재 경제 상황이 4분면(성장 ↑↓ × 인플레이션 ↑↓) 중 어디에 속하는지** 판단하기 위한 개인용 지표 모니터링 대시보드입니다.
+자동화의 목표는 데이터 수집과 시각화까지이며, **해석과 판단은 수동**으로 진행합니다. 주간 판단 노트는 이 리포지토리가 아니라 별도 Obsidian vault(`luke-wiki`)에 수기로 작성합니다.
+
+---
+
+## 4분면 프레임워크
+
+| 분면 | 성장 | 인플레이션 | 유리한 자산 (참고) |
+|---|---|---|---|
+| 1 | ↑ | ↑ | 원자재, 신흥국 주식, 인플레 연동채 |
+| 2 | ↑ | ↓ | 선진국 주식, 회사채 |
+| 3 | ↓ | ↑ | 금, 인플레 연동채, 원자재 |
+| 4 | ↓ | ↓ | 국채(장기), 현금 |
+
+## 수집 지표
+
+| 지표 | FRED 코드 | 분면 | 비고 |
+|---|---|---|---|
+| 미국 10Y-2Y 금리차 | `T10Y2Y` | 성장 | 역전 시 침체 경고 (선행) |
+| 미국 10Y BEI | `T10YIE` | 인플레 | 시장 기대 인플레 |
+| CPI 전년 동월 대비 | `CPIAUCSL` | 인플레 | 원시값을 YoY % 로 변환 |
+| 산업생산지수 | `INDPRO` | 성장 | 성장 현재 상태 |
+| WTI 원유 가격 | `DCOILWTICO` | 인플레 | 인플레 선행 |
+
+지표를 추가/수정하려면 `scripts/fetch_fred.py` 상단의 `INDICATORS` 딕셔너리만 편집하면 됩니다.
+
+---
+
+## 디렉토리 구조
+
+```
+dalio-dashboard/
+├── README.md
+├── .gitignore
+├── data/
+│   └── indicators.json      # 수집된 시계열 (GitHub Actions가 갱신)
+├── scripts/
+│   ├── fetch_fred.py        # FRED API → indicators.json
+│   └── requirements.txt
+└── .github/workflows/
+    └── update.yml           # 주 1회 자동 수집 + 커밋
+```
+
+---
+
+## 로컬 실행
+
+```bash
+# 1. FRED API 키 발급: https://fred.stlouisfed.org/docs/api/api_key.html
+export FRED_API_KEY="your_api_key_here"
+
+# 2. 의존성 설치
+pip install -r scripts/requirements.txt
+
+# 3. 수집 실행
+python scripts/fetch_fred.py
+```
+
+실행이 끝나면 `data/indicators.json` 이 갱신되고, 각 지표별로 `Fetching T10Y2Y... OK (520 points)` 형태의 로그가 찍힙니다.
+
+---
+
+## GitHub Secrets 설정
+
+자동 수집을 위해 리포지토리에 FRED API 키를 Secret 으로 등록해야 합니다.
+
+1. GitHub 리포지토리 → **Settings** → **Secrets and variables** → **Actions**
+2. **New repository secret** 클릭
+3. Name: `FRED_API_KEY`, Value: 발급받은 API 키
+4. **Add secret** 저장
+
+이후 `.github/workflows/update.yml` 이 매주 월요일 09:00 UTC (한국시간 월요일 18:00) 에 자동 실행되며, 데이터가 바뀌었을 때만 `chore: update indicators (YYYY-MM-DD)` 커밋을 생성합니다.
+Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 수동 실행도 가능합니다.
+
+---
+
+## 설계 원칙
+
+- **의존성 최소화**: 표준 라이브러리 + `requests` 만 사용. 학습과 유지보수 부담을 낮추기 위함.
+- **안전 모드**: 한 지표가 실패해도 나머지는 계속 수집. 전부 실패하면 기존 JSON을 덮어쓰지 않음.
+- **시간대 일관성**: 모든 타임스탬프는 UTC, ISO 8601 포맷.
+- **수집과 판단의 분리**: 이 리포는 파이프라인/대시보드까지만. 주간 판단 노트는 별도 Obsidian vault 에서 관리.
+
+---
+
+## 로드맵
+
+- [x] **1단계 — 데이터 파이프라인** (현재)
+  FRED 호출 스크립트 + GitHub Actions 주간 자동 수집
+- [ ] **2단계 — 시각화**
+  `index.html` + `app.js` + `style.css` + Chart.js 기반 4분면 대시보드
+- [ ] **3단계 — 배포**
+  Vercel 연동 (GitHub 푸시 시 자동 재배포), 개인 도메인 연결
