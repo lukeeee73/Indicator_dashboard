@@ -37,6 +37,7 @@ dalio-dashboard/
 ├── index.html               # 대시보드 진입점 (Chart.js CDN 로드)
 ├── style.css                # 다크 테마 + 반응형 카드 레이아웃
 ├── app.js                   # indicators.json fetch & 차트 렌더링
+├── vercel.json              # Vercel 배포 설정 (JSON 캐시 정책)
 ├── data/
 │   └── indicators.json      # 수집된 시계열 (GitHub Actions가 갱신)
 ├── scripts/
@@ -90,6 +91,36 @@ Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 �
 
 ---
 
+## Vercel 배포
+
+정적 사이트라 **빌드 단계가 없고**, Vercel 이 자동으로 감지해 루트를 그대로 서빙합니다.
+
+### 최초 배포
+
+1. https://vercel.com 로그인 (GitHub 계정으로 가입 권장)
+2. **Add New... → Project** 클릭
+3. **Import Git Repository** 에서 `lukeeee73/Indicator_dashboard` 선택 → **Import**
+4. 설정 화면에서:
+   - **Framework Preset**: `Other` (자동으로 잡힐 것)
+   - **Build Command**: 비워두기
+   - **Output Directory**: 비워두기 (루트 그대로)
+   - **Install Command**: 비워두기
+5. **Deploy** 클릭 → 30초 내외로 `https://<프로젝트명>.vercel.app` URL 발급
+
+### 이후 자동 배포
+
+Vercel 이 GitHub 의 default branch 를 감시하므로,
+- 내가 코드를 푸시하거나
+- GitHub Actions 가 `data/indicators.json` 을 자동 커밋하면
+
+**자동으로 재배포**됩니다. 별도 동작 필요 없음.
+
+### 캐시 정책 (`vercel.json`)
+
+`data/indicators.json` 은 Vercel Edge CDN 에서 최대 5분만 캐시되도록 설정되어 있어, 주간 갱신이 곧바로 반영됩니다. 나머지 정적 파일은 기본 캐시 정책을 따릅니다.
+
+---
+
 ## 설계 원칙
 
 - **의존성 최소화**: 표준 라이브러리 + `requests` 만 사용. 학습과 유지보수 부담을 낮추기 위함.
@@ -105,5 +136,5 @@ Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 �
   FRED 호출 스크립트 + GitHub Actions 주간 자동 수집
 - [x] **2단계 — 시각화** (현재)
   `index.html` + `app.js` + `style.css` + Chart.js 기반 카드형 대시보드
-- [ ] **3단계 — 배포**
-  Vercel 연동 (GitHub 푸시 시 자동 재배포), 개인 도메인 연결
+- [x] **3단계 — 배포** (현재)
+  Vercel 연동 (GitHub 푸시 시 자동 재배포). 개인 도메인 연결은 선택.
