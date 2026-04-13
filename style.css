@@ -1,18 +1,23 @@
 /* -------------------------------------------------------------
-   색상/간격 토큰. 나중에 라이트 테마를 만들고 싶으면 여기만 바꾸면 됨.
+   Luke Dashboard — 스타일시트
+   컨셉: 레이달리오 저서 스타일 — 블랙 · 레드 · 화이트 트리컬러
    ------------------------------------------------------------- */
 :root {
-  --bg:            #0f1116;
-  --bg-elev:       #181b22;
-  --bg-card:       #1f232c;
-  --border:        #2a2f3a;
-  --text:          #e4e6eb;
-  --text-dim:      #9aa0a9;
-  --accent-growth:    #5ab0f0;  /* 성장 카테고리 차트/포인트 */
-  --accent-inflation: #f08c5a;  /* 인플레 카테고리 차트/포인트 */
-  --up:            #4ade80;     /* 최근 대비 상승 */
-  --down:          #f87171;     /* 최근 대비 하락 */
-  --radius:        0.5rem;
+  --bg:            #080808;         /* 진한 블랙 배경 */
+  --bg-elev:       #121212;         /* 살짝 띄운 레이어 */
+  --bg-card:       #181818;         /* 카드 배경 */
+  --border:        #282828;         /* 기본 테두리 */
+  --border-mid:    #383838;         /* 중간 밝기 테두리 */
+  --text:          #f2f2f2;         /* 메인 텍스트 (화이트) */
+  --text-dim:      #787878;         /* 흐린 텍스트 */
+  --red:           #cc2424;         /* 기본 레드 */
+  --red-bright:    #e63030;         /* 밝은 레드 (hover/active) */
+  --red-dim:       #5c1010;         /* 어두운 레드 (배경 틴트) */
+  --accent-growth:    #c8d8ea;      /* 성장 지표 라인 — 스틸 블루-화이트 */
+  --accent-inflation: #cc2424;      /* 인플레 지표 라인 — 레드 */
+  --up:            #5acd80;         /* 상승 — 그린 유지 (금융 관례) */
+  --down:          #cc2424;         /* 하락 — 레드 */
+  --radius:        0.2rem;          /* 직선적 모서리 */
 }
 
 * { box-sizing: border-box; }
@@ -30,25 +35,37 @@ body {
 
 /* ---------- 헤더 ---------- */
 .site-header {
-  padding: 2rem 1.5rem 1.25rem;
+  padding: 2.25rem 1.5rem 1.5rem;
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--red);
+  background: var(--bg);
 }
 .site-header h1 {
-  margin: 0 0 0.25rem;
-  font-size: 1.75rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
 }
-.subtitle     { margin: 0; color: var(--text-dim); font-size: 0.95rem; }
+/* 제목 밑 레드 언더라인 장식 */
+.site-header h1::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--red);
+  margin: 0.45rem auto 0;
+}
+.subtitle     { margin: 0; color: var(--text-dim); font-size: 0.9rem; letter-spacing: 0.04em; }
 .last-updated {
-  margin: 0.6rem 0 0;
+  margin: 0.55rem 0 0;
   color: var(--text-dim);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
 }
 .header-controls {
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -63,23 +80,25 @@ body {
   user-select: none;
 }
 .header-controls .switch input {
-  accent-color: var(--accent-growth);
+  accent-color: var(--red);
 }
 
 /* ---------- 메인 레이아웃 ---------- */
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1.75rem 1.5rem;
 }
-section { margin-bottom: 2.5rem; }
+section { margin-bottom: 2.75rem; }
 section h2 {
   margin: 0 0 1rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-dim);
+  padding-left: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+  border-left: 3px solid var(--red);
 }
 
 /* ---------- 4분면 카드 ---------- */
@@ -96,9 +115,18 @@ section h2 {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  transition: border-color 0.2s ease;
 }
-.quadrant .label { font-weight: 600; font-size: 0.95rem; }
-.quadrant .hint  { font-size: 0.8rem;  color: var(--text-dim); }
+/* 인플레 상승 시나리오 → 레드 왼쪽 강조 */
+.quadrant:nth-child(1),
+.quadrant:nth-child(3) {
+  border-left: 2px solid var(--red-dim);
+}
+.quadrant:hover {
+  border-color: var(--border-mid);
+}
+.quadrant .label { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.quadrant .hint  { font-size: 0.78rem; color: var(--text-dim); }
 
 /* ---------- 지표 카드 ---------- */
 .cards {
@@ -109,14 +137,16 @@ section h2 {
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
+  border-top: 2px solid var(--border-mid);
   border-radius: var(--radius);
   padding: 1.25rem;
-  animation: fadeIn 0.4s ease-out both;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  animation: fadeIn 0.35s ease-out both;
+  transition: transform 0.2s ease, border-color 0.2s ease, border-top-color 0.2s ease;
 }
 .card:hover {
   transform: translateY(-2px);
-  border-color: #3a4150;
+  border-color: var(--border-mid);
+  border-top-color: var(--red);
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -129,12 +159,12 @@ section h2 {
   align-items: baseline;
   margin-bottom: 0.5rem;
 }
-.card-title { font-weight: 600; font-size: 1rem; }
+.card-title { font-weight: 600; font-size: 1rem; color: var(--text); }
 .card-code  {
   font-size: 0.72rem;
   color: var(--text-dim);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
 
 .card-value {
@@ -142,6 +172,7 @@ section h2 {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
+  color: var(--text);
 }
 .card-change {
   font-size: 0.85rem;
@@ -164,6 +195,16 @@ section h2 {
   position: relative;
 }
 
+/* 이벤트 클릭 힌트 (10년+ 뷰에서 표시) */
+.event-hint {
+  margin: 0.3rem 0 0;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-style: italic;
+  padding-left: 0.25rem;
+  border-left: 2px solid var(--red-dim);
+}
+
 /* ---------- 타임프레임 선택 버튼 ---------- */
 .tf-selector {
   display: flex;
@@ -175,7 +216,7 @@ section h2 {
   background: var(--bg-elev);
   color: var(--text-dim);
   border: 1px solid var(--border);
-  border-radius: 0.35rem;
+  border-radius: var(--radius);
   padding: 0.2rem 0.55rem;
   font-size: 0.72rem;
   font-family: inherit;
@@ -185,12 +226,12 @@ section h2 {
 }
 .tf-btn:hover {
   color: var(--text);
-  border-color: #3a4150;
+  border-color: var(--border-mid);
 }
 .tf-btn.active {
-  background: var(--border);
-  color: var(--text);
-  border-color: #3a4150;
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
 }
 
 /* ---------- 비교 자산 / 모드 토글 ---------- */
@@ -212,7 +253,7 @@ section h2 {
   background: var(--bg-elev);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 0.35rem;
+  border-radius: var(--radius);
   padding: 0.25rem 0.5rem;
   font-size: 0.78rem;
   font-family: inherit;
@@ -220,12 +261,12 @@ section h2 {
 }
 .compare-select:focus {
   outline: none;
-  border-color: #3a4150;
+  border-color: var(--red);
 }
 .mode-toggle {
   display: inline-flex;
   border: 1px solid var(--border);
-  border-radius: 0.35rem;
+  border-radius: var(--radius);
   overflow: hidden;
 }
 .mode-toggle[hidden] { display: none; }
@@ -242,15 +283,15 @@ section h2 {
 .mode-btn + .mode-btn { border-left: 1px solid var(--border); }
 .mode-btn:hover  { color: var(--text); }
 .mode-btn.active {
-  background: var(--border);
-  color: var(--text);
+  background: var(--red);
+  color: #fff;
 }
 .compare-note {
   margin: 0.5rem 0 0;
   padding: 0.5rem 0.65rem;
   background: var(--bg-elev);
-  border-left: 2px solid var(--accent-growth);
-  border-radius: 0.25rem;
+  border-left: 2px solid var(--red);
+  border-radius: var(--radius);
   font-size: 0.75rem;
   color: var(--text-dim);
   line-height: 1.4;
@@ -259,7 +300,7 @@ section h2 {
 
 .card-chart.compare-chart {
   margin-top: 0.6rem;
-  height: 130px;  /* 메인보다 약간 작게 */
+  height: 130px;
 }
 .card-chart.compare-chart[hidden] { display: none; }
 
@@ -269,23 +310,23 @@ section h2 {
   text-align: center;
   color: var(--text-dim);
   font-size: 0.85rem;
-  border-top: 1px solid var(--border);
+  border-top: 2px solid var(--red);
 }
-.site-footer a { color: var(--accent-growth); text-decoration: none; }
-.site-footer a:hover { text-decoration: underline; }
+.site-footer a { color: var(--red-bright); text-decoration: none; }
+.site-footer a:hover { color: var(--text); text-decoration: underline; }
 .site-footer .note { margin-top: 0.5rem; font-size: 0.75rem; }
 .site-footer code {
   background: var(--bg-elev);
   padding: 0.1rem 0.35rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
   font-size: 0.75rem;
 }
 
 /* ---------- 상태 메시지 ---------- */
 .error {
-  background: #3a1f23;
+  background: var(--red-dim);
   color: #fca5a5;
-  border: 1px solid #6b2028;
+  border: 1px solid var(--red);
   border-radius: var(--radius);
   padding: 1rem;
 }
@@ -295,7 +336,7 @@ section h2 {
   padding: 1rem;
   text-align: center;
   background: var(--bg-elev);
-  border: 1px dashed var(--border);
+  border: 1px dashed var(--border-mid);
   border-radius: var(--radius);
 }
 
@@ -303,6 +344,6 @@ section h2 {
 @media (max-width: 600px) {
   .quadrant-grid { grid-template-columns: 1fr; }
   .cards         { grid-template-columns: 1fr; }
-  .site-header h1 { font-size: 1.5rem; }
+  .site-header h1 { font-size: 1.6rem; }
   .card-value     { font-size: 1.5rem; }
 }
