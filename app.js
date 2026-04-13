@@ -1,5 +1,5 @@
 /* ============================================================
- * Dalio Dashboard — 프론트엔드 로직
+ * Luke Dashboard — 프론트엔드 로직
  *
  * 역할:
  *   1. data/indicators.json 을 fetch
@@ -90,30 +90,29 @@ const COMPARE_RECOMMENDATIONS = {
 };
 
 // 주요 역사적 이벤트. 차트에 수직 점선 + 라벨로 표시.
-// 범위(range)를 가진 이벤트는 [start, end] 구간으로 처리할 수도 있으나,
-// 여기서는 "시작 시점"만 점선으로 남기고 라벨로 설명한다.
+// short: 10년 이상 뷰에서 클릭 팝업으로 쓰이는 짧은 이름
 const EVENTS = [
-  { date: "1914-07-28", label: "1차 세계대전 발발" },
-  { date: "1929-10-29", label: "대공황 (Black Tuesday)" },
-  { date: "1939-09-01", label: "2차 세계대전 발발" },
-  { date: "1945-09-02", label: "2차 세계대전 종전" },
-  { date: "1971-08-15", label: "닉슨 쇼크 (금본위 붕괴)" },
-  { date: "1973-10-06", label: "1차 오일쇼크" },
-  { date: "1979-11-04", label: "2차 오일쇼크" },
-  { date: "1987-10-19", label: "Black Monday" },
-  { date: "1997-07-02", label: "아시아 외환위기" },
-  { date: "2000-03-10", label: "닷컴 버블 정점" },
-  { date: "2001-09-11", label: "9/11 테러" },
-  { date: "2008-09-15", label: "리먼 파산 (글로벌 금융위기)" },
-  { date: "2011-08-05", label: "미국 신용등급 강등" },
-  { date: "2020-03-11", label: "COVID-19 팬데믹 선언" },
-  { date: "2022-02-24", label: "러시아-우크라이나 전쟁" },
+  { date: "1914-07-28", label: "1차 세계대전 발발",          short: "WW1" },
+  { date: "1929-10-29", label: "대공황 (Black Tuesday)",     short: "대공황" },
+  { date: "1939-09-01", label: "2차 세계대전 발발",          short: "WW2" },
+  { date: "1945-09-02", label: "2차 세계대전 종전",          short: "WW2종전" },
+  { date: "1971-08-15", label: "닉슨 쇼크 (금본위 붕괴)",   short: "닉슨쇼크" },
+  { date: "1973-10-06", label: "1차 오일쇼크",               short: "오일1" },
+  { date: "1979-11-04", label: "2차 오일쇼크",               short: "오일2" },
+  { date: "1987-10-19", label: "Black Monday",               short: "블랙먼데이" },
+  { date: "1997-07-02", label: "아시아 외환위기",             short: "외환위기" },
+  { date: "2000-03-10", label: "닷컴 버블 정점",             short: "닷컴버블" },
+  { date: "2001-09-11", label: "9/11 테러",                  short: "9/11" },
+  { date: "2008-09-15", label: "리먼 파산 (글로벌 금융위기)", short: "리먼파산" },
+  { date: "2011-08-05", label: "미국 신용등급 강등",         short: "신용강등" },
+  { date: "2020-03-11", label: "COVID-19 팬데믹 선언",       short: "COVID" },
+  { date: "2022-02-24", label: "러시아-우크라이나 전쟁",     short: "우크라이나" },
 ];
 
 // 카테고리별 차트 색 (CSS 변수와 일치시킴)
 const CATEGORY_COLOR = {
-  growth:    "#5ab0f0",
-  inflation: "#f08c5a",
+  growth:    "#c8d8ea",   // 스틸 블루-화이트
+  inflation: "#cc2424",   // 레드
 };
 
 // 최근 변화 계산 기준 (일)
@@ -245,6 +244,7 @@ function renderCard(code, payload, assets) {
     <p class="card-desc">${meta.description}</p>
     <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
     <div class="card-chart main-chart"><canvas></canvas></div>
+    <p class="event-hint" hidden>이벤트 마커(▏)를 클릭하면 라벨이 표시됩니다</p>
 
     <div class="compare-bar">
       <label class="compare-label">
@@ -267,6 +267,7 @@ function renderCard(code, payload, assets) {
   const compareSelect = card.querySelector(".compare-select");
   const modeToggle    = card.querySelector(".mode-toggle");
   const tfSelector    = card.querySelector(".tf-selector");
+  const eventHint     = card.querySelector(".event-hint");
 
   const initialKey = availableFrames.some((tf) => tf.key === DEFAULT_TIMEFRAME_KEY)
     ? DEFAULT_TIMEFRAME_KEY
@@ -290,6 +291,12 @@ function renderCard(code, payload, assets) {
       ? EVENTS.filter((e) => rangeStart && rangeEnd && e.date >= rangeStart && e.date <= rangeEnd)
       : [];
 
+    // 10년 이상 뷰 여부 → 클릭 방식 힌트 표시
+    const isLongSpan = spansOverTenYears(mainSliced.map((p) => p.date));
+    if (eventHint) {
+      eventHint.hidden = !(APP_STATE.showEvents && isLongSpan && events.length > 0);
+    }
+
     // 기존 차트 파괴
     if (chartState.main)    { chartState.main.destroy();    chartState.main = null; }
     if (chartState.compare) { chartState.compare.destroy(); chartState.compare = null; }
@@ -307,12 +314,14 @@ function renderCard(code, payload, assets) {
           name:   cmpMeta?.displayName ?? state.compareCode,
         },
         events,
+        longSpan: isLongSpan,
         primaryMeta: meta,
       });
       compareBox.hidden = true;
     } else {
       chartState.main = renderChart(mainCanvas, mainSliced, category, {
         events,
+        longSpan: isLongSpan,
         primaryMeta: meta,
       });
 
@@ -322,6 +331,7 @@ function renderCard(code, payload, assets) {
         compareBox.hidden = false;
         chartState.compare = renderChart(compareCanvas, cmpSliced, null, {
           events,
+          longSpan: isLongSpan,
           assetColor: cmpMeta?.color,
           primaryMeta: cmpMeta,
         });
@@ -492,34 +502,47 @@ function renderChart(canvas, series, category, opts = {}) {
   }
 
   // 이벤트 annotations: x 축이 category 타입이므로 labels 내의 정확한 문자열로 snap.
+  // 10년 이상 뷰: 라벨 기본 숨김 + 마커 클릭 시 토글. 이하: 항상 표시.
+  const longSpan = opts.longSpan || false;
   const annotations = {};
   (opts.events || []).forEach((evt, i) => {
     const snapped = snapEventToLabel(evt.date, labels);
     if (!snapped) return;
-    annotations[`evt_${i}`] = {
+    const annotKey = `evt_${i}`;
+    const annotation = {
       type: "line",
       xMin: snapped,
       xMax: snapped,
-      borderColor: "rgba(230, 230, 230, 0.45)",
-      borderWidth: 1,
+      borderColor: longSpan ? "rgba(200, 50, 50, 0.55)" : "rgba(210, 210, 210, 0.4)",
+      borderWidth: longSpan ? 1.5 : 1,
       borderDash: [4, 4],
       label: {
-        display: true,
+        display: !longSpan,
         content: evt.label,
         position: "start",
-        backgroundColor: "rgba(20, 20, 20, 0.8)",
-        color: "#e4e6eb",
+        backgroundColor: "rgba(10, 10, 10, 0.9)",
+        color: "#f2f2f2",
         font: { size: 9, weight: "500" },
         padding: { top: 2, bottom: 2, left: 4, right: 4 },
         yAdjust: -4,
       },
     };
+    if (longSpan) {
+      annotation.click = function(ctx) {
+        const a = ctx.chart.options.plugins.annotation.annotations[annotKey];
+        if (a && a.label) {
+          a.label.display = !a.label.display;
+          ctx.chart.update("none");
+        }
+      };
+    }
+    annotations[annotKey] = annotation;
   });
 
   const scales = {
     x: {
       ticks: {
-        color: "#9aa0a9",
+        color: "#787878",
         maxTicksLimit: 5,
         autoSkip: true,
         callback(v) {
@@ -527,18 +550,18 @@ function renderChart(canvas, series, category, opts = {}) {
           return labels.length > 0 && spansOverAYear(labels) ? raw.slice(0, 4) : raw.slice(0, 7);
         },
       },
-      grid: { color: "#2a2f3a", tickLength: 0 },
+      grid: { color: "#222222", tickLength: 0 },
     },
     y: {
       position: "left",
-      ticks: { color: "#9aa0a9" },
-      grid:  { color: "#2a2f3a" },
+      ticks: { color: "#787878" },
+      grid:  { color: "#222222" },
     },
   };
   if (overlayMeta) {
     scales.y1 = {
       position: "right",
-      ticks: { color: overlayMeta.color || "#d4af37" },
+      ticks: { color: overlayMeta.color || "#c8d8ea" },
       grid:  { display: false },
     };
   }
@@ -555,7 +578,7 @@ function renderChart(canvas, series, category, opts = {}) {
       plugins: {
         legend: {
           display: !!overlayMeta,
-          labels: { color: "#9aa0a9", boxWidth: 10, boxHeight: 10, font: { size: 10 } },
+          labels: { color: "#a0a0a0", boxWidth: 10, boxHeight: 10, font: { size: 10 } },
         },
         tooltip: {
           callbacks: {
@@ -573,7 +596,7 @@ function renderChart(canvas, series, category, opts = {}) {
             },
           },
         },
-        annotation: { annotations },
+        annotation: { annotations, hitTolerance: longSpan ? 8 : 4 },
       },
       scales,
     },
@@ -585,6 +608,13 @@ function spansOverAYear(labels) {
   const first = new Date(labels[0]);
   const last  = new Date(labels[labels.length - 1]);
   return (last - first) > 365 * 24 * 3600 * 1000;
+}
+
+function spansOverTenYears(labels) {
+  if (labels.length < 2) return false;
+  const first = new Date(labels[0]);
+  const last  = new Date(labels[labels.length - 1]);
+  return (last - first) > 10 * 365 * 24 * 3600 * 1000;
 }
 
 /**
