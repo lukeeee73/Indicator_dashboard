@@ -21,24 +21,63 @@
   </header>
 
   <main>
-    <!-- 4분면 참조 카드: 지금 어느 분면인지는 수동 판단 -->
+    <!-- 현재 국면 자동 판정: 과거 분포 대비 백분위로 성장/인플레 점수 산출 -->
+    <section class="assessment" id="assessment-section" hidden>
+      <h2>현재 국면 (자동 판정)</h2>
+      <div class="assessment-grid">
+        <div class="assessment-card" data-window="full">
+          <div class="aw-header">
+            <span class="aw-title">장기 기준</span>
+            <span class="aw-sub">1945 이후 전체 분포</span>
+          </div>
+          <div class="aw-quadrant" id="assessment-full-quadrant">—</div>
+          <div class="aw-scores">
+            <span class="aw-score">성장 <b id="assessment-full-growth">—</b></span>
+            <span class="aw-score">인플레 <b id="assessment-full-inflation">—</b></span>
+          </div>
+        </div>
+
+        <div class="assessment-card" data-window="rolling_10y">
+          <div class="aw-header">
+            <span class="aw-title">단기 기준</span>
+            <span class="aw-sub">최근 10년 분포 (단기부채 사이클)</span>
+          </div>
+          <div class="aw-quadrant" id="assessment-10y-quadrant">—</div>
+          <div class="aw-scores">
+            <span class="aw-score">성장 <b id="assessment-10y-growth">—</b></span>
+            <span class="aw-score">인플레 <b id="assessment-10y-inflation">—</b></span>
+          </div>
+        </div>
+
+        <div class="assessment-scatter">
+          <div class="aw-header">
+            <span class="aw-title">궤적 (최근 24개월, 장기 기준)</span>
+            <span class="aw-sub">X: 인플레 · Y: 성장 · 경계 40/60</span>
+          </div>
+          <div class="scatter-chart"><canvas id="assessment-scatter"></canvas></div>
+        </div>
+      </div>
+      <p class="assessment-note" id="assessment-note"></p>
+    </section>
+
+    <!-- 4분면 참조 카드: 각 분면이 어떤 자산에 유리한지 리마인더 -->
     <section class="framework">
       <h2>4분면 프레임워크</h2>
       <div class="quadrant-grid">
-        <div class="quadrant">
-          <span class="label">성장 ↑ · 인플레 ↑</span>
+        <div class="quadrant" data-quadrant="Q1">
+          <span class="label">Q1 · 성장 ↑ · 인플레 ↑</span>
           <span class="hint">원자재 · 신흥국 주식 · 인플레 연동채</span>
         </div>
-        <div class="quadrant">
-          <span class="label">성장 ↑ · 인플레 ↓</span>
+        <div class="quadrant" data-quadrant="Q2">
+          <span class="label">Q2 · 성장 ↑ · 인플레 ↓</span>
           <span class="hint">선진국 주식 · 회사채</span>
         </div>
-        <div class="quadrant">
-          <span class="label">성장 ↓ · 인플레 ↑</span>
+        <div class="quadrant" data-quadrant="Q3">
+          <span class="label">Q3 · 성장 ↓ · 인플레 ↑</span>
           <span class="hint">금 · 인플레 연동채 · 원자재</span>
         </div>
-        <div class="quadrant">
-          <span class="label">성장 ↓ · 인플레 ↓</span>
+        <div class="quadrant" data-quadrant="Q4">
+          <span class="label">Q4 · 성장 ↓ · 인플레 ↓</span>
           <span class="hint">장기 국채 · 현금</span>
         </div>
       </div>

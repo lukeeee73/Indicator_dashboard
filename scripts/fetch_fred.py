@@ -7,10 +7,11 @@ FRED API에서 주요 경제 지표를 가져와 data/indicators.json에 저장�
     python scripts/fetch_fred.py
 
 원칙:
-    - requests만 사용 (pandas, numpy 등은 쓰지 않는다)
     - 한 지표가 실패해도 다른 지표는 계속 수집한다 (안전 모드)
     - 모든 지표가 실패하면 기존 JSON을 덮어쓰지 않는다
     - 날짜는 모두 UTC 기준, ISO 8601 포맷
+    - 수집 이후 analyze 모듈이 각 지표에 "현재 위치(percentile/label)" 와
+      성장/인플레 종합 점수(assessment 블록) 를 주입한다.
 """
 
 from __future__ import annotations
@@ -21,7 +22,10 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pandas as pd
 import requests
+
+from analyze import enrich_with_assessment
 
 
 # --------------------------------------------------------------------------
@@ -31,7 +35,9 @@ import requests
 #   - name:      대시보드에 표시할 영문 이름
 #   - category:  "growth" (성장 분면) | "inflation" (인플레 분면)
 #   - unit:      단위 표기. 프론트엔드가 툴팁에 붙일 때 사용
-#   - transform: None 이면 원시값 그대로, "yoy_pct" 면 전년 동월 대비 상승률(%)로 변환
+#   - transform: None        → 원시값 그대로
+#                "yoy_pct"   → 월간 시계열의 전년 동월 대비 상승률(%) 로 변환
+#                "yoy_pct_daily" → 일간 시계열을 월말 last 로 리샘플 후 YoY(%)
 INDICATORS: dict[str, dict] = {
     "T10Y2Y": {
         "name": "10Y-2Y Treasury Spread",
@@ -52,17 +58,47 @@ INDICATORS: dict[str, dict] = {
         "unit": "percent",
         "transform": "yoy_pct",
     },
+    "CPILFESL": {
+        # Core CPI (식품·에너지 제외). "끈적한(sticky) 인플레" 의 척도.
+        "name": "Core CPI YoY",
+        "category": "inflation",
+        "unit": "percent",
+        "transform": "yoy_pct",
+    },
+    "PCEPI": {
+        # PCE 물가지수. Fed 가 통화정책 기준으로 보는 지표.
+        "name": "PCE YoY",
+        "category": "inflation",
+        "unit": "percent",
+        "transform": "yoy_pct",
+    },
     "INDPRO": {
-        "name": "Industrial Production Index",
+        # 원시 지수값 대신 YoY 변화율을 본다 — 레짐 비교가 가능해짐.
+        "name": "Industrial Production YoY",
         "category": "growth",
-        "unit": "index",
+        "unit": "percent",
+        "transform": "yoy_pct",
+    },
+    "PAYEMS": {
+        # 비농업 고용. 성장의 현재 상태.
+        "name": "Nonfarm Payrolls YoY",
+        "category": "growth",
+        "unit": "percent",
+        "transform": "yoy_pct",
+    },
+    "USSLIND": {
+        # Philly Fed State Leading Index — 향후 6개월 성장률 전망 (level).
+        "name": "State Leading Index",
+        "category": "growth",
+        "unit": "percent",
         "transform": None,
     },
     "DCOILWTICO": {
-        "name": "WTI Crude Oil Price",
+        # 일간 가격을 월말 last 로 리샘플 후 YoY — 공급측 인플레 압력으로 사용.
+        "name": "WTI Crude Oil YoY",
         "category": "inflation",
-        "unit": "usd_per_barrel",
-        "transform": None,
+        "unit": "percent",
+        "transform": "yoy_pct_daily",
     },
 }
 
@@ -166,21 +202,51 @@ def fetch_series(series_id: str, api_key: str, start_date: str) -> list[dict]:
 # --------------------------------------------------------------------------
 # 변환 함수들
 # --------------------------------------------------------------------------
-def compute_yoy_pct(series: list[dict]) -> list[dict]:
-    """전년 동월 대비 상승률(%)로 변환.
+def _series_to_pandas(series: list[dict]) -> pd.Series:
+    """[{date, value}] → DatetimeIndex 기준 pd.Series (오름차순 정렬)."""
+    if not series:
+        return pd.Series(dtype=float)
+    df = pd.DataFrame(series)
+    df["date"] = pd.to_datetime(df["date"])
+    return df.set_index("date")["value"].astype(float).sort_index()
 
-    CPIAUCSL 은 월간 데이터이므로, 정렬된 시계열에서 i 번째 값과
-    (i - 12) 번째 값을 비교하면 1년 전 대비 상승률이 된다.
+
+def _pandas_to_series(s: pd.Series) -> list[dict]:
+    """pd.Series → [{date: 'YYYY-MM-DD', value: float}] 리스트."""
+    return [
+        {"date": d.strftime("%Y-%m-%d"), "value": round(float(v), 3)}
+        for d, v in s.items()
+        if pd.notna(v)
+    ]
+
+
+def compute_yoy_pct(series: list[dict]) -> list[dict]:
+    """월간 시계열의 전년 동월 대비 상승률(%). 12 기간 전 대비 pct_change."""
+    s = _series_to_pandas(series)
+    if s.empty:
+        return []
+    yoy = s.pct_change(periods=12) * 100.0
+    return _pandas_to_series(yoy.dropna())
+
+
+def compute_yoy_pct_daily(series: list[dict]) -> list[dict]:
+    """일간 시계열을 월말(last) 로 리샘플 → YoY(%).
+
+    WTI 같은 일간 가격 데이터에 대해서도 월 단위 YoY 를 뽑아, 다른 인플레 지표와
+    같은 기준(월간 YoY%) 에서 백분위/레이블 비교가 가능하도록 한다.
     """
-    result: list[dict] = []
-    for i in range(12, len(series)):
-        prev = series[i - 12]["value"]
-        curr = series[i]["value"]
-        if prev == 0:
-            continue  # 0으로 나누기 방지 (현실적으로 발생 안 하지만 안전장치)
-        yoy = (curr - prev) / prev * 100.0
-        result.append({"date": series[i]["date"], "value": round(yoy, 3)})
-    return result
+    s = _series_to_pandas(series)
+    if s.empty:
+        return []
+    monthly_last = s.resample("ME").last().dropna()
+    yoy = monthly_last.pct_change(periods=12) * 100.0
+    return _pandas_to_series(yoy.dropna())
+
+
+TRANSFORMS = {
+    "yoy_pct":       compute_yoy_pct,
+    "yoy_pct_daily": compute_yoy_pct_daily,
+}
 
 
 
@@ -215,7 +281,14 @@ def collect_group(group: dict, api_key: str, label: str) -> tuple[dict, int]:
         print(f"Fetching {label} {code}...", end=" ", flush=True)
         try:
             raw = fetch_series(code, api_key, FRED_EARLIEST_DATE)
-            series = compute_yoy_pct(raw) if meta.get("transform") == "yoy_pct" else raw
+            transform = meta.get("transform")
+            if transform:
+                fn = TRANSFORMS.get(transform)
+                if fn is None:
+                    raise ValueError(f"unknown transform: {transform}")
+                series = fn(raw)
+            else:
+                series = raw
             entry = {
                 "name": meta["name"],
                 "unit": meta["unit"],
@@ -278,6 +351,12 @@ def main() -> int:
         "indicators": merged_indicators,
         "assets": merged_assets,
     }
+
+    # 각 지표에 "current" (percentile/label) 를 주입하고, 성장/인플레 종합
+    # 점수와 분면 판정(assessment) 을 최상위에 추가한다.
+    print("\nAnalyzing (percentile / labels / quadrant)...", flush=True)
+    enrich_with_assessment(output)
+
     save_json(OUTPUT_PATH, output)
 
     print(

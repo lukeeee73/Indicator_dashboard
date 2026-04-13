@@ -33,16 +33,40 @@ const INDICATOR_META = {
     unit: "%",
     decimals: 2,
   },
+  CPILFESL: {
+    displayName: "Core CPI YoY",
+    description: "식품·에너지 제외 CPI. 끈적한(sticky) 인플레 척도.",
+    unit: "%",
+    decimals: 2,
+  },
+  PCEPI: {
+    displayName: "PCE YoY",
+    description: "개인소비지출 물가. Fed 통화정책 준거 지표.",
+    unit: "%",
+    decimals: 2,
+  },
   INDPRO: {
-    displayName: "산업생산지수",
-    description: "공장/광산/유틸 생산량. 성장의 현재 상태.",
-    unit: "",
+    displayName: "산업생산 YoY",
+    description: "공장/광산/유틸 생산량의 전년 대비 변화. 성장의 현재 상태.",
+    unit: "%",
+    decimals: 2,
+  },
+  PAYEMS: {
+    displayName: "비농업 고용 YoY",
+    description: "비농업 부문 고용의 전년 대비 변화. 성장 확산 지표.",
+    unit: "%",
+    decimals: 2,
+  },
+  USSLIND: {
+    displayName: "주 단위 선행지수",
+    description: "Philly Fed의 향후 6개월 성장률 전망(주별 가중).",
+    unit: "%",
     decimals: 2,
   },
   DCOILWTICO: {
-    displayName: "WTI 원유",
-    description: "원유 가격. 인플레 선행지표.",
-    unit: "$",
+    displayName: "WTI 원유 YoY",
+    description: "원유 가격의 전년 대비 변화. 공급측 인플레 압력.",
+    unit: "%",
     decimals: 2,
   },
 };
@@ -82,10 +106,30 @@ const COMPARE_RECOMMENDATIONS = {
     secondary: ["DGS10", "VIXCLS"],
     note: "생산 확장기엔 주식 상승·HY 스프레드 축소, 수축기엔 반대 흐름.",
   },
+  PAYEMS: {
+    primary:   ["SP500", "BAMLH0A0HYM2"],
+    secondary: ["DGS10", "VIXCLS"],
+    note: "고용 YoY 둔화는 경기 후행이지만 침체의 확정적 신호. 주식·크레딧 스프레드와 비교.",
+  },
+  USSLIND: {
+    primary:   ["SP500", "BAMLH0A0HYM2"],
+    secondary: ["VIXCLS", "DGS10"],
+    note: "Philly Fed 선행지수가 꺾일 때 주식/크레딧이 선반영했는지 체크.",
+  },
+  CPILFESL: {
+    primary:   ["GOLDAMGBD228NLBM", "DGS10"],
+    secondary: ["DTWEXBGS", "SP500"],
+    note: "Core CPI 가속기엔 명목금리·금 동행, 달러 약세 경향.",
+  },
+  PCEPI: {
+    primary:   ["DGS10", "GOLDAMGBD228NLBM"],
+    secondary: ["DTWEXBGS", "SP500"],
+    note: "Fed 기준 지표. 목표(2%) 대비 이탈 국면에서 채권/달러 반응 확인.",
+  },
   DCOILWTICO: {
     primary:   ["DTWEXBGS", "GOLDAMGBD228NLBM"],
     secondary: ["SP500", "DEXKOUS"],
-    note: "유가는 달러와 역상관, 인플레와 동행. 1·2차 오일쇼크·2008·COVID 전후가 관전 포인트.",
+    note: "유가 YoY 는 달러와 역상관, 인플레와 동행. 1·2차 오일쇼크·2008·COVID 전후가 관전 포인트.",
   },
 };
 
@@ -170,6 +214,7 @@ function wireEventsToggle() {
 // ---------- 렌더링 -----------------------------------------
 function render(data) {
   renderLastUpdated(data.last_updated);
+  renderAssessment(data.assessment || null);
 
   const indicators = data.indicators || {};
   const assets     = data.assets     || {};
@@ -188,6 +233,166 @@ function render(data) {
     const host = payload.category === "growth" ? growthHost : inflationHost;
     host.appendChild(renderCard(code, payload, assets));
   }
+}
+
+// 현재 국면 자동 판정 패널.
+// assessment = { full, rolling_10y, config, trajectory }
+function renderAssessment(assessment) {
+  const section = document.getElementById("assessment-section");
+  if (!section) return;
+  if (!assessment || !assessment.full || !assessment.rolling_10y) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+
+  const QUADRANT_LABEL = {
+    "Q1": "Q1 · 성장↑ 인플레↑",
+    "Q2": "Q2 · 성장↑ 인플레↓",
+    "Q3": "Q3 · 성장↓ 인플레↑",
+    "Q4": "Q4 · 성장↓ 인플레↓",
+    "Q1/Q2-edge": "Edge · 성장↑ 인플레 중립",
+    "Q3/Q4-edge": "Edge · 성장↓ 인플레 중립",
+    "Q1/Q3-edge": "Edge · 인플레↑ 성장 중립",
+    "Q2/Q4-edge": "Edge · 인플레↓ 성장 중립",
+    "Neutral":    "Neutral · 중립 구간",
+  };
+
+  const fillPanel = (keyPrefix, summary) => {
+    const qEl = document.getElementById(`assessment-${keyPrefix}-quadrant`);
+    const gEl = document.getElementById(`assessment-${keyPrefix}-growth`);
+    const iEl = document.getElementById(`assessment-${keyPrefix}-inflation`);
+    if (qEl) {
+      qEl.textContent = QUADRANT_LABEL[summary.quadrant] || summary.quadrant;
+      qEl.dataset.quadrant = summary.quadrant.split("/")[0].replace("-edge", "");
+    }
+    if (gEl) {
+      gEl.textContent = `${summary.growth_score.toFixed(0)} · ${summary.growth_label}`;
+      gEl.dataset.label = summary.growth_label;
+    }
+    if (iEl) {
+      iEl.textContent = `${summary.inflation_score.toFixed(0)} · ${summary.inflation_label}`;
+      iEl.dataset.label = summary.inflation_label;
+    }
+  };
+  fillPanel("full", assessment.full);
+  fillPanel("10y",  assessment.rolling_10y);
+
+  // 분면이 두 창에서 다르면 그 자체가 레짐 전환 힌트 → 문구 생성
+  const note = document.getElementById("assessment-note");
+  if (note) {
+    const f = assessment.full;
+    const s = assessment.rolling_10y;
+    const qf = f.quadrant;
+    const qs = s.quadrant;
+    if (qf === qs) {
+      note.textContent = `장기·단기 기준 모두 ${QUADRANT_LABEL[qf] || qf}. 분면 판정이 일관됨.`;
+    } else {
+      note.textContent = `장기 기준은 ${QUADRANT_LABEL[qf] || qf}, 단기 기준은 ${QUADRANT_LABEL[qs] || qs}. 두 창의 판정이 엇갈리면 레짐 전환 가능성에 주목.`;
+    }
+  }
+
+  // 2D 산점도
+  renderScatter(assessment);
+}
+
+function renderScatter(assessment) {
+  const canvas = document.getElementById("assessment-scatter");
+  if (!canvas) return;
+  const traj = assessment.trajectory || [];
+  const cur  = assessment.full;
+
+  // 궤적: 과거 → 현재 순으로 dot + 선. 마지막 점은 크게 강조.
+  const trajectoryPoints = traj.map((p, idx) => ({
+    x: p.inflation_score,
+    y: p.growth_score,
+    date: p.date,
+    isLast: idx === traj.length - 1,
+  }));
+  const currentPoint = {
+    x: cur.inflation_score,
+    y: cur.growth_score,
+    date: "지금 (장기 기준)",
+    isCurrent: true,
+  };
+
+  const trajDataset = {
+    label: "최근 24개월",
+    data: trajectoryPoints,
+    showLine: true,
+    borderColor: "rgba(200,200,200,0.35)",
+    borderWidth: 1,
+    pointBackgroundColor: trajectoryPoints.map((p) =>
+      p.isLast ? "#cc2424" : "rgba(200,200,200,0.5)",
+    ),
+    pointBorderColor: trajectoryPoints.map((p) =>
+      p.isLast ? "#cc2424" : "rgba(200,200,200,0.5)",
+    ),
+    pointRadius: trajectoryPoints.map((p) => (p.isLast ? 5 : 2.5)),
+    pointHoverRadius: 6,
+  };
+  const curDataset = {
+    label: "현재",
+    data: [currentPoint],
+    showLine: false,
+    pointBackgroundColor: "#cc2424",
+    pointBorderColor: "#ffffff",
+    pointBorderWidth: 2,
+    pointRadius: 7,
+    pointHoverRadius: 8,
+  };
+
+  // 기존 차트 파괴 후 재생성
+  if (canvas._chart) { canvas._chart.destroy(); canvas._chart = null; }
+
+  // 40/60 경계선
+  const bandAnnotations = {
+    vLow:  { type: "line", xMin: 40, xMax: 40, borderColor: "rgba(150,150,150,0.3)", borderWidth: 1, borderDash: [3,3] },
+    vHigh: { type: "line", xMin: 60, xMax: 60, borderColor: "rgba(150,150,150,0.3)", borderWidth: 1, borderDash: [3,3] },
+    hLow:  { type: "line", yMin: 40, yMax: 40, borderColor: "rgba(150,150,150,0.3)", borderWidth: 1, borderDash: [3,3] },
+    hHigh: { type: "line", yMin: 60, yMax: 60, borderColor: "rgba(150,150,150,0.3)", borderWidth: 1, borderDash: [3,3] },
+    // 모서리 분면 라벨
+    q1: { type: "label", xValue: 80, yValue: 80, content: ["Q1"], color: "rgba(200,200,200,0.45)", font: { size: 12, weight: "700" } },
+    q2: { type: "label", xValue: 20, yValue: 80, content: ["Q2"], color: "rgba(200,200,200,0.45)", font: { size: 12, weight: "700" } },
+    q3: { type: "label", xValue: 80, yValue: 20, content: ["Q3"], color: "rgba(200,200,200,0.45)", font: { size: 12, weight: "700" } },
+    q4: { type: "label", xValue: 20, yValue: 20, content: ["Q4"], color: "rgba(200,200,200,0.45)", font: { size: 12, weight: "700" } },
+  };
+
+  // eslint-disable-next-line no-undef
+  canvas._chart = new Chart(canvas, {
+    type: "scatter",
+    data: { datasets: [trajDataset, curDataset] },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const p = ctx.raw;
+              return `${p.date}  ·  I ${p.x.toFixed(0)}  ·  G ${p.y.toFixed(0)}`;
+            },
+          },
+        },
+        annotation: { annotations: bandAnnotations },
+      },
+      scales: {
+        x: {
+          min: 0, max: 100,
+          title: { display: true, text: "인플레이션 점수", color: "#787878", font: { size: 10 } },
+          ticks: { color: "#787878", stepSize: 20 },
+          grid:  { color: "#222222" },
+        },
+        y: {
+          min: 0, max: 100,
+          title: { display: true, text: "성장 점수", color: "#787878", font: { size: 10 } },
+          ticks: { color: "#787878", stepSize: 20 },
+          grid:  { color: "#222222" },
+        },
+      },
+    },
+  });
 }
 
 function renderLastUpdated(iso) {
@@ -232,6 +437,8 @@ function renderCard(code, payload, assets) {
   // 비교 자산 select: 추천 / 관련 / 기타로 그룹화. assets 에 존재하는 코드만 옵션으로 노출.
   const compareSelectHtml = buildCompareSelectHtml(recs, assets);
 
+  const badgesHtml = renderBadges(payload.current);
+
   card.innerHTML = `
     <header class="card-header">
       <span class="card-title">${meta.displayName}</span>
@@ -241,6 +448,7 @@ function renderCard(code, payload, assets) {
       <span class="card-value">${formatValue(latest.value, meta)}</span>
       <span class="card-change ${changeClass}" title="약 ${CHANGE_WINDOW_DAYS}일 전 대비">${changeStr}</span>
     </div>
+    ${badgesHtml}
     <p class="card-desc">${meta.description}</p>
     <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
     <div class="card-chart main-chart"><canvas></canvas></div>
@@ -656,6 +864,28 @@ function snapEventToLabel(eventDate, labels) {
 
 
 // ---------- 헬퍼 --------------------------------------------
+/**
+ * 카드 값 아래에 "장기 기준 / 10년 기준" 두 개의 high/neutral/low 배지를 렌더.
+ * current 가 없으면(오래된 JSON) 빈 문자열 반환.
+ */
+function renderBadges(current) {
+  if (!current) return "";
+  const cell = (label, p, lbl) => {
+    if (p == null || !lbl) return "";
+    const pct = Math.round(p);
+    return `
+      <span class="badge" data-label="${lbl}" title="${label} 기준 백분위 ${pct}">
+        <span class="badge-window">${label}</span>
+        <span class="badge-value">${pct}</span>
+        <span class="badge-label">${lbl}</span>
+      </span>`;
+  };
+  const fullCell = cell("장기", current.percentile_full, current.label_full);
+  const rollCell = cell("10y",  current.percentile_10y, current.label_10y);
+  if (!fullCell && !rollCell) return "";
+  return `<div class="card-badges">${fullCell}${rollCell}</div>`;
+}
+
 function formatValue(v, meta) {
   const n = v.toFixed(meta.decimals);
   if (meta.unit === "$") return `$${n}`;

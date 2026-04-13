@@ -16,15 +16,39 @@
 
 ## 수집 지표
 
-| 지표 | FRED 코드 | 분면 | 비고 |
-|---|---|---|---|
-| 미국 10Y-2Y 금리차 | `T10Y2Y` | 성장 | 역전 시 침체 경고 (선행) |
-| 미국 10Y BEI | `T10YIE` | 인플레 | 시장 기대 인플레 |
-| CPI 전년 동월 대비 | `CPIAUCSL` | 인플레 | 원시값을 YoY % 로 변환 |
-| 산업생산지수 | `INDPRO` | 성장 | 성장 현재 상태 |
-| WTI 원유 가격 | `DCOILWTICO` | 인플레 | 인플레 선행 |
+| 지표 | FRED 코드 | 분면 | 변환 | 비고 |
+|---|---|---|---|---|
+| 10Y-2Y 금리차 | `T10Y2Y` | 성장 | — | 역전 시 침체 경고 (선행) |
+| 산업생산 YoY | `INDPRO` | 성장 | YoY% | 성장 현재 상태 |
+| 비농업 고용 YoY | `PAYEMS` | 성장 | YoY% | 성장 확산 지표 |
+| 주 단위 선행지수 | `USSLIND` | 성장 | — | Philly Fed, 6개월 성장 전망 |
+| CPI YoY | `CPIAUCSL` | 인플레 | YoY% | 표면 인플레 |
+| Core CPI YoY | `CPILFESL` | 인플레 | YoY% | 끈적한(sticky) 인플레 |
+| PCE YoY | `PCEPI` | 인플레 | YoY% | Fed 통화정책 준거 |
+| 10Y BEI | `T10YIE` | 인플레 | — | 시장 기대 인플레 |
+| WTI YoY | `DCOILWTICO` | 인플레 | YoY% (일간→월말) | 공급측 압력 |
 
 지표를 추가/수정하려면 `scripts/fetch_fred.py` 상단의 `INDICATORS` 딕셔너리만 편집하면 됩니다.
+
+---
+
+## 자동 판정 (Assessment)
+
+수집 이후 `scripts/analyze.py` 가 각 지표의 현재값을 두 개의 참조 창에 대한
+**백분위(percentile)** 로 환산하고, 성장/인플레 축별 평균 점수와 4분면 판정을
+`indicators.json` 의 `assessment` 블록에 저장합니다.
+
+- **장기 기준 (Full)**: 1945-09-02(2차 세계대전 종전) 이후 전체 분포
+- **단기 기준 (Rolling 10y)**: 최근 10년 분포 — 단기부채 사이클(~5~8년) 을 감쌈
+- 백분위 ≥ 60 → `high`, ≤ 40 → `low`, 그 사이 → `neutral`
+- 두 창의 판정이 엇갈리면 대시보드 상단에 "레짐 전환 가능성" 문구가 자동 생성됨
+- 24개월 궤적이 2D 산점도(X: 인플레 · Y: 성장) 위에 표시됨
+
+기존 JSON 에 `assessment` 를 재계산만 하고 싶을 때는 네트워크 없이 이렇게:
+
+```bash
+python scripts/analyze.py
+```
 
 ---
 
