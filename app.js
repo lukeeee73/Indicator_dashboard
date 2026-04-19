@@ -239,6 +239,25 @@ const APP_STATE = {
   cardRedraws: [],  // 각 카드의 redraw() 함수 모음
 };
 
+// 탭 상태 관리
+let _cachedData = null;
+const _renderedTabs = new Set();
+
+function switchToTab(tab) {
+  // 첫 방문 시 해당 탭 컨텐츠를 지연 렌더링
+  if (!_renderedTabs.has(tab) && _cachedData) {
+    renderTabContent(tab, _cachedData);
+    _renderedTabs.add(tab);
+  }
+  // 패널 전환
+  document.querySelectorAll(".tab-panel").forEach(p => { p.hidden = true; });
+  document.getElementById(`panel-${tab}`).hidden = false;
+  // 버튼 active 상태
+  document.querySelectorAll(".tab-btn").forEach(b => {
+    b.classList.toggle("active", b.dataset.tab === tab);
+  });
+}
+
 
 // ---------- 진입점 ------------------------------------------
 document.addEventListener("DOMContentLoaded", async () => {
@@ -247,7 +266,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const res = await fetch("data/indicators.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    render(data);
+    _cachedData = data;
+    renderLastUpdated(data.last_updated);
+    // US 탭 먼저 렌더링
+    renderTabContent("US", data);
+    _renderedTabs.add("US");
+    // 탭 버튼 이벤트 연결
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => switchToTab(btn.dataset.tab));
+    });
     wireEventsToggle();
   } catch (err) {
     renderError(err);
@@ -266,33 +293,42 @@ function wireEventsToggle() {
 
 
 // ---------- 렌더링 -----------------------------------------
-function render(data) {
-  renderLastUpdated(data.last_updated);
-  renderAssessment(data.assessment || null);
-
+// tab: "US" | "KR" — 해당 탭의 지표와 assessment를 렌더링한다.
+function renderTabContent(tab, data) {
   const indicators = data.indicators || {};
   const assets     = data.assets     || {};
-  const growthHost    = document.getElementById("growth-cards");
-  const inflationHost = document.getElementById("inflation-cards");
+
+  // 탭에 맞는 assessment 선택
+  const assessment = tab === "US"
+    ? (data.assessment    || null)
+    : (data.assessment_kr || null);
+  renderAssessment(assessment, tab);
+
+  const growthHost    = document.getElementById(`growth-cards-${tab}`);
+  const inflationHost = document.getElementById(`inflation-cards-${tab}`);
 
   // 지표가 하나도 없으면 안내 메시지
   if (Object.keys(indicators).length === 0) {
-    growthHost.innerHTML    = emptyMessage("아직 데이터가 없습니다. GitHub Actions 를 실행해 주세요.");
-    inflationHost.innerHTML = "";
+    if (growthHost) growthHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions 를 실행해 주세요.");
     return;
   }
 
   for (const [code, payload] of Object.entries(indicators)) {
     if (!payload.series || payload.series.length === 0) continue;
+    const region = payload.region ?? "US";
+    // US 탭: KR 이 아닌 지표, KR 탭: KR 지표만
+    const belongsHere = tab === "US" ? region !== "KR" : region === tab;
+    if (!belongsHere) continue;
     const host = payload.category === "growth" ? growthHost : inflationHost;
-    host.appendChild(renderCard(code, payload, assets));
+    if (host) host.appendChild(renderCard(code, payload, assets));
   }
 }
 
 // 현재 국면 자동 판정 패널.
 // assessment = { full, rolling_10y, config, trajectory }
-function renderAssessment(assessment) {
-  const section = document.getElementById("assessment-section");
+// tab: "US" | "KR"
+function renderAssessment(assessment, tab) {
+  const section = document.getElementById(`assessment-${tab}`);
   if (!section) return;
   if (!assessment || !assessment.full || !assessment.rolling_10y) {
     section.hidden = true;
@@ -313,9 +349,9 @@ function renderAssessment(assessment) {
   };
 
   const fillPanel = (keyPrefix, summary) => {
-    const qEl = document.getElementById(`assessment-${keyPrefix}-quadrant`);
-    const gEl = document.getElementById(`assessment-${keyPrefix}-growth`);
-    const iEl = document.getElementById(`assessment-${keyPrefix}-inflation`);
+    const qEl = document.getElementById(`assessment-${tab}-${keyPrefix}-quadrant`);
+    const gEl = document.getElementById(`assessment-${tab}-${keyPrefix}-growth`);
+    const iEl = document.getElementById(`assessment-${tab}-${keyPrefix}-inflation`);
     if (qEl) {
       qEl.textContent = QUADRANT_LABEL[summary.quadrant] || summary.quadrant;
       qEl.dataset.quadrant = summary.quadrant.split("/")[0].replace("-edge", "");
@@ -333,7 +369,7 @@ function renderAssessment(assessment) {
   fillPanel("10y",  assessment.rolling_10y);
 
   // 분면이 두 창에서 다르면 그 자체가 레짐 전환 힌트 → 문구 생성
-  const note = document.getElementById("assessment-note");
+  const note = document.getElementById(`assessment-${tab}-note`);
   if (note) {
     const f = assessment.full;
     const s = assessment.rolling_10y;
@@ -347,11 +383,11 @@ function renderAssessment(assessment) {
   }
 
   // 2D 산점도
-  renderScatter(assessment);
+  renderScatter(assessment, tab);
 }
 
-function renderScatter(assessment) {
-  const canvas = document.getElementById("assessment-scatter");
+function renderScatter(assessment, tab) {
+  const canvas = document.getElementById(`assessment-scatter-${tab}`);
   if (!canvas) return;
   const traj = assessment.trajectory || [];
   const cur  = assessment.full;
