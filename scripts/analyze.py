@@ -172,14 +172,11 @@ def _monthly_last(series_list: list[dict]) -> pd.Series:
     return s.resample("ME").last().dropna()
 
 
-def compute_trajectory(indicators: dict) -> list[dict]:
+def compute_trajectory(indicators: dict, region: str | None = None) -> list[dict]:
     """최근 TRAJECTORY_MONTHS 개월의 (growth_score, inflation_score) 궤적.
 
-    각 월말 시점에 대해:
-        1) 각 지표의 월말 last 값을 구한다
-        2) 그 값이 post-WW2 전체 분포에서 차지하는 백분위(=full 기준) 를 계산
-        3) 같은 카테고리끼리 평균내서 그 달의 점수로 삼는다
-    => 현재 시점의 전체 분포를 고정 기준으로 두므로 trajectory 가 같은 좌표계에서 이동.
+    region=None  → US 기준: exclude_assessment 가 아닌 지표만 사용
+    region="KR"  → 한국 기준: region="KR" 인 지표만 사용
     """
     growth_ranks: dict[str, pd.Series] = {}
     infl_ranks:   dict[str, pd.Series] = {}
@@ -188,8 +185,13 @@ def compute_trajectory(indicators: dict) -> list[dict]:
         cat = payload.get("category")
         if cat not in ("growth", "inflation"):
             continue
-        if payload.get("exclude_assessment"):
-            continue
+        # 지역 필터
+        if region is None:
+            if payload.get("exclude_assessment"):
+                continue
+        else:
+            if payload.get("region") != region:
+                continue
         series_list = payload.get("series", [])
         s = _series_to_pandas(series_list)
         if s.empty:
@@ -278,18 +280,45 @@ def enrich_with_assessment(output: dict) -> dict:
             infl_full.append(cur["percentile_full"])
             infl_10y.append(cur["percentile_10y"])
 
-    assessment = {
+    _config = {
+        "postwar_cutoff": POSTWAR_CUTOFF,
+        "rolling_years":  ROLLING_YEARS,
+        "high_threshold": HIGH_THRESHOLD,
+        "low_threshold":  LOW_THRESHOLD,
+    }
+
+    # 미국 4분면 assessment (기존 동작 그대로)
+    output["assessment"] = {
         "full":        _make_summary(growth_full, infl_full),
         "rolling_10y": _make_summary(growth_10y, infl_10y),
-        "config": {
-            "postwar_cutoff": POSTWAR_CUTOFF,
-            "rolling_years":  ROLLING_YEARS,
-            "high_threshold": HIGH_THRESHOLD,
-            "low_threshold":  LOW_THRESHOLD,
-        },
-        "trajectory": compute_trajectory(indicators),
+        "config":      _config,
+        "trajectory":  compute_trajectory(indicators),
     }
-    output["assessment"] = assessment
+
+    # 한국 4분면 assessment (region="KR" 인 지표만)
+    kr_growth_full, kr_growth_10y = [], []
+    kr_infl_full,   kr_infl_10y   = [], []
+    for code, payload in indicators.items():
+        if payload.get("region") != "KR":
+            continue
+        cur = payload.get("current")
+        if cur is None:
+            continue
+        cat = payload.get("category")
+        if cat == "growth":
+            kr_growth_full.append(cur["percentile_full"])
+            kr_growth_10y.append(cur["percentile_10y"])
+        elif cat == "inflation":
+            kr_infl_full.append(cur["percentile_full"])
+            kr_infl_10y.append(cur["percentile_10y"])
+
+    output["assessment_kr"] = {
+        "full":        _make_summary(kr_growth_full, kr_infl_full),
+        "rolling_10y": _make_summary(kr_growth_10y, kr_infl_10y),
+        "config":      _config,
+        "trajectory":  compute_trajectory(indicators, region="KR"),
+    }
+
     return output
 
 
