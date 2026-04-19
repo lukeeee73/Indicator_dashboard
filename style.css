@@ -236,6 +236,14 @@ section h2 {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* 한국 지표 카드: 상단 테두리를 태극기 블루로 구분 */
+.card[data-region="KR"] {
+  border-top-color: #4c9ef7;
+}
+.card[data-region="KR"]:hover {
+  border-top-color: #7bb8ff;
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;

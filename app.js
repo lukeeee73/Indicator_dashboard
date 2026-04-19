@@ -69,6 +69,36 @@ const INDICATOR_META = {
     unit: "%",
     decimals: 2,
   },
+
+  // ── 한국 지표 ─────────────────────────────────────────────────────────
+  KORCPIALLMINMEI: {
+    displayName: "🇰🇷 한국 CPI YoY",
+    description: "한국 소비자물가지수 전년 동월 대비 상승률 (OECD/FRED). 미국 4분면 점수에는 포함되지 않음.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+  },
+  KORPROINDMISMEI: {
+    displayName: "🇰🇷 한국 산업생산 YoY",
+    description: "한국 제조업 산업생산 전년 대비 변화율 (OECD/FRED). 미국 4분면 점수에는 포함되지 않음.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+  },
+  LRUNTTTTKOR156S: {
+    displayName: "🇰🇷 한국 실업률",
+    description: "한국 15세 이상 실업률. 높을수록 성장 약화 신호(역방향 백분위 적용). 미국 4분면 점수에는 포함되지 않음.",
+    unit: "%",
+    decimals: 1,
+    region: "KR",
+  },
+  KOSPI_YOY: {
+    displayName: "🇰🇷 코스피 YoY",
+    description: "코스피 지수 전년 동월 대비 수익률 (Yahoo Finance). 한국 주식시장의 경기 반영 지표. 미국 4분면 점수에는 포함되지 않음.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+  },
 };
 
 // 비교 자산(Assets) UI 메타데이터.
@@ -81,6 +111,8 @@ const ASSET_META = {
   VIXCLS:           { displayName: "VIX (공포지수)",         unit: "",  decimals: 2, color: "#f87171" },
   DEXKOUS:          { displayName: "원/달러 환율",           unit: "₩", decimals: 2, color: "#86efac" },
   BAMLH0A0HYM2:     { displayName: "미국 하이일드 스프레드", unit: "%", decimals: 2, color: "#fca5a5" },
+  IRLTLT01KRM156N:  { displayName: "한국 국채 10년",         unit: "%", decimals: 2, color: "#4c9ef7" },
+  KOSPI:            { displayName: "코스피 (원시)",          unit: "",  decimals: 0, color: "#a78bfa" },
 };
 
 // 지표별 "추천 비교 대상". 4분면 프레임워크 논리에 따라 1/2순위 구성.
@@ -130,6 +162,28 @@ const COMPARE_RECOMMENDATIONS = {
     primary:   ["DTWEXBGS", "GOLDAMGBD228NLBM"],
     secondary: ["SP500", "DEXKOUS"],
     note: "유가 YoY 는 달러와 역상관, 인플레와 동행. 1·2차 오일쇼크·2008·COVID 전후가 관전 포인트.",
+  },
+
+  // ── 한국 지표 비교 추천 ────────────────────────────────────────────────
+  KORCPIALLMINMEI: {
+    primary:   ["DEXKOUS", "DCOILWTICO"],
+    secondary: ["IRLTLT01KRM156N", "GOLDAMGBD228NLBM"],
+    note: "수입 의존도가 높은 한국은 원/달러 약세·유가 상승이 CPI 선행 지표. 환율과의 동행성 확인.",
+  },
+  KORPROINDMISMEI: {
+    primary:   ["KOSPI", "DEXKOUS"],
+    secondary: ["SP500", "BAMLH0A0HYM2"],
+    note: "수출 의존 경제구조상 글로벌 수요와 동행. 코스피·원화와의 상관, S&P 500 과의 동조화 확인.",
+  },
+  LRUNTTTTKOR156S: {
+    primary:   ["KOSPI", "KORPROINDMISMEI"],
+    secondary: ["DEXKOUS", "VIXCLS"],
+    note: "실업률 상승은 내수 위축 신호. 코스피 하락과 동행 경향. 백분위는 역방향(높을수록 성장 약화).",
+  },
+  KOSPI_YOY: {
+    primary:   ["SP500", "DEXKOUS"],
+    secondary: ["GOLDAMGBD228NLBM", "BAMLH0A0HYM2"],
+    note: "코스피 YoY 상승기엔 원화 강세·글로벌 위험 선호. S&P 500 과의 동조화/디커플링 비교.",
   },
 };
 
@@ -423,6 +477,7 @@ function renderCard(code, payload, assets) {
 
   const card = document.createElement("article");
   card.className = "card";
+  if (meta.region) card.dataset.region = meta.region;
 
   const changeStr   = formatChange(change, meta);
   const changeClass = change == null ? "" : change >= 0 ? "up" : "down";

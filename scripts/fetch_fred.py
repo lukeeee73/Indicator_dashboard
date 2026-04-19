@@ -100,6 +100,35 @@ INDICATORS: dict[str, dict] = {
         "unit": "percent",
         "transform": "yoy_pct_daily",
     },
+
+    # ── 한국 지표 (OECD / FRED) ──────────────────────────────────────────
+    # exclude_assessment=True: 개별 카드 백분위는 계산하되,
+    # 미국 4분면 종합 점수(assessment)에는 포함하지 않는다.
+    "KORCPIALLMINMEI": {
+        "name": "Korea CPI YoY",
+        "category": "inflation",
+        "unit": "percent",
+        "transform": "yoy_pct",
+        "region": "KR",
+        "exclude_assessment": True,
+    },
+    "KORPROINDMISMEI": {
+        "name": "Korea Industrial Production YoY",
+        "category": "growth",
+        "unit": "percent",
+        "transform": "yoy_pct",
+        "region": "KR",
+        "exclude_assessment": True,
+    },
+    "LRUNTTTTKOR156S": {
+        # 실업률은 역방향 폴라리티 — 높을수록 성장 악화. analyze.py INVERTED_CODES 에 등록됨.
+        "name": "Korea Unemployment Rate",
+        "category": "growth",
+        "unit": "percent",
+        "transform": None,
+        "region": "KR",
+        "exclude_assessment": True,
+    },
 }
 
 
@@ -148,6 +177,11 @@ ASSETS: dict[str, dict] = {
     },
     "BAMLH0A0HYM2": {
         "name": "US High-Yield Bond Spread",
+        "unit": "percent",
+        "transform": None,
+    },
+    "IRLTLT01KRM156N": {
+        "name": "Korea 10-Year Government Bond Yield",
         "unit": "percent",
         "transform": None,
     },
@@ -249,6 +283,38 @@ TRANSFORMS = {
 }
 
 
+# --------------------------------------------------------------------------
+# Yahoo Finance 수집 (FRED에 없는 지수)
+# --------------------------------------------------------------------------
+def fetch_yahoo_monthly(symbol: str) -> list[dict]:
+    """Yahoo Finance에서 월별 종가(Close) 시계열을 [{date, value}, ...] 로 반환.
+
+    실패 시 빈 리스트 반환 — 호출부에서 기존값을 유지한다.
+    """
+    try:
+        import yfinance as yf  # noqa: PLC0415
+    except ImportError as e:
+        raise RuntimeError("yfinance 가 설치되지 않았습니다. pip install yfinance") from e
+
+    ticker = yf.Ticker(symbol)
+    hist = ticker.history(period="max", interval="1mo", auto_adjust=True)
+    if hist.empty:
+        return []
+
+    series: list[dict] = []
+    for idx, row in hist.iterrows():
+        date_str = (
+            idx.tz_localize(None).strftime("%Y-%m-%d")
+            if idx.tzinfo else idx.strftime("%Y-%m-%d")
+        )
+        try:
+            val = float(row["Close"])
+        except (TypeError, ValueError, KeyError):
+            continue
+        if pd.isna(val):
+            continue
+        series.append({"date": date_str, "value": round(val, 2)})
+    return sorted(series, key=lambda x: x["date"])
 
 
 # --------------------------------------------------------------------------
@@ -296,6 +362,10 @@ def collect_group(group: dict, api_key: str, label: str) -> tuple[dict, int]:
             }
             if "category" in meta:
                 entry["category"] = meta["category"]
+            if "region" in meta:
+                entry["region"] = meta["region"]
+            if meta.get("exclude_assessment"):
+                entry["exclude_assessment"] = True
             collected[code] = entry
             print(f"OK ({len(series)} points)")
             success += 1
@@ -332,11 +402,49 @@ def main() -> int:
     new_indicators, ok_ind = collect_group(INDICATORS, api_key, "indicator")
     new_assets,    ok_ast  = collect_group(ASSETS,    api_key, "asset")
 
+    # KOSPI YoY — Yahoo Finance 경유 (FRED 미제공)
+    print("Fetching indicator KOSPI_YOY (Yahoo Finance ^KS11)...", end=" ", flush=True)
+    try:
+        raw_kospi = fetch_yahoo_monthly("^KS11")
+        if raw_kospi:
+            kospi_yoy = compute_yoy_pct(raw_kospi)
+            new_indicators["KOSPI_YOY"] = {
+                "name": "KOSPI YoY",
+                "unit": "percent",
+                "category": "growth",
+                "region": "KR",
+                "exclude_assessment": True,
+                "series": kospi_yoy,
+            }
+            print(f"OK ({len(kospi_yoy)} points)")
+            ok_ind += 1
+        else:
+            print("FAILED (empty series)")
+    except Exception as e:  # noqa: BLE001
+        print(f"FAILED (unexpected: {e})")
+
+    # KOSPI 원시 가격 — 비교 자산으로도 추가
+    print("Fetching asset KOSPI (Yahoo Finance ^KS11)...", end=" ", flush=True)
+    try:
+        raw_kospi_price = fetch_yahoo_monthly("^KS11")
+        if raw_kospi_price:
+            new_assets["KOSPI"] = {
+                "name": "KOSPI",
+                "unit": "index",
+                "series": raw_kospi_price,
+            }
+            print(f"OK ({len(raw_kospi_price)} points)")
+            ok_ast += 1
+        else:
+            print("FAILED (empty series)")
+    except Exception as e:  # noqa: BLE001
+        print(f"FAILED (unexpected: {e})")
+
     merged_indicators.update(new_indicators)
     merged_assets.update(new_assets)
 
     success_count = ok_ind + ok_ast
-    total_count   = len(INDICATORS) + len(ASSETS)
+    total_count   = len(INDICATORS) + len(ASSETS) + 2  # +2: KOSPI_YOY, KOSPI asset
 
     if success_count == 0:
         # 전부 실패하면 기존 파일을 건드리지 않는다 (데이터 보존)
@@ -361,7 +469,8 @@ def main() -> int:
 
     print(
         f"\nDone. {success_count}/{total_count} series updated "
-        f"(indicators: {ok_ind}/{len(INDICATORS)}, assets: {ok_ast}/{len(ASSETS)}) "
+        f"(indicators: {ok_ind}/{len(INDICATORS) + 1}, "
+        f"assets: {ok_ast}/{len(ASSETS) + 1}) "
         f"-> {OUTPUT_PATH.relative_to(REPO_ROOT)}"
     )
     return 0
