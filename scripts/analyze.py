@@ -41,8 +41,8 @@ LOW_THRESHOLD  = 40.0           # 이 백분위 이하이면 "low"
 TRAJECTORY_MONTHS = 24          # 2D 산점도에 그릴 최근 궤적 길이
 
 # polarity 가 반대인 지표 코드를 여기에 넣으면 백분위가 (100 - p) 로 뒤집힌다.
-# 현재 세트는 전부 positive polarity 라 비어 있다.
-INVERTED_CODES: set[str] = set()
+# LRUNTTTTKOR156S: 실업률 — 높을수록 성장 악화이므로 역방향 적용.
+INVERTED_CODES: set[str] = {"LRUNTTTTKOR156S"}
 
 
 # --------------------------------------------------------------------------
@@ -188,6 +188,8 @@ def compute_trajectory(indicators: dict) -> list[dict]:
         cat = payload.get("category")
         if cat not in ("growth", "inflation"):
             continue
+        if payload.get("exclude_assessment"):
+            continue
         series_list = payload.get("series", [])
         s = _series_to_pandas(series_list)
         if s.empty:
@@ -262,6 +264,11 @@ def enrich_with_assessment(output: dict) -> dict:
         if cur is None:
             continue
         payload["current"] = cur
+
+        # exclude_assessment=True 인 지표(한국 지표 등)는 개별 카드 통계는
+        # 계산하되, 미국 4분면 종합 점수에는 포함하지 않는다.
+        if payload.get("exclude_assessment"):
+            continue
 
         cat = payload.get("category")
         if cat == "growth":
