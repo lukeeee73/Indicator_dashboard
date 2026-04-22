@@ -132,6 +132,13 @@ section h2 {
   border-left: 3px solid var(--red);
 }
 
+.category--dollar h2 { border-left-color: #f5c842; }
+.category-desc {
+  margin: -0.5rem 0 1rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
 /* ---------- 현재 국면 자동 판정 ---------- */
 .assessment-grid {
   display: grid;
