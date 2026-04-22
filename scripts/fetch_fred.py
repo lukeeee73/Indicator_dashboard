@@ -101,6 +101,59 @@ INDICATORS: dict[str, dict] = {
         "transform": "yoy_pct_daily",
     },
 
+    # ── 달러 가치 분석 지표 (미국) ──────────────────────────────────────
+    # 금리·통화량·재정 건전성을 통해 달러의 상대 가치를 판단하는 데 쓰인다.
+    # exclude_assessment=True: 4분면 성장/인플레 점수에는 포함하지 않는다.
+    "DGS10": {
+        "name": "US 10-Year Treasury Yield",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": None,
+        "exclude_assessment": True,
+    },
+    "M2SL": {
+        "name": "US M2 Money Supply YoY",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": "yoy_pct",
+        "exclude_assessment": True,
+    },
+    "GFDEGDQ188S": {
+        # 분기 데이터, 이미 GDP 대비 % — transform 없이 원시값 사용
+        "name": "US Federal Debt (% of GDP)",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": None,
+        "exclude_assessment": True,
+    },
+
+    # ── 달러 가치 분석 지표 (한국) ──────────────────────────────────────
+    "IRLTLT01KRM156N": {
+        "name": "Korea 10-Year Government Bond Yield",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": None,
+        "region": "KR",
+        "exclude_assessment": True,
+    },
+    "MYAGM2KRM189S": {
+        "name": "Korea M2 Money Supply YoY",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": "yoy_pct",
+        "region": "KR",
+        "exclude_assessment": True,
+    },
+    "DEBTTLKRQ052N": {
+        # 분기 데이터, IMF/World Bank 경유 — GDP 대비 % 원시값 사용
+        "name": "Korea General Government Debt (% of GDP)",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": None,
+        "region": "KR",
+        "exclude_assessment": True,
+    },
+
     # ── 한국 지표 (OECD / FRED) ──────────────────────────────────────────
     # exclude_assessment=True: 개별 카드 백분위는 계산하되,
     # 미국 4분면 종합 점수(assessment)에는 포함하지 않는다.

@@ -70,6 +70,49 @@ const INDICATOR_META = {
     decimals: 2,
   },
 
+  // ── 달러 가치 분석 지표 (미국) ────────────────────────────────────────
+  DGS10: {
+    displayName: "미국 10Y 국채 수익률",
+    description: "미국 10년물 국채 수익률. 달러 자산의 기회비용 기준. 한국 국채와의 금리 차이가 환율 방향에 영향.",
+    unit: "%",
+    decimals: 2,
+  },
+  M2SL: {
+    displayName: "미국 M2 통화량 YoY",
+    description: "광의 통화(M2) 전년 동월 대비 증가율. 과도한 팽창은 달러 약세 및 인플레 압력의 선행 지표.",
+    unit: "%",
+    decimals: 2,
+  },
+  GFDEGDQ188S: {
+    displayName: "미국 연방 부채 (% of GDP)",
+    description: "미국 연방 정부 부채의 GDP 대비 비율. 재정 건전성의 장기 지표. 분기 발표.",
+    unit: "% GDP",
+    decimals: 1,
+  },
+
+  // ── 달러 가치 분석 지표 (한국) ────────────────────────────────────────
+  IRLTLT01KRM156N: {
+    displayName: "🇰🇷 한국 10Y 국채 수익률",
+    description: "한국 10년물 국채 수익률. 미국 DGS10과의 금리 차이(스프레드)가 원/달러 환율의 핵심 변수.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+  },
+  MYAGM2KRM189S: {
+    displayName: "🇰🇷 한국 M2 통화량 YoY",
+    description: "한국 광의 통화(M2) 전년 동월 대비 증가율 (OECD/FRED). 미국 M2 증가율과 비교해 상대 통화 팽창 속도를 파악.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+  },
+  DEBTTLKRQ052N: {
+    displayName: "🇰🇷 한국 정부 부채 (% of GDP)",
+    description: "한국 일반 정부 부채의 GDP 대비 비율 (IMF/World Bank via FRED). 미국과의 재정 건전성 비교. 분기 발표.",
+    unit: "% GDP",
+    decimals: 1,
+    region: "KR",
+  },
+
   // ── 한국 지표 ─────────────────────────────────────────────────────────
   KORCPIALLMINMEI: {
     displayName: "🇰🇷 한국 CPI YoY",
@@ -164,6 +207,38 @@ const COMPARE_RECOMMENDATIONS = {
     note: "유가 YoY 는 달러와 역상관, 인플레와 동행. 1·2차 오일쇼크·2008·COVID 전후가 관전 포인트.",
   },
 
+  // ── 달러 가치 분석 지표 비교 추천 ────────────────────────────────────
+  DGS10: {
+    primary:   ["DEXKOUS", "IRLTLT01KRM156N", "DTWEXBGS"],
+    secondary: ["GOLDAMGBD228NLBM", "SP500"],
+    note: "미국 10Y 금리가 오를수록 달러 강세 압력. 한국 국채와의 스프레드, 원/달러 환율과 동시 비교.",
+  },
+  M2SL: {
+    primary:   ["DEXKOUS", "DTWEXBGS", "GOLDAMGBD228NLBM"],
+    secondary: ["SP500", "VIXCLS"],
+    note: "M2 급증 구간(2020 등)에서 달러 지수 약세·금 강세 경향. 환율과의 시차 동행 확인.",
+  },
+  GFDEGDQ188S: {
+    primary:   ["DGS10", "BAMLH0A0HYM2", "DEXKOUS"],
+    secondary: ["GOLDAMGBD228NLBM", "DTWEXBGS"],
+    note: "부채/GDP 급등 구간에서 장기금리·크레딧 스프레드 반응을 체크. 금·달러 약세와의 연관성.",
+  },
+  IRLTLT01KRM156N: {
+    primary:   ["DEXKOUS", "DGS10", "KOSPI"],
+    secondary: ["GOLDAMGBD228NLBM", "BAMLH0A0HYM2"],
+    note: "한미 금리차 확대 시 원화 약세 경향. 원/달러 환율, 미국 10Y 국채와 동시에 비교.",
+  },
+  MYAGM2KRM189S: {
+    primary:   ["DEXKOUS", "IRLTLT01KRM156N", "KOSPI"],
+    secondary: ["GOLDAMGBD228NLBM", "SP500"],
+    note: "한국 M2 팽창 속도를 미국 M2와 비교해 상대 통화 공급 과잉을 파악. 원/달러와 동행 확인.",
+  },
+  DEBTTLKRQ052N: {
+    primary:   ["IRLTLT01KRM156N", "DEXKOUS", "KOSPI"],
+    secondary: ["BAMLH0A0HYM2", "GOLDAMGBD228NLBM"],
+    note: "한국 재정 건전성 추이. 부채 확대 시 장기금리·원화 방향성과의 관계를 확인.",
+  },
+
   // ── 한국 지표 비교 추천 ────────────────────────────────────────────────
   KORCPIALLMINMEI: {
     primary:   ["DEXKOUS", "DCOILWTICO"],
@@ -211,6 +286,7 @@ const EVENTS = [
 const CATEGORY_COLOR = {
   growth:    "#c8d8ea",   // 스틸 블루-화이트
   inflation: "#cc2424",   // 레드
+  dollar:    "#f5c842",   // 골드-옐로우 (달러 상징색)
 };
 
 // 최근 변화 계산 기준 (일)
@@ -306,6 +382,7 @@ function renderTabContent(tab, data) {
 
   const growthHost    = document.getElementById(`growth-cards-${tab}`);
   const inflationHost = document.getElementById(`inflation-cards-${tab}`);
+  const dollarHost    = document.getElementById(`dollar-cards-${tab}`);
 
   // 지표가 하나도 없으면 안내 메시지
   if (Object.keys(indicators).length === 0) {
@@ -319,7 +396,10 @@ function renderTabContent(tab, data) {
     // US 탭: KR 이 아닌 지표, KR 탭: KR 지표만
     const belongsHere = tab === "US" ? region !== "KR" : region === tab;
     if (!belongsHere) continue;
-    const host = payload.category === "growth" ? growthHost : inflationHost;
+    let host;
+    if (payload.category === "growth") host = growthHost;
+    else if (payload.category === "dollar") host = dollarHost;
+    else host = inflationHost;
     if (host) host.appendChild(renderCard(code, payload, assets));
   }
 }
