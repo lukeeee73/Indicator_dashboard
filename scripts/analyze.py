@@ -326,20 +326,21 @@ def enrich_with_assessment(output: dict) -> dict:
 # CLI (기존 JSON 을 재분석하고 덮어쓰고 싶을 때)
 # --------------------------------------------------------------------------
 def _main() -> int:
-    import json
     import sys
     from pathlib import Path
 
-    path = Path(__file__).resolve().parent.parent / "data" / "indicators.json"
-    if not path.exists():
-        print(f"ERROR: {path} not found", file=sys.stderr)
+    # fetch_fred.py 의 분할 저장 API 를 재사용해 동일한 파일 구조를 유지한다.
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from fetch_fred import load_split_store, save_split_store, LEGACY_BUNDLE_PATH  # noqa: E402
+
+    data = load_split_store()
+    has_indicators = bool(data.get("indicators"))
+    if not has_indicators:
+        print(f"ERROR: 분할 데이터(data/index.json) 또는 {LEGACY_BUNDLE_PATH} 가 비어있습니다.",
+              file=sys.stderr)
         return 1
-    with path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
     enrich_with_assessment(data)
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    save_split_store(data)
     a = data.get("assessment", {})
     print("Assessment re-computed.")
     print("  full       :", a.get("full"))

@@ -60,16 +60,23 @@ dalio-dashboard/
 ├── .gitignore
 ├── index.html               # 대시보드 진입점 (Chart.js CDN 로드)
 ├── style.css                # 다크 테마 + 반응형 카드 레이아웃
-├── app.js                   # indicators.json fetch & 차트 렌더링
+├── app.js                   # data/ fetch & 차트 렌더링 (국가 탭 + 섹터 서브탭)
 ├── vercel.json              # Vercel 배포 설정 (JSON 캐시 정책)
 ├── data/
-│   └── indicators.json      # 수집된 시계열 (GitHub Actions가 갱신)
+│   ├── index.json           # 메타데이터 + assessment (4분면 판정) 요약
+│   ├── indicators/
+│   │   └── <CODE>.json      # 지표별 전체 payload — 개별 편집 가능
+│   └── assets/
+│       └── <CODE>.json      # 비교 자산별 전체 payload
 ├── scripts/
-│   ├── fetch_fred.py        # FRED API → indicators.json
+│   ├── fetch_fred.py        # FRED API → data/ 분할 저장
+│   ├── analyze.py           # percentile/label/quadrant 재계산 (CLI)
 │   └── requirements.txt
 └── .github/workflows/
     └── update.yml           # 주 1회 자동 수집 + 커밋
 ```
+
+> 각 지표/자산의 시계열은 **개별 JSON 파일**로 분리 저장됩니다. 개별 파일을 직접 열어서 편집·가공한 뒤 `python scripts/analyze.py` 를 돌리면 `current`(백분위·레이블) 와 `assessment` 를 재계산해 반영합니다.
 
 ---
 

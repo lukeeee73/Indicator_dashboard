@@ -18,9 +18,11 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Optional
 
 import pandas as pd
 import requests
@@ -246,7 +248,12 @@ ASSETS: dict[str, dict] = {
 # --------------------------------------------------------------------------
 FRED_BASE_URL = "https://api.stlouisfed.org/fred/series/observations"
 REPO_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_PATH = REPO_ROOT / "data" / "indicators.json"
+DATA_DIR = REPO_ROOT / "data"
+INDEX_PATH       = DATA_DIR / "index.json"
+INDICATORS_DIR   = DATA_DIR / "indicators"
+ASSETS_DIR       = DATA_DIR / "assets"
+# 구 단일 번들 경로 — 마이그레이션 및 하위 호환용 fallback 으로만 읽는다.
+LEGACY_BUNDLE_PATH = DATA_DIR / "indicators.json"
 
 # FRED에서 가져올 수 있는 최대한의 과거 데이터를 받는다.
 # FRED 시계열은 최대 1800년대 후반까지 존재하므로, 충분히 과거의 날짜를 시작점으로 지정한다.
@@ -373,18 +380,48 @@ def fetch_yahoo_monthly(symbol: str) -> list[dict]:
 # --------------------------------------------------------------------------
 # 기존 JSON 입출력
 # --------------------------------------------------------------------------
-def load_existing(path: Path) -> dict:
-    """기존 indicators.json 을 읽어 반환. 파일이 없거나 깨졌으면 빈 구조를 반환."""
-    empty = {"last_updated": None, "indicators": {}, "assets": {}}
-    if not path.exists():
-        return empty
+def _read_json(path: Path) -> Optional[dict]:
     try:
         with path.open("r", encoding="utf-8") as f:
-            data = json.load(f)
-            data.setdefault("assets", {})
-            return data
+            return json.load(f)
     except (json.JSONDecodeError, OSError):
-        return empty
+        return None
+
+
+def load_split_store() -> dict:
+    """data/index.json + data/indicators/*.json + data/assets/*.json 을 읽어
+    fetch_fred 내부에서 쓰던 단일 dict 형태로 복원한다.
+
+    분할 파일이 없으면 레거시 data/indicators.json 으로 폴백.
+    둘 다 없으면 빈 구조 반환.
+    """
+    empty = {"last_updated": None, "indicators": {}, "assets": {}}
+
+    if INDEX_PATH.exists():
+        idx = _read_json(INDEX_PATH) or {}
+        indicators: dict[str, dict] = {}
+        for code in [entry["code"] for entry in idx.get("indicators", []) if "code" in entry]:
+            payload = _read_json(INDICATORS_DIR / f"{code}.json")
+            if payload is not None:
+                indicators[code] = payload
+        assets: dict[str, dict] = {}
+        for code in [entry["code"] for entry in idx.get("assets", []) if "code" in entry]:
+            payload = _read_json(ASSETS_DIR / f"{code}.json")
+            if payload is not None:
+                assets[code] = payload
+        return {
+            "last_updated": idx.get("last_updated"),
+            "indicators": indicators,
+            "assets": assets,
+        }
+
+    if LEGACY_BUNDLE_PATH.exists():
+        legacy = _read_json(LEGACY_BUNDLE_PATH)
+        if legacy is not None:
+            legacy.setdefault("assets", {})
+            return legacy
+
+    return empty
 
 
 def collect_group(group: dict, api_key: str, label: str) -> tuple[dict, int]:
@@ -436,6 +473,75 @@ def save_json(path: Path, data: dict) -> None:
         f.write("\n")  # 파일 끝 개행 (POSIX 관례)
 
 
+def _clean_stale_files(directory: Path, keep_codes: set[str]) -> None:
+    """지정 디렉토리에서 keep_codes 에 없는 <code>.json 을 삭제한다 — 제거된 지표/자산 정리."""
+    if not directory.exists():
+        return
+    for path in directory.glob("*.json"):
+        if path.stem not in keep_codes:
+            path.unlink(missing_ok=True)
+
+
+def save_split_store(output: dict) -> None:
+    """{last_updated, indicators, assets, assessment, assessment_kr} 를 분할 저장.
+
+    - data/index.json: last_updated + 각 지표·자산의 메타데이터(코드/이름/분류/단위/current 등) + assessment
+    - data/indicators/<code>.json: 각 지표의 전체 payload (series 포함)
+    - data/assets/<code>.json:     각 자산의 전체 payload (series 포함)
+
+    유저가 개별 파일을 직접 편집 가능한 형태로 유지하기 위한 구조.
+    """
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    INDICATORS_DIR.mkdir(parents=True, exist_ok=True)
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+
+    indicators = output.get("indicators", {}) or {}
+    assets     = output.get("assets", {}) or {}
+
+    indicator_index_entries: list[dict] = []
+    for code, payload in indicators.items():
+        save_json(INDICATORS_DIR / f"{code}.json", payload)
+        entry = {
+            "code": code,
+            "name":      payload.get("name"),
+            "unit":      payload.get("unit"),
+            "category":  payload.get("category"),
+        }
+        if "region" in payload:
+            entry["region"] = payload["region"]
+        if payload.get("exclude_assessment"):
+            entry["exclude_assessment"] = True
+        if "current" in payload:
+            entry["current"] = payload["current"]
+        indicator_index_entries.append(entry)
+
+    asset_index_entries: list[dict] = []
+    for code, payload in assets.items():
+        save_json(ASSETS_DIR / f"{code}.json", payload)
+        asset_index_entries.append({
+            "code": code,
+            "name": payload.get("name"),
+            "unit": payload.get("unit"),
+        })
+
+    index_doc = {
+        "last_updated":   output.get("last_updated"),
+        "indicators":     indicator_index_entries,
+        "assets":         asset_index_entries,
+        "assessment":     output.get("assessment"),
+        "assessment_kr":  output.get("assessment_kr"),
+    }
+    save_json(INDEX_PATH, index_doc)
+
+    # 수집 대상에서 빠진 코드의 잔여 파일 정리
+    _clean_stale_files(INDICATORS_DIR, set(indicators.keys()))
+    _clean_stale_files(ASSETS_DIR,     set(assets.keys()))
+
+    # 레거시 단일 번들은 더 이상 쓰지 않으니 정리
+    if LEGACY_BUNDLE_PATH.exists():
+        LEGACY_BUNDLE_PATH.unlink(missing_ok=True)
+
+
 # --------------------------------------------------------------------------
 # 메인 파이프라인
 # --------------------------------------------------------------------------
@@ -448,7 +554,7 @@ def main() -> int:
     now_utc = datetime.now(timezone.utc)
 
     # 실패한 시리즈는 기존 데이터 유지 (없어지지 않도록)
-    existing = load_existing(OUTPUT_PATH)
+    existing = load_split_store()
     merged_indicators: dict[str, dict] = dict(existing.get("indicators", {}))
     merged_assets: dict[str, dict] = dict(existing.get("assets", {}))
 
@@ -518,13 +624,13 @@ def main() -> int:
     print("\nAnalyzing (percentile / labels / quadrant)...", flush=True)
     enrich_with_assessment(output)
 
-    save_json(OUTPUT_PATH, output)
+    save_split_store(output)
 
     print(
         f"\nDone. {success_count}/{total_count} series updated "
         f"(indicators: {ok_ind}/{len(INDICATORS) + 1}, "
         f"assets: {ok_ast}/{len(ASSETS) + 1}) "
-        f"-> {OUTPUT_PATH.relative_to(REPO_ROOT)}"
+        f"-> {DATA_DIR.relative_to(REPO_ROOT)}/ (index.json + indicators/*.json + assets/*.json)"
     )
     return 0
 

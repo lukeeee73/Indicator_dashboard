@@ -1,7 +1,7 @@
 name: Update FRED Indicators
 
-# 주 1회 FRED API 호출 → data/indicators.json 갱신 → 변경 시 자동 커밋
-# 매주 월요일 09:00 UTC (= 한국시간 월요일 18:00) 자동 실행 + 수동 실행 가능
+# 주 1회 FRED API 호출 → data/index.json + data/indicators/*.json + data/assets/*.json 갱신
+# → 변경 시 자동 커밋. 매주 월요일 09:00 UTC (= 한국시간 월요일 18:00) 자동 + 수동 실행.
 on:
   schedule:
     - cron: "0 9 * * 1"
@@ -33,16 +33,16 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/fetch_fred.py
 
-      - name: Commit & push if indicators.json changed
+      - name: Commit & push if data/ changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # 변경사항 유무를 exit code 로 판단
-          if git diff --quiet -- data/indicators.json; then
-            echo "No changes to data/indicators.json — skipping commit."
+          # data/ 디렉토리 전체의 변경 유무를 exit code 로 판단
+          if git diff --quiet -- data/; then
+            echo "No changes under data/ — skipping commit."
           else
-            git add data/indicators.json
+            git add data/
             git commit -m "chore: update indicators ($(date -u +%Y-%m-%d))"
             git push
           fi
