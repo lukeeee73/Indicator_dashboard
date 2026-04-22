@@ -139,6 +139,53 @@ section h2 {
   color: var(--text-dim);
 }
 
+/* ---------- 섹터 서브탭 (성장 · 인플레 · 달러) ---------- */
+.sector-nav {
+  display: flex;
+  gap: 0.25rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 0.25rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+.sector-btn {
+  flex: 1 1 auto;
+  min-width: 6rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius);
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.sector-btn:hover {
+  color: var(--text);
+  border-color: var(--border-mid);
+}
+.sector-btn.active {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--red);
+}
+/* 달러 섹터 탭 활성화 시 강조색을 골드로 */
+.sector-btn[data-sector="dollar"].active {
+  border-color: #f5c842;
+}
+.sector-btn[data-sector="inflation"].active {
+  border-color: var(--red);
+}
+.sector-btn[data-sector="growth"].active {
+  border-color: #c8d8ea;
+}
+.sector-panel[hidden] { display: none !important; }
+
 /* ---------- 현재 국면 자동 판정 ---------- */
 .assessment-grid {
   display: grid;

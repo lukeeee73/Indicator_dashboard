@@ -14,60 +14,76 @@
 // ---------- 지표별 UI 메타데이터 ------------------------------
 // fetch_fred.py 의 INDICATORS 와 별도로, 프론트 표기 전용 정보를 둔다.
 // 새 지표를 추가할 때마다 여기에도 한 줄 추가하면 끝.
+//
+// 필드 설명:
+//   displayName / description / unit / decimals — 표시 포맷
+//   region        — "KR" 이면 한국 패널로 라우팅
+//   zeroline      — true 면 y축에 0 을 반드시 포함하고 0 기준선을 그림.
+//                   부호(양/음) 가 의미를 가지는 시리즈(YoY, 스프레드 등) 전용.
+//   axisScale     — "linear"(기본) | "log"  장기 가격·지수는 로그가 더 객관적.
 const INDICATOR_META = {
   T10Y2Y: {
     displayName: "10Y-2Y 금리차",
     description: "장단기 금리차. 음수면 경기침체 선행 신호.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   T10YIE: {
     displayName: "10Y 기대 인플레 (BEI)",
     description: "시장이 예상하는 향후 10년 평균 인플레.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   CPIAUCSL: {
     displayName: "CPI YoY",
     description: "실제 소비자물가 전년 동월 대비 상승률.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   CPILFESL: {
     displayName: "Core CPI YoY",
     description: "식품·에너지 제외 CPI. 끈적한(sticky) 인플레 척도.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   PCEPI: {
     displayName: "PCE YoY",
     description: "개인소비지출 물가. Fed 통화정책 준거 지표.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   INDPRO: {
     displayName: "산업생산 YoY",
     description: "공장/광산/유틸 생산량의 전년 대비 변화. 성장의 현재 상태.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   PAYEMS: {
     displayName: "비농업 고용 YoY",
     description: "비농업 부문 고용의 전년 대비 변화. 성장 확산 지표.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   USSLIND: {
     displayName: "주 단위 선행지수",
     description: "Philly Fed의 향후 6개월 성장률 전망(주별 가중).",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   DCOILWTICO: {
     displayName: "WTI 원유 YoY",
     description: "원유 가격의 전년 대비 변화. 공급측 인플레 압력.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
 
   // ── 달러 가치 분석 지표 (미국) ────────────────────────────────────────
@@ -82,6 +98,7 @@ const INDICATOR_META = {
     description: "광의 통화(M2) 전년 동월 대비 증가율. 과도한 팽창은 달러 약세 및 인플레 압력의 선행 지표.",
     unit: "%",
     decimals: 2,
+    zeroline: true,
   },
   GFDEGDQ188S: {
     displayName: "미국 연방 부채 (% of GDP)",
@@ -104,6 +121,7 @@ const INDICATOR_META = {
     unit: "%",
     decimals: 2,
     region: "KR",
+    zeroline: true,
   },
   DEBTTLKRQ052N: {
     displayName: "🇰🇷 한국 정부 부채 (% of GDP)",
@@ -120,6 +138,7 @@ const INDICATOR_META = {
     unit: "%",
     decimals: 2,
     region: "KR",
+    zeroline: true,
   },
   KORPROINDMISMEI: {
     displayName: "🇰🇷 한국 산업생산 YoY",
@@ -127,6 +146,7 @@ const INDICATOR_META = {
     unit: "%",
     decimals: 2,
     region: "KR",
+    zeroline: true,
   },
   LRUNTTTTKOR156S: {
     displayName: "🇰🇷 한국 실업률",
@@ -141,6 +161,7 @@ const INDICATOR_META = {
     unit: "%",
     decimals: 2,
     region: "KR",
+    zeroline: true,
   },
 };
 
@@ -336,12 +357,46 @@ function switchToTab(tab) {
 
 
 // ---------- 진입점 ------------------------------------------
+//
+// 데이터 저장 구조 (2026-04 이후):
+//   data/index.json               — 메타데이터 + assessment
+//   data/indicators/<CODE>.json   — 지표별 전체 payload
+//   data/assets/<CODE>.json       — 자산별 전체 payload
+//
+// 각 파일이 독립 파일이라 수동 편집·가공이 쉬워진다.
+// 페이지 로드 시 index + 모든 파일을 병렬로 가져와 단일 dict 로 합친다.
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    // cache: 'no-cache' → 브라우저 캐시보다 서버 재검증 우선
-    const res = await fetch("data/indicators.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    const idxRes = await fetch("data/index.json", { cache: "no-cache" });
+    if (!idxRes.ok) throw new Error(`HTTP ${idxRes.status}`);
+    const idx = await idxRes.json();
+
+    const indicatorEntries = idx.indicators || [];
+    const assetEntries     = idx.assets     || [];
+
+    const fetchJson = (url) => fetch(url, { cache: "no-cache" }).then((r) => {
+      if (!r.ok) throw new Error(`${url} → HTTP ${r.status}`);
+      return r.json();
+    });
+
+    const [indicatorPayloads, assetPayloads] = await Promise.all([
+      Promise.all(indicatorEntries.map((e) => fetchJson(`data/indicators/${e.code}.json`))),
+      Promise.all(assetEntries.map((e)     => fetchJson(`data/assets/${e.code}.json`))),
+    ]);
+
+    const indicators = {};
+    indicatorEntries.forEach((e, i) => { indicators[e.code] = indicatorPayloads[i]; });
+    const assets = {};
+    assetEntries.forEach((e, i) => { assets[e.code] = assetPayloads[i]; });
+
+    const data = {
+      last_updated:  idx.last_updated,
+      indicators,
+      assets,
+      assessment:    idx.assessment    || null,
+      assessment_kr: idx.assessment_kr || null,
+    };
+
     _cachedData = data;
     renderLastUpdated(data.last_updated);
     // US 탭 먼저 렌더링
@@ -387,6 +442,7 @@ function renderTabContent(tab, data) {
   // 지표가 하나도 없으면 안내 메시지
   if (Object.keys(indicators).length === 0) {
     if (growthHost) growthHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions 를 실행해 주세요.");
+    wireSectorNav(tab);
     return;
   }
 
@@ -402,6 +458,36 @@ function renderTabContent(tab, data) {
     else host = inflationHost;
     if (host) host.appendChild(renderCard(code, payload, assets));
   }
+
+  wireSectorNav(tab);
+}
+
+/** 섹터 서브탭(성장/인플레/달러) 버튼 클릭 → 해당 sector-panel 만 보이도록 토글. */
+function wireSectorNav(tab) {
+  const panel = document.getElementById(`panel-${tab}`);
+  if (!panel) return;
+  const nav = panel.querySelector(".sector-nav");
+  if (!nav || nav.dataset.wired === "1") return;
+  nav.dataset.wired = "1";
+
+  const apply = (sector) => {
+    nav.querySelectorAll(".sector-btn").forEach((b) => {
+      const active = b.dataset.sector === sector;
+      b.classList.toggle("active", active);
+      b.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    panel.querySelectorAll(".sector-panel").forEach((s) => {
+      s.hidden = s.dataset.sector !== sector;
+    });
+    // 숨겨졌던 섹터의 차트가 resize 타이밍을 놓치지 않도록 window resize 디스패치
+    window.dispatchEvent(new Event("resize"));
+  };
+
+  nav.addEventListener("click", (e) => {
+    const btn = e.target.closest("button.sector-btn");
+    if (!btn) return;
+    apply(btn.dataset.sector);
+  });
 }
 
 // 현재 국면 자동 판정 패널.
@@ -631,8 +717,9 @@ function renderCard(code, payload, assets) {
         <select class="compare-select">${compareSelectHtml}</select>
       </label>
       <div class="mode-toggle" role="group" aria-label="비교 표시 방식" hidden>
-        <button type="button" class="mode-btn active" data-mode="overlay">겹쳐보기</button>
-        <button type="button" class="mode-btn"        data-mode="stacked">나란히</button>
+        <button type="button" class="mode-btn active" data-mode="overlay"    title="각자의 원단위 축(이중 y축)">겹쳐보기</button>
+        <button type="button" class="mode-btn"        data-mode="normalized" title="각 시리즈를 표시 구간 내 0~100 으로 정규화 — 같은 기준으로 형태 비교">기준화</button>
+        <button type="button" class="mode-btn"        data-mode="stacked"    title="두 개의 독립 차트로 나란히">나란히</button>
       </div>
     </div>
     <p class="compare-note" hidden>${escapeHtml(recs.note || "")}</p>
@@ -685,13 +772,28 @@ function renderCard(code, payload, assets) {
     const cmpMeta    = state.compareCode ? (ASSET_META[state.compareCode] ?? null) : null;
 
     if (cmpPayload && state.compareMode === "overlay") {
-      // 겹쳐보기: 같은 차트에 이중 Y축
+      // 겹쳐보기: 같은 차트에 이중 Y축 (각 시리즈는 자기 원단위 축에 표시)
       chartState.main = renderChart(mainCanvas, mainSliced, category, {
         overlay: {
           series: cmpPayload.series,
           meta:   cmpMeta,
           name:   cmpMeta?.displayName ?? state.compareCode,
         },
+        events,
+        longSpan: isLongSpan,
+        primaryMeta: meta,
+      });
+      compareBox.hidden = true;
+    } else if (cmpPayload && state.compareMode === "normalized") {
+      // 기준화(정규화): 두 시리즈 모두 "표시 구간 내 0~100" 으로 스케일.
+      // 결과적으로 단일 y축에서 "형태와 상대 위치" 를 같은 기준으로 비교할 수 있다.
+      chartState.main = renderChart(mainCanvas, mainSliced, category, {
+        overlay: {
+          series: cmpPayload.series,
+          meta:   cmpMeta,
+          name:   cmpMeta?.displayName ?? state.compareCode,
+        },
+        normalize: true,
         events,
         longSpan: isLongSpan,
         primaryMeta: meta,
@@ -835,20 +937,29 @@ function sliceSeriesByMonths(series, months) {
 
 /**
  * 공용 차트 렌더러.
- *   - opts.overlay: { series, meta, name } → 이중 Y축으로 오버레이
+ *   - opts.overlay: { series, meta, name } → 오버레이 시리즈 (기본: 이중 Y축)
+ *   - opts.normalize: true → 두 시리즈 모두 "표시 구간 내 0~100" 으로 정규화,
+ *                     단일 Y축에서 같은 기준으로 비교 (기준화 모드)
  *   - opts.events:  [{date, label}, ...]   → 수직 점선 + 라벨 (annotation 플러그인)
  *   - opts.assetColor: asset 단독 차트일 때 선 색
- *   - opts.primaryMeta: tooltip 숫자 포맷용
+ *   - opts.primaryMeta: tooltip 숫자 포맷용. zeroline 축 정책도 여기서 읽음.
  */
 function renderChart(canvas, series, category, opts = {}) {
   const baseColor  = opts.assetColor || CATEGORY_COLOR[category] || "#9aa0a9";
   const labels     = series.map((p) => p.date);
   const values     = series.map((p) => p.value);
   const primaryMeta = opts.primaryMeta || { decimals: 2, unit: "" };
+  const normalize = !!opts.normalize;
+
+  // 정규화 모드: 원값은 따로 보존해서 tooltip 에 표시하고, 플롯은 0~100 값으로.
+  const primaryRawValues = values.slice();
+  const primaryNormInfo  = normalize ? computeNormInfo(values) : null;
+  const primaryPlotValues = normalize ? values.map((v) => normalizeValue(v, primaryNormInfo)) : values;
 
   const datasets = [{
     label: primaryMeta.displayName || "",
-    data: values,
+    data: primaryPlotValues,
+    _rawValues: primaryRawValues,
     borderColor: baseColor,
     backgroundColor: baseColor + "22",
     borderWidth: 1.5,
@@ -863,10 +974,15 @@ function renderChart(canvas, series, category, opts = {}) {
   let overlayMeta = null;
   if (opts.overlay && opts.overlay.series && opts.overlay.series.length > 0) {
     overlayMeta = opts.overlay.meta || { decimals: 2, unit: "", color: "#d4af37" };
-    const aligned = alignSeriesToLabels(opts.overlay.series, labels);
+    const alignedRaw  = alignSeriesToLabels(opts.overlay.series, labels);
+    const overlayNormInfo = normalize ? computeNormInfo(alignedRaw) : null;
+    const overlayPlot = normalize
+      ? alignedRaw.map((v) => normalizeValue(v, overlayNormInfo))
+      : alignedRaw;
     datasets.push({
       label: opts.overlay.name || "비교",
-      data: aligned,
+      data: overlayPlot,
+      _rawValues: alignedRaw,
       borderColor: overlayMeta.color || "#d4af37",
       backgroundColor: "transparent",
       borderWidth: 1.5,
@@ -875,7 +991,7 @@ function renderChart(canvas, series, category, opts = {}) {
       pointRadius: 0,
       pointHoverRadius: 4,
       tension: 0.2,
-      yAxisID: "y1",
+      yAxisID: normalize ? "y" : "y1",
       spanGaps: true,
     });
   }
@@ -884,6 +1000,22 @@ function renderChart(canvas, series, category, opts = {}) {
   // 10년 이상 뷰: 라벨 기본 숨김 + 마커 클릭 시 토글. 이하: 항상 표시.
   const longSpan = opts.longSpan || false;
   const annotations = {};
+
+  // zeroline 정책: 데이터가 0 을 가로지를 때만 0 기준선을 그림. 정규화 모드에선 의미 없음.
+  if (!normalize && primaryMeta && primaryMeta.zeroline) {
+    const finite = primaryRawValues.filter((v) => Number.isFinite(v));
+    if (finite.length > 0 && Math.min(...finite) < 0 && Math.max(...finite) > 0) {
+      annotations.zeroLine = {
+        type: "line",
+        yMin: 0,
+        yMax: 0,
+        borderColor: "rgba(240,240,240,0.35)",
+        borderWidth: 1,
+        borderDash: [2, 3],
+        drawTime: "beforeDatasetsDraw",
+      };
+    }
+  }
   (opts.events || []).forEach((evt, i) => {
     const snapped = snapEventToLabel(evt.date, labels);
     if (!snapped) return;
@@ -937,7 +1069,29 @@ function renderChart(canvas, series, category, opts = {}) {
       grid:  { color: "#222222" },
     },
   };
-  if (overlayMeta) {
+
+  if (normalize) {
+    // 기준화 모드: 공통 0~100 범위 강제
+    scales.y.min = 0;
+    scales.y.max = 100;
+    scales.y.title = {
+      display: true,
+      text: "기준화(0 = 구간 최솟값 · 100 = 구간 최댓값)",
+      color: "#787878",
+      font: { size: 9 },
+    };
+  } else if (primaryMeta && primaryMeta.zeroline) {
+    // zeroline 정책: 0 을 반드시 축 범위에 포함 (YoY/스프레드 지표 객관성)
+    const finite = primaryRawValues.filter((v) => Number.isFinite(v));
+    if (finite.length > 0) {
+      const dataMin = Math.min(...finite);
+      const dataMax = Math.max(...finite);
+      scales.y.suggestedMin = Math.min(0, dataMin);
+      scales.y.suggestedMax = Math.max(0, dataMax);
+    }
+  }
+
+  if (overlayMeta && !normalize) {
     scales.y1 = {
       position: "right",
       ticks: { color: overlayMeta.color || "#c8d8ea" },
@@ -966,12 +1120,18 @@ function renderChart(canvas, series, category, opts = {}) {
               const m = ctx.datasetIndex === 1 && overlayMeta ? overlayMeta : primaryMeta;
               const dec = m.decimals ?? 2;
               const unit = m.unit || "";
-              const v = ctx.parsed.y.toFixed(dec);
+              // 정규화 모드: tooltip 에는 원값 + (기준화 점수) 를 함께 노출.
+              const raw = (ctx.dataset._rawValues && ctx.dataset._rawValues[ctx.dataIndex]);
+              const showRaw = Number.isFinite(raw);
+              const rawStr = showRaw ? formatWithUnit(raw, dec, unit) : "";
               const prefix = ctx.dataset.label ? `${ctx.dataset.label}: ` : "";
-              if (unit === "$") return `${prefix}$${v}`;
-              if (unit === "%") return `${prefix}${v}%`;
-              if (unit === "₩") return `${prefix}₩${v}`;
-              return `${prefix}${v}`;
+              if (normalize) {
+                const normScore = ctx.parsed.y.toFixed(0);
+                return showRaw
+                  ? `${prefix}${rawStr}  ·  기준화 ${normScore}`
+                  : `${prefix}기준화 ${normScore}`;
+              }
+              return `${prefix}${formatWithUnit(ctx.parsed.y, dec, unit)}`;
             },
           },
         },
@@ -994,6 +1154,34 @@ function spansOverTenYears(labels) {
   const first = new Date(labels[0]);
   const last  = new Date(labels[labels.length - 1]);
   return (last - first) > 10 * 365 * 24 * 3600 * 1000;
+}
+
+/**
+ * 주어진 값 배열의 min/max 를 계산. 정규화의 스케일 기준으로 쓴다.
+ * 유효한 숫자가 0 개 / 1 개 (min === max) 면 normalize 를 포기하고 null 반환.
+ */
+function computeNormInfo(values) {
+  const finite = values.filter((v) => Number.isFinite(v));
+  if (finite.length === 0) return null;
+  const min = Math.min(...finite);
+  const max = Math.max(...finite);
+  if (min === max) return null;
+  return { min, max };
+}
+
+/** 값을 0~100 으로 min-max 정규화. info 가 null 이거나 값이 없으면 null. */
+function normalizeValue(v, info) {
+  if (!info || !Number.isFinite(v)) return null;
+  return ((v - info.min) / (info.max - info.min)) * 100.0;
+}
+
+/** 단위 포맷터 (tooltip 공통) */
+function formatWithUnit(v, decimals, unit) {
+  const n = v.toFixed(decimals);
+  if (unit === "$") return `$${n}`;
+  if (unit === "%") return `${n}%`;
+  if (unit === "₩") return `₩${n}`;
+  return n;
 }
 
 /**

@@ -3,7 +3,25 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/data/indicators.json",
+      "source": "/data/index.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/data/indicators/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/data/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
