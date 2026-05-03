@@ -22,65 +22,102 @@
 //                   부호(양/음) 가 의미를 가지는 시리즈(YoY, 스프레드 등) 전용.
 //   axisScale     — "linear"(기본) | "log"  장기 가격·지수는 로그가 더 객관적.
 const INDICATOR_META = {
+  // ── 성장 지표 ─────────────────────────────────────────────────────────
   T10Y2Y: {
     displayName: "10Y-2Y 금리차",
-    description: "장단기 금리차. 음수면 경기침체 선행 신호.",
-    unit: "%",
-    decimals: 2,
-    zeroline: true,
-  },
-  T10YIE: {
-    displayName: "10Y 기대 인플레 (BEI)",
-    description: "시장이 예상하는 향후 10년 평균 인플레.",
-    unit: "%",
-    decimals: 2,
-    zeroline: true,
-  },
-  CPIAUCSL: {
-    displayName: "CPI YoY",
-    description: "실제 소비자물가 전년 동월 대비 상승률.",
-    unit: "%",
-    decimals: 2,
-    zeroline: true,
-  },
-  CPILFESL: {
-    displayName: "Core CPI YoY",
-    description: "식품·에너지 제외 CPI. 끈적한(sticky) 인플레 척도.",
-    unit: "%",
-    decimals: 2,
-    zeroline: true,
-  },
-  PCEPI: {
-    displayName: "PCE YoY",
-    description: "개인소비지출 물가. Fed 통화정책 준거 지표.",
+    description: "장기 금리와 단기 금리의 차이. 마이너스(역전)가 되면 역사적으로 1~2년 내 침체가 따라왔다.",
     unit: "%",
     decimals: 2,
     zeroline: true,
   },
   INDPRO: {
     displayName: "산업생산 YoY",
-    description: "공장/광산/유틸 생산량의 전년 대비 변화. 성장의 현재 상태.",
+    description: "공장·광산·유틸리티 생산량의 전년 대비 변화. 실물 경기가 지금 어느 속도로 돌아가는지 보여준다.",
     unit: "%",
     decimals: 2,
     zeroline: true,
   },
   PAYEMS: {
     displayName: "비농업 고용 YoY",
-    description: "비농업 부문 고용의 전년 대비 변화. 성장 확산 지표.",
+    description: "비농업 일자리의 전년 대비 증감. 경기가 좋으면 고용이 늘고 나쁘면 줄어드는 동행 지표.",
     unit: "%",
     decimals: 2,
     zeroline: true,
   },
   USSLIND: {
     displayName: "주 단위 선행지수",
-    description: "Philly Fed의 향후 6개월 성장률 전망(주별 가중).",
+    description: "Philly Fed가 집계하는 향후 6개월 성장률 전망. 50개 주(州) 데이터를 가중 합산해 지역 편중 없이 미국 전체를 본다.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  ICSA: {
+    displayName: "신규 실업급여 청구 YoY",
+    description: "매주 목요일 발표. 새로 실업급여를 신청한 사람 수의 전년 대비 변화. 경기 충격 첫 주에 즉시 튀어 오르며 PAYEMS보다 5~6주 빠르다. 높을수록 나쁨(역방향 적용).",
+    unit: "%",
+    decimals: 1,
+    zeroline: true,
+  },
+  UMCSENT: {
+    displayName: "미시간대 소비자심리",
+    description: "미시간대가 매달 측정하는 소비자 낙관도. GDP의 70%인 소비를 이끄는 가계 심리를 가장 빠르게 반영하는 선행 지표.",
+    unit: "index",
+    decimals: 1,
+  },
+
+  // ── 인플레이션 지표 ───────────────────────────────────────────────────
+  T10YIE: {
+    displayName: "10Y 기대 인플레 (BEI)",
+    description: "채권 시장이 베팅하는 향후 10년 평균 물가 상승률. 실시간으로 움직이는 가장 빠른 인플레 선행 신호.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  CPIAUCSL: {
+    displayName: "CPI YoY",
+    description: "가계가 실제로 사는 물건·서비스 바구니의 전년 대비 가격 변화. 우리가 일상에서 느끼는 물가 그 자체.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  CPILFESL: {
+    displayName: "Core CPI YoY",
+    description: "CPI에서 변동성이 큰 식품·에너지를 뺀 값. 인플레가 얼마나 '끈적하게' 고착되고 있는지 보여준다.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  PCEPI: {
+    displayName: "PCE YoY",
+    description: "Fed가 금리 결정 기준으로 삼는 물가 지표. CPI보다 범위가 넓고 소비 패턴 변화를 더 빠르게 반영한다.",
     unit: "%",
     decimals: 2,
     zeroline: true,
   },
   DCOILWTICO: {
     displayName: "WTI 원유 YoY",
-    description: "원유 가격의 전년 대비 변화. 공급측 인플레 압력.",
+    description: "국제 원유 가격의 전년 대비 변화. 에너지 비용을 통해 물가 압력이 얼마나 빠르게 퍼지는지 알 수 있다.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  T5YIFR: {
+    displayName: "5Y5Y 기대 인플레",
+    description: "5년 후부터 시작하는 5년간의 기대 인플레이션. 10Y BEI와 함께 보면 인플레가 일시적인지, 구조적으로 고착되는지 구분할 수 있다.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  PCUOMFGOMFG: {
+    displayName: "제조업 PPI YoY",
+    description: "제조업체가 받는 제품 가격의 전년 대비 변화. 원가 상승 압력이 소비자 가격에 전가되기 2~3개월 전에 먼저 움직인다.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  WPSID61: {
+    displayName: "원자재 PPI YoY",
+    description: "금속·농산물 등 광범위한 원자재 가격의 전년 대비 변화. WTI가 에너지만 보는 것을 보완해 인플레 원천을 넓게 커버한다.",
     unit: "%",
     decimals: 2,
     zeroline: true,
@@ -89,20 +126,20 @@ const INDICATOR_META = {
   // ── 달러 가치 분석 지표 (미국) ────────────────────────────────────────
   DGS10: {
     displayName: "미국 10Y 국채 수익률",
-    description: "미국 10년물 국채 수익률. 달러 자산의 기회비용 기준. 한국 국채와의 금리 차이가 환율 방향에 영향.",
+    description: "미국 10년물 국채 수익률. 달러 자산의 기회비용이자 글로벌 자금 흐름의 기준점. 오르면 달러 강세와 이머징 자금 유출 압력이 커진다.",
     unit: "%",
     decimals: 2,
   },
   M2SL: {
     displayName: "미국 M2 통화량 YoY",
-    description: "광의 통화(M2) 전년 동월 대비 증가율. 과도한 팽창은 달러 약세 및 인플레 압력의 선행 지표.",
+    description: "현금·예금·MMF를 합친 광의 통화량의 전년 대비 증가율. 돈이 너무 많이 풀리면 인플레와 달러 약세로 이어지는 선행 지표.",
     unit: "%",
     decimals: 2,
     zeroline: true,
   },
   GFDEGDQ188S: {
     displayName: "미국 연방 부채 (% of GDP)",
-    description: "미국 연방 정부 부채의 GDP 대비 비율. 재정 건전성의 장기 지표. 분기 발표.",
+    description: "미국 연방 정부 빚의 GDP 대비 비율. 재정 건전성을 장기적으로 보여주는 지표로 분기 단위로 발표된다.",
     unit: "% GDP",
     decimals: 1,
   },
@@ -110,14 +147,14 @@ const INDICATOR_META = {
   // ── 달러 가치 분석 지표 (한국) ────────────────────────────────────────
   IRLTLT01KRM156N: {
     displayName: "🇰🇷 한국 10Y 국채 수익률",
-    description: "한국 10년물 국채 수익률. 미국 DGS10과의 금리 차이(스프레드)가 원/달러 환율의 핵심 변수.",
+    description: "한국 10년물 국채 수익률. 미국 DGS10과의 금리 차이(스프레드)가 원/달러 환율 방향을 결정하는 핵심 변수.",
     unit: "%",
     decimals: 2,
     region: "KR",
   },
   MYAGM2KRM189S: {
     displayName: "🇰🇷 한국 M2 통화량 YoY",
-    description: "한국 광의 통화(M2) 전년 동월 대비 증가율 (OECD/FRED). 미국 M2 증가율과 비교해 상대 통화 팽창 속도를 파악.",
+    description: "한국 광의 통화(M2)의 전년 대비 증가율. 미국 M2와 비교해 어느 쪽이 더 빠르게 돈을 풀고 있는지 파악할 수 있다.",
     unit: "%",
     decimals: 2,
     region: "KR",
@@ -125,7 +162,7 @@ const INDICATOR_META = {
   },
   DEBTTLKRQ052N: {
     displayName: "🇰🇷 한국 정부 부채 (% of GDP)",
-    description: "한국 일반 정부 부채의 GDP 대비 비율 (IMF/World Bank via FRED). 미국과의 재정 건전성 비교. 분기 발표.",
+    description: "한국 정부 부채의 GDP 대비 비율 (IMF/World Bank). 미국과 함께 보면 두 나라의 재정 여력을 비교할 수 있다. 분기 발표.",
     unit: "% GDP",
     decimals: 1,
     region: "KR",
@@ -134,7 +171,7 @@ const INDICATOR_META = {
   // ── 한국 지표 ─────────────────────────────────────────────────────────
   KORCPIALLMINMEI: {
     displayName: "🇰🇷 한국 CPI YoY",
-    description: "한국 소비자물가지수 전년 동월 대비 상승률 (OECD/FRED). 미국 4분면 점수에는 포함되지 않음.",
+    description: "한국 소비자물가의 전년 대비 상승률. 국내 물가 흐름을 직접 보여주는 지표로 미국 4분면 점수에는 포함되지 않는다.",
     unit: "%",
     decimals: 2,
     region: "KR",
@@ -142,7 +179,7 @@ const INDICATOR_META = {
   },
   KORPROINDMISMEI: {
     displayName: "🇰🇷 한국 산업생산 YoY",
-    description: "한국 제조업 산업생산 전년 대비 변화율 (OECD/FRED). 미국 4분면 점수에는 포함되지 않음.",
+    description: "한국 제조업 산업생산의 전년 대비 변화율. 수출 중심 한국 경제의 실물 흐름을 보여준다. 미국 4분면 점수에는 포함되지 않는다.",
     unit: "%",
     decimals: 2,
     region: "KR",
@@ -150,14 +187,14 @@ const INDICATOR_META = {
   },
   LRUNTTTTKOR156S: {
     displayName: "🇰🇷 한국 실업률",
-    description: "한국 15세 이상 실업률. 높을수록 성장 약화 신호(역방향 백분위 적용). 미국 4분면 점수에는 포함되지 않음.",
+    description: "한국 15세 이상 실업률. 높을수록 성장 약화를 의미해 역방향으로 계산된다. 미국 4분면 점수에는 포함되지 않는다.",
     unit: "%",
     decimals: 1,
     region: "KR",
   },
   KOSPI_YOY: {
     displayName: "🇰🇷 코스피 YoY",
-    description: "코스피 지수 전년 동월 대비 수익률 (Yahoo Finance). 한국 주식시장의 경기 반영 지표. 미국 4분면 점수에는 포함되지 않음.",
+    description: "코스피 지수의 전년 동월 대비 수익률. 한국 증시가 경기를 어떻게 반영하는지 한눈에 보여준다. 미국 4분면 점수에는 포함되지 않는다.",
     unit: "%",
     decimals: 2,
     region: "KR",
