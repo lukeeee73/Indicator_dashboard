@@ -35,8 +35,9 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from analyze import (  # noqa: E402
-    INVERTED_CODES, POSTWAR_CUTOFF,
+    POSTWAR_CUTOFF, ROLLING_YEARS,
     _series_to_pandas, _percentile_rank, _apply_polarity, _label_from_percentile,
+    compute_current_stats,
 )
 from backtest import (  # noqa: E402
     load_indicators, slice_series, load_recession_episodes,
@@ -87,148 +88,96 @@ def _weighted_mean(vals: list[tuple[float | None, float]]) -> float | None:
     return round(num / den, 1) if den > 0 else None
 
 
-def _classify_quadrant(g: float | None, i: float | None) -> str | None:
-    if g is None or i is None:
+def _blend(level: float | None, diff: float | None) -> float | None:
+    if level is None:
         return None
-    gh = g >= ENTRY_HIGH; gl = g <= ENTRY_LOW
-    ih = i >= ENTRY_HIGH; il = i <= ENTRY_LOW
-    if gh and ih: return "Q1"
-    if gh and il: return "Q2"
-    if gl and ih: return "Q3"
-    if gl and il: return "Q4"
-    if gh:  return "Q1/Q2-edge"
-    if gl:  return "Q3/Q4-edge"
-    if ih:  return "Q1/Q3-edge"
-    if il:  return "Q2/Q4-edge"
-    return "Neutral"
+    if diff is None:
+        return level
+    return round(ALPHA_DIFF * diff + (1 - ALPHA_DIFF) * level, 1)
 
 
-def _diff_percentile(code: str, sliced: list[dict]) -> float | None:
-    """최신 6개월 변화량이 역사적 변화 분포에서 차지하는 백분위."""
-    s = _series_to_pandas(sliced)
+def _diff_percentile(code: str, s: pd.Series) -> float | None:
+    """최신 6개월 변화량의 백분위. s 는 pre-parsed pd.Series."""
     full = s[s.index >= POSTWAR_CUTOFF]
-    # 월 단위로 리샘플 (일간 데이터 노이즈 제거)
     monthly = full.resample("ME").last().dropna()
     if len(monthly) < DIFF_MONTHS + 10:
         return None
     diffs = monthly.diff(DIFF_MONTHS).dropna()
-    if diffs.empty:
+    if len(monthly) <= DIFF_MONTHS:
         return None
-    current = float(monthly.iloc[-1]) - float(monthly.iloc[-DIFF_MONTHS - 1]) \
-        if len(monthly) > DIFF_MONTHS else None
-    if current is None:
-        return None
-    p = _percentile_rank(diffs, current)
-    return _apply_polarity(code, p)
+    current = float(monthly.iloc[-1]) - float(monthly.iloc[-DIFF_MONTHS - 1])
+    return _apply_polarity(code, _percentile_rank(diffs, current))
 
 
-# ── 모델 A (baseline) ──────────────────────────────────────────────────────────
-def _stats_A(code: str, sliced: list[dict]) -> tuple[float | None, float | None]:
-    """(percentile_full, percentile_10y)"""
-    from analyze import compute_current_stats
+# ── 모델별 stats 함수 ───────────────────────────────────────────────────────────
+def _stats_level(code: str, sliced: list[dict]) -> tuple[float | None, float | None]:
     cur = compute_current_stats(code, sliced)
     if cur is None:
         return None, None
     return cur["percentile_full"], cur["percentile_10y"]
 
 
-# ── 모델 B (diff-aware) ────────────────────────────────────────────────────────
 def _stats_B(code: str, sliced: list[dict]) -> tuple[float | None, float | None]:
-    """(combined_full, combined_10y): α*diff + (1-α)*level."""
-    from analyze import compute_current_stats
-    cur = compute_current_stats(code, sliced)
-    if cur is None:
+    """레벨 백분위 + 방향 백분위 혼합. 시리즈를 한 번만 파싱."""
+    s = _series_to_pandas(sliced)
+    if s.empty:
         return None, None
-    dp = _diff_percentile(code, sliced)
-    def blend(level: float | None) -> float | None:
-        if level is None:
-            return None
-        if dp is None:
-            return level
-        return round(ALPHA_DIFF * dp + (1 - ALPHA_DIFF) * level, 1)
-    return blend(cur["percentile_full"]), blend(cur["percentile_10y"])
+    latest = float(s.iloc[-1])
+    latest_date = s.index[-1]
+    full_s = s[s.index >= POSTWAR_CUTOFF]
+    p_full = _apply_polarity(code, _percentile_rank(full_s, latest))
+    cutoff = latest_date - pd.DateOffset(years=ROLLING_YEARS)
+    p_10y = _apply_polarity(code, _percentile_rank(s[(s.index >= cutoff) & (s.index <= latest_date)], latest))
+    dp = _diff_percentile(code, s)
+    return _blend(p_full, dp), _blend(p_10y, dp)
 
 
-# ── 모델 C (lead-weighted, inflation=full only) ───────────────────────────────
-def _stats_C(code: str, sliced: list[dict]) -> tuple[float | None, None]:
-    """(percentile_full, None) — 10y 는 사용 안 함."""
-    from analyze import compute_current_stats
+def _stats_level_full(code: str, sliced: list[dict]) -> tuple[float | None, None]:
     cur = compute_current_stats(code, sliced)
-    if cur is None:
-        return None, None
-    return cur["percentile_full"], None
+    return (cur["percentile_full"] if cur else None), None
 
 
-# ── Walk 함수들 ────────────────────────────────────────────────────────────────
-def _build_row_base(as_of: pd.Timestamp, indicators: dict,
-                    stats_fn) -> dict:
+# ── 통합 row 빌더 ──────────────────────────────────────────────────────────────
+def _build_row(as_of: pd.Timestamp, indicators: dict,
+               stats_fn, weights: dict[str, float] | None = None) -> dict:
     gf, g10, if_, i10 = [], [], [], []
     for code, payload in indicators.items():
         sliced = slice_series(code, payload["series"], as_of)
         if not sliced:
             continue
         pf, p10 = stats_fn(code, sliced)
-        cat = payload["category"]
-        if cat == "growth":
-            gf.append((pf, 1.0)); g10.append((p10, 1.0))
-        else:
-            if_.append((pf, 1.0)); i10.append((p10, 1.0))
-    g_f  = _weighted_mean(gf)
-    g_10 = _weighted_mean(g10)
-    i_f  = _weighted_mean(if_)
-    i_10 = _weighted_mean(i10)
-    return {
-        "growth_full":  g_f,  "infl_full":  i_f,
-        "growth_10y":   g_10, "infl_10y":   i_10,
-        "g_lab_full":   _label_from_percentile(g_f),
-        "i_lab_full":   _label_from_percentile(i_f),
-        "g_lab_10y":    _label_from_percentile(g_10),
-        "i_lab_10y":    _label_from_percentile(i_10),
-    }
-
-
-def _build_row_C(as_of: pd.Timestamp, indicators: dict) -> dict:
-    gf, if_ = [], []
-    for code, payload in indicators.items():
-        sliced = slice_series(code, payload["series"], as_of)
-        if not sliced:
-            continue
-        pf, _ = _stats_C(code, sliced)
-        w = INDICATOR_WEIGHTS.get(code, 1.0)
+        w = weights.get(code, 1.0) if weights else 1.0
         if payload["category"] == "growth":
-            gf.append((pf, w))
+            gf.append((pf, w)); g10.append((p10, w))
         else:
-            if_.append((pf, w))
-    g_f = _weighted_mean(gf)
-    i_f = _weighted_mean(if_)
+            if_.append((pf, w)); i10.append((p10, w))
+    g_f = _weighted_mean(gf);  g_10 = _weighted_mean(g10)
+    i_f = _weighted_mean(if_); i_10 = _weighted_mean(i10)
     return {
-        "growth_full": g_f, "infl_full": i_f,
+        "growth_full": g_f,  "infl_full": i_f,
+        "growth_10y":  g_10, "infl_10y":  i_10,
         "g_lab_full":  _label_from_percentile(g_f),
         "i_lab_full":  _label_from_percentile(i_f),
-        # 10y 컬럼은 None (C 모델은 full 창만 사용)
-        "growth_10y": None, "infl_10y": None,
-        "g_lab_10y": None,  "i_lab_10y": None,
+        "g_lab_10y":   _label_from_percentile(g_10),
+        "i_lab_10y":   _label_from_percentile(i_10),
     }
 
 
 def walk_model(model: str, indicators: dict,
                start: pd.Timestamp, end: pd.Timestamp) -> pd.DataFrame:
-    rows = []
-    for as_of in pd.date_range(start, end, freq="ME"):
-        m = as_of.to_period("M")
-        if model == "A":
-            row = _build_row_base(as_of, indicators, _stats_A)
-        elif model == "B":
-            row = _build_row_base(as_of, indicators, _stats_B)
-        elif model in ("C", "D"):
-            row = _build_row_C(as_of, indicators)
-        else:
-            raise ValueError(model)
-        rows.append({"month": m, **row})
+    stats_map: dict[str, tuple] = {
+        "A": (_stats_level,      None),
+        "B": (_stats_B,          None),
+        "C": (_stats_level_full, INDICATOR_WEIGHTS),
+        "D": (_stats_level_full, INDICATOR_WEIGHTS),
+    }
+    stats_fn, weights = stats_map[model]
+    rows = [
+        {"month": as_of.to_period("M"), **_build_row(as_of, indicators, stats_fn, weights)}
+        for as_of in pd.date_range(start, end, freq="ME")
+    ]
     df = pd.DataFrame(rows).set_index("month")
-    if model == "D":
-        df = _apply_smooth_hysteresis(df)
-    return df
+    return _apply_smooth_hysteresis(df) if model == "D" else df
 
 
 def _apply_smooth_hysteresis(df: pd.DataFrame) -> pd.DataFrame:
@@ -237,7 +186,7 @@ def _apply_smooth_hysteresis(df: pd.DataFrame) -> pd.DataFrame:
     for axis in ("growth", "infl"):
         col = f"{axis}_full"
         smoothed = df[col].ewm(span=EWMA_SPAN, min_periods=1).mean().round(1)
-        df[f"{axis}_full"] = smoothed    # 평활된 점수로 교체
+        df[f"{axis}_full"] = smoothed
 
         lab_col = f"{'g' if axis == 'growth' else 'i'}_lab_full"
         labels = []
@@ -267,20 +216,13 @@ def run_comparison() -> None:
     inf = load_inflation_episodes()
 
     results: dict[str, dict] = {}
-    timelines: dict[str, pd.DataFrame] = {}
 
     for model in ("A", "B", "C", "D"):
         print(f"Walking model {model}…", flush=True)
         df = walk_model(model, indicators, start, end_dt)
-        timelines[model] = df
-
-        # 성장 신호: full 창 우선, 없으면 10y
-        g_col = "g_lab_full"
-        i_col = "i_lab_full"
-
         results[model] = {
-            "growth_vs_recession":   evaluate_signal(df, g_col, "low",  rec),
-            "inflation_vs_episode":  evaluate_signal(df, i_col, "high", inf),
+            "growth_vs_recession":  evaluate_signal(df, "g_lab_full", "low",  rec),
+            "inflation_vs_episode": evaluate_signal(df, "i_lab_full", "high", inf),
         }
 
     # ── JSON 저장 ────────────────────────────────────────────────────────────

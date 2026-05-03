@@ -65,6 +65,8 @@ def load_indicators() -> dict[str, dict]:
             continue
         if payload.get("category") not in ("growth", "inflation"):
             continue
+        for point in payload["series"]:
+            point["_ts"] = pd.Timestamp(point["date"])
         out[path.stem] = payload
     return out
 
@@ -72,7 +74,7 @@ def load_indicators() -> dict[str, dict]:
 def slice_series(code: str, series: list[dict], as_of: pd.Timestamp) -> list[dict]:
     lag = pd.Timedelta(days=RELEASE_LAG_DAYS.get(code, DEFAULT_LAG_DAYS))
     cutoff = as_of - lag
-    return [p for p in series if pd.Timestamp(p["date"]) <= cutoff]
+    return [p for p in series if p["_ts"] <= cutoff]
 
 
 def assess_at(as_of: pd.Timestamp, indicators: dict[str, dict]) -> dict:
