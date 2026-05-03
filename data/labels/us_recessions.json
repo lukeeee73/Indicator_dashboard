@@ -1,0 +1,29 @@
+{
+  "source": "NBER Business Cycle Dating Committee",
+  "source_url": "https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions",
+  "retrieved_on": "2026-05-03",
+  "convention": {
+    "peak":   "Last month of expansion (still 'expansion').",
+    "trough": "Last month of contraction (still 'recession').",
+    "recession_months": "Inclusive interval [peak + 1 month, trough]. A month equal to peak is NOT counted as recession; a month equal to trough IS counted as recession."
+  },
+  "notes": [
+    "NBER dates are the universally cited US business-cycle reference and are revised only retrospectively.",
+    "The committee publishes monthly (and, since 2020, also quarterly) peak/trough dates. Only the monthly dates are stored here.",
+    "These dates are 'final' as of retrieval date; if NBER ever revises a date the file should be updated."
+  ],
+  "episodes": [
+    { "peak": "1948-11", "trough": "1949-10" },
+    { "peak": "1953-07", "trough": "1954-05" },
+    { "peak": "1957-08", "trough": "1958-04" },
+    { "peak": "1960-04", "trough": "1961-02" },
+    { "peak": "1969-12", "trough": "1970-11" },
+    { "peak": "1973-11", "trough": "1975-03" },
+    { "peak": "1980-01", "trough": "1980-07" },
+    { "peak": "1981-07", "trough": "1982-11" },
+    { "peak": "1990-07", "trough": "1991-03" },
+    { "peak": "2001-03", "trough": "2001-11" },
+    { "peak": "2007-12", "trough": "2009-06" },
+    { "peak": "2020-02", "trough": "2020-04" }
+  ]
+}
