@@ -42,7 +42,8 @@ TRAJECTORY_MONTHS = 24          # 2D 산점도에 그릴 최근 궤적 길이
 
 # polarity 가 반대인 지표 코드를 여기에 넣으면 백분위가 (100 - p) 로 뒤집힌다.
 # LRUNTTTTKOR156S: 실업률 — 높을수록 성장 악화이므로 역방향 적용.
-INVERTED_CODES: set[str] = {"LRUNTTTTKOR156S"}
+# ICSA: 신규 실업수당 청구 — 높을수록(YoY 급등) 성장 악화이므로 역방향 적용.
+INVERTED_CODES: set[str] = {"LRUNTTTTKOR156S", "ICSA"}
 
 
 # --------------------------------------------------------------------------

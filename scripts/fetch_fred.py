@@ -103,6 +103,51 @@ INDICATORS: dict[str, dict] = {
         "transform": "yoy_pct_daily",
     },
 
+    # ── 인플레 선행 지표 ─────────────────────────────────────────────────
+    "T5YIFR": {
+        # 5년 후 시작하는 5년간의 기대인플레이션(시장가격 기반, 실시간).
+        # T10YIE 가 단기 앵커라면 이건 장기 구조적 인플레 판단 — 둘을 비교하면
+        # "일시적 충격 vs 고착화" 를 구분할 수 있다.
+        "name": "5Y5Y Forward Inflation Expectation",
+        "category": "inflation",
+        "unit": "percent",
+        "transform": None,
+    },
+    "PCUOMFGOMFG": {
+        # 생산자물가(제조업 전체). 원가 압력이 소비자 가격으로 전가되기 2~3개월 전에 움직임.
+        "name": "PPI Manufacturing YoY",
+        "category": "inflation",
+        "unit": "percent",
+        "transform": "yoy_pct",
+    },
+    "WPSID61": {
+        # WTI 는 에너지만 커버하지만 이 지표는 금속·농업 등 광범위한 원자재를 포함.
+        "name": "PPI Raw Materials YoY",
+        "category": "inflation",
+        "unit": "percent",
+        "transform": "yoy_pct",
+    },
+
+    # ── 성장 선행 지표 ──────────────────────────────────────────────────
+    "ICSA": {
+        # 신규 실업수당 청구건수(주간). 노동시장 스트레스의 가장 빠른 신호.
+        # PAYEMS 보다 5~6주 먼저 움직이며, 경기 충격 첫 주에 즉시 급등한다.
+        # 일간과 동일하게 월말 last 로 리샘플 후 YoY 변환.
+        # 높을수록 성장 악화이므로 analyze.py INVERTED_CODES 에 등록됨.
+        "name": "Initial Jobless Claims YoY",
+        "category": "growth",
+        "unit": "percent",
+        "transform": "yoy_pct_daily",
+    },
+    "UMCSENT": {
+        # 미시간대 소비자심리지수(레벨). GDP 의 70% 를 차지하는 소비 의도의 선행 신호.
+        # 원시 레벨(50~110)을 그대로 사용 — 높을수록 성장 긍정, 역방향 불필요.
+        "name": "Michigan Consumer Sentiment",
+        "category": "growth",
+        "unit": "index",
+        "transform": None,
+    },
+
     # ── 달러 가치 분석 지표 (미국) ──────────────────────────────────────
     # 금리·통화량·재정 건전성을 통해 달러의 상대 가치를 판단하는 데 쓰인다.
     # exclude_assessment=True: 4분면 성장/인플레 점수에는 포함하지 않는다.
