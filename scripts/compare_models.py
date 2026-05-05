@@ -14,6 +14,8 @@ E  cycle-relative : 8년 사이클 백분위(50%) + 6개월 변화 백분위(30%
                     "역사적으로 어디인가" 보다 "지금 사이클에서 어디인가, 어디로 가나" 를
                     우선시. 컴포넌트 데이터 부족 시 해당 가중치를 자동 정규화.
                     지표별 가중치는 C 와 동일.
+F  EC-hybrid      : 성장 축 = E(8년 사이클), 인플레 축 = C(full 창 가중치).
+                    E 의 침체 선행력 + C 의 인플레 정밀도를 조합.
 
 하이퍼파라미터 사전 등록(pre-registered)
 ---------------------------------------
@@ -197,15 +199,19 @@ def _stats_E(code: str, sliced: list[dict]) -> tuple[float | None, None]:
 
 # ── 통합 row 빌더 ──────────────────────────────────────────────────────────────
 def _build_row(as_of: pd.Timestamp, indicators: dict,
-               stats_fn, weights: dict[str, float] | None = None) -> dict:
+               stats_fn=None, weights: dict[str, float] | None = None,
+               stats_fn_map: dict[str, object] | None = None) -> dict:
+    """stats_fn_map = {"growth": fn, "inflation": fn} 으로 축별 함수를 지정할 수 있다."""
     gf, g10, if_, i10 = [], [], [], []
     for code, payload in indicators.items():
         sliced = slice_series(code, payload["series"], as_of)
         if not sliced:
             continue
-        pf, p10 = stats_fn(code, sliced)
+        cat = payload["category"]
+        fn = stats_fn_map.get(cat, stats_fn) if stats_fn_map else stats_fn
+        pf, p10 = fn(code, sliced)
         w = weights.get(code, 1.0) if weights else 1.0
-        if payload["category"] == "growth":
+        if cat == "growth":
             gf.append((pf, w)); g10.append((p10, w))
         else:
             if_.append((pf, w)); i10.append((p10, w))
@@ -221,18 +227,28 @@ def _build_row(as_of: pd.Timestamp, indicators: dict,
     }
 
 
+# Model F: 성장 축은 E(8년 사이클), 인플레 축은 C(full 창 가중)
+_F_FN_MAP: dict[str, object] = {
+    "growth":    _stats_E,
+    "inflation": _stats_level_full,
+}
+
+
 def walk_model(model: str, indicators: dict,
                start: pd.Timestamp, end: pd.Timestamp) -> pd.DataFrame:
+    # (stats_fn, weights, stats_fn_map)
     stats_map: dict[str, tuple] = {
-        "A": (_stats_level,      None),
-        "B": (_stats_B,          None),
-        "C": (_stats_level_full, INDICATOR_WEIGHTS),
-        "D": (_stats_level_full, INDICATOR_WEIGHTS),
-        "E": (_stats_E,          INDICATOR_WEIGHTS),
+        "A": (_stats_level,      None,              None),
+        "B": (_stats_B,          None,              None),
+        "C": (_stats_level_full, INDICATOR_WEIGHTS, None),
+        "D": (_stats_level_full, INDICATOR_WEIGHTS, None),
+        "E": (_stats_E,          INDICATOR_WEIGHTS, None),
+        "F": (None,              INDICATOR_WEIGHTS, _F_FN_MAP),
     }
-    stats_fn, weights = stats_map[model]
+    stats_fn, weights, fn_map = stats_map[model]
     rows = [
-        {"month": as_of.to_period("M"), **_build_row(as_of, indicators, stats_fn, weights)}
+        {"month": as_of.to_period("M"),
+         **_build_row(as_of, indicators, stats_fn, weights, fn_map)}
         for as_of in pd.date_range(start, end, freq="ME")
     ]
     df = pd.DataFrame(rows).set_index("month")
@@ -276,7 +292,7 @@ def run_comparison() -> None:
 
     results: dict[str, dict] = {}
 
-    for model in ("A", "B", "C", "D", "E"):
+    for model in ("A", "B", "C", "D", "E", "F"):
         print(f"Walking model {model}…", flush=True)
         df = walk_model(model, indicators, start, end_dt)
         results[model] = {
@@ -323,6 +339,7 @@ def run_comparison() -> None:
         "C": "C lead-weighted",
         "D": "D C+smooth+hyst",
         "E": "E cycle-relative(8y)",
+        "F": "F E(성장)+C(인플레)",
     }
     for model, mres in results.items():
         tag = labels[model]
