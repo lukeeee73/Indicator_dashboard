@@ -10,6 +10,10 @@ C  lead-weighted  : 선행/동행/후행 지표에 가중치 차등 부여.
                     인플레축은 full 창만 사용(2단계에서 10y 창이 열등함을 확인).
 D  C + smooth     : C 의 축 점수를 EWMA(span=3) 평활 후 히스테리시스 임계 적용
                     (진입 high=60, 이탈=50 / 진입 low=40, 이탈=50)
+E  cycle-relative : 8년 사이클 백분위(50%) + 6개월 변화 백분위(30%) + 10년 백분위(20%).
+                    "역사적으로 어디인가" 보다 "지금 사이클에서 어디인가, 어디로 가나" 를
+                    우선시. 컴포넌트 데이터 부족 시 해당 가중치를 자동 정규화.
+                    지표별 가중치는 C 와 동일.
 
 하이퍼파라미터 사전 등록(pre-registered)
 ---------------------------------------
@@ -19,6 +23,10 @@ C  지표별 weight  : INDICATOR_WEIGHTS 딕셔너리 참조
 D  ewma_span    = 3     (half-life ≈ 2개월)
    entry_high   = 60, exit_high  = 50
    entry_low    = 40, exit_low   = 50
+E  cycle_years   = 8, long_years = 10, diff_months = 6
+   cycle_weight  = 0.5, diff_weight = 0.3, long_weight = 0.2
+   min_months_window = 24  (창 안에 최소 2년 데이터)
+   min_diffs_for_dist = 12 (변화 분포에 최소 12개)
 
 결과를 보고 위 값을 조정하지 않는다 — 조정 시 과적합.
 """
@@ -55,6 +63,16 @@ ENTRY_HIGH   = 60.0    # Tier D: high 진입 임계
 EXIT_HIGH    = 50.0    # Tier D: high 이탈 임계
 ENTRY_LOW    = 40.0    # Tier D: low  진입 임계
 EXIT_LOW     = 50.0    # Tier D: low  이탈 임계
+
+# Tier E 사이클-상대 가중치 및 창
+CYCLE_YEARS        = 8     # 사이클 참조 창
+LONG_YEARS         = 10    # 장기 참조 창 (analyze.py ROLLING_YEARS 와 동일)
+DIFF_MONTHS_E      = 6     # 6개월 변화
+CYCLE_WEIGHT       = 0.5
+DIFF_WEIGHT_E      = 0.3
+LONG_WEIGHT        = 0.2
+MIN_MONTHS_WINDOW  = 24    # 창 내 최소 데이터 포인트
+MIN_DIFFS_FOR_DIST = 12    # diff 분포에 최소 12개
 
 # Tier C 지표별 가중치 (선행=2, 동행=1, 후행/공급측=0.5)
 INDICATOR_WEIGHTS: dict[str, float] = {
@@ -137,6 +155,46 @@ def _stats_level_full(code: str, sliced: list[dict]) -> tuple[float | None, None
     return (cur["percentile_full"] if cur else None), None
 
 
+def _stats_E(code: str, sliced: list[dict]) -> tuple[float | None, None]:
+    """8년 사이클 백분위(50%) + 6개월 변화 백분위(30%) + 10년 백분위(20%).
+    컴포넌트 데이터 불충분 시 해당 가중치를 자동 정규화."""
+    s = _series_to_pandas(sliced)
+    if s.empty:
+        return None, None
+
+    monthly = s.resample("ME").last().dropna()
+    if monthly.empty:
+        return None, None
+
+    latest_date = monthly.index[-1]
+    latest = float(monthly.iloc[-1])
+
+    cycle_cutoff = latest_date - pd.DateOffset(years=CYCLE_YEARS)
+    long_cutoff  = latest_date - pd.DateOffset(years=LONG_YEARS)
+    cycle_s = monthly[monthly.index >= cycle_cutoff]
+    long_s  = monthly[monthly.index >= long_cutoff]
+
+    # ① 8년 사이클 백분위
+    p_cycle: float | None = None
+    if len(cycle_s) >= MIN_MONTHS_WINDOW:
+        p_cycle = _apply_polarity(code, _percentile_rank(cycle_s, latest))
+
+    # ② 6개월 변화 백분위 — 8년 창 내 diff 분포를 참조
+    p_diff: float | None = None
+    if len(cycle_s) > DIFF_MONTHS_E:
+        diffs = cycle_s.diff(DIFF_MONTHS_E).dropna()
+        if len(diffs) >= MIN_DIFFS_FOR_DIST:
+            p_diff = _apply_polarity(code, _percentile_rank(diffs, float(diffs.iloc[-1])))
+
+    # ③ 10년 백분위
+    p_long: float | None = None
+    if len(long_s) >= MIN_MONTHS_WINDOW:
+        p_long = _apply_polarity(code, _percentile_rank(long_s, latest))
+
+    score = _weighted_mean([(p_cycle, CYCLE_WEIGHT), (p_diff, DIFF_WEIGHT_E), (p_long, LONG_WEIGHT)])
+    return score, None
+
+
 # ── 통합 row 빌더 ──────────────────────────────────────────────────────────────
 def _build_row(as_of: pd.Timestamp, indicators: dict,
                stats_fn, weights: dict[str, float] | None = None) -> dict:
@@ -170,6 +228,7 @@ def walk_model(model: str, indicators: dict,
         "B": (_stats_B,          None),
         "C": (_stats_level_full, INDICATOR_WEIGHTS),
         "D": (_stats_level_full, INDICATOR_WEIGHTS),
+        "E": (_stats_E,          INDICATOR_WEIGHTS),
     }
     stats_fn, weights = stats_map[model]
     rows = [
@@ -217,7 +276,7 @@ def run_comparison() -> None:
 
     results: dict[str, dict] = {}
 
-    for model in ("A", "B", "C", "D"):
+    for model in ("A", "B", "C", "D", "E"):
         print(f"Walking model {model}…", flush=True)
         df = walk_model(model, indicators, start, end_dt)
         results[model] = {
@@ -238,6 +297,14 @@ def run_comparison() -> None:
                 "entry_low": ENTRY_LOW,   "exit_low":  EXIT_LOW,
             },
             "indicator_weights": INDICATOR_WEIGHTS,
+            "cycle_e": {
+                "cycle_years": CYCLE_YEARS, "long_years": LONG_YEARS,
+                "diff_months": DIFF_MONTHS_E,
+                "cycle_weight": CYCLE_WEIGHT, "diff_weight": DIFF_WEIGHT_E,
+                "long_weight": LONG_WEIGHT,
+                "min_months_window": MIN_MONTHS_WINDOW,
+                "min_diffs_for_dist": MIN_DIFFS_FOR_DIST,
+            },
         },
         "models": results,
     }
@@ -255,6 +322,7 @@ def run_comparison() -> None:
         "B": "B diff-aware(α=0.4)",
         "C": "C lead-weighted",
         "D": "D C+smooth+hyst",
+        "E": "E cycle-relative(8y)",
     }
     for model, mres in results.items():
         tag = labels[model]
