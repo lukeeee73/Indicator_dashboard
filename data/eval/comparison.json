@@ -1,0 +1,732 @@
+{
+  "config": {
+    "backtest_start": "1980-01-31",
+    "backtest_end": "2026-05-01",
+    "alpha_diff": 0.4,
+    "diff_months": 6,
+    "ewma_span": 3,
+    "hysteresis": {
+      "entry_high": 60.0,
+      "exit_high": 50.0,
+      "entry_low": 40.0,
+      "exit_low": 50.0
+    },
+    "indicator_weights": {
+      "T10Y2Y": 2.0,
+      "USSLIND": 2.0,
+      "UMCSENT": 1.5,
+      "INDPRO": 1.0,
+      "PAYEMS": 1.0,
+      "ICSA": 0.5,
+      "T10YIE": 2.0,
+      "T5YIFR": 2.0,
+      "CPILFESL": 1.5,
+      "PCEPI": 1.5,
+      "CPIAUCSL": 1.0,
+      "DCOILWTICO": 0.5,
+      "WPSID61": 0.5,
+      "PCUOMFGOMFG": 0.5
+    },
+    "cycle_e": {
+      "cycle_years": 8,
+      "long_years": 10,
+      "diff_months": 6,
+      "cycle_weight": 0.5,
+      "diff_weight": 0.3,
+      "long_weight": 0.2,
+      "min_months_window": 24,
+      "min_diffs_for_dist": 12
+    }
+  },
+  "models": {
+    "A": {
+      "growth_vs_recession": {
+        "n_episodes_in_window": 4,
+        "n_caught": 4,
+        "hit_rate": 1.0,
+        "median_lead_months": 15.0,
+        "mean_lead_months": 13.75,
+        "false_positive_rate": 0.2151,
+        "fp_months": 94,
+        "nonepisode_months": 437,
+        "flips_per_year": 0.78,
+        "per_episode": [
+          {
+            "start": "1980-02",
+            "end": "1980-07",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1981-08",
+            "end": "1982-11",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1990-08",
+            "end": "1991-03",
+            "first_signal": "1989-04",
+            "lead_months": 16,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2001-04",
+            "end": "2001-11",
+            "first_signal": "2000-11",
+            "lead_months": 5,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2008-01",
+            "end": "2009-06",
+            "first_signal": "2006-05",
+            "lead_months": 20,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2020-03",
+            "end": "2020-04",
+            "first_signal": "2019-01",
+            "lead_months": 14,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      },
+      "inflation_vs_episode": {
+        "n_episodes_in_window": 3,
+        "n_caught": 3,
+        "hit_rate": 1.0,
+        "median_lead_months": 2.0,
+        "mean_lead_months": 9.33,
+        "false_positive_rate": 0.1166,
+        "fp_months": 45,
+        "nonepisode_months": 386,
+        "flips_per_year": 0.82,
+        "per_episode": [
+          {
+            "start": "1973-03",
+            "end": "1983-04",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1983-11",
+            "end": "1985-08",
+            "first_signal": "1981-11",
+            "lead_months": 24,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": true
+          },
+          {
+            "start": "1987-09",
+            "end": "1991-08",
+            "first_signal": "1987-07",
+            "lead_months": 2,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2021-05",
+            "end": "2023-10",
+            "first_signal": "2021-03",
+            "lead_months": 2,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      }
+    },
+    "B": {
+      "growth_vs_recession": {
+        "n_episodes_in_window": 4,
+        "n_caught": 4,
+        "hit_rate": 1.0,
+        "median_lead_months": 15.0,
+        "mean_lead_months": 14.75,
+        "false_positive_rate": 0.1098,
+        "fp_months": 48,
+        "nonepisode_months": 437,
+        "flips_per_year": 1.19,
+        "per_episode": [
+          {
+            "start": "1980-02",
+            "end": "1980-07",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1981-08",
+            "end": "1982-11",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1990-08",
+            "end": "1991-03",
+            "first_signal": "1989-04",
+            "lead_months": 16,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2001-04",
+            "end": "2001-11",
+            "first_signal": "2000-07",
+            "lead_months": 9,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2008-01",
+            "end": "2009-06",
+            "first_signal": "2006-05",
+            "lead_months": 20,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2020-03",
+            "end": "2020-04",
+            "first_signal": "2019-01",
+            "lead_months": 14,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      },
+      "inflation_vs_episode": {
+        "n_episodes_in_window": 3,
+        "n_caught": 3,
+        "hit_rate": 1.0,
+        "median_lead_months": 5.0,
+        "mean_lead_months": 10.33,
+        "false_positive_rate": 0.1632,
+        "fp_months": 63,
+        "nonepisode_months": 386,
+        "flips_per_year": 0.82,
+        "per_episode": [
+          {
+            "start": "1973-03",
+            "end": "1983-04",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1983-11",
+            "end": "1985-08",
+            "first_signal": "1981-11",
+            "lead_months": 24,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": true
+          },
+          {
+            "start": "1987-09",
+            "end": "1991-08",
+            "first_signal": "1987-04",
+            "lead_months": 5,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2021-05",
+            "end": "2023-10",
+            "first_signal": "2021-03",
+            "lead_months": 2,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      }
+    },
+    "C": {
+      "growth_vs_recession": {
+        "n_episodes_in_window": 4,
+        "n_caught": 4,
+        "hit_rate": 1.0,
+        "median_lead_months": 15.5,
+        "mean_lead_months": 15.5,
+        "false_positive_rate": 0.2014,
+        "fp_months": 88,
+        "nonepisode_months": 437,
+        "flips_per_year": 0.73,
+        "per_episode": [
+          {
+            "start": "1980-02",
+            "end": "1980-07",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1981-08",
+            "end": "1982-11",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1990-08",
+            "end": "1991-03",
+            "first_signal": "1989-03",
+            "lead_months": 17,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2001-04",
+            "end": "2001-11",
+            "first_signal": "2000-07",
+            "lead_months": 9,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2008-01",
+            "end": "2009-06",
+            "first_signal": "2006-03",
+            "lead_months": 22,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2020-03",
+            "end": "2020-04",
+            "first_signal": "2019-01",
+            "lead_months": 14,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      },
+      "inflation_vs_episode": {
+        "n_episodes_in_window": 3,
+        "n_caught": 3,
+        "hit_rate": 1.0,
+        "median_lead_months": 1.0,
+        "mean_lead_months": 3.0,
+        "false_positive_rate": 0.0725,
+        "fp_months": 28,
+        "nonepisode_months": 386,
+        "flips_per_year": 0.78,
+        "per_episode": [
+          {
+            "start": "1973-03",
+            "end": "1983-04",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1983-11",
+            "end": "1985-08",
+            "first_signal": "1981-11",
+            "lead_months": 24,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": true
+          },
+          {
+            "start": "1987-09",
+            "end": "1991-08",
+            "first_signal": "1989-01",
+            "lead_months": -16,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2021-05",
+            "end": "2023-10",
+            "first_signal": "2021-04",
+            "lead_months": 1,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      }
+    },
+    "D": {
+      "growth_vs_recession": {
+        "n_episodes_in_window": 4,
+        "n_caught": 4,
+        "hit_rate": 1.0,
+        "median_lead_months": 14.5,
+        "mean_lead_months": 15.0,
+        "false_positive_rate": 0.286,
+        "fp_months": 125,
+        "nonepisode_months": 437,
+        "flips_per_year": 0.26,
+        "per_episode": [
+          {
+            "start": "1980-02",
+            "end": "1980-07",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1981-08",
+            "end": "1982-11",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1990-08",
+            "end": "1991-03",
+            "first_signal": "1989-05",
+            "lead_months": 15,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2001-04",
+            "end": "2001-11",
+            "first_signal": "2000-09",
+            "lead_months": 7,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2008-01",
+            "end": "2009-06",
+            "first_signal": "2006-01",
+            "lead_months": 24,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": true
+          },
+          {
+            "start": "2020-03",
+            "end": "2020-04",
+            "first_signal": "2019-01",
+            "lead_months": 14,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      },
+      "inflation_vs_episode": {
+        "n_episodes_in_window": 3,
+        "n_caught": 3,
+        "hit_rate": 1.0,
+        "median_lead_months": 0.0,
+        "mean_lead_months": 2.67,
+        "false_positive_rate": 0.0959,
+        "fp_months": 37,
+        "nonepisode_months": 386,
+        "flips_per_year": 0.32,
+        "per_episode": [
+          {
+            "start": "1973-03",
+            "end": "1983-04",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1983-11",
+            "end": "1985-08",
+            "first_signal": "1981-11",
+            "lead_months": 24,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": true
+          },
+          {
+            "start": "1987-09",
+            "end": "1991-08",
+            "first_signal": "1989-01",
+            "lead_months": -16,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2021-05",
+            "end": "2023-10",
+            "first_signal": "2021-05",
+            "lead_months": 0,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      }
+    },
+    "E": {
+      "growth_vs_recession": {
+        "n_episodes_in_window": 4,
+        "n_caught": 4,
+        "hit_rate": 1.0,
+        "median_lead_months": 18.0,
+        "mean_lead_months": 17.5,
+        "false_positive_rate": 0.1076,
+        "fp_months": 47,
+        "nonepisode_months": 437,
+        "flips_per_year": 1.1,
+        "per_episode": [
+          {
+            "start": "1980-02",
+            "end": "1980-07",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1981-08",
+            "end": "1982-11",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1990-08",
+            "end": "1991-03",
+            "first_signal": "1988-12",
+            "lead_months": 20,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2001-04",
+            "end": "2001-11",
+            "first_signal": "2000-02",
+            "lead_months": 14,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2008-01",
+            "end": "2009-06",
+            "first_signal": "2006-05",
+            "lead_months": 20,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2020-03",
+            "end": "2020-04",
+            "first_signal": "2018-11",
+            "lead_months": 16,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      },
+      "inflation_vs_episode": {
+        "n_episodes_in_window": 3,
+        "n_caught": 2,
+        "hit_rate": 0.667,
+        "median_lead_months": -5.0,
+        "mean_lead_months": -5.0,
+        "false_positive_rate": 0.1969,
+        "fp_months": 76,
+        "nonepisode_months": 386,
+        "flips_per_year": 1.17,
+        "per_episode": [
+          {
+            "start": "1973-03",
+            "end": "1983-04",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1983-11",
+            "end": "1985-08",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": false,
+            "start_censored": false
+          },
+          {
+            "start": "1987-09",
+            "end": "1991-08",
+            "first_signal": "1988-09",
+            "lead_months": -12,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2021-05",
+            "end": "2023-10",
+            "first_signal": "2021-03",
+            "lead_months": 2,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      }
+    },
+    "F": {
+      "growth_vs_recession": {
+        "n_episodes_in_window": 4,
+        "n_caught": 4,
+        "hit_rate": 1.0,
+        "median_lead_months": 18.0,
+        "mean_lead_months": 17.5,
+        "false_positive_rate": 0.1076,
+        "fp_months": 47,
+        "nonepisode_months": 437,
+        "flips_per_year": 1.1,
+        "per_episode": [
+          {
+            "start": "1980-02",
+            "end": "1980-07",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1981-08",
+            "end": "1982-11",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1990-08",
+            "end": "1991-03",
+            "first_signal": "1988-12",
+            "lead_months": 20,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2001-04",
+            "end": "2001-11",
+            "first_signal": "2000-02",
+            "lead_months": 14,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2008-01",
+            "end": "2009-06",
+            "first_signal": "2006-05",
+            "lead_months": 20,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2020-03",
+            "end": "2020-04",
+            "first_signal": "2018-11",
+            "lead_months": 16,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      },
+      "inflation_vs_episode": {
+        "n_episodes_in_window": 3,
+        "n_caught": 3,
+        "hit_rate": 1.0,
+        "median_lead_months": 1.0,
+        "mean_lead_months": 3.0,
+        "false_positive_rate": 0.0725,
+        "fp_months": 28,
+        "nonepisode_months": 386,
+        "flips_per_year": 0.78,
+        "per_episode": [
+          {
+            "start": "1973-03",
+            "end": "1983-04",
+            "first_signal": null,
+            "lead_months": null,
+            "caught": null,
+            "start_censored": true
+          },
+          {
+            "start": "1983-11",
+            "end": "1985-08",
+            "first_signal": "1981-11",
+            "lead_months": 24,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": true
+          },
+          {
+            "start": "1987-09",
+            "end": "1991-08",
+            "first_signal": "1989-01",
+            "lead_months": -16,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          },
+          {
+            "start": "2021-05",
+            "end": "2023-10",
+            "first_signal": "2021-04",
+            "lead_months": 1,
+            "caught": true,
+            "start_censored": false,
+            "lookback_capped": false
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "kind": "us_inflation_episodes",
+  "generated_by": "scripts/build_labels.py",
+  "methodology": "Episodes are derived programmatically from FRED series stored in this repo using four pre-registered rules. No episode is hand-picked. Consensus episodes are months in which ≥2 rules are simultaneously satisfied for ≥6 consecutive months.",
+  "rules": [
+    {
+      "id": "headline_5pct",
+      "description": "Headline CPI YoY ≥ 5.0% for ≥ 6 consecutive months.",
+      "code": "CPIAUCSL",
+      "kind": "absolute",
+      "threshold_value": 5.0,
+      "min_months": 6,
+      "data_start": "1948-01",
+      "data_end": "2026-03",
+      "n_episodes": 6,
+      "episodes": [
+        {
+          "start": "1948-01",
+          "end": "1948-10",
+          "months": 10,
+          "peak_date": "1948-01",
+          "peak_value": 10.242
+        },
+        {
+          "start": "1950-12",
+          "end": "1951-12",
+          "months": 13,
+          "peak_date": "1951-04",
+          "peak_value": 9.598
+        },
+        {
+          "start": "1969-03",
+          "end": "1971-01",
+          "months": 23,
+          "peak_date": "1970-02",
+          "peak_value": 6.425
+        },
+        {
+          "start": "1973-04",
+          "end": "1982-08",
+          "months": 113,
+          "peak_date": "1980-03",
+          "peak_value": 14.592
+        },
+        {
+          "start": "1990-08",
+          "end": "1991-02",
+          "months": 7,
+          "peak_date": "1990-10",
+          "peak_value": 6.38
+        },
+        {
+          "start": "2021-06",
+          "end": "2023-02",
+          "months": 21,
+          "peak_date": "2022-06",
+          "peak_value": 8.979
+        }
+      ]
+    },
+    {
+      "id": "core_4pct",
+      "description": "Core CPI YoY ≥ 4.0% for ≥ 6 consecutive months.",
+      "code": "CPILFESL",
+      "kind": "absolute",
+      "threshold_value": 4.0,
+      "min_months": 6,
+      "data_start": "1958-01",
+      "data_end": "2026-03",
+      "n_episodes": 6,
+      "episodes": [
+        {
+          "start": "1968-02",
+          "end": "1971-09",
+          "months": 44,
+          "peak_date": "1970-11",
+          "peak_value": 6.633
+        },
+        {
+          "start": "1973-10",
+          "end": "1983-04",
+          "months": 115,
+          "peak_date": "1980-06",
+          "peak_value": 13.604
+        },
+        {
+          "start": "1983-11",
+          "end": "1985-08",
+          "months": 22,
+          "peak_date": "1984-06",
+          "peak_value": 5.343
+        },
+        {
+          "start": "1985-10",
+          "end": "1986-04",
+          "months": 7,
+          "peak_date": "1986-01",
+          "peak_value": 4.482
+        },
+        {
+          "start": "1987-09",
+          "end": "1992-01",
+          "months": 53,
+          "peak_date": "1991-02",
+          "peak_value": 5.652
+        },
+        {
+          "start": "2021-09",
+          "end": "2023-11",
+          "months": 27,
+          "peak_date": "2022-09",
+          "peak_value": 6.624
+        }
+      ]
+    },
+    {
+      "id": "pce_3pct_long",
+      "description": "PCE YoY ≥ 3.0% for ≥ 12 consecutive months (Fed target 2% + 1pp persistent breach).",
+      "code": "PCEPI",
+      "kind": "absolute",
+      "threshold_value": 3.0,
+      "min_months": 12,
+      "data_start": "1960-01",
+      "data_end": "2026-03",
+      "n_episodes": 4,
+      "episodes": [
+        {
+          "start": "1968-01",
+          "end": "1986-02",
+          "months": 218,
+          "peak_date": "1980-03",
+          "peak_value": 11.595
+        },
+        {
+          "start": "1987-04",
+          "end": "1991-08",
+          "months": 53,
+          "peak_date": "1990-10",
+          "peak_value": 5.175
+        },
+        {
+          "start": "2007-10",
+          "end": "2008-09",
+          "months": 12,
+          "peak_date": "2008-07",
+          "peak_value": 4.136
+        },
+        {
+          "start": "2021-04",
+          "end": "2023-10",
+          "months": 31,
+          "peak_date": "2022-06",
+          "peak_value": 7.243
+        }
+      ]
+    },
+    {
+      "id": "relative_top25",
+      "description": "Headline CPI YoY in top quartile (≥ 75th percentile of post-1948 distribution) for ≥ 6 consecutive months.",
+      "code": "CPIAUCSL",
+      "kind": "relative",
+      "threshold_value": 4.4325,
+      "min_months": 6,
+      "data_start": "1948-01",
+      "data_end": "2026-03",
+      "n_episodes": 7,
+      "episodes": [
+        {
+          "start": "1948-01",
+          "end": "1948-11",
+          "months": 11,
+          "peak_date": "1948-01",
+          "peak_value": 10.242
+        },
+        {
+          "start": "1950-12",
+          "end": "1951-12",
+          "months": 13,
+          "peak_date": "1951-04",
+          "peak_value": 9.598
+        },
+        {
+          "start": "1968-12",
+          "end": "1971-03",
+          "months": 28,
+          "peak_date": "1970-02",
+          "peak_value": 6.425
+        },
+        {
+          "start": "1973-03",
+          "end": "1982-11",
+          "months": 117,
+          "peak_date": "1980-03",
+          "peak_value": 14.592
+        },
+        {
+          "start": "1989-01",
+          "end": "1990-04",
+          "months": 16,
+          "peak_date": "1989-05",
+          "peak_value": 5.277
+        },
+        {
+          "start": "1990-06",
+          "end": "1991-06",
+          "months": 13,
+          "peak_date": "1990-10",
+          "peak_value": 6.38
+        },
+        {
+          "start": "2021-05",
+          "end": "2023-04",
+          "months": 24,
+          "peak_date": "2022-06",
+          "peak_value": 8.979
+        }
+      ]
+    }
+  ],
+  "consensus": {
+    "min_rules_concurrent": 2,
+    "min_months": 6,
+    "n_episodes": 7,
+    "episodes": [
+      {
+        "start": "1948-01",
+        "end": "1948-10",
+        "months": 10,
+        "max_rules_concurrent": 2
+      },
+      {
+        "start": "1950-12",
+        "end": "1951-12",
+        "months": 13,
+        "max_rules_concurrent": 2
+      },
+      {
+        "start": "1968-02",
+        "end": "1971-09",
+        "months": 44,
+        "max_rules_concurrent": 4
+      },
+      {
+        "start": "1973-03",
+        "end": "1983-04",
+        "months": 122,
+        "max_rules_concurrent": 4
+      },
+      {
+        "start": "1983-11",
+        "end": "1985-08",
+        "months": 22,
+        "max_rules_concurrent": 2
+      },
+      {
+        "start": "1987-09",
+        "end": "1991-08",
+        "months": 48,
+        "max_rules_concurrent": 4
+      },
+      {
+        "start": "2021-05",
+        "end": "2023-10",
+        "months": 30,
+        "max_rules_concurrent": 4
+      }
+    ]
+  }
+}
