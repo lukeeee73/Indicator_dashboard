@@ -203,11 +203,167 @@ const INDICATOR_META = {
 };
 
 // 개별 종목 UI 메타데이터. fetch_fred.py 의 STOCKS 와 대응.
+//   business: 회사가 어떻게 돈을 버는지 한 줄 설명 (사용자가 사업 모델을 모를 수 있다는 가정)
+//   moat:     이 회사의 경쟁력/특징 (왜 주목받는지)
 const STOCK_META = {
-  AAPL: { displayName: "Apple",  fullName: "Apple Inc.",              sector: "Technology",               color: "#9aa0a9", decimals: 2 },
-  NVDA: { displayName: "NVIDIA", fullName: "NVIDIA Corporation",      sector: "Technology",               color: "#76b900", decimals: 2 },
-  TSLA: { displayName: "Tesla",  fullName: "Tesla Inc.",              sector: "Consumer Discretionary",   color: "#cc0000", decimals: 2 },
-  META: { displayName: "Meta",   fullName: "Meta Platforms Inc.",     sector: "Communication Services",   color: "#0082fb", decimals: 2 },
+  AAPL: {
+    displayName: "Apple",  fullName: "Apple Inc.",  sector: "기술 (하드웨어 + 서비스)",  color: "#9aa0a9", decimals: 2,
+    business: "아이폰·맥·아이패드 같은 하드웨어와 앱스토어·iCloud·애플뮤직 같은 서비스로 매출을 만든다. 매출의 약 절반이 아이폰에서 나온다.",
+    moat:     "강력한 브랜드 파워와 자체 OS 생태계(iOS·macOS). 소비자 충성도가 매우 높아 가격 결정력이 강하다.",
+  },
+  MSFT: {
+    displayName: "Microsoft", fullName: "Microsoft Corporation", sector: "기술 (소프트웨어 + 클라우드)", color: "#00a4ef", decimals: 2,
+    business: "Windows·Office 같은 소프트웨어 라이선스, 클라우드 서비스(Azure), 게임(Xbox), LinkedIn 등 다양한 사업으로 매출을 만든다. 클라우드 매출 비중이 빠르게 커지는 중.",
+    moat:     "기업 IT 시장의 표준 위치. OpenAI 투자·통합으로 AI 시장에서도 선두권. 한 번 도입하면 바꾸기 힘든 '전환 비용'이 매우 큰 사업이 많다.",
+  },
+  GOOGL: {
+    displayName: "Alphabet (Google)", fullName: "Alphabet Inc.", sector: "통신 서비스 (광고 + 클라우드)", color: "#4285f4", decimals: 2,
+    business: "구글 검색·유튜브 광고가 매출의 대부분(약 75%). 구글 클라우드, 안드로이드, Pixel, Waymo(자율주행) 등도 보유.",
+    moat:     "전 세계 검색 시장 점유율 90% 이상. 디지털 광고 시장에서 메타와 함께 양대 산맥. AI(Gemini) 자체 개발 역량 보유.",
+  },
+  AMZN: {
+    displayName: "Amazon", fullName: "Amazon.com Inc.", sector: "소매 + 클라우드", color: "#ff9900", decimals: 2,
+    business: "전자상거래(Amazon.com)와 클라우드(AWS) 두 축. 소매는 매출이 크지만 마진이 얇고, AWS는 매출 비중은 작아도 영업이익의 절반 이상을 만든다.",
+    moat:     "AWS는 글로벌 클라우드 시장 1위(점유율 약 30%). 물류 인프라가 거대해서 신규 진입자가 따라오기 어렵다.",
+  },
+  NVDA: {
+    displayName: "NVIDIA", fullName: "NVIDIA Corporation", sector: "기술 (반도체)", color: "#76b900", decimals: 2,
+    business: "원래는 게이밍용 그래픽 카드(GPU) 회사였지만, AI 학습/추론에 GPU가 필수가 되면서 데이터센터 매출이 폭발. 현재 매출의 80% 이상이 데이터센터(AI용).",
+    moat:     "AI 반도체 시장 사실상 독점(점유율 80%+). 자체 소프트웨어(CUDA) 생태계가 진입장벽. 경쟁사가 대안을 만들기 어려운 구조.",
+  },
+  META: {
+    displayName: "Meta", fullName: "Meta Platforms Inc.", sector: "통신 서비스 (광고)", color: "#0082fb", decimals: 2,
+    business: "페이스북·인스타그램·왓츠앱의 광고 매출이 거의 전부(매출의 약 98%). VR(Reality Labs)에 큰 투자 중이지만 아직 적자.",
+    moat:     "전 세계 약 40억 명이 매달 사용하는 SNS 네트워크 효과. 광고 타겟팅 정밀도가 매우 높아 광고주에게 매력적.",
+  },
+  ORCL: {
+    displayName: "Oracle", fullName: "Oracle Corporation", sector: "기술 (데이터베이스 + 클라우드)", color: "#f80000", decimals: 2,
+    business: "기업용 데이터베이스 소프트웨어가 본업. 최근 클라우드 인프라(OCI)에 공격적으로 투자해 AI 학습용 GPU 클라우드 시장에서 빠르게 성장 중.",
+    moat:     "전 세계 대기업의 핵심 데이터베이스 시장 장악(점유율 30%+). 한 번 도입하면 옮기기 매우 어려운 '록인' 효과가 강하다.",
+  },
+  PLTR: {
+    displayName: "Palantir", fullName: "Palantir Technologies Inc.", sector: "기술 (AI 데이터 분석)", color: "#000000", decimals: 2,
+    business: "정부·기업 대상 데이터 분석 소프트웨어 제공. 군·정보기관(Gotham), 일반 기업(Foundry), AI 운영(AIP) 세 제품군. 매출 절반 이상이 정부 계약.",
+    moat:     "미국·서방 정부의 민감한 데이터를 다뤄서 신뢰가 핵심 자산. AI 시대에 '데이터를 실제로 어떻게 의사결정에 쓸지' 영역에서 선두주자로 부각.",
+  },
+  TSLA: {
+    displayName: "Tesla", fullName: "Tesla Inc.", sector: "자동차 + 에너지", color: "#cc0000", decimals: 2,
+    business: "전기차 판매가 매출의 대부분. 에너지 저장 시스템(Powerwall, Megapack), 자율주행 소프트웨어(FSD), 휴머노이드 로봇(Optimus)도 개발 중.",
+    moat:     "전 세계 전기차 판매량 상위. 자체 충전 네트워크(Supercharger), 수직 통합된 제조, 일론 머스크의 브랜드 파워가 강점. 자율주행에 베팅 중.",
+  },
+};
+
+// 시장 지수 UI 메타데이터. fetch_fred.py 의 INDICES 와 대응.
+const INDEX_META = {
+  "^GSPC": {
+    displayName: "S&P 500",
+    color: "#c084fc",
+    decimals: 2,
+    summary:     "미국 대형주 500개의 가중평균",
+    explanation: "미국에서 가장 큰 500개 회사를 시가총액(회사 크기) 기준으로 합쳐 계산한 지수. 글로벌 자금이 가장 많이 추종하는 '미국 시장 = 이 지수'라고 봐도 무방하다.",
+    interpretation: "S&P 500이 오르면 미국 대형 기업 전반이 좋다는 뜻. 떨어지면 시장 전체가 위축됐다는 신호.",
+  },
+  "^IXIC": {
+    displayName: "NASDAQ Composite",
+    color: "#0096ff",
+    decimals: 2,
+    summary:     "나스닥 거래소 전 종목",
+    explanation: "나스닥 거래소에 상장된 모든 종목(약 3,000개)의 가중평균. 애플·MS·구글·엔비디아 같은 빅테크 비중이 매우 높다.",
+    interpretation: "NASDAQ이 S&P 500보다 더 크게 움직이면 → 시장이 테크/성장주에 베팅 중. 더 크게 떨어지면 → 위험 회피 모드.",
+  },
+  "^DJI": {
+    displayName: "Dow Jones (다우존스)",
+    color: "#f5c842",
+    decimals: 2,
+    summary:     "30개 우량 대기업 지수",
+    explanation: "미국의 대표 우량 대기업 30개로 구성. 1896년부터 발표돼 가장 오래된 주가 지수다. 가격 가중 방식이라 비싼 주식의 영향이 크다.",
+    interpretation: "S&P 500과 같이 움직이지만 30개 종목만 보니 시장 전체보다는 '전통 대기업'의 흐름에 가깝다.",
+  },
+  "^RUT": {
+    displayName: "Russell 2000",
+    color: "#86efac",
+    decimals: 2,
+    summary:     "미국 소형주 2,000개",
+    explanation: "미국 소형주 2,000개로 구성된 지수. 대부분 내수 중심 중소기업이라 미국 국내 경기 흐름을 잘 반영한다.",
+    interpretation: "Russell 2000이 S&P 500보다 부진하면 → 대기업만 좋고 중소기업은 어렵다는 신호. 같이 잘 가면 → 경기 전반이 건강하다는 뜻.",
+  },
+};
+
+// 재무 지표 용어집 — 평문 설명 + 현재 수치를 어떻게 해석해야 하는지 가이드
+//   label:      카드에 표시할 한국어 명칭
+//   format:     수치를 어떻게 보여줄지 (val) => string
+//   what:       이 지표가 무엇인지 (한 줄)
+//   how:        수치를 어떻게 읽어야 하는지 (한 줄)
+const METRIC_GLOSSARY = {
+  market_cap: {
+    label:  "시가총액",
+    format: (v) => formatLargeMoney(v),
+    what:   "회사 전체의 시장 가치. 모든 주식을 한 번에 사려면 필요한 돈.",
+    how:    (v) => `현재 이 회사의 시장가치는 ${formatLargeMoney(v)}. 1조 달러($1T)를 넘으면 '메가캡'으로 분류되는 초대형 기업.`,
+  },
+  pe_ratio: {
+    label:  "P/E (주가수익비율, TTM)",
+    format: (v) => v == null ? "—" : v.toFixed(1) + "배",
+    what:   "현재 주가 ÷ 1주당 1년 순이익. 회사가 1년 버는 돈의 몇 배에 거래되는지.",
+    how:    (v) => v == null ? "데이터 없음 (적자 기업이면 P/E 계산 불가)."
+                : v < 15  ? `${v.toFixed(1)}배 — 시장 평균(약 22)보다 낮음. 저평가 또는 성장 기대 낮음.`
+                : v < 30  ? `${v.toFixed(1)}배 — 시장 평균 수준. 무난한 밸류에이션.`
+                : v < 60  ? `${v.toFixed(1)}배 — 평균보다 높음. 시장이 성장을 강하게 기대 중.`
+                          : `${v.toFixed(1)}배 — 매우 높음. 미래 성장에 큰 베팅이 들어가 있음.`,
+  },
+  forward_pe: {
+    label:  "선행 P/E",
+    format: (v) => v == null ? "—" : v.toFixed(1) + "배",
+    what:   "주가 ÷ 향후 12개월 예상 순이익. 애널리스트들의 미래 전망이 반영됨.",
+    how:    (v) => v == null ? "데이터 없음."
+                : `현재 ${v.toFixed(1)}배. 이 값이 P/E(TTM)보다 낮으면 → 시장이 향후 이익이 늘어날 거라 예상.`,
+  },
+  eps_ttm: {
+    label:  "EPS (주당순이익, TTM)",
+    format: (v) => v == null ? "—" : `$${v.toFixed(2)}`,
+    what:   "최근 1년 동안 1주당 얼마를 벌었는지. (순이익 ÷ 주식 수)",
+    how:    (v) => v == null ? "데이터 없음."
+                : v <= 0   ? `1주당 $${v.toFixed(2)} — 적자 상태. 아직 흑자 전환 못함.`
+                          : `1주당 $${v.toFixed(2)} — 분기마다 발표되며, 추세가 우상향이면 회사가 점점 더 잘 벌고 있다는 신호.`,
+  },
+  operating_margin: {
+    label:  "영업이익률",
+    format: (v) => formatPercent(v),
+    what:   "매출 100원 중 본업으로 남는 이익 비율. 사업 자체의 수익성을 보여준다.",
+    how:    (v) => v == null ? "데이터 없음."
+                : v < 0.05 ? `${(v*100).toFixed(1)}% — 매우 낮음. 본업 수익성이 약함.`
+                : v < 0.15 ? `${(v*100).toFixed(1)}% — 평균적인 제조/소매 수준.`
+                : v < 0.30 ? `${(v*100).toFixed(1)}% — 우량 기업 수준. 사업이 잘 굴러간다는 뜻.`
+                          : `${(v*100).toFixed(1)}% — 매우 높음. 소프트웨어/플랫폼 기업의 특징.`,
+  },
+  profit_margin: {
+    label:  "순이익률",
+    format: (v) => formatPercent(v),
+    what:   "매출 100원 중 세금·이자까지 다 빼고 최종 남는 비율.",
+    how:    (v) => v == null ? "데이터 없음."
+                : v < 0    ? `${(v*100).toFixed(1)}% — 적자.`
+                : v < 0.10 ? `${(v*100).toFixed(1)}% — 박한 마진. 경쟁이 치열한 산업 특성.`
+                : v < 0.25 ? `${(v*100).toFixed(1)}% — 견조한 수준.`
+                          : `${(v*100).toFixed(1)}% — 높은 마진. 가격 결정력이 강한 기업.`,
+  },
+  return_on_equity: {
+    label:  "ROE (자기자본이익률)",
+    format: (v) => formatPercent(v),
+    what:   "주주가 맡긴 자본 100원으로 1년에 몇 원을 벌었는지.",
+    how:    (v) => v == null ? "데이터 없음."
+                : v < 0.10 ? `${(v*100).toFixed(1)}% — 평균 이하. 자본 효율이 낮음.`
+                : v < 0.20 ? `${(v*100).toFixed(1)}% — 우량 수준.`
+                          : `${(v*100).toFixed(1)}% — 매우 우수. 워런 버핏이 선호하는 영역(15%+).`,
+  },
+  dividend_yield: {
+    label:  "배당수익률",
+    format: (v) => formatPercent(v),
+    what:   "현재 주가 대비 연간 배당금 비율. 주식을 들고만 있어도 받는 현금 수익률.",
+    how:    (v) => v == null || v === 0 ? "배당 없음 — 번 돈을 모두 재투자하는 성장주에 흔하다."
+                : v < 0.02 ? `연 ${(v*100).toFixed(2)}% — 낮음. 성장 우선 기업.`
+                : v < 0.04 ? `연 ${(v*100).toFixed(2)}% — 평균적 배당주 수준.`
+                          : `연 ${(v*100).toFixed(2)}% — 고배당. 안정적 현금흐름 중시 기업.`,
+  },
 };
 
 // 비교 자산(Assets) UI 메타데이터.
@@ -423,16 +579,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const indicatorEntries = idx.indicators || [];
     const assetEntries     = idx.assets     || [];
     const stockEntries     = idx.stocks     || [];
+    const indexEntries     = idx.indices    || [];
 
     const fetchJson = (url) => fetch(url, { cache: "no-cache" }).then((r) => {
       if (!r.ok) throw new Error(`${url} → HTTP ${r.status}`);
       return r.json();
     });
 
-    const [indicatorPayloads, assetPayloads, stockPayloads] = await Promise.all([
+    const [indicatorPayloads, assetPayloads, stockPayloads, indexPayloads] = await Promise.all([
       Promise.all(indicatorEntries.map((e) => fetchJson(`data/indicators/${e.code}.json`))),
       Promise.all(assetEntries.map((e)     => fetchJson(`data/assets/${e.code}.json`))),
       Promise.all(stockEntries.map((e)     => fetchJson(`data/stocks/${e.code}.json`))),
+      Promise.all(indexEntries.map((e)     => fetchJson(`data/indices/${e.filename || e.code}.json`))),
     ]);
 
     const indicators = {};
@@ -441,12 +599,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     assetEntries.forEach((e, i) => { assets[e.code] = assetPayloads[i]; });
     const stocks = {};
     stockEntries.forEach((e, i) => { stocks[e.code] = stockPayloads[i]; });
+    const indices = {};
+    indexEntries.forEach((e, i) => { indices[e.code] = indexPayloads[i]; });
 
     const data = {
       last_updated:  idx.last_updated,
       indicators,
       assets,
       stocks,
+      indices,
       assessment:    idx.assessment    || null,
       assessment_kr: idx.assessment_kr || null,
     };
@@ -1343,28 +1504,46 @@ function escapeHtml(s) {
 // ---------- 주식 탭 렌더링 -------------------------------------------
 
 function renderStocksTab(data) {
-  const stocks = data.stocks || {};
-  const host   = document.getElementById("stock-cards");
-  if (!host) return;
+  const stocks  = data.stocks  || {};
+  const indices = data.indices || {};
 
-  if (Object.keys(stocks).length === 0) {
-    host.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions를 실행해 주세요.");
-    return;
+  // ─ 시장 지수 ─
+  const indexHost = document.getElementById("index-cards");
+  if (indexHost) {
+    if (Object.keys(indices).length === 0) {
+      indexHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions를 실행해 주세요.");
+    } else {
+      for (const [code, payload] of Object.entries(indices)) {
+        if (!payload || !payload.series || payload.series.length === 0) continue;
+        indexHost.appendChild(renderIndexCard(code, payload));
+      }
+    }
   }
 
-  for (const [ticker, payload] of Object.entries(stocks)) {
-    if (!payload || !payload.series || payload.series.length === 0) continue;
-    host.appendChild(renderStockCard(ticker, payload));
+  // ─ 개별 종목 ─
+  const stockHost = document.getElementById("stock-cards");
+  if (stockHost) {
+    if (Object.keys(stocks).length === 0) {
+      stockHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions를 실행해 주세요.");
+    } else {
+      for (const [ticker, payload] of Object.entries(stocks)) {
+        if (!payload || !payload.series || payload.series.length === 0) continue;
+        stockHost.appendChild(renderStockCard(ticker, payload));
+      }
+    }
   }
+
+  // 서브 네비게이션 (시장 지수 / 개별 종목 토글)
+  wireSectorNav("STOCKS");
 }
 
 function renderStockCard(ticker, payload) {
-  const meta   = STOCK_META[ticker] ?? { displayName: ticker, fullName: ticker, sector: "", color: "#9aa0a9", decimals: 2 };
+  const meta   = STOCK_META[ticker] ?? { displayName: ticker, fullName: ticker, sector: "", color: "#9aa0a9", decimals: 2, business: "", moat: "" };
   const series = payload.series;
   const latest = series[series.length - 1];
 
-  // 90일 전 대비 % 변화
-  const prior = findPriorPoint(series, latest.date, 90);
+  // 1년 전 대비 % 변화 — 단기보다 1년 추세가 사용자에게 유의미
+  const prior = findPriorPoint(series, latest.date, 365);
   const changePct = prior ? ((latest.value - prior.value) / prior.value) * 100 : null;
   const changeClass = changePct == null ? "" : changePct >= 0 ? "up" : "down";
   const changeStr   = changePct == null
@@ -1382,7 +1561,7 @@ function renderStockCard(ticker, payload) {
   const quarterly  = financials.quarterly || [];
 
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = "card stock-card";
   card.innerHTML = `
     <header class="card-header">
       <span class="card-title">${escapeHtml(meta.displayName)}</span>
@@ -1390,19 +1569,36 @@ function renderStockCard(ticker, payload) {
     </header>
     <div>
       <span class="card-value">$${latest.value.toFixed(meta.decimals)}</span>
-      <span class="card-change ${changeClass}" title="90일 전 대비">${changeStr}</span>
+      <span class="card-change ${changeClass}" title="1년 전 대비">${changeStr} <span class="change-period">(1년)</span></span>
     </div>
     <p class="card-desc">${escapeHtml(meta.fullName)} · ${escapeHtml(meta.sector)}</p>
+
+    ${meta.business ? `
+      <div class="info-block">
+        <div class="info-block-title">📌 어떤 회사인가</div>
+        <p class="info-block-body">${escapeHtml(meta.business)}</p>
+      </div>
+    ` : ""}
+    ${meta.moat ? `
+      <div class="info-block">
+        <div class="info-block-title">💡 무엇이 이 회사를 특별하게 만드나</div>
+        <p class="info-block-body">${escapeHtml(meta.moat)}</p>
+      </div>
+    ` : ""}
+
+    <div class="section-title">📈 주가 흐름</div>
     <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
     <div class="card-chart main-chart"><canvas></canvas></div>
 
     ${renderStockMetricsHtml(snapshot)}
     ${quarterly.length > 0 ? `
+      <div class="section-title">💰 분기 실적 추세</div>
+      <p class="section-help">회사가 실제로 매출과 이익을 어떻게 만들어내고 있는지. 막대가 점점 커지면 사업이 성장 중이라는 뜻.</p>
       <div class="financials-header">
-        <span>분기 실적 추세</span>
-        <span class="financials-sub">매출 · 영업이익 · 순이익 (최근 ${quarterly.length}분기)</span>
+        <span class="financials-sub">매출 · 영업이익 · 순이익 (최근 ${quarterly.length}분기, 단위: 십억 달러)</span>
       </div>
       <div class="card-chart financials-chart"><canvas></canvas></div>
+      <p class="section-note">${escapeHtml(buildQuarterlyInsight(quarterly))}</p>
     ` : ""}
   `;
 
@@ -1450,26 +1646,168 @@ function renderStockCard(ticker, payload) {
 
 function renderStockMetricsHtml(snap) {
   if (!snap || Object.values(snap).every((v) => v == null)) return "";
-  const items = [
-    { label: "시가총액",    value: formatLargeMoney(snap.market_cap) },
-    { label: "P/E (TTM)",   value: formatRatio(snap.pe_ratio) },
-    { label: "선행 P/E",    value: formatRatio(snap.forward_pe) },
-    { label: "EPS (TTM)",   value: snap.eps_ttm == null ? "—" : `$${snap.eps_ttm.toFixed(2)}` },
-    { label: "영업이익률",  value: formatPercent(snap.operating_margin) },
-    { label: "순이익률",    value: formatPercent(snap.profit_margin) },
-    { label: "ROE",         value: formatPercent(snap.return_on_equity) },
-    { label: "배당수익률",  value: formatPercent(snap.dividend_yield) },
-  ];
-  return `
-    <div class="stock-metrics">
-      ${items.map((it) => `
-        <div class="stock-metric">
-          <span class="sm-label">${escapeHtml(it.label)}</span>
-          <span class="sm-value">${escapeHtml(it.value)}</span>
+
+  // 표시 순서. 가장 직관적인 지표부터.
+  const order = ["market_cap", "pe_ratio", "forward_pe", "eps_ttm",
+                 "operating_margin", "profit_margin", "return_on_equity", "dividend_yield"];
+
+  const items = order.map((key) => {
+    const g = METRIC_GLOSSARY[key];
+    if (!g) return "";
+    const val = snap[key];
+    return `
+      <div class="metric-row">
+        <div class="metric-row-head">
+          <span class="metric-name">${escapeHtml(g.label)}</span>
+          <span class="metric-val">${escapeHtml(g.format(val))}</span>
         </div>
-      `).join("")}
-    </div>
+        <p class="metric-what">📖 ${escapeHtml(g.what)}</p>
+        <p class="metric-how">💬 ${escapeHtml(g.how(val))}</p>
+      </div>
+    `;
+  }).join("");
+
+  return `
+    <div class="section-title">🏢 회사 가치 평가</div>
+    <p class="section-help">투자자들이 이 회사를 어떻게 평가하고 있는지 보여주는 지표들. 각 지표가 뭔지 모를 수 있으니 설명을 함께 표시했다.</p>
+    <div class="metrics-list">${items}</div>
   `;
+}
+
+// 분기 실적 추세를 한 줄 텍스트로 자동 요약.
+// 마지막 4분기 평균과 그 이전 4분기 평균을 비교해 추세 판단.
+function buildQuarterlyInsight(quarterly) {
+  if (!quarterly || quarterly.length < 8) {
+    return "데이터가 부족해 추세 요약을 제공할 수 없습니다.";
+  }
+  const recent = quarterly.slice(-4);
+  const prior  = quarterly.slice(-8, -4);
+  const avg = (arr, key) => {
+    const vals = arr.map((q) => q[key]).filter((v) => v != null);
+    return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
+  };
+  const recentRev = avg(recent, "revenue");
+  const priorRev  = avg(prior,  "revenue");
+  const recentNi  = avg(recent, "net_income");
+  const priorNi   = avg(prior,  "net_income");
+
+  const fmtTrend = (recent, prior, label) => {
+    if (recent == null || prior == null || prior === 0) return null;
+    const pct = ((recent - prior) / Math.abs(prior)) * 100;
+    const dir = pct >= 5 ? "증가 추세" : pct <= -5 ? "감소 추세" : "보합";
+    return `${label} ${dir}(전년 동기 평균 대비 ${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%)`;
+  };
+  const parts = [
+    fmtTrend(recentRev, priorRev, "매출은"),
+    fmtTrend(recentNi,  priorNi,  "순이익은"),
+  ].filter(Boolean);
+
+  if (parts.length === 0) return "";
+  return "💡 " + parts.join(" · ") + ".";
+}
+
+// ─── 시장 지수 카드 ─────────────────────────────────────────────────
+
+function renderIndexCard(code, payload) {
+  const meta   = INDEX_META[code] ?? { displayName: payload.name || code, color: "#9aa0a9", decimals: 2, summary: "", explanation: payload.description || "", interpretation: "" };
+  const series = payload.series;
+  const latest = series[series.length - 1];
+
+  // 여러 기간 변화율 계산 → 사용자가 한눈에 단기/중기/장기 흐름을 비교
+  const yoy   = priorChangePct(series, 365);
+  const m3    = priorChangePct(series, 90);
+  const m1    = priorChangePct(series, 30);
+
+  const fmtChange = (v) => v == null ? "—" : `${v >= 0 ? "▲" : "▼"} ${Math.abs(v).toFixed(2)}%`;
+  const cls       = (v) => v == null ? "" : v >= 0 ? "up" : "down";
+
+  const availableFrames = filterAvailableTimeframes(series);
+  const tfButtonsHtml = availableFrames.map((tf) => {
+    const active = tf.key === DEFAULT_TIMEFRAME_KEY ? " active" : "";
+    return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
+  }).join("");
+
+  const card = document.createElement("article");
+  card.className = "card index-card";
+  card.innerHTML = `
+    <header class="card-header">
+      <span class="card-title">${escapeHtml(meta.displayName)}</span>
+      <span class="card-code">${escapeHtml(code)}</span>
+    </header>
+    <div>
+      <span class="card-value">${latest.value.toLocaleString("en-US", { maximumFractionDigits: meta.decimals })}</span>
+      <span class="card-change ${cls(yoy)}" title="1년 전 대비">${fmtChange(yoy)} <span class="change-period">(1년)</span></span>
+    </div>
+    <p class="card-desc">${escapeHtml(meta.summary || payload.name || "")}</p>
+
+    <div class="info-block">
+      <div class="info-block-title">📌 이 지수가 뭔가요</div>
+      <p class="info-block-body">${escapeHtml(meta.explanation || payload.description || "")}</p>
+    </div>
+    ${meta.interpretation ? `
+      <div class="info-block">
+        <div class="info-block-title">💡 어떻게 읽으면 되나</div>
+        <p class="info-block-body">${escapeHtml(meta.interpretation)}</p>
+      </div>
+    ` : ""}
+
+    <div class="returns-row">
+      <div class="return-cell">
+        <span class="return-label">최근 1개월</span>
+        <span class="return-val ${cls(m1)}">${fmtChange(m1)}</span>
+      </div>
+      <div class="return-cell">
+        <span class="return-label">최근 3개월</span>
+        <span class="return-val ${cls(m3)}">${fmtChange(m3)}</span>
+      </div>
+      <div class="return-cell">
+        <span class="return-label">최근 1년</span>
+        <span class="return-val ${cls(yoy)}">${fmtChange(yoy)}</span>
+      </div>
+    </div>
+
+    <div class="section-title">📈 가격 흐름</div>
+    <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
+    <div class="card-chart main-chart"><canvas></canvas></div>
+  `;
+
+  // 차트 렌더링
+  const mainCanvas = card.querySelector(".main-chart canvas");
+  const tfSelector = card.querySelector(".tf-selector");
+  const initialKey = availableFrames.some((tf) => tf.key === DEFAULT_TIMEFRAME_KEY)
+    ? DEFAULT_TIMEFRAME_KEY
+    : availableFrames[availableFrames.length - 1].key;
+  const state = { tfKey: initialKey };
+  let chartInstance = null;
+
+  function redraw() {
+    const tf = TIMEFRAMES.find((t) => t.key === state.tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
+    const sliced = sliceSeriesByMonths(series, tf.months);
+    if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+    chartInstance = renderChart(mainCanvas, sliced, "index", {
+      assetColor:  meta.color,
+      primaryMeta: { decimals: meta.decimals, unit: "", displayName: meta.displayName },
+    });
+  }
+  tfSelector.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tf-btn");
+    if (!btn) return;
+    state.tfKey = btn.dataset.tf;
+    tfSelector.querySelectorAll(".tf-btn").forEach((b) =>
+      b.classList.toggle("active", b.dataset.tf === state.tfKey));
+    redraw();
+  });
+  redraw();
+  return card;
+}
+
+// 시리즈에서 days 일 전 대비 % 변화. 데이터가 없으면 null.
+function priorChangePct(series, days) {
+  if (!series || series.length === 0) return null;
+  const latest = series[series.length - 1];
+  const prior  = findPriorPoint(series, latest.date, days);
+  if (!prior || prior.value === 0) return null;
+  return ((latest.value - prior.value) / prior.value) * 100;
 }
 
 function renderFinancialsChart(canvas, quarterly) {
