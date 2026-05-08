@@ -414,6 +414,53 @@ section h2 {
   position: relative;
 }
 
+/* ---------- 주식 카드: 재무 지표 그리드 ---------- */
+.stock-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+  padding: 0.7rem;
+  background: var(--bg-elev, rgba(255, 255, 255, 0.03));
+  border-radius: 6px;
+}
+.stock-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.sm-label {
+  font-size: 0.68rem;
+  color: var(--text-dim, #888);
+  letter-spacing: 0.02em;
+}
+.sm-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text, #f0f0f0);
+  font-variant-numeric: tabular-nums;
+}
+
+.financials-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.9rem;
+  font-size: 0.78rem;
+  color: var(--text-dim, #888);
+}
+.financials-header > span:first-child {
+  font-weight: 600;
+  color: var(--text, #f0f0f0);
+}
+.financials-sub {
+  font-size: 0.68rem;
+}
+.card-chart.financials-chart {
+  height: 180px;
+  margin-top: 0.4rem;
+}
+
 /* 이벤트 클릭 힌트 (10년+ 뷰에서 표시) */
 .event-hint {
   margin: 0.3rem 0 0;

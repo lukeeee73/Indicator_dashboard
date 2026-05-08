@@ -470,6 +470,82 @@ def fetch_yahoo_stock(symbol: str) -> list[dict]:
 
 
 # --------------------------------------------------------------------------
+# Yahoo Finance 재무/실적 데이터 수집
+# --------------------------------------------------------------------------
+def _safe_float(val) -> Optional[float]:
+    """nan/None/문자열 등 비정상 값을 None 으로 정규화."""
+    if val is None:
+        return None
+    try:
+        f = float(val)
+    except (TypeError, ValueError):
+        return None
+    if pd.isna(f):
+        return None
+    return f
+
+
+def _row_value(df: pd.DataFrame, candidates: list[str], col) -> Optional[float]:
+    """yfinance 가 회사마다 항목명을 약간씩 다르게 주므로 후보 키들을 순서대로 시도."""
+    for key in candidates:
+        if key in df.index:
+            return _safe_float(df.at[key, col])
+    return None
+
+
+def fetch_yahoo_financials(symbol: str, max_quarters: int = 20) -> dict:
+    """Yahoo Finance에서 핵심 재무 지표(snapshot) + 분기 손익 추세를 수집.
+
+    반환 구조:
+        {
+            "snapshot": {market_cap, pe_ratio, eps_ttm, ...},  # 현재 시점 단일값
+            "quarterly": [
+                {date, revenue, operating_income, net_income, eps},
+                ...  # 최근 max_quarters 개 (시간 오름차순)
+            ]
+        }
+    실패 시 빈 구조 반환.
+    """
+    try:
+        import yfinance as yf  # noqa: PLC0415
+    except ImportError as e:
+        raise RuntimeError("yfinance 가 설치되지 않았습니다.") from e
+
+    ticker = yf.Ticker(symbol)
+    info = ticker.info or {}
+
+    snapshot = {
+        "market_cap":       _safe_float(info.get("marketCap")),
+        "pe_ratio":         _safe_float(info.get("trailingPE")),
+        "forward_pe":       _safe_float(info.get("forwardPE")),
+        "eps_ttm":          _safe_float(info.get("trailingEps")),
+        "dividend_yield":   _safe_float(info.get("dividendYield")),
+        "profit_margin":    _safe_float(info.get("profitMargins")),
+        "operating_margin": _safe_float(info.get("operatingMargins")),
+        "price_to_book":    _safe_float(info.get("priceToBook")),
+        "return_on_equity": _safe_float(info.get("returnOnEquity")),
+    }
+
+    # 분기 손익계산서 — 회사마다 항목명이 약간 다름
+    quarterly: list[dict] = []
+    qis = ticker.quarterly_income_stmt
+    if qis is not None and not qis.empty:
+        # 컬럼은 분기 종료일(Timestamp)
+        sorted_cols = sorted(qis.columns)
+        for col in sorted_cols[-max_quarters:]:
+            date_str = pd.Timestamp(col).strftime("%Y-%m-%d")
+            quarterly.append({
+                "date":             date_str,
+                "revenue":          _row_value(qis, ["Total Revenue"], col),
+                "operating_income": _row_value(qis, ["Operating Income", "Operating Income Loss"], col),
+                "net_income":       _row_value(qis, ["Net Income", "Net Income Common Stockholders"], col),
+                "eps":              _row_value(qis, ["Diluted EPS", "Basic EPS"], col),
+            })
+
+    return {"snapshot": snapshot, "quarterly": quarterly}
+
+
+# --------------------------------------------------------------------------
 # 기존 JSON 입출력
 # --------------------------------------------------------------------------
 def _read_json(path: Path) -> Optional[dict]:
@@ -711,25 +787,37 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         print(f"FAILED (unexpected: {e})")
 
-    # 개별 종목 — Yahoo Finance 경유
+    # 개별 종목 — Yahoo Finance 경유 (가격 + 재무/실적)
     new_stocks: dict[str, dict] = {}
     ok_stk = 0
     for ticker, meta in STOCKS.items():
-        print(f"Fetching stock {ticker} (Yahoo Finance)...", end=" ", flush=True)
+        print(f"Fetching stock {ticker} price (Yahoo Finance)...", end=" ", flush=True)
         try:
             series = fetch_yahoo_stock(ticker)
-            if series:
-                new_stocks[ticker] = {
-                    "name":   meta["name"],
-                    "sector": meta["sector"],
-                    "series": series,
-                }
-                print(f"OK ({len(series)} points)")
-                ok_stk += 1
-            else:
+            if not series:
                 print("FAILED (empty series)")
+                continue
+            print(f"OK ({len(series)} points)")
         except Exception as e:  # noqa: BLE001
             print(f"FAILED (unexpected: {e})")
+            continue
+
+        # 재무 데이터는 실패해도 가격만이라도 저장
+        financials = {"snapshot": {}, "quarterly": []}
+        print(f"  Fetching {ticker} financials...", end=" ", flush=True)
+        try:
+            financials = fetch_yahoo_financials(ticker)
+            print(f"OK ({len(financials['quarterly'])} quarters)")
+        except Exception as e:  # noqa: BLE001
+            print(f"FAILED (unexpected: {e})")
+
+        new_stocks[ticker] = {
+            "name":       meta["name"],
+            "sector":     meta["sector"],
+            "series":     series,
+            "financials": financials,
+        }
+        ok_stk += 1
 
     merged_indicators.update(new_indicators)
     merged_assets.update(new_assets)

@@ -1377,6 +1377,10 @@ function renderStockCard(ticker, payload) {
     return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
   }).join("");
 
+  const financials = payload.financials || { snapshot: {}, quarterly: [] };
+  const snapshot   = financials.snapshot || {};
+  const quarterly  = financials.quarterly || [];
+
   const card = document.createElement("article");
   card.className = "card";
   card.innerHTML = `
@@ -1391,6 +1395,15 @@ function renderStockCard(ticker, payload) {
     <p class="card-desc">${escapeHtml(meta.fullName)} · ${escapeHtml(meta.sector)}</p>
     <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
     <div class="card-chart main-chart"><canvas></canvas></div>
+
+    ${renderStockMetricsHtml(snapshot)}
+    ${quarterly.length > 0 ? `
+      <div class="financials-header">
+        <span>분기 실적 추세</span>
+        <span class="financials-sub">매출 · 영업이익 · 순이익 (최근 ${quarterly.length}분기)</span>
+      </div>
+      <div class="card-chart financials-chart"><canvas></canvas></div>
+    ` : ""}
   `;
 
   const mainCanvas = card.querySelector(".main-chart canvas");
@@ -1423,5 +1436,126 @@ function renderStockCard(ticker, payload) {
   });
 
   redraw();
+
+  // 분기 실적 차트 — 카드가 DOM 에 붙기 전에 render 해도 Chart.js 는 동작함
+  if (quarterly.length > 0) {
+    const finCanvas = card.querySelector(".financials-chart canvas");
+    if (finCanvas) renderFinancialsChart(finCanvas, quarterly);
+  }
+
   return card;
+}
+
+// ─── 재무/실적 표시 헬퍼 ─────────────────────────────────────────────
+
+function renderStockMetricsHtml(snap) {
+  if (!snap || Object.values(snap).every((v) => v == null)) return "";
+  const items = [
+    { label: "시가총액",    value: formatLargeMoney(snap.market_cap) },
+    { label: "P/E (TTM)",   value: formatRatio(snap.pe_ratio) },
+    { label: "선행 P/E",    value: formatRatio(snap.forward_pe) },
+    { label: "EPS (TTM)",   value: snap.eps_ttm == null ? "—" : `$${snap.eps_ttm.toFixed(2)}` },
+    { label: "영업이익률",  value: formatPercent(snap.operating_margin) },
+    { label: "순이익률",    value: formatPercent(snap.profit_margin) },
+    { label: "ROE",         value: formatPercent(snap.return_on_equity) },
+    { label: "배당수익률",  value: formatPercent(snap.dividend_yield) },
+  ];
+  return `
+    <div class="stock-metrics">
+      ${items.map((it) => `
+        <div class="stock-metric">
+          <span class="sm-label">${escapeHtml(it.label)}</span>
+          <span class="sm-value">${escapeHtml(it.value)}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderFinancialsChart(canvas, quarterly) {
+  const labels = quarterly.map((q) => formatQuarterLabel(q.date));
+  const toBillions = (v) => (v == null ? null : v / 1e9);
+
+  const datasets = [
+    {
+      label: "매출",
+      data: quarterly.map((q) => toBillions(q.revenue)),
+      backgroundColor: "rgba(125, 211, 252, 0.75)",
+      borderColor: "rgba(125, 211, 252, 1)",
+      borderWidth: 1,
+    },
+    {
+      label: "영업이익",
+      data: quarterly.map((q) => toBillions(q.operating_income)),
+      backgroundColor: "rgba(192, 132, 252, 0.75)",
+      borderColor: "rgba(192, 132, 252, 1)",
+      borderWidth: 1,
+    },
+    {
+      label: "순이익",
+      data: quarterly.map((q) => toBillions(q.net_income)),
+      backgroundColor: "rgba(134, 239, 172, 0.75)",
+      borderColor: "rgba(134, 239, 172, 1)",
+      borderWidth: 1,
+    },
+  ];
+
+  return new Chart(canvas.getContext("2d"), {
+    type: "bar",
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "bottom", labels: { color: "#d0d0d0", boxWidth: 12, font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const v = ctx.parsed.y;
+              if (v == null) return `${ctx.dataset.label}: —`;
+              return `${ctx.dataset.label}: $${v.toFixed(2)}B`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: { ticks: { color: "#a0a0a0", font: { size: 10 } }, grid: { display: false } },
+        y: {
+          ticks: {
+            color: "#a0a0a0",
+            font: { size: 10 },
+            callback: (v) => `$${v}B`,
+          },
+          grid: { color: "rgba(255,255,255,0.05)" },
+        },
+      },
+    },
+  });
+}
+
+function formatLargeMoney(n) {
+  if (n == null) return "—";
+  if (n >= 1e12) return `$${(n / 1e12).toFixed(2)}T`;
+  if (n >= 1e9)  return `$${(n / 1e9).toFixed(2)}B`;
+  if (n >= 1e6)  return `$${(n / 1e6).toFixed(2)}M`;
+  return `$${n.toFixed(0)}`;
+}
+
+function formatRatio(n) {
+  return (n == null) ? "—" : n.toFixed(2);
+}
+
+function formatPercent(frac) {
+  // yfinance 는 비율을 0.245 형태로 줌 → 24.5% 로 표시
+  if (frac == null) return "—";
+  return `${(frac * 100).toFixed(2)}%`;
+}
+
+function formatQuarterLabel(dateStr) {
+  // "2024-09-30" → "24Q3"
+  const d = new Date(dateStr);
+  const year = String(d.getFullYear()).slice(-2);
+  const month = d.getMonth() + 1;
+  const q = Math.ceil(month / 3);
+  return `${year}Q${q}`;
 }
