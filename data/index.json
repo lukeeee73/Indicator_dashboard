@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-08T11:00:35Z",
+  "last_updated": "2026-05-08T11:38:39Z",
   "indicators": [
     {
       "code": "T10Y2Y",
@@ -7,10 +7,10 @@
       "unit": "percent",
       "category": "growth",
       "current": {
-        "value": 0.51,
-        "date": "2026-05-01",
-        "percentile_full": 39.4,
-        "percentile_10y": 56.2,
+        "value": 0.49,
+        "date": "2026-05-07",
+        "percentile_full": 38.3,
+        "percentile_10y": 54.0,
         "label_full": "low",
         "label_10y": "neutral"
       }
@@ -63,10 +63,10 @@
       "unit": "percent",
       "category": "inflation",
       "current": {
-        "value": 67.741,
-        "date": "2026-04-30",
-        "percentile_full": 93.1,
-        "percentile_10y": 91.3,
+        "value": 78.588,
+        "date": "2026-05-31",
+        "percentile_full": 96.1,
+        "percentile_10y": 93.0,
         "label_full": "high",
         "label_10y": "high"
       }
@@ -182,10 +182,10 @@
       "category": "dollar",
       "exclude_assessment": true,
       "current": {
-        "value": 4.4,
-        "date": "2026-04-30",
-        "percentile_full": 38.0,
-        "percentile_10y": 92.8,
+        "value": 4.36,
+        "date": "2026-05-06",
+        "percentile_full": 37.4,
+        "percentile_10y": 91.4,
         "label_full": "low",
         "label_10y": "high"
       }
@@ -300,10 +300,10 @@
       "unit": "percent",
       "category": "growth",
       "current": {
-        "value": -20.921,
-        "date": "2026-04-30",
-        "percentile_full": 90.9,
-        "percentile_10y": 83.1,
+        "value": -18.033,
+        "date": "2026-05-31",
+        "percentile_full": 88.1,
+        "percentile_10y": 81.4,
         "label_full": "high",
         "label_10y": "high"
       }
@@ -365,17 +365,86 @@
       "unit": "index"
     }
   ],
+  "stocks": [
+    {
+      "code": "AAPL",
+      "name": "Apple Inc.",
+      "sector": "Technology"
+    },
+    {
+      "code": "NVDA",
+      "name": "NVIDIA Corporation",
+      "sector": "Technology"
+    },
+    {
+      "code": "TSLA",
+      "name": "Tesla Inc.",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "code": "META",
+      "name": "Meta Platforms Inc.",
+      "sector": "Communication Services"
+    },
+    {
+      "code": "MSFT",
+      "name": "Microsoft Corporation",
+      "sector": "Technology"
+    },
+    {
+      "code": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Communication Services"
+    },
+    {
+      "code": "AMZN",
+      "name": "Amazon.com Inc.",
+      "sector": "Consumer Discretionary"
+    },
+    {
+      "code": "ORCL",
+      "name": "Oracle Corporation",
+      "sector": "Technology"
+    },
+    {
+      "code": "PLTR",
+      "name": "Palantir Technologies",
+      "sector": "Technology"
+    }
+  ],
+  "indices": [
+    {
+      "code": "^GSPC",
+      "filename": "GSPC",
+      "name": "S&P 500"
+    },
+    {
+      "code": "^IXIC",
+      "filename": "IXIC",
+      "name": "NASDAQ Composite"
+    },
+    {
+      "code": "^DJI",
+      "filename": "DJI",
+      "name": "Dow Jones Industrial Average"
+    },
+    {
+      "code": "^RUT",
+      "filename": "RUT",
+      "name": "Russell 2000"
+    }
+  ],
   "assessment": {
     "full": {
-      "growth_score": 41.6,
-      "inflation_score": 71.6,
+      "growth_score": 41.0,
+      "inflation_score": 71.9,
       "growth_label": "neutral",
       "inflation_label": "high",
       "quadrant": "Q1/Q3-edge"
     },
     "rolling_10y": {
-      "growth_score": 47.8,
-      "inflation_score": 78.6,
+      "growth_score": 47.2,
+      "inflation_score": 78.8,
       "growth_label": "neutral",
       "inflation_label": "high",
       "quadrant": "Q1/Q3-edge"
@@ -499,13 +568,13 @@
       },
       {
         "date": "2026-04-30",
-        "growth_score": 65.5,
-        "inflation_score": 74.6
+        "growth_score": 65.3,
+        "inflation_score": 75.8
       },
       {
         "date": "2026-05-31",
-        "growth_score": 39.4,
-        "inflation_score": 68.1
+        "growth_score": 63.2,
+        "inflation_score": 77.4
       }
     ]
   },

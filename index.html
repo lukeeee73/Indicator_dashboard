@@ -24,6 +24,7 @@
   <nav class="tab-nav">
     <button class="tab-btn active" data-tab="US">🇺🇸 미국</button>
     <button class="tab-btn" data-tab="KR">🇰🇷 한국</button>
+    <button class="tab-btn" data-tab="STOCKS">📈 주식</button>
   </nav>
 
   <main>
@@ -184,6 +185,29 @@
         <div class="cards" id="dollar-cards-KR"></div>
       </section>
     </div><!-- /panel-KR -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         주식 패널
+    ══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-STOCKS" hidden>
+      <nav class="sector-nav" data-country="STOCKS" role="tablist" aria-label="주식 섹션">
+        <button class="sector-btn active" data-sector="indices"    role="tab" aria-selected="true">시장 지수</button>
+        <button class="sector-btn"        data-sector="individual" role="tab" aria-selected="false">개별 종목</button>
+      </nav>
+
+      <section class="category sector-panel" data-sector="indices">
+        <h2>시장 지수</h2>
+        <p class="category-desc">전체 시장의 흐름을 보여주는 대표 지수들. 개별 종목보다 변동이 작고 장기 추세를 파악하기 좋다.</p>
+        <div class="cards" id="index-cards"></div>
+      </section>
+
+      <section class="category sector-panel" data-sector="individual" hidden>
+        <h2>개별 종목</h2>
+        <p class="category-desc">대형 테크 기업 중심. 각 회사의 사업 모델·재무 지표·분기 실적 추세를 확인할 수 있다.</p>
+        <div class="cards" id="stock-cards"></div>
+      </section>
+    </div><!-- /panel-STOCKS -->
 
   </main>
 

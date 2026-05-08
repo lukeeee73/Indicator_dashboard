@@ -202,6 +202,39 @@ const INDICATOR_META = {
   },
 };
 
+// 개별 종목 UI 메타데이터. business 는 한 줄 사업 모델 요약.
+const STOCK_META = {
+  AAPL:  { displayName: "Apple",            fullName: "Apple Inc.",                  sector: "기술 (하드웨어 + 서비스)",      color: "#9aa0a9", decimals: 2, business: "아이폰·맥 등 하드웨어와 앱스토어·iCloud 같은 서비스. 매출 절반이 아이폰." },
+  MSFT:  { displayName: "Microsoft",        fullName: "Microsoft Corporation",       sector: "기술 (소프트웨어 + 클라우드)",  color: "#00a4ef", decimals: 2, business: "Windows·Office 라이선스 + 클라우드 Azure. OpenAI 투자로 AI 선두권." },
+  GOOGL: { displayName: "Alphabet (Google)", fullName: "Alphabet Inc.",              sector: "통신 서비스 (광고 + 클라우드)", color: "#4285f4", decimals: 2, business: "구글 검색·유튜브 광고가 매출의 약 75%. 클라우드(GCP)·자율주행(Waymo) 보유." },
+  AMZN:  { displayName: "Amazon",           fullName: "Amazon.com Inc.",             sector: "소매 + 클라우드",               color: "#ff9900", decimals: 2, business: "전자상거래는 매출 大·마진 얇음. 클라우드 AWS는 영업이익의 절반 이상." },
+  NVDA:  { displayName: "NVIDIA",           fullName: "NVIDIA Corporation",          sector: "기술 (반도체)",                 color: "#76b900", decimals: 2, business: "AI 학습용 GPU 시장 사실상 독점. 매출 80%+가 데이터센터." },
+  META:  { displayName: "Meta",             fullName: "Meta Platforms Inc.",         sector: "통신 서비스 (광고)",             color: "#0082fb", decimals: 2, business: "페이스북·인스타·왓츠앱 광고가 매출의 약 98%. VR에 대규모 투자 중." },
+  ORCL:  { displayName: "Oracle",           fullName: "Oracle Corporation",          sector: "기술 (데이터베이스 + 클라우드)", color: "#f80000", decimals: 2, business: "기업용 DB 절대 강자. 최근 AI용 GPU 클라우드(OCI)에 공격적 투자." },
+  PLTR:  { displayName: "Palantir",         fullName: "Palantir Technologies Inc.",  sector: "기술 (AI 데이터 분석)",         color: "#000000", decimals: 2, business: "정부·기업 데이터 분석 SW. 매출 절반 이상이 미국 정부 계약." },
+  TSLA:  { displayName: "Tesla",            fullName: "Tesla Inc.",                  sector: "자동차 + 에너지",                color: "#cc0000", decimals: 2, business: "전기차 매출 위주. 에너지 저장·자율주행(FSD)·로봇(Optimus) 개발 중." },
+};
+
+// 시장 지수 UI 메타데이터. summary 는 부제, description 은 한 줄 설명.
+const INDEX_META = {
+  "^GSPC": { displayName: "S&P 500",          color: "#c084fc", decimals: 2, summary: "미국 대형주 500개 가중평균",   description: "미국 시가총액 상위 500개 기업. 미국 시장 전체의 대표 지수." },
+  "^IXIC": { displayName: "NASDAQ Composite", color: "#0096ff", decimals: 2, summary: "나스닥 전 종목 (테크 중심)",   description: "나스닥 상장 종목 전체. 빅테크 비중이 압도적." },
+  "^DJI":  { displayName: "Dow Jones",        color: "#f5c842", decimals: 2, summary: "30개 우량 대기업 (가격 가중)", description: "미국 30개 우량주. 1896년~ 가장 오래된 지수." },
+  "^RUT":  { displayName: "Russell 2000",     color: "#86efac", decimals: 2, summary: "미국 소형주 2,000개",          description: "내수 중심 중소기업. 미국 국내 경기를 반영." },
+};
+
+// 재무 지표 용어집 — 수식 + 해석 방향만 (한 줄씩)
+const METRIC_GLOSSARY = {
+  market_cap:       { label: "시가총액",       format: (v) => formatLargeMoney(v),                          formula: "주가 × 발행 주식 수",          direction: "회사 전체의 시장 가치 ($1T+ = 메가캡)" },
+  pe_ratio:         { label: "P/E (TTM)",       format: (v) => v == null ? "—" : v.toFixed(1) + "배",         formula: "주가 ÷ 주당순이익",            direction: "낮을수록 저평가 · 높을수록 성장 기대 (S&P500 평균 ~22)" },
+  forward_pe:       { label: "선행 P/E",        format: (v) => v == null ? "—" : v.toFixed(1) + "배",         formula: "주가 ÷ 향후 12개월 예상 EPS",  direction: "P/E(TTM)보다 낮으면 향후 이익 증가 기대" },
+  eps_ttm:          { label: "EPS (TTM)",       format: (v) => v == null ? "—" : `$${v.toFixed(2)}`,           formula: "순이익 ÷ 주식 수",             direction: "1주당 1년간 번 돈 (음수면 적자)" },
+  operating_margin: { label: "영업이익률",      format: (v) => formatPercent(v),                              formula: "영업이익 ÷ 매출",              direction: "본업 수익성 (소프트웨어 30%+, 제조업 5~15%)" },
+  profit_margin:    { label: "순이익률",        format: (v) => formatPercent(v),                              formula: "순이익 ÷ 매출",                direction: "세금·이자까지 뺀 최종 수익성" },
+  return_on_equity: { label: "ROE",             format: (v) => formatPercent(v),                              formula: "순이익 ÷ 자기자본",            direction: "주주 자본 효율 (15%+ 우량)" },
+  dividend_yield:   { label: "배당수익률",      format: (v) => formatPercent(v),                              formula: "연간 배당 ÷ 주가",             direction: "주식 보유 시 받는 연 현금 수익률 (성장주는 0%)" },
+};
+
 // 비교 자산(Assets) UI 메타데이터.
 // fetch_fred.py 의 ASSETS 와 대응.
 const ASSET_META = {
@@ -350,16 +383,20 @@ const CATEGORY_COLOR = {
 // 최근 변화 계산 기준 (일)
 const CHANGE_WINDOW_DAYS = 30;
 
-// 차트 타임프레임 선택지. null 이면 전체 데이터를 보여준다.
+// 차트 타임프레임 선택지. months == null 이면 전체 데이터.
+// 분수 month(예: 1W = 0.23)는 일별 시계열에서만 유효 — filterAvailableTimeframes 가
+// 데이터 포인트 밀도를 보고 자동으로 거른다.
 const TIMEFRAMES = [
-  { key: "3M",   label: "3개월", months: 3    },
-  { key: "1Y",   label: "1년",   months: 12   },
-  { key: "5Y",   label: "5년",   months: 60   },
-  { key: "10Y",  label: "10년",  months: 120  },
-  { key: "30Y",  label: "30년",  months: 360  },
-  { key: "50Y",  label: "50년",  months: 600  },
-  { key: "100Y", label: "100년", months: 1200 },
-  { key: "ALL",  label: "전체",  months: null },
+  { key: "1W",   label: "1주",   months: 7 / 30.44   },
+  { key: "1M",   label: "1개월", months: 1           },
+  { key: "3M",   label: "3개월", months: 3           },
+  { key: "1Y",   label: "1년",   months: 12          },
+  { key: "5Y",   label: "5년",   months: 60          },
+  { key: "10Y",  label: "10년",  months: 120         },
+  { key: "30Y",  label: "30년",  months: 360         },
+  { key: "50Y",  label: "50년",  months: 600         },
+  { key: "100Y", label: "100년", months: 1200        },
+  { key: "ALL",  label: "전체",  months: null        },
 ];
 
 // 카드를 처음 열었을 때 보여줄 기본 타임프레임
@@ -380,7 +417,11 @@ const _renderedTabs = new Set();
 function switchToTab(tab) {
   // 첫 방문 시 해당 탭 컨텐츠를 지연 렌더링
   if (!_renderedTabs.has(tab) && _cachedData) {
-    renderTabContent(tab, _cachedData);
+    if (tab === "STOCKS") {
+      renderStocksTab(_cachedData);
+    } else {
+      renderTabContent(tab, _cachedData);
+    }
     _renderedTabs.add(tab);
   }
   // 패널 전환
@@ -410,26 +451,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const indicatorEntries = idx.indicators || [];
     const assetEntries     = idx.assets     || [];
+    const stockEntries     = idx.stocks     || [];
+    const indexEntries     = idx.indices    || [];
 
     const fetchJson = (url) => fetch(url, { cache: "no-cache" }).then((r) => {
       if (!r.ok) throw new Error(`${url} → HTTP ${r.status}`);
       return r.json();
     });
 
-    const [indicatorPayloads, assetPayloads] = await Promise.all([
+    const [indicatorPayloads, assetPayloads, stockPayloads, indexPayloads] = await Promise.all([
       Promise.all(indicatorEntries.map((e) => fetchJson(`data/indicators/${e.code}.json`))),
       Promise.all(assetEntries.map((e)     => fetchJson(`data/assets/${e.code}.json`))),
+      Promise.all(stockEntries.map((e)     => fetchJson(`data/stocks/${e.code}.json`))),
+      Promise.all(indexEntries.map((e)     => fetchJson(`data/indices/${e.filename || e.code}.json`))),
     ]);
 
     const indicators = {};
     indicatorEntries.forEach((e, i) => { indicators[e.code] = indicatorPayloads[i]; });
     const assets = {};
     assetEntries.forEach((e, i) => { assets[e.code] = assetPayloads[i]; });
+    const stocks = {};
+    stockEntries.forEach((e, i) => { stocks[e.code] = stockPayloads[i]; });
+    const indices = {};
+    indexEntries.forEach((e, i) => { indices[e.code] = indexPayloads[i]; });
 
     const data = {
       last_updated:  idx.last_updated,
       indicators,
       assets,
+      stocks,
+      indices,
       assessment:    idx.assessment    || null,
       assessment_kr: idx.assessment_kr || null,
     };
@@ -937,8 +988,19 @@ function sliceByDateRange(series, startDate, endDate) {
 function filterAvailableTimeframes(series) {
   if (!series || series.length === 0) return [TIMEFRAMES[TIMEFRAMES.length - 1]];
   const spanMonths = monthsBetween(series[0].date, series[series.length - 1].date);
-  const available = TIMEFRAMES.filter((tf) => tf.months == null || tf.months <= spanMonths);
-  // 가장 큰 타임프레임이 데이터 범위를 아예 초과하는 경우에도, "전체" 는 항상 제공.
+
+  // 시리즈의 평균 데이터 간격(일). 분수 month 타임프레임은 충분한 포인트가 있을 때만 노출.
+  const totalDays = Math.max(1,
+    Math.round((new Date(series[series.length - 1].date) - new Date(series[0].date)) / 86400000));
+  const avgGapDays = totalDays / Math.max(1, series.length - 1);
+
+  const available = TIMEFRAMES.filter((tf) => {
+    if (tf.months == null) return true;
+    if (tf.months > spanMonths) return false;
+    // 짧은 타임프레임에 최소 3개 이상의 포인트가 들어가야 차트로 의미 있음.
+    const tfDays = tf.months * 30.44;
+    return tfDays / avgGapDays >= 3;
+  });
   if (!available.some((tf) => tf.months == null)) {
     available.push(TIMEFRAMES[TIMEFRAMES.length - 1]);
   }
@@ -966,7 +1028,8 @@ function sliceSeriesByMonths(series, months) {
   if (months == null || series.length === 0) return series;
   const last = new Date(series[series.length - 1].date);
   const cutoff = new Date(last);
-  cutoff.setMonth(cutoff.getMonth() - months);
+  // 분수 month(1W = 0.23) 도 정확하게 처리하기 위해 일 단위로 변환해서 차감.
+  cutoff.setDate(cutoff.getDate() - Math.round(months * 30.44));
   const cutoffStr = cutoff.toISOString().slice(0, 10);
   const start = series.findIndex((p) => p.date >= cutoffStr);
   return start === -1 ? series.slice(-1) : series.slice(start);
@@ -1320,4 +1383,323 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
   }[c]));
+}
+
+
+// ---------- 주식 탭 렌더링 -------------------------------------------
+
+function renderStocksTab(data) {
+  const stocks  = data.stocks  || {};
+  const indices = data.indices || {};
+
+  // ─ 시장 지수 ─
+  const indexHost = document.getElementById("index-cards");
+  if (indexHost) {
+    if (Object.keys(indices).length === 0) {
+      indexHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions를 실행해 주세요.");
+    } else {
+      for (const [code, payload] of Object.entries(indices)) {
+        if (!payload || !payload.series || payload.series.length === 0) continue;
+        indexHost.appendChild(renderIndexCard(code, payload));
+      }
+    }
+  }
+
+  // ─ 개별 종목 ─
+  const stockHost = document.getElementById("stock-cards");
+  if (stockHost) {
+    if (Object.keys(stocks).length === 0) {
+      stockHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions를 실행해 주세요.");
+    } else {
+      for (const [ticker, payload] of Object.entries(stocks)) {
+        if (!payload || !payload.series || payload.series.length === 0) continue;
+        stockHost.appendChild(renderStockCard(ticker, payload));
+      }
+    }
+  }
+
+  // 서브 네비게이션 (시장 지수 / 개별 종목 토글)
+  wireSectorNav("STOCKS");
+}
+
+function renderStockCard(ticker, payload) {
+  const meta   = STOCK_META[ticker] ?? { displayName: ticker, fullName: ticker, sector: "", color: "#9aa0a9", decimals: 2, business: "", moat: "" };
+  const series = payload.series;
+  const latest = series[series.length - 1];
+
+  // 1년 전 대비 % 변화 — 단기보다 1년 추세가 사용자에게 유의미
+  const prior = findPriorPoint(series, latest.date, 365);
+  const changePct = prior ? ((latest.value - prior.value) / prior.value) * 100 : null;
+  const changeClass = changePct == null ? "" : changePct >= 0 ? "up" : "down";
+  const changeStr   = changePct == null
+    ? "—"
+    : `${changePct >= 0 ? "▲" : "▼"} ${Math.abs(changePct).toFixed(2)}%`;
+
+  const availableFrames = filterAvailableTimeframes(series);
+  const tfButtonsHtml = availableFrames.map((tf) => {
+    const active = tf.key === DEFAULT_TIMEFRAME_KEY ? " active" : "";
+    return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
+  }).join("");
+
+  const financials = payload.financials || { snapshot: {}, quarterly: [] };
+  const snapshot   = financials.snapshot || {};
+  const quarterly  = financials.quarterly || [];
+
+  const card = document.createElement("article");
+  card.className = "card stock-card";
+  card.innerHTML = `
+    <header class="card-header">
+      <span class="card-title">${escapeHtml(meta.displayName)}</span>
+      <span class="card-code">${escapeHtml(ticker)}</span>
+    </header>
+    <div>
+      <span class="card-value">$${latest.value.toFixed(meta.decimals)}</span>
+      <span class="card-change ${changeClass}" title="1년 전 대비">${changeStr} <span class="change-period">(1년)</span></span>
+    </div>
+    <p class="card-desc">${escapeHtml(meta.fullName)} · ${escapeHtml(meta.sector)}</p>
+    ${meta.business ? `<p class="card-business">${escapeHtml(meta.business)}</p>` : ""}
+
+    <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
+    <div class="card-chart main-chart"><canvas></canvas></div>
+
+    ${renderStockMetricsHtml(snapshot)}
+    ${quarterly.length > 0 ? `
+      <div class="section-title">분기 실적 (단위: $B)</div>
+      <div class="card-chart financials-chart"><canvas></canvas></div>
+    ` : ""}
+  `;
+
+  const mainCanvas = card.querySelector(".main-chart canvas");
+  const tfSelector = card.querySelector(".tf-selector");
+
+  const initialKey = availableFrames.some((tf) => tf.key === DEFAULT_TIMEFRAME_KEY)
+    ? DEFAULT_TIMEFRAME_KEY
+    : availableFrames[availableFrames.length - 1].key;
+  const state = { tfKey: initialKey };
+  let chartInstance = null;
+
+  function redraw() {
+    const tf = TIMEFRAMES.find((t) => t.key === state.tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
+    const sliced = sliceSeriesByMonths(series, tf.months);
+    if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+    chartInstance = renderChart(mainCanvas, sliced, "stock", {
+      assetColor:  meta.color,
+      primaryMeta: { decimals: meta.decimals, unit: "$", displayName: meta.displayName },
+    });
+  }
+
+  tfSelector.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tf-btn");
+    if (!btn) return;
+    state.tfKey = btn.dataset.tf;
+    tfSelector.querySelectorAll(".tf-btn").forEach((b) =>
+      b.classList.toggle("active", b.dataset.tf === state.tfKey)
+    );
+    redraw();
+  });
+
+  redraw();
+
+  // 분기 실적 차트 — 카드가 DOM 에 붙기 전에 render 해도 Chart.js 는 동작함
+  if (quarterly.length > 0) {
+    const finCanvas = card.querySelector(".financials-chart canvas");
+    if (finCanvas) renderFinancialsChart(finCanvas, quarterly);
+  }
+
+  return card;
+}
+
+// ─── 재무/실적 표시 헬퍼 ─────────────────────────────────────────────
+
+function renderStockMetricsHtml(snap) {
+  if (!snap || Object.values(snap).every((v) => v == null)) return "";
+  const order = ["market_cap", "pe_ratio", "forward_pe", "eps_ttm",
+                 "operating_margin", "profit_margin", "return_on_equity", "dividend_yield"];
+  const items = order.map((key) => {
+    const g = METRIC_GLOSSARY[key];
+    if (!g) return "";
+    return `
+      <div class="metric-row">
+        <div class="metric-row-head">
+          <span class="metric-name">${escapeHtml(g.label)}</span>
+          <span class="metric-val">${escapeHtml(g.format(snap[key]))}</span>
+        </div>
+        <p class="metric-formula">${escapeHtml(g.formula)}</p>
+        <p class="metric-direction">${escapeHtml(g.direction)}</p>
+      </div>
+    `;
+  }).join("");
+  return `<div class="section-title">재무 지표</div><div class="metrics-list">${items}</div>`;
+}
+
+// ─── 시장 지수 카드 ─────────────────────────────────────────────────
+
+function renderIndexCard(code, payload) {
+  const meta   = INDEX_META[code] ?? { displayName: payload.name || code, color: "#9aa0a9", decimals: 2, summary: "", description: payload.description || "" };
+  const series = payload.series;
+  const latest = series[series.length - 1];
+
+  // 1주/1개월/1년 변화율 — 단기·중기·장기 흐름 한눈에
+  const w1  = priorChangePct(series, 7);
+  const m1  = priorChangePct(series, 30);
+  const yoy = priorChangePct(series, 365);
+
+  const fmtChange = (v) => v == null ? "—" : `${v >= 0 ? "▲" : "▼"} ${Math.abs(v).toFixed(2)}%`;
+  const cls       = (v) => v == null ? "" : v >= 0 ? "up" : "down";
+
+  const availableFrames = filterAvailableTimeframes(series);
+  const tfButtonsHtml = availableFrames.map((tf) => {
+    const active = tf.key === DEFAULT_TIMEFRAME_KEY ? " active" : "";
+    return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
+  }).join("");
+
+  const card = document.createElement("article");
+  card.className = "card index-card";
+  card.innerHTML = `
+    <header class="card-header">
+      <span class="card-title">${escapeHtml(meta.displayName)}</span>
+      <span class="card-code">${escapeHtml(code)}</span>
+    </header>
+    <div>
+      <span class="card-value">${latest.value.toLocaleString("en-US", { maximumFractionDigits: meta.decimals })}</span>
+      <span class="card-change ${cls(yoy)}" title="1년 전 대비">${fmtChange(yoy)} <span class="change-period">(1년)</span></span>
+    </div>
+    <p class="card-desc">${escapeHtml(meta.summary || payload.name || "")}</p>
+    <p class="card-business">${escapeHtml(meta.description || payload.description || "")}</p>
+
+    <div class="returns-row">
+      <div class="return-cell"><span class="return-label">1주</span>   <span class="return-val ${cls(w1)}">${fmtChange(w1)}</span></div>
+      <div class="return-cell"><span class="return-label">1개월</span> <span class="return-val ${cls(m1)}">${fmtChange(m1)}</span></div>
+      <div class="return-cell"><span class="return-label">1년</span>   <span class="return-val ${cls(yoy)}">${fmtChange(yoy)}</span></div>
+    </div>
+
+    <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
+    <div class="card-chart main-chart"><canvas></canvas></div>
+  `;
+
+  // 차트 렌더링
+  const mainCanvas = card.querySelector(".main-chart canvas");
+  const tfSelector = card.querySelector(".tf-selector");
+  const initialKey = availableFrames.some((tf) => tf.key === DEFAULT_TIMEFRAME_KEY)
+    ? DEFAULT_TIMEFRAME_KEY
+    : availableFrames[availableFrames.length - 1].key;
+  const state = { tfKey: initialKey };
+  let chartInstance = null;
+
+  function redraw() {
+    const tf = TIMEFRAMES.find((t) => t.key === state.tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
+    const sliced = sliceSeriesByMonths(series, tf.months);
+    if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+    chartInstance = renderChart(mainCanvas, sliced, "index", {
+      assetColor:  meta.color,
+      primaryMeta: { decimals: meta.decimals, unit: "", displayName: meta.displayName },
+    });
+  }
+  tfSelector.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tf-btn");
+    if (!btn) return;
+    state.tfKey = btn.dataset.tf;
+    tfSelector.querySelectorAll(".tf-btn").forEach((b) =>
+      b.classList.toggle("active", b.dataset.tf === state.tfKey));
+    redraw();
+  });
+  redraw();
+  return card;
+}
+
+// 시리즈에서 days 일 전 대비 % 변화. 데이터가 없으면 null.
+function priorChangePct(series, days) {
+  if (!series || series.length === 0) return null;
+  const latest = series[series.length - 1];
+  const prior  = findPriorPoint(series, latest.date, days);
+  if (!prior || prior.value === 0) return null;
+  return ((latest.value - prior.value) / prior.value) * 100;
+}
+
+function renderFinancialsChart(canvas, quarterly) {
+  const labels = quarterly.map((q) => formatQuarterLabel(q.date));
+  const toBillions = (v) => (v == null ? null : v / 1e9);
+
+  const datasets = [
+    {
+      label: "매출",
+      data: quarterly.map((q) => toBillions(q.revenue)),
+      backgroundColor: "rgba(125, 211, 252, 0.75)",
+      borderColor: "rgba(125, 211, 252, 1)",
+      borderWidth: 1,
+    },
+    {
+      label: "영업이익",
+      data: quarterly.map((q) => toBillions(q.operating_income)),
+      backgroundColor: "rgba(192, 132, 252, 0.75)",
+      borderColor: "rgba(192, 132, 252, 1)",
+      borderWidth: 1,
+    },
+    {
+      label: "순이익",
+      data: quarterly.map((q) => toBillions(q.net_income)),
+      backgroundColor: "rgba(134, 239, 172, 0.75)",
+      borderColor: "rgba(134, 239, 172, 1)",
+      borderWidth: 1,
+    },
+  ];
+
+  return new Chart(canvas.getContext("2d"), {
+    type: "bar",
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "bottom", labels: { color: "#d0d0d0", boxWidth: 12, font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const v = ctx.parsed.y;
+              if (v == null) return `${ctx.dataset.label}: —`;
+              return `${ctx.dataset.label}: $${v.toFixed(2)}B`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: { ticks: { color: "#a0a0a0", font: { size: 10 } }, grid: { display: false } },
+        y: {
+          ticks: {
+            color: "#a0a0a0",
+            font: { size: 10 },
+            callback: (v) => `$${v}B`,
+          },
+          grid: { color: "rgba(255,255,255,0.05)" },
+        },
+      },
+    },
+  });
+}
+
+function formatLargeMoney(n) {
+  if (n == null) return "—";
+  if (n >= 1e12) return `$${(n / 1e12).toFixed(2)}T`;
+  if (n >= 1e9)  return `$${(n / 1e9).toFixed(2)}B`;
+  if (n >= 1e6)  return `$${(n / 1e6).toFixed(2)}M`;
+  return `$${n.toFixed(0)}`;
+}
+
+function formatRatio(n) {
+  return (n == null) ? "—" : n.toFixed(2);
+}
+
+function formatPercent(frac) {
+  // yfinance 는 비율을 0.245 형태로 줌 → 24.5% 로 표시
+  if (frac == null) return "—";
+  return `${(frac * 100).toFixed(2)}%`;
+}
+
+function formatQuarterLabel(dateStr) {
+  // "2024-09-30" → "24Q3"
+  const d = new Date(dateStr);
+  const year = String(d.getFullYear()).slice(-2);
+  const month = d.getMonth() + 1;
+  const q = Math.ceil(month / 3);
+  return `${year}Q${q}`;
 }
