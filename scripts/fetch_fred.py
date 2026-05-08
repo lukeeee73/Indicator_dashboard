@@ -289,6 +289,18 @@ ASSETS: dict[str, dict] = {
 
 
 # --------------------------------------------------------------------------
+# 개별 종목 정의
+# --------------------------------------------------------------------------
+# Yahoo Finance 티커 기준. 섹터 정보는 프론트엔드 카드 표시용.
+STOCKS: dict[str, dict] = {
+    "AAPL": {"name": "Apple Inc.",              "sector": "Technology"},
+    "NVDA": {"name": "NVIDIA Corporation",      "sector": "Technology"},
+    "TSLA": {"name": "Tesla Inc.",              "sector": "Consumer Discretionary"},
+    "META": {"name": "Meta Platforms Inc.",     "sector": "Communication Services"},
+}
+
+
+# --------------------------------------------------------------------------
 # 상수
 # --------------------------------------------------------------------------
 FRED_BASE_URL = "https://api.stlouisfed.org/fred/series/observations"
@@ -297,6 +309,7 @@ DATA_DIR = REPO_ROOT / "data"
 INDEX_PATH       = DATA_DIR / "index.json"
 INDICATORS_DIR   = DATA_DIR / "indicators"
 ASSETS_DIR       = DATA_DIR / "assets"
+STOCKS_DIR       = DATA_DIR / "stocks"
 # 구 단일 번들 경로 — 마이그레이션 및 하위 호환용 fallback 으로만 읽는다.
 LEGACY_BUNDLE_PATH = DATA_DIR / "indicators.json"
 
@@ -423,6 +436,40 @@ def fetch_yahoo_monthly(symbol: str) -> list[dict]:
 
 
 # --------------------------------------------------------------------------
+# Yahoo Finance 개별 종목 수집 (일별 종가, 최근 10년)
+# --------------------------------------------------------------------------
+def fetch_yahoo_stock(symbol: str) -> list[dict]:
+    """Yahoo Finance에서 일별 종가 시계열을 [{date, value}, ...] 로 반환.
+
+    최근 10년치 일별 데이터를 가져온다. 실패 시 빈 리스트 반환.
+    """
+    try:
+        import yfinance as yf  # noqa: PLC0415
+    except ImportError as e:
+        raise RuntimeError("yfinance 가 설치되지 않았습니다. pip install yfinance") from e
+
+    ticker = yf.Ticker(symbol)
+    hist = ticker.history(period="10y", interval="1d", auto_adjust=True)
+    if hist.empty:
+        return []
+
+    series: list[dict] = []
+    for idx, row in hist.iterrows():
+        date_str = (
+            idx.tz_localize(None).strftime("%Y-%m-%d")
+            if idx.tzinfo else idx.strftime("%Y-%m-%d")
+        )
+        try:
+            val = float(row["Close"])
+        except (TypeError, ValueError, KeyError):
+            continue
+        if pd.isna(val):
+            continue
+        series.append({"date": date_str, "value": round(val, 2)})
+    return sorted(series, key=lambda x: x["date"])
+
+
+# --------------------------------------------------------------------------
 # 기존 JSON 입출력
 # --------------------------------------------------------------------------
 def _read_json(path: Path) -> Optional[dict]:
@@ -440,7 +487,7 @@ def load_split_store() -> dict:
     분할 파일이 없으면 레거시 data/indicators.json 으로 폴백.
     둘 다 없으면 빈 구조 반환.
     """
-    empty = {"last_updated": None, "indicators": {}, "assets": {}}
+    empty = {"last_updated": None, "indicators": {}, "assets": {}, "stocks": {}}
 
     if INDEX_PATH.exists():
         idx = _read_json(INDEX_PATH) or {}
@@ -454,10 +501,16 @@ def load_split_store() -> dict:
             payload = _read_json(ASSETS_DIR / f"{code}.json")
             if payload is not None:
                 assets[code] = payload
+        stocks: dict[str, dict] = {}
+        for code in [entry["code"] for entry in idx.get("stocks", []) if "code" in entry]:
+            payload = _read_json(STOCKS_DIR / f"{code}.json")
+            if payload is not None:
+                stocks[code] = payload
         return {
             "last_updated": idx.get("last_updated"),
             "indicators": indicators,
             "assets": assets,
+            "stocks": stocks,
         }
 
     if LEGACY_BUNDLE_PATH.exists():
@@ -539,9 +592,11 @@ def save_split_store(output: dict) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     INDICATORS_DIR.mkdir(parents=True, exist_ok=True)
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    STOCKS_DIR.mkdir(parents=True, exist_ok=True)
 
     indicators = output.get("indicators", {}) or {}
     assets     = output.get("assets", {}) or {}
+    stocks     = output.get("stocks", {}) or {}
 
     indicator_index_entries: list[dict] = []
     for code, payload in indicators.items():
@@ -569,10 +624,20 @@ def save_split_store(output: dict) -> None:
             "unit": payload.get("unit"),
         })
 
+    stock_index_entries: list[dict] = []
+    for code, payload in stocks.items():
+        save_json(STOCKS_DIR / f"{code}.json", payload)
+        stock_index_entries.append({
+            "code":   code,
+            "name":   payload.get("name"),
+            "sector": payload.get("sector"),
+        })
+
     index_doc = {
         "last_updated":   output.get("last_updated"),
         "indicators":     indicator_index_entries,
         "assets":         asset_index_entries,
+        "stocks":         stock_index_entries,
         "assessment":     output.get("assessment"),
         "assessment_kr":  output.get("assessment_kr"),
     }
@@ -581,6 +646,7 @@ def save_split_store(output: dict) -> None:
     # 수집 대상에서 빠진 코드의 잔여 파일 정리
     _clean_stale_files(INDICATORS_DIR, set(indicators.keys()))
     _clean_stale_files(ASSETS_DIR,     set(assets.keys()))
+    _clean_stale_files(STOCKS_DIR,     set(stocks.keys()))
 
     # 레거시 단일 번들은 더 이상 쓰지 않으니 정리
     if LEGACY_BUNDLE_PATH.exists():
@@ -602,6 +668,7 @@ def main() -> int:
     existing = load_split_store()
     merged_indicators: dict[str, dict] = dict(existing.get("indicators", {}))
     merged_assets: dict[str, dict] = dict(existing.get("assets", {}))
+    merged_stocks: dict[str, dict] = dict(existing.get("stocks", {}))
 
     new_indicators, ok_ind = collect_group(INDICATORS, api_key, "indicator")
     new_assets,    ok_ast  = collect_group(ASSETS,    api_key, "asset")
@@ -644,11 +711,32 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         print(f"FAILED (unexpected: {e})")
 
+    # 개별 종목 — Yahoo Finance 경유
+    new_stocks: dict[str, dict] = {}
+    ok_stk = 0
+    for ticker, meta in STOCKS.items():
+        print(f"Fetching stock {ticker} (Yahoo Finance)...", end=" ", flush=True)
+        try:
+            series = fetch_yahoo_stock(ticker)
+            if series:
+                new_stocks[ticker] = {
+                    "name":   meta["name"],
+                    "sector": meta["sector"],
+                    "series": series,
+                }
+                print(f"OK ({len(series)} points)")
+                ok_stk += 1
+            else:
+                print("FAILED (empty series)")
+        except Exception as e:  # noqa: BLE001
+            print(f"FAILED (unexpected: {e})")
+
     merged_indicators.update(new_indicators)
     merged_assets.update(new_assets)
+    merged_stocks.update(new_stocks)
 
-    success_count = ok_ind + ok_ast
-    total_count   = len(INDICATORS) + len(ASSETS) + 2  # +2: KOSPI_YOY, KOSPI asset
+    success_count = ok_ind + ok_ast + ok_stk
+    total_count   = len(INDICATORS) + len(ASSETS) + 2 + len(STOCKS)  # +2: KOSPI_YOY, KOSPI asset
 
     if success_count == 0:
         # 전부 실패하면 기존 파일을 건드리지 않는다 (데이터 보존)
@@ -662,6 +750,7 @@ def main() -> int:
         "last_updated": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "indicators": merged_indicators,
         "assets": merged_assets,
+        "stocks": merged_stocks,
     }
 
     # 각 지표에 "current" (percentile/label) 를 주입하고, 성장/인플레 종합
@@ -675,7 +764,7 @@ def main() -> int:
         f"\nDone. {success_count}/{total_count} series updated "
         f"(indicators: {ok_ind}/{len(INDICATORS) + 1}, "
         f"assets: {ok_ast}/{len(ASSETS) + 1}) "
-        f"-> {DATA_DIR.relative_to(REPO_ROOT)}/ (index.json + indicators/*.json + assets/*.json)"
+        f"-> {DATA_DIR.relative_to(REPO_ROOT)}/ (index.json + indicators/*.json + assets/*.json + stocks/*.json)"
     )
     return 0
 

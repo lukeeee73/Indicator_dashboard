@@ -24,6 +24,7 @@
   <nav class="tab-nav">
     <button class="tab-btn active" data-tab="US">🇺🇸 미국</button>
     <button class="tab-btn" data-tab="KR">🇰🇷 한국</button>
+    <button class="tab-btn" data-tab="STOCKS">📈 주식</button>
   </nav>
 
   <main>
@@ -184,6 +185,18 @@
         <div class="cards" id="dollar-cards-KR"></div>
       </section>
     </div><!-- /panel-KR -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         주식 패널
+    ══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-STOCKS" hidden>
+      <section class="category">
+        <h2>개별 종목</h2>
+        <p class="category-desc">Yahoo Finance 기준 일별 종가 · 주 1회 자동 갱신</p>
+        <div class="cards" id="stock-cards"></div>
+      </section>
+    </div><!-- /panel-STOCKS -->
 
   </main>
 

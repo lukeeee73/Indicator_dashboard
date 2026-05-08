@@ -202,6 +202,14 @@ const INDICATOR_META = {
   },
 };
 
+// 개별 종목 UI 메타데이터. fetch_fred.py 의 STOCKS 와 대응.
+const STOCK_META = {
+  AAPL: { displayName: "Apple",  fullName: "Apple Inc.",              sector: "Technology",               color: "#9aa0a9", decimals: 2 },
+  NVDA: { displayName: "NVIDIA", fullName: "NVIDIA Corporation",      sector: "Technology",               color: "#76b900", decimals: 2 },
+  TSLA: { displayName: "Tesla",  fullName: "Tesla Inc.",              sector: "Consumer Discretionary",   color: "#cc0000", decimals: 2 },
+  META: { displayName: "Meta",   fullName: "Meta Platforms Inc.",     sector: "Communication Services",   color: "#0082fb", decimals: 2 },
+};
+
 // 비교 자산(Assets) UI 메타데이터.
 // fetch_fred.py 의 ASSETS 와 대응.
 const ASSET_META = {
@@ -380,7 +388,11 @@ const _renderedTabs = new Set();
 function switchToTab(tab) {
   // 첫 방문 시 해당 탭 컨텐츠를 지연 렌더링
   if (!_renderedTabs.has(tab) && _cachedData) {
-    renderTabContent(tab, _cachedData);
+    if (tab === "STOCKS") {
+      renderStocksTab(_cachedData);
+    } else {
+      renderTabContent(tab, _cachedData);
+    }
     _renderedTabs.add(tab);
   }
   // 패널 전환
@@ -410,26 +422,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const indicatorEntries = idx.indicators || [];
     const assetEntries     = idx.assets     || [];
+    const stockEntries     = idx.stocks     || [];
 
     const fetchJson = (url) => fetch(url, { cache: "no-cache" }).then((r) => {
       if (!r.ok) throw new Error(`${url} → HTTP ${r.status}`);
       return r.json();
     });
 
-    const [indicatorPayloads, assetPayloads] = await Promise.all([
+    const [indicatorPayloads, assetPayloads, stockPayloads] = await Promise.all([
       Promise.all(indicatorEntries.map((e) => fetchJson(`data/indicators/${e.code}.json`))),
       Promise.all(assetEntries.map((e)     => fetchJson(`data/assets/${e.code}.json`))),
+      Promise.all(stockEntries.map((e)     => fetchJson(`data/stocks/${e.code}.json`))),
     ]);
 
     const indicators = {};
     indicatorEntries.forEach((e, i) => { indicators[e.code] = indicatorPayloads[i]; });
     const assets = {};
     assetEntries.forEach((e, i) => { assets[e.code] = assetPayloads[i]; });
+    const stocks = {};
+    stockEntries.forEach((e, i) => { stocks[e.code] = stockPayloads[i]; });
 
     const data = {
       last_updated:  idx.last_updated,
       indicators,
       assets,
+      stocks,
       assessment:    idx.assessment    || null,
       assessment_kr: idx.assessment_kr || null,
     };
@@ -1320,4 +1337,91 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
   }[c]));
+}
+
+
+// ---------- 주식 탭 렌더링 -------------------------------------------
+
+function renderStocksTab(data) {
+  const stocks = data.stocks || {};
+  const host   = document.getElementById("stock-cards");
+  if (!host) return;
+
+  if (Object.keys(stocks).length === 0) {
+    host.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions를 실행해 주세요.");
+    return;
+  }
+
+  for (const [ticker, payload] of Object.entries(stocks)) {
+    if (!payload || !payload.series || payload.series.length === 0) continue;
+    host.appendChild(renderStockCard(ticker, payload));
+  }
+}
+
+function renderStockCard(ticker, payload) {
+  const meta   = STOCK_META[ticker] ?? { displayName: ticker, fullName: ticker, sector: "", color: "#9aa0a9", decimals: 2 };
+  const series = payload.series;
+  const latest = series[series.length - 1];
+
+  // 90일 전 대비 % 변화
+  const prior = findPriorPoint(series, latest.date, 90);
+  const changePct = prior ? ((latest.value - prior.value) / prior.value) * 100 : null;
+  const changeClass = changePct == null ? "" : changePct >= 0 ? "up" : "down";
+  const changeStr   = changePct == null
+    ? "—"
+    : `${changePct >= 0 ? "▲" : "▼"} ${Math.abs(changePct).toFixed(2)}%`;
+
+  const availableFrames = filterAvailableTimeframes(series);
+  const tfButtonsHtml = availableFrames.map((tf) => {
+    const active = tf.key === DEFAULT_TIMEFRAME_KEY ? " active" : "";
+    return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
+  }).join("");
+
+  const card = document.createElement("article");
+  card.className = "card";
+  card.innerHTML = `
+    <header class="card-header">
+      <span class="card-title">${escapeHtml(meta.displayName)}</span>
+      <span class="card-code">${escapeHtml(ticker)}</span>
+    </header>
+    <div>
+      <span class="card-value">$${latest.value.toFixed(meta.decimals)}</span>
+      <span class="card-change ${changeClass}" title="90일 전 대비">${changeStr}</span>
+    </div>
+    <p class="card-desc">${escapeHtml(meta.fullName)} · ${escapeHtml(meta.sector)}</p>
+    <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
+    <div class="card-chart main-chart"><canvas></canvas></div>
+  `;
+
+  const mainCanvas = card.querySelector(".main-chart canvas");
+  const tfSelector = card.querySelector(".tf-selector");
+
+  const initialKey = availableFrames.some((tf) => tf.key === DEFAULT_TIMEFRAME_KEY)
+    ? DEFAULT_TIMEFRAME_KEY
+    : availableFrames[availableFrames.length - 1].key;
+  const state = { tfKey: initialKey };
+  let chartInstance = null;
+
+  function redraw() {
+    const tf = TIMEFRAMES.find((t) => t.key === state.tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
+    const sliced = sliceSeriesByMonths(series, tf.months);
+    if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+    chartInstance = renderChart(mainCanvas, sliced, "stock", {
+      assetColor:  meta.color,
+      primaryMeta: { decimals: meta.decimals, unit: "$", displayName: meta.displayName },
+    });
+  }
+
+  tfSelector.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tf-btn");
+    if (!btn) return;
+    state.tfKey = btn.dataset.tf;
+    tfSelector.querySelectorAll(".tf-btn").forEach((b) =>
+      b.classList.toggle("active", b.dataset.tf === state.tfKey)
+    );
+    redraw();
+  });
+
+  redraw();
+  return card;
 }
