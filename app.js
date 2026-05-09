@@ -1445,6 +1445,9 @@ function renderStockCard(ticker, payload) {
   const snapshot   = financials.snapshot || {};
   const quarterly  = financials.quarterly || [];
 
+  const metricsHtml = renderStockMetricsHtml(snapshot);
+  const hasFinancials = metricsHtml !== "" || quarterly.length > 0;
+
   const card = document.createElement("article");
   card.className = "card stock-card";
   card.innerHTML = `
@@ -1462,10 +1465,20 @@ function renderStockCard(ticker, payload) {
     <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
     <div class="card-chart main-chart"><canvas></canvas></div>
 
-    ${renderStockMetricsHtml(snapshot)}
-    ${quarterly.length > 0 ? `
-      <div class="section-title">분기 실적 (단위: $B)</div>
-      <div class="card-chart financials-chart"><canvas></canvas></div>
+    ${hasFinancials ? `
+      <div class="stock-details">
+        <button type="button" class="details-toggle" aria-expanded="false">
+          <span class="details-toggle-label">재무 정보 보기</span>
+          <span class="details-toggle-icon" aria-hidden="true">▾</span>
+        </button>
+        <div class="details-body" hidden>
+          ${metricsHtml}
+          ${quarterly.length > 0 ? `
+            <div class="section-title">분기 실적 (단위: $B)</div>
+            <div class="card-chart financials-chart"><canvas></canvas></div>
+          ` : ""}
+        </div>
+      </div>
     ` : ""}
   `;
 
@@ -1500,10 +1513,25 @@ function renderStockCard(ticker, payload) {
 
   redraw();
 
-  // 분기 실적 차트 — 카드가 DOM 에 붙기 전에 render 해도 Chart.js 는 동작함
-  if (quarterly.length > 0) {
-    const finCanvas = card.querySelector(".financials-chart canvas");
-    if (finCanvas) renderFinancialsChart(finCanvas, quarterly);
+  // 재무 정보 토글 — 분기 차트는 펼쳐질 때 lazy 렌더 (hidden 상태에선 캔버스 크기 측정 불가)
+  const toggleBtn   = card.querySelector(".details-toggle");
+  const detailsBody = card.querySelector(".details-body");
+  if (toggleBtn && detailsBody) {
+    let financialsRendered = false;
+    toggleBtn.addEventListener("click", () => {
+      const next = toggleBtn.getAttribute("aria-expanded") !== "true";
+      toggleBtn.setAttribute("aria-expanded", String(next));
+      detailsBody.hidden = !next;
+      const labelEl = toggleBtn.querySelector(".details-toggle-label");
+      const iconEl  = toggleBtn.querySelector(".details-toggle-icon");
+      if (labelEl) labelEl.textContent = next ? "재무 정보 숨기기" : "재무 정보 보기";
+      if (iconEl)  iconEl.textContent  = next ? "▴" : "▾";
+      if (next && !financialsRendered && quarterly.length > 0) {
+        const finCanvas = card.querySelector(".financials-chart canvas");
+        if (finCanvas) renderFinancialsChart(finCanvas, quarterly);
+        financialsRendered = true;
+      }
+    });
   }
 
   return card;
@@ -1511,25 +1539,33 @@ function renderStockCard(ticker, payload) {
 
 // ─── 재무/실적 표시 헬퍼 ─────────────────────────────────────────────
 
+// 거물 투자자(버핏·달리오) 관점에서 본 4개 핵심 지표.
+//  - ROE: 자본을 얼마나 효율적으로 굴리는가 (Buffett 의 사업 질 척도)
+//  - 영업이익률: 본업의 수익성 = 해자(moat) 의 강도
+//  - P/E: 가격이 적정한가 (밸류에이션)
+//  - 시가총액: 회사의 규모/성숙도 컨텍스트
+const STOCK_KEY_METRICS = [
+  { key: "return_on_equity", label: "ROE",        hint: "자본 효율 · 15%+ 우량",         format: (v) => formatPercent(v) },
+  { key: "operating_margin", label: "영업이익률", hint: "본업 수익성 · 해자 강도",       format: (v) => formatPercent(v) },
+  { key: "pe_ratio",         label: "P/E",        hint: "가격/이익 · S&P500 ~22배",      format: (v) => v == null ? "—" : v.toFixed(1) + "배" },
+  { key: "market_cap",       label: "시가총액",   hint: "회사 규모",                     format: (v) => formatLargeMoney(v) },
+];
+
 function renderStockMetricsHtml(snap) {
   if (!snap || Object.values(snap).every((v) => v == null)) return "";
-  const order = ["market_cap", "pe_ratio", "forward_pe", "eps_ttm",
-                 "operating_margin", "profit_margin", "return_on_equity", "dividend_yield"];
-  const items = order.map((key) => {
-    const g = METRIC_GLOSSARY[key];
-    if (!g) return "";
-    return `
-      <div class="metric-row">
-        <div class="metric-row-head">
-          <span class="metric-name">${escapeHtml(g.label)}</span>
-          <span class="metric-val">${escapeHtml(g.format(snap[key]))}</span>
-        </div>
-        <p class="metric-formula">${escapeHtml(g.formula)}</p>
-        <p class="metric-direction">${escapeHtml(g.direction)}</p>
+  const items = STOCK_KEY_METRICS.map(({ key, label, hint, format }) => `
+    <div class="key-metric">
+      <div class="km-head">
+        <span class="km-label">${escapeHtml(label)}</span>
+        <span class="km-value">${escapeHtml(format(snap[key]))}</span>
       </div>
-    `;
-  }).join("");
-  return `<div class="section-title">재무 지표</div><div class="metrics-list">${items}</div>`;
+      <p class="km-hint">${escapeHtml(hint)}</p>
+    </div>
+  `).join("");
+  return `
+    <div class="key-metrics">${items}</div>
+    <p class="key-metrics-note">사업의 질(ROE·영업이익률) × 가격(P/E) — 거물 투자자가 가장 먼저 보는 4가지.</p>
+  `;
 }
 
 // ─── 시장 지수 카드 ─────────────────────────────────────────────────
