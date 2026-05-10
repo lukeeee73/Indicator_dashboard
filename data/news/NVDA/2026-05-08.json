@@ -1,0 +1,44 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-05-08",
+  "as_of_utc": "2026-05-08T21:00:00Z",
+  "_sample": true,
+  "_note": "이 파일은 UI 검증용 샘플입니다. Routine 첫 실행 시 실제 데이터로 덮어쓰여집니다.",
+  "news": [
+    {
+      "title": "[SAMPLE] NVIDIA 차세대 Blackwell Ultra 양산 일정 앞당겨",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/sample",
+      "published": "2026-05-08T11:00:00Z",
+      "summary": "TSMC 협력으로 Blackwell Ultra 양산이 1분기 앞당겨질 전망",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "[SAMPLE] 하이퍼스케일러 3사 CapEx 가이던스 추가 상향",
+      "source": "WSJ",
+      "url": "https://www.wsj.com/sample",
+      "published": "2026-05-08T05:00:00Z",
+      "summary": "MSFT·GOOGL·AMZN 모두 AI 인프라 투자 추가 확대 발표",
+      "impact": "+",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "[SAMPLE] AMD MI400 출시 지연 보도",
+      "implication_for_target": "NVDA 시장 점유율 추가 확대 가능성"
+    }
+  ],
+  "scores": {
+    "earnings_outlook":      0.6,
+    "competitive_position":  0.5,
+    "regulatory_risk":       -0.1,
+    "macro_sensitivity":      0.4
+  },
+  "narrative_score": 0.35,
+  "summary_kr": "Blackwell Ultra 양산 가속과 하이퍼스케일러 CapEx 상향으로 강한 정성 신호.",
+  "key_events": ["Blackwell Ultra 일정 단축", "AI 인프라 CapEx 추가 상향"],
+  "risks": ["중국 수출 규제 강화 가능성"]
+}

@@ -10248,6 +10248,37 @@
         "fair_value": 470.4,
         "gap": -0.1055
       }
-    ]
+    ],
+    "qualitative": {
+      "as_of": "2026-05-08",
+      "narrative_score": -0.15,
+      "summary_kr": "Azure 성장 둔화 우려와 클라우드 경쟁사 가격 압박으로 정성 점수 마이너스.",
+      "key_events": [
+        "Azure 성장률 컨센서스 하회"
+      ],
+      "risks": [
+        "AI 인프라 마진 추가 악화",
+        "Google Cloud·AWS 경쟁 격화"
+      ],
+      "news_count": 1,
+      "competitor_context": [
+        {
+          "ticker": "GOOGL",
+          "headline": "[SAMPLE] Google Cloud TPU v6 발표, AI 추론 비용 30% 절감",
+          "implication_for_target": "MSFT Azure 가격 경쟁력 약화"
+        },
+        {
+          "ticker": "AMZN",
+          "headline": "[SAMPLE] AWS Bedrock 라이센스 모델 단순화",
+          "implication_for_target": "엔터프라이즈 AI 시장 점유 경쟁 격화"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-08",
+          "narrative_score": -0.15
+        }
+      ]
+    }
   }
 }

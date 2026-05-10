@@ -1413,7 +1413,7 @@ function renderStocksTab(data) {
     } else {
       for (const [ticker, payload] of Object.entries(stocks)) {
         if (!payload || !payload.series || payload.series.length === 0) continue;
-        stockHost.appendChild(renderStockCard(ticker, payload));
+        stockHost.appendChild(renderStockCard(ticker, payload, stocks));
       }
     }
   }
@@ -1422,7 +1422,7 @@ function renderStocksTab(data) {
   wireSectorNav("STOCKS");
 }
 
-function renderStockCard(ticker, payload) {
+function renderStockCard(ticker, payload, allStocks = null) {
   const meta   = STOCK_META[ticker] ?? { displayName: ticker, fullName: ticker, sector: "", color: "#9aa0a9", decimals: 2, business: "", moat: "" };
   const series = payload.series;
   const latest = series[series.length - 1];
@@ -1448,7 +1448,8 @@ function renderStockCard(ticker, payload) {
 
   const metricsHtml      = renderStockMetricsHtml(snapshot);
   const valuationBadge   = renderValuationBadgeHtml(valuation);
-  const valuationSection = renderValuationSectionHtml(valuation);
+  const peerCompareHtml  = renderPeerCompareHtml(ticker, valuation, allStocks);
+  const valuationSection = renderValuationSectionHtml(valuation, peerCompareHtml);
   const hasFinancials    = metricsHtml !== "" || quarterly.length > 0 || valuationSection !== "";
 
   const card = document.createElement("article");
@@ -1599,16 +1600,41 @@ function renderValuationBadgeHtml(val) {
   const meta = VALUATION_SIGNALS[val.signal] || VALUATION_SIGNALS.fair;
   const gapPct = (val.valuation_gap * 100);
   const sign = gapPct >= 0 ? "+" : "";
+  const qual = val.qualitative;
+  const narrative = qual && qual.narrative_score != null
+    ? renderNarrativeChipHtml(qual.narrative_score, qual.as_of)
+    : "";
   return `
-    <div class="valuation-badge" data-tone="${meta.tone}" title="현재가 대비 적정가치 갭 (음수=저평가, 양수=고평가)">
-      <span class="vb-label">${escapeHtml(meta.label)}</span>
-      <span class="vb-gap">${sign}${gapPct.toFixed(1)}%</span>
-      <span class="vb-fair">vs 적정 $${val.fair_value.toFixed(2)}</span>
+    <div class="valuation-badge-row">
+      <div class="valuation-badge" data-tone="${meta.tone}" title="현재가 대비 적정가치 갭 (음수=저평가, 양수=고평가)">
+        <span class="vb-label">${escapeHtml(meta.label)}</span>
+        <span class="vb-gap">${sign}${gapPct.toFixed(1)}%</span>
+        <span class="vb-fair">vs 적정 $${val.fair_value.toFixed(2)}</span>
+      </div>
+      ${narrative}
     </div>
   `;
 }
 
-function renderValuationSectionHtml(val) {
+function renderNarrativeChipHtml(score, asOf) {
+  // -1.0 (악화) ~ +1.0 (개선) — Routine 산출 정성 점수
+  const tone = score <= -0.2 ? "narr-neg-strong"
+             : score <  0    ? "narr-neg"
+             : score <  0.2  ? "narr-neutral"
+             : score <  0.5  ? "narr-pos"
+             :                  "narr-pos-strong";
+  const sign = score >= 0 ? "+" : "";
+  const dateLabel = asOf ? ` (${escapeHtml(asOf)})` : "";
+  return `
+    <div class="narrative-chip" data-tone="${tone}" title="Routine 정성 분석 점수${dateLabel}">
+      <span class="nc-icon" aria-hidden="true">📰</span>
+      <span class="nc-label">정성</span>
+      <span class="nc-score">${sign}${score.toFixed(2)}</span>
+    </div>
+  `;
+}
+
+function renderValuationSectionHtml(val, peerCompareHtml = "") {
   if (!val) return "";
   const hasMethods = val.methods && Object.keys(val.methods).length > 0;
   if (!hasMethods) {
@@ -1658,6 +1684,138 @@ function renderValuationSectionHtml(val) {
     ` : `
       <p class="valuation-note">분기 실적 누적 후 valuation gap 추이 차트가 표시됩니다.</p>
     `}
+    ${peerCompareHtml}
+    ${renderQualitativeBlockHtml(val.qualitative)}
+  `;
+}
+
+// 같은 watchlist 내 경쟁사들과 valuation gap 을 한 줄로 비교.
+// COMPETITORS 는 scripts/competitors.py 에 정의되어 index.json 에 포함될 수도
+// 있지만 페이지가 stocks 전체를 로드하므로 클라이언트에서 매핑.
+const PEER_COMPETITORS = {
+  AAPL:  ["MSFT", "GOOGL", "AMZN"],
+  MSFT:  ["AAPL", "GOOGL", "AMZN", "ORCL"],
+  GOOGL: ["MSFT", "META", "AMZN"],
+  AMZN:  ["MSFT", "GOOGL", "AAPL"],
+  NVDA:  [],
+  META:  ["GOOGL"],
+  ORCL:  ["MSFT"],
+  PLTR:  ["MSFT"],
+  TSLA:  [],
+};
+
+function renderPeerCompareHtml(ticker, val, allStocks) {
+  if (!val || val.valuation_gap == null || !allStocks) return "";
+  const peers = PEER_COMPETITORS[ticker] || [];
+  const present = peers
+    .map((p) => ({ ticker: p, payload: allStocks[p] }))
+    .filter((x) => x.payload && x.payload.valuation && x.payload.valuation.valuation_gap != null);
+
+  if (present.length === 0) return "";
+
+  // 자기 자신을 맨 앞에 두고, 경쟁사 정렬은 valuation_gap 오름차순(저평가 순)
+  const rows = [
+    { ticker, gap: val.valuation_gap, signal: val.signal, narr: val.qualitative?.narrative_score, self: true },
+    ...present
+      .map((x) => ({
+        ticker: x.ticker,
+        gap:    x.payload.valuation.valuation_gap,
+        signal: x.payload.valuation.signal,
+        narr:   x.payload.valuation.qualitative?.narrative_score,
+        self:   false,
+      }))
+      .sort((a, b) => a.gap - b.gap),
+  ];
+
+  const rowHtml = rows.map((r) => {
+    const meta = VALUATION_SIGNALS[r.signal] || VALUATION_SIGNALS.fair;
+    const gapPct = r.gap * 100;
+    const sign = gapPct >= 0 ? "+" : "";
+    const narrChip = r.narr != null
+      ? `<span class="peer-narr" data-sign="${r.narr >= 0 ? "pos" : "neg"}">${r.narr >= 0 ? "+" : ""}${r.narr.toFixed(2)}</span>`
+      : `<span class="peer-narr peer-narr-empty">—</span>`;
+    return `
+      <tr class="peer-row${r.self ? " peer-self" : ""}" data-tone="${meta.tone}">
+        <td class="peer-ticker">${escapeHtml(r.ticker)}${r.self ? '<span class="peer-self-mark">현재</span>' : ""}</td>
+        <td class="peer-gap">${sign}${gapPct.toFixed(1)}%</td>
+        <td class="peer-signal">${escapeHtml(meta.label)}</td>
+        <td class="peer-narr-cell">${narrChip}</td>
+      </tr>
+    `;
+  }).join("");
+
+  return `
+    <div class="section-title sub">경쟁사 비교 (watchlist 내)</div>
+    <table class="peer-table">
+      <thead>
+        <tr>
+          <th>종목</th>
+          <th>Gap</th>
+          <th>신호</th>
+          <th>정성</th>
+        </tr>
+      </thead>
+      <tbody>${rowHtml}</tbody>
+    </table>
+  `;
+}
+
+function renderQualitativeBlockHtml(qual) {
+  if (!qual) {
+    return `
+      <div class="section-title sub">정성 분석 (뉴스·경쟁사)</div>
+      <p class="valuation-note">Claude Code Routine이 매일 뉴스를 수집해 채워넣습니다. <code>.claude/routines/daily-market-analysis.md</code> 참고.</p>
+    `;
+  }
+
+  const score = qual.narrative_score;
+  const scorePct = score != null ? (score * 100).toFixed(0) : "—";
+  const summary = qual.summary_kr ? `<p class="qual-summary">${escapeHtml(qual.summary_kr)}</p>` : "";
+
+  const events = (qual.key_events || []).slice(0, 5);
+  const risks  = (qual.risks      || []).slice(0, 5);
+  const eventsHtml = events.length > 0 ? `
+    <div class="qual-list">
+      <div class="qual-list-title qual-event">주요 이벤트</div>
+      <ul>${events.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>
+    </div>
+  ` : "";
+  const risksHtml = risks.length > 0 ? `
+    <div class="qual-list">
+      <div class="qual-list-title qual-risk">리스크</div>
+      <ul>${risks.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
+    </div>
+  ` : "";
+
+  const competitors = (qual.competitor_context || []).slice(0, 4);
+  const competitorsHtml = competitors.length > 0 ? `
+    <div class="qual-competitor-block">
+      <div class="qual-list-title">경쟁사 동향</div>
+      <ul class="qual-competitor-list">
+        ${competitors.map((c) => `
+          <li>
+            <span class="qc-ticker">${escapeHtml(c.ticker || "")}</span>
+            <span class="qc-headline">${escapeHtml(c.headline || "")}</span>
+            ${c.implication_for_target ? `<div class="qc-implication">→ ${escapeHtml(c.implication_for_target)}</div>` : ""}
+          </li>
+        `).join("")}
+      </ul>
+    </div>
+  ` : "";
+
+  const asOfLabel = qual.as_of ? ` · ${escapeHtml(qual.as_of)} 기준` : "";
+
+  return `
+    <div class="section-title sub">정성 분석 (뉴스·경쟁사)${asOfLabel}</div>
+    <div class="qual-summary-row">
+      <div class="qual-score-pill" data-sign="${score >= 0 ? "pos" : "neg"}" title="Routine 산출 정성 점수 (-1.0 ~ +1.0)">
+        narrative_score <strong>${score >= 0 ? "+" : ""}${score != null ? score.toFixed(2) : "—"}</strong>
+        <span class="qual-news-count">뉴스 ${qual.news_count ?? 0}건</span>
+      </div>
+    </div>
+    ${summary}
+    <div class="qual-grid">${eventsHtml}${risksHtml}</div>
+    ${competitorsHtml}
   `;
 }
 
