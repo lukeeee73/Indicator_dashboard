@@ -1,0 +1,49 @@
+{
+  "ticker": "AAPL",
+  "date": "2026-05-08",
+  "as_of_utc": "2026-05-08T21:00:00Z",
+  "_sample": true,
+  "_note": "이 파일은 UI 검증용 샘플입니다. Routine 첫 실행 시 실제 데이터로 덮어쓰여집니다.",
+  "news": [
+    {
+      "title": "[SAMPLE] Apple Services 부문 매출 가이던스 상향 조정",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/sample",
+      "published": "2026-05-08T13:30:00Z",
+      "summary": "App Store·iCloud 등 Services 부문이 두 자릿수 성장세를 이어가며 FY2026 가이던스 상향",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "[SAMPLE] EU 디지털시장법 추가 과징금 가능성 보도",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/sample",
+      "published": "2026-05-08T09:15:00Z",
+      "summary": "EU 집행위가 App Store 결제 정책에 대해 추가 시정 명령 검토 중",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "[SAMPLE] Microsoft Copilot 라이선스 요금 인하 발표",
+      "implication_for_target": "AAPL Apple Intelligence 가격 정책에 압력"
+    },
+    {
+      "ticker": "GOOGL",
+      "headline": "[SAMPLE] Pixel 11 카메라·AI 기능 발표",
+      "implication_for_target": "iPhone 17 차별화 압박"
+    }
+  ],
+  "scores": {
+    "earnings_outlook":      0.4,
+    "competitive_position":  -0.1,
+    "regulatory_risk":       -0.3,
+    "macro_sensitivity":      0.0
+  },
+  "narrative_score": 0.0,
+  "summary_kr": "Services 호조로 펀더멘털은 견조하나, EU 규제 리스크와 경쟁 압박으로 단기 정성 점수는 중립.",
+  "key_events": ["Services 가이던스 상향", "EU 추가 과징금 검토"],
+  "risks": ["EU 규제 비용 확대", "Android 진영 AI 경쟁 격화"]
+}

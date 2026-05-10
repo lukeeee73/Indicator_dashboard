@@ -10108,5 +10108,178 @@
         "eps": 2.01
       }
     ]
+  },
+  "valuation": {
+    "as_of": "2026-05-07",
+    "current_price": 287.44,
+    "sector": "Technology",
+    "methods": {
+      "pe_benchmark": {
+        "fair_value": 231.0,
+        "weight": 5.0,
+        "note": "EPS_TTM × 섹터 P/E (28)"
+      },
+      "forward_pe_benchmark": {
+        "fair_value": 210.31,
+        "weight": 3.0,
+        "note": "내재 forward EPS × 섹터 Forward P/E (22)"
+      },
+      "graham_number": {
+        "fair_value": 33.37,
+        "weight": 2.0,
+        "note": "sqrt(22.5 × EPS × 주당순자산)"
+      }
+    },
+    "fair_value": 185.27,
+    "valuation_gap": 0.5515,
+    "signal": "expensive",
+    "gap_series_weekly": [
+      {
+        "date": "2026-01-02",
+        "price": 270.76,
+        "fair_value": 221.48,
+        "gap": 0.2225
+      },
+      {
+        "date": "2026-01-09",
+        "price": 259.13,
+        "fair_value": 221.48,
+        "gap": 0.17
+      },
+      {
+        "date": "2026-01-16",
+        "price": 255.29,
+        "fair_value": 221.48,
+        "gap": 0.1527
+      },
+      {
+        "date": "2026-01-23",
+        "price": 247.81,
+        "fair_value": 221.48,
+        "gap": 0.1189
+      },
+      {
+        "date": "2026-01-30",
+        "price": 259.24,
+        "fair_value": 221.48,
+        "gap": 0.1705
+      },
+      {
+        "date": "2026-02-06",
+        "price": 277.86,
+        "fair_value": 221.48,
+        "gap": 0.2546
+      },
+      {
+        "date": "2026-02-13",
+        "price": 255.78,
+        "fair_value": 221.48,
+        "gap": 0.1549
+      },
+      {
+        "date": "2026-02-20",
+        "price": 264.58,
+        "fair_value": 221.48,
+        "gap": 0.1946
+      },
+      {
+        "date": "2026-02-27",
+        "price": 264.18,
+        "fair_value": 221.48,
+        "gap": 0.1928
+      },
+      {
+        "date": "2026-03-06",
+        "price": 257.46,
+        "fair_value": 221.48,
+        "gap": 0.1625
+      },
+      {
+        "date": "2026-03-13",
+        "price": 250.12,
+        "fair_value": 221.48,
+        "gap": 0.1293
+      },
+      {
+        "date": "2026-03-20",
+        "price": 247.99,
+        "fair_value": 221.48,
+        "gap": 0.1197
+      },
+      {
+        "date": "2026-03-27",
+        "price": 248.8,
+        "fair_value": 221.48,
+        "gap": 0.1234
+      },
+      {
+        "date": "2026-04-02",
+        "price": 255.92,
+        "fair_value": 231.56,
+        "gap": 0.1052
+      },
+      {
+        "date": "2026-04-10",
+        "price": 260.48,
+        "fair_value": 231.56,
+        "gap": 0.1249
+      },
+      {
+        "date": "2026-04-17",
+        "price": 270.23,
+        "fair_value": 231.56,
+        "gap": 0.167
+      },
+      {
+        "date": "2026-04-24",
+        "price": 271.06,
+        "fair_value": 231.56,
+        "gap": 0.1706
+      },
+      {
+        "date": "2026-05-01",
+        "price": 280.14,
+        "fair_value": 231.56,
+        "gap": 0.2098
+      },
+      {
+        "date": "2026-05-07",
+        "price": 287.44,
+        "fair_value": 231.56,
+        "gap": 0.2413
+      }
+    ],
+    "qualitative": {
+      "as_of": "2026-05-08",
+      "narrative_score": 0.0,
+      "summary_kr": "Services 호조로 펀더멘털은 견조하나, EU 규제 리스크와 경쟁 압박으로 단기 정성 점수는 중립.",
+      "key_events": [
+        "Services 가이던스 상향",
+        "EU 추가 과징금 검토"
+      ],
+      "risks": [
+        "EU 규제 비용 확대",
+        "Android 진영 AI 경쟁 격화"
+      ],
+      "news_count": 2,
+      "competitor_context": [
+        {
+          "ticker": "MSFT",
+          "headline": "[SAMPLE] Microsoft Copilot 라이선스 요금 인하 발표",
+          "implication_for_target": "AAPL Apple Intelligence 가격 정책에 압력"
+        },
+        {
+          "ticker": "GOOGL",
+          "headline": "[SAMPLE] Pixel 11 카메라·AI 기능 발표",
+          "implication_for_target": "iPhone 17 차별화 압박"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-08",
+          "narrative_score": 0.0
+        }
+      ]
+    }
   }
 }

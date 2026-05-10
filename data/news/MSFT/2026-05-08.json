@@ -1,0 +1,40 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-05-08",
+  "as_of_utc": "2026-05-08T21:00:00Z",
+  "_sample": true,
+  "_note": "이 파일은 UI 검증용 샘플입니다. Routine 첫 실행 시 실제 데이터로 덮어쓰여집니다.",
+  "news": [
+    {
+      "title": "[SAMPLE] Azure AI 인프라 매출 YoY 성장률 둔화 우려",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/sample",
+      "published": "2026-05-08T16:00:00Z",
+      "summary": "Azure 성장률이 컨센서스 하회. AI 워크로드 마진 압박 보도",
+      "impact": "-",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "[SAMPLE] Google Cloud TPU v6 발표, AI 추론 비용 30% 절감",
+      "implication_for_target": "MSFT Azure 가격 경쟁력 약화"
+    },
+    {
+      "ticker": "AMZN",
+      "headline": "[SAMPLE] AWS Bedrock 라이센스 모델 단순화",
+      "implication_for_target": "엔터프라이즈 AI 시장 점유 경쟁 격화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook":      -0.3,
+    "competitive_position":  -0.2,
+    "regulatory_risk":        0.0,
+    "macro_sensitivity":     -0.1
+  },
+  "narrative_score": -0.15,
+  "summary_kr": "Azure 성장 둔화 우려와 클라우드 경쟁사 가격 압박으로 정성 점수 마이너스.",
+  "key_events": ["Azure 성장률 컨센서스 하회"],
+  "risks": ["AI 인프라 마진 추가 악화", "Google Cloud·AWS 경쟁 격화"]
+}

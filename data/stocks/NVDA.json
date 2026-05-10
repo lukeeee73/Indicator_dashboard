@@ -10108,5 +10108,226 @@
         "eps": 1.76
       }
     ]
+  },
+  "valuation": {
+    "as_of": "2026-05-07",
+    "current_price": 211.5,
+    "sector": "Technology",
+    "methods": {
+      "pe_benchmark": {
+        "fair_value": 137.48,
+        "weight": 5.0,
+        "note": "EPS_TTM × 섹터 P/E (28)"
+      },
+      "forward_pe_benchmark": {
+        "fair_value": 248.29,
+        "weight": 3.0,
+        "note": "내재 forward EPS × 섹터 Forward P/E (22)"
+      },
+      "graham_number": {
+        "fair_value": 26.74,
+        "weight": 2.0,
+        "note": "sqrt(22.5 × EPS × 주당순자산)"
+      }
+    },
+    "fair_value": 148.57,
+    "valuation_gap": 0.4235,
+    "signal": "expensive",
+    "gap_series_weekly": [
+      {
+        "date": "2025-10-31",
+        "price": 202.47,
+        "fair_value": 112.84,
+        "gap": 0.7943
+      },
+      {
+        "date": "2025-11-07",
+        "price": 188.13,
+        "fair_value": 112.84,
+        "gap": 0.6672
+      },
+      {
+        "date": "2025-11-14",
+        "price": 190.15,
+        "fair_value": 112.84,
+        "gap": 0.6851
+      },
+      {
+        "date": "2025-11-21",
+        "price": 178.86,
+        "fair_value": 112.84,
+        "gap": 0.5851
+      },
+      {
+        "date": "2025-11-28",
+        "price": 176.98,
+        "fair_value": 112.84,
+        "gap": 0.5684
+      },
+      {
+        "date": "2025-12-05",
+        "price": 182.4,
+        "fair_value": 112.84,
+        "gap": 0.6164
+      },
+      {
+        "date": "2025-12-12",
+        "price": 175.01,
+        "fair_value": 112.84,
+        "gap": 0.551
+      },
+      {
+        "date": "2025-12-19",
+        "price": 180.98,
+        "fair_value": 112.84,
+        "gap": 0.6039
+      },
+      {
+        "date": "2025-12-26",
+        "price": 190.52,
+        "fair_value": 112.84,
+        "gap": 0.6884
+      },
+      {
+        "date": "2026-01-02",
+        "price": 188.84,
+        "fair_value": 112.84,
+        "gap": 0.6735
+      },
+      {
+        "date": "2026-01-09",
+        "price": 184.85,
+        "fair_value": 112.84,
+        "gap": 0.6382
+      },
+      {
+        "date": "2026-01-16",
+        "price": 186.22,
+        "fair_value": 112.84,
+        "gap": 0.6503
+      },
+      {
+        "date": "2026-01-23",
+        "price": 187.66,
+        "fair_value": 112.84,
+        "gap": 0.6631
+      },
+      {
+        "date": "2026-01-30",
+        "price": 191.12,
+        "fair_value": 112.84,
+        "gap": 0.6937
+      },
+      {
+        "date": "2026-02-06",
+        "price": 185.4,
+        "fair_value": 137.2,
+        "gap": 0.3513
+      },
+      {
+        "date": "2026-02-13",
+        "price": 182.8,
+        "fair_value": 137.2,
+        "gap": 0.3324
+      },
+      {
+        "date": "2026-02-20",
+        "price": 189.81,
+        "fair_value": 137.2,
+        "gap": 0.3835
+      },
+      {
+        "date": "2026-02-27",
+        "price": 177.18,
+        "fair_value": 137.2,
+        "gap": 0.2914
+      },
+      {
+        "date": "2026-03-06",
+        "price": 177.81,
+        "fair_value": 137.2,
+        "gap": 0.296
+      },
+      {
+        "date": "2026-03-13",
+        "price": 180.25,
+        "fair_value": 137.2,
+        "gap": 0.3138
+      },
+      {
+        "date": "2026-03-20",
+        "price": 172.7,
+        "fair_value": 137.2,
+        "gap": 0.2587
+      },
+      {
+        "date": "2026-03-27",
+        "price": 167.52,
+        "fair_value": 137.2,
+        "gap": 0.221
+      },
+      {
+        "date": "2026-04-02",
+        "price": 177.39,
+        "fair_value": 137.2,
+        "gap": 0.2929
+      },
+      {
+        "date": "2026-04-10",
+        "price": 188.63,
+        "fair_value": 137.2,
+        "gap": 0.3749
+      },
+      {
+        "date": "2026-04-17",
+        "price": 201.68,
+        "fair_value": 137.2,
+        "gap": 0.47
+      },
+      {
+        "date": "2026-04-24",
+        "price": 208.27,
+        "fair_value": 137.2,
+        "gap": 0.518
+      },
+      {
+        "date": "2026-05-01",
+        "price": 198.45,
+        "fair_value": 137.2,
+        "gap": 0.4464
+      },
+      {
+        "date": "2026-05-07",
+        "price": 211.5,
+        "fair_value": 137.2,
+        "gap": 0.5415
+      }
+    ],
+    "qualitative": {
+      "as_of": "2026-05-08",
+      "narrative_score": 0.35,
+      "summary_kr": "Blackwell Ultra 양산 가속과 하이퍼스케일러 CapEx 상향으로 강한 정성 신호.",
+      "key_events": [
+        "Blackwell Ultra 일정 단축",
+        "AI 인프라 CapEx 추가 상향"
+      ],
+      "risks": [
+        "중국 수출 규제 강화 가능성"
+      ],
+      "news_count": 2,
+      "competitor_context": [
+        {
+          "ticker": "AMD",
+          "headline": "[SAMPLE] AMD MI400 출시 지연 보도",
+          "implication_for_target": "NVDA 시장 점유율 추가 확대 가능성"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-08",
+          "narrative_score": 0.35
+        }
+      ]
+    }
   }
 }

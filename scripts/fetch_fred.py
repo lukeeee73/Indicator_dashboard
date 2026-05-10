@@ -28,6 +28,9 @@ import pandas as pd
 import requests
 
 from analyze import enrich_with_assessment
+from valuation import enrich_stocks_with_valuation
+from merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
+from competitors import get_watchlist_competitors
 
 
 # --------------------------------------------------------------------------
@@ -770,13 +773,31 @@ def save_split_store(output: dict) -> None:
         })
 
     stock_index_entries: list[dict] = []
+    watchlist_set = set(stocks.keys())
     for code, payload in stocks.items():
         save_json(STOCKS_DIR / f"{code}.json", payload)
-        stock_index_entries.append({
+        entry = {
             "code":   code,
             "name":   payload.get("name"),
             "sector": payload.get("sector"),
-        })
+            "competitors_in_watchlist": get_watchlist_competitors(code, watchlist_set),
+        }
+        # valuation 블록이 있으면 요약 필드만 인덱스에 노출 (목록 카드용)
+        val = payload.get("valuation")
+        if val:
+            summary = {
+                "as_of":         val.get("as_of"),
+                "current_price": val.get("current_price"),
+                "fair_value":    val.get("fair_value"),
+                "valuation_gap": val.get("valuation_gap"),
+                "signal":        val.get("signal"),
+            }
+            qual = val.get("qualitative")
+            if qual:
+                summary["narrative_score"] = qual.get("narrative_score")
+                summary["qualitative_as_of"] = qual.get("as_of")
+            entry["valuation_summary"] = summary
+        stock_index_entries.append(entry)
 
     # 시장 지수 — ^ 접두사가 파일명에 부적합하므로 제거해서 저장하되 code 에는 보존.
     index_index_entries: list[dict] = []
@@ -950,6 +971,14 @@ def main() -> int:
     # 점수와 분면 판정(assessment) 을 최상위에 추가한다.
     print("\nAnalyzing (percentile / labels / quadrant)...", flush=True)
     enrich_with_assessment(output)
+
+    # 개별 종목에 valuation (fair value, gap, signal) 블록 주입
+    print("Computing stock valuation gaps...", flush=True)
+    enrich_stocks_with_valuation(output.get("stocks", {}) or {})
+
+    # data/news/ 의 정성 분석을 valuation.qualitative 로 병합 (Routine 결과)
+    print("Merging qualitative analysis from data/news/...", flush=True)
+    merge_qualitative_into_stocks(output.get("stocks", {}) or {})
 
     save_split_store(output)
 
