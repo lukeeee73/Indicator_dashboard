@@ -28,6 +28,7 @@ import pandas as pd
 import requests
 
 from analyze import enrich_with_assessment
+from valuation import enrich_stocks_with_valuation
 
 
 # --------------------------------------------------------------------------
@@ -772,11 +773,22 @@ def save_split_store(output: dict) -> None:
     stock_index_entries: list[dict] = []
     for code, payload in stocks.items():
         save_json(STOCKS_DIR / f"{code}.json", payload)
-        stock_index_entries.append({
+        entry = {
             "code":   code,
             "name":   payload.get("name"),
             "sector": payload.get("sector"),
-        })
+        }
+        # valuation 블록이 있으면 요약 필드만 인덱스에 노출 (목록 카드용)
+        val = payload.get("valuation")
+        if val:
+            entry["valuation_summary"] = {
+                "as_of":         val.get("as_of"),
+                "current_price": val.get("current_price"),
+                "fair_value":    val.get("fair_value"),
+                "valuation_gap": val.get("valuation_gap"),
+                "signal":        val.get("signal"),
+            }
+        stock_index_entries.append(entry)
 
     # 시장 지수 — ^ 접두사가 파일명에 부적합하므로 제거해서 저장하되 code 에는 보존.
     index_index_entries: list[dict] = []
@@ -950,6 +962,10 @@ def main() -> int:
     # 점수와 분면 판정(assessment) 을 최상위에 추가한다.
     print("\nAnalyzing (percentile / labels / quadrant)...", flush=True)
     enrich_with_assessment(output)
+
+    # 개별 종목에 valuation (fair value, gap, signal) 블록 주입
+    print("Computing stock valuation gaps...", flush=True)
+    enrich_stocks_with_valuation(output.get("stocks", {}) or {})
 
     save_split_store(output)
 

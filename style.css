@@ -555,6 +555,135 @@ section h2 {
   line-height: 1.45;
 }
 
+/* ---------- 주식 카드: Valuation 배지 (현재가 vs 적정가치 갭) ---------- */
+.valuation-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  cursor: help;
+}
+.valuation-badge .vb-label {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.valuation-badge .vb-gap {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.valuation-badge .vb-fair {
+  color: var(--text-dim);
+  font-size: 0.72rem;
+}
+.valuation-badge[data-tone="value-strong"] {
+  border-color: #2f7a48;
+  background: rgba(90, 205, 128, 0.14);
+}
+.valuation-badge[data-tone="value-strong"] .vb-label,
+.valuation-badge[data-tone="value-strong"] .vb-gap { color: #86efac; }
+
+.valuation-badge[data-tone="value"] {
+  border-color: #2c5d3b;
+  background: rgba(90, 205, 128, 0.08);
+}
+.valuation-badge[data-tone="value"] .vb-label,
+.valuation-badge[data-tone="value"] .vb-gap { color: #5acd80; }
+
+.valuation-badge[data-tone="fair"] {
+  border-color: var(--border-mid);
+  background: var(--bg-elev);
+}
+.valuation-badge[data-tone="fair"] .vb-label,
+.valuation-badge[data-tone="fair"] .vb-gap { color: var(--text); }
+
+.valuation-badge[data-tone="over"] {
+  border-color: #8a4a1f;
+  background: rgba(234, 145, 53, 0.10);
+}
+.valuation-badge[data-tone="over"] .vb-label,
+.valuation-badge[data-tone="over"] .vb-gap { color: #f59e0b; }
+
+.valuation-badge[data-tone="over-strong"] {
+  border-color: var(--red);
+  background: rgba(204, 36, 36, 0.14);
+}
+.valuation-badge[data-tone="over-strong"] .vb-label,
+.valuation-badge[data-tone="over-strong"] .vb-gap { color: var(--red-bright); }
+
+/* ---------- 주식 카드: Valuation 상세 섹션 ---------- */
+.valuation-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.55rem 0.7rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 5px;
+  margin-top: 0.2rem;
+}
+.vs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-variant-numeric: tabular-nums;
+}
+.vs-label  { font-size: 0.75rem; color: var(--text-dim); }
+.vs-value  { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+.vs-row.vs-fair .vs-value { color: var(--red-bright); }
+
+.method-table {
+  margin-top: 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.method-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.6rem;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.72rem;
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+  align-items: center;
+}
+.method-row:last-child { border-bottom: none; }
+.method-row.method-head {
+  background: var(--bg-elev);
+  color: var(--text-dim);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+.method-name   { color: var(--text-dim); line-height: 1.3; }
+.method-fair   { color: var(--text); font-weight: 600; min-width: 4.5rem; text-align: right; }
+.method-weight { color: var(--text-dim); min-width: 2.2rem; text-align: right; }
+.method-row.method-head .method-name,
+.method-row.method-head .method-fair,
+.method-row.method-head .method-weight { color: var(--text-dim); }
+
+.section-title.sub {
+  margin-top: 0.8rem;
+  font-size: 0.72rem;
+}
+.valuation-chart { height: 110px; }
+.valuation-note,
+.valuation-empty {
+  margin: 0.4rem 0 0;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  background: var(--bg-elev);
+  border-radius: var(--radius);
+}
+
 /* 분기 실적 차트 */
 .financials-header {
   margin-top: 0.4rem;

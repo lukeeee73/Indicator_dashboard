@@ -1444,9 +1444,12 @@ function renderStockCard(ticker, payload) {
   const financials = payload.financials || { snapshot: {}, quarterly: [] };
   const snapshot   = financials.snapshot || {};
   const quarterly  = financials.quarterly || [];
+  const valuation  = payload.valuation || null;
 
-  const metricsHtml = renderStockMetricsHtml(snapshot);
-  const hasFinancials = metricsHtml !== "" || quarterly.length > 0;
+  const metricsHtml      = renderStockMetricsHtml(snapshot);
+  const valuationBadge   = renderValuationBadgeHtml(valuation);
+  const valuationSection = renderValuationSectionHtml(valuation);
+  const hasFinancials    = metricsHtml !== "" || quarterly.length > 0 || valuationSection !== "";
 
   const card = document.createElement("article");
   card.className = "card stock-card";
@@ -1461,6 +1464,7 @@ function renderStockCard(ticker, payload) {
     </div>
     <p class="card-desc">${escapeHtml(meta.fullName)} · ${escapeHtml(meta.sector)}</p>
     ${meta.business ? `<p class="card-business">${escapeHtml(meta.business)}</p>` : ""}
+    ${valuationBadge}
 
     <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
     <div class="card-chart main-chart"><canvas></canvas></div>
@@ -1468,10 +1472,11 @@ function renderStockCard(ticker, payload) {
     ${hasFinancials ? `
       <div class="stock-details">
         <button type="button" class="details-toggle" aria-expanded="false">
-          <span class="details-toggle-label">재무 정보 보기</span>
+          <span class="details-toggle-label">상세 분석 보기</span>
           <span class="details-toggle-icon" aria-hidden="true">▾</span>
         </button>
         <div class="details-body" hidden>
+          ${valuationSection}
           ${metricsHtml}
           ${quarterly.length > 0 ? `
             <div class="section-title">분기 실적 (단위: $B)</div>
@@ -1513,23 +1518,27 @@ function renderStockCard(ticker, payload) {
 
   redraw();
 
-  // 재무 정보 토글 — 분기 차트는 펼쳐질 때 lazy 렌더 (hidden 상태에선 캔버스 크기 측정 불가)
+  // 상세 분석 토글 — 차트는 펼쳐질 때 lazy 렌더 (hidden 상태에선 캔버스 크기 측정 불가)
   const toggleBtn   = card.querySelector(".details-toggle");
   const detailsBody = card.querySelector(".details-body");
   if (toggleBtn && detailsBody) {
-    let financialsRendered = false;
+    let lazyRendered = false;
     toggleBtn.addEventListener("click", () => {
       const next = toggleBtn.getAttribute("aria-expanded") !== "true";
       toggleBtn.setAttribute("aria-expanded", String(next));
       detailsBody.hidden = !next;
       const labelEl = toggleBtn.querySelector(".details-toggle-label");
       const iconEl  = toggleBtn.querySelector(".details-toggle-icon");
-      if (labelEl) labelEl.textContent = next ? "재무 정보 숨기기" : "재무 정보 보기";
+      if (labelEl) labelEl.textContent = next ? "상세 분석 숨기기" : "상세 분석 보기";
       if (iconEl)  iconEl.textContent  = next ? "▴" : "▾";
-      if (next && !financialsRendered && quarterly.length > 0) {
+      if (next && !lazyRendered) {
         const finCanvas = card.querySelector(".financials-chart canvas");
-        if (finCanvas) renderFinancialsChart(finCanvas, quarterly);
-        financialsRendered = true;
+        if (finCanvas && quarterly.length > 0) renderFinancialsChart(finCanvas, quarterly);
+        const valCanvas = card.querySelector(".valuation-chart canvas");
+        if (valCanvas && valuation && (valuation.gap_series_weekly || []).length > 1) {
+          renderValuationGapChart(valCanvas, valuation.gap_series_weekly);
+        }
+        lazyRendered = true;
       }
     });
   }
@@ -1563,9 +1572,153 @@ function renderStockMetricsHtml(snap) {
     </div>
   `).join("");
   return `
+    <div class="section-title">핵심 지표</div>
     <div class="key-metrics">${items}</div>
     <p class="key-metrics-note">사업의 질(ROE·영업이익률) × 가격(P/E) — 거물 투자자가 가장 먼저 보는 4가지.</p>
   `;
+}
+
+// ─── Valuation (기업가치 vs 시장가격) ───────────────────────────────
+//   signal       라벨            색
+//   deep_value   강한 저평가     green-strong
+//   undervalued  저평가          green
+//   fair         적정            neutral
+//   overvalued   고평가          orange
+//   expensive    과대평가        red
+const VALUATION_SIGNALS = {
+  deep_value:  { label: "강한 저평가", tone: "value-strong" },
+  undervalued: { label: "저평가",     tone: "value" },
+  fair:        { label: "적정",       tone: "fair" },
+  overvalued:  { label: "고평가",     tone: "over" },
+  expensive:   { label: "과대평가",   tone: "over-strong" },
+  "n/a":       { label: "산출 불가",  tone: "fair" },
+};
+
+function renderValuationBadgeHtml(val) {
+  if (!val || val.valuation_gap == null || !val.signal) return "";
+  const meta = VALUATION_SIGNALS[val.signal] || VALUATION_SIGNALS.fair;
+  const gapPct = (val.valuation_gap * 100);
+  const sign = gapPct >= 0 ? "+" : "";
+  return `
+    <div class="valuation-badge" data-tone="${meta.tone}" title="현재가 대비 적정가치 갭 (음수=저평가, 양수=고평가)">
+      <span class="vb-label">${escapeHtml(meta.label)}</span>
+      <span class="vb-gap">${sign}${gapPct.toFixed(1)}%</span>
+      <span class="vb-fair">vs 적정 $${val.fair_value.toFixed(2)}</span>
+    </div>
+  `;
+}
+
+function renderValuationSectionHtml(val) {
+  if (!val) return "";
+  const hasMethods = val.methods && Object.keys(val.methods).length > 0;
+  if (!hasMethods) {
+    return `
+      <div class="section-title">기업가치 vs 시장가격</div>
+      <p class="valuation-empty">${escapeHtml(val.note || "fair value 산출 불가")}</p>
+    `;
+  }
+  const totalWeight = Object.values(val.methods).reduce((s, m) => s + (m.weight || 0), 0);
+  const methodRows = Object.entries(val.methods).map(([key, m]) => {
+    const w = totalWeight > 0 ? (m.weight / totalWeight * 100) : 0;
+    return `
+      <div class="method-row">
+        <div class="method-name">${escapeHtml(m.note || key)}</div>
+        <div class="method-fair">$${m.fair_value.toFixed(2)}</div>
+        <div class="method-weight">${w.toFixed(0)}%</div>
+      </div>
+    `;
+  }).join("");
+
+  const hasSeries = (val.gap_series_weekly || []).length > 1;
+
+  return `
+    <div class="section-title">기업가치 vs 시장가격</div>
+    <div class="valuation-summary">
+      <div class="vs-row">
+        <span class="vs-label">현재가</span>
+        <span class="vs-value">$${val.current_price.toFixed(2)}</span>
+      </div>
+      <div class="vs-row vs-fair">
+        <span class="vs-label">적정 가치 (composite)</span>
+        <span class="vs-value">$${val.fair_value.toFixed(2)}</span>
+      </div>
+    </div>
+    <div class="method-table">
+      <div class="method-row method-head">
+        <div class="method-name">산출 방법</div>
+        <div class="method-fair">적정가</div>
+        <div class="method-weight">가중</div>
+      </div>
+      ${methodRows}
+    </div>
+    ${hasSeries ? `
+      <div class="section-title sub">최근 valuation gap 추이 (주간)</div>
+      <div class="card-chart valuation-chart"><canvas></canvas></div>
+      <p class="valuation-note">분기 실적 데이터가 쌓일수록 추이가 길어집니다. 0% 선이 적정 가치이며, 양수=고평가·음수=저평가입니다.</p>
+    ` : `
+      <p class="valuation-note">분기 실적 누적 후 valuation gap 추이 차트가 표시됩니다.</p>
+    `}
+  `;
+}
+
+function renderValuationGapChart(canvas, gapSeries) {
+  if (!gapSeries || gapSeries.length === 0) return null;
+  const labels = gapSeries.map((p) => p.date);
+  const data   = gapSeries.map((p) => p.gap * 100);  // %
+  // 색은 부호별로 다르게 — 위는 빨강, 아래는 그린
+  const positiveColor = "rgba(204, 36, 36, 0.85)";
+  const negativeColor = "rgba(90, 205, 128, 0.85)";
+
+  return new Chart(canvas.getContext("2d"), {
+    type: "line",
+    data: {
+      labels,
+      datasets: [{
+        label: "Valuation gap (%)",
+        data,
+        borderColor: "#cc2424",
+        backgroundColor: "rgba(204, 36, 36, 0.08)",
+        borderWidth: 1.5,
+        fill: { target: { value: 0 }, above: "rgba(204, 36, 36, 0.10)", below: "rgba(90, 205, 128, 0.10)" },
+        pointRadius: 0,
+        tension: 0.2,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const v = ctx.parsed.y;
+              const d = gapSeries[ctx.dataIndex];
+              const sign = v >= 0 ? "+" : "";
+              return [
+                `Gap: ${sign}${v.toFixed(1)}%`,
+                `가격 $${d.price.toFixed(2)} · 적정 $${d.fair_value.toFixed(2)}`,
+              ];
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: { color: "#a0a0a0", font: { size: 10 }, maxTicksLimit: 6 },
+          grid: { display: false },
+        },
+        y: {
+          ticks: {
+            color: "#a0a0a0",
+            font: { size: 10 },
+            callback: (v) => `${v >= 0 ? "+" : ""}${v}%`,
+          },
+          grid: { color: "rgba(255,255,255,0.05)" },
+        },
+      },
+    },
+  });
 }
 
 // ─── 시장 지수 카드 ─────────────────────────────────────────────────
