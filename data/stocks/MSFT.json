@@ -5380,7 +5380,7 @@
     },
     {
       "date": "2021-09-09",
-      "value": 286.43
+      "value": 286.44
     },
     {
       "date": "2021-09-10",
@@ -7056,7 +7056,7 @@
     },
     {
       "date": "2023-05-10",
-      "value": 305.08
+      "value": 305.09
     },
     {
       "date": "2023-05-11",
@@ -8472,7 +8472,7 @@
     },
     {
       "date": "2024-10-07",
-      "value": 404.81
+      "value": 404.8
     },
     {
       "date": "2024-10-08",
@@ -10057,18 +10057,22 @@
     {
       "date": "2026-05-07",
       "value": 420.77
+    },
+    {
+      "date": "2026-05-08",
+      "value": 415.12
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 3125662449664.0,
-      "pe_ratio": 25.06075,
-      "forward_pe": 21.740118,
-      "eps_ttm": 16.79,
-      "dividend_yield": 0.87,
+      "market_cap": 3083246239744.0,
+      "pe_ratio": 24.750149,
+      "forward_pe": 21.445097,
+      "eps_ttm": 16.77,
+      "dividend_yield": 0.88,
       "profit_margin": 0.39341998,
       "operating_margin": 0.46326,
-      "price_to_book": 7.5437903,
+      "price_to_book": 7.441418,
       "return_on_equity": 0.34013999
     },
     "quarterly": [
@@ -10110,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-07",
-    "current_price": 420.77,
+    "as_of": "2026-05-08",
+    "current_price": 415.12,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 470.12,
+        "fair_value": 469.56,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 425.8,
+        "fair_value": 425.86,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 145.16,
+        "fair_value": 145.08,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 391.83,
-    "valuation_gap": 0.0739,
+    "fair_value": 391.55,
+    "valuation_gap": 0.0602,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10243,10 +10247,10 @@
         "gap": -0.119
       },
       {
-        "date": "2026-05-07",
-        "price": 420.77,
+        "date": "2026-05-08",
+        "price": 415.12,
         "fair_value": 470.4,
-        "gap": -0.1055
+        "gap": -0.1175
       }
     ],
     "qualitative": {

@@ -10057,18 +10057,22 @@
     {
       "date": "2026-05-07",
       "value": 411.79
+    },
+    {
+      "date": "2026-05-08",
+      "value": 428.35
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1546569515008.0,
-      "pe_ratio": 384.85046,
-      "forward_pe": 162.41875,
+      "market_cap": 1608764358656.0,
+      "pe_ratio": 400.3271,
+      "forward_pe": 170.38449,
       "eps_ttm": 1.07,
       "dividend_yield": null,
       "profit_margin": 0.03946,
       "operating_margin": 0.04203,
-      "price_to_book": 18.805773,
+      "price_to_book": 19.562042,
       "return_on_equity": 0.04901
     },
     "quarterly": [
@@ -10124,8 +10128,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-07",
-    "current_price": 411.79,
+    "as_of": "2026-05-08",
+    "current_price": 428.35,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10134,7 +10138,7 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 50.71,
+        "fair_value": 50.28,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
@@ -10144,8 +10148,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 33.18,
-    "valuation_gap": 11.4108,
+    "fair_value": 33.05,
+    "valuation_gap": 11.9603,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10257,10 +10261,10 @@
         "gap": 13.342
       },
       {
-        "date": "2026-05-07",
-        "price": 411.79,
+        "date": "2026-05-08",
+        "price": 428.35,
         "fair_value": 27.25,
-        "gap": 14.1116
+        "gap": 14.7193
       }
     ]
   }

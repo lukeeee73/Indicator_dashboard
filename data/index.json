@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-08T11:38:39Z",
+  "last_updated": "2026-05-11T11:56:40Z",
   "indicators": [
     {
       "code": "T10Y2Y",
@@ -7,10 +7,10 @@
       "unit": "percent",
       "category": "growth",
       "current": {
-        "value": 0.49,
-        "date": "2026-05-07",
-        "percentile_full": 38.3,
-        "percentile_10y": 54.0,
+        "value": 0.48,
+        "date": "2026-05-08",
+        "percentile_full": 37.8,
+        "percentile_10y": 53.1,
         "label_full": "low",
         "label_10y": "neutral"
       }
@@ -22,7 +22,7 @@
       "category": "inflation",
       "current": {
         "value": 2.45,
-        "date": "2026-05-07",
+        "date": "2026-05-08",
         "percentile_full": 85.6,
         "percentile_10y": 91.5,
         "label_full": "high",
@@ -105,10 +105,10 @@
       "unit": "percent",
       "category": "growth",
       "current": {
-        "value": 0.164,
-        "date": "2026-03-01",
-        "percentile_full": 20.3,
-        "percentile_10y": 12.0,
+        "value": 0.158,
+        "date": "2026-04-01",
+        "percentile_full": 20.4,
+        "percentile_10y": 12.8,
         "label_full": "low",
         "label_10y": "low"
       }
@@ -167,9 +167,9 @@
       "region": "KR",
       "exclude_assessment": true,
       "current": {
-        "value": 177.944,
+        "value": 189.963,
         "date": "2026-05-01",
-        "percentile_full": 99.0,
+        "percentile_full": 99.3,
         "percentile_10y": 99.6,
         "label_full": "high",
         "label_10y": "high"
@@ -182,10 +182,10 @@
       "category": "dollar",
       "exclude_assessment": true,
       "current": {
-        "value": 4.36,
-        "date": "2026-05-06",
-        "percentile_full": 37.4,
-        "percentile_10y": 91.4,
+        "value": 4.41,
+        "date": "2026-05-07",
+        "percentile_full": 38.1,
+        "percentile_10y": 93.0,
         "label_full": "low",
         "label_10y": "high"
       }
@@ -258,10 +258,10 @@
       "unit": "percent",
       "category": "inflation",
       "current": {
-        "value": 2.29,
-        "date": "2026-05-07",
-        "percentile_full": 50.6,
-        "percentile_10y": 80.8,
+        "value": 2.28,
+        "date": "2026-05-08",
+        "percentile_full": 49.1,
+        "percentile_10y": 78.5,
         "label_full": "neutral",
         "label_10y": "high"
       }
@@ -370,147 +370,147 @@
       "code": "AAPL",
       "name": "Apple Inc.",
       "sector": "Technology",
-      "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 287.44,
-        "fair_value": 185.27,
-        "valuation_gap": 0.5515,
-        "signal": "expensive",
-        "narrative_score": 0.0,
-        "qualitative_as_of": "2026-05-08"
-      },
       "competitors_in_watchlist": [
         "MSFT",
         "GOOGL",
         "AMZN"
-      ]
+      ],
+      "valuation_summary": {
+        "as_of": "2026-05-08",
+        "current_price": 293.32,
+        "fair_value": 186.24,
+        "valuation_gap": 0.575,
+        "signal": "expensive",
+        "narrative_score": 0.0,
+        "qualitative_as_of": "2026-05-08"
+      }
     },
     {
       "code": "NVDA",
       "name": "NVIDIA Corporation",
       "sector": "Technology",
+      "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 211.5,
+        "as_of": "2026-05-08",
+        "current_price": 215.2,
         "fair_value": 148.57,
-        "valuation_gap": 0.4235,
+        "valuation_gap": 0.4485,
         "signal": "expensive",
         "narrative_score": 0.35,
         "qualitative_as_of": "2026-05-08"
-      },
-      "competitors_in_watchlist": []
+      }
     },
     {
       "code": "TSLA",
       "name": "Tesla Inc.",
       "sector": "Consumer Discretionary",
+      "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 411.79,
-        "fair_value": 33.18,
-        "valuation_gap": 11.4108,
+        "as_of": "2026-05-08",
+        "current_price": 428.35,
+        "fair_value": 33.05,
+        "valuation_gap": 11.9603,
         "signal": "expensive"
-      },
-      "competitors_in_watchlist": []
+      }
     },
     {
       "code": "META",
       "name": "Meta Platforms Inc.",
       "sector": "Communication Services",
-      "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 616.81,
-        "fair_value": 505.76,
-        "valuation_gap": 0.2196,
-        "signal": "expensive"
-      },
       "competitors_in_watchlist": [
         "GOOGL"
-      ]
+      ],
+      "valuation_summary": {
+        "as_of": "2026-05-08",
+        "current_price": 609.63,
+        "fair_value": 508.19,
+        "valuation_gap": 0.1996,
+        "signal": "overvalued"
+      }
     },
     {
       "code": "MSFT",
       "name": "Microsoft Corporation",
       "sector": "Technology",
-      "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 420.77,
-        "fair_value": 391.83,
-        "valuation_gap": 0.0739,
-        "signal": "overvalued",
-        "narrative_score": -0.15,
-        "qualitative_as_of": "2026-05-08"
-      },
       "competitors_in_watchlist": [
         "AAPL",
         "GOOGL",
         "AMZN",
         "ORCL"
-      ]
+      ],
+      "valuation_summary": {
+        "as_of": "2026-05-08",
+        "current_price": 415.12,
+        "fair_value": 391.55,
+        "valuation_gap": 0.0602,
+        "signal": "overvalued",
+        "narrative_score": -0.15,
+        "qualitative_as_of": "2026-05-08"
+      }
     },
     {
       "code": "GOOGL",
       "name": "Alphabet Inc.",
       "sector": "Communication Services",
-      "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 397.99,
-        "fair_value": 224.79,
-        "valuation_gap": 0.7705,
-        "signal": "expensive"
-      },
       "competitors_in_watchlist": [
         "MSFT",
         "META",
         "AMZN"
-      ]
+      ],
+      "valuation_summary": {
+        "as_of": "2026-05-08",
+        "current_price": 400.8,
+        "fair_value": 225.02,
+        "valuation_gap": 0.7812,
+        "signal": "expensive"
+      }
     },
     {
       "code": "AMZN",
       "name": "Amazon.com Inc.",
       "sector": "Consumer Discretionary",
-      "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 271.17,
-        "fair_value": 181.17,
-        "valuation_gap": 0.4968,
-        "signal": "expensive"
-      },
       "competitors_in_watchlist": [
         "MSFT",
         "GOOGL",
         "AAPL"
-      ]
+      ],
+      "valuation_summary": {
+        "as_of": "2026-05-08",
+        "current_price": 272.68,
+        "fair_value": 181.44,
+        "valuation_gap": 0.5028,
+        "signal": "expensive"
+      }
     },
     {
       "code": "ORCL",
       "name": "Oracle Corporation",
       "sector": "Technology",
-      "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 194.59,
-        "fair_value": 138.64,
-        "valuation_gap": 0.4035,
-        "signal": "expensive"
-      },
       "competitors_in_watchlist": [
         "MSFT"
-      ]
+      ],
+      "valuation_summary": {
+        "as_of": "2026-05-08",
+        "current_price": 195.95,
+        "fair_value": 138.5,
+        "valuation_gap": 0.4148,
+        "signal": "expensive"
+      }
     },
     {
       "code": "PLTR",
       "name": "Palantir Technologies",
       "sector": "Technology",
-      "valuation_summary": {
-        "as_of": "2026-05-07",
-        "current_price": 137.05,
-        "fair_value": 27.44,
-        "valuation_gap": 3.9942,
-        "signal": "expensive"
-      },
       "competitors_in_watchlist": [
         "MSFT"
-      ]
+      ],
+      "valuation_summary": {
+        "as_of": "2026-05-08",
+        "current_price": 137.8,
+        "fair_value": 27.77,
+        "valuation_gap": 3.9624,
+        "signal": "expensive"
+      }
     }
   ],
   "indices": [
@@ -537,15 +537,15 @@
   ],
   "assessment": {
     "full": {
-      "growth_score": 41.0,
-      "inflation_score": 71.9,
+      "growth_score": 40.9,
+      "inflation_score": 71.7,
       "growth_label": "neutral",
       "inflation_label": "high",
       "quadrant": "Q1/Q3-edge"
     },
     "rolling_10y": {
-      "growth_score": 47.2,
-      "inflation_score": 78.8,
+      "growth_score": 47.1,
+      "inflation_score": 78.5,
       "growth_label": "neutral",
       "inflation_label": "high",
       "quadrant": "Q1/Q3-edge"
@@ -639,7 +639,7 @@
       },
       {
         "date": "2025-10-31",
-        "growth_score": 27.9,
+        "growth_score": 28.0,
         "inflation_score": 48.8
       },
       {
@@ -650,11 +650,11 @@
       {
         "date": "2025-12-31",
         "growth_score": 31.4,
-        "inflation_score": 48.6
+        "inflation_score": 48.5
       },
       {
         "date": "2026-01-31",
-        "growth_score": 26.9,
+        "growth_score": 27.0,
         "inflation_score": 49.4
       },
       {
@@ -669,19 +669,19 @@
       },
       {
         "date": "2026-04-30",
-        "growth_score": 65.3,
+        "growth_score": 50.4,
         "inflation_score": 75.8
       },
       {
         "date": "2026-05-31",
-        "growth_score": 63.2,
-        "inflation_score": 77.4
+        "growth_score": 62.9,
+        "inflation_score": 76.9
       }
     ]
   },
   "assessment_kr": {
     "full": {
-      "growth_score": 66.2,
+      "growth_score": 66.4,
       "inflation_score": 35.8,
       "growth_label": "high",
       "inflation_label": "low",

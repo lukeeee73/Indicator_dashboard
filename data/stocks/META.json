@@ -1444,7 +1444,7 @@
     },
     {
       "date": "2017-10-11",
-      "value": 171.4
+      "value": 171.39
     },
     {
       "date": "2017-10-12",
@@ -3080,7 +3080,7 @@
     },
     {
       "date": "2019-05-30",
-      "value": 181.58
+      "value": 181.59
     },
     {
       "date": "2019-05-31",
@@ -10057,18 +10057,22 @@
     {
       "date": "2026-05-07",
       "value": 616.81
+    },
+    {
+      "date": "2026-05-08",
+      "value": 609.63
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1565724901376.0,
-      "pe_ratio": 22.4213,
-      "forward_pe": 17.04556,
-      "eps_ttm": 27.51,
+      "market_cap": 1547498946560.0,
+      "pe_ratio": 22.176428,
+      "forward_pe": 16.847143,
+      "eps_ttm": 27.49,
       "dividend_yield": 0.34,
       "profit_margin": 0.32837,
       "operating_margin": 0.40617,
-      "price_to_book": 7.1833186,
+      "price_to_book": 6.3494525,
       "return_on_equity": 0.32930002
     },
     "quarterly": [
@@ -10117,12 +10121,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-07",
-    "current_price": 616.81,
+    "as_of": "2026-05-08",
+    "current_price": 609.63,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 550.2,
+        "fair_value": 549.8,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10132,14 +10136,14 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 230.54,
+        "fair_value": 243.69,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 505.76,
-    "valuation_gap": 0.2196,
-    "signal": "expensive",
+    "fair_value": 508.19,
+    "valuation_gap": 0.1996,
+    "signal": "overvalued",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10250,10 +10254,10 @@
         "gap": 0.1064
       },
       {
-        "date": "2026-05-07",
-        "price": 616.81,
+        "date": "2026-05-08",
+        "price": 609.63,
         "fair_value": 550.2,
-        "gap": 0.1211
+        "gap": 0.108
       }
     ]
   }
