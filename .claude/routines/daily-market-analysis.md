@@ -142,28 +142,37 @@
 
 ### 6. Git commit & push
 
+항상 고정 브랜치 `claude/news-daily` 하나만 사용한다.
+브랜치가 없으면 자동으로 생성된다.
+
 작업 완료 후 다음 명령으로 커밋:
 ```bash
 git add data/news/ data/stocks/*.json
 git commit -m "chore(news): daily qualitative analysis ($(date -u +%Y-%m-%d))"
-git push origin claude/stock-valuation-tracker-uv3D8
+git push origin claude/news-daily
 ```
 
 만약 변경된 파일이 없으면 (예: 모든 ticker가 빈 뉴스) 커밋하지 않는다.
 
-### 7. Pull Request 생성
+### 7. Pull Request 생성 또는 스킵
 
 커밋 & 푸시가 성공한 경우에만 실행한다.
-`mcp__github__create_pull_request` 도구를 사용해 PR을 생성한다:
 
-- **repo**: `lukeeee73/indicator_dashboard`
-- **title**: `chore(news): daily qualitative analysis (YYYY-MM-DD)` (오늘 날짜)
-- **head**: `claude/stock-valuation-tracker-uv3D8`
-- **base**: `main`
-- **body**: 다음 형식으로 작성:
+**먼저** `mcp__github__list_pull_requests`로 `claude/news-daily` → `main` 방향의
+열린 PR이 있는지 확인한다.
+
+- **PR이 이미 열려 있으면**: 아무것도 하지 않는다.
+  푸시한 커밋이 자동으로 기존 PR에 반영되어 있다.
+
+- **PR이 없으면**: `mcp__github__create_pull_request`로 새 PR을 생성한다:
+  - **repo**: `lukeeee73/indicator_dashboard`
+  - **title**: `chore(news): daily qualitative analysis (YYYY-MM-DD ~)` (시작 날짜 ~ 열린 채로 누적됨을 표시)
+  - **head**: `claude/news-daily`
+  - **base**: `main`
+  - **body**: 다음 형식으로 작성:
 
 ```
-## Daily Market Analysis — YYYY-MM-DD
+## Daily Market Analysis
 
 ### 처리된 종목
 각 ticker별로 수집된 뉴스 건수와 narrative_score를 표로 정리:
@@ -179,10 +188,9 @@ git push origin claude/stock-valuation-tracker-uv3D8
 ### 변경 파일
 - data/news/{TICKER}/YYYY-MM-DD.json (9개)
 - data/stocks/*.json (qualitative 블록 갱신)
-```
 
-이미 같은 날짜의 PR이 열려 있으면 새로 만들지 않는다.
-(`mcp__github__list_pull_requests`로 확인 후 진행)
+> 이 PR은 머지 전까지 매일 자동으로 커밋이 추가됩니다.
+```
 
 ---
 
