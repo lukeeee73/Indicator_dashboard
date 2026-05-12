@@ -151,6 +151,39 @@ git push origin claude/stock-valuation-tracker-uv3D8
 
 만약 변경된 파일이 없으면 (예: 모든 ticker가 빈 뉴스) 커밋하지 않는다.
 
+### 7. Pull Request 생성
+
+커밋 & 푸시가 성공한 경우에만 실행한다.
+`mcp__github__create_pull_request` 도구를 사용해 PR을 생성한다:
+
+- **repo**: `lukeeee73/indicator_dashboard`
+- **title**: `chore(news): daily qualitative analysis (YYYY-MM-DD)` (오늘 날짜)
+- **head**: `claude/stock-valuation-tracker-uv3D8`
+- **base**: `main`
+- **body**: 다음 형식으로 작성:
+
+```
+## Daily Market Analysis — YYYY-MM-DD
+
+### 처리된 종목
+각 ticker별로 수집된 뉴스 건수와 narrative_score를 표로 정리:
+
+| Ticker | 뉴스 건수 | narrative_score |
+|--------|-----------|-----------------|
+| AAPL   | 3         | +0.10           |
+| ...    | ...       | ...             |
+
+### 주요 이슈
+오늘 가장 큰 이슈 2~3개를 bullet point로 요약 (한국어)
+
+### 변경 파일
+- data/news/{TICKER}/YYYY-MM-DD.json (9개)
+- data/stocks/*.json (qualitative 블록 갱신)
+```
+
+이미 같은 날짜의 PR이 열려 있으면 새로 만들지 않는다.
+(`mcp__github__list_pull_requests`로 확인 후 진행)
+
 ---
 
 ## 안전 가이드라인
