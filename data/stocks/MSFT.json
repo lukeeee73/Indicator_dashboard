@@ -10254,32 +10254,42 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-08",
+      "as_of": "2026-05-14",
       "narrative_score": -0.15,
-      "summary_kr": "Azure 성장 둔화 우려와 클라우드 경쟁사 가격 압박으로 정성 점수 마이너스.",
+      "summary_kr": "MSFT는 영국 CMA 반독점 조사 개시로 규제 리스크가 크게 부각. LinkedIn 구조조정은 비용 효율화로 해석되나, Google Cloud·AWS의 가속 성장이 Azure 경쟁 환경을 압박 중.",
       "key_events": [
-        "Azure 성장률 컨센서스 하회"
+        "영국 CMA 반독점 조사 개시",
+        "LinkedIn 인력 감축",
+        "전 EY CEO 이사회 합류"
       ],
       "risks": [
-        "AI 인프라 마진 추가 악화",
-        "Google Cloud·AWS 경쟁 격화"
+        "UK·EU 규제 확대 가능성",
+        "Google Cloud·AWS 성장 가속에 따른 Azure 점유율 방어 과제"
       ],
-      "news_count": 1,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "GOOGL",
-          "headline": "[SAMPLE] Google Cloud TPU v6 발표, AI 추론 비용 30% 절감",
-          "implication_for_target": "MSFT Azure 가격 경쟁력 약화"
+          "headline": "Alphabet Q1 2026: Google Cloud revenue surges 63% YoY to $20B",
+          "implication_for_target": "Google Cloud 폭발적 성장으로 Azure와의 클라우드 경쟁 심화"
         },
         {
           "ticker": "AMZN",
-          "headline": "[SAMPLE] AWS Bedrock 라이센스 모델 단순화",
-          "implication_for_target": "엔터프라이즈 AI 시장 점유 경쟁 격화"
+          "headline": "AWS Q1 2026 revenue up 28% YoY — fastest growth in 15 quarters",
+          "implication_for_target": "클라우드 1위 AWS 재가속, Microsoft Azure 점유율 방어에 걸림돌"
         }
       ],
       "history": [
         {
           "date": "2026-05-08",
+          "narrative_score": -0.15
+        },
+        {
+          "date": "2026-05-13",
+          "narrative_score": -0.1
+        },
+        {
+          "date": "2026-05-14",
           "narrative_score": -0.15
         }
       ]
