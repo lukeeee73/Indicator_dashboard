@@ -308,61 +308,133 @@ ASSETS: dict[str, dict] = {
 # 한국 상장 종목은 Yahoo Finance 의 ".KS" 접미사를 사용한다 (예: 329180.KS).
 # 가격은 KRW 단위이므로 app.js STOCK_META 에서 currency: "KRW" 로 표시한다.
 STOCKS: dict[str, dict] = {
-    # ── 빅테크 / AI 플랫폼 ─────────────────────────────────────────────
-    "AAPL":  {"name": "Apple Inc.",                      "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
-    "MSFT":  {"name": "Microsoft Corporation",           "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
-    "GOOGL": {"name": "Alphabet Inc.",                   "sector": "Communication Services", "group": "빅테크 / AI 플랫폼"},
-    "AMZN":  {"name": "Amazon.com Inc.",                 "sector": "Consumer Discretionary", "group": "빅테크 / AI 플랫폼"},
-    "META":  {"name": "Meta Platforms Inc.",             "sector": "Communication Services", "group": "빅테크 / AI 플랫폼"},
-    "ORCL":  {"name": "Oracle Corporation",              "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
-    "PLTR":  {"name": "Palantir Technologies",           "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
-
-    # ── 반도체 ────────────────────────────────────────────────────────
-    "NVDA":  {"name": "NVIDIA Corporation",              "sector": "Technology",             "group": "반도체"},
-    "AMD":   {"name": "Advanced Micro Devices",          "sector": "Technology",             "group": "반도체"},
-    "TSM":   {"name": "Taiwan Semiconductor",            "sector": "Technology",             "group": "반도체"},
-    "AVGO":  {"name": "Broadcom Inc.",                   "sector": "Technology",             "group": "반도체"},
-
-    # ── 자동차 / 모빌리티 ─────────────────────────────────────────────
-    "TSLA":  {"name": "Tesla Inc.",                      "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
-
-    # ── 바이오 / 제약 / 헬스케어 ──────────────────────────────────────
-    "LLY":   {"name": "Eli Lilly and Company",           "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
-    "NVO":   {"name": "Novo Nordisk A/S",                "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
-    "JNJ":   {"name": "Johnson & Johnson",               "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
-    "UNH":   {"name": "UnitedHealth Group",              "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
-
-    # ── 에너지 / 원자재 ───────────────────────────────────────────────
-    "XOM":   {"name": "Exxon Mobil Corporation",         "sector": "Energy",                 "group": "에너지 / 원자재"},
-    "FCX":   {"name": "Freeport-McMoRan Inc.",           "sector": "Materials",              "group": "에너지 / 원자재"},
-    "NEM":   {"name": "Newmont Corporation",             "sector": "Materials",              "group": "에너지 / 원자재"},
-
-    # ── 금융 ──────────────────────────────────────────────────────────
-    "JPM":   {"name": "JPMorgan Chase & Co.",            "sector": "Financial Services",     "group": "금융"},
-    "V":     {"name": "Visa Inc.",                       "sector": "Financial Services",     "group": "금융"},
-    "BRK-B": {"name": "Berkshire Hathaway Inc. (Class B)", "sector": "Financial Services",   "group": "금융"},
-
-    # ── 소비재 (Consumer Staples) ─────────────────────────────────────
-    "WMT":   {"name": "Walmart Inc.",                    "sector": "Consumer Staples",       "group": "소비재"},
-    "COST":  {"name": "Costco Wholesale",                "sector": "Consumer Staples",       "group": "소비재"},
-    "KO":    {"name": "The Coca-Cola Company",           "sector": "Consumer Staples",       "group": "소비재"},
-
-    # ── 산업재 / 방산 ─────────────────────────────────────────────────
-    "CAT":   {"name": "Caterpillar Inc.",                "sector": "Industrials",            "group": "산업재 / 방산"},
-    "BA":    {"name": "The Boeing Company",              "sector": "Industrials",            "group": "산업재 / 방산"},
-    "LMT":   {"name": "Lockheed Martin Corporation",     "sector": "Industrials",            "group": "산업재 / 방산"},
-
-    # ── 부동산 (REITs) ────────────────────────────────────────────────
-    "AMT":   {"name": "American Tower Corporation",      "sector": "Real Estate",            "group": "부동산 (REITs)"},
-    "PLD":   {"name": "Prologis, Inc.",                  "sector": "Real Estate",            "group": "부동산 (REITs)"},
-    "EQIX":  {"name": "Equinix, Inc.",                   "sector": "Real Estate",            "group": "부동산 (REITs)"},
-
-    # ── 조선 (한국 상장) ──────────────────────────────────────────────
-    "329180.KS": {"name": "HD Hyundai Heavy Industries", "sector": "Industrials",            "group": "조선 (한국)"},
-    "042660.KS": {"name": "Hanwha Ocean Co., Ltd.",      "sector": "Industrials",            "group": "조선 (한국)"},
+    # ── 빅테크 / 소프트웨어 ─────────────────────────────────────
+    "AAPL":   {"name": "Apple Inc.",                      "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
+    "MSFT":   {"name": "Microsoft Corporation",           "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
+    "GOOGL":  {"name": "Alphabet Inc.",                   "sector": "Communication Services", "group": "빅테크 / 소프트웨어"},
+    "AMZN":   {"name": "Amazon.com Inc.",                 "sector": "Consumer Discretionary", "group": "빅테크 / 소프트웨어"},
+    "META":   {"name": "Meta Platforms Inc.",             "sector": "Communication Services", "group": "빅테크 / 소프트웨어"},
+    "ORCL":   {"name": "Oracle Corporation",              "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
+    "CRM":    {"name": "Salesforce, Inc.",                "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
+    "ADBE":   {"name": "Adobe Inc.",                      "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
+    "IBM":    {"name": "International Business Machines", "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
+    "PLTR":   {"name": "Palantir Technologies Inc.",      "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
+    # ── 반도체 ─────────────────────────────────────
+    "NVDA":  {"name": "NVIDIA Corporation",        "sector": "Technology", "group": "반도체"},
+    "AMD":   {"name": "Advanced Micro Devices",    "sector": "Technology", "group": "반도체"},
+    "INTC":  {"name": "Intel Corporation",         "sector": "Technology", "group": "반도체"},
+    "QCOM":  {"name": "QUALCOMM Incorporated",     "sector": "Technology", "group": "반도체"},
+    "TSM":   {"name": "Taiwan Semiconductor Mfg.", "sector": "Technology", "group": "반도체"},
+    "ASML":  {"name": "ASML Holding N.V.",         "sector": "Technology", "group": "반도체"},
+    "AMAT":  {"name": "Applied Materials, Inc.",   "sector": "Technology", "group": "반도체"},
+    "LRCX":  {"name": "Lam Research Corp.",        "sector": "Technology", "group": "반도체"},
+    "AVGO":  {"name": "Broadcom Inc.",             "sector": "Technology", "group": "반도체"},
+    "MU":    {"name": "Micron Technology, Inc.",   "sector": "Technology", "group": "반도체"},
+    # ── 자동차 / 모빌리티 ─────────────────────────────────────
+    "TSLA":       {"name": "Tesla Inc.",               "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "TM":         {"name": "Toyota Motor Corporation", "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "F":          {"name": "Ford Motor Company",       "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "GM":         {"name": "General Motors Company",   "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "STLA":       {"name": "Stellantis N.V.",          "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "HMC":        {"name": "Honda Motor Co., Ltd.",    "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "RIVN":       {"name": "Rivian Automotive, Inc.",  "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "NIO":        {"name": "NIO Inc.",                 "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "005380.KS":  {"name": "Hyundai Motor Company",    "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    "000270.KS":  {"name": "Kia Corporation",          "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+    # ── 바이오 / 제약 / 헬스케어 ─────────────────────────────────────
+    "LLY":   {"name": "Eli Lilly and Company",    "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "NVO":   {"name": "Novo Nordisk A/S",         "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "JNJ":   {"name": "Johnson & Johnson",        "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "PFE":   {"name": "Pfizer Inc.",              "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "MRK":   {"name": "Merck & Co., Inc.",        "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "ABBV":  {"name": "AbbVie Inc.",              "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "AZN":   {"name": "AstraZeneca PLC",          "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "UNH":   {"name": "UnitedHealth Group",       "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "TMO":   {"name": "Thermo Fisher Scientific", "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    "ABT":   {"name": "Abbott Laboratories",      "sector": "Healthcare", "group": "바이오 / 제약 / 헬스케어"},
+    # ── 에너지 / 원자재 ─────────────────────────────────────
+    "XOM":   {"name": "Exxon Mobil Corporation",  "sector": "Energy",    "group": "에너지 / 원자재"},
+    "CVX":   {"name": "Chevron Corporation",      "sector": "Energy",    "group": "에너지 / 원자재"},
+    "COP":   {"name": "ConocoPhillips",           "sector": "Energy",    "group": "에너지 / 원자재"},
+    "SHEL":  {"name": "Shell plc",                "sector": "Energy",    "group": "에너지 / 원자재"},
+    "OXY":   {"name": "Occidental Petroleum",     "sector": "Energy",    "group": "에너지 / 원자재"},
+    "SLB":   {"name": "Schlumberger Limited",     "sector": "Energy",    "group": "에너지 / 원자재"},
+    "FCX":   {"name": "Freeport-McMoRan Inc.",    "sector": "Materials", "group": "에너지 / 원자재"},
+    "NEM":   {"name": "Newmont Corporation",      "sector": "Materials", "group": "에너지 / 원자재"},
+    "LIN":   {"name": "Linde plc",                "sector": "Materials", "group": "에너지 / 원자재"},
+    "APD":   {"name": "Air Products & Chemicals", "sector": "Materials", "group": "에너지 / 원자재"},
+    # ── 금융 ─────────────────────────────────────
+    "JPM":    {"name": "JPMorgan Chase & Co.",              "sector": "Financial Services", "group": "금융"},
+    "BAC":    {"name": "Bank of America Corp.",             "sector": "Financial Services", "group": "금융"},
+    "WFC":    {"name": "Wells Fargo & Company",             "sector": "Financial Services", "group": "금융"},
+    "C":      {"name": "Citigroup Inc.",                    "sector": "Financial Services", "group": "금융"},
+    "GS":     {"name": "The Goldman Sachs Group",           "sector": "Financial Services", "group": "금융"},
+    "MS":     {"name": "Morgan Stanley",                    "sector": "Financial Services", "group": "금융"},
+    "V":      {"name": "Visa Inc.",                         "sector": "Financial Services", "group": "금융"},
+    "MA":     {"name": "Mastercard Incorporated",           "sector": "Financial Services", "group": "금융"},
+    "AXP":    {"name": "American Express Company",          "sector": "Financial Services", "group": "금융"},
+    "BRK-B":  {"name": "Berkshire Hathaway Inc. (Class B)", "sector": "Financial Services", "group": "금융"},
+    # ── 소비재 ─────────────────────────────────────
+    "WMT":   {"name": "Walmart Inc.",           "sector": "Consumer Staples",       "group": "소비재"},
+    "COST":  {"name": "Costco Wholesale",       "sector": "Consumer Staples",       "group": "소비재"},
+    "KO":    {"name": "The Coca-Cola Company",  "sector": "Consumer Staples",       "group": "소비재"},
+    "PEP":   {"name": "PepsiCo, Inc.",          "sector": "Consumer Staples",       "group": "소비재"},
+    "PG":    {"name": "Procter & Gamble Co.",   "sector": "Consumer Staples",       "group": "소비재"},
+    "MO":    {"name": "Altria Group, Inc.",     "sector": "Consumer Staples",       "group": "소비재"},
+    "MCD":   {"name": "McDonald's Corporation", "sector": "Consumer Discretionary", "group": "소비재"},
+    "HD":    {"name": "The Home Depot, Inc.",   "sector": "Consumer Discretionary", "group": "소비재"},
+    "NKE":   {"name": "NIKE, Inc.",             "sector": "Consumer Discretionary", "group": "소비재"},
+    "SBUX":  {"name": "Starbucks Corporation",  "sector": "Consumer Discretionary", "group": "소비재"},
+    # ── 산업재 / 방산 ─────────────────────────────────────
+    "CAT":  {"name": "Caterpillar Inc.",        "sector": "Industrials", "group": "산업재 / 방산"},
+    "DE":   {"name": "Deere & Company",         "sector": "Industrials", "group": "산업재 / 방산"},
+    "BA":   {"name": "The Boeing Company",      "sector": "Industrials", "group": "산업재 / 방산"},
+    "LMT":  {"name": "Lockheed Martin Corp.",   "sector": "Industrials", "group": "산업재 / 방산"},
+    "RTX":  {"name": "RTX Corporation",         "sector": "Industrials", "group": "산업재 / 방산"},
+    "NOC":  {"name": "Northrop Grumman Corp.",  "sector": "Industrials", "group": "산업재 / 방산"},
+    "HON":  {"name": "Honeywell International", "sector": "Industrials", "group": "산업재 / 방산"},
+    "GE":   {"name": "GE Aerospace",            "sector": "Industrials", "group": "산업재 / 방산"},
+    "UPS":  {"name": "United Parcel Service",   "sector": "Industrials", "group": "산업재 / 방산"},
+    "FDX":  {"name": "FedEx Corporation",       "sector": "Industrials", "group": "산업재 / 방산"},
+    # ── 부동산 (REITs) ─────────────────────────────────────
+    "AMT":   {"name": "American Tower Corporation", "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "CCI":   {"name": "Crown Castle Inc.",          "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "PLD":   {"name": "Prologis, Inc.",             "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "EQIX":  {"name": "Equinix, Inc.",              "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "DLR":   {"name": "Digital Realty Trust",       "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "O":     {"name": "Realty Income Corporation",  "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "SPG":   {"name": "Simon Property Group",       "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "WELL":  {"name": "Welltower Inc.",             "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "PSA":   {"name": "Public Storage",             "sector": "Real Estate", "group": "부동산 (REITs)"},
+    "VICI":  {"name": "VICI Properties Inc.",       "sector": "Real Estate", "group": "부동산 (REITs)"},
+    # ── 통신 / 미디어 ─────────────────────────────────────
+    "VZ":     {"name": "Verizon Communications",  "sector": "Communication Services", "group": "통신 / 미디어"},
+    "T":      {"name": "AT&T Inc.",               "sector": "Communication Services", "group": "통신 / 미디어"},
+    "TMUS":   {"name": "T-Mobile US, Inc.",       "sector": "Communication Services", "group": "통신 / 미디어"},
+    "CMCSA":  {"name": "Comcast Corporation",     "sector": "Communication Services", "group": "통신 / 미디어"},
+    "CHTR":   {"name": "Charter Communications",  "sector": "Communication Services", "group": "통신 / 미디어"},
+    "NFLX":   {"name": "Netflix, Inc.",           "sector": "Communication Services", "group": "통신 / 미디어"},
+    "DIS":    {"name": "The Walt Disney Company", "sector": "Communication Services", "group": "통신 / 미디어"},
+    "SPOT":   {"name": "Spotify Technology S.A.", "sector": "Communication Services", "group": "통신 / 미디어"},
+    "EA":     {"name": "Electronic Arts Inc.",    "sector": "Communication Services", "group": "통신 / 미디어"},
+    "TTWO":   {"name": "Take-Two Interactive",    "sector": "Communication Services", "group": "통신 / 미디어"},
+    # ── 유틸리티 / 전력 ─────────────────────────────────────
+    "NEE":  {"name": "NextEra Energy, Inc.",    "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "SO":   {"name": "The Southern Company",    "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "DUK":  {"name": "Duke Energy Corporation", "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "AEP":  {"name": "American Electric Power", "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "EXC":  {"name": "Exelon Corporation",      "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "CEG":  {"name": "Constellation Energy",    "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "VST":  {"name": "Vistra Corp.",            "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "SRE":  {"name": "Sempra",                  "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "ED":   {"name": "Consolidated Edison",     "sector": "Utilities", "group": "유틸리티 / 전력"},
+    "D":    {"name": "Dominion Energy, Inc.",   "sector": "Utilities", "group": "유틸리티 / 전력"},
+    # ── 조선 (한국) ─────────────────────────────────────
+    "329180.KS":  {"name": "HD Hyundai Heavy Industries", "sector": "Industrials", "group": "조선 (한국)"},
+    "042660.KS":  {"name": "Hanwha Ocean Co., Ltd.",      "sector": "Industrials", "group": "조선 (한국)"},
+    "010140.KS":  {"name": "Samsung Heavy Industries",    "sector": "Industrials", "group": "조선 (한국)"},
+    "010620.KS":  {"name": "HD Hyundai Mipo Dockyard",    "sector": "Industrials", "group": "조선 (한국)"},
 }
-
-
 # --------------------------------------------------------------------------
 # 시장 지수 정의
 # --------------------------------------------------------------------------

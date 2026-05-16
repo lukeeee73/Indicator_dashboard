@@ -6,17 +6,49 @@
 누적한다.
 
 > 이 루틴은 **종목 목록이 늘어도 그대로 작동**하도록 일반화되어 있다.
-> 종목·섹터를 추가/변경하려면 다음 두 파일만 수정하면 된다:
+> 종목·섹터·요일 매핑은 다음 단일 파일에서 관리한다:
 >
-> - `scripts/fetch_fred.py` 의 `STOCKS` 딕셔너리 (티커·정식명·섹터·그룹)
-> - `scripts/competitors.py` 의 `COMPETITORS` 딕셔너리 (경쟁사 매핑)
+> - `scripts/watchlist_data.py` — `STOCKS` / `COMPETITORS` / `GROUPS` /
+>   `DAY_OF_WEEK_SECTORS` 의 단일 진실 공급원
 >
-> 루틴은 위 설정의 결과물인 `data/index.json` 의 `stocks[]` 배열을 **유일한
-> 진실 공급원**으로 삼는다. 코드를 따로 고칠 필요는 없다.
+> 편집 후 `python scripts/gen_watchlist.py` 를 한 번 실행하면 다음 파일들이
+> 일관되게 재생성된다:
+>   - `scripts/fetch_fred.py` 의 `STOCKS`
+>   - `scripts/competitors.py` 의 `COMPETITORS`
+>   - `app.js` 의 `STOCK_META` / `STOCK_GROUPS` / `PEER_COMPETITORS`
+>
+> 루틴은 그 결과물인 `data/index.json` 의 `stocks[]` 배열을 watchlist 의
+> 진실 공급원으로 사용한다.
 
 ---
 
-## 0. Watchlist 로딩 (루틴 시작 시 1회)
+## 0. 요일별 섹터 라운드로빈 (NEW)
+
+watchlist 가 100+ 종목으로 커졌으므로, 한 번에 전부 처리하지 않고 **요일별로
+배정된 섹터만** 처리한다. 매핑은 `scripts/watchlist_data.py` 의
+`DAY_OF_WEEK_SECTORS` 에 정의되어 있다 (월=0, ..., 일=6):
+
+| 요일 | 처리 섹터 |
+|---|---|
+| 월요일 | 빅테크 / 소프트웨어 |
+| 화요일 | 반도체 |
+| 수요일 | 자동차 / 모빌리티, 조선 (한국) |
+| 목요일 | 바이오 / 제약 / 헬스케어 |
+| 금요일 | 에너지 / 원자재, 유틸리티 / 전력 |
+| 토요일 | 금융, 부동산 (REITs) |
+| 일요일 | 소비재, 산업재 / 방산, 통신 / 미디어 |
+
+**실행 시 흐름:**
+
+1. UTC 기준 오늘의 요일 (`datetime.utcnow().weekday()`) 확인
+2. `DAY_OF_WEEK_SECTORS[weekday]` 에서 오늘 처리할 섹터 리스트 얻기
+3. `data/index.json` 의 `stocks[]` 중 `group` 이 위 리스트에 포함된 종목만 필터링
+4. 나머지 섹터는 **건드리지 않는다** (기존 qualitative 블록·뉴스 그대로 유지)
+
+> 사용자가 수동으로 다른 섹터를 추가 실행하고 싶을 때는 routine 호출 시
+> "오늘은 추가로 X 섹터도 처리해줘" 라고 자연어로 지시할 수 있다.
+
+## 0.5 Watchlist 로딩
 
 ```
 data/index.json 의 stocks[] 배열을 읽는다.
@@ -241,34 +273,35 @@ git push origin claude/news-daily
   - **title**: `chore(news): daily qualitative analysis (YYYY-MM-DD ~)`
   - **head**: `claude/news-daily`
   - **base**: `main`
-  - **body**: 다음 형식으로 작성 (섹터별로 묶어서 보기 좋게):
+  - **body**: 다음 형식으로 작성. 오늘 처리한 섹터만 포함한다 (요일 라운드로빈):
 
 ```markdown
-## Daily Market Analysis
+## Daily Market Analysis — {요일} ({처리한 섹터들})
 
-### 처리된 종목 (섹터별)
+### 처리된 종목
 
-#### 빅테크 / AI 플랫폼
+#### {오늘의 섹터 1}
 | Ticker | 뉴스 건수 | narrative_score |
 |--------|-----------|-----------------|
 | AAPL   | 3         | +0.10           |
 | ...    | ...       | ...             |
 
-#### 반도체
-| Ticker | 뉴스 건수 | narrative_score |
+#### {오늘의 섹터 2}  (해당 요일에 2개 섹터가 배정된 경우만)
 ...
 
-(나머지 섹터들도 같은 형식으로)
+> 다른 섹터는 다른 요일에 처리됨 — `.claude/routines/daily-market-analysis.md`
+> 의 요일별 라운드로빈 표 참고.
 
 ### 주요 이슈
 오늘 가장 큰 이슈 2~3개를 bullet point 로 요약 (한국어). 가능하면 섹터
 연쇄 효과 (예: "NVDA 가이던스 상향 → 반도체 섹터 동조 상승") 도 표기.
 
 ### 변경 파일
-- data/news/{TICKER}/YYYY-MM-DD.json (N 개)
-- data/stocks/*.json (qualitative 블록 갱신)
+- data/news/{TICKER}/YYYY-MM-DD.json (N 개, 오늘 섹터만)
+- data/stocks/*.json (해당 섹터 종목의 qualitative 블록 갱신)
 
 > 이 PR 은 머지 전까지 매일 자동으로 커밋이 추가됩니다.
+> 7일에 한 번 모든 섹터가 한 바퀴 돕니다.
 ```
 
 ---
@@ -311,25 +344,41 @@ git push origin claude/news-daily
 
 ## 종목·섹터 추가 가이드 (사람용)
 
-새 종목을 watchlist 에 추가하고 싶다면:
+새 종목·섹터를 watchlist 에 추가하고 싶다면, **`scripts/watchlist_data.py`
+단 한 파일만** 편집한다:
 
-1. **`scripts/fetch_fred.py` 의 `STOCKS` 딕셔너리에 한 줄 추가**
+1. **`scripts/watchlist_data.py` 의 `STOCKS` 리스트에 한 줄 추가**
    ```python
-   "TICKER": {"name": "Full Name", "sector": "GICS Sector", "group": "한국어 그룹"},
+   ("TICKER", "Full Name", "GICS Sector EN", "한국어 그룹",
+    "한국어 섹터 부제", "#color", decimals, "USD"|"KRW",
+    "초보자도 이해 가능한 사업 모델 한 줄 설명"),
    ```
-   - `sector` 는 `scripts/valuation.py` 의 `SECTOR_PE_BENCHMARK` 키 중 하나
-     (Technology / Healthcare / Energy / ... )
-   - `group` 은 `app.js` 의 `STOCK_GROUPS` 키와 일치해야 카드가 묶여 표시됨.
+   - `GICS Sector EN` 은 `scripts/valuation.py` 의 `SECTOR_PE_BENCHMARK`
+     키 중 하나 (Technology / Healthcare / Energy / Materials / ...).
+   - `한국어 그룹` 은 `GROUPS` 리스트에 정의된 그룹명과 일치해야 함.
+     새 그룹을 만들고 싶으면 `GROUPS` 에 한 줄 추가 + `DAY_OF_WEEK_SECTORS`
+     에서 어떤 요일에 처리할지 배정.
 
-2. **`scripts/competitors.py` 의 `COMPETITORS` 에 경쟁사 목록 추가**
+2. **`scripts/watchlist_data.py` 의 `COMPETITORS` 에 경쟁사 목록 추가**
+   (watchlist 내 종목 + 일부 외부 peer 모두 OK)
 
-3. **`app.js` 의 `STOCK_META` 에 한 줄 추가** (displayName / business / color
-   / currency 등 UI 메타데이터)
+3. **재생성 명령 실행**
+   ```bash
+   python scripts/gen_watchlist.py
+   ```
+   이 한 줄이 다음을 모두 갱신한다:
+   - `scripts/fetch_fred.py` 의 `STOCKS`
+   - `scripts/competitors.py` 의 `COMPETITORS`
+   - `app.js` 의 `STOCK_META` / `STOCK_GROUPS` / `PEER_COMPETITORS`
 
-4. **`Luke_wiki/wiki/news/{TICKER}.md` 신규 생성** (기존 파일 복사)
-   + `_dashboard.md` 표에 행 추가
+4. **Luke_wiki 의 `wiki/news/{TICKER}.md` 신규 생성**
+   루틴이 다음 실행에서 자동으로 만들어주지만, 미리 만들어두고 싶다면
+   기존 파일(예: `wiki/news/AAPL.md`) 을 복사해 frontmatter 의 ticker /
+   subtitle 만 바꾼다. `_dashboard.md` 표 행도 해당 섹터 헤더 아래에
+   추가한다 (없으면 루틴이 자동 추가).
 
 5. 다음 주간 GitHub Actions 실행 (`update.yml`) 이 자동으로 종목 데이터를
-   채워준다. 그 이후 첫 daily routine 실행이 뉴스를 누적하기 시작한다.
+   채워준다. 그 이후 첫 daily routine 실행이 (해당 종목의 요일 차례에)
+   뉴스를 누적하기 시작한다.
 
 루틴 자체는 이 모든 단계를 마치고 나면 코드 수정 없이 새 종목을 인식한다.
