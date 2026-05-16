@@ -202,18 +202,159 @@ const INDICATOR_META = {
   },
 };
 
-// 개별 종목 UI 메타데이터. business 는 한 줄 사업 모델 요약.
+// 개별 종목 UI 메타데이터.
+//   - displayName / fullName: 카드 상단 표시명
+//   - sector:   카드 부제 (한국어, 사업 모델 한 줄)
+//   - group:    상위 섹터 묶음 헤더 (fetch_fred.py STOCKS 의 group 과 동일)
+//   - color:    차트 라인 색
+//   - decimals: 가격 소수점 자릿수 (KRW 등 정수 단위는 0)
+//   - currency: "USD" (기본) | "KRW" — 가격 prefix·valuation 표시에 사용
+//   - business: 초보자도 이해할 수 있는 사업 모델 한 줄 설명
 const STOCK_META = {
-  AAPL:  { displayName: "Apple",            fullName: "Apple Inc.",                  sector: "기술 (하드웨어 + 서비스)",      color: "#9aa0a9", decimals: 2, business: "아이폰·맥 등 하드웨어와 앱스토어·iCloud 같은 서비스. 매출 절반이 아이폰." },
-  MSFT:  { displayName: "Microsoft",        fullName: "Microsoft Corporation",       sector: "기술 (소프트웨어 + 클라우드)",  color: "#00a4ef", decimals: 2, business: "Windows·Office 라이선스 + 클라우드 Azure. OpenAI 투자로 AI 선두권." },
-  GOOGL: { displayName: "Alphabet (Google)", fullName: "Alphabet Inc.",              sector: "통신 서비스 (광고 + 클라우드)", color: "#4285f4", decimals: 2, business: "구글 검색·유튜브 광고가 매출의 약 75%. 클라우드(GCP)·자율주행(Waymo) 보유." },
-  AMZN:  { displayName: "Amazon",           fullName: "Amazon.com Inc.",             sector: "소매 + 클라우드",               color: "#ff9900", decimals: 2, business: "전자상거래는 매출 大·마진 얇음. 클라우드 AWS는 영업이익의 절반 이상." },
-  NVDA:  { displayName: "NVIDIA",           fullName: "NVIDIA Corporation",          sector: "기술 (반도체)",                 color: "#76b900", decimals: 2, business: "AI 학습용 GPU 시장 사실상 독점. 매출 80%+가 데이터센터." },
-  META:  { displayName: "Meta",             fullName: "Meta Platforms Inc.",         sector: "통신 서비스 (광고)",             color: "#0082fb", decimals: 2, business: "페이스북·인스타·왓츠앱 광고가 매출의 약 98%. VR에 대규모 투자 중." },
-  ORCL:  { displayName: "Oracle",           fullName: "Oracle Corporation",          sector: "기술 (데이터베이스 + 클라우드)", color: "#f80000", decimals: 2, business: "기업용 DB 절대 강자. 최근 AI용 GPU 클라우드(OCI)에 공격적 투자." },
-  PLTR:  { displayName: "Palantir",         fullName: "Palantir Technologies Inc.",  sector: "기술 (AI 데이터 분석)",         color: "#000000", decimals: 2, business: "정부·기업 데이터 분석 SW. 매출 절반 이상이 미국 정부 계약." },
-  TSLA:  { displayName: "Tesla",            fullName: "Tesla Inc.",                  sector: "자동차 + 에너지",                color: "#cc0000", decimals: 2, business: "전기차 매출 위주. 에너지 저장·자율주행(FSD)·로봇(Optimus) 개발 중." },
+  // ── 빅테크 / 소프트웨어 ─────────────────────────────────────
+  AAPL: { displayName: "Apple", fullName: "Apple Inc.", group: "빅테크 / 소프트웨어", sector: "기술 (하드웨어 + 서비스)", color: "#9aa0a9", decimals: 2, currency: "USD", business: "아이폰·맥 등 하드웨어와 앱스토어·iCloud 같은 서비스. 매출 절반이 아이폰. 전 세계 가장 비싼 회사 (시총 1위권)." },
+  MSFT: { displayName: "Microsoft", fullName: "Microsoft Corporation", group: "빅테크 / 소프트웨어", sector: "기술 (소프트웨어 + 클라우드)", color: "#00a4ef", decimals: 2, currency: "USD", business: "Windows·Office 라이선스 + 클라우드 Azure. 기업 SW 시장 절대강자. OpenAI 투자로 AI 시장 선두권." },
+  GOOGL: { displayName: "Alphabet (Google)", fullName: "Alphabet Inc.", group: "빅테크 / 소프트웨어", sector: "통신 서비스 (광고 + 클라우드)", color: "#4285f4", decimals: 2, currency: "USD", business: "구글 검색·유튜브 광고가 매출의 약 75%. 클라우드(GCP)·자율주행(Waymo)·생성형 AI(Gemini) 보유." },
+  AMZN: { displayName: "Amazon", fullName: "Amazon.com Inc.", group: "빅테크 / 소프트웨어", sector: "전자상거래 + 클라우드", color: "#ff9900", decimals: 2, currency: "USD", business: "세계 최대 전자상거래. 클라우드(AWS)는 매출 비중 작지만 영업이익의 절반 이상을 책임진다." },
+  META: { displayName: "Meta", fullName: "Meta Platforms Inc.", group: "빅테크 / 소프트웨어", sector: "통신 서비스 (광고)", color: "#0082fb", decimals: 2, currency: "USD", business: "페이스북·인스타·왓츠앱 광고가 매출의 약 98%. VR(Quest)·AI 인프라에 대규모 투자 중." },
+  ORCL: { displayName: "Oracle", fullName: "Oracle Corporation", group: "빅테크 / 소프트웨어", sector: "기술 (데이터베이스 + 클라우드)", color: "#f80000", decimals: 2, currency: "USD", business: "기업용 데이터베이스 절대강자. 최근 AI용 GPU 클라우드(OCI)에 공격 투자." },
+  CRM: { displayName: "Salesforce", fullName: "Salesforce, Inc.", group: "빅테크 / 소프트웨어", sector: "B2B SaaS CRM 1위", color: "#00a1e0", decimals: 2, currency: "USD", business: "기업용 SaaS·CRM(고객관리) 1위. Slack·Tableau 등 인수로 확장. 'No Software' 슬로건의 클라우드 SW 대표주." },
+  ADBE: { displayName: "Adobe", fullName: "Adobe Inc.", group: "빅테크 / 소프트웨어", sector: "크리에이티브 소프트웨어", color: "#ff0000", decimals: 2, currency: "USD", business: "포토샵·일러스트레이터·PDF(Acrobat) 절대 강자. 디자이너·마케터 표준 도구. 구독 전환 성공 사례." },
+  IBM: { displayName: "IBM", fullName: "International Business Machines", group: "빅테크 / 소프트웨어", sector: "전통 엔터프라이즈 IT", color: "#0530ad", decimals: 2, currency: "USD", business: "100년+ 역사의 엔터프라이즈 IT. 메인프레임·컨설팅(IBM Consulting)·하이브리드 클라우드(Red Hat 인수)." },
+  PLTR: { displayName: "Palantir", fullName: "Palantir Technologies Inc.", group: "빅테크 / 소프트웨어", sector: "정부·기업 데이터 분석 SW", color: "#cbd5e1", decimals: 2, currency: "USD", business: "정부·기업 데이터 분석 SW. 미국 국방·정보기관 핵심 공급사. AI 플랫폼 AIP 로 민간 확장 중." },
+  // ── 반도체 ─────────────────────────────────────
+  NVDA: { displayName: "NVIDIA", fullName: "NVIDIA Corporation", group: "반도체", sector: "AI 학습용 GPU 사실상 독점", color: "#76b900", decimals: 2, currency: "USD", business: "AI 학습용 GPU 시장 점유율 90%+. 매출 80% 이상이 데이터센터. ChatGPT 이후 AI 인프라 투자 최대 수혜주." },
+  AMD: { displayName: "AMD", fullName: "Advanced Micro Devices", group: "반도체", sector: "CPU + GPU 종합 반도체", color: "#ed1c24", decimals: 2, currency: "USD", business: "CPU·GPU 동시 공급. NVIDIA 의 거의 유일한 AI 칩 경쟁자. 서버 CPU(EPYC)로 Intel 점유율 잠식 중." },
+  INTC: { displayName: "Intel", fullName: "Intel Corporation", group: "반도체", sector: "x86 CPU 전통 강자", color: "#0071c5", decimals: 2, currency: "USD", business: "x86 CPU 전통 절대강자였으나 AMD·ARM 에 밀려 점유율 하락. 미국 정부 CHIPS 보조금 최대 수혜자." },
+  QCOM: { displayName: "Qualcomm", fullName: "QUALCOMM Incorporated", group: "반도체", sector: "스마트폰 모뎀·SoC 1위", color: "#3253dc", decimals: 2, currency: "USD", business: "스마트폰 통신 모뎀·AP(Snapdragon) 글로벌 1위. 안드로이드 진영 핵심. 자동차·IoT 로 확장." },
+  TSM: { displayName: "TSMC", fullName: "Taiwan Semiconductor Mfg.", group: "반도체", sector: "세계 1위 파운드리 (위탁생산)", color: "#d11919", decimals: 2, currency: "USD", business: "세계 1위 반도체 파운드리. 애플·NVIDIA·AMD 핵심 칩을 거의 다 제조. 3nm 이하 첨단공정 사실상 독점." },
+  ASML: { displayName: "ASML", fullName: "ASML Holding N.V.", group: "반도체", sector: "노광장비 (EUV) 글로벌 독점", color: "#0091da", decimals: 2, currency: "USD", business: "반도체 미세공정의 핵심 노광장비 (EUV) 글로벌 독점 (네덜란드). 1대 약 4억 달러. 한국·대만·중국이 큰 고객." },
+  AMAT: { displayName: "Applied Materials", fullName: "Applied Materials, Inc.", group: "반도체", sector: "반도체 장비 종합 1위", color: "#0095da", decimals: 2, currency: "USD", business: "반도체 장비 종합 1위 (식각·증착 등). 메모리·로직 모든 공정에 폭넓게 공급. 반도체 capex 사이클의 거울." },
+  LRCX: { displayName: "Lam Research", fullName: "Lam Research Corp.", group: "반도체", sector: "반도체 장비 (식각·증착)", color: "#10b981", decimals: 2, currency: "USD", business: "반도체 식각·증착 장비 강자. 메모리(DRAM·NAND) 공정에 특히 강세. 한국 삼성·SK 가 큰 고객." },
+  AVGO: { displayName: "Broadcom", fullName: "Broadcom Inc.", group: "반도체", sector: "통신·네트워크 칩 + 인프라 SW", color: "#e60024", decimals: 2, currency: "USD", business: "통신·네트워크용 맞춤형 칩 + VMware 인수로 인프라 SW까지 확장. AI 데이터센터 네트워킹 핵심." },
+  MU: { displayName: "Micron", fullName: "Micron Technology, Inc.", group: "반도체", sector: "메모리 (DRAM·NAND) 3강", color: "#00a85b", decimals: 2, currency: "USD", business: "메모리(DRAM·NAND) 글로벌 3강(삼성·SK·마이크론). AI 가속기에 필수인 HBM(고대역폭 메모리) 시장 진입." },
+  // ── 자동차 / 모빌리티 ─────────────────────────────────────
+  TSLA: { displayName: "Tesla", fullName: "Tesla Inc.", group: "자동차 / 모빌리티", sector: "전기차 + 에너지 + 자율주행", color: "#cc0000", decimals: 2, currency: "USD", business: "전기차 매출 위주. 에너지 저장(Megapack)·자율주행(FSD)·로봇(Optimus) 개발 중. CEO 일론 머스크 영향력 큼." },
+  TM: { displayName: "Toyota", fullName: "Toyota Motor Corporation", group: "자동차 / 모빌리티", sector: "글로벌 1위 완성차", color: "#eb0a1e", decimals: 2, currency: "USD", business: "글로벌 판매량 1위 완성차 (일본). 하이브리드(프리우스) 강자. EV 전환은 상대적으로 보수적." },
+  F: { displayName: "Ford", fullName: "Ford Motor Company", group: "자동차 / 모빌리티", sector: "미국 빅3 (Ford F-150)", color: "#003478", decimals: 2, currency: "USD", business: "미국 빅3 완성차. 픽업트럭 F-150 절대 강자. EV(F-150 Lightning, Mustang Mach-E) 와 내연기관 병행." },
+  GM: { displayName: "GM", fullName: "General Motors Company", group: "자동차 / 모빌리티", sector: "미국 빅3 (Chevrolet, Cadillac)", color: "#005daa", decimals: 2, currency: "USD", business: "미국 빅3 완성차 (Chevrolet·Cadillac·GMC). EV 플랫폼 Ultium 전개. 자율주행 자회사 Cruise." },
+  STLA: { displayName: "Stellantis", fullName: "Stellantis N.V.", group: "자동차 / 모빌리티", sector: "Chrysler·Peugeot·Fiat 통합", color: "#1a3a6e", decimals: 2, currency: "USD", business: "Chrysler·Peugeot·Fiat·Jeep 등 14 브랜드를 가진 글로벌 4위 자동차 그룹 (2021 합병)." },
+  HMC: { displayName: "Honda", fullName: "Honda Motor Co., Ltd.", group: "자동차 / 모빌리티", sector: "Honda — 일본 2위 완성차", color: "#cc0000", decimals: 2, currency: "USD", business: "일본 2위 완성차. 자동차 + 오토바이 (오토바이는 글로벌 1위). 하이브리드·F1 엔진 기술 강자." },
+  RIVN: { displayName: "Rivian", fullName: "Rivian Automotive, Inc.", group: "자동차 / 모빌리티", sector: "미국 EV 픽업트럭 스타트업", color: "#ffc814", decimals: 2, currency: "USD", business: "미국 EV 픽업트럭·SUV 스타트업 (2021 상장). 아마존이 배송 밴 10만대 주문, 폭스바겐과 합작사 설립." },
+  NIO: { displayName: "NIO", fullName: "NIO Inc.", group: "자동차 / 모빌리티", sector: "중국 프리미엄 EV 대표", color: "#00a8e1", decimals: 2, currency: "USD", business: "중국 프리미엄 EV 대표주 (NIO ES8 등). 배터리 교환(스왑) 스테이션 차별화. 정부 보조 / 가격경쟁 변수." },
+  "005380.KS": { displayName: "현대차", fullName: "Hyundai Motor Company", group: "자동차 / 모빌리티", sector: "한국 1위 완성차", color: "#002c5f", decimals: 0, currency: "KRW", business: "한국 1위 완성차. EV(아이오닉)·수소차(넥쏘) 동시 추진. 정의선 회장 지휘 하 미국·인도 시장 성장." },
+  "000270.KS": { displayName: "기아", fullName: "Kia Corporation", group: "자동차 / 모빌리티", sector: "한국 2위 완성차 (현대차그룹)", color: "#bb162b", decimals: 0, currency: "KRW", business: "한국 2위 완성차 (현대차그룹). EV6·EV9 등 EV 라인업 호평. 디자인 경쟁력 + 미국 시장 점유율 확대." },
+  // ── 바이오 / 제약 / 헬스케어 ─────────────────────────────────────
+  LLY: { displayName: "Eli Lilly", fullName: "Eli Lilly and Company", group: "바이오 / 제약 / 헬스케어", sector: "비만 / 당뇨 치료제 글로벌 1위", color: "#d52b1e", decimals: 2, currency: "USD", business: "비만치료제(GLP-1) 시장 1위. Zepbound·Mounjaro 매출 폭발로 시총 1조 달러 돌파. 알츠하이머·항암제도 보유." },
+  NVO: { displayName: "Novo Nordisk", fullName: "Novo Nordisk A/S", group: "바이오 / 제약 / 헬스케어", sector: "비만 / 당뇨 치료제 양대산맥", color: "#0066cc", decimals: 2, currency: "USD", business: "덴마크 제약사. Ozempic·Wegovy 등 비만/당뇨 치료제로 Eli Lilly 와 양대산맥. 유럽 시총 1위." },
+  JNJ: { displayName: "J&J", fullName: "Johnson & Johnson", group: "바이오 / 제약 / 헬스케어", sector: "종합 헬스케어 (제약 + 의료기기)", color: "#d51b25", decimals: 2, currency: "USD", business: "세계 최대 종합 헬스케어. 제약 + 의료기기. 60년 연속 배당 증가의 대표 배당귀족(Dividend King)." },
+  PFE: { displayName: "Pfizer", fullName: "Pfizer Inc.", group: "바이오 / 제약 / 헬스케어", sector: "글로벌 제약 + COVID 백신", color: "#0093d0", decimals: 2, currency: "USD", business: "글로벌 메이저 제약사. COVID-19 백신(Comirnaty)·치료제(Paxlovid)로 팬데믹 수혜 후 정상화 중. 항암제·심혈관." },
+  MRK: { displayName: "Merck", fullName: "Merck & Co., Inc.", group: "바이오 / 제약 / 헬스케어", sector: "항암제 키트루다 글로벌 1위", color: "#00857c", decimals: 2, currency: "USD", business: "면역항암제 키트루다(Keytruda) 글로벌 매출 1위 의약품 (연 매출 ~$25B). 2028 특허 만료가 핵심 변수." },
+  ABBV: { displayName: "AbbVie", fullName: "AbbVie Inc.", group: "바이오 / 제약 / 헬스케어", sector: "면역질환 (휴미라 후속)", color: "#071d49", decimals: 2, currency: "USD", business: "면역질환 치료제 강자. 휴미라(Humira) 특허 만료 후 Skyrizi·Rinvoq 등 후속 신약으로 성공적 전환." },
+  AZN: { displayName: "AstraZeneca", fullName: "AstraZeneca PLC", group: "바이오 / 제약 / 헬스케어", sector: "영국 제약 메이저 (항암·호흡기)", color: "#830051", decimals: 2, currency: "USD", business: "영국 메이저 제약사. 항암제·호흡기·심혈관 강세. COVID 백신 개발. 미국 시장 진출 확대." },
+  UNH: { displayName: "UnitedHealth", fullName: "UnitedHealth Group", group: "바이오 / 제약 / 헬스케어", sector: "미국 1위 의료보험 + 헬스케어", color: "#4c8cf8", decimals: 2, currency: "USD", business: "미국 최대 의료보험사. 보험(UnitedHealthcare) + 의료서비스(Optum) 결합. 미국 의료비 인플레이션의 핵심 종목." },
+  TMO: { displayName: "Thermo Fisher", fullName: "Thermo Fisher Scientific", group: "바이오 / 제약 / 헬스케어", sector: "진단·실험 장비 1위", color: "#0086c9", decimals: 2, currency: "USD", business: "세계 1위 과학 연구 / 진단 장비·시약 공급사. 제약사·연구소·진단검사센터가 모두 고객. M&A 로 성장." },
+  ABT: { displayName: "Abbott", fullName: "Abbott Laboratories", group: "바이오 / 제약 / 헬스케어", sector: "의료기기 + 진단 + 영양식품", color: "#0090d0", decimals: 2, currency: "USD", business: "의료기기(연속혈당측정기 Freestyle Libre)·진단·영양식품·일반약. JNJ 와 함께 종합 헬스케어 대표." },
+  // ── 에너지 / 원자재 ─────────────────────────────────────
+  XOM: { displayName: "ExxonMobil", fullName: "Exxon Mobil Corporation", group: "에너지 / 원자재", sector: "세계 최대 민간 석유·가스 메이저", color: "#cf0a2c", decimals: 2, currency: "USD", business: "세계 최대 민간 석유·가스 회사. 상류(탐사·생산)부터 하류(정제·화학)까지 수직통합. 유가·인플레이션 직접 수혜." },
+  CVX: { displayName: "Chevron", fullName: "Chevron Corporation", group: "에너지 / 원자재", sector: "미국 2위 석유 메이저", color: "#1e4d93", decimals: 2, currency: "USD", business: "미국 2위 석유 메이저. 상·하류 수직통합. 배당귀족(36년 연속 증가). 워런 버핏 대규모 보유." },
+  COP: { displayName: "ConocoPhillips", fullName: "ConocoPhillips", group: "에너지 / 원자재", sector: "북미 상류 (탐사·생산) 전문", color: "#e51937", decimals: 2, currency: "USD", business: "미국 최대 상류(E&P) 전문 회사. 정제 사업 없이 탐사·생산만. 셰일 + 알래스카 + 카타르 LNG." },
+  SHEL: { displayName: "Shell", fullName: "Shell plc", group: "에너지 / 원자재", sector: "Shell — 유럽 메이저", color: "#fbce07", decimals: 2, currency: "USD", business: "영국·네덜란드 본사 유럽 최대 석유 메이저. 천연가스(LNG) 글로벌 1위 거래 회사. 신재생 점진적 전환." },
+  OXY: { displayName: "Occidental", fullName: "Occidental Petroleum", group: "에너지 / 원자재", sector: "셰일 + 버핏 핵심 보유", color: "#cc092f", decimals: 2, currency: "USD", business: "미국 셰일 오일 강자 (퍼미안 분지). 워런 버핏이 28% 보유. CCUS(탄소 포집) 기술 투자." },
+  SLB: { displayName: "Schlumberger", fullName: "Schlumberger Limited", group: "에너지 / 원자재", sector: "유전 서비스 글로벌 1위", color: "#0080c8", decimals: 2, currency: "USD", business: "유전 서비스(시추·물리탐사·완결) 글로벌 1위. 석유·가스 회사가 사업 영위하려면 거치는 'toll booth'." },
+  FCX: { displayName: "Freeport-McMoRan", fullName: "Freeport-McMoRan Inc.", group: "에너지 / 원자재", sector: "세계 최대 구리 광산회사", color: "#fa9000", decimals: 2, currency: "USD", business: "세계 최대 구리 광산회사. 전기차·신재생에너지 확대로 구리 수요가 핵심 모멘텀. 금도 일부 생산." },
+  NEM: { displayName: "Newmont", fullName: "Newmont Corporation", group: "에너지 / 원자재", sector: "세계 최대 금광 회사", color: "#c8a032", decimals: 2, currency: "USD", business: "세계 최대 금광 회사. 인플레이션·달러 약세·중앙은행 금 매입 수요의 직접 수혜. 금 가격에 연동." },
+  LIN: { displayName: "Linde", fullName: "Linde plc", group: "에너지 / 원자재", sector: "산업용 가스 글로벌 1위", color: "#0072c6", decimals: 2, currency: "USD", business: "산업용 가스(질소·산소·수소) 글로벌 1위. 반도체·헬스케어·화학 등 제조업의 필수 인프라." },
+  APD: { displayName: "Air Products", fullName: "Air Products & Chemicals", group: "에너지 / 원자재", sector: "산업용 가스 + 청정수소 투자", color: "#1c98d3", decimals: 2, currency: "USD", business: "산업용 가스 글로벌 2위. 수소 경제(청정수소) 적극 투자. 사우디 NEOM 그린수소 프로젝트 참여." },
+  // ── 금융 ─────────────────────────────────────
+  JPM: { displayName: "JPMorgan", fullName: "JPMorgan Chase & Co.", group: "금융", sector: "미국 1위 은행 (소매+IB+자산운용)", color: "#5b8def", decimals: 2, currency: "USD", business: "미국 1위 은행. 소비자 금융 + 투자은행(JP Morgan) + 자산운용 결합. 금리·경기 사이클의 대표 종목." },
+  BAC: { displayName: "Bank of America", fullName: "Bank of America Corp.", group: "금융", sector: "미국 2위 은행 (소매 중심)", color: "#e31837", decimals: 2, currency: "USD", business: "미국 2위 은행. 소매 금융 중심. 워런 버핏 핵심 보유 종목. 금리 상승 수혜 (NIM 확대)." },
+  WFC: { displayName: "Wells Fargo", fullName: "Wells Fargo & Company", group: "금융", sector: "미국 4대 은행 (소매·모기지)", color: "#d71e2b", decimals: 2, currency: "USD", business: "미국 4대 은행. 소매·모기지 중심. 2016 가짜계좌 스캔들 후 자산 상한 규제 받음 → 최근 해제 기대." },
+  C: { displayName: "Citigroup", fullName: "Citigroup Inc.", group: "금융", sector: "글로벌 진출 미국 은행", color: "#005baa", decimals: 2, currency: "USD", business: "미국 4대 은행 중 가장 글로벌화된 은행 (100+ 국가). 트랜잭션 뱅킹·기관 사업 강세." },
+  GS: { displayName: "Goldman Sachs", fullName: "The Goldman Sachs Group", group: "금융", sector: "투자은행 1위 (M&A·트레이딩)", color: "#7a89a4", decimals: 2, currency: "USD", business: "글로벌 투자은행 1위. M&A 자문·트레이딩·자산운용. IPO·M&A 사이클에 가장 민감한 종목." },
+  MS: { displayName: "Morgan Stanley", fullName: "Morgan Stanley", group: "금융", sector: "투자은행 2위 + 자산관리", color: "#0066b3", decimals: 2, currency: "USD", business: "투자은행 2위. ETrade 인수로 wealth management 비중 확대 → 수익 안정성 개선." },
+  V: { displayName: "Visa", fullName: "Visa Inc.", group: "금융", sector: "글로벌 결제 네트워크 1위", color: "#7c8cf5", decimals: 2, currency: "USD", business: "글로벌 결제 네트워크 1위. 카드 결제마다 수수료를 가져가는 'toll booth' 비즈니스. 영업이익률 60%대." },
+  MA: { displayName: "Mastercard", fullName: "Mastercard Incorporated", group: "금융", sector: "글로벌 결제 네트워크 2위", color: "#eb001b", decimals: 2, currency: "USD", business: "글로벌 결제 네트워크 2위. Visa 와 사실상 양강. 신용·체크·디지털 결제. 크로스보더 결제 성장." },
+  AXP: { displayName: "Amex", fullName: "American Express Company", group: "금융", sector: "고급 신용카드 (Closed-loop)", color: "#016fd0", decimals: 2, currency: "USD", business: "고급 신용카드 (Centurion·Platinum). 카드망·발행·가맹 통합(Closed-loop). 워런 버핏 핵심 보유." },
+  "BRK-B": { displayName: "Berkshire (B)", fullName: "Berkshire Hathaway Inc. (Class B)", group: "금융", sector: "워런 버핏 지주회사", color: "#a3a3a3", decimals: 2, currency: "USD", business: "워런 버핏의 지주회사. 보험(Geico) + 철도(BNSF) + 에너지 + 주식 포트폴리오(애플 비중 큼). 배당 없음." },
+  // ── 소비재 ─────────────────────────────────────
+  WMT: { displayName: "Walmart", fullName: "Walmart Inc.", group: "소비재", sector: "세계 최대 소매 유통", color: "#0071ce", decimals: 2, currency: "USD", business: "세계 최대 소매 유통. 미국 가구 90%가 매장 10마일 내 거주. e-commerce 로 Amazon 추격, 광고 사업으로 마진 확대." },
+  COST: { displayName: "Costco", fullName: "Costco Wholesale", group: "소비재", sector: "회원제 창고형 매장", color: "#e31837", decimals: 2, currency: "USD", business: "회원제 창고형 매장. 멤버십 수수료가 영업이익의 70%+, 갱신율 90%대로 매우 충성도 높음. 인플레이션 방어 종목." },
+  KO: { displayName: "Coca-Cola", fullName: "The Coca-Cola Company", group: "소비재", sector: "글로벌 음료 절대강자", color: "#f40009", decimals: 2, currency: "USD", business: "200여 개국 판매 글로벌 음료 강자. 60년 연속 배당 증가 배당귀족. 워런 버핏 핵심 보유 종목." },
+  PEP: { displayName: "PepsiCo", fullName: "PepsiCo, Inc.", group: "소비재", sector: "음료 + 스낵 (Frito-Lay)", color: "#004b93", decimals: 2, currency: "USD", business: "음료(펩시) + 스낵(Frito-Lay, Lay's, Doritos). 스낵 사업이 음료보다 큼. 배당귀족." },
+  PG: { displayName: "P&G", fullName: "Procter & Gamble Co.", group: "소비재", sector: "생활용품 글로벌 1위", color: "#003da5", decimals: 2, currency: "USD", business: "생활용품 글로벌 1위 (질레트·팬틴·페브리즈·다우니 등 65개+ 브랜드). 65년 연속 배당 증가 배당귀족." },
+  MO: { displayName: "Altria", fullName: "Altria Group, Inc.", group: "소비재", sector: "미국 담배 1위 (Marlboro)", color: "#005826", decimals: 2, currency: "USD", business: "미국 담배 1위 (Marlboro 브랜드). 50+년 연속 배당 증가. 배당수익률 7%대로 인컴주 대표. ESG 관점 호불호." },
+  MCD: { displayName: "McDonald's", fullName: "McDonald's Corporation", group: "소비재", sector: "글로벌 패스트푸드 1위", color: "#ffc72c", decimals: 2, currency: "USD", business: "글로벌 패스트푸드 1위. 사실상 부동산 임대업(가맹점에 부지 임대). 배당귀족 47년 연속 증가." },
+  HD: { displayName: "Home Depot", fullName: "The Home Depot, Inc.", group: "소비재", sector: "미국 1위 홈임프루브먼트", color: "#f96302", decimals: 2, currency: "USD", business: "미국 1위 홈임프루브먼트 매장 (Lowe's 와 양대). DIY + 프로용. 주택 시장·금리에 민감." },
+  NKE: { displayName: "Nike", fullName: "NIKE, Inc.", group: "소비재", sector: "스포츠웨어 글로벌 1위", color: "#fa5400", decimals: 2, currency: "USD", business: "스포츠웨어 글로벌 1위. 운동화·의류·용품. D2C 강화 + 중국 시장 회복이 핵심 변수." },
+  SBUX: { displayName: "Starbucks", fullName: "Starbucks Corporation", group: "소비재", sector: "글로벌 커피 체인 1위", color: "#006241", decimals: 2, currency: "USD", business: "글로벌 커피 체인 1위. 중국 시장 회복·국내 가격 경쟁이 주가 변수. 모바일 주문·로열티 프로그램 강세." },
+  // ── 산업재 / 방산 ─────────────────────────────────────
+  CAT: { displayName: "Caterpillar", fullName: "Caterpillar Inc.", group: "산업재 / 방산", sector: "세계 1위 건설·광산 장비", color: "#ffcd11", decimals: 2, currency: "USD", business: "세계 1위 건설·광산 장비 제조. 글로벌 인프라 투자·자원개발 사이클의 대표주. 농업·엔진 사업도 운영." },
+  DE: { displayName: "John Deere", fullName: "Deere & Company", group: "산업재 / 방산", sector: "John Deere — 농기계 1위", color: "#367c2b", decimals: 2, currency: "USD", business: "John Deere — 농기계 글로벌 1위. 정밀 농업(See & Spray, 자율 트랙터) 기술 선도. 농산물 가격에 동행." },
+  BA: { displayName: "Boeing", fullName: "The Boeing Company", group: "산업재 / 방산", sector: "Airbus 와 함께 민항기 양대 강자", color: "#5b8df8", decimals: 2, currency: "USD", business: "Airbus 와 함께 민항기 양대 강자. 737·787·777 시리즈. 방산(F/A-18, 우주) 도 운영. 최근 품질·안전 이슈." },
+  LMT: { displayName: "Lockheed Martin", fullName: "Lockheed Martin Corp.", group: "산업재 / 방산", sector: "미국 1위 방산 (F-35)", color: "#86a3d4", decimals: 2, currency: "USD", business: "미국 1위 방산기업. F-35 스텔스 전투기·미사일·우주 시스템. 미 국방예산 + NATO·일본·한국 수출 직접 수혜." },
+  RTX: { displayName: "RTX", fullName: "RTX Corporation", group: "산업재 / 방산", sector: "Raytheon — 미사일·항공엔진", color: "#c8102e", decimals: 2, currency: "USD", business: "구 Raytheon Technologies. 미사일(Patriot, Tomahawk)·항공엔진(Pratt & Whitney)·국방 시스템. 우크라이나·중동 분쟁 수혜." },
+  NOC: { displayName: "Northrop Grumman", fullName: "Northrop Grumman Corp.", group: "산업재 / 방산", sector: "전략핵·우주 시스템 방산", color: "#0066a1", decimals: 2, currency: "USD", business: "미국 4대 방산. 전략 핵폭격기(B-21 Raider)·핵미사일(Sentinel)·우주(NASA 협력) 강자. 미·중 우주 경쟁 수혜." },
+  HON: { displayName: "Honeywell", fullName: "Honeywell International", group: "산업재 / 방산", sector: "산업복합 (항공·자동화)", color: "#e1241c", decimals: 2, currency: "USD", business: "산업복합 (항공우주·빌딩기술·에너지·자동화·헬스케어). GE·3M 과 함께 미국 산업복합 대표." },
+  GE: { displayName: "GE Aerospace", fullName: "GE Aerospace", group: "산업재 / 방산", sector: "항공기 엔진 (LEAP) 1위", color: "#005eb8", decimals: 2, currency: "USD", business: "민항기 엔진(LEAP) Safran 합작 통해 글로벌 1위. 2024 GE 분할로 항공우주만 남음. 항공 운항 시간(FH) 연동." },
+  UPS: { displayName: "UPS", fullName: "United Parcel Service", group: "산업재 / 방산", sector: "글로벌 물류 1위", color: "#351c15", decimals: 2, currency: "USD", business: "글로벌 물류·택배 1위 (갈색 트럭). 220개 국가 배송. e-commerce 성장과 동행, B2B 산업 사이클에 민감." },
+  FDX: { displayName: "FedEx", fullName: "FedEx Corporation", group: "산업재 / 방산", sector: "글로벌 익일배송 1위", color: "#4d148c", decimals: 2, currency: "USD", business: "글로벌 익일·국제 배송 1위 (Express). UPS 와 양대. 보잉 757/767 항공기 다수 보유." },
+  // ── 부동산 (REITs) ─────────────────────────────────────
+  AMT: { displayName: "American Tower", fullName: "American Tower Corporation", group: "부동산 (REITs)", sector: "세계 최대 통신탑 REIT", color: "#4ea1ff", decimals: 2, currency: "USD", business: "세계 최대 통신탑(셀타워) REIT. 통신사들에 5G 안테나 임대. 디지털 인프라의 'toll bridge' 모델." },
+  CCI: { displayName: "Crown Castle", fullName: "Crown Castle Inc.", group: "부동산 (REITs)", sector: "통신탑 REIT 2위", color: "#005faf", decimals: 2, currency: "USD", business: "미국 통신탑 REIT 2위. 광케이블(Fiber) 사업 보유. AMT 와 양대. 5G 인프라 임대수익." },
+  PLD: { displayName: "Prologis", fullName: "Prologis, Inc.", group: "부동산 (REITs)", sector: "세계 최대 물류창고 REIT", color: "#34d399", decimals: 2, currency: "USD", business: "세계 최대 물류창고 REIT. 아마존 등 e-commerce 성장에 따른 물류센터 임대수익 폭발. AI 데이터센터로 확장." },
+  EQIX: { displayName: "Equinix", fullName: "Equinix, Inc.", group: "부동산 (REITs)", sector: "글로벌 데이터센터 REIT 1위", color: "#f97316", decimals: 2, currency: "USD", business: "글로벌 데이터센터 REIT 1위. 70+ 도시에 데이터센터 운영. 클라우드·AI 인프라 폭증의 직접 수혜자." },
+  DLR: { displayName: "Digital Realty", fullName: "Digital Realty Trust", group: "부동산 (REITs)", sector: "데이터센터 REIT 2위", color: "#0078c2", decimals: 2, currency: "USD", business: "글로벌 데이터센터 REIT 2위 (Equinix 와 양대). 하이퍼스케일·엔터프라이즈 데이터센터. AI 학습·추론 수요 수혜." },
+  O: { displayName: "Realty Income", fullName: "Realty Income Corporation", group: "부동산 (REITs)", sector: "월 배당 'The Monthly Dividend Company'", color: "#1a3a6e", decimals: 2, currency: "USD", business: "월 단위 배당으로 유명 ('The Monthly Dividend Company'). 미국 단일 임차인 소매(Convenience store 등) 임대." },
+  SPG: { displayName: "Simon Property", fullName: "Simon Property Group", group: "부동산 (REITs)", sector: "미국 최대 쇼핑몰 REIT", color: "#a90030", decimals: 2, currency: "USD", business: "미국 최대 쇼핑몰 REIT. 프리미엄 아웃렛 + 럭셔리 쇼핑몰. e-commerce 시대에도 프리미엄 입지 가치 유지." },
+  WELL: { displayName: "Welltower", fullName: "Welltower Inc.", group: "부동산 (REITs)", sector: "시니어 헬스케어 REIT 1위", color: "#3aaa35", decimals: 2, currency: "USD", business: "시니어 헬스케어 REIT 1위. 요양원·시니어 아파트·메디컬 오피스. 인구 고령화 장기 수혜." },
+  PSA: { displayName: "Public Storage", fullName: "Public Storage", group: "부동산 (REITs)", sector: "셀프 스토리지 REIT 1위", color: "#75b73b", decimals: 2, currency: "USD", business: "셀프 스토리지(개인 창고 임대) REIT 1위. 미국 전역에 ~3,000개 창고. 운영비 낮고 가격 결정력 강함." },
+  VICI: { displayName: "VICI Properties", fullName: "VICI Properties Inc.", group: "부동산 (REITs)", sector: "카지노·엔터테인먼트 REIT", color: "#c8102e", decimals: 2, currency: "USD", business: "라스베이거스 카지노·엔터테인먼트 부동산 REIT. Caesars Palace·MGM Grand 등 임대. S&P 500 편입." },
+  // ── 통신 / 미디어 ─────────────────────────────────────
+  VZ: { displayName: "Verizon", fullName: "Verizon Communications", group: "통신 / 미디어", sector: "미국 1위 통신 (5G)", color: "#cd040b", decimals: 2, currency: "USD", business: "미국 1위 통신사 (무선 기준). 5G 네트워크 + 광케이블. 고배당 (수익률 6%대) 인컴주." },
+  T: { displayName: "AT&T", fullName: "AT&T Inc.", group: "통신 / 미디어", sector: "미국 2위 통신 + 광케이블", color: "#00a8e0", decimals: 2, currency: "USD", business: "미국 2위 통신사. WarnerMedia 분사 후 통신 본업 집중. 광케이블 인터넷 확대 중. 고배당." },
+  TMUS: { displayName: "T-Mobile", fullName: "T-Mobile US, Inc.", group: "통신 / 미디어", sector: "미국 3위 통신 (5G 1위)", color: "#e20074", decimals: 2, currency: "USD", business: "미국 3위 통신사. Sprint 인수로 5G 인프라 1위. VZ·T 와의 점유율 경쟁의 승자." },
+  CMCSA: { displayName: "Comcast", fullName: "Comcast Corporation", group: "통신 / 미디어", sector: "미국 케이블·미디어 (NBCUniversal)", color: "#1d3a83", decimals: 2, currency: "USD", business: "미국 케이블·인터넷 1위 + NBCUniversal(영화·테마파크). 스트리밍(Peacock) 진출. 케이블 가입자 감소가 변수." },
+  CHTR: { displayName: "Charter", fullName: "Charter Communications", group: "통신 / 미디어", sector: "미국 케이블·인터넷 2위 (Spectrum)", color: "#0099d8", decimals: 2, currency: "USD", business: "미국 케이블·인터넷 2위 (Spectrum 브랜드). Comcast 와 양대. 무선 사업(Spectrum Mobile) 확대 중." },
+  NFLX: { displayName: "Netflix", fullName: "Netflix, Inc.", group: "통신 / 미디어", sector: "글로벌 스트리밍 1위", color: "#e50914", decimals: 2, currency: "USD", business: "글로벌 스트리밍 1위 (가입자 ~3억). 광고형 요금제 + 계정공유 단속으로 마진 개선. 자체 콘텐츠 강자." },
+  DIS: { displayName: "Disney", fullName: "The Walt Disney Company", group: "통신 / 미디어", sector: "디즈니 — 종합 미디어·엔터", color: "#022a5e", decimals: 2, currency: "USD", business: "디즈니 — 종합 미디어·엔터 (영화·테마파크·ESPN·디즈니+). Marvel·Pixar·Star Wars IP 보유." },
+  SPOT: { displayName: "Spotify", fullName: "Spotify Technology S.A.", group: "통신 / 미디어", sector: "글로벌 음악 스트리밍 1위", color: "#1db954", decimals: 2, currency: "USD", business: "글로벌 음악 스트리밍 1위 (스웨덴). 가입자 6억+. 팟캐스트·오디오북 확장. 음악 레이블에 로열티 지불 구조." },
+  EA: { displayName: "Electronic Arts", fullName: "Electronic Arts Inc.", group: "통신 / 미디어", sector: "글로벌 게임 (FIFA·Apex)", color: "#ff4747", decimals: 2, currency: "USD", business: "글로벌 게임 퍼블리셔. FC(구 FIFA)·Madden NFL·Apex Legends·심즈. 스포츠 게임 라이선스 강자." },
+  TTWO: { displayName: "Take-Two", fullName: "Take-Two Interactive", group: "통신 / 미디어", sector: "GTA·NBA 2K 개발사", color: "#e60012", decimals: 2, currency: "USD", business: "Grand Theft Auto·NBA 2K 개발사 (Rockstar Games·2K). GTA VI 출시(2025-26) 가 가장 큰 카탈리스트." },
+  // ── 유틸리티 / 전력 ─────────────────────────────────────
+  NEE: { displayName: "NextEra Energy", fullName: "NextEra Energy, Inc.", group: "유틸리티 / 전력", sector: "미국 1위 신재생 유틸리티", color: "#1ab394", decimals: 2, currency: "USD", business: "미국 1위 신재생(풍력·태양광) 유틸리티 + 플로리다 전력회사. 신재생 자산 규모 글로벌 최대급." },
+  SO: { displayName: "Southern Co.", fullName: "The Southern Company", group: "유틸리티 / 전력", sector: "미국 남부 전력 유틸리티", color: "#005ba8", decimals: 2, currency: "USD", business: "미국 동남부 (조지아·앨라배마 등) 전력 유틸리티. 보글 원전(Vogtle 3·4호기) 가동 — 미국 최신 원전." },
+  DUK: { displayName: "Duke Energy", fullName: "Duke Energy Corporation", group: "유틸리티 / 전력", sector: "미국 동남부 전력 유틸리티", color: "#003366", decimals: 2, currency: "USD", business: "미국 동남부 (노스캐롤라이나·플로리다 등) 전력·가스 유틸리티. 원전·가스·신재생 혼합 전원믹스." },
+  AEP: { displayName: "American Electric", fullName: "American Electric Power", group: "유틸리티 / 전력", sector: "미국 송전망 최대 (765kV)", color: "#0072ce", decimals: 2, currency: "USD", business: "미국 송전망 1위 (765kV 초고압). 11개 주에 발전·송배전. AI 데이터센터 전력 수요 직접 수혜." },
+  EXC: { displayName: "Exelon", fullName: "Exelon Corporation", group: "유틸리티 / 전력", sector: "송배전 전문 (Pure-play T&D)", color: "#0085ca", decimals: 2, currency: "USD", business: "송배전 전문 유틸리티 (발전 분리). 시카고(ComEd)·필라델피아(PECO)·볼티모어 등 대도시 전력 공급." },
+  CEG: { displayName: "Constellation", fullName: "Constellation Energy", group: "유틸리티 / 전력", sector: "미국 1위 원자력 발전사", color: "#a3238e", decimals: 2, currency: "USD", business: "미국 1위 원자력 발전사 (~10% 전력 공급). 마이크로소프트와 24년 PPA (스리마일섬 재가동) 체결로 AI 전력 수혜 대표주." },
+  VST: { displayName: "Vistra", fullName: "Vistra Corp.", group: "유틸리티 / 전력", sector: "원자력 + 가스 발전사", color: "#003c71", decimals: 2, currency: "USD", business: "텍사스 중심 발전사 (원자력 + 가스). 2024 Energy Harbor 인수로 원전 4기 추가. AI 전력 수요 수혜." },
+  SRE: { displayName: "Sempra", fullName: "Sempra", group: "유틸리티 / 전력", sector: "남부캘리포니아 + LNG 수출", color: "#dd0c2f", decimals: 2, currency: "USD", business: "남부 캘리포니아 가스·전력 (SoCalGas·SDG&E) + 멕시코 / 미국 LNG 수출 터미널. 에너지·유틸리티 하이브리드." },
+  ED: { displayName: "Con Edison", fullName: "Consolidated Edison", group: "유틸리티 / 전력", sector: "뉴욕시 전력·가스 독점", color: "#0033a0", decimals: 2, currency: "USD", business: "뉴욕시 전력·가스 독점 공급 (1823년 창업). 49년 연속 배당 증가. 가장 안정적인 인컴주 중 하나." },
+  D: { displayName: "Dominion", fullName: "Dominion Energy, Inc.", group: "유틸리티 / 전력", sector: "버지니아 전력 (데이터센터 메카)", color: "#0066cc", decimals: 2, currency: "USD", business: "버지니아·캐롤라이나 전력. 버지니아 북부는 미국 최대 데이터센터 클러스터(~70% 인터넷 트래픽). AI 전력 수혜." },
+  // ── 조선 (한국) ─────────────────────────────────────
+  "329180.KS": { displayName: "HD현대중공업", fullName: "HD Hyundai Heavy Industries", group: "조선 (한국)", sector: "한국 1위 조선사", color: "#22c55e", decimals: 0, currency: "KRW", business: "한국 1위 조선사. 친환경(LNG·암모니아 추진) 선박 분야 글로벌 1위. K-조선 르네상스의 대장주." },
+  "042660.KS": { displayName: "한화오션", fullName: "Hanwha Ocean Co., Ltd.", group: "조선 (한국)", sector: "방산(잠수함) + 친환경 선박", color: "#ec6608", decimals: 0, currency: "KRW", business: "구 대우조선해양. 한화그룹 인수 후 방산(잠수함)·친환경 선박으로 사업 확장." },
+  "010140.KS": { displayName: "삼성중공업", fullName: "Samsung Heavy Industries", group: "조선 (한국)", sector: "삼성그룹 조선·해양플랜트", color: "#1428a0", decimals: 0, currency: "KRW", business: "삼성그룹 조선·해양플랜트. LNG 운반선·드릴십·FPSO. 카타르·모잠비크 LNG 메가 프로젝트 참여." },
+  "010620.KS": { displayName: "HD현대미포", fullName: "HD Hyundai Mipo Dockyard", group: "조선 (한국)", sector: "중형 선박 (MR 탱커) 전문", color: "#0072bc", decimals: 0, currency: "KRW", business: "HD현대그룹 중형 조선사. MR(Medium Range) 탱커·PC선·중형 컨테이너선 전문. 친환경 메탄올 추진 선박 강세." },
 };
+
+// 섹터 그룹 표시 순서 + 그룹별 한 줄 설명 (대시보드 헤더에 노출).
+// 새 그룹을 추가하면 여기에도 한 줄 추가하여 카드 묶음 순서를 제어한다.
+const STOCK_GROUPS = [
+  { key: "빅테크 / 소프트웨어", desc: "글로벌 시총 상위 빅테크 + 엔터프라이즈 소프트웨어. 광고·SaaS·DB 등 다양한 수익모델." },
+  { key: "반도체", desc: "AI·자동차·서버 등 전 산업의 'OPEC' 격. CPU·GPU·메모리·장비·파운드리 포함." },
+  { key: "자동차 / 모빌리티", desc: "내연기관·EV·자율주행 전환기. 기존 완성차 + 신규 진입자 + 한국 빅2." },
+  { key: "바이오 / 제약 / 헬스케어", desc: "글로벌 시총 상위 제약 + 의료기기/진단 + 의료보험. 인구 고령화 장기 수혜." },
+  { key: "에너지 / 원자재", desc: "원유·가스·구리·금·산업용가스 등 실물 자산. 인플레이션·달러 약세 국면 방어주." },
+  { key: "금융", desc: "대형 은행·투자은행·결제망·지주회사. 금리·경기 사이클·신용 환경의 거울." },
+  { key: "소비재", desc: "필수 + 임의 소비재 통합. 음료·생활용품·QSR·홈임프루브먼트·스포츠웨어." },
+  { key: "산업재 / 방산", desc: "건설·항공기·방산·물류·산업복합기업. 인프라·국방예산 사이클 직접 수혜." },
+  { key: "부동산 (REITs)", desc: "통신탑·물류창고·데이터센터·쇼핑몰·시니어 등 다양한 자산군의 REIT." },
+  { key: "통신 / 미디어", desc: "통신사·케이블·스트리밍·종합 미디어·게임. 콘텐츠·구독 경제의 중심." },
+  { key: "유틸리티 / 전력", desc: "전력·가스 유틸리티. 신재생·원자력 비중 확대 + AI 데이터센터 전력수요의 수혜." },
+  { key: "조선 (한국)", desc: "K-조선 르네상스. LNG·암모니아 친환경 선박 글로벌 1위 한국 조선사들." },
+];
 
 // 시장 지수 UI 메타데이터. summary 는 부제, description 은 한 줄 설명.
 const INDEX_META = {
@@ -1388,6 +1529,22 @@ function escapeHtml(s) {
 
 // ---------- 주식 탭 렌더링 -------------------------------------------
 
+// ─── Stock price formatting helpers (USD / KRW) ────────────────────────
+// 한국 상장 종목은 가격이 KRW 라 별도 통화 기호와 소수점 처리 필요.
+function stockCurrencySymbol(meta) {
+  return (meta && meta.currency === "KRW") ? "₩" : "$";
+}
+
+function formatStockPrice(value, meta) {
+  if (value == null || Number.isNaN(value)) return "—";
+  const sym      = stockCurrencySymbol(meta);
+  const decimals = (meta && typeof meta.decimals === "number") ? meta.decimals : 2;
+  const formatted = value >= 1000
+    ? value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+    : value.toFixed(decimals);
+  return `${sym}${formatted}`;
+}
+
 function renderStocksTab(data) {
   const stocks  = data.stocks  || {};
   const indices = data.indices || {};
@@ -1405,16 +1562,13 @@ function renderStocksTab(data) {
     }
   }
 
-  // ─ 개별 종목 ─
+  // ─ 개별 종목 (섹터 그룹별) ─
   const stockHost = document.getElementById("stock-cards");
   if (stockHost) {
     if (Object.keys(stocks).length === 0) {
       stockHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions를 실행해 주세요.");
     } else {
-      for (const [ticker, payload] of Object.entries(stocks)) {
-        if (!payload || !payload.series || payload.series.length === 0) continue;
-        stockHost.appendChild(renderStockCard(ticker, payload, stocks));
-      }
+      renderStocksByGroup(stockHost, stocks);
     }
   }
 
@@ -1422,8 +1576,52 @@ function renderStocksTab(data) {
   wireSectorNav("STOCKS");
 }
 
+// 개별 종목을 STOCK_GROUPS 순서대로 묶어서 섹터 헤더 + 그 안에 카드들 배치.
+function renderStocksByGroup(host, stocks) {
+  host.innerHTML = "";
+
+  // 그룹별로 ticker 묶기. payload 의 group (index.json 의 값) 또는 STOCK_META 의 group
+  // 둘 중 하나라도 있으면 사용. 아무것도 없으면 "기타" 로 분류.
+  const buckets = new Map();
+  for (const [ticker, payload] of Object.entries(stocks)) {
+    if (!payload || !payload.series || payload.series.length === 0) continue;
+    const meta  = STOCK_META[ticker];
+    const group = (meta && meta.group) || payload.group || "기타";
+    if (!buckets.has(group)) buckets.set(group, []);
+    buckets.get(group).push(ticker);
+  }
+
+  // 정의된 순서로 먼저 렌더하고, 정의에 없는 그룹은 마지막에 alphabetical 로.
+  const orderedGroups = STOCK_GROUPS.filter((g) => buckets.has(g.key));
+  const extraGroups = [...buckets.keys()]
+    .filter((k) => !STOCK_GROUPS.some((g) => g.key === k))
+    .sort()
+    .map((k) => ({ key: k, desc: "" }));
+
+  for (const g of [...orderedGroups, ...extraGroups]) {
+    const tickers = buckets.get(g.key) || [];
+    if (tickers.length === 0) continue;
+
+    const section = document.createElement("section");
+    section.className = "stock-group";
+    section.innerHTML = `
+      <header class="stock-group-header">
+        <h3 class="stock-group-title">${escapeHtml(g.key)}</h3>
+        <span class="stock-group-count">${tickers.length}종목</span>
+        ${g.desc ? `<p class="stock-group-desc">${escapeHtml(g.desc)}</p>` : ""}
+      </header>
+      <div class="cards stock-group-cards"></div>
+    `;
+    const cardsHost = section.querySelector(".stock-group-cards");
+    for (const ticker of tickers) {
+      cardsHost.appendChild(renderStockCard(ticker, stocks[ticker], stocks));
+    }
+    host.appendChild(section);
+  }
+}
+
 function renderStockCard(ticker, payload, allStocks = null) {
-  const meta   = STOCK_META[ticker] ?? { displayName: ticker, fullName: ticker, sector: "", color: "#9aa0a9", decimals: 2, business: "", moat: "" };
+  const meta   = STOCK_META[ticker] ?? { displayName: ticker, fullName: ticker, sector: "", color: "#9aa0a9", decimals: 2, currency: "USD", business: "", moat: "" };
   const series = payload.series;
   const latest = series[series.length - 1];
 
@@ -1446,10 +1644,10 @@ function renderStockCard(ticker, payload, allStocks = null) {
   const quarterly  = financials.quarterly || [];
   const valuation  = payload.valuation || null;
 
-  const metricsHtml      = renderStockMetricsHtml(snapshot);
-  const valuationBadge   = renderValuationBadgeHtml(valuation);
+  const metricsHtml      = renderStockMetricsHtml(snapshot, meta);
+  const valuationBadge   = renderValuationBadgeHtml(valuation, meta);
   const peerCompareHtml  = renderPeerCompareHtml(ticker, valuation, allStocks);
-  const valuationSection = renderValuationSectionHtml(valuation, peerCompareHtml);
+  const valuationSection = renderValuationSectionHtml(valuation, peerCompareHtml, meta);
   const hasFinancials    = metricsHtml !== "" || quarterly.length > 0 || valuationSection !== "";
 
   const card = document.createElement("article");
@@ -1460,7 +1658,7 @@ function renderStockCard(ticker, payload, allStocks = null) {
       <span class="card-code">${escapeHtml(ticker)}</span>
     </header>
     <div>
-      <span class="card-value">$${latest.value.toFixed(meta.decimals)}</span>
+      <span class="card-value">${formatStockPrice(latest.value, meta)}</span>
       <span class="card-change ${changeClass}" title="1년 전 대비">${changeStr} <span class="change-period">(1년)</span></span>
     </div>
     <p class="card-desc">${escapeHtml(meta.fullName)} · ${escapeHtml(meta.sector)}</p>
@@ -1480,7 +1678,7 @@ function renderStockCard(ticker, payload, allStocks = null) {
           ${valuationSection}
           ${metricsHtml}
           ${quarterly.length > 0 ? `
-            <div class="section-title">분기 실적 (단위: $B)</div>
+            <div class="section-title">분기 실적 (단위: ${meta.currency === "KRW" ? "₩조" : "$B"})</div>
             <div class="card-chart financials-chart"><canvas></canvas></div>
           ` : ""}
         </div>
@@ -1503,7 +1701,7 @@ function renderStockCard(ticker, payload, allStocks = null) {
     if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
     chartInstance = renderChart(mainCanvas, sliced, "stock", {
       assetColor:  meta.color,
-      primaryMeta: { decimals: meta.decimals, unit: "$", displayName: meta.displayName },
+      primaryMeta: { decimals: meta.decimals, unit: stockCurrencySymbol(meta), displayName: meta.displayName },
     });
   }
 
@@ -1534,7 +1732,7 @@ function renderStockCard(ticker, payload, allStocks = null) {
       if (iconEl)  iconEl.textContent  = next ? "▴" : "▾";
       if (next && !lazyRendered) {
         const finCanvas = card.querySelector(".financials-chart canvas");
-        if (finCanvas && quarterly.length > 0) renderFinancialsChart(finCanvas, quarterly);
+        if (finCanvas && quarterly.length > 0) renderFinancialsChart(finCanvas, quarterly, meta);
         const valCanvas = card.querySelector(".valuation-chart canvas");
         if (valCanvas && valuation && (valuation.gap_series_weekly || []).length > 1) {
           renderValuationGapChart(valCanvas, valuation.gap_series_weekly);
@@ -1555,19 +1753,19 @@ function renderStockCard(ticker, payload, allStocks = null) {
 //  - P/E: 가격이 적정한가 (밸류에이션)
 //  - 시가총액: 회사의 규모/성숙도 컨텍스트
 const STOCK_KEY_METRICS = [
-  { key: "return_on_equity", label: "ROE",        hint: "자본 효율 · 15%+ 우량",         format: (v) => formatPercent(v) },
-  { key: "operating_margin", label: "영업이익률", hint: "본업 수익성 · 해자 강도",       format: (v) => formatPercent(v) },
-  { key: "pe_ratio",         label: "P/E",        hint: "가격/이익 · S&P500 ~22배",      format: (v) => v == null ? "—" : v.toFixed(1) + "배" },
-  { key: "market_cap",       label: "시가총액",   hint: "회사 규모",                     format: (v) => formatLargeMoney(v) },
+  { key: "return_on_equity", label: "ROE",        hint: "자본 효율 · 15%+ 우량",         format: (v, meta) => formatPercent(v) },
+  { key: "operating_margin", label: "영업이익률", hint: "본업 수익성 · 해자 강도",       format: (v, meta) => formatPercent(v) },
+  { key: "pe_ratio",         label: "P/E",        hint: "가격/이익 · S&P500 ~22배",      format: (v, meta) => v == null ? "—" : v.toFixed(1) + "배" },
+  { key: "market_cap",       label: "시가총액",   hint: "회사 규모",                     format: (v, meta) => formatLargeMoney(v, meta) },
 ];
 
-function renderStockMetricsHtml(snap) {
+function renderStockMetricsHtml(snap, stockMeta) {
   if (!snap || Object.values(snap).every((v) => v == null)) return "";
   const items = STOCK_KEY_METRICS.map(({ key, label, hint, format }) => `
     <div class="key-metric">
       <div class="km-head">
         <span class="km-label">${escapeHtml(label)}</span>
-        <span class="km-value">${escapeHtml(format(snap[key]))}</span>
+        <span class="km-value">${escapeHtml(format(snap[key], stockMeta))}</span>
       </div>
       <p class="km-hint">${escapeHtml(hint)}</p>
     </div>
@@ -1595,9 +1793,9 @@ const VALUATION_SIGNALS = {
   "n/a":       { label: "산출 불가",  tone: "fair" },
 };
 
-function renderValuationBadgeHtml(val) {
+function renderValuationBadgeHtml(val, stockMeta) {
   if (!val || val.valuation_gap == null || !val.signal) return "";
-  const meta = VALUATION_SIGNALS[val.signal] || VALUATION_SIGNALS.fair;
+  const sigMeta = VALUATION_SIGNALS[val.signal] || VALUATION_SIGNALS.fair;
   const gapPct = (val.valuation_gap * 100);
   const sign = gapPct >= 0 ? "+" : "";
   const qual = val.qualitative;
@@ -1606,10 +1804,10 @@ function renderValuationBadgeHtml(val) {
     : "";
   return `
     <div class="valuation-badge-row">
-      <div class="valuation-badge" data-tone="${meta.tone}" title="현재가 대비 적정가치 갭 (음수=저평가, 양수=고평가)">
-        <span class="vb-label">${escapeHtml(meta.label)}</span>
+      <div class="valuation-badge" data-tone="${sigMeta.tone}" title="현재가 대비 적정가치 갭 (음수=저평가, 양수=고평가)">
+        <span class="vb-label">${escapeHtml(sigMeta.label)}</span>
         <span class="vb-gap">${sign}${gapPct.toFixed(1)}%</span>
-        <span class="vb-fair">vs 적정 $${val.fair_value.toFixed(2)}</span>
+        <span class="vb-fair">vs 적정 ${formatStockPrice(val.fair_value, stockMeta)}</span>
       </div>
       ${narrative}
     </div>
@@ -1634,7 +1832,7 @@ function renderNarrativeChipHtml(score, asOf) {
   `;
 }
 
-function renderValuationSectionHtml(val, peerCompareHtml = "") {
+function renderValuationSectionHtml(val, peerCompareHtml = "", stockMeta = null) {
   if (!val) return "";
   const hasMethods = val.methods && Object.keys(val.methods).length > 0;
   if (!hasMethods) {
@@ -1649,7 +1847,7 @@ function renderValuationSectionHtml(val, peerCompareHtml = "") {
     return `
       <div class="method-row">
         <div class="method-name">${escapeHtml(m.note || key)}</div>
-        <div class="method-fair">$${m.fair_value.toFixed(2)}</div>
+        <div class="method-fair">${formatStockPrice(m.fair_value, stockMeta)}</div>
         <div class="method-weight">${w.toFixed(0)}%</div>
       </div>
     `;
@@ -1662,11 +1860,11 @@ function renderValuationSectionHtml(val, peerCompareHtml = "") {
     <div class="valuation-summary">
       <div class="vs-row">
         <span class="vs-label">현재가</span>
-        <span class="vs-value">$${val.current_price.toFixed(2)}</span>
+        <span class="vs-value">${formatStockPrice(val.current_price, stockMeta)}</span>
       </div>
       <div class="vs-row vs-fair">
         <span class="vs-label">적정 가치 (composite)</span>
-        <span class="vs-value">$${val.fair_value.toFixed(2)}</span>
+        <span class="vs-value">${formatStockPrice(val.fair_value, stockMeta)}</span>
       </div>
     </div>
     <div class="method-table">
@@ -1690,20 +1888,135 @@ function renderValuationSectionHtml(val, peerCompareHtml = "") {
 }
 
 // 같은 watchlist 내 경쟁사들과 valuation gap 을 한 줄로 비교.
-// COMPETITORS 는 scripts/competitors.py 에 정의되어 index.json 에 포함될 수도
-// 있지만 페이지가 stocks 전체를 로드하므로 클라이언트에서 매핑.
+// scripts/competitors.py 의 COMPETITORS 와 동기화. 여기엔 watchlist 내 종목만 남긴다.
 const PEER_COMPETITORS = {
-  AAPL:  ["MSFT", "GOOGL", "AMZN"],
-  MSFT:  ["AAPL", "GOOGL", "AMZN", "ORCL"],
+  // ── 빅테크 / 소프트웨어 ─────────────────────────────────────
+  AAPL: ["MSFT", "GOOGL", "AMZN"],
+  MSFT: ["AAPL", "GOOGL", "AMZN", "ORCL", "CRM"],
   GOOGL: ["MSFT", "META", "AMZN"],
-  AMZN:  ["MSFT", "GOOGL", "AAPL"],
-  NVDA:  [],
-  META:  ["GOOGL"],
-  ORCL:  ["MSFT"],
-  PLTR:  ["MSFT"],
-  TSLA:  [],
+  AMZN: ["MSFT", "GOOGL", "AAPL", "WMT"],
+  META: ["GOOGL"],
+  ORCL: ["MSFT", "CRM", "IBM"],
+  CRM: ["MSFT", "ORCL", "ADBE"],
+  ADBE: ["MSFT", "CRM"],
+  IBM: ["MSFT", "ORCL"],
+  PLTR: ["MSFT", "ORCL", "IBM"],
+  // ── 반도체 ─────────────────────────────────────
+  NVDA: ["AMD", "AVGO", "TSM", "INTC"],
+  AMD: ["NVDA", "INTC", "AVGO", "TSM"],
+  INTC: ["AMD", "TSM", "QCOM"],
+  QCOM: ["INTC", "AVGO", "TSM", "MU"],
+  TSM: ["NVDA", "INTC", "AVGO", "AMD"],
+  ASML: ["AMAT", "LRCX"],
+  AMAT: ["LRCX", "ASML"],
+  LRCX: ["AMAT", "ASML"],
+  AVGO: ["NVDA", "AMD", "QCOM", "TSM"],
+  MU: ["INTC", "AVGO", "QCOM"],
+  // ── 자동차 / 모빌리티 ─────────────────────────────────────
+  TSLA: ["GM", "F", "RIVN", "NIO"],
+  TM: ["GM", "F", "HMC", "STLA"],
+  F: ["GM", "TSLA", "STLA", "TM"],
+  GM: ["F", "TSLA", "STLA", "TM"],
+  STLA: ["F", "GM", "TM", "HMC"],
+  HMC: ["TM", "F", "GM"],
+  RIVN: ["TSLA", "F", "GM", "NIO"],
+  NIO: ["TSLA", "RIVN"],
+  "005380.KS": ["000270.KS", "TM", "HMC", "TSLA"],
+  "000270.KS": ["005380.KS", "TM", "HMC", "TSLA"],
+  // ── 바이오 / 제약 / 헬스케어 ─────────────────────────────────────
+  LLY: ["NVO", "JNJ", "MRK", "PFE"],
+  NVO: ["LLY", "JNJ", "MRK"],
+  JNJ: ["LLY", "PFE", "MRK", "ABBV"],
+  PFE: ["JNJ", "MRK", "ABBV", "AZN"],
+  MRK: ["JNJ", "PFE", "AZN"],
+  ABBV: ["JNJ", "MRK", "PFE"],
+  AZN: ["PFE", "MRK", "ABBV"],
+  UNH: ["JNJ"],
+  TMO: ["ABT"],
+  ABT: ["JNJ", "TMO"],
+  // ── 에너지 / 원자재 ─────────────────────────────────────
+  XOM: ["CVX", "SHEL", "COP"],
+  CVX: ["XOM", "SHEL", "COP", "OXY"],
+  COP: ["XOM", "CVX", "OXY"],
+  SHEL: ["XOM", "CVX"],
+  OXY: ["COP", "XOM", "CVX"],
+  SLB: [],
+  FCX: ["NEM"],
+  NEM: ["FCX"],
+  LIN: ["APD"],
+  APD: ["LIN"],
+  // ── 금융 ─────────────────────────────────────
+  JPM: ["BAC", "WFC", "C", "GS"],
+  BAC: ["JPM", "WFC", "C"],
+  WFC: ["JPM", "BAC", "C"],
+  C: ["JPM", "BAC", "WFC", "GS"],
+  GS: ["MS", "JPM", "C"],
+  MS: ["GS", "JPM"],
+  V: ["MA", "AXP"],
+  MA: ["V", "AXP"],
+  AXP: ["V", "MA"],
+  "BRK-B": ["JPM", "BAC", "V", "AAPL"],
+  // ── 소비재 ─────────────────────────────────────
+  WMT: ["COST", "AMZN"],
+  COST: ["WMT"],
+  KO: ["PEP"],
+  PEP: ["KO"],
+  PG: [],
+  MO: [],
+  MCD: ["SBUX"],
+  HD: [],
+  NKE: [],
+  SBUX: ["MCD"],
+  // ── 산업재 / 방산 ─────────────────────────────────────
+  CAT: ["DE"],
+  DE: ["CAT"],
+  BA: ["LMT", "RTX", "NOC"],
+  LMT: ["RTX", "NOC", "BA"],
+  RTX: ["LMT", "NOC", "BA"],
+  NOC: ["LMT", "RTX", "BA"],
+  HON: ["GE", "RTX"],
+  GE: ["RTX", "HON", "BA"],
+  UPS: ["FDX", "AMZN"],
+  FDX: ["UPS", "AMZN"],
+  // ── 부동산 (REITs) ─────────────────────────────────────
+  AMT: ["CCI", "EQIX", "DLR"],
+  CCI: ["AMT", "DLR"],
+  PLD: ["PSA"],
+  EQIX: ["DLR", "AMT"],
+  DLR: ["EQIX", "AMT"],
+  O: [],
+  SPG: [],
+  WELL: [],
+  PSA: [],
+  VICI: [],
+  // ── 통신 / 미디어 ─────────────────────────────────────
+  VZ: ["T", "TMUS"],
+  T: ["VZ", "TMUS"],
+  TMUS: ["VZ", "T"],
+  CMCSA: ["CHTR", "DIS", "NFLX"],
+  CHTR: ["CMCSA", "VZ", "T"],
+  NFLX: ["DIS", "AMZN", "SPOT"],
+  DIS: ["NFLX", "CMCSA"],
+  SPOT: ["NFLX", "AAPL"],
+  EA: ["TTWO", "MSFT"],
+  TTWO: ["EA", "MSFT"],
+  // ── 유틸리티 / 전력 ─────────────────────────────────────
+  NEE: ["DUK", "SO", "AEP"],
+  SO: ["DUK", "AEP", "NEE"],
+  DUK: ["NEE", "SO", "AEP"],
+  AEP: ["DUK", "SO", "NEE", "EXC"],
+  EXC: ["AEP", "ED", "SO"],
+  CEG: ["VST", "NEE", "DUK"],
+  VST: ["CEG", "NEE"],
+  SRE: ["AEP", "DUK", "NEE"],
+  ED: ["EXC", "AEP", "DUK"],
+  D: ["DUK", "NEE", "SO", "AEP"],
+  // ── 조선 (한국) ─────────────────────────────────────
+  "329180.KS": ["042660.KS", "010140.KS", "010620.KS"],
+  "042660.KS": ["329180.KS", "010140.KS", "010620.KS"],
+  "010140.KS": ["329180.KS", "042660.KS", "010620.KS"],
+  "010620.KS": ["329180.KS", "042660.KS", "010140.KS"],
 };
-
 function renderPeerCompareHtml(ticker, val, allStocks) {
   if (!val || val.valuation_gap == null || !allStocks) return "";
   const peers = PEER_COMPETITORS[ticker] || [];
@@ -1963,28 +2276,32 @@ function priorChangePct(series, days) {
   return ((latest.value - prior.value) / prior.value) * 100;
 }
 
-function renderFinancialsChart(canvas, quarterly) {
+function renderFinancialsChart(canvas, quarterly, stockMeta) {
   const labels = quarterly.map((q) => formatQuarterLabel(q.date));
-  const toBillions = (v) => (v == null ? null : v / 1e9);
+  // USD 종목은 십억($B), KRW 종목은 조(₩T) 단위로 표시 — 시각적 스케일이 비슷해진다.
+  const isKrw    = stockMeta && stockMeta.currency === "KRW";
+  const scale    = isKrw ? 1e12 : 1e9;
+  const unitTag  = isKrw ? "₩조" : "$B";
+  const toScale  = (v) => (v == null ? null : v / scale);
 
   const datasets = [
     {
       label: "매출",
-      data: quarterly.map((q) => toBillions(q.revenue)),
+      data: quarterly.map((q) => toScale(q.revenue)),
       backgroundColor: "rgba(125, 211, 252, 0.75)",
       borderColor: "rgba(125, 211, 252, 1)",
       borderWidth: 1,
     },
     {
       label: "영업이익",
-      data: quarterly.map((q) => toBillions(q.operating_income)),
+      data: quarterly.map((q) => toScale(q.operating_income)),
       backgroundColor: "rgba(192, 132, 252, 0.75)",
       borderColor: "rgba(192, 132, 252, 1)",
       borderWidth: 1,
     },
     {
       label: "순이익",
-      data: quarterly.map((q) => toBillions(q.net_income)),
+      data: quarterly.map((q) => toScale(q.net_income)),
       backgroundColor: "rgba(134, 239, 172, 0.75)",
       borderColor: "rgba(134, 239, 172, 1)",
       borderWidth: 1,
@@ -2004,7 +2321,7 @@ function renderFinancialsChart(canvas, quarterly) {
             label: (ctx) => {
               const v = ctx.parsed.y;
               if (v == null) return `${ctx.dataset.label}: —`;
-              return `${ctx.dataset.label}: $${v.toFixed(2)}B`;
+              return `${ctx.dataset.label}: ${v.toFixed(2)}${unitTag}`;
             },
           },
         },
@@ -2015,7 +2332,7 @@ function renderFinancialsChart(canvas, quarterly) {
           ticks: {
             color: "#a0a0a0",
             font: { size: 10 },
-            callback: (v) => `$${v}B`,
+            callback: (v) => `${v}${unitTag}`,
           },
           grid: { color: "rgba(255,255,255,0.05)" },
         },
@@ -2024,12 +2341,13 @@ function renderFinancialsChart(canvas, quarterly) {
   });
 }
 
-function formatLargeMoney(n) {
+function formatLargeMoney(n, meta) {
   if (n == null) return "—";
-  if (n >= 1e12) return `$${(n / 1e12).toFixed(2)}T`;
-  if (n >= 1e9)  return `$${(n / 1e9).toFixed(2)}B`;
-  if (n >= 1e6)  return `$${(n / 1e6).toFixed(2)}M`;
-  return `$${n.toFixed(0)}`;
+  const sym = (meta && meta.currency === "KRW") ? "₩" : "$";
+  if (n >= 1e12) return `${sym}${(n / 1e12).toFixed(2)}T`;
+  if (n >= 1e9)  return `${sym}${(n / 1e9).toFixed(2)}B`;
+  if (n >= 1e6)  return `${sym}${(n / 1e6).toFixed(2)}M`;
+  return `${sym}${n.toFixed(0)}`;
 }
 
 function formatRatio(n) {

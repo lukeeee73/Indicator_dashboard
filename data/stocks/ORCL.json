@@ -1,27 +1,8 @@
 {
   "name": "Oracle Corporation",
   "sector": "Technology",
+  "group": "빅테크 / 소프트웨어",
   "series": [
-    {
-      "date": "2016-05-09",
-      "value": 33.89
-    },
-    {
-      "date": "2016-05-10",
-      "value": 34.46
-    },
-    {
-      "date": "2016-05-11",
-      "value": 34.14
-    },
-    {
-      "date": "2016-05-12",
-      "value": 34.29
-    },
-    {
-      "date": "2016-05-13",
-      "value": 34.11
-    },
     {
       "date": "2016-05-16",
       "value": 34.42
@@ -10061,18 +10042,38 @@
     {
       "date": "2026-05-08",
       "value": 195.95
+    },
+    {
+      "date": "2026-05-11",
+      "value": 193.84
+    },
+    {
+      "date": "2026-05-12",
+      "value": 186.83
+    },
+    {
+      "date": "2026-05-13",
+      "value": 189.76
+    },
+    {
+      "date": "2026-05-14",
+      "value": 195.61
+    },
+    {
+      "date": "2026-05-15",
+      "value": 192.95
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 563561234432.0,
-      "pe_ratio": 35.242805,
-      "forward_pe": 24.394617,
-      "eps_ttm": 5.56,
-      "dividend_yield": 1.02,
+      "market_cap": 554933092352.0,
+      "pe_ratio": 34.578854,
+      "forward_pe": 24.021133,
+      "eps_ttm": 5.58,
+      "dividend_yield": 1.04,
       "profit_margin": 0.25298,
       "operating_margin": 0.32676,
-      "price_to_book": 16.796673,
+      "price_to_book": 16.539516,
       "return_on_equity": 0.57572
     },
     "quarterly": [
@@ -10121,12 +10122,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-08",
-    "current_price": 195.95,
+    "as_of": "2026-05-15",
+    "current_price": 192.95,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 155.68,
+        "fair_value": 156.24,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10136,13 +10137,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 38.2,
+        "fair_value": 38.27,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 138.5,
-    "valuation_gap": 0.4148,
+    "fair_value": 138.79,
+    "valuation_gap": 0.3902,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10282,6 +10283,12 @@
         "price": 195.95,
         "fair_value": 151.2,
         "gap": 0.296
+      },
+      {
+        "date": "2026-05-15",
+        "price": 192.95,
+        "fair_value": 151.2,
+        "gap": 0.2761
       }
     ],
     "qualitative": {
@@ -10295,11 +10302,15 @@
       "risks": [
         "클라우드 전환 속도가 기존 라이선스 매출 잠식 리스크"
       ],
-      "history": [
+      "news_count": 1,
+      "competitor_context": [
         {
-          "date": "2026-05-13",
-          "narrative_score": 0.13
-        },
+          "ticker": "MSFT",
+          "headline": "UK opens new antitrust probe against Microsoft cloud and software dominance",
+          "implication_for_target": "MSFT 반독점 압력 강화로 ORCL이 클라우드·ERP 계약에서 반사이익 가능성"
+        }
+      ],
+      "history": [
         {
           "date": "2026-05-14",
           "narrative_score": 0.15

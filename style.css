@@ -329,6 +329,52 @@ section h2 {
   border-top-color: #7bb8ff;
 }
 
+/* ---------- 주식 패널: 섹터 그룹 헤더 ---------- */
+.stock-group {
+  margin-bottom: 2.5rem;
+}
+.stock-group:last-child {
+  margin-bottom: 0;
+}
+.stock-group-header {
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: baseline;
+  gap: 0.6rem 0.8rem;
+}
+.stock-group-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.stock-group-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.stock-group-desc {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+@media (max-width: 640px) {
+  .stock-group-header {
+    grid-template-columns: 1fr auto;
+  }
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;

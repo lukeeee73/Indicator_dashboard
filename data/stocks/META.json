@@ -1,27 +1,8 @@
 {
   "name": "Meta Platforms Inc.",
   "sector": "Communication Services",
+  "group": "빅테크 / 소프트웨어",
   "series": [
-    {
-      "date": "2016-05-09",
-      "value": 118.31
-    },
-    {
-      "date": "2016-05-10",
-      "value": 119.56
-    },
-    {
-      "date": "2016-05-11",
-      "value": 118.59
-    },
-    {
-      "date": "2016-05-12",
-      "value": 119.34
-    },
-    {
-      "date": "2016-05-13",
-      "value": 118.88
-    },
     {
       "date": "2016-05-16",
       "value": 117.75
@@ -4780,7 +4761,7 @@
     },
     {
       "date": "2021-02-04",
-      "value": 264.42
+      "value": 264.41
     },
     {
       "date": "2021-02-05",
@@ -7232,7 +7213,7 @@
     },
     {
       "date": "2023-07-14",
-      "value": 306.46
+      "value": 306.47
     },
     {
       "date": "2023-07-17",
@@ -9352,7 +9333,7 @@
     },
     {
       "date": "2025-08-25",
-      "value": 751.53
+      "value": 751.54
     },
     {
       "date": "2025-08-26",
@@ -10061,18 +10042,38 @@
     {
       "date": "2026-05-08",
       "value": 609.63
+    },
+    {
+      "date": "2026-05-11",
+      "value": 598.86
+    },
+    {
+      "date": "2026-05-12",
+      "value": 603.0
+    },
+    {
+      "date": "2026-05-13",
+      "value": 616.63
+    },
+    {
+      "date": "2026-05-14",
+      "value": 618.43
+    },
+    {
+      "date": "2026-05-15",
+      "value": 614.23
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1547498946560.0,
-      "pe_ratio": 22.176428,
-      "forward_pe": 16.847143,
-      "eps_ttm": 27.49,
+      "market_cap": 1559175626752.0,
+      "pe_ratio": 22.319403,
+      "forward_pe": 16.974262,
+      "eps_ttm": 27.52,
       "dividend_yield": 0.34,
       "profit_margin": 0.32837,
       "operating_margin": 0.40617,
-      "price_to_book": 6.3494525,
+      "price_to_book": 6.3973627,
       "return_on_equity": 0.32930002
     },
     "quarterly": [
@@ -10121,12 +10122,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-08",
-    "current_price": 609.63,
+    "as_of": "2026-05-15",
+    "current_price": 614.23,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 549.8,
+        "fair_value": 550.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10136,14 +10137,14 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 243.69,
+        "fair_value": 243.83,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 508.19,
-    "valuation_gap": 0.1996,
-    "signal": "overvalued",
+    "fair_value": 508.51,
+    "valuation_gap": 0.2079,
+    "signal": "expensive",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10258,6 +10259,12 @@
         "price": 609.63,
         "fair_value": 550.2,
         "gap": 0.108
+      },
+      {
+        "date": "2026-05-15",
+        "price": 614.23,
+        "fair_value": 550.2,
+        "gap": 0.1164
       }
     ],
     "qualitative": {
@@ -10272,11 +10279,20 @@
         "AI 투자 수익화 지연",
         "규제 당국 AI 이니셔티브 관련 추가 조사 가능성"
       ],
-      "history": [
+      "news_count": 1,
+      "competitor_context": [
         {
-          "date": "2026-05-13",
-          "narrative_score": 0.05
+          "ticker": "GOOGL",
+          "headline": "Alphabet leads $60B AI debt financing surge, Cloud revenue backlog strong",
+          "implication_for_target": "구글 AI 생태계 강화로 META 디지털 광고 시장 점유율 경쟁 지속"
         },
+        {
+          "ticker": "SNAP",
+          "headline": "No major Snap news in 24h period",
+          "implication_for_target": "경쟁사 뚜렷한 이슈 없어 META 소셜 광고 시장 지위 유지"
+        }
+      ],
+      "history": [
         {
           "date": "2026-05-14",
           "narrative_score": 0.1
