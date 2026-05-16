@@ -1,6 +1,7 @@
 {
   "name": "Palantir Technologies",
   "sector": "Technology",
+  "group": "빅테크 / AI 플랫폼",
   "series": [
     {
       "date": "2020-09-30",
@@ -5633,18 +5634,38 @@
     {
       "date": "2026-05-08",
       "value": 137.8
+    },
+    {
+      "date": "2026-05-11",
+      "value": 136.89
+    },
+    {
+      "date": "2026-05-12",
+      "value": 136.0
+    },
+    {
+      "date": "2026-05-13",
+      "value": 130.05
+    },
+    {
+      "date": "2026-05-14",
+      "value": 133.73
+    },
+    {
+      "date": "2026-05-15",
+      "value": 133.99
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 330349608960.0,
-      "pe_ratio": 153.11111,
-      "forward_pe": 66.9322,
-      "eps_ttm": 0.9,
+      "market_cap": 321215856640.0,
+      "pe_ratio": 152.26137,
+      "forward_pe": 64.897514,
+      "eps_ttm": 0.88,
       "dividend_yield": null,
       "profit_margin": 0.43673,
       "operating_margin": 0.46183997,
-      "price_to_book": 44.60991,
+      "price_to_book": 43.3765,
       "return_on_equity": 0.32587
     },
     "quarterly": [
@@ -5686,28 +5707,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-08",
-    "current_price": 137.8,
+    "as_of": "2026-05-15",
+    "current_price": 133.99,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 25.2,
+        "fair_value": 24.64,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 45.29,
+        "fair_value": 45.42,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 7.91,
+        "fair_value": 7.82,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 27.77,
-    "valuation_gap": 3.9624,
+    "fair_value": 27.51,
+    "valuation_gap": 3.8706,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -5823,6 +5844,12 @@
         "price": 137.8,
         "fair_value": 24.93,
         "gap": 4.5269
+      },
+      {
+        "date": "2026-05-15",
+        "price": 133.99,
+        "fair_value": 24.93,
+        "gap": 4.3741
       }
     ],
     "qualitative": {
@@ -5836,11 +5863,15 @@
       "risks": [
         "고밸류에이션 부담으로 거시 금리 상승 시 급격한 조정 위험"
       ],
-      "history": [
+      "news_count": 1,
+      "competitor_context": [
         {
-          "date": "2026-05-13",
-          "narrative_score": 0.13
-        },
+          "ticker": "MSFT",
+          "headline": "Ackman backs Microsoft; Copilot enterprise AI ecosystem expands",
+          "implication_for_target": "MSFT Copilot 기업용 AI 생태계 강화로 PLTR 엔터프라이즈 AI 계약 경쟁 심화"
+        }
+      ],
+      "history": [
         {
           "date": "2026-05-14",
           "narrative_score": 0.05

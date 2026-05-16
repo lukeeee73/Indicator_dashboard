@@ -1,27 +1,8 @@
 {
   "name": "Amazon.com Inc.",
   "sector": "Consumer Discretionary",
+  "group": "빅테크 / AI 플랫폼",
   "series": [
-    {
-      "date": "2016-05-09",
-      "value": 33.99
-    },
-    {
-      "date": "2016-05-10",
-      "value": 35.15
-    },
-    {
-      "date": "2016-05-11",
-      "value": 35.66
-    },
-    {
-      "date": "2016-05-12",
-      "value": 35.9
-    },
-    {
-      "date": "2016-05-13",
-      "value": 35.5
-    },
     {
       "date": "2016-05-16",
       "value": 35.53
@@ -10061,18 +10042,38 @@
     {
       "date": "2026-05-08",
       "value": 272.68
+    },
+    {
+      "date": "2026-05-11",
+      "value": 268.99
+    },
+    {
+      "date": "2026-05-12",
+      "value": 265.82
+    },
+    {
+      "date": "2026-05-13",
+      "value": 270.13
+    },
+    {
+      "date": "2026-05-14",
+      "value": 267.22
+    },
+    {
+      "date": "2026-05-15",
+      "value": 264.14
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 2933248491520.0,
-      "pe_ratio": 32.578255,
-      "forward_pe": 27.625109,
-      "eps_ttm": 8.37,
+      "market_cap": 2841383010304.0,
+      "pe_ratio": 31.633533,
+      "forward_pe": 26.751066,
+      "eps_ttm": 8.35,
       "dividend_yield": null,
       "profit_margin": 0.12224,
       "operating_margin": 0.1314,
-      "price_to_book": 6.63568,
+      "price_to_book": 6.4278593,
       "return_on_equity": 0.24285
     },
     "quarterly": [
@@ -10114,28 +10115,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-08",
-    "current_price": 272.68,
+    "as_of": "2026-05-15",
+    "current_price": 264.14,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 209.25,
+        "fair_value": 208.75,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 197.41,
+        "fair_value": 197.48,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
       "graham_number": {
-        "fair_value": 87.97,
+        "fair_value": 87.87,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 181.44,
-    "valuation_gap": 0.5028,
+    "fair_value": 181.19,
+    "valuation_gap": 0.4578,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10251,6 +10252,12 @@
         "price": 272.68,
         "fair_value": 209.0,
         "gap": 0.3047
+      },
+      {
+        "date": "2026-05-15",
+        "price": 264.14,
+        "fair_value": 209.0,
+        "gap": 0.2638
       }
     ],
     "qualitative": {
@@ -10265,11 +10272,20 @@
         "2026년 CapEx $200B 돌파 시 수익성 압박",
         "클라우드 시장 가격 경쟁 심화"
       ],
-      "history": [
+      "news_count": 2,
+      "competitor_context": [
         {
-          "date": "2026-05-13",
-          "narrative_score": 0.05
+          "ticker": "MSFT",
+          "headline": "Ackman backs Microsoft; Copilot enterprise ecosystem grows",
+          "implication_for_target": "기관 자금 일부가 AMZN에서 MSFT로 이동 가능성, AWS vs Azure 경쟁 지속"
         },
+        {
+          "ticker": "GOOGL",
+          "headline": "Alphabet leads $60B AI debt financing surge for AI expansion",
+          "implication_for_target": "Google Cloud의 공격적 AI 투자 확대로 AWS 클라우드 시장 경쟁 심화"
+        }
+      ],
+      "history": [
         {
           "date": "2026-05-14",
           "narrative_score": 0.33
