@@ -294,17 +294,72 @@ ASSETS: dict[str, dict] = {
 # --------------------------------------------------------------------------
 # 개별 종목 정의
 # --------------------------------------------------------------------------
-# Yahoo Finance 티커 기준. 섹터 정보는 프론트엔드 카드 표시용.
+# Yahoo Finance 티커 기준.
+#   - name:   카드에 표시할 영문 정식명
+#   - sector: valuation.py 의 섹터 P/E 벤치마크 키 (영문, GICS 분류 기반)
+#   - group:  대시보드 카드 묶음 헤더 (한국어). app.js STOCK_META 와 동일해야 함.
+#
+# 새 종목을 추가할 때:
+#   1) 여기에 한 줄 추가
+#   2) scripts/competitors.py 에 경쟁사 목록 한 줄 추가
+#   3) app.js STOCK_META 에 displayName / business / group / color 등 한 줄 추가
+#   4) Luke_wiki 의 wiki/news/{TICKER}.md 와 wiki/news/_dashboard.md 갱신
+#
+# 한국 상장 종목은 Yahoo Finance 의 ".KS" 접미사를 사용한다 (예: 329180.KS).
+# 가격은 KRW 단위이므로 app.js STOCK_META 에서 currency: "KRW" 로 표시한다.
 STOCKS: dict[str, dict] = {
-    "AAPL":  {"name": "Apple Inc.",              "sector": "Technology"},
-    "MSFT":  {"name": "Microsoft Corporation",   "sector": "Technology"},
-    "GOOGL": {"name": "Alphabet Inc.",           "sector": "Communication Services"},
-    "AMZN":  {"name": "Amazon.com Inc.",         "sector": "Consumer Discretionary"},
-    "NVDA":  {"name": "NVIDIA Corporation",      "sector": "Technology"},
-    "META":  {"name": "Meta Platforms Inc.",     "sector": "Communication Services"},
-    "ORCL":  {"name": "Oracle Corporation",      "sector": "Technology"},
-    "PLTR":  {"name": "Palantir Technologies",   "sector": "Technology"},
-    "TSLA":  {"name": "Tesla Inc.",              "sector": "Consumer Discretionary"},
+    # ── 빅테크 / AI 플랫폼 ─────────────────────────────────────────────
+    "AAPL":  {"name": "Apple Inc.",                      "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
+    "MSFT":  {"name": "Microsoft Corporation",           "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
+    "GOOGL": {"name": "Alphabet Inc.",                   "sector": "Communication Services", "group": "빅테크 / AI 플랫폼"},
+    "AMZN":  {"name": "Amazon.com Inc.",                 "sector": "Consumer Discretionary", "group": "빅테크 / AI 플랫폼"},
+    "META":  {"name": "Meta Platforms Inc.",             "sector": "Communication Services", "group": "빅테크 / AI 플랫폼"},
+    "ORCL":  {"name": "Oracle Corporation",              "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
+    "PLTR":  {"name": "Palantir Technologies",           "sector": "Technology",             "group": "빅테크 / AI 플랫폼"},
+
+    # ── 반도체 ────────────────────────────────────────────────────────
+    "NVDA":  {"name": "NVIDIA Corporation",              "sector": "Technology",             "group": "반도체"},
+    "AMD":   {"name": "Advanced Micro Devices",          "sector": "Technology",             "group": "반도체"},
+    "TSM":   {"name": "Taiwan Semiconductor",            "sector": "Technology",             "group": "반도체"},
+    "AVGO":  {"name": "Broadcom Inc.",                   "sector": "Technology",             "group": "반도체"},
+
+    # ── 자동차 / 모빌리티 ─────────────────────────────────────────────
+    "TSLA":  {"name": "Tesla Inc.",                      "sector": "Consumer Discretionary", "group": "자동차 / 모빌리티"},
+
+    # ── 바이오 / 제약 / 헬스케어 ──────────────────────────────────────
+    "LLY":   {"name": "Eli Lilly and Company",           "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
+    "NVO":   {"name": "Novo Nordisk A/S",                "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
+    "JNJ":   {"name": "Johnson & Johnson",               "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
+    "UNH":   {"name": "UnitedHealth Group",              "sector": "Healthcare",             "group": "바이오 / 제약 / 헬스케어"},
+
+    # ── 에너지 / 원자재 ───────────────────────────────────────────────
+    "XOM":   {"name": "Exxon Mobil Corporation",         "sector": "Energy",                 "group": "에너지 / 원자재"},
+    "FCX":   {"name": "Freeport-McMoRan Inc.",           "sector": "Materials",              "group": "에너지 / 원자재"},
+    "NEM":   {"name": "Newmont Corporation",             "sector": "Materials",              "group": "에너지 / 원자재"},
+
+    # ── 금융 ──────────────────────────────────────────────────────────
+    "JPM":   {"name": "JPMorgan Chase & Co.",            "sector": "Financial Services",     "group": "금융"},
+    "V":     {"name": "Visa Inc.",                       "sector": "Financial Services",     "group": "금융"},
+    "BRK-B": {"name": "Berkshire Hathaway Inc. (Class B)", "sector": "Financial Services",   "group": "금융"},
+
+    # ── 소비재 (Consumer Staples) ─────────────────────────────────────
+    "WMT":   {"name": "Walmart Inc.",                    "sector": "Consumer Staples",       "group": "소비재"},
+    "COST":  {"name": "Costco Wholesale",                "sector": "Consumer Staples",       "group": "소비재"},
+    "KO":    {"name": "The Coca-Cola Company",           "sector": "Consumer Staples",       "group": "소비재"},
+
+    # ── 산업재 / 방산 ─────────────────────────────────────────────────
+    "CAT":   {"name": "Caterpillar Inc.",                "sector": "Industrials",            "group": "산업재 / 방산"},
+    "BA":    {"name": "The Boeing Company",              "sector": "Industrials",            "group": "산업재 / 방산"},
+    "LMT":   {"name": "Lockheed Martin Corporation",     "sector": "Industrials",            "group": "산업재 / 방산"},
+
+    # ── 부동산 (REITs) ────────────────────────────────────────────────
+    "AMT":   {"name": "American Tower Corporation",      "sector": "Real Estate",            "group": "부동산 (REITs)"},
+    "PLD":   {"name": "Prologis, Inc.",                  "sector": "Real Estate",            "group": "부동산 (REITs)"},
+    "EQIX":  {"name": "Equinix, Inc.",                   "sector": "Real Estate",            "group": "부동산 (REITs)"},
+
+    # ── 조선 (한국 상장) ──────────────────────────────────────────────
+    "329180.KS": {"name": "HD Hyundai Heavy Industries", "sector": "Industrials",            "group": "조선 (한국)"},
+    "042660.KS": {"name": "Hanwha Ocean Co., Ltd.",      "sector": "Industrials",            "group": "조선 (한국)"},
 }
 
 
@@ -780,6 +835,7 @@ def save_split_store(output: dict) -> None:
             "code":   code,
             "name":   payload.get("name"),
             "sector": payload.get("sector"),
+            "group":  payload.get("group"),
             "competitors_in_watchlist": get_watchlist_competitors(code, watchlist_set),
         }
         # valuation 블록이 있으면 요약 필드만 인덱스에 노출 (목록 카드용)
@@ -918,6 +974,7 @@ def main() -> int:
         new_stocks[ticker] = {
             "name":       meta["name"],
             "sector":     meta["sector"],
+            "group":      meta.get("group"),
             "series":     series,
             "financials": financials,
         }

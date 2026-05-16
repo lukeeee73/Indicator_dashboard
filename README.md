@@ -169,3 +169,27 @@ Vercel 이 GitHub 의 default branch 를 감시하므로,
   `index.html` + `app.js` + `style.css` + Chart.js 기반 카드형 대시보드
 - [x] **3단계 — 배포** (현재)
   Vercel 연동 (GitHub 푸시 시 자동 재배포). 개인 도메인 연결은 선택.
+- [x] **4단계 — 개별 종목 확장** (현재)
+  빅테크에서 시작해 반도체·바이오/제약·에너지·금융·소비재·산업재·부동산(REITs)·조선까지 10개 섹터 그룹·33 종목으로 확장. 한국 조선주 2종 (HD현대중공업, 한화오션) 포함.
+
+---
+
+## 개별 종목 watchlist
+
+대시보드의 **주식 탭 → 개별 종목** 에서 다음 10개 섹터 그룹 33 종목을 확인할 수 있다.
+새 종목·섹터를 추가하는 방법은 [.claude/routines/daily-market-analysis.md](.claude/routines/daily-market-analysis.md) "종목·섹터 추가 가이드" 참고.
+
+| 섹터 그룹 | 종목 |
+|---|---|
+| 빅테크 / AI 플랫폼 | AAPL · MSFT · GOOGL · AMZN · META · ORCL · PLTR |
+| 반도체 | NVDA · AMD · TSM · AVGO |
+| 자동차 / 모빌리티 | TSLA |
+| 바이오 / 제약 / 헬스케어 | LLY · NVO · JNJ · UNH |
+| 에너지 / 원자재 | XOM · FCX · NEM |
+| 금융 | JPM · V · BRK-B |
+| 소비재 | WMT · COST · KO |
+| 산업재 / 방산 | CAT · BA · LMT |
+| 부동산 (REITs) | AMT · PLD · EQIX |
+| 조선 (한국, KRW) | 329180.KS (HD현대중공업) · 042660.KS (한화오션) |
+
+각 카드에는 사업 모델 한 줄 설명, 1년 가격 추이, 4가지 핵심 재무 지표 (P/E·영업이익률·ROE·배당수익률), 분기 매출/이익 추세, 자체 산출 fair value 와 valuation gap, watchlist 내 경쟁사 비교, daily-market-analysis 루틴이 매일 누적하는 정성 분석(narrative_score) 이 표시된다.
