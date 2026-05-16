@@ -1,0 +1,56 @@
+{
+  "ticker": "BAC",
+  "date": "2026-05-16",
+  "as_of_utc": "2026-05-16T12:00:00Z",
+  "news": [
+    {
+      "title": "Bank of America Q1 2026: EPS $1.11 beats $1.01 est, revenue $30.3B (+7% YoY), EPS +25% YoY",
+      "source": "Yahoo Finance / Quiver Quant",
+      "url": "https://finance.yahoo.com/quote/BAC/",
+      "published": "2026-04-15T00:00:00Z",
+      "summary": "BAC Q1 실적 서프라이즈. EPS +25% YoY, 매출 +7% YoY. 주가 장전 +1.97% 반응",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Bank of America declares $0.28 quarterly dividend, ex-date June 5, 2026",
+      "source": "Investor Relations / Yahoo Finance",
+      "url": "https://investor.bankofamerica.com/",
+      "published": "2026-05-14T00:00:00Z",
+      "summary": "BAC, 분기 배당 $0.28 선언. 배당 지속 능력 확인",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "CEO Brian Moynihan to speak at Bernstein Strategic Decisions Conference May 27",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/BAC/",
+      "published": "2026-05-15T00:00:00Z",
+      "summary": "무이니한 CEO, 5월 27일 번스타인 컨퍼런스 참석 예정. 전략 방향 설명 기회",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JPM",
+      "headline": "JPM lowers WFC price target to $86.50, maintains Neutral rating",
+      "implication_for_target": "JPM의 WFC 목표가 하향은 섹터 내 은행 NIM 압박 우려를 반영, BAC에도 간접 영향"
+    },
+    {
+      "ticker": "WFC",
+      "headline": "Wells Fargo faces NIM compression and analysts reduce price targets",
+      "implication_for_target": "WFC NIM 압박 이슈가 BAC 등 소매 은행 전반의 마진 우려로 확산될 수 있음"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.1,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": 0.05,
+  "summary_kr": "BAC의 Q1 실적이 EPS +25% YoY로 강한 어닝 서프라이즈를 기록. 그러나 Fed 금리 동결 기조와 NIM 압박 우려로 주가는 고점 대비 하락세. 배당 유지와 CEO 컨퍼런스 참석이 주주 소통 강화 신호.",
+  "key_events": ["Q1 EPS 서프라이즈 (+25% YoY)", "분기 배당 $0.28 선언", "CEO 번스타인 컨퍼런스 참석 예정"],
+  "risks": ["Fed 금리 동결 지속으로 NIM 압박 심화", "경기 불확실성에 따른 대손충당금 증가 위험"]
+}
