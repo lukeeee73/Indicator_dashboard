@@ -169,3 +169,55 @@ Vercel 이 GitHub 의 default branch 를 감시하므로,
   `index.html` + `app.js` + `style.css` + Chart.js 기반 카드형 대시보드
 - [x] **3단계 — 배포** (현재)
   Vercel 연동 (GitHub 푸시 시 자동 재배포). 개인 도메인 연결은 선택.
+- [x] **4단계 — 개별 종목 섹터별 확장** (현재)
+  AI 편향을 줄이고 12개 섹터 그룹·**114 종목**으로 폭넓게 확장. 통신/미디어·유틸리티/전력 섹터 신설. 한국 조선·자동차 6종 포함 (KRW 통화 지원).
+
+---
+
+## 개별 종목 watchlist (12 섹터 그룹 · 114 종목)
+
+대시보드의 **주식 탭 → 개별 종목** 에서 섹터별로 묶인 모든 종목 카드를 확인할 수 있다.
+종목 정의는 `scripts/watchlist_data.py` 한 파일에 모여 있으며, 변경 후
+`python scripts/gen_watchlist.py` 한 줄로 `fetch_fred.py` / `competitors.py` /
+`app.js` 가 일관되게 재생성된다. 자세한 절차는
+[.claude/routines/daily-market-analysis.md](.claude/routines/daily-market-analysis.md)
+"종목·섹터 추가 가이드" 참고.
+
+| 섹터 그룹 | 종목 수 | 대표 종목 |
+|---|---|---|
+| 빅테크 / 소프트웨어         | 10 | AAPL · MSFT · GOOGL · AMZN · META · ORCL · CRM · ADBE · IBM · PLTR |
+| 반도체                        | 10 | NVDA · AMD · INTC · QCOM · TSM · ASML · AMAT · LRCX · AVGO · MU |
+| 자동차 / 모빌리티            | 10 | TSLA · TM · F · GM · STLA · HMC · RIVN · NIO · 현대차 · 기아 |
+| 바이오 / 제약 / 헬스케어     | 10 | LLY · NVO · JNJ · PFE · MRK · ABBV · AZN · UNH · TMO · ABT |
+| 에너지 / 원자재              | 10 | XOM · CVX · COP · SHEL · OXY · SLB · FCX · NEM · LIN · APD |
+| 금융                          | 10 | JPM · BAC · WFC · C · GS · MS · V · MA · AXP · BRK-B |
+| 소비재                        | 10 | WMT · COST · KO · PEP · PG · MO · MCD · HD · NKE · SBUX |
+| 산업재 / 방산                 | 10 | CAT · DE · BA · LMT · RTX · NOC · HON · GE · UPS · FDX |
+| 부동산 (REITs)                | 10 | AMT · CCI · PLD · EQIX · DLR · O · SPG · WELL · PSA · VICI |
+| 통신 / 미디어                 | 10 | VZ · T · TMUS · CMCSA · CHTR · NFLX · DIS · SPOT · EA · TTWO |
+| 유틸리티 / 전력               | 10 | NEE · SO · DUK · AEP · EXC · CEG · VST · SRE · ED · D |
+| 조선 (한국, KRW)              |  4 | HD현대중공업 · 한화오션 · 삼성중공업 · HD현대미포 |
+
+각 카드에는 사업 모델 한 줄 설명, 1년 가격 추이, 4가지 핵심 재무 지표
+(P/E·영업이익률·ROE·배당수익률), 분기 매출/이익 추세, 자체 산출 fair value 와
+valuation gap, watchlist 내 경쟁사 비교, daily-market-analysis 루틴이 누적하는
+정성 분석(narrative_score) 이 표시된다.
+
+### 요일별 라운드로빈 (daily routine)
+
+watchlist 가 114 종목으로 늘어 하루에 다 처리하면 부담이 크므로, daily routine 은
+요일별로 섹터를 나눠서 처리한다. 매핑은 `scripts/watchlist_data.py` 의
+`DAY_OF_WEEK_SECTORS` 에 정의되어 있다:
+
+| 요일 | 처리 섹터 | 종목 수 |
+|---|---|---|
+| 월요일 | 빅테크 / 소프트웨어 | 10 |
+| 화요일 | 반도체 | 10 |
+| 수요일 | 자동차 / 모빌리티 + 조선 (한국) | 14 |
+| 목요일 | 바이오 / 제약 / 헬스케어 | 10 |
+| 금요일 | 에너지 / 원자재 + 유틸리티 / 전력 | 20 |
+| 토요일 | 금융 + 부동산 (REITs) | 20 |
+| 일요일 | 소비재 + 산업재 / 방산 + 통신 / 미디어 | 30 |
+
+7일에 한 번 모든 종목이 한 바퀴 도는 구조다. 가격·재무 데이터(`update.yml`)
+는 여전히 주 1회 일괄 수집한다 — 가벼우므로.

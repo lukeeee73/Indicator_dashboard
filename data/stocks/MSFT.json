@@ -1,27 +1,8 @@
 {
   "name": "Microsoft Corporation",
   "sector": "Technology",
+  "group": "빅테크 / 소프트웨어",
   "series": [
-    {
-      "date": "2016-05-09",
-      "value": 44.06
-    },
-    {
-      "date": "2016-05-10",
-      "value": 44.89
-    },
-    {
-      "date": "2016-05-11",
-      "value": 44.92
-    },
-    {
-      "date": "2016-05-12",
-      "value": 45.32
-    },
-    {
-      "date": "2016-05-13",
-      "value": 44.94
-    },
     {
       "date": "2016-05-16",
       "value": 45.6
@@ -7056,7 +7037,7 @@
     },
     {
       "date": "2023-05-10",
-      "value": 305.09
+      "value": 305.08
     },
     {
       "date": "2023-05-11",
@@ -10061,18 +10042,38 @@
     {
       "date": "2026-05-08",
       "value": 415.12
+    },
+    {
+      "date": "2026-05-11",
+      "value": 412.66
+    },
+    {
+      "date": "2026-05-12",
+      "value": 407.77
+    },
+    {
+      "date": "2026-05-13",
+      "value": 405.21
+    },
+    {
+      "date": "2026-05-14",
+      "value": 409.43
+    },
+    {
+      "date": "2026-05-15",
+      "value": 421.92
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 3083246239744.0,
-      "pe_ratio": 24.750149,
-      "forward_pe": 21.445097,
-      "eps_ttm": 16.77,
-      "dividend_yield": 0.88,
+      "market_cap": 3134205460480.0,
+      "pe_ratio": 25.129244,
+      "forward_pe": 21.799538,
+      "eps_ttm": 16.79,
+      "dividend_yield": 0.86,
       "profit_margin": 0.39341998,
       "operating_margin": 0.46326,
-      "price_to_book": 7.441418,
+      "price_to_book": 7.5644083,
       "return_on_equity": 0.34013999
     },
     "quarterly": [
@@ -10114,28 +10115,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-08",
-    "current_price": 415.12,
+    "as_of": "2026-05-15",
+    "current_price": 421.92,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 469.56,
+        "fair_value": 470.12,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 425.86,
+        "fair_value": 425.8,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 145.08,
+        "fair_value": 145.16,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 391.55,
-    "valuation_gap": 0.0602,
+    "fair_value": 391.83,
+    "valuation_gap": 0.0768,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10251,6 +10252,12 @@
         "price": 415.12,
         "fair_value": 470.4,
         "gap": -0.1175
+      },
+      {
+        "date": "2026-05-15",
+        "price": 421.92,
+        "fair_value": 470.4,
+        "gap": -0.1031
       }
     ],
     "qualitative": {
@@ -10266,14 +10273,23 @@
         "영국 반독점 조사 확대 시 클라우드 규제 부담",
         "AI 투자 대비 수익화 속도"
       ],
+      "news_count": 4,
+      "competitor_context": [
+        {
+          "ticker": "AAPL",
+          "headline": "OpenAI considers legal action against Apple over ChatGPT integration",
+          "implication_for_target": "OpenAI-AAPL 갈등으로 MSFT Copilot 생태계에 상대적 수혜 가능성"
+        },
+        {
+          "ticker": "GOOGL",
+          "headline": "Alphabet leads $60B tech debt financing surge for AI expansion",
+          "implication_for_target": "구글 AI 투자 가속화, Azure와 Google Cloud 간 경쟁 심화 우려"
+        }
+      ],
       "history": [
         {
           "date": "2026-05-08",
           "narrative_score": -0.15
-        },
-        {
-          "date": "2026-05-13",
-          "narrative_score": -0.1
         },
         {
           "date": "2026-05-14",
