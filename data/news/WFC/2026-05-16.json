@@ -1,0 +1,56 @@
+{
+  "ticker": "WFC",
+  "date": "2026-05-16",
+  "as_of_utc": "2026-05-16T12:00:00Z",
+  "news": [
+    {
+      "title": "Court grants final approval in Wells Fargo settlement; preferred dividends declared",
+      "source": "MarketBeat / Yahoo Finance",
+      "url": "https://www.marketbeat.com/stocks/NYSE/WFC/",
+      "published": "2026-05-15T00:00:00Z",
+      "summary": "법원, WFC 관련 소송 최종 합의 승인. 6개 시리즈 우선주 배당도 선언",
+      "impact": "+",
+      "category": "regulation"
+    },
+    {
+      "title": "JPMorgan cuts Wells Fargo price target to $86.50 from $91, maintains Neutral",
+      "source": "MarketBeat",
+      "url": "https://www.marketbeat.com/stocks/NYSE/WFC/",
+      "published": "2026-05-15T00:00:00Z",
+      "summary": "JPM, WFC 목표주가를 $91→$86.50으로 하향. NIM 압박과 에너지 비용 상승 우려 반영",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Wells Fargo faces NIM compression and rising energy cost headwinds in 2026",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/quotes/WFC",
+      "published": "2026-05-15T00:00:00Z",
+      "summary": "WFC, 금리 동결로 NIM 압박·에너지 비용 상승 직면. 단기 주가 압력 지속 전망",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JPM",
+      "headline": "JPMorgan lowered WFC price target to $86.50; JPM itself showing insider sell activity",
+      "implication_for_target": "JPM의 목표가 하향은 WFC의 NIM 열위 포지션을 확인. 자산 상한 규제 해제 전까지 대출 성장 제한"
+    },
+    {
+      "ticker": "BAC",
+      "headline": "Bank of America Q1 beats with +25% EPS growth — NIM improvement beats WFC",
+      "implication_for_target": "BAC 대비 WFC의 NIM 개선 속도가 느려 상대 열위 우려. 자산 상한 규제가 핵심 갭"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": -0.1,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.1,
+  "summary_kr": "WFC는 소송 합의 최종 승인으로 리스크 해소 신호를 받았으나 JPM의 목표가 하향과 NIM 압박 우려가 주가 부담으로 작용. 자산 상한 규제 해제 전까지 경쟁사 대비 성장 제약이 지속될 전망.",
+  "key_events": ["소송 합의 법원 최종 승인", "JPM의 목표가 $86.50으로 하향 (Neutral)", "NIM 압박·에너지 비용 상승 우려"],
+  "risks": ["자산 상한 규제 해제 지연 시 대출 성장 제약", "금리 동결로 인한 NIM 추가 압박"]
+}
