@@ -77,7 +77,7 @@ data/index.json 의 stocks[] 배열을 읽는다.
 
 오늘 처리 대상 ticker 각각에 대해:
 
-1. **위키 로드** — `lukeeee73/luke_wiki` 의 `wiki/news/{TICKER}.md` 를 MCP 로 읽어 [미해결 가설] 과 [일자별 기록] 최근 7 일 파악.
+1. **위키 로드** — `lukeeee73/luke_wiki` 의 `wiki/news/{TICKER} - {name}.md` 를 MCP 로 읽어 [미해결 가설] 과 [일자별 기록] 최근 7 일 파악.
 2. **뉴스 수집** — 최근 24 시간 뉴스 3~5 건 (한국 종목은 한국 매체 포함).
 3. **경쟁사 동향** — 1~2 건 (섹터별 비교 관점에 맞춰).
 4. **사실 추적** — 오늘 뉴스를 [미해결 가설] 과 대조하여 verified/refuted/pending/aged-out 판정. 패턴(연속·모순·동기화) 감지.
@@ -101,10 +101,13 @@ data/index.json 의 stocks[] 배열을 읽는다.
 mcp__github__get_file_contents(
   owner="lukeeee73",
   repo="luke_wiki",
-  path="wiki/news/{TICKER}.md",
+  path="wiki/news/{TICKER} - {name}.md",
   ref="main"
 )
 ```
+
+> 여기서 `{name}` 은 `data/index.json` 의 해당 종목 `name` 필드 값이다
+> (예: AAPL → `"Apple Inc"`, 329180.KS → `"HD Hyundai Heavy Industries"`).
 
 추출할 것:
 
@@ -113,7 +116,86 @@ mcp__github__get_file_contents(
 - `<!-- DAILY_START -->` 직후부터 가장 최근 7 일의 `### YYYY-MM-DD` 헤더와 본문 → `recent_history` (연속성·모순 감지용).
 - 파일 SHA → 나중 푸시 시 사용.
 
-파일이 없으면 (`404`) → 빈 상태로 진행하되 마크다운 신규 생성. `tags` 에 `[routine-news, watchlist, {TICKER}]` 를 포함하고 기존 ticker 파일(예: `AAPL.md`) 의 구조를 복사.
+파일이 없으면 (`404`) → 빈 상태로 진행하되 마크다운 신규 생성.
+파일명 형식: `wiki/news/{TICKER} - {name}.md`
+(예: `AAPL - Apple Inc.md`, `329180.KS - HD Hyundai Heavy Industries.md`)
+§1.5 에 따라 **회사 소개 섹션을 반드시 포함**해 생성한다.
+`tags` 에 `[routine-news, watchlist, {TICKER}]` 를 포함한다.
+
+---
+
+## 1.5 신규 파일 생성 시 — 회사 소개 작성 규칙
+
+`wiki/news/{TICKER} - {name}.md` 를 새로 만들 때는 `## 회사 소개` 섹션을 **파일 맨 앞** (회사 정보 한 줄 바로 아래) 에 반드시 작성한다.
+
+### 작성 원칙
+
+- **쉬운 한국어**: 금융·산업 전문용어를 최대한 피하고, 꼭 써야 할 전문용어는 바로 뒤에 괄호로 쉽게 풀어쓴다.
+  - 예: "FFO (부동산 회사의 실질 현금 수익을 나타내는 지표)"
+  - 예: "파운드리 (다른 회사가 설계한 반도체를 대신 생산해주는 공장)"
+- **산업 내 위상**: 이 회사가 자기 업계에서 어느 위치인지 — 1위 / 2위 / 틈새 강자 / 도전자 등 — 을 구체적으로 밝힌다.
+- **핵심 사업 모델**: 이 회사가 어떻게 돈을 버는지 2~3 문장으로 설명한다.
+- **분량**: 3~5 문장. 너무 길면 읽기 어렵고 너무 짧으면 맥락이 빠진다.
+
+### 예시
+
+```markdown
+## 회사 소개
+
+NVIDIA(엔비디아)는 GPU(그래픽 처리 장치 — 원래 게임 화면을 그리는 칩이었으나
+지금은 AI 학습에 필수적인 부품)를 설계하는 미국 반도체 회사다.
+AI 서버용 GPU 시장에서 약 80% 이상의 점유율(시장 지배력)을 갖고 있어,
+사실상 AI 인프라의 핵심 부품 공급자 역할을 한다.
+직접 공장을 갖지 않고 TSMC 같은 파운드리(위탁 생산 공장)에 제조를 맡기는
+팹리스(fabless) 방식으로 운영되며, 하드웨어 판매 외에도 CUDA 플랫폼(AI
+개발자들이 GPU를 쓰도록 돕는 소프트웨어 생태계)으로 강력한 고객 락인 효과를
+유지한다.
+```
+
+### 신규 파일 전체 템플릿
+
+```markdown
+---
+title: "{TICKER} - {name} — Routine News Log"
+created: {오늘날짜}
+updated: {오늘날짜}
+domain: finance
+type: claim
+weight: reference
+confidence: low
+tags: [routine-news, watchlist, {TICKER}]
+sources: []
+---
+
+# {TICKER} - {name} — Routine News Log
+
+**{name}** · {sector} · {group} · 경쟁사: {competitors}
+
+## 회사 소개
+
+{위 원칙에 따라 3~5 문장으로 작성}
+
+> [!info] 자동 수집 노트
+> 이 페이지는 `indicator_dashboard` 의 `daily-market-analysis` 루틴이 매일 누적한다.
+> 직접 편집해도 되지만, HTML 마커(`<!-- OPEN_CLAIMS_START -->` 등)는 지우지 말 것.
+
+---
+
+## 미해결 가설 (Open Claims)
+<!-- OPEN_CLAIMS_START -->
+<!-- OPEN_CLAIMS_END -->
+
+## 사실 누적 (Verified Facts)
+<!-- FACTS_START -->
+<!-- FACTS_END -->
+
+## 일자별 기록 (역순)
+<!-- DAILY_START -->
+_(루틴 첫 실행 전 — 비어 있음)_
+<!-- DAILY_END -->
+```
+
+---
 
 ## 2. 뉴스 수집
 
@@ -213,7 +295,7 @@ watchlist 외부 경쟁사 (예: NVDA 입장의 `INTC`, JNJ 입장의 `PFE`) 도
 
 ## 6. 위키 마크다운 갱신
 
-`wiki/news/{TICKER}.md` 전체를 다음과 같이 재구성한다 (HTML 앵커 마커는 보존):
+`wiki/news/{TICKER} - {name}.md` 전체를 다음과 같이 재구성한다 (HTML 앵커 마커는 보존):
 
 ### 6.1 [미해결 가설] 섹션 재작성
 
@@ -329,7 +411,7 @@ watchlist 외부 경쟁사 (예: NVDA 입장의 `INTC`, JNJ 입장의 `PFE`) 도
   "summary_kr": "종합 1-2 문장 한국어 요약. 가장 중요한 신호와 그 의미.",
   "key_events": ["EU 가격 인상", "Azure 가격 압박"],
   "risks":      ["EU 규제 대응 지연 시 매출 둔화"],
-  "wiki_url":   "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL.md"
+  "wiki_url":   "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL%20-%20Apple%20Inc.md"
 }
 ```
 
@@ -343,11 +425,14 @@ watchlist 외부 경쟁사 (예: NVDA 입장의 `INTC`, JNJ 입장의 `PFE`) 도
   "news": [],
   "note": "최근 24시간 내 의미 있는 뉴스 없음",
   "narrative_score": 0.0,
-  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL.md"
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL%20-%20Apple%20Inc.md"
 }
 ```
 
 `wiki_url` 필드는 대시보드에서 "자세히 보기" 링크로 활용 가능.
+
+> **URL 인코딩 주의**: 파일명의 공백은 GitHub URL 에서 `%20` 으로 인코딩한다.
+> 예: `AAPL - Apple Inc.md` → `AAPL%20-%20Apple%20Inc.md`
 
 ## 8. valuation.qualitative 블록 갱신
 
@@ -362,7 +447,7 @@ watchlist 외부 경쟁사 (예: NVDA 입장의 `INTC`, JNJ 입장의 `PFE`) 도
     "summary_kr": "...",
     "key_events": [...],
     "risks": [...],
-    "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL.md",
+    "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL%20-%20Apple%20Inc.md",
     "history": [
       {"date": "2026-05-09", "narrative_score": -0.1},
       {"date": "2026-05-16", "narrative_score":  0.05}
@@ -383,7 +468,7 @@ watchlist 외부 경쟁사 (예: NVDA 입장의 `INTC`, JNJ 입장의 `PFE`) 도
 오늘 처리한 ticker 들을 모두 처리한 뒤 `wiki/news/_dashboard.md` 의 "최신 스냅샷" 표에서 **오늘 처리한 행만** 갱신:
 
 ```
-| [AAPL](AAPL.md) | 2026-05-16 | +0.15 | iPhone 17 EU 출시, App Store 수수료 EU 조정안 | 3 |
+| [AAPL](AAPL%20-%20Apple%20Inc.md) | 2026-05-16 | +0.15 | iPhone 17 EU 출시, App Store 수수료 EU 조정안 | 3 |
 ```
 
 (open claims 컬럼 = [미해결 가설] 의 pending 항목 수)
@@ -406,8 +491,8 @@ mcp__github__push_files(
   repo="luke_wiki",
   branch="main",
   files=[
-    {"path": "wiki/news/AAPL.md", "content": "..."},
-    {"path": "wiki/news/MSFT.md", "content": "..."},
+    {"path": "wiki/news/AAPL - Apple Inc.md", "content": "..."},
+    {"path": "wiki/news/MSFT - Microsoft Corporation.md", "content": "..."},
     ...,
     {"path": "wiki/news/_dashboard.md", "content": "..."}
   ],
@@ -450,7 +535,7 @@ git push origin claude/news-daily
 #### {오늘의 섹터 1}
 | Ticker | 뉴스 건수 | narrative_score | 위키 |
 |--------|-----------|-----------------|------|
-| AAPL   | 3         | +0.10           | [AAPL.md](https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL.md) |
+| AAPL   | 3         | +0.10           | [AAPL - Apple Inc.md](https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AAPL%20-%20Apple%20Inc.md) |
 | ...    | ...       | ...             | ... |
 
 #### {오늘의 섹터 2}  (해당 요일에 2 개 섹터가 배정된 경우만)
@@ -515,9 +600,10 @@ git push origin claude/news-daily
 
 ## 첫 실행 시 (one-time bootstrap)
 
-각 `wiki/news/{TICKER}.md` 의 [미해결 가설] / [사실 누적] / [일자별 기록] 섹션은 stub 상태(비어 있음). 첫 실행은 단순히 오늘 데이터로 [일자별 기록] 첫 항목을 만들고, 4.2 규칙으로 신규 가설들을 등록한다. 4.1 의 verified/refuted 처리는 둘째 실행 (= 다음 라운드로빈 차례, 7 일 뒤) 부터 의미를 갖는다.
+각 `wiki/news/{TICKER} - {name}.md` 의 [미해결 가설] / [사실 누적] / [일자별 기록] 섹션은 stub 상태(비어 있음). 첫 실행은 단순히 오늘 데이터로 [일자별 기록] 첫 항목을 만들고, 4.2 규칙으로 신규 가설들을 등록한다. 4.1 의 verified/refuted 처리는 둘째 실행 (= 다음 라운드로빈 차례, 7 일 뒤) 부터 의미를 갖는다.
 
-신규 종목이 watchlist 에 추가되어 `wiki/news/{TICKER}.md` 가 아직 없으면, §1 에서 404 를 만나는 즉시 기존 ticker 파일을 템플릿 삼아 새로 만든다.
+신규 종목이 watchlist 에 추가되어 `wiki/news/{TICKER} - {name}.md` 가 아직 없으면, §1 에서 404 를 만나는 즉시 §1.5 의 템플릿으로 **회사 소개 섹션이 포함된** 새 파일을 생성한다.
+(파일명 예: `AAPL - Apple Inc.md`, `329180.KS - HD Hyundai Heavy Industries.md`)
 
 ---
 
@@ -545,8 +631,12 @@ git push origin claude/news-daily
    - `scripts/competitors.py` 의 `COMPETITORS`
    - `app.js` 의 `STOCK_META` / `STOCK_GROUPS` / `PEER_COMPETITORS`
 
-4. **Luke_wiki 의 `wiki/news/{TICKER}.md` 신규 생성은 선택**
-   루틴이 다음 라운드로빈 차례에 자동으로 만들어준다 (§1, §첫 실행 참고). 미리 만들어두고 싶다면 기존 파일 (예: `wiki/news/AAPL.md`) 을 복사해 frontmatter 의 ticker / subtitle 만 바꾼다. `_dashboard.md` 표 행도 해당 섹터 헤더 아래에 추가한다 (없으면 루틴이 자동 추가).
+4. **Luke_wiki 의 `wiki/news/{TICKER} - {name}.md` 신규 생성은 선택**
+   루틴이 다음 라운드로빈 차례에 자동으로 만들어준다 (§1, §1.5, §첫 실행 참고).
+   미리 만들어두고 싶다면 §1.5 의 **신규 파일 전체 템플릿**을 사용해
+   frontmatter / 회사 소개 / HTML 마커를 모두 포함해 생성한다
+   (파일명 예: `NVDA - NVIDIA Corporation.md`).
+   `_dashboard.md` 표 행도 해당 섹터 헤더 아래에 추가한다 (없으면 루틴이 자동 추가).
 
 5. 다음 주간 GitHub Actions 실행 (`update.yml`) 이 자동으로 종목 데이터를 채워준다. 그 이후 첫 daily routine 실행이 (해당 종목의 요일 차례에) 뉴스를 누적하기 시작한다.
 
