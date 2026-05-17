@@ -1,0 +1,73 @@
+{
+  "ticker": "BAC",
+  "date": "2026-05-17",
+  "as_of_utc": "2026-05-17T21:00:00Z",
+  "news": [
+    {
+      "title": "Bank of America Q1 2026: EPS $1.11 (+25% YoY), revenue $30.3B (+7%); beat estimates",
+      "source": "Yahoo Finance",
+      "url": "https://investor.bankofamerica.com/",
+      "published": "2026-04-15T12:00:00Z",
+      "summary": "BAC Q1 EPS $1.11(컨센서스 +9.9% 상회)·매출 $30.3B — 강력한 어닝 비트",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Bank of America declares $0.28 quarterly dividend, ex-date June 5, 2026",
+      "source": "Bank of America IR",
+      "url": "https://investor.bankofamerica.com/",
+      "published": "2026-05-15T16:00:00Z",
+      "summary": "BAC 분기 배당 $0.28 선언, 기준일 6월 5일",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Fed signals no rate cuts in 2026; bank valuations under pressure",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/quotes/BAC",
+      "published": "2026-05-14T10:00:00Z",
+      "summary": "연준 2026년 금리 인하 없음 시사 — 은행 순이자마진 전망 흐림",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "BAC CEO Brian Moynihan to present at Bernstein Strategic Decisions Conference, May 27",
+      "source": "Bank of America IR",
+      "url": "https://investor.bankofamerica.com/",
+      "published": "2026-05-15T09:00:00Z",
+      "summary": "Moynihan CEO, 5월 27일 번스타인 콘퍼런스 발표 예정",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JPM",
+      "headline": "JPMorgan opens 52 new branches YTD; Dimon warns on market overvaluation",
+      "implication_for_target": "JPM 공격적 지점 확장이 BAC 시장점유율에 잠재 압박"
+    },
+    {
+      "ticker": "WFC",
+      "headline": "Wells Fargo Fed asset cap lifted — full balance sheet expansion possible",
+      "implication_for_target": "WFC 규제 해소로 대출 경쟁 심화 가능"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.1,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": 0.05,
+  "summary_kr": "BAC는 Q1 EPS +25% 강한 어닝 비트를 기록했으나, Fed 금리 동결 장기화 전망이 NIM 회복 시나리오를 흐린다. JPM 지점 확장·WFC 규제 해소로 경쟁 강도도 높아지는 환경.",
+  "key_events": [
+    "Q1 EPS $1.11 (+25% YoY, +9.9% vs est)",
+    "배당 $0.28 선언",
+    "Fed 금리 동결 장기화"
+  ],
+  "risks": [
+    "Fed 2026 금리 인하 부재 — NIM 개선 지연",
+    "WFC 자산제한 해소로 대출 경쟁 가열"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/eloquent-archimedes-hI0Ms/wiki/news/BAC.md"
+}
