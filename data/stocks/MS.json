@@ -7957,7 +7957,7 @@
     },
     {
       "date": "2024-04-10",
-      "value": 85.93
+      "value": 85.92
     },
     {
       "date": "2024-04-11",
@@ -10068,7 +10068,7 @@
     "snapshot": {
       "market_cap": 303643099136.0,
       "pe_ratio": 17.45331,
-      "forward_pe": 15.154807,
+      "forward_pe": 15.158577,
       "eps_ttm": 11.03,
       "dividend_yield": 2.08,
       "profit_margin": 0.24753,
@@ -10132,7 +10132,7 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 152.43,
+        "fair_value": 152.4,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
@@ -10142,8 +10142,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 148.57,
-    "valuation_gap": 0.2957,
+    "fair_value": 148.56,
+    "valuation_gap": 0.2958,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10266,6 +10266,43 @@
         "fair_value": 154.56,
         "gap": 0.2455
       }
-    ]
+    ],
+    "qualitative": {
+      "as_of": "2026-05-17",
+      "narrative_score": 0.08,
+      "summary_kr": "MS는 Q1 사상 최대 매출($20.6B)과 EPS 대폭 상회로 강력한 성장 모멘텀을 확인했다. E*TRADE 암호화폐 거래 출시로 리테일 확장도 가속화 중이나, FINRA 해외 부문 조사가 규제 리스크로 잠재한다.",
+      "key_events": [
+        "Q1 매출 $20.6B 사상 최대·EPS $3.43",
+        "E*TRADE 암호화폐 거래 파일럿",
+        "FINRA 해외 부문 조사"
+      ],
+      "risks": [
+        "FINRA 조사 확대 가능성",
+        "금리·시장 변동성이 웰스 매니지먼트 수익에 영향"
+      ],
+      "news_count": 4,
+      "competitor_context": [
+        {
+          "ticker": "GS",
+          "headline": "Goldman Sachs cautious on private credit; stock +65% in 12 months",
+          "implication_for_target": "GS 대비 MS의 웰스 매니지먼트·리테일 전략 차별화 긍정"
+        },
+        {
+          "ticker": "JPM",
+          "headline": "JPMorgan Meta data center financing $13B; CIO insider sell",
+          "implication_for_target": "JPM 강력한 딜 파이프라인 — MS IB와 경쟁"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-16",
+          "narrative_score": 0.13
+        },
+        {
+          "date": "2026-05-17",
+          "narrative_score": 0.08
+        }
+      ]
+    }
   }
 }
