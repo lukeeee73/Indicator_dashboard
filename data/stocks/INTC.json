@@ -4,26 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 24.44
-    },
-    {
-      "date": "2016-05-17",
-      "value": 24.11
-    },
-    {
-      "date": "2016-05-18",
-      "value": 24.12
-    },
-    {
-      "date": "2016-05-19",
-      "value": 23.83
-    },
-    {
-      "date": "2016-05-20",
-      "value": 24.25
-    },
-    {
       "date": "2016-05-23",
       "value": 24.31
     },
@@ -5713,7 +5693,7 @@
     },
     {
       "date": "2022-01-13",
-      "value": 50.96
+      "value": 50.95
     },
     {
       "date": "2022-01-14",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 108.77
+    },
+    {
+      "date": "2026-05-18",
+      "value": 108.17
+    },
+    {
+      "date": "2026-05-19",
+      "value": 110.8
+    },
+    {
+      "date": "2026-05-20",
+      "value": 118.96
+    },
+    {
+      "date": "2026-05-21",
+      "value": 118.5
+    },
+    {
+      "date": "2026-05-22",
+      "value": 119.84
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 546677981184.0,
+      "market_cap": 602315816960.0,
       "pe_ratio": null,
-      "forward_pe": 70.938034,
+      "forward_pe": 77.83233,
       "eps_ttm": -0.6,
       "dividend_yield": null,
       "profit_margin": -0.05904,
       "operating_margin": 0.06879,
-      "price_to_book": 4.7531023,
+      "price_to_book": 5.4037967,
       "return_on_equity": -0.02911
     },
     "quarterly": [
@@ -10115,18 +10115,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 108.77,
+    "as_of": "2026-05-22",
+    "current_price": 119.84,
     "sector": "Technology",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 33.73,
+        "fair_value": 33.87,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       }
     },
-    "fair_value": 33.73,
-    "valuation_gap": 2.2247,
+    "fair_value": 33.87,
+    "valuation_gap": 2.5382,
     "signal": "expensive",
     "gap_series_weekly": []
   }

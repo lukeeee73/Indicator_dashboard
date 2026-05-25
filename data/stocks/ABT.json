@@ -4,26 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 31.72
-    },
-    {
-      "date": "2016-05-17",
-      "value": 31.27
-    },
-    {
-      "date": "2016-05-18",
-      "value": 31.3
-    },
-    {
-      "date": "2016-05-19",
-      "value": 30.88
-    },
-    {
-      "date": "2016-05-20",
-      "value": 31.18
-    },
-    {
       "date": "2016-05-23",
       "value": 30.99
     },
@@ -5733,7 +5713,7 @@
     },
     {
       "date": "2022-01-21",
-      "value": 115.84
+      "value": 115.83
     },
     {
       "date": "2022-01-24",
@@ -8581,7 +8561,7 @@
     },
     {
       "date": "2024-11-20",
-      "value": 112.49
+      "value": 112.5
     },
     {
       "date": "2024-11-21",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 84.47
+    },
+    {
+      "date": "2026-05-18",
+      "value": 87.91
+    },
+    {
+      "date": "2026-05-19",
+      "value": 88.82
+    },
+    {
+      "date": "2026-05-20",
+      "value": 88.38
+    },
+    {
+      "date": "2026-05-21",
+      "value": 87.77
+    },
+    {
+      "date": "2026-05-22",
+      "value": 87.41
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 147130957824.0,
-      "pe_ratio": 23.661066,
-      "forward_pe": 13.929864,
+      "market_cap": 152251891712.0,
+      "pe_ratio": 24.484596,
+      "forward_pe": 14.414697,
       "eps_ttm": 3.57,
-      "dividend_yield": 2.98,
+      "dividend_yield": 2.88,
       "profit_margin": 0.13904999,
       "operating_margin": 0.13472,
-      "price_to_book": 2.8261235,
+      "price_to_book": 2.9244874,
       "return_on_equity": 0.123339996
     },
     "quarterly": [
@@ -10115,8 +10115,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 84.47,
+    "as_of": "2026-05-22",
+    "current_price": 87.41,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10136,8 +10136,8 @@
       }
     },
     "fair_value": 71.04,
-    "valuation_gap": 0.1891,
-    "signal": "overvalued",
+    "valuation_gap": 0.2305,
+    "signal": "expensive",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10258,6 +10258,12 @@
         "price": 84.47,
         "fair_value": 64.26,
         "gap": 0.3145
+      },
+      {
+        "date": "2026-05-22",
+        "price": 87.41,
+        "fair_value": 64.26,
+        "gap": 0.3603
       }
     ]
   }

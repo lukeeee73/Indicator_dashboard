@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 76.19
-    },
-    {
-      "date": "2016-05-17",
-      "value": 75.66
-    },
-    {
-      "date": "2016-05-18",
-      "value": 76.74
-    },
-    {
-      "date": "2016-05-19",
-      "value": 79.92
-    },
-    {
-      "date": "2016-05-20",
-      "value": 79.85
-    },
-    {
       "date": "2016-05-23",
       "value": 80.55
     },
@@ -4329,7 +4309,7 @@
     },
     {
       "date": "2020-08-31",
-      "value": 268.71
+      "value": 268.7
     },
     {
       "date": "2020-09-01",
@@ -6557,7 +6537,7 @@
     },
     {
       "date": "2022-11-15",
-      "value": 159.72
+      "value": 159.73
     },
     {
       "date": "2022-11-16",
@@ -7261,7 +7241,7 @@
     },
     {
       "date": "2023-08-01",
-      "value": 221.03
+      "value": 221.02
     },
     {
       "date": "2023-08-02",
@@ -7849,7 +7829,7 @@
     },
     {
       "date": "2024-03-01",
-      "value": 312.29
+      "value": 312.3
     },
     {
       "date": "2024-03-04",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 173.51
+    },
+    {
+      "date": "2026-05-18",
+      "value": 179.48
+    },
+    {
+      "date": "2026-05-19",
+      "value": 179.42
+    },
+    {
+      "date": "2026-05-20",
+      "value": 180.1
+    },
+    {
+      "date": "2026-05-21",
+      "value": 176.31
+    },
+    {
+      "date": "2026-05-22",
+      "value": 180.07
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 141940506624.0,
-      "pe_ratio": 22.216389,
-      "forward_pe": 11.632467,
-      "eps_ttm": 7.81,
-      "dividend_yield": 1.01,
+      "market_cap": 147306938368.0,
+      "pe_ratio": 23.085897,
+      "forward_pe": 12.0300665,
+      "eps_ttm": 7.8,
+      "dividend_yield": 0.98,
       "profit_margin": 0.17958,
       "operating_margin": 0.19239001,
-      "price_to_book": 2.7254877,
+      "price_to_book": 2.8285322,
       "return_on_equity": 0.123959996
     },
     "quarterly": [
@@ -10115,28 +10115,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 173.51,
+    "as_of": "2026-05-22",
+    "current_price": 180.07,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 218.68,
+        "fair_value": 218.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 328.15,
+        "fair_value": 329.3,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 105.77,
+        "fair_value": 105.7,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 228.94,
-    "valuation_gap": -0.2421,
+    "fair_value": 229.13,
+    "valuation_gap": -0.2141,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10312,7 +10312,46 @@
         "price": 173.51,
         "fair_value": 218.68,
         "gap": -0.2066
+      },
+      {
+        "date": "2026-05-22",
+        "price": 180.07,
+        "fair_value": 218.68,
+        "gap": -0.1766
       }
-    ]
+    ],
+    "qualitative": {
+      "as_of": "2026-05-18",
+      "narrative_score": -0.05,
+      "summary_kr": "$250억 역대 최대 자사주 매입으로 주가 하방 지지를 시도하고 Agentforce ARR +200%의 성장이 보이지만, BofA 하향과 AI 에이전트의 SaaS 좌석 수요 잠식 우려가 구조적 약점으로 지목되고 있다.",
+      "key_events": [
+        "$25B 역대 최대 자사주 매입",
+        "BofA Underperform 하향 $160",
+        "Agentforce ARR +200%"
+      ],
+      "risks": [
+        "AI 에이전트가 SaaS 좌석 기반 수익모델 잠식 위험",
+        "YTD -30% 추세 지속 가능성"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "MSFT",
+          "headline": "Microsoft Copilot/Dynamics 365 expanding in CRM/sales automation space",
+          "implication_for_target": "Copilot이 Salesforce의 핵심 영업 자동화 시장 직접 공략"
+        },
+        {
+          "ticker": "ORCL",
+          "headline": "Oracle growing enterprise software momentum with Samsung deal and analyst upgrades",
+          "implication_for_target": "엔터프라이즈 소프트웨어 고객 쟁탈전 심화"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-18",
+          "narrative_score": -0.05
+        }
+      ]
+    }
   }
 }

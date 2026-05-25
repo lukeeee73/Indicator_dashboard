@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 117.75
-    },
-    {
-      "date": "2016-05-17",
-      "value": 116.44
-    },
-    {
-      "date": "2016-05-18",
-      "value": 116.73
-    },
-    {
-      "date": "2016-05-19",
-      "value": 115.9
-    },
-    {
-      "date": "2016-05-20",
-      "value": 116.44
-    },
-    {
       "date": "2016-05-23",
       "value": 115.07
     },
@@ -3061,7 +3041,7 @@
     },
     {
       "date": "2019-05-30",
-      "value": 181.59
+      "value": 181.58
     },
     {
       "date": "2019-05-31",
@@ -3245,7 +3225,7 @@
     },
     {
       "date": "2019-08-05",
-      "value": 180.31
+      "value": 180.32
     },
     {
       "date": "2019-08-06",
@@ -4761,7 +4741,7 @@
     },
     {
       "date": "2021-02-04",
-      "value": 264.41
+      "value": 264.42
     },
     {
       "date": "2021-02-05",
@@ -7761,7 +7741,7 @@
     },
     {
       "date": "2024-01-30",
-      "value": 396.95
+      "value": 396.94
     },
     {
       "date": "2024-01-31",
@@ -8425,7 +8405,7 @@
     },
     {
       "date": "2024-09-26",
-      "value": 565.11
+      "value": 565.12
     },
     {
       "date": "2024-09-27",
@@ -8609,7 +8589,7 @@
     },
     {
       "date": "2024-12-02",
-      "value": 589.99
+      "value": 589.98
     },
     {
       "date": "2024-12-03",
@@ -9333,7 +9313,7 @@
     },
     {
       "date": "2025-08-25",
-      "value": 751.53
+      "value": 751.54
     },
     {
       "date": "2025-08-26",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 614.23
+    },
+    {
+      "date": "2026-05-18",
+      "value": 611.21
+    },
+    {
+      "date": "2026-05-19",
+      "value": 602.61
+    },
+    {
+      "date": "2026-05-20",
+      "value": 605.06
+    },
+    {
+      "date": "2026-05-21",
+      "value": 607.38
+    },
+    {
+      "date": "2026-05-22",
+      "value": 610.26
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1559175626752.0,
-      "pe_ratio": 22.319403,
-      "forward_pe": 16.985453,
+      "market_cap": 1549098287104.0,
+      "pe_ratio": 22.175146,
+      "forward_pe": 16.948385,
       "eps_ttm": 27.52,
       "dividend_yield": 0.34,
       "profit_margin": 0.32837,
       "operating_margin": 0.40617,
-      "price_to_book": 6.3973627,
+      "price_to_book": 6.3560143,
       "return_on_equity": 0.32930002
     },
     "quarterly": [
@@ -10122,8 +10122,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 614.23,
+    "as_of": "2026-05-22",
+    "current_price": 610.26,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10132,7 +10132,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 614.76,
+        "fair_value": 612.12,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -10142,8 +10142,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 508.39,
-    "valuation_gap": 0.2082,
+    "fair_value": 507.6,
+    "valuation_gap": 0.2022,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10265,31 +10265,38 @@
         "price": 614.23,
         "fair_value": 550.2,
         "gap": 0.1164
+      },
+      {
+        "date": "2026-05-22",
+        "price": 610.26,
+        "fair_value": 550.2,
+        "gap": 0.1092
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-15",
-      "narrative_score": -0.08,
-      "summary_kr": "Q1 어닝 서프라이즈에도 $125-145B CapEx 가이던스 상향이 주가 하방 압력으로 작용. AI 투자 수익화 일정이 투자자 신뢰 회복의 핵심 과제.",
+      "as_of": "2026-05-18",
+      "narrative_score": 0.02,
+      "summary_kr": "Q1 매출 +33% 강한 어닝 서프라이즈에도 불구, 2026 capex $125B(+8%) 상향과 자사주매입 전면 중단이 투자자 실망을 유발해 주가가 고점 대비 -23% 조정을 받고 있다.",
       "key_events": [
-        "Q1 2026 어닝 서프라이즈",
-        "CapEx 가이던스 $125-145B으로 대폭 상향"
+        "Q1 매출 +33%, EPS 비트",
+        "capex $125B 상향 (+8%)",
+        "Meta Superintelligence Labs AI 모델 출시"
       ],
       "risks": [
-        "AI 투자 수익화 지연",
-        "규제 당국 AI 이니셔티브 관련 추가 조사 가능성"
+        "capex $125B 장기 ROI 불확실성",
+        "자사주매입 중단 → 주주환원 기대 실망"
       ],
-      "news_count": 1,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "GOOGL",
-          "headline": "Alphabet leads $60B AI debt financing surge, Cloud revenue backlog strong",
-          "implication_for_target": "구글 AI 생태계 강화로 META 디지털 광고 시장 점유율 경쟁 지속"
+          "headline": "Google DeepMind Gemini advancing; Alphabet EPS forecast raised sharply",
+          "implication_for_target": "AI 모델 경쟁에서 Gemini vs Meta AI 대결 구도 — 광고 AI 효율 경쟁"
         },
         {
-          "ticker": "SNAP",
-          "headline": "No major Snap news in 24h period",
-          "implication_for_target": "경쟁사 뚜렷한 이슈 없어 META 소셜 광고 시장 지위 유지"
+          "ticker": "MSFT",
+          "headline": "Microsoft Copilot AI expanding across enterprise, competing in productivity AI",
+          "implication_for_target": "기업용 AI 광고 타겟팅·CRM 영역에서 간접 경쟁"
         }
       ],
       "history": [
@@ -10300,6 +10307,10 @@
         {
           "date": "2026-05-15",
           "narrative_score": -0.08
+        },
+        {
+          "date": "2026-05-18",
+          "narrative_score": 0.02
         }
       ]
     }

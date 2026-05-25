@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 97.23
-    },
-    {
-      "date": "2016-05-17",
-      "value": 95.93
-    },
-    {
-      "date": "2016-05-18",
-      "value": 96.7
-    },
-    {
-      "date": "2016-05-19",
-      "value": 95.88
-    },
-    {
-      "date": "2016-05-20",
-      "value": 96.88
-    },
-    {
       "date": "2016-05-23",
       "value": 96.62
     },
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 247.6
+    },
+    {
+      "date": "2026-05-18",
+      "value": 255.64
+    },
+    {
+      "date": "2026-05-19",
+      "value": 254.99
+    },
+    {
+      "date": "2026-05-20",
+      "value": 253.37
+    },
+    {
+      "date": "2026-05-21",
+      "value": 244.1
+    },
+    {
+      "date": "2026-05-22",
+      "value": 244.76
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 100079919104.0,
-      "pe_ratio": 14.428905,
-      "forward_pe": 9.383757,
+      "market_cap": 98931990528.0,
+      "pe_ratio": 14.263403,
+      "forward_pe": 9.276124,
       "eps_ttm": 17.16,
       "dividend_yield": null,
       "profit_margin": 0.29477,
       "operating_margin": 0.38762,
-      "price_to_book": 8.792614,
+      "price_to_book": 8.691761,
       "return_on_equity": 0.58774
     },
     "quarterly": [
@@ -10129,8 +10129,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 247.6,
+    "as_of": "2026-05-22",
+    "current_price": 244.76,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10150,7 +10150,7 @@
       }
     },
     "fair_value": 435.24,
-    "valuation_gap": -0.4311,
+    "valuation_gap": -0.4376,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10296,7 +10296,46 @@
         "price": 247.6,
         "fair_value": 480.76,
         "gap": -0.485
+      },
+      {
+        "date": "2026-05-22",
+        "price": 244.76,
+        "fair_value": 480.76,
+        "gap": -0.4909
       }
-    ]
+    ],
+    "qualitative": {
+      "as_of": "2026-05-18",
+      "narrative_score": 0.12,
+      "summary_kr": "$250억 자사주 매입, Semrush 인수, AI 에이전트 출시가 동시에 발표되며, 반도체→소프트웨어 섹터 로테이션에서 Adobe가 주도주로 부상하고 있다.",
+      "key_events": [
+        "$25B 자사주 매입",
+        "Semrush 인수",
+        "Acrobat AI 에이전트 출시",
+        "소프트웨어 섹터 로테이션 주도"
+      ],
+      "risks": [
+        "Microsoft Copilot의 PDF/문서 기능 확장으로 Acrobat 경쟁 심화"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "MSFT",
+          "headline": "Microsoft Copilot expanding document/PDF productivity features",
+          "implication_for_target": "Copilot PDF 기능이 Acrobat AI와 직접 경쟁"
+        },
+        {
+          "ticker": "CRM",
+          "headline": "Salesforce Agentforce growing but under structural pressure",
+          "implication_for_target": "소프트웨어 섹터 내 투자 자금이 CRM 약세 속 ADBE로 이동 기회"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-18",
+          "narrative_score": 0.12
+        }
+      ]
+    }
   }
 }

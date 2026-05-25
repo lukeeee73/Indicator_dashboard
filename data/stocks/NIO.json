@@ -7718,19 +7718,39 @@
     {
       "date": "2026-05-15",
       "value": 6.1
+    },
+    {
+      "date": "2026-05-18",
+      "value": 5.88
+    },
+    {
+      "date": "2026-05-19",
+      "value": 5.74
+    },
+    {
+      "date": "2026-05-20",
+      "value": 5.59
+    },
+    {
+      "date": "2026-05-21",
+      "value": 5.6
+    },
+    {
+      "date": "2026-05-22",
+      "value": 5.2
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 15284569088.0,
+      "market_cap": 13029468160.0,
       "pe_ratio": null,
-      "forward_pe": -307.2147,
-      "eps_ttm": -1.01,
+      "forward_pe": 53.36496,
+      "eps_ttm": -0.55,
       "dividend_yield": null,
-      "profit_margin": -0.17798,
-      "operating_margin": 0.01476,
-      "price_to_book": 24.622013,
-      "return_on_equity": -1.18725
+      "profit_margin": -0.09086,
+      "operating_margin": -0.01209,
+      "price_to_book": 21.036646,
+      "return_on_equity": -0.83959
     },
     "quarterly": [
       {
@@ -7742,10 +7762,10 @@
       },
       {
         "date": "2024-12-31",
-        "revenue": 19703427000.0,
-        "operating_income": -6032935000.0,
-        "net_income": -7131769000.0,
-        "eps": -3.45
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": null
       },
       {
         "date": "2025-03-31",
@@ -7774,18 +7794,30 @@
         "operating_income": 807270000.0,
         "net_income": 122443000.0,
         "eps": 0.05
+      },
+      {
+        "date": "2026-03-31",
+        "revenue": 25532655000.0,
+        "operating_income": -308811000.0,
+        "net_income": -496008000.0,
+        "eps": -0.2
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 6.1,
+    "as_of": "2026-05-22",
+    "current_price": 5.2,
     "sector": "Consumer Discretionary",
-    "methods": {},
-    "fair_value": null,
-    "valuation_gap": null,
-    "signal": "n/a",
-    "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
+    "methods": {
+      "forward_pe_benchmark": {
+        "fair_value": 1.95,
+        "weight": 3.0,
+        "note": "내재 forward EPS × 섹터 Forward P/E (20)"
+      }
+    },
+    "fair_value": 1.95,
+    "valuation_gap": 1.6667,
+    "signal": "expensive",
     "gap_series_weekly": []
   }
 }

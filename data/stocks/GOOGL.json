@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 36.22
-    },
-    {
-      "date": "2016-05-17",
-      "value": 35.71
-    },
-    {
-      "date": "2016-05-18",
-      "value": 35.79
-    },
-    {
-      "date": "2016-05-19",
-      "value": 35.47
-    },
-    {
-      "date": "2016-05-20",
-      "value": 35.79
-    },
-    {
       "date": "2016-05-23",
       "value": 35.57
     },
@@ -2645,7 +2625,7 @@
     },
     {
       "date": "2018-12-28",
-      "value": 51.9
+      "value": 51.91
     },
     {
       "date": "2018-12-31",
@@ -5921,7 +5901,7 @@
     },
     {
       "date": "2022-03-30",
-      "value": 140.77
+      "value": 140.78
     },
     {
       "date": "2022-03-31",
@@ -8133,7 +8113,7 @@
     },
     {
       "date": "2024-06-12",
-      "value": 176.53
+      "value": 176.54
     },
     {
       "date": "2024-06-13",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 396.78
+    },
+    {
+      "date": "2026-05-18",
+      "value": 396.94
+    },
+    {
+      "date": "2026-05-19",
+      "value": 387.66
+    },
+    {
+      "date": "2026-05-20",
+      "value": 388.91
+    },
+    {
+      "date": "2026-05-21",
+      "value": 387.66
+    },
+    {
+      "date": "2026-05-22",
+      "value": 382.97
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 4807165739008.0,
-      "pe_ratio": 30.311687,
-      "forward_pe": 27.456259,
-      "eps_ttm": 13.09,
-      "dividend_yield": 0.22,
+      "market_cap": 4639851282432.0,
+      "pe_ratio": 29.23435,
+      "forward_pe": 26.500639,
+      "eps_ttm": 13.1,
+      "dividend_yield": 0.23,
       "profit_margin": 0.37919,
       "operating_margin": 0.36121,
-      "price_to_book": 10.041504,
+      "price_to_book": 9.692008,
       "return_on_equity": 0.38884997
     },
     "quarterly": [
@@ -10122,12 +10122,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 396.78,
+    "as_of": "2026-05-22",
+    "current_price": 382.97,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 261.8,
+        "fair_value": 262.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10137,13 +10137,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 107.88,
+        "fair_value": 107.92,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 226.18,
-    "valuation_gap": 0.7543,
+    "fair_value": 226.28,
+    "valuation_gap": 0.6924,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10265,31 +10265,38 @@
         "price": 396.78,
         "fair_value": 262.2,
         "gap": 0.5133
+      },
+      {
+        "date": "2026-05-22",
+        "price": 382.97,
+        "fair_value": 262.2,
+        "gap": 0.4606
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-15",
-      "narrative_score": 0.15,
-      "summary_kr": "AI 투자 붐 선두주자로서 구글 클라우드·Gemini 모멘텀이 강하고 채권 발행을 통한 공격적 투자 의지를 확인. 규제 리스크는 지속적이나 신규 촉매 없음.",
+      "as_of": "2026-05-18",
+      "narrative_score": 0.1,
+      "summary_kr": "2026년 EPS 컨센서스가 $14.22로 대폭 상향되고 클라우드 시장 점유율도 확대되고 있으나, Ackman의 전량 매도가 기관 투자 심리에 부정적 신호를 주고 있다.",
       "key_events": [
-        "$60B AI 인프라 채권 발행 주도",
-        "Google Cloud 강한 백로그"
+        "EPS 컨센서스 $14.22 상향",
+        "Googlebook 출시 발표",
+        "Ackman GOOGL 전량 매도"
       ],
       "risks": [
-        "반독점 소송 장기화",
-        "AI 데이터센터 에너지 소비 규제 리스크"
+        "Ackman 매도 후 기관 이탈 연쇄 우려",
+        "MSFT/META AI 경쟁 심화"
       ],
-      "news_count": 1,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Ackman reveals new Microsoft position, calls stock 'highly compelling'",
-          "implication_for_target": "기관 자금이 MSFT로 유입되며 GOOGL 대비 상대적 밸류에이션 압박 가능"
+          "headline": "Microsoft pivoting AI away from OpenAI dependency, strengthening Azure AI",
+          "implication_for_target": "Azure AI 경쟁력 강화로 Google Cloud 시장 점유율 경쟁 심화"
         },
         {
           "ticker": "META",
-          "headline": "Meta raises 2026 capex guidance to $125-145B on AI infrastructure",
-          "implication_for_target": "META의 공격적 AI 투자가 디지털 광고 시장에서 GOOGL과 경쟁 심화"
+          "headline": "Meta Superintelligence Labs released first AI model",
+          "implication_for_target": "AI 모델 시장 경쟁 심화 — Gemini의 기업·소비자 채택 압박"
         }
       ],
       "history": [
@@ -10300,6 +10307,10 @@
         {
           "date": "2026-05-15",
           "narrative_score": 0.15
+        },
+        {
+          "date": "2026-05-18",
+          "narrative_score": 0.1
         }
       ]
     }

@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 94.08
-    },
-    {
-      "date": "2016-05-17",
-      "value": 93.16
-    },
-    {
-      "date": "2016-05-18",
-      "value": 92.75
-    },
-    {
-      "date": "2016-05-19",
-      "value": 91.23
-    },
-    {
-      "date": "2016-05-20",
-      "value": 92.69
-    },
-    {
       "date": "2016-05-23",
       "value": 92.39
     },
@@ -2221,7 +2201,7 @@
     },
     {
       "date": "2018-07-27",
-      "value": 98.64
+      "value": 98.63
     },
     {
       "date": "2018-07-30",
@@ -3513,7 +3493,7 @@
     },
     {
       "date": "2019-11-07",
-      "value": 100.38
+      "value": 100.37
     },
     {
       "date": "2019-11-08",
@@ -3733,7 +3713,7 @@
     },
     {
       "date": "2020-01-29",
-      "value": 100.38
+      "value": 100.37
     },
     {
       "date": "2020-01-30",
@@ -4473,7 +4453,7 @@
     },
     {
       "date": "2020-10-21",
-      "value": 87.01
+      "value": 87.02
     },
     {
       "date": "2020-10-22",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 219.3
+    },
+    {
+      "date": "2026-05-18",
+      "value": 222.75
+    },
+    {
+      "date": "2026-05-19",
+      "value": 222.33
+    },
+    {
+      "date": "2026-05-20",
+      "value": 225.0
+    },
+    {
+      "date": "2026-05-21",
+      "value": 252.97
+    },
+    {
+      "date": "2026-05-22",
+      "value": 253.84
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 206116847616.0,
-      "pe_ratio": 19.424269,
-      "forward_pe": 16.3003,
-      "eps_ttm": 11.29,
-      "dividend_yield": 3.08,
+      "market_cap": 238580482048.0,
+      "pe_ratio": 22.463717,
+      "forward_pe": 18.866283,
+      "eps_ttm": 11.3,
+      "dividend_yield": 2.66,
       "profit_margin": 0.15606,
       "operating_margin": 0.13809,
-      "price_to_book": 6.2508907,
+      "price_to_book": 7.235413,
       "return_on_equity": 0.35772
     },
     "quarterly": [
@@ -10115,29 +10115,29 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 219.3,
+    "as_of": "2026-05-22",
+    "current_price": 253.84,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 316.12,
+        "fair_value": 316.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 295.98,
+        "fair_value": 296.0,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 94.4,
+        "fair_value": 94.44,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 265.73,
-    "valuation_gap": -0.1747,
-    "signal": "undervalued",
+    "fair_value": 265.89,
+    "valuation_gap": -0.0453,
+    "signal": "fair",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10258,7 +10258,46 @@
         "price": 219.3,
         "fair_value": 316.68,
         "gap": -0.3075
+      },
+      {
+        "date": "2026-05-22",
+        "price": 253.84,
+        "fair_value": 316.68,
+        "gap": -0.1984
       }
-    ]
+    ],
+    "qualitative": {
+      "as_of": "2026-05-18",
+      "narrative_score": -0.08,
+      "summary_kr": "메가캡 중 YTD 최하위(-26%) 성과와 RBC 목표주가 하향이 계속되는 가운데, 아람코 AI 협업과 Red Hat AI 서비스 출시가 하락세 반전 촉매가 될지 주목된다.",
+      "key_events": [
+        "YTD -26% 메가캡 최하위",
+        "IBM-Aramco AI 협업 발표",
+        "Red Hat AI 인퍼런스 서비스 출시"
+      ],
+      "risks": [
+        "52주 최저가 근접, 기술적 지지선 붕괴 위험",
+        "Azure/Oracle과의 경쟁에서 고객 이탈 지속"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "MSFT",
+          "headline": "Microsoft Azure AI strengthening enterprise AI deployment capabilities",
+          "implication_for_target": "Azure AI vs IBM WatsonX 기업 AI 플랫폼 경쟁 — IBM의 고객 이탈 압력"
+        },
+        {
+          "ticker": "ORCL",
+          "headline": "Oracle gaining momentum with Samsung deal and analyst upgrades",
+          "implication_for_target": "엔터프라이즈 DB·클라우드에서 Oracle의 공격적 확장이 IBM의 영토 침범"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-18",
+          "narrative_score": -0.08
+        }
+      ]
+    }
   }
 }

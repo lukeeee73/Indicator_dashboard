@@ -4,26 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 22.61
-    },
-    {
-      "date": "2016-05-17",
-      "value": 22.03
-    },
-    {
-      "date": "2016-05-18",
-      "value": 22.01
-    },
-    {
-      "date": "2016-05-19",
-      "value": 21.97
-    },
-    {
-      "date": "2016-05-20",
-      "value": 22.52
-    },
-    {
       "date": "2016-05-23",
       "value": 22.54
     },
@@ -337,7 +317,7 @@
     },
     {
       "date": "2016-09-13",
-      "value": 23.71
+      "value": 23.72
     },
     {
       "date": "2016-09-14",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 24.76
+    },
+    {
+      "date": "2026-05-18",
+      "value": 24.93
+    },
+    {
+      "date": "2026-05-19",
+      "value": 24.8
+    },
+    {
+      "date": "2026-05-20",
+      "value": 24.88
+    },
+    {
+      "date": "2026-05-21",
+      "value": 25.08
+    },
+    {
+      "date": "2026-05-22",
+      "value": 25.21
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 88448385024.0,
-      "pe_ratio": 4.8549023,
-      "forward_pe": 6.4948525,
+      "market_cap": 90038018048.0,
+      "pe_ratio": 4.942157,
+      "forward_pe": 6.6115813,
       "eps_ttm": 5.1,
-      "dividend_yield": 5.33,
+      "dividend_yield": 5.24,
       "profit_margin": 0.15004,
       "operating_margin": 0.13145,
-      "price_to_book": 1.0032821,
+      "price_to_book": 1.0213137,
       "return_on_equity": 0.20918
     },
     "quarterly": [
@@ -10129,8 +10129,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 24.76,
+    "as_of": "2026-05-22",
+    "current_price": 25.21,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10139,7 +10139,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 64.81,
+        "fair_value": 64.82,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -10150,7 +10150,7 @@
       }
     },
     "fair_value": 81.09,
-    "valuation_gap": -0.6946,
+    "valuation_gap": -0.6891,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10272,6 +10272,12 @@
         "price": 24.76,
         "fair_value": 101.6,
         "gap": -0.7563
+      },
+      {
+        "date": "2026-05-22",
+        "price": 25.21,
+        "fair_value": 101.6,
+        "gap": -0.7519
       }
     ]
   }

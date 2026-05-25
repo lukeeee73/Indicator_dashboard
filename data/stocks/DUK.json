@@ -4,26 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-05-16",
-      "value": 53.34
-    },
-    {
-      "date": "2016-05-17",
-      "value": 52.36
-    },
-    {
-      "date": "2016-05-18",
-      "value": 50.96
-    },
-    {
-      "date": "2016-05-19",
-      "value": 51.22
-    },
-    {
-      "date": "2016-05-20",
-      "value": 51.24
-    },
-    {
       "date": "2016-05-23",
       "value": 50.68
     },
@@ -225,7 +205,7 @@
     },
     {
       "date": "2016-08-03",
-      "value": 56.67
+      "value": 56.66
     },
     {
       "date": "2016-08-04",
@@ -10062,18 +10042,38 @@
     {
       "date": "2026-05-15",
       "value": 120.95
+    },
+    {
+      "date": "2026-05-18",
+      "value": 122.84
+    },
+    {
+      "date": "2026-05-19",
+      "value": 124.56
+    },
+    {
+      "date": "2026-05-20",
+      "value": 123.81
+    },
+    {
+      "date": "2026-05-21",
+      "value": 124.66
+    },
+    {
+      "date": "2026-05-22",
+      "value": 125.67
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 94292164608.0,
-      "pe_ratio": 18.607693,
-      "forward_pe": 16.874216,
+      "market_cap": 97971855360.0,
+      "pe_ratio": 19.333845,
+      "forward_pe": 17.53155,
       "eps_ttm": 6.5,
-      "dividend_yield": 3.52,
+      "dividend_yield": 3.39,
       "profit_margin": 0.15706,
       "operating_margin": 0.25507,
-      "price_to_book": 1.759375,
+      "price_to_book": 1.8280336,
       "return_on_equity": 0.09661
     },
     "quarterly": [
@@ -10129,8 +10129,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-15",
-    "current_price": 120.95,
+    "as_of": "2026-05-22",
+    "current_price": 125.67,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10150,8 +10150,8 @@
       }
     },
     "fair_value": 104.31,
-    "valuation_gap": 0.1595,
-    "signal": "overvalued",
+    "valuation_gap": 0.2048,
+    "signal": "expensive",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10272,6 +10272,12 @@
         "price": 120.95,
         "fair_value": 104.48,
         "gap": 0.1576
+      },
+      {
+        "date": "2026-05-22",
+        "price": 125.67,
+        "fair_value": 104.48,
+        "gap": 0.2028
       }
     ]
   }
