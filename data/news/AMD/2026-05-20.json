@@ -1,0 +1,66 @@
+{
+  "ticker": "AMD",
+  "date": "2026-05-20",
+  "as_of_utc": "2026-05-20T21:00:00Z",
+  "news": [
+    {
+      "title": "AMD Shares Surge 8.1% to $447.58 on NVIDIA Earnings Halo",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/8872965/advanced-micro-devices-inc-amd-shares-surge-81-what-gf-score-of-81-tells-investors",
+      "published": "2026-05-20T20:00:00Z",
+      "summary": "NVDA 어닝 비트 낙수효과로 AMD +8.1% 급등 — AI 반도체 섹터 전반 랠리 동참",
+      "impact": "+",
+      "category": "macro"
+    },
+    {
+      "title": "AMD Q1 2026: Data Center Revenue $5.8B Record, Q2 Guide $11.2B Above Consensus",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/quotes/AMD",
+      "published": "2026-05-06T21:00:00Z",
+      "summary": "Q1 데이터센터 $5.8B(+57%) 사상 최고, Q2 가이던스 $11.2B 컨센서스 $10.5B 상회",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Evercore ISI Raises AMD Price Target to $579 From $358",
+      "source": "MarketWise",
+      "url": "https://marketwise.com/investing/amd-stock-surges-q1-2026-earnings-ai-growth/",
+      "published": "2026-05-20T14:00:00Z",
+      "summary": "Evercore ISI, AMD 목표주가 $579(기존 $358)로 대폭 상향 — MI450 AI 칩 가시성 반영",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "AMD MI450 First 1GW Deployment Slated for H2 2026",
+      "source": "ad-hoc-news.de",
+      "url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/advanced-micro-devices-stock-us0079031078-q1-sales-jump-and-ai-outlook/69360637",
+      "published": "2026-05-20T10:00:00Z",
+      "summary": "AMD MI450 AI 칩 1GW 규모 첫 배포 H2 2026 확정 — NVDA Blackwell 대비 대안 부상",
+      "impact": "+",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NVDA",
+      "headline": "NVIDIA Q1 FY2027 EPS $1.87 beats $1.76 est.; AI GPU demand record",
+      "implication_for_target": "AI GPU 시장 파이 확대 → AMD 데이터센터 성장도 동반 강화 (impact: +)"
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel server CPU share -370bps QoQ; foundry Apple deal remains legacy-process",
+      "implication_for_target": "AMD EPYC 서버 CPU 점유율 흡수 지속 (impact for AMD: +)"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.5,
+    "competitive_position": 0.3,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": 0.2
+  },
+  "narrative_score": 0.25,
+  "summary_kr": "NVDA 어닝 낙수효과 +8.1% 랠리. Q1 데이터센터 사상 최고($5.8B)·Q2 가이던스 컨센서스 대폭 상회·MI450 H2 출시 확정으로 AI GPU 2위 입지 강화 중.",
+  "key_events": ["NVDA 어닝 낙수효과 +8.1%", "MI450 1GW H2 2026 배포 확정", "Evercore 목표주가 $579"],
+  "risks": ["12개월 +320% 후 고밸류에이션", "NVDA Blackwell 대비 성능 격차 여전히 미검증", "Q2 DC 성장세 지속 여부"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/AMD%20-%20Advanced%20Micro%20Devices.md"
+}

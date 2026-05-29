@@ -1,0 +1,66 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-05-26",
+  "as_of_utc": "2026-05-26T21:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia earnings takeaways: Data center revenue nearly doubles, report is strong but stock slides",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/05/20/nvidia-nvda-earnings-report-q1-2027.html",
+      "published": "2026-05-20T20:00:00Z",
+      "summary": "Q1 FY2027 매출 $81.6B(+85% YoY), EPS $1.87 컨센서스 상회, 데이터센터 $75.2B(+92%) 역대 최고",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Nvidia CEO says the company has 'largely conceded' China's AI chip market to Huawei",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/video/2026/05/21/nvidia-ceo-says-the-company-has-largely-conceded-chinaas-ai-chip-market-to-huawei.html",
+      "published": "2026-05-21T18:00:00Z",
+      "summary": "젠슨 황 CEO: 중국 AI 칩 시장을 화웨이에 양보, 베이징의 H200 구매 차단 공식 확인",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Huawei's New Chip Architecture Rewrites Sanctions Playbook",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/Opinion/26/05/52778791/huaweis-new-chip-architecture-rewrites-sanctions-playbook",
+      "published": "2026-05-26T14:10:39Z",
+      "summary": "화웨이 신규 칩 아키텍처가 미국 반도체 제재 효과를 우회하는 새 전략으로 주목",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "NVIDIA (NVDA) Faces Stock Decline Despite Strong Earnings",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/8879454/nvidia-nvda-faces-stock-decline-despite-strong-earnings",
+      "published": "2026-05-26T01:29:07Z",
+      "summary": "강한 어닝에도 NVDA 주가 하락 — 중국 시장 양보 실망 + sell-the-news 패턴",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "AMD Q1 revenue $10.3B (+38% YoY), Lisa Su: server market to exceed $120B by 2030",
+      "implication_for_target": "AI GPU 시장 파이 확대 구도 — NVDA 독점 지위 유지 중, AMD MI450 출시 전까지 Blackwell 수요 집중"
+    },
+    {
+      "ticker": "TSM",
+      "headline": "Taiwan overtakes India as world's 5th largest stock market, TSMC +46% YTD",
+      "implication_for_target": "TSMC 생산 능력 강세는 NVDA Blackwell 300 공급 안정화에 직접 기여"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.7,
+    "competitive_position": -0.2,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": 0.2
+  },
+  "narrative_score": 0.10,
+  "summary_kr": "Q1 FY2027 매출 $81.6B(+85%), EPS $1.87 기대 상회 역대 최고 실적. 그러나 CEO가 중국 AI 칩 시장을 화웨이에 양보했다고 공식 인정, 가설 반증. Q2 가이던스 $91B로 AI 수요 지속 확인되나 주가는 sell-the-news 패턴 하락.",
+  "key_events": ["Q1 FY2027 역대 최고 매출 $81.6B(+85%)", "CEO 중국 AI 칩 시장 화웨이 양보 공식 인정", "Q2 가이던스 $91B 컨센서스 $86.84B 대폭 상회"],
+  "risks": ["중국 AI 칩 시장 구조적 포기로 장기 성장 제약", "화웨이 아키텍처 발전으로 제재 효과 약화"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/main/wiki/news/NVDA%20-%20NVIDIA%20Corporation.md"
+}
