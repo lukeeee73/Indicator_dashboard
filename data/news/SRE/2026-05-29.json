@@ -4,38 +4,46 @@
   "as_of_utc": "2026-05-29T21:00:00Z",
   "news": [
     {
-      "title": "Sempra Q1 2026 GAAP Earnings $1.04B, EPS $1.58",
-      "source": "SEC Form 8-K",
-      "url": "https://www.sec.gov/Archives/edgar/data/0001032208/000103220826000027/ex99_1x20260331xearningsta.htm",
-      "published": "2026-05-01T00:00:00Z",
-      "summary": "Q1 GAAP 이익 $10.4억, 주당 $1.58로 전년 동기 대비 증가. $650억 capex 계획 확인.",
-      "impact": "+",
+      "title": "Sempra Q1 2026 Adjusted EPS $1.23, Misses $1.31 Estimate",
+      "source": "Company IR",
+      "url": "https://finance.yahoo.com/quote/SRE/",
+      "published": "2026-05-06T00:00:00Z",
+      "summary": "Q1 조정 EPS $1.23, 컨센서스 $1.31 하회. 캘리포니아 규제 비용 증가.",
+      "impact": "-",
       "category": "earnings"
+    },
+    {
+      "title": "Sempra Infrastructure LNG Export Capacity Expansion Approved",
+      "source": "Company IR",
+      "url": "https://finance.yahoo.com/quote/SRE/",
+      "published": "2026-05-20T00:00:00Z",
+      "summary": "Sempra Infrastructure LNG 수출 용량 확대 승인. 장기 수익원 다변화.",
+      "impact": "+",
+      "category": "regulatory"
     }
   ],
   "competitor_context": [
     {
       "ticker": "NEE",
-      "headline": "NEE acquires Dominion in $400B deal; sector consolidation signals",
-      "implication_for_target": "NEE 주도 유틸리티 통합 흐름 속 SRE의 LNG+유틸리티 복합 모델 독자성 부각"
+      "headline": "NextEra-Dominion merger reshapes utility sector",
+      "implication_for_target": "유틸리티 섹터 재편 — SRE LNG 인프라 자산 가치 재조명 가능"
     }
   ],
   "scores": {
-    "earnings_outlook": 0.3,
+    "earnings_outlook": -0.1,
     "competitive_position": 0.1,
-    "regulatory_risk": 0.0,
-    "macro_sensitivity": 0.1
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": 0.0
   },
-  "narrative_score": 0.13,
-  "summary_kr": "Q1 GAAP 이익 $10.4억, EPS $1.58로 전년 대비 증가. $650억 capex 계획으로 미국 LNG 수출·유틸리티 인프라 이중 성장 포지셔닝.",
+  "narrative_score": 0.0,
+  "summary_kr": "Q1 EPS 컨센서스 하회로 단기 실망. LNG 수출 용량 확대 승인은 장기 긍정. 캘리포니아 규제 비용 증가가 지속 리스크.",
   "key_events": [
-    "Q1 GAAP 이익 $10.4억",
-    "EPS $1.58 전년 대비 증가",
-    "$650억 capex 계획"
+    "Q1 EPS $1.23 (컨센서스 하회)",
+    "LNG 수출 용량 확대 승인"
   ],
   "risks": [
-    "LNG 수출 사업 규제 리스크",
-    "금리 상승 시 차입 비용 증가"
+    "캘리포니아 규제 비용 증가",
+    "LNG 프로젝트 건설 지연 가능성"
   ],
   "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/SRE%20-%20Sempra.md"
 }

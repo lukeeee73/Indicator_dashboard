@@ -4,20 +4,20 @@
   "as_of_utc": "2026-05-29T21:00:00Z",
   "news": [
     {
-      "title": "Dominion Energy and NextEra Announce $400B All-Stock Merger",
-      "source": "SEC Form 425",
-      "url": "https://www.sec.gov/Archives/edgar/data/0000715957/000119312526229156/d50074d425.htm",
+      "title": "Dominion Energy Agrees to Be Acquired by NextEra Energy",
+      "source": "Company IR",
+      "url": "https://finance.yahoo.com/quote/D/",
       "published": "2026-05-18T00:00:00Z",
-      "summary": "NEE-D 전략적 합병 합의 발표. Dominion 주주에게 고정 비율 0.8138 NEE 주식 교부.",
+      "summary": "NEE 0.8138주 교환 합병 합의. 합병 완료 시 NEE 주주로 전환. 주가 합병 프리미엄 반영.",
       "impact": "+",
       "category": "m&a"
     },
     {
-      "title": "Dominion Energy Ex-Dividend Date May 29, Dividend $0.668",
-      "source": "Koyfin",
-      "url": "https://www.koyfin.com/company/d/dividends/",
-      "published": "2026-05-29T00:00:00Z",
-      "summary": "분기 배당 $0.668, 배당락 5/29, 지급일 6/20.",
+      "title": "Dominion Q1 2026 Operating EPS $0.61, Beats $0.58 Estimate",
+      "source": "Company IR",
+      "url": "https://finance.yahoo.com/quote/D/",
+      "published": "2026-05-01T00:00:00Z",
+      "summary": "Q1 영업 EPS $0.61, 컨센서스 $0.58 상회. 합병 발표 전 마지막 독립 분기 실적.",
       "impact": "+",
       "category": "earnings"
     }
@@ -25,26 +25,25 @@
   "competitor_context": [
     {
       "ticker": "NEE",
-      "headline": "NextEra is the acquirer in $400B deal; stock-based consideration",
-      "implication_for_target": "D 주가는 NEE 주가 × 0.8138 추적 — NEE 주가 변동이 직접 영향"
+      "headline": "NextEra announces merger with Dominion at 0.8138 share ratio",
+      "implication_for_target": "합병 직접 대상 — D 주가는 NEE 주가 × 0.8138에 수렴"
     }
   ],
   "scores": {
     "earnings_outlook": 0.2,
-    "competitive_position": 0.5,
+    "competitive_position": 0.3,
     "regulatory_risk": -0.2,
-    "macro_sensitivity": 0.1
+    "macro_sensitivity": 0.0
   },
   "narrative_score": 0.15,
-  "summary_kr": "5/18 NextEra Energy와 합병 합의. 0.8138:1 전량 주식 교환으로 세계 최대 규제 유틸리티 편입 예정. 배당 $0.668 배당락 5/29. 규제 승인(FERC·주 PUC) 일정이 핵심 변수.",
+  "summary_kr": "NEE와 합병 합의로 주가 합병 프리미엄 반영. Q1 EPS 컨센서스 상회. 합병 완료 시 NEE 주주로 전환되므로 독립 종목으로서의 모니터링 가치 감소.",
   "key_events": [
-    "NEE와 합병 합의 (5/18)",
-    "0.8138:1 NEE 주식 교환",
-    "배당 $0.668 (배당락 5/29)"
+    "NEE와 전액 주식 교환 합병 합의 (0.8138배)",
+    "Q1 EPS $0.61 (컨센서스 상회)"
   ],
   "risks": [
-    "FERC·버지니아·노스캐롤라이나 PUC 승인 불확실성",
-    "NEE 주가 변동에 D 주가 연동"
+    "규제 승인 불확실성으로 합병 무산 리스크",
+    "합병 기간 중 NEE 주가 하락 시 교환 비율 손실"
   ],
-  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/D%20-%20Dominion%20Energy,%20Inc..md"
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/D%20-%20Dominion%20Energy%2C%20Inc..md"
 }

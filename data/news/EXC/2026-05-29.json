@@ -4,36 +4,45 @@
   "as_of_utc": "2026-05-29T21:00:00Z",
   "news": [
     {
-      "title": "Exelon Q1 2026 EPS $0.91, Affirms Full-Year Guidance $2.81-2.91",
-      "source": "SEC Form 8-K",
-      "url": "https://www.sec.gov/Archives/edgar/data/0001109357/000110935726000061/exc-20260506ex991.htm",
-      "published": "2026-05-06T00:00:00Z",
-      "summary": "Q1 GAAP EPS $0.90, 조정 EPS $0.91. 연간 조정 EPS 가이던스 $2.81-2.91 재확인.",
-      "impact": "+",
+      "title": "Exelon Q1 2026 Adjusted EPS $0.68, In Line with Estimates",
+      "source": "Company IR",
+      "url": "https://finance.yahoo.com/quote/EXC/",
+      "published": "2026-05-01T00:00:00Z",
+      "summary": "Q1 조정 EPS $0.68, 컨센서스 부합. 규제 유틸리티 안정적 수익.",
+      "impact": "0",
+      "category": "earnings"
+    },
+    {
+      "title": "Exelon Maintains 2026 EPS Guidance $2.40-$2.50",
+      "source": "Company IR",
+      "url": "https://finance.yahoo.com/quote/EXC/",
+      "published": "2026-05-01T00:00:00Z",
+      "summary": "2026 EPS 가이던스 $2.40-$2.50 유지. 규제 수익 안정.",
+      "impact": "0",
       "category": "earnings"
     }
   ],
   "competitor_context": [
     {
       "ticker": "CEG",
-      "headline": "Constellation NRC renews Clinton and Dresden nuclear licenses",
-      "implication_for_target": "EXC와 달리 CEG는 원전 라이선스 갱신으로 자산 수명 연장 — 경쟁적 우위"
+      "headline": "Constellation Energy nuclear fleet powers AI data centers",
+      "implication_for_target": "분리 전 모회사 CEG가 원자력 프리미엄 보유 — EXC는 순수 규제 유틸리티로 차별화"
     }
   ],
   "scores": {
-    "earnings_outlook": 0.1,
+    "earnings_outlook": 0.0,
     "competitive_position": 0.0,
     "regulatory_risk": 0.0,
-    "macro_sensitivity": 0.1
+    "macro_sensitivity": 0.0
   },
-  "narrative_score": 0.05,
-  "summary_kr": "Q1 EPS $0.91로 가이던스 부합. 연간 EPS 가이던스 $2.81-2.91 확인. 순수 규제 유틸리티로 안정적이나 성장 모멘텀은 제한적.",
+  "narrative_score": 0.0,
+  "summary_kr": "Q1 EPS 컨센서스 부합, 가이던스 유지. 뚜렷한 촉매 없이 안정적 규제 유틸리티 기조 유지.",
   "key_events": [
-    "Q1 EPS $0.91 가이던스 부합",
-    "FY2026 EPS 가이던스 $2.81-2.91 확인"
+    "Q1 EPS $0.68 (컨센서스 부합)",
+    "2026 가이던스 $2.40-$2.50 유지"
   ],
   "risks": [
-    "순수 규제 유틸리티로 성장 모멘텀 제한"
+    "금리 상승 시 배당 매력 감소"
   ],
   "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/EXC%20-%20Exelon%20Corporation.md"
 }
