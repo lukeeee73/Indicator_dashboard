@@ -1,0 +1,50 @@
+{
+  "ticker": "D",
+  "date": "2026-05-29",
+  "as_of_utc": "2026-05-29T21:00:00Z",
+  "news": [
+    {
+      "title": "Dominion Energy and NextEra Announce $400B All-Stock Merger",
+      "source": "SEC Form 425",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000715957/000119312526229156/d50074d425.htm",
+      "published": "2026-05-18T00:00:00Z",
+      "summary": "NEE-D 전략적 합병 합의 발표. Dominion 주주에게 고정 비율 0.8138 NEE 주식 교부.",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "Dominion Energy Ex-Dividend Date May 29, Dividend $0.668",
+      "source": "Koyfin",
+      "url": "https://www.koyfin.com/company/d/dividends/",
+      "published": "2026-05-29T00:00:00Z",
+      "summary": "분기 배당 $0.668, 배당락 5/29, 지급일 6/20.",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NEE",
+      "headline": "NextEra is the acquirer in $400B deal; stock-based consideration",
+      "implication_for_target": "D 주가는 NEE 주가 × 0.8138 추적 — NEE 주가 변동이 직접 영향"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.5,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": 0.1
+  },
+  "narrative_score": 0.15,
+  "summary_kr": "5/18 NextEra Energy와 합병 합의. 0.8138:1 전량 주식 교환으로 세계 최대 규제 유틸리티 편입 예정. 배당 $0.668 배당락 5/29. 규제 승인(FERC·주 PUC) 일정이 핵심 변수.",
+  "key_events": [
+    "NEE와 합병 합의 (5/18)",
+    "0.8138:1 NEE 주식 교환",
+    "배당 $0.668 (배당락 5/29)"
+  ],
+  "risks": [
+    "FERC·버지니아·노스캐롤라이나 PUC 승인 불확실성",
+    "NEE 주가 변동에 D 주가 연동"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/D%20-%20Dominion%20Energy,%20Inc..md"
+}
