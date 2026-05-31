@@ -10298,28 +10298,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-18",
-      "narrative_score": 0.15,
-      "summary_kr": "Wedbush·Oppenheimer의 동시 목표주가 대폭 상향($275/$235)과 삼성전자 계약 체결, 가트너 11년 연속 리더 선정으로 긍정적 모멘텀이 이어지고 있다.",
+      "as_of": "2026-05-25",
+      "narrative_score": 0.25,
+      "summary_kr": "오라클 Q3 FY2026 어닝 서프라이즈: 매출 +22%, OCI +84%, AI 인프라 +243%. 미이행 계약 잔고 $5530억(+325%) 폭발적 성장. $300억 미국 정부 클라우드 계약으로 엔터프라이즈 AI 인프라 선두 경쟁자로 부상.",
       "key_events": [
-        "Wedbush/Oppenheimer 목표주가 동시 상향",
-        "삼성 Java SE 계약",
-        "가트너 WMS 11년 연속 리더"
+        "Q3 매출 $17.2B +22% vs 예상 상회",
+        "OCI +84%, AI 인프라 +243%, 멀티클라우드 DB +531%",
+        "미이행 잔고 $5530억 +325%",
+        "$300억 미국 정부 클라우드 계약"
       ],
       "risks": [
-        "Oracle Cloud DB vs Azure 장기 경쟁 심화"
+        "$5530억 백로그 실제 이행 능력 검증 필요",
+        "Azure/AWS DB 경쟁 장기 지속"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Microsoft Azure AI Fabric and SQL expanding enterprise data management",
-          "implication_for_target": "Azure DB vs Oracle Cloud DB 경쟁 — 기업 데이터베이스 전환 리스크"
+          "headline": "Azure SQL/Fabric 엔터프라이즈 DB 확장 중",
+          "implication_for_target": "Oracle Cloud DB와 장기 경쟁 지속 — 그러나 Oracle 락인 효과 강력"
         },
         {
-          "ticker": "CRM",
-          "headline": "Salesforce Agentforce ARR growing 200% YoY but under pressure",
-          "implication_for_target": "엔터프라이즈 AI 플랫폼 경쟁에서 ORCL의 포지셔닝 강화 기회"
+          "ticker": "AMZN",
+          "headline": "AWS 데이터베이스 서비스 성장 지속",
+          "implication_for_target": "멀티클라우드 DB 수요에서 Oracle 포지션 견고"
         }
       ],
       "history": [
@@ -10334,6 +10336,10 @@
         {
           "date": "2026-05-18",
           "narrative_score": 0.15
+        },
+        {
+          "date": "2026-05-25",
+          "narrative_score": 0.25
         }
       ]
     }

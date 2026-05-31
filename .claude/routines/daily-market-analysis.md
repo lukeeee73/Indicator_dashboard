@@ -233,9 +233,34 @@ watchlist 외부 경쟁사 (예: NVDA 입장의 `INTC`, JNJ 입장의 `PFE`) 도
 
 `history` 배열은 기존 값을 유지하면서 오늘 점수를 append (최근 30개만 유지).
 
-> 자동화 가능: `scripts/merge_qualitative.py` 가 `data/news/` 의 모든
-> `{TICKER}/{YYYY-MM-DD}.json` 을 읽어 `data/stocks/{TICKER}.json` 의
-> qualitative 블록을 자동으로 채운다. 루틴은 JSON 만 정확히 쓰면 된다.
+> **이 블록은 직접 손으로 쓰지 않는다.** `scripts/merge_qualitative.py` 가
+> `data/news/` 의 모든 `{TICKER}/{YYYY-MM-DD}.json` 을 읽어
+> `data/stocks/{TICKER}.json` 의 qualitative 블록을 자동으로 채운다.
+> 루틴은 4번에서 뉴스 JSON 만 정확히 쓰고, **반드시 아래 5.5 단계를 실행**하면 된다.
+
+### 5.5 ⚠️ 뉴스를 stocks JSON 으로 병합 (대시보드 반영의 핵심 단계)
+
+> **이 단계를 건너뛰면 뉴스가 대시보드에 절대 보이지 않는다.** 대시보드
+> (`app.js`) 는 `data/stocks/{TICKER}.json` 의 `valuation.qualitative` 블록만
+> 읽는다. `data/news/` 에 JSON 을 쓰는 것만으로는 대시보드가 갱신되지 않는다.
+> (과거에 이 병합이 주간 GitHub Actions (`update.yml`, 월요일 1회) 에서만
+> 돌아서, 화~일요일에 수집한 뉴스가 다음 월요일까지 대시보드에 반영되지 않는
+> 버그가 있었다. 그래서 **매일 도는 이 루틴이 직접 병합을 실행해야 한다.**)
+
+4번에서 오늘 뉴스 JSON 을 모두 쓴 직후, 커밋(7번) 전에 **반드시** 실행한다:
+
+```bash
+python scripts/merge_qualitative.py
+```
+
+이 명령이 `data/news/` 전체를 읽어 모든 `data/stocks/{TICKER}.json` 의
+`valuation.qualitative` (as_of / narrative_score / summary_kr / key_events /
+risks / news_count / competitor_context / history) 를 최신 뉴스로 갱신한다.
+
+**검증:** 실행 후 오늘 처리한 섹터의 종목 몇 개를 골라
+`valuation.qualitative.as_of` 가 오늘 날짜(또는 그 종목의 최신 뉴스 날짜)와
+일치하는지 확인한다. 일치하지 않으면 4번 JSON 작성이나 병합이 실패한 것이므로
+커밋하지 말고 원인을 찾는다.
 
 ### 6. Luke_wiki 갱신
 
@@ -290,6 +315,8 @@ frontmatter 의 `updated` 를 오늘 날짜로 갱신한다.
 # 현재 세션 브랜치 감지 (하드코딩 금지)
 SESSION_BRANCH=$(git branch --show-current)
 
+# ⚠️ 5.5 단계(merge_qualitative.py)를 먼저 실행했는지 반드시 확인할 것.
+# 안 했으면 data/stocks/*.json 이 갱신되지 않아 대시보드에 뉴스가 안 보인다.
 # indicator_dashboard
 git add data/news/ data/stocks/*.json .claude/routines/daily-market-analysis.md
 git commit -m "chore(news): daily qualitative analysis ($(date -u +%Y-%m-%d), {오늘섹터})"
