@@ -1572,9 +1572,317 @@ function renderStocksTab(data) {
     }
   }
 
-  // 서브 네비게이션 (시장 지수 / 개별 종목 토글)
+  // ─ 밸류체인 (초안: 반도체) ─
+  renderValueChainSection(stocks);
+
+  // 서브 네비게이션 (시장 지수 / 개별 종목 / 밸류체인 토글)
   wireSectorNav("STOCKS");
 }
+
+// ════════════════════════════════════════════════════════════════════════
+//  섹터 밸류체인 (value chain) — 초안 / PROOF-OF-CONCEPT
+// ════════════════════════════════════════════════════════════════════════
+//
+// ▼▼▼ 여기가 "관계 데이터"입니다 — Luke 가 조사한 내용으로 함께 채워나갈 부분 ▼▼▼
+//
+// 구조 설명:
+//   stages : 상류(upstream) → 하류(downstream) 순서의 단계 배열.
+//            board 에 왼쪽→오른쪽 컬럼으로 그려진다.
+//            tickers 는 그 단계에 속한 watchlist 종목들.
+//            external 은 watchlist 에 없지만 흐름상 필요한 가상 노드(고객 등).
+//   links  : 상→하류 방향의 공급 관계. from(공급) → to(수요/고객).
+//            노드를 클릭하면 연결된 link 들이 강조되고 SVG 선으로 그려진다.
+//
+// ⚠️ 아래 반도체 데이터는 형태 검증용 "예시 초안"입니다.
+//    실제 단계 분류·관계·설명은 Luke 의 조사 내용으로 교체할 예정.
+const VALUE_CHAINS = {
+  semiconductors: {
+    group: "반도체",
+    title: "반도체 밸류체인",
+    subtitle: "장비·소재 → 제조(파운드리/IDM) → 설계(팹리스) → 최종 고객",
+    stages: [
+      {
+        id: "equipment",
+        label: "장비 · 소재",
+        desc: "반도체를 만드는 '공장 설비'. 노광·식각·증착 장비를 제조사에 공급한다.",
+        tickers: ["ASML", "AMAT", "LRCX"],
+      },
+      {
+        id: "manufacturing",
+        label: "제조 (파운드리 · IDM)",
+        desc: "실제로 웨이퍼에 회로를 새겨 칩을 만든다. 파운드리는 위탁생산, IDM 은 설계+제조 통합.",
+        tickers: ["TSM", "INTC", "MU"],
+      },
+      {
+        id: "design",
+        label: "설계 (팹리스)",
+        desc: "칩을 설계만 하고 제조는 파운드리에 맡긴다. AI·통신·CPU/GPU 칩 설계.",
+        tickers: ["NVDA", "AMD", "QCOM", "AVGO"],
+      },
+      {
+        id: "customer",
+        label: "최종 고객",
+        desc: "완성된 칩을 사가는 수요처. (watchlist 내 빅테크 / 외부 가상 노드)",
+        tickers: ["MSFT", "AMZN", "GOOGL"],
+        external: [
+          { id: "datacenter", label: "데이터센터 / AI" },
+          { id: "devices",    label: "스마트폰 / 디바이스" },
+        ],
+      },
+    ],
+    // 상→하류 공급 관계 (예시 초안 — 실제 관계는 함께 채워나감)
+    links: [
+      { from: "ASML", to: "TSM",  label: "EUV 노광장비 공급" },
+      { from: "ASML", to: "INTC", label: "EUV 노광장비 공급" },
+      { from: "AMAT", to: "TSM",  label: "식각·증착 장비" },
+      { from: "AMAT", to: "MU",   label: "메모리 공정 장비" },
+      { from: "LRCX", to: "MU",   label: "식각 장비 (메모리)" },
+      { from: "LRCX", to: "TSM",  label: "식각 장비" },
+      { from: "TSM",  to: "NVDA", label: "AI GPU 위탁생산" },
+      { from: "TSM",  to: "AMD",  label: "CPU/GPU 위탁생산" },
+      { from: "TSM",  to: "QCOM", label: "모바일 SoC 위탁생산" },
+      { from: "TSM",  to: "AVGO", label: "네트워크 칩 위탁생산" },
+      { from: "NVDA", to: "MSFT", label: "AI 가속기 공급" },
+      { from: "NVDA", to: "AMZN", label: "AI 가속기 공급" },
+      { from: "NVDA", to: "GOOGL",label: "AI 가속기 공급" },
+      { from: "NVDA", to: "datacenter", label: "AI 학습/추론 GPU" },
+      { from: "AMD",  to: "datacenter", label: "서버 CPU/GPU" },
+      { from: "AVGO", to: "datacenter", label: "네트워킹 칩" },
+      { from: "QCOM", to: "devices",    label: "모바일 AP/모뎀" },
+      { from: "MU",   to: "datacenter", label: "HBM / 서버 메모리" },
+    ],
+  },
+};
+// ▲▲▲ 관계 데이터 끝 ▲▲▲
+
+const VC_STATE = { activeChain: "semiconductors", activeNode: null };
+
+// 밸류체인 섹션 전체 렌더 (섹터 셀렉터 + 보드)
+function renderValueChainSection(stocks) {
+  const navHost = document.getElementById("vc-chain-nav");
+  if (!navHost) return;
+
+  // 섹터 셀렉터 (현재는 반도체 하나지만 확장 대비)
+  const chainKeys = Object.keys(VALUE_CHAINS);
+  navHost.innerHTML = chainKeys.map((key) => {
+    const active = key === VC_STATE.activeChain;
+    return `<button class="vc-chain-btn ${active ? "active" : ""}" data-chain="${key}">${escapeHtml(VALUE_CHAINS[key].group)}</button>`;
+  }).join("");
+  navHost.querySelectorAll(".vc-chain-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      VC_STATE.activeChain = btn.dataset.chain;
+      VC_STATE.activeNode = null;
+      renderValueChainSection(stocks);
+    });
+  });
+
+  renderValueChainBoard(stocks);
+}
+
+// 보드(단계 컬럼 + 노드) 렌더
+function renderValueChainBoard(stocks) {
+  const board = document.getElementById("vc-board");
+  const chain = VALUE_CHAINS[VC_STATE.activeChain];
+  if (!board || !chain) return;
+
+  board.innerHTML = "";
+  chain.stages.forEach((stage, i) => {
+    const col = document.createElement("div");
+    col.className = "vc-col";
+    col.dataset.stage = stage.id;
+
+    const nodes = (stage.tickers || []).map((ticker) => {
+      const meta = STOCK_META[ticker] || {};
+      const name = meta.displayName || ticker;
+      const biz  = meta.business || "";
+      const color = meta.color || "#9aa0a9";
+      return `<button class="vc-node" data-ticker="${ticker}" style="--vc-accent:${color}"
+                title="${escapeHtml(biz)}">
+                <span class="vc-node-ticker">${escapeHtml(name)}</span>
+              </button>`;
+    }).join("");
+
+    const externals = (stage.external || []).map((ex) =>
+      `<div class="vc-node vc-node--external" data-ticker="${ex.id}">
+         <span class="vc-node-ticker">${escapeHtml(ex.label)}</span>
+       </div>`
+    ).join("");
+
+    col.innerHTML = `
+      <header class="vc-col-head">
+        <span class="vc-col-step">${i + 1}</span>
+        <h4 class="vc-col-title">${escapeHtml(stage.label)}</h4>
+        <p class="vc-col-desc">${escapeHtml(stage.desc)}</p>
+      </header>
+      <div class="vc-col-nodes">${nodes}${externals}</div>
+    `;
+    board.appendChild(col);
+
+    // 단계 사이 흐름 화살표
+    if (i < chain.stages.length - 1) {
+      const arrow = document.createElement("div");
+      arrow.className = "vc-flow-arrow";
+      arrow.textContent = "→";
+      board.appendChild(arrow);
+    }
+  });
+
+  // 노드 클릭 → 상세 + 관계선
+  board.querySelectorAll(".vc-node[data-ticker]").forEach((el) => {
+    el.addEventListener("click", () => selectValueChainNode(el.dataset.ticker, stocks));
+  });
+
+  // 활성 노드 복원 / 초기화
+  if (VC_STATE.activeNode) {
+    selectValueChainNode(VC_STATE.activeNode, stocks);
+  } else {
+    clearValueChainLinks();
+  }
+}
+
+// 노드 선택: 강조 + 관계선 + 상세 패널
+function selectValueChainNode(ticker, stocks) {
+  VC_STATE.activeNode = ticker;
+  const chain = VALUE_CHAINS[VC_STATE.activeChain];
+  const board = document.getElementById("vc-board");
+  if (!chain || !board) return;
+
+  // 연결된 노드 집합 계산
+  const upstream = chain.links.filter((l) => l.to === ticker).map((l) => l.from);
+  const downstream = chain.links.filter((l) => l.from === ticker).map((l) => l.to);
+  const connected = new Set([...upstream, ...downstream, ticker]);
+
+  // 강조 클래스 토글
+  board.querySelectorAll(".vc-node").forEach((el) => {
+    const t = el.dataset.ticker;
+    el.classList.toggle("vc-node--active", t === ticker);
+    el.classList.toggle("vc-node--linked", connected.has(t) && t !== ticker);
+    el.classList.toggle("vc-node--dim", !connected.has(t));
+  });
+
+  drawValueChainLinks(ticker);
+  renderValueChainDetail(ticker, upstream, downstream, stocks);
+}
+
+// SVG 관계선 그리기 (활성 노드의 link 만)
+function drawValueChainLinks(ticker) {
+  const svg  = document.getElementById("vc-links");
+  const wrap = svg && svg.parentElement;
+  const chain = VALUE_CHAINS[VC_STATE.activeChain];
+  if (!svg || !wrap || !chain) return;
+
+  svg.innerHTML = "";
+  const wrapRect = wrap.getBoundingClientRect();
+  if (wrapRect.width === 0) return; // 패널이 아직 숨겨져 있으면 skip
+  svg.setAttribute("width", wrapRect.width);
+  svg.setAttribute("height", wrapRect.height);
+
+  const centerOf = (t) => {
+    const el = wrap.querySelector(`.vc-node[data-ticker="${CSS.escape(t)}"]`);
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return {
+      // 오른쪽 면 / 왼쪽 면 중앙
+      right: { x: r.right - wrapRect.left, y: r.top + r.height / 2 - wrapRect.top },
+      left:  { x: r.left  - wrapRect.left, y: r.top + r.height / 2 - wrapRect.top },
+    };
+  };
+
+  const relevant = chain.links.filter((l) => l.from === ticker || l.to === ticker);
+  relevant.forEach((l) => {
+    const a = centerOf(l.from);
+    const b = centerOf(l.to);
+    if (!a || !b) return;
+    const p1 = a.right, p2 = b.left;
+    const dx = Math.max(40, (p2.x - p1.x) / 2);
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", `M ${p1.x} ${p1.y} C ${p1.x + dx} ${p1.y}, ${p2.x - dx} ${p2.y}, ${p2.x} ${p2.y}`);
+    path.setAttribute("class", "vc-link-path");
+    svg.appendChild(path);
+  });
+}
+
+function clearValueChainLinks() {
+  const svg = document.getElementById("vc-links");
+  if (svg) svg.innerHTML = "";
+  const board = document.getElementById("vc-board");
+  if (board) board.querySelectorAll(".vc-node").forEach((el) => {
+    el.classList.remove("vc-node--active", "vc-node--linked", "vc-node--dim");
+  });
+}
+
+// 상세 패널: 역할 + 관계 + 정성 분석(뉴스)
+function renderValueChainDetail(ticker, upstream, downstream, stocks) {
+  const host = document.getElementById("vc-detail");
+  if (!host) return;
+  const chain = VALUE_CHAINS[VC_STATE.activeChain];
+
+  // 외부(가상) 노드인 경우
+  const isExternal = !STOCK_META[ticker];
+  const meta = STOCK_META[ticker] || {};
+  const payload = stocks && stocks[ticker];
+  const qual = payload && payload.valuation && payload.valuation.qualitative;
+
+  const nameOf = (t) => {
+    if (STOCK_META[t]) return STOCK_META[t].displayName || t;
+    for (const s of chain.stages) {
+      const ex = (s.external || []).find((e) => e.id === t);
+      if (ex) return ex.label;
+    }
+    return t;
+  };
+  const labelFor = (t, dir) => {
+    const link = dir === "up"
+      ? chain.links.find((l) => l.from === t && l.to === ticker)
+      : chain.links.find((l) => l.from === ticker && l.to === t);
+    return link ? link.label : "";
+  };
+
+  const relHtml = (list, dir, title) => {
+    if (!list.length) return "";
+    const items = list.map((t) =>
+      `<li><strong>${escapeHtml(nameOf(t))}</strong>
+         <span class="vc-rel-label">${escapeHtml(labelFor(t, dir))}</span></li>`
+    ).join("");
+    return `<div class="vc-rel-block"><h5>${title}</h5><ul>${items}</ul></div>`;
+  };
+
+  let qualHtml = "";
+  if (qual) {
+    const score = qual.narrative_score;
+    const tone = score == null ? "neutral" : score > 0.05 ? "pos" : score < -0.05 ? "neg" : "neutral";
+    const risks = (qual.risks || []).slice(0, 3).map((r) => `<li>${escapeHtml(r)}</li>`).join("");
+    qualHtml = `
+      <div class="vc-detail-news">
+        <h5>최신 정성 분석 ${qual.as_of ? `<span class="vc-asof">(${escapeHtml(qual.as_of)})</span>` : ""}</h5>
+        <p class="vc-narr" data-tone="${tone}">
+          narrative_score <strong>${score == null ? "—" : (score >= 0 ? "+" : "") + score.toFixed(2)}</strong>
+          · 뉴스 ${qual.news_count ?? 0}건
+        </p>
+        ${qual.summary_kr ? `<p class="vc-summary">${escapeHtml(qual.summary_kr)}</p>` : ""}
+        ${risks ? `<div class="vc-risks"><span>주요 리스크</span><ul>${risks}</ul></div>` : ""}
+      </div>`;
+  } else if (!isExternal) {
+    qualHtml = `<p class="vc-detail-hint">이 종목의 정성 분석 데이터가 아직 없습니다.</p>`;
+  }
+
+  host.innerHTML = `
+    <header class="vc-detail-head" style="--vc-accent:${meta.color || "#6b7280"}">
+      <h4>${escapeHtml(nameOf(ticker))}</h4>
+      ${meta.fullName ? `<p class="vc-detail-full">${escapeHtml(meta.fullName)}</p>` : ""}
+    </header>
+    ${meta.business ? `<p class="vc-detail-biz">${escapeHtml(meta.business)}</p>` : ""}
+    ${isExternal ? `<p class="vc-detail-hint">외부 수요처(가상 노드)입니다.</p>` : ""}
+    ${relHtml(upstream, "up", "⬅ 공급받는 곳 (상류)")}
+    ${relHtml(downstream, "down", "공급하는 곳 (하류) ➡")}
+    ${qualHtml}
+  `;
+}
+
+// 패널이 보일 때 / 리사이즈 시 관계선 다시 그리기
+window.addEventListener("resize", () => {
+  if (VC_STATE.activeNode) drawValueChainLinks(VC_STATE.activeNode);
+});
 
 // 개별 종목을 STOCK_GROUPS 순서대로 묶어서 섹터 헤더 + 그 안에 카드들 배치.
 function renderStocksByGroup(host, stocks) {

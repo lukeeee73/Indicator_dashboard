@@ -194,6 +194,7 @@
       <nav class="sector-nav" data-country="STOCKS" role="tablist" aria-label="주식 섹션">
         <button class="sector-btn active" data-sector="indices"    role="tab" aria-selected="true">시장 지수</button>
         <button class="sector-btn"        data-sector="individual" role="tab" aria-selected="false">개별 종목</button>
+        <button class="sector-btn"        data-sector="valuechain" role="tab" aria-selected="false">밸류체인</button>
       </nav>
 
       <section class="category sector-panel" data-sector="indices">
@@ -206,6 +207,21 @@
         <h2>개별 종목</h2>
         <p class="category-desc">섹터별로 글로벌 시총·점유율 상위의 대표 종목을 묶어서 본다. 각 회사의 사업 모델·재무 지표·분기 실적·정성(뉴스) 분석을 확인할 수 있다.</p>
         <div id="stock-cards"></div>
+      </section>
+
+      <section class="category sector-panel" data-sector="valuechain" hidden>
+        <h2>섹터 밸류체인</h2>
+        <p class="category-desc">섹터를 가치사슬(상류 → 하류)의 흐름으로 보고, 각 기업이 어느 단계에서 어떤 역할을 하는지 확인한다. 기업 노드를 클릭하면 연결 관계와 최신 정성 분석(뉴스)이 우측에 표시된다. <strong>(초안: 반도체만)</strong></p>
+        <div class="vc-chain-nav" id="vc-chain-nav" role="tablist" aria-label="밸류체인 섹터"></div>
+        <div class="vc-layout">
+          <div class="vc-board-wrap">
+            <svg class="vc-links" id="vc-links" aria-hidden="true"></svg>
+            <div class="vc-board" id="vc-board"></div>
+          </div>
+          <aside class="vc-detail" id="vc-detail">
+            <p class="vc-detail-hint">기업 노드를 클릭하면 상세 정보가 표시됩니다.</p>
+          </aside>
+        </div>
       </section>
     </div><!-- /panel-STOCKS -->
 
