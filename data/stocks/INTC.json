@@ -10128,6 +10128,47 @@
     "fair_value": 33.87,
     "valuation_gap": 2.5382,
     "signal": "expensive",
-    "gap_series_weekly": []
+    "gap_series_weekly": [],
+    "qualitative": {
+      "as_of": "2026-05-26",
+      "narrative_score": 0.03,
+      "summary_kr": "INTC 26년 신고가 갱신 (+4.5%) — Apple 파운드리 협상 기대감과 COMPUTEX Core Ultra 신제품 발표 주도. 그러나 Q1 파운드리 $2.3B 적자 지속, 서버 CPU 점유율 하락 기조 유지. 주가 vs 펀더멘털 괴리 확대.",
+      "key_events": [
+        "INTC 주가 26년 신고가 +4.5%",
+        "Core Ultra Series 3 + SuperClaw AI 플랫폼 COMPUTEX 발표",
+        "Apple 파운드리 협상 18A 기대감"
+      ],
+      "risks": [
+        "파운드리 Q1 $2.3B 적자 — 18A/14A 수율 문제 지속",
+        "서버 CPU 점유율 지속 하락 구조적 손실"
+      ],
+      "news_count": 4,
+      "competitor_context": [
+        {
+          "ticker": "AMD",
+          "headline": "AMD server CPU continues to gain share — EPYC absorbing Intel's lost market share",
+          "implication_for_target": "AMD EPYC가 INTC 서버 점유율 직접 흡수 — 서버 CPU 회복 경로 더욱 어렵게 만드는 압력"
+        },
+        {
+          "ticker": "TSM",
+          "headline": "TSMC N2/N3 process roadmap acceleration for AI chips",
+          "implication_for_target": "TSMC 선단공정 가속은 INTC 파운드리 18A 대비 고객 전환 장벽을 높임"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-05-19",
+          "narrative_score": -0.2
+        },
+        {
+          "date": "2026-05-20",
+          "narrative_score": 0.05
+        },
+        {
+          "date": "2026-05-26",
+          "narrative_score": 0.03
+        }
+      ]
+    }
   }
 }
