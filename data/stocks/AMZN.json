@@ -10275,31 +10275,32 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-25",
-      "narrative_score": 0.13,
-      "summary_kr": "Q1 EPS $2.78(예상 $1.63 대폭 상회), AWS +28%로 15분기 최고 성장. Bedrock AI 서비스 연간화 $150억, Anthropic 투자수익 $168억. 2026 capex $2000억 계획으로 AI 인프라 장기 투자 지속.",
+      "as_of": "2026-06-01",
+      "narrative_score": -0.13,
+      "summary_kr": "AWS 규제 리스크(EU 클라우드 규정·호주 ACCC 소송) 동시 부각으로 주가 -3.5% 하락. $2000억 capex 부담이 수익성 우려를 높이는 가운데 알렉사 B2B 라이선스는 긍정적 신호. 경쟁사 Azure·GCP의 AI 성장도 압박 요인.",
       "key_events": [
-        "Q1 EPS $2.78 vs $1.63 대폭 비트",
-        "AWS +28% 15분기 최고 연간화 $1500억",
-        "Anthropic 투자수익 $168억",
-        "2026 capex $2000억 계획"
+        "주가 -3.5% (AWS 규제·ACCC 소송 악재)",
+        "EU 클라우드 규제 강화로 AWS 정부 수주 리스크",
+        "역대 최대 유로채 €145억 발행",
+        "'알렉사 쇼핑' 리테일러 라이선스"
       ],
       "risks": [
-        "capex $2000억 장기 ROI 불확실성",
-        "관세 전가 집단소송 법적 리스크",
-        "GOOGL 클라우드 추격 가속"
+        "호주 ACCC 아동 안전 소송 진행",
+        "EU 클라우드 규제로 정부 계약 제한 가능성",
+        "AWS 5월 7~8일 US East 1 대규모 장애 신뢰 타격",
+        "$2000억 capex로 단기 FCF 급감"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "GOOGL",
-          "headline": "Google Cloud +63% YoY, 백로그 $460B — AWS 3위 추격 가속",
-          "implication_for_target": "클라우드 시장 2위(MSFT)·3위(GOOGL) 모두 성장 가속 — AWS 점유율 방어 경쟁"
+          "ticker": "MSFT",
+          "headline": "Azure AI revenue $37B annualized run rate (+123% YoY); GitHub Copilot 140K orgs",
+          "implication_for_target": "Azure의 폭발적 AI 성장 → AWS 기업 AI 점유율 압박"
         },
         {
-          "ticker": "MSFT",
-          "headline": "Azure AI 기업 배포 역량 강화 — Ackman $2.1B 베팅",
-          "implication_for_target": "기관 AI 자금 이동에서 Azure 선호도 확인 — AWS 상대 경쟁 심화"
+          "ticker": "GOOGL",
+          "headline": "Alphabet raises $80B for AI expansion",
+          "implication_for_target": "구글 클라우드 공격적 투자로 AWS 3강 구도 내 경쟁 심화"
         }
       ],
       "history": [
@@ -10318,6 +10319,10 @@
         {
           "date": "2026-05-25",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-06-01",
+          "narrative_score": -0.13
         }
       ]
     }
