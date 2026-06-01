@@ -4,30 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 32.14
-    },
-    {
-      "date": "2016-05-24",
-      "value": 32.43
-    },
-    {
-      "date": "2016-05-25",
-      "value": 32.44
-    },
-    {
-      "date": "2016-05-26",
-      "value": 32.67
-    },
-    {
-      "date": "2016-05-27",
-      "value": 32.73
-    },
-    {
-      "date": "2016-05-31",
-      "value": 32.6
-    },
-    {
       "date": "2016-06-01",
       "value": 32.67
     },
@@ -309,7 +285,7 @@
     },
     {
       "date": "2016-09-09",
-      "value": 31.14
+      "value": 31.13
     },
     {
       "date": "2016-09-12",
@@ -5993,7 +5969,7 @@
     },
     {
       "date": "2022-05-03",
-      "value": 56.03
+      "value": 56.02
     },
     {
       "date": "2022-05-04",
@@ -9017,7 +8993,7 @@
     },
     {
       "date": "2025-05-08",
-      "value": 69.17
+      "value": 69.16
     },
     {
       "date": "2025-05-09",
@@ -10062,18 +10038,38 @@
     {
       "date": "2026-05-22",
       "value": 81.48
+    },
+    {
+      "date": "2026-05-26",
+      "value": 80.46
+    },
+    {
+      "date": "2026-05-27",
+      "value": 81.62
+    },
+    {
+      "date": "2026-05-28",
+      "value": 80.41
+    },
+    {
+      "date": "2026-05-29",
+      "value": 79.01
+    },
+    {
+      "date": "2026-06-01",
+      "value": 78.82
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 350566285312.0,
-      "pe_ratio": 25.622643,
-      "forward_pe": 23.389397,
+      "market_cap": 339121668096.0,
+      "pe_ratio": 24.786163,
+      "forward_pe": 22.625824,
       "eps_ttm": 3.18,
-      "dividend_yield": 2.6,
+      "dividend_yield": 2.68,
       "profit_margin": 0.278,
       "operating_margin": 0.35055,
-      "price_to_book": 10.42477,
+      "price_to_book": 10.084442,
       "return_on_equity": 0.43372002
     },
     "quarterly": [
@@ -10129,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 81.48,
+    "as_of": "2026-06-01",
+    "current_price": 78.82,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10150,7 +10146,7 @@
       }
     },
     "fair_value": 58.52,
-    "valuation_gap": 0.3923,
+    "valuation_gap": 0.3468,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,6 +10274,18 @@
         "price": 81.48,
         "fair_value": 69.96,
         "gap": 0.1647
+      },
+      {
+        "date": "2026-05-29",
+        "price": 79.01,
+        "fair_value": 69.96,
+        "gap": 0.1294
+      },
+      {
+        "date": "2026-06-01",
+        "price": 78.82,
+        "fair_value": 69.96,
+        "gap": 0.1266
       }
     ],
     "qualitative": {

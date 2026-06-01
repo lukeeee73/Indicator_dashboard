@@ -4,30 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 71.96
-    },
-    {
-      "date": "2016-05-24",
-      "value": 73.98
-    },
-    {
-      "date": "2016-05-25",
-      "value": 73.68
-    },
-    {
-      "date": "2016-05-26",
-      "value": 73.63
-    },
-    {
-      "date": "2016-05-27",
-      "value": 74.24
-    },
-    {
-      "date": "2016-05-31",
-      "value": 73.57
-    },
-    {
       "date": "2016-06-01",
       "value": 73.83
     },
@@ -2365,7 +2341,7 @@
     },
     {
       "date": "2018-09-25",
-      "value": 141.62
+      "value": 141.61
     },
     {
       "date": "2018-09-26",
@@ -3793,7 +3769,7 @@
     },
     {
       "date": "2020-02-27",
-      "value": 172.07
+      "value": 172.08
     },
     {
       "date": "2020-02-28",
@@ -4409,7 +4385,7 @@
     },
     {
       "date": "2020-10-06",
-      "value": 192.22
+      "value": 192.23
     },
     {
       "date": "2020-10-07",
@@ -4829,7 +4805,7 @@
     },
     {
       "date": "2021-03-09",
-      "value": 211.96
+      "value": 211.97
     },
     {
       "date": "2021-03-10",
@@ -5721,7 +5697,7 @@
     },
     {
       "date": "2022-01-25",
-      "value": 195.2
+      "value": 195.19
     },
     {
       "date": "2022-01-26",
@@ -7149,7 +7125,7 @@
     },
     {
       "date": "2023-06-28",
-      "value": 222.81
+      "value": 222.82
     },
     {
       "date": "2023-06-29",
@@ -10062,18 +10038,38 @@
     {
       "date": "2026-05-22",
       "value": 328.88
+    },
+    {
+      "date": "2026-05-26",
+      "value": 326.48
+    },
+    {
+      "date": "2026-05-27",
+      "value": 327.61
+    },
+    {
+      "date": "2026-05-28",
+      "value": 324.95
+    },
+    {
+      "date": "2026-05-29",
+      "value": 326.36
+    },
+    {
+      "date": "2026-06-01",
+      "value": 322.29
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 625445502976.0,
-      "pe_ratio": 28.648085,
-      "forward_pe": 22.145384,
-      "eps_ttm": 11.48,
-      "dividend_yield": 0.81,
+      "market_cap": 612912988160.0,
+      "pe_ratio": 28.123037,
+      "forward_pe": 21.701643,
+      "eps_ttm": 11.46,
+      "dividend_yield": 0.82,
       "profit_margin": 0.51679003,
       "operating_margin": 0.67346,
-      "price_to_book": 16.416092,
+      "price_to_book": 16.087152,
       "return_on_equity": 0.60349
     },
     "quarterly": [
@@ -10115,12 +10111,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 328.88,
+    "as_of": "2026-06-01",
+    "current_price": 322.29,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 160.72,
+        "fair_value": 160.44,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
@@ -10130,13 +10126,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 71.94,
+        "fair_value": 71.87,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 148.21,
-    "valuation_gap": 1.219,
+    "fair_value": 148.06,
+    "valuation_gap": 1.1768,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10264,6 +10260,18 @@
         "price": 328.88,
         "fair_value": 160.72,
         "gap": 1.0463
+      },
+      {
+        "date": "2026-05-29",
+        "price": 326.36,
+        "fair_value": 160.72,
+        "gap": 1.0306
+      },
+      {
+        "date": "2026-06-01",
+        "price": 322.29,
+        "fair_value": 160.72,
+        "gap": 1.0053
       }
     ],
     "qualitative": {

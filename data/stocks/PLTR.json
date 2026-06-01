@@ -5674,18 +5674,38 @@
     {
       "date": "2026-05-22",
       "value": 136.88
+    },
+    {
+      "date": "2026-05-26",
+      "value": 136.6
+    },
+    {
+      "date": "2026-05-27",
+      "value": 132.51
+    },
+    {
+      "date": "2026-05-28",
+      "value": 143.34
+    },
+    {
+      "date": "2026-05-29",
+      "value": 156.54
+    },
+    {
+      "date": "2026-06-01",
+      "value": 158.53
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 328144093184.0,
-      "pe_ratio": 153.79776,
-      "forward_pe": 65.98917,
+      "market_cap": 380165750784.0,
+      "pe_ratio": 178.17978,
+      "forward_pe": 76.45062,
       "eps_ttm": 0.89,
       "dividend_yield": null,
       "profit_margin": 0.43673,
       "operating_margin": 0.46183997,
-      "price_to_book": 38.831207,
+      "price_to_book": 44.987232,
       "return_on_equity": 0.32587
     },
     "quarterly": [
@@ -5727,8 +5747,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 136.88,
+    "as_of": "2026-06-01",
+    "current_price": 158.53,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -5737,7 +5757,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 45.63,
+        "fair_value": 45.62,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -5748,7 +5768,7 @@
       }
     },
     "fair_value": 27.83,
-    "valuation_gap": 3.9186,
+    "valuation_gap": 4.6972,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -5876,6 +5896,18 @@
         "price": 136.88,
         "fair_value": 24.93,
         "gap": 4.49
+      },
+      {
+        "date": "2026-05-29",
+        "price": 156.54,
+        "fair_value": 24.93,
+        "gap": 5.2785
+      },
+      {
+        "date": "2026-06-01",
+        "price": 158.53,
+        "fair_value": 24.93,
+        "gap": 5.3583
       }
     ],
     "qualitative": {

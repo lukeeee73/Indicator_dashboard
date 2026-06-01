@@ -4,30 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 33.74
-    },
-    {
-      "date": "2016-05-24",
-      "value": 34.36
-    },
-    {
-      "date": "2016-05-25",
-      "value": 34.56
-    },
-    {
-      "date": "2016-05-26",
-      "value": 34.4
-    },
-    {
-      "date": "2016-05-27",
-      "value": 34.51
-    },
-    {
-      "date": "2016-05-31",
-      "value": 34.62
-    },
-    {
       "date": "2016-06-01",
       "value": 34.67
     },
@@ -10062,18 +10038,38 @@
     {
       "date": "2026-05-22",
       "value": 192.08
+    },
+    {
+      "date": "2026-05-26",
+      "value": 193.06
+    },
+    {
+      "date": "2026-05-27",
+      "value": 190.96
+    },
+    {
+      "date": "2026-05-28",
+      "value": 203.7
+    },
+    {
+      "date": "2026-05-29",
+      "value": 225.78
+    },
+    {
+      "date": "2026-06-01",
+      "value": 236.43
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 552430927872.0,
-      "pe_ratio": 34.484737,
-      "forward_pe": 23.912825,
-      "eps_ttm": 5.57,
-      "dividend_yield": 1.04,
+      "market_cap": 679740243968.0,
+      "pe_ratio": 42.35581,
+      "forward_pe": 29.423605,
+      "eps_ttm": 5.58,
+      "dividend_yield": 0.89,
       "profit_margin": 0.25298,
       "operating_margin": 0.32676,
-      "price_to_book": 16.464941,
+      "price_to_book": 20.259335,
       "return_on_equity": 0.57572
     },
     "quarterly": [
@@ -10122,28 +10118,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 192.08,
+    "as_of": "2026-06-01",
+    "current_price": 236.43,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 155.96,
+        "fair_value": 156.24,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 176.72,
+        "fair_value": 176.78,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 38.24,
+        "fair_value": 38.28,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 138.64,
-    "valuation_gap": 0.3854,
+    "fair_value": 138.81,
+    "valuation_gap": 0.7033,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10295,6 +10291,18 @@
         "price": 192.08,
         "fair_value": 151.2,
         "gap": 0.2704
+      },
+      {
+        "date": "2026-05-29",
+        "price": 225.78,
+        "fair_value": 151.2,
+        "gap": 0.4933
+      },
+      {
+        "date": "2026-06-01",
+        "price": 236.43,
+        "fair_value": 151.2,
+        "gap": 0.5637
       }
     ],
     "qualitative": {

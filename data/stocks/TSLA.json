@@ -4,30 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 14.41
-    },
-    {
-      "date": "2016-05-24",
-      "value": 14.53
-    },
-    {
-      "date": "2016-05-25",
-      "value": 14.64
-    },
-    {
-      "date": "2016-05-26",
-      "value": 15.01
-    },
-    {
-      "date": "2016-05-27",
-      "value": 14.87
-    },
-    {
-      "date": "2016-05-31",
-      "value": 14.88
-    },
-    {
       "date": "2016-06-01",
       "value": 14.64
     },
@@ -10062,18 +10038,38 @@
     {
       "date": "2026-05-22",
       "value": 426.01
+    },
+    {
+      "date": "2026-05-26",
+      "value": 433.59
+    },
+    {
+      "date": "2026-05-27",
+      "value": 440.36
+    },
+    {
+      "date": "2026-05-28",
+      "value": 442.1
+    },
+    {
+      "date": "2026-05-29",
+      "value": 435.79
+    },
+    {
+      "date": "2026-06-01",
+      "value": 421.74
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1599975981056.0,
-      "pe_ratio": 383.7928,
-      "forward_pe": 169.74606,
-      "eps_ttm": 1.11,
+      "market_cap": 1583600893952.0,
+      "pe_ratio": 386.83484,
+      "forward_pe": 168.00879,
+      "eps_ttm": 1.09,
       "dividend_yield": null,
       "profit_margin": 0.03946,
       "operating_margin": 0.04203,
-      "price_to_book": 19.455177,
+      "price_to_book": 19.256063,
       "return_on_equity": 0.04901
     },
     "quarterly": [
@@ -10129,28 +10125,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 426.01,
+    "as_of": "2026-06-01",
+    "current_price": 421.74,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 27.75,
+        "fair_value": 27.25,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 50.19,
+        "fair_value": 50.2,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
       "graham_number": {
-        "fair_value": 23.39,
+        "fair_value": 23.18,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 33.61,
-    "valuation_gap": 11.6751,
+    "fair_value": 33.32,
+    "valuation_gap": 11.6569,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,6 +10274,18 @@
         "price": 426.01,
         "fair_value": 27.25,
         "gap": 14.6334
+      },
+      {
+        "date": "2026-05-29",
+        "price": 435.79,
+        "fair_value": 27.25,
+        "gap": 14.9923
+      },
+      {
+        "date": "2026-06-01",
+        "price": 421.74,
+        "fair_value": 27.25,
+        "gap": 14.4767
       }
     ],
     "qualitative": {

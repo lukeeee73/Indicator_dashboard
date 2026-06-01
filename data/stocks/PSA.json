@@ -4,30 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 168.97
-    },
-    {
-      "date": "2016-05-24",
-      "value": 170.66
-    },
-    {
-      "date": "2016-05-25",
-      "value": 169.96
-    },
-    {
-      "date": "2016-05-26",
-      "value": 170.49
-    },
-    {
-      "date": "2016-05-27",
-      "value": 171.23
-    },
-    {
-      "date": "2016-05-31",
-      "value": 170.21
-    },
-    {
       "date": "2016-06-01",
       "value": 172.27
     },
@@ -777,7 +753,7 @@
     },
     {
       "date": "2017-02-28",
-      "value": 156.44
+      "value": 156.45
     },
     {
       "date": "2017-03-01",
@@ -1193,7 +1169,7 @@
     },
     {
       "date": "2017-07-27",
-      "value": 138.97
+      "value": 138.96
     },
     {
       "date": "2017-07-28",
@@ -1389,7 +1365,7 @@
     },
     {
       "date": "2017-10-05",
-      "value": 151.18
+      "value": 151.17
     },
     {
       "date": "2017-10-06",
@@ -5025,7 +5001,7 @@
     },
     {
       "date": "2021-05-18",
-      "value": 221.91
+      "value": 221.92
     },
     {
       "date": "2021-05-19",
@@ -5941,7 +5917,7 @@
     },
     {
       "date": "2022-04-13",
-      "value": 334.68
+      "value": 334.69
     },
     {
       "date": "2022-04-14",
@@ -6941,7 +6917,7 @@
     },
     {
       "date": "2023-04-13",
-      "value": 269.32
+      "value": 269.33
     },
     {
       "date": "2023-04-14",
@@ -8381,7 +8357,7 @@
     },
     {
       "date": "2024-09-18",
-      "value": 339.45
+      "value": 339.44
     },
     {
       "date": "2024-09-19",
@@ -10062,18 +10038,38 @@
     {
       "date": "2026-05-22",
       "value": 305.25
+    },
+    {
+      "date": "2026-05-26",
+      "value": 304.47
+    },
+    {
+      "date": "2026-05-27",
+      "value": 306.79
+    },
+    {
+      "date": "2026-05-28",
+      "value": 309.25
+    },
+    {
+      "date": "2026-05-29",
+      "value": 303.69
+    },
+    {
+      "date": "2026-06-01",
+      "value": 297.56
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 53585338368.0,
-      "pe_ratio": 31.53409,
-      "forward_pe": 30.194431,
-      "eps_ttm": 9.68,
-      "dividend_yield": 3.93,
+      "market_cap": 52235390976.0,
+      "pe_ratio": 30.707947,
+      "forward_pe": 29.281696,
+      "eps_ttm": 9.69,
+      "dividend_yield": 3.95,
       "profit_margin": 0.39061,
       "operating_margin": 0.46032003,
-      "price_to_book": 10.93694,
+      "price_to_book": 10.661411,
       "return_on_equity": 0.20175
     },
     "quarterly": [
@@ -10122,28 +10118,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 305.25,
+    "as_of": "2026-06-01",
+    "current_price": 297.56,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 174.24,
+        "fair_value": 174.42,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 161.75,
+        "fair_value": 162.59,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 77.97,
+        "fair_value": 78.01,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 151.24,
-    "valuation_gap": 1.0183,
+    "fair_value": 151.59,
+    "valuation_gap": 0.9629,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,6 +10267,18 @@
         "price": 305.25,
         "fair_value": 174.42,
         "gap": 0.7501
+      },
+      {
+        "date": "2026-05-29",
+        "price": 303.69,
+        "fair_value": 174.42,
+        "gap": 0.7411
+      },
+      {
+        "date": "2026-06-01",
+        "price": 297.56,
+        "fair_value": 174.42,
+        "gap": 0.706
       }
     ],
     "qualitative": {
