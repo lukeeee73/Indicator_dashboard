@@ -1,0 +1,57 @@
+{
+  "ticker": "AMD",
+  "date": "2026-06-02",
+  "as_of_utc": "2026-06-02T21:00:00Z",
+  "news": [
+    {
+      "title": "AMD Faces Stock Pressure Amid Nvidia's New Superchip Announcement at Computex",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/8893951/amd-faces-stock-pressure-amid-nvidias-new-superchip-announcement",
+      "published": "2026-06-01T18:00:00Z",
+      "summary": "NVDA RTX Spark 슈퍼칩 발표 후 AMD 주가 4% 이상 하락, AI PC 시장 경쟁 격화",
+      "impact": "-",
+      "category": "product"
+    },
+    {
+      "title": "AMD's Lisa Su Explains Massive Forecast Change as Stock Roars 19% on Earnings",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/05/06/amd-lisa-su-stock-forecast-earnings.html",
+      "published": "2026-05-06T20:00:00Z",
+      "summary": "6월 분기 매출 가이던스 $11.2B(+45% YoY), 컨센서스 $10.5B 상회 — 에이전틱 AI 수요 급증",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "TD Cowen Raises AMD Price Target to $600 After Management Meeting",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/quotes/AMD",
+      "published": "2026-06-01T14:00:00Z",
+      "summary": "TD Cowen이 목표가 $500→$600으로 상향, 경영진 미팅 후 Buy 의견 유지",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NVDA",
+      "headline": "Nvidia unveiled RTX Spark superchip at Computex 2026, targeting AI PC market with 100+ TOPS vs AMD's 45 TOPS",
+      "implication_for_target": "AMD Snapdragon 경쟁자는 QCOM이지만, NVDA가 AI PC 통합칩 시장 공략 시 AMD GPU 입지 잠식 위험"
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel unveiled Xeon 6+ at Computex but stock fell 4.67% — AMD data center market share gains may continue",
+      "implication_for_target": "INTC 실망 지속 시 AMD 서버 CPU 점유율 추가 확대 기회"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.50,
+    "competitive_position": -0.30,
+    "regulatory_risk": 0.00,
+    "macro_sensitivity": 0.20
+  },
+  "narrative_score": 0.16,
+  "summary_kr": "6월 분기 매출 가이던스 $11.2B(+45% YoY)로 컨센서스를 크게 상회하며 어닝 모멘텀은 양호하나, COMPUTEX에서 NVIDIA RTX Spark 슈퍼칩 발표로 AI PC 경쟁 심화 우려로 주가 4% 이상 급락. 혼조세 지속.",
+  "key_events": ["NVIDIA RTX Spark 발표 후 주가 4%+ 급락", "6월 분기 매출 가이던스 $11.2B — 컨센서스 +7% 상회", "TD Cowen 목표가 $600으로 상향"],
+  "risks": ["NVDA AI PC 슈퍼칩으로 GPU·AI PC 칩 시장 점유율 위협", "INTC 반등 시 서버 CPU 점유율 경쟁 재점화"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/AMD%20-%20Advanced%20Micro%20Devices.md"
+}

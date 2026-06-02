@@ -10289,29 +10289,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-26",
-      "narrative_score": 0.23,
-      "summary_kr": "QCOM +5.74% 급등 — ByteDance AI 칩 공급 계약, 자동차 매출 $1.3B 신기록, 온디바이스 AI 침투율 급증 전망으로 이전 실망감 완전 반전. 6월 24일 투자자의 날에서 사업 다각화 로드맵 추가 공개 예정.",
+      "as_of": "2026-06-02",
+      "narrative_score": -0.22,
+      "summary_kr": "NVDA RTX Spark이 AI PC 칩 시장을 직접 공략하며 Snapdragon X Elite 대비 성능 격차(100+ vs 45 TOPS) 부각으로 주가 8.78% 급락. Dragonfly 데이터센터 칩 공개했으나 세부사항은 6/24 인베스터 데이로 연기. 단기 모멘텀 약화.",
       "key_events": [
-        "ByteDance AI 데이터센터 칩 공급 계약 체결",
-        "자동차 매출 $1.3B 분기 신기록",
-        "온디바이스 AI 침투율 2027년 32% 전망"
+        "NVDA RTX Spark AI PC 직격탄으로 주가 8.78% 급락",
+        "Dragonfly 데이터센터 AI 칩 브랜드 공개 (세부사항 6/24 발표)",
+        "ByteDance AI ASIC 공급 계약 — 장기 호재"
       ],
       "risks": [
-        "Q3 가이던스 하회 우려 해소 여부 미확인",
-        "스마트폰 사이클 둔화 시 핵심 매출 타격"
+        "NVDA의 AI PC 시장 진입으로 Snapdragon 점유율 축소 위험",
+        "마이크로소프트 Copilot+ PC 독점 완화로 구조적 우위 소멸",
+        "6월 24일 인베스터 데이 기대 미달 시 추가 하락 가능성"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "NVDA",
-          "headline": "NVDA Q1 FY2027 record data center revenue — server AI remains NVDA/AMD dominant",
-          "implication_for_target": "NVDA/AMD AI 서버 독주 속에 QCOM은 온디바이스 AI·자동차 틈새로 포지셔닝 — 직접 경쟁 아닌 보완적 성장"
+          "headline": "Nvidia RTX Spark superchip for AI PCs targets Qualcomm's Snapdragon market directly, 100+ TOPS vs 45 TOPS",
+          "implication_for_target": "AI PC 핵심 시장에서 NVDA 직접 진입 — Snapdragon 프리미엄 포지셔닝 위협"
         },
         {
           "ticker": "INTC",
-          "headline": "Intel COMPUTEX Core Ultra AI PC products, SuperClaw platform",
-          "implication_for_target": "AI PC 시장에서 INTC와 직접 경쟁 — QCOM Snapdragon Elite 성능 우위 유지 필요"
+          "headline": "Microsoft reportedly eased Copilot+ PC hardware exclusivity, removing structural tailwind shared with Qualcomm",
+          "implication_for_target": "Copilot+ PC 하드웨어 독점 약화로 QCOM의 Windows AI PC 점유율 확대 동력 축소"
         }
       ],
       "history": [
@@ -10326,6 +10327,10 @@
         {
           "date": "2026-05-26",
           "narrative_score": 0.23
+        },
+        {
+          "date": "2026-06-02",
+          "narrative_score": -0.22
         }
       ]
     }
