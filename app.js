@@ -1572,316 +1572,357 @@ function renderStocksTab(data) {
     }
   }
 
-  // ─ 밸류체인 (초안: 반도체) ─
-  renderValueChainSection(stocks);
+  // ─ AI·반도체 시장 지도 (수요 캐스케이드 · 병목 중심) ─
+  renderMarketCascade(stocks);
 
-  // 서브 네비게이션 (시장 지수 / 개별 종목 / 밸류체인 토글)
+  // 서브 네비게이션 (시장 지수 / 개별 종목 / 시장 지도 토글)
   wireSectorNav("STOCKS");
 }
 
 // ════════════════════════════════════════════════════════════════════════
-//  섹터 밸류체인 (value chain) — 초안 / PROOF-OF-CONCEPT
+//  AI · 반도체 시장 지도 (market cascade) — 수요 → 공급, 병목 중심
 // ════════════════════════════════════════════════════════════════════════
 //
-// ▼▼▼ 여기가 "관계 데이터"입니다 — Luke 가 조사한 내용으로 함께 채워나갈 부분 ▼▼▼
+// 기업이 아니라 '시장(수요)' 단위로 본 밸류체인.
+// 데이터 SSOT 는  data/markets/ai-semiconductor.json  하나이며,
+// 이 JSON 만 고치면 노드·층·관계·병목·플레이어가 모두 바뀐다.
 //
-// 구조 설명:
-//   stages : 상류(upstream) → 하류(downstream) 순서의 단계 배열.
-//            board 에 왼쪽→오른쪽 컬럼으로 그려진다.
-//            tickers 는 그 단계에 속한 watchlist 종목들.
-//            external 은 watchlist 에 없지만 흐름상 필요한 가상 노드(고객 등).
-//   links  : 상→하류 방향의 공급 관계. from(공급) → to(수요/고객).
-//            노드를 클릭하면 연결된 link 들이 강조되고 SVG 선으로 그려진다.
-//
-// ⚠️ 아래 반도체 데이터는 형태 검증용 "예시 초안"입니다.
-//    실제 단계 분류·관계·설명은 Luke 의 조사 내용으로 교체할 예정.
-const VALUE_CHAINS = {
-  semiconductors: {
-    group: "반도체",
-    title: "반도체 밸류체인",
-    subtitle: "장비·소재 → 제조(파운드리/IDM) → 설계(팹리스) → 최종 고객",
-    stages: [
-      {
-        id: "equipment",
-        label: "장비 · 소재",
-        desc: "반도체를 만드는 '공장 설비'. 노광·식각·증착 장비를 제조사에 공급한다.",
-        tickers: ["ASML", "AMAT", "LRCX"],
-      },
-      {
-        id: "manufacturing",
-        label: "제조 (파운드리 · IDM)",
-        desc: "실제로 웨이퍼에 회로를 새겨 칩을 만든다. 파운드리는 위탁생산, IDM 은 설계+제조 통합.",
-        tickers: ["TSM", "INTC", "MU"],
-      },
-      {
-        id: "design",
-        label: "설계 (팹리스)",
-        desc: "칩을 설계만 하고 제조는 파운드리에 맡긴다. AI·통신·CPU/GPU 칩 설계.",
-        tickers: ["NVDA", "AMD", "QCOM", "AVGO"],
-      },
-      {
-        id: "customer",
-        label: "최종 고객",
-        desc: "완성된 칩을 사가는 수요처. (watchlist 내 빅테크 / 외부 가상 노드)",
-        tickers: ["MSFT", "AMZN", "GOOGL"],
-        external: [
-          { id: "datacenter", label: "데이터센터 / AI" },
-          { id: "devices",    label: "스마트폰 / 디바이스" },
-        ],
-      },
-    ],
-    // 상→하류 공급 관계 (예시 초안 — 실제 관계는 함께 채워나감)
-    links: [
-      { from: "ASML", to: "TSM",  label: "EUV 노광장비 공급" },
-      { from: "ASML", to: "INTC", label: "EUV 노광장비 공급" },
-      { from: "AMAT", to: "TSM",  label: "식각·증착 장비" },
-      { from: "AMAT", to: "MU",   label: "메모리 공정 장비" },
-      { from: "LRCX", to: "MU",   label: "식각 장비 (메모리)" },
-      { from: "LRCX", to: "TSM",  label: "식각 장비" },
-      { from: "TSM",  to: "NVDA", label: "AI GPU 위탁생산" },
-      { from: "TSM",  to: "AMD",  label: "CPU/GPU 위탁생산" },
-      { from: "TSM",  to: "QCOM", label: "모바일 SoC 위탁생산" },
-      { from: "TSM",  to: "AVGO", label: "네트워크 칩 위탁생산" },
-      { from: "NVDA", to: "MSFT", label: "AI 가속기 공급" },
-      { from: "NVDA", to: "AMZN", label: "AI 가속기 공급" },
-      { from: "NVDA", to: "GOOGL",label: "AI 가속기 공급" },
-      { from: "NVDA", to: "datacenter", label: "AI 학습/추론 GPU" },
-      { from: "AMD",  to: "datacenter", label: "서버 CPU/GPU" },
-      { from: "AVGO", to: "datacenter", label: "네트워킹 칩" },
-      { from: "QCOM", to: "devices",    label: "모바일 AP/모뎀" },
-      { from: "MU",   to: "datacenter", label: "HBM / 서버 메모리" },
-    ],
-  },
+// 시장 노드는 소속 기업(players[].ticker 중 watchlist 종목)의
+// data/stocks/{TICKER}.json → valuation.qualitative.narrative_score 를
+// 자동 집계해 "시장 단위 뉴스 시그널" 로 보여준다. (daily 루틴이 채우는 값)
+
+const MARKET_MAP_URL = "data/markets/ai-semiconductor.json";
+const MC_STATE = { map: null, activeNode: null, bottleneckOnly: false, loading: false };
+
+// 병목 심각도 → 색
+const MC_SEVERITY_COLOR = {
+  structural:     "#a855f7", // 보라 — 구조적 독점
+  acute:          "#e63030", // 빨강 — 급성 병목
+  easing:         "#f59e0b", // 주황 — 완화중
+  emerging:       "#eab308", // 노랑 — 부상하는 병목
+  demand_limited: "#5aa9e6", // 파랑 — 수요 한계형
 };
-// ▲▲▲ 관계 데이터 끝 ▲▲▲
+// 층 → 색
+const MC_LAYER_COLOR = {
+  demand:        "#22d3ee",
+  capital:       "#a78bfa",
+  compute:       "#5acd80",
+  components:    "#e63030",
+  manufacturing: "#fbbf24",
+  foundation:    "#9aa0a9",
+};
 
-const VC_STATE = { activeChain: "semiconductors", activeNode: null };
-
-// 밸류체인 섹션 전체 렌더 (섹터 셀렉터 + 보드)
-function renderValueChainSection(stocks) {
-  const navHost = document.getElementById("vc-chain-nav");
-  if (!navHost) return;
-
-  // 섹터 셀렉터 (현재는 반도체 하나지만 확장 대비)
-  const chainKeys = Object.keys(VALUE_CHAINS);
-  navHost.innerHTML = chainKeys.map((key) => {
-    const active = key === VC_STATE.activeChain;
-    return `<button class="vc-chain-btn ${active ? "active" : ""}" data-chain="${key}">${escapeHtml(VALUE_CHAINS[key].group)}</button>`;
-  }).join("");
-  navHost.querySelectorAll(".vc-chain-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      VC_STATE.activeChain = btn.dataset.chain;
-      VC_STATE.activeNode = null;
-      renderValueChainSection(stocks);
-    });
-  });
-
-  renderValueChainBoard(stocks);
+// 진입점 (renderStocksTab 에서 호출). 비동기 fetch 후 렌더. map 은 1회만 로드.
+async function renderMarketCascade(stocks) {
+  const board = document.getElementById("vc-board");
+  if (!board) return;
+  if (!MC_STATE.map && !MC_STATE.loading) {
+    MC_STATE.loading = true;
+    board.innerHTML = emptyMessage("시장 지도를 불러오는 중…");
+    try {
+      const res = await fetch(MARKET_MAP_URL, { cache: "no-cache" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      MC_STATE.map = await res.json();
+    } catch (err) {
+      board.innerHTML = emptyMessage(`시장 지도를 불러오지 못했습니다 (${err.message}).`);
+      MC_STATE.loading = false;
+      return;
+    }
+    MC_STATE.loading = false;
+  }
+  if (!MC_STATE.map) return;
+  renderMarketChrome();
+  renderMarketBoard(stocks);
 }
 
-// 보드(단계 컬럼 + 노드) 렌더
-function renderValueChainBoard(stocks) {
+// 상단 크롬: 병목 범례 + '병목만 강조' 토글
+function renderMarketChrome() {
+  const navHost = document.getElementById("vc-chain-nav");
+  if (!navHost) return;
+  const map = MC_STATE.map;
+  const legend = Object.entries(map.severity_legend || {}).map(([k, v]) =>
+    `<span class="mc-leg" title="${escapeHtml(v.desc || "")}" style="--mc-c:${MC_SEVERITY_COLOR[k] || "#888"}">
+       <i class="mc-leg-dot"></i>${escapeHtml(v.icon || "")} ${escapeHtml(v.label || k)}</span>`).join("");
+  navHost.innerHTML = `
+    <div class="mc-legend">${legend}</div>
+    <label class="mc-toggle"><input type="checkbox" id="mc-bottleneck-only" ${MC_STATE.bottleneckOnly ? "checked" : ""}> 병목만 강조</label>`;
+  const cb = document.getElementById("mc-bottleneck-only");
+  if (cb) cb.addEventListener("change", () => {
+    MC_STATE.bottleneckOnly = cb.checked;
+    const b = document.getElementById("vc-board");
+    if (b) b.classList.toggle("mc-board--btlonly", cb.checked);
+  });
+}
+
+// 시장 규모(대표값 $B) → 노드 폭 (sqrt 스케일 + clamp). 8→~116, 200→~195, 725→~284
+function mcNodeWidth(sizeB) {
+  const s = (typeof sizeB === "number" && sizeB > 0) ? sizeB : 8;
+  return Math.max(116, Math.min(300, Math.round(96 + Math.sqrt(s) * 7.0)));
+}
+
+// 시장 노드의 watchlist 기업 narrative_score 평균을 집계
+function mcAggregateScore(m, stocks) {
+  const scores = [];
+  (m.players || []).forEach((p) => {
+    if (!p.ticker || !p.in_watchlist) return;
+    const q = stocks && stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
+    if (q && typeof q.narrative_score === "number") scores.push(q.narrative_score);
+  });
+  if (!scores.length) return { count: 0, score: 0, tone: "neutral" };
+  const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+  return { count: scores.length, score: avg, tone: avg > 0.05 ? "pos" : avg < -0.05 ? "neg" : "neutral" };
+}
+
+// 보드(층 밴드 + 노드) 렌더
+function renderMarketBoard(stocks) {
   const board = document.getElementById("vc-board");
-  const chain = VALUE_CHAINS[VC_STATE.activeChain];
-  if (!board || !chain) return;
-
+  const map = MC_STATE.map;
+  if (!board || !map) return;
+  board.className = "vc-board mc-board" + (MC_STATE.bottleneckOnly ? " mc-board--btlonly" : "");
   board.innerHTML = "";
-  chain.stages.forEach((stage, i) => {
-    const col = document.createElement("div");
-    col.className = "vc-col";
-    col.dataset.stage = stage.id;
 
-    const nodes = (stage.tickers || []).map((ticker) => {
-      const meta = STOCK_META[ticker] || {};
-      const name = meta.displayName || ticker;
-      const biz  = meta.business || "";
-      const color = meta.color || "#9aa0a9";
-      return `<button class="vc-node" data-ticker="${ticker}" style="--vc-accent:${color}"
-                title="${escapeHtml(biz)}">
-                <span class="vc-node-ticker">${escapeHtml(name)}</span>
-              </button>`;
-    }).join("");
+  // 수요 → 공급 축 안내
+  const axis = document.createElement("div");
+  axis.className = "mc-axis";
+  axis.innerHTML = `<span class="mc-axis-top">▲ 수요 · 돈을 내는 곳</span>
+                    <span class="mc-axis-bot">공급 · 병목 · 만드는 곳 ▼</span>`;
+  board.appendChild(axis);
 
-    const externals = (stage.external || []).map((ex) =>
-      `<div class="vc-node vc-node--external" data-ticker="${ex.id}">
-         <span class="vc-node-ticker">${escapeHtml(ex.label)}</span>
-       </div>`
-    ).join("");
-
-    col.innerHTML = `
-      <header class="vc-col-head">
-        <span class="vc-col-step">${i + 1}</span>
-        <h4 class="vc-col-title">${escapeHtml(stage.label)}</h4>
-        <p class="vc-col-desc">${escapeHtml(stage.desc)}</p>
-      </header>
-      <div class="vc-col-nodes">${nodes}${externals}</div>
-    `;
-    board.appendChild(col);
-
-    // 단계 사이 흐름 화살표
-    if (i < chain.stages.length - 1) {
-      const arrow = document.createElement("div");
-      arrow.className = "vc-flow-arrow";
-      arrow.textContent = "→";
-      board.appendChild(arrow);
-    }
+  map.layers.forEach((layer) => {
+    const markets = map.markets.filter((m) => m.layer === layer.id);
+    if (!markets.length) return;
+    const band = document.createElement("div");
+    band.className = "mc-layer";
+    band.dataset.layer = layer.id;
+    band.style.setProperty("--mc-layer", MC_LAYER_COLOR[layer.id] || "#888");
+    band.innerHTML = `
+      <div class="mc-layer-head">
+        <span class="mc-layer-label">${escapeHtml(layer.label)}</span>
+        <span class="mc-layer-desc">${escapeHtml(layer.desc)}</span>
+      </div>
+      <div class="mc-layer-nodes">${markets.map((m) => mcNodeHtml(m, stocks)).join("")}</div>`;
+    board.appendChild(band);
   });
 
-  // 노드 클릭 → 상세 + 관계선
-  board.querySelectorAll(".vc-node[data-ticker]").forEach((el) => {
-    el.addEventListener("click", () => selectValueChainNode(el.dataset.ticker, stocks));
-  });
+  board.querySelectorAll(".mc-node[data-id]").forEach((el) =>
+    el.addEventListener("click", () => selectMarketNode(el.dataset.id, stocks)));
 
-  // 활성 노드 복원 / 초기화
-  if (VC_STATE.activeNode) {
-    selectValueChainNode(VC_STATE.activeNode, stocks);
+  if (MC_STATE.activeNode && map.markets.some((m) => m.id === MC_STATE.activeNode)) {
+    selectMarketNode(MC_STATE.activeNode, stocks);
   } else {
-    clearValueChainLinks();
+    clearMarketLinks();
   }
 }
 
-// 노드 선택: 강조 + 관계선 + 상세 패널
-function selectValueChainNode(ticker, stocks) {
-  VC_STATE.activeNode = ticker;
-  const chain = VALUE_CHAINS[VC_STATE.activeChain];
-  const board = document.getElementById("vc-board");
-  if (!chain || !board) return;
-
-  // 연결된 노드 집합 계산
-  const upstream = chain.links.filter((l) => l.to === ticker).map((l) => l.from);
-  const downstream = chain.links.filter((l) => l.from === ticker).map((l) => l.to);
-  const connected = new Set([...upstream, ...downstream, ticker]);
-
-  // 강조 클래스 토글
-  board.querySelectorAll(".vc-node").forEach((el) => {
-    const t = el.dataset.ticker;
-    el.classList.toggle("vc-node--active", t === ticker);
-    el.classList.toggle("vc-node--linked", connected.has(t) && t !== ticker);
-    el.classList.toggle("vc-node--dim", !connected.has(t));
-  });
-
-  drawValueChainLinks(ticker);
-  renderValueChainDetail(ticker, upstream, downstream, stocks);
+// 단일 시장 노드 HTML
+function mcNodeHtml(m, stocks) {
+  const sev = m.bottleneck && m.bottleneck.severity;
+  const accent = sev ? (MC_SEVERITY_COLOR[sev] || "#888") : (MC_LAYER_COLOR[m.layer] || "#888");
+  const leg = sev && MC_STATE.map.severity_legend ? MC_STATE.map.severity_legend[sev] : null;
+  const icon = leg ? leg.icon : "";
+  const agg = mcAggregateScore(m, stocks);
+  const scoreChip = agg.count > 0
+    ? `<span class="mc-node-score" data-tone="${agg.tone}">${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)}</span>`
+    : "";
+  const w = mcNodeWidth(m.size_usd_b);
+  return `<button class="mc-node${sev ? " mc-node--btl mc-node--" + sev : ""}" data-id="${escapeHtml(m.id)}"
+            style="--mc-accent:${accent};--mc-w:${w}px" title="${escapeHtml(m.definition || "")}">
+      ${sev ? `<span class="mc-node-badge">${escapeHtml(icon)}</span>` : ""}
+      <span class="mc-node-name">${escapeHtml(m.name_kr)}</span>
+      <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
+      ${scoreChip}
+    </button>`;
 }
 
-// SVG 관계선 그리기 (활성 노드의 link 만)
-function drawValueChainLinks(ticker) {
+// 노드 선택: 강조 + 관계선 + 상세
+function selectMarketNode(id, stocks) {
+  MC_STATE.activeNode = id;
+  const map = MC_STATE.map;
+  const board = document.getElementById("vc-board");
+  if (!map || !board) return;
+  // links: from = 수요(상류), to = 공급(하류)
+  const needs    = map.links.filter((l) => l.from === id).map((l) => l.to);   // 이 시장이 의존하는 공급(하류)
+  const pulledBy = map.links.filter((l) => l.to === id).map((l) => l.from);   // 이 시장을 끌어당기는 수요(상류)
+  const connected = new Set([...needs, ...pulledBy, id]);
+  board.querySelectorAll(".mc-node").forEach((el) => {
+    const t = el.dataset.id;
+    el.classList.toggle("mc-node--active", t === id);
+    el.classList.toggle("mc-node--linked", connected.has(t) && t !== id);
+    el.classList.toggle("mc-node--dim", !connected.has(t));
+  });
+  drawMarketLinks(id);
+  renderMarketDetail(id, needs, pulledBy, stocks);
+}
+
+// 활성 노드의 관계선만 SVG 로 그림 (세로 연결 + 동일층은 가로 연결)
+function drawMarketLinks(id) {
   const svg  = document.getElementById("vc-links");
   const wrap = svg && svg.parentElement;
-  const chain = VALUE_CHAINS[VC_STATE.activeChain];
-  if (!svg || !wrap || !chain) return;
-
+  const map  = MC_STATE.map;
+  if (!svg || !wrap || !map) return;
   svg.innerHTML = "";
   const wrapRect = wrap.getBoundingClientRect();
-  if (wrapRect.width === 0) return; // 패널이 아직 숨겨져 있으면 skip
+  if (wrapRect.width === 0) return; // 패널이 숨겨져 있으면 skip
   svg.setAttribute("width", wrapRect.width);
-  svg.setAttribute("height", wrapRect.height);
+  svg.setAttribute("height", Math.max(wrap.scrollHeight, wrapRect.height));
 
-  const centerOf = (t) => {
-    const el = wrap.querySelector(`.vc-node[data-ticker="${CSS.escape(t)}"]`);
+  const rectOf = (t) => {
+    const el = wrap.querySelector(`.mc-node[data-id="${CSS.escape(t)}"]`);
     if (!el) return null;
     const r = el.getBoundingClientRect();
-    return {
-      // 오른쪽 면 / 왼쪽 면 중앙
-      right: { x: r.right - wrapRect.left, y: r.top + r.height / 2 - wrapRect.top },
-      left:  { x: r.left  - wrapRect.left, y: r.top + r.height / 2 - wrapRect.top },
-    };
+    return { x: r.left - wrapRect.left, y: r.top - wrapRect.top, w: r.width, h: r.height };
   };
 
-  const relevant = chain.links.filter((l) => l.from === ticker || l.to === ticker);
-  relevant.forEach((l) => {
-    const a = centerOf(l.from);
-    const b = centerOf(l.to);
+  map.links.filter((l) => l.from === id || l.to === id).forEach((l) => {
+    const a = rectOf(l.from), b = rectOf(l.to);
     if (!a || !b) return;
-    const p1 = a.right, p2 = b.left;
-    const dx = Math.max(40, (p2.x - p1.x) / 2);
+    const aMid = a.y + a.h / 2, bMid = b.y + b.h / 2;
+    let p1, p2, c1, c2;
+    if (Math.abs(aMid - bMid) > 24) {           // 세로: 위 노드 하단 → 아래 노드 상단
+      const up = aMid < bMid ? a : b, dn = aMid < bMid ? b : a;
+      p1 = { x: up.x + up.w / 2, y: up.y + up.h };
+      p2 = { x: dn.x + dn.w / 2, y: dn.y };
+      const dy = Math.max(28, (p2.y - p1.y) / 2);
+      c1 = { x: p1.x, y: p1.y + dy };
+      c2 = { x: p2.x, y: p2.y - dy };
+    } else {                                     // 동일층: 왼쪽 노드 오른쪽 → 오른쪽 노드 왼쪽
+      const lf = a.x < b.x ? a : b, rt = a.x < b.x ? b : a;
+      p1 = { x: lf.x + lf.w, y: lf.y + lf.h / 2 };
+      p2 = { x: rt.x, y: rt.y + rt.h / 2 };
+      const dx = Math.max(28, (p2.x - p1.x) / 2);
+      c1 = { x: p1.x + dx, y: p1.y };
+      c2 = { x: p2.x - dx, y: p2.y };
+    }
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", `M ${p1.x} ${p1.y} C ${p1.x + dx} ${p1.y}, ${p2.x - dx} ${p2.y}, ${p2.x} ${p2.y}`);
-    path.setAttribute("class", "vc-link-path");
+    path.setAttribute("d", `M ${p1.x} ${p1.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${p2.x} ${p2.y}`);
+    path.setAttribute("class", "mc-link-path");
     svg.appendChild(path);
   });
 }
 
-function clearValueChainLinks() {
+function clearMarketLinks() {
   const svg = document.getElementById("vc-links");
   if (svg) svg.innerHTML = "";
   const board = document.getElementById("vc-board");
-  if (board) board.querySelectorAll(".vc-node").forEach((el) => {
-    el.classList.remove("vc-node--active", "vc-node--linked", "vc-node--dim");
-  });
+  if (board) board.querySelectorAll(".mc-node").forEach((el) =>
+    el.classList.remove("mc-node--active", "mc-node--linked", "mc-node--dim"));
 }
 
-// 상세 패널: 역할 + 관계 + 정성 분석(뉴스)
-function renderValueChainDetail(ticker, upstream, downstream, stocks) {
+// 상세 패널: 정의 · 규모 · 수요동인 · 병목 · 시장 뉴스 시그널 · 플레이어 · 관계 · 출처
+function renderMarketDetail(id, needs, pulledBy, stocks) {
   const host = document.getElementById("vc-detail");
-  if (!host) return;
-  const chain = VALUE_CHAINS[VC_STATE.activeChain];
+  const map = MC_STATE.map;
+  if (!host || !map) return;
+  const m = map.markets.find((x) => x.id === id);
+  if (!m) return;
 
-  // 외부(가상) 노드인 경우
-  const isExternal = !STOCK_META[ticker];
-  const meta = STOCK_META[ticker] || {};
-  const payload = stocks && stocks[ticker];
-  const qual = payload && payload.valuation && payload.valuation.qualitative;
-
-  const nameOf = (t) => {
-    if (STOCK_META[t]) return STOCK_META[t].displayName || t;
-    for (const s of chain.stages) {
-      const ex = (s.external || []).find((e) => e.id === t);
-      if (ex) return ex.label;
-    }
-    return t;
-  };
-  const labelFor = (t, dir) => {
-    const link = dir === "up"
-      ? chain.links.find((l) => l.from === t && l.to === ticker)
-      : chain.links.find((l) => l.from === ticker && l.to === t);
+  const nameOf = (mid) => { const x = map.markets.find((y) => y.id === mid); return x ? x.name_kr : mid; };
+  const labelFor = (mid, dir) => {
+    const link = dir === "need"
+      ? map.links.find((l) => l.from === id && l.to === mid)
+      : map.links.find((l) => l.from === mid && l.to === id);
     return link ? link.label : "";
   };
-
   const relHtml = (list, dir, title) => {
     if (!list.length) return "";
-    const items = list.map((t) =>
-      `<li><strong>${escapeHtml(nameOf(t))}</strong>
-         <span class="vc-rel-label">${escapeHtml(labelFor(t, dir))}</span></li>`
-    ).join("");
-    return `<div class="vc-rel-block"><h5>${title}</h5><ul>${items}</ul></div>`;
+    const items = list.map((mid) =>
+      `<li><button class="mc-rel-link" data-goto="${escapeHtml(mid)}">${escapeHtml(nameOf(mid))}</button>
+         <span class="mc-rel-label">${escapeHtml(labelFor(mid, dir))}</span></li>`).join("");
+    return `<div class="mc-rel-block"><h5>${title}</h5><ul>${items}</ul></div>`;
   };
 
-  let qualHtml = "";
-  if (qual) {
-    const score = qual.narrative_score;
-    const tone = score == null ? "neutral" : score > 0.05 ? "pos" : score < -0.05 ? "neg" : "neutral";
-    const risks = (qual.risks || []).slice(0, 3).map((r) => `<li>${escapeHtml(r)}</li>`).join("");
-    qualHtml = `
-      <div class="vc-detail-news">
-        <h5>최신 정성 분석 ${qual.as_of ? `<span class="vc-asof">(${escapeHtml(qual.as_of)})</span>` : ""}</h5>
-        <p class="vc-narr" data-tone="${tone}">
-          narrative_score <strong>${score == null ? "—" : (score >= 0 ? "+" : "") + score.toFixed(2)}</strong>
-          · 뉴스 ${qual.news_count ?? 0}건
-        </p>
-        ${qual.summary_kr ? `<p class="vc-summary">${escapeHtml(qual.summary_kr)}</p>` : ""}
-        ${risks ? `<div class="vc-risks"><span>주요 리스크</span><ul>${risks}</ul></div>` : ""}
+  let btlHtml = "";
+  if (m.bottleneck) {
+    const sev = m.bottleneck.severity, leg = map.severity_legend[sev] || {};
+    btlHtml = `<div class="mc-btl-box" style="--mc-c:${MC_SEVERITY_COLOR[sev] || "#888"}">
+        <span class="mc-btl-tag">${escapeHtml(leg.icon || "")} ${escapeHtml(leg.label || sev)}</span>
+        <p class="mc-btl-text">${escapeHtml(m.bottleneck.limit)}</p>
       </div>`;
-  } else if (!isExternal) {
-    qualHtml = `<p class="vc-detail-hint">이 종목의 정성 분석 데이터가 아직 없습니다.</p>`;
   }
 
+  const playersHtml = (m.players || []).map((p) => {
+    let chip = "", cls = "mc-player";
+    if (p.ticker && p.in_watchlist) {
+      cls += " mc-player--data";
+      const q = stocks && stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
+      if (q && typeof q.narrative_score === "number") {
+        const tone = q.narrative_score > 0.05 ? "pos" : q.narrative_score < -0.05 ? "neg" : "neutral";
+        chip = `<span class="mc-player-score" data-tone="${tone}">${q.narrative_score >= 0 ? "+" : ""}${q.narrative_score.toFixed(2)}</span>`;
+      } else {
+        chip = `<span class="mc-player-score" data-tone="neutral">—</span>`;
+      }
+    } else {
+      chip = `<span class="mc-player-ext">${p.ticker ? "데이터 예정" : "비상장"}</span>`;
+    }
+    const tk = p.ticker ? `<span class="mc-player-tk">${escapeHtml(p.ticker)}</span>` : "";
+    return `<li class="${cls}">
+        <span class="mc-player-name">${escapeHtml(p.name)} ${tk}</span>
+        <span class="mc-player-role">${escapeHtml(p.role || "")}</span>${chip}
+      </li>`;
+  }).join("");
+
+  const agg = mcAggregateScore(m, stocks);
+  const aggHtml = agg.count > 0
+    ? `<p class="mc-agg" data-tone="${agg.tone}">시장 뉴스 시그널 <strong>${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)}</strong> · watchlist ${agg.count}곳 평균 narrative_score</p>`
+    : `<p class="mc-agg mc-agg--none">아직 watchlist 뉴스가 연결되지 않은 시장입니다.</p>`;
+
+  // 시장 단위 헤드라인 (특정 티커에 안 붙는 업황 뉴스 — market-research 루틴이 채움)
+  const newsHtml = (m.recent_news || []).length
+    ? `<div class="mc-news"><h5>최근 시장 뉴스</h5><ul>${
+        m.recent_news.slice(0, 5).map((n) => {
+          const tone = n.impact === "+" ? "pos" : n.impact === "-" ? "neg" : "neutral";
+          const meta = [n.source, n.date].filter(Boolean).join(" · ");
+          const title = n.url
+            ? `<a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title || "")}</a>`
+            : escapeHtml(n.title || "");
+          return `<li class="mc-news-item" data-tone="${tone}">
+              <span class="mc-news-title">${title}</span>
+              ${n.summary ? `<span class="mc-news-sum">${escapeHtml(n.summary)}</span>` : ""}
+              ${meta ? `<span class="mc-news-src">${escapeHtml(meta)}</span>` : ""}
+            </li>`;
+        }).join("")
+      }</ul></div>`
+    : "";
+
+  const sizeMeta = [
+    m.size_label ? `규모 <strong>${escapeHtml(m.size_label)}</strong>` : "",
+    m.growth ? `성장 ${escapeHtml(m.growth)}` : "",
+    m.size_confidence ? `<span class="mc-conf mc-conf--${escapeHtml(m.size_confidence)}">신뢰도 ${escapeHtml(m.size_confidence)}</span>` : "",
+  ].filter(Boolean).join(" · ");
+
+  const srcHtml = (m.sources || []).length
+    ? `<details class="mc-sources"><summary>출처 ${m.sources.length}</summary><ul>${
+        m.sources.map((u) => `<li><a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(String(u).replace(/^https?:\/\//, "").split("/")[0])}</a></li>`).join("")
+      }</ul></details>`
+    : "";
+
+  const layerLabel = (map.layers.find((l) => l.id === m.layer) || {}).label || "";
+
   host.innerHTML = `
-    <header class="vc-detail-head" style="--vc-accent:${meta.color || "#6b7280"}">
-      <h4>${escapeHtml(nameOf(ticker))}</h4>
-      ${meta.fullName ? `<p class="vc-detail-full">${escapeHtml(meta.fullName)}</p>` : ""}
+    <header class="mc-detail-head" style="--mc-accent:${MC_LAYER_COLOR[m.layer] || "#888"}">
+      <span class="mc-detail-layer">${escapeHtml(layerLabel)}</span>
+      <h4>${escapeHtml(m.name_kr)}</h4>
+      <p class="mc-detail-en">${escapeHtml(m.name_en || "")}</p>
     </header>
-    ${meta.business ? `<p class="vc-detail-biz">${escapeHtml(meta.business)}</p>` : ""}
-    ${isExternal ? `<p class="vc-detail-hint">외부 수요처(가상 노드)입니다.</p>` : ""}
-    ${relHtml(upstream, "up", "⬅ 공급받는 곳 (상류)")}
-    ${relHtml(downstream, "down", "공급하는 곳 (하류) ➡")}
-    ${qualHtml}
-  `;
+    <p class="mc-detail-def">${escapeHtml(m.definition || "")}</p>
+    ${sizeMeta ? `<p class="mc-detail-size">${sizeMeta}</p>` : ""}
+    ${m.demand_driver ? `<p class="mc-detail-driver"><span>수요 동인</span>${escapeHtml(m.demand_driver)}</p>` : ""}
+    ${btlHtml}
+    ${aggHtml}
+    ${newsHtml}
+    <div class="mc-players"><h5>핵심 플레이어</h5><ul>${playersHtml}</ul></div>
+    ${relHtml(needs, "need", "⬇ 의존하는 공급 (하류)")}
+    ${relHtml(pulledBy, "pull", "⬆ 끌어당기는 수요 (상류)")}
+    ${srcHtml}`;
+
+  host.querySelectorAll(".mc-rel-link[data-goto]").forEach((b) =>
+    b.addEventListener("click", () => selectMarketNode(b.dataset.goto, stocks)));
 }
 
-// 패널이 보일 때 / 리사이즈 시 관계선 다시 그리기
+// 서브탭이 보일 때 / 리사이즈 시 관계선 다시 그리기
+// (wireSectorNav 가 서브탭 전환마다 window resize 를 디스패치한다)
 window.addEventListener("resize", () => {
-  if (VC_STATE.activeNode) drawValueChainLinks(VC_STATE.activeNode);
+  if (MC_STATE.activeNode) drawMarketLinks(MC_STATE.activeNode);
 });
 
 // 개별 종목을 STOCK_GROUPS 순서대로 묶어서 섹터 헤더 + 그 안에 카드들 배치.

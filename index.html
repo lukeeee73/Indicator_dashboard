@@ -194,7 +194,7 @@
       <nav class="sector-nav" data-country="STOCKS" role="tablist" aria-label="주식 섹션">
         <button class="sector-btn active" data-sector="indices"    role="tab" aria-selected="true">시장 지수</button>
         <button class="sector-btn"        data-sector="individual" role="tab" aria-selected="false">개별 종목</button>
-        <button class="sector-btn"        data-sector="valuechain" role="tab" aria-selected="false">밸류체인</button>
+        <button class="sector-btn"        data-sector="valuechain" role="tab" aria-selected="false">시장 지도</button>
       </nav>
 
       <section class="category sector-panel" data-sector="indices">
@@ -210,16 +210,16 @@
       </section>
 
       <section class="category sector-panel" data-sector="valuechain" hidden>
-        <h2>섹터 밸류체인</h2>
-        <p class="category-desc">섹터를 가치사슬(상류 → 하류)의 흐름으로 보고, 각 기업이 어느 단계에서 어떤 역할을 하는지 확인한다. 기업 노드를 클릭하면 연결 관계와 최신 정성 분석(뉴스)이 우측에 표시된다. <strong>(초안: 반도체만)</strong></p>
-        <div class="vc-chain-nav" id="vc-chain-nav" role="tablist" aria-label="밸류체인 섹터"></div>
+        <h2>AI · 반도체 시장 지도</h2>
+        <p class="category-desc">개별 기업이 아니라 <strong>'시장(수요)'</strong> 단위로 본 AI·반도체 밸류체인. 위(최종 수요)에서 아래(공급·병목)로 내려가며, <strong>수요가 공급을 끌어당기고 어디서 막히는지</strong>를 본다. 빨갛게 펄스하는 노드가 현재 병목이다. 시장 노드를 클릭하면 규모·성장·기술적 한계·핵심 플레이어와, 소속 watchlist 기업의 뉴스 시그널이 우측에 집계된다.</p>
+        <div class="vc-chain-nav" id="vc-chain-nav" aria-label="병목 범례"></div>
         <div class="vc-layout">
           <div class="vc-board-wrap">
             <svg class="vc-links" id="vc-links" aria-hidden="true"></svg>
             <div class="vc-board" id="vc-board"></div>
           </div>
           <aside class="vc-detail" id="vc-detail">
-            <p class="vc-detail-hint">기업 노드를 클릭하면 상세 정보가 표시됩니다.</p>
+            <p class="vc-detail-hint">시장 노드를 클릭하면 상세 정보가 표시됩니다.</p>
           </aside>
         </div>
       </section>

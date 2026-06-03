@@ -1,0 +1,1224 @@
+{
+  "id": "ai-semiconductor",
+  "title": "AI · 반도체 밸류체인",
+  "subtitle": "수요 → 공급 캐스케이드 · 병목 중심 시장 지도",
+  "as_of": "2026-06",
+  "intro": "기업이 아니라 '시장(수요)' 단위로 본 AI·반도체 산업. 위에서 아래로 내려갈수록 최종 수요(AI 앱·엣지)에서 자본·컴퓨팅을 거쳐 핵심 부품·제조 기반·장비/전력으로 이어진다. 수요가 공급을 끌어당기며, 빨갛게 표시된 노드가 지금 그 흐름을 막고 있는 병목이다.",
+  "data_note": "시장 규모·성장률은 2024~2026 업계 트래커(SemiAnalysis, Epoch AI, Yole, TrendForce, Counterpoint, Dell'Oro, LightCounting, IEA, SEMI) 및 기업 공시 기준의 추정치다. 출처가 갈리는 값은 confidence 로 표시했다. size_usd_b 는 노드 크기 시각화를 위한 대표값이며 정밀치가 아니다.",
+  "severity_legend": {
+    "structural": {
+      "label": "구조적 독점",
+      "icon": "⚫",
+      "desc": "대체 공급원이 없어 구조적으로 가장 단단한 병목"
+    },
+    "acute": {
+      "label": "급성 병목",
+      "icon": "🔴",
+      "desc": "현재 가장 타이트 — 매진·리드타임·수율 한계"
+    },
+    "easing": {
+      "label": "병목 완화중",
+      "icon": "🟠",
+      "desc": "병목이었으나 증설로 완화되는 중"
+    },
+    "emerging": {
+      "label": "부상하는 병목",
+      "icon": "🟡",
+      "desc": "지금은 아니나 빠르게 조여오는 2차 병목"
+    },
+    "demand_limited": {
+      "label": "수요 한계형",
+      "icon": "🔵",
+      "desc": "공급은 충분 — 킬러앱·교체수요가 한계"
+    }
+  },
+  "layers": [
+    {
+      "id": "demand",
+      "label": "① 최종 수요",
+      "desc": "AI를 실제로 쓰고 돈을 내는 곳. 모든 수요의 근원."
+    },
+    {
+      "id": "capital",
+      "label": "② 자본 엔진",
+      "desc": "그 수요를 사들이는 돈. 하이퍼스케일러·프런티어 랩의 설비투자."
+    },
+    {
+      "id": "compute",
+      "label": "③ AI 컴퓨팅",
+      "desc": "수요를 처리하는 연산 시스템 — 가속기·ASIC·네트워킹."
+    },
+    {
+      "id": "components",
+      "label": "④ 핵심 부품 (병목)",
+      "desc": "가속기를 만들기 위해 반드시 필요한 부품. 현재 병목이 집중된 층."
+    },
+    {
+      "id": "manufacturing",
+      "label": "⑤ 제조 기반",
+      "desc": "실제로 칩과 기판을 만들어내는 곳."
+    },
+    {
+      "id": "foundation",
+      "label": "⑥ 장비·소재·전력",
+      "desc": "제조를 가능케 하는 최심층 인프라 — picks & shovels."
+    }
+  ],
+  "markets": [
+    {
+      "id": "ai-models",
+      "layer": "demand",
+      "name_kr": "AI 소프트웨어·모델",
+      "name_en": "AI Software / Foundation Models",
+      "definition": "파운데이션 모델과 AI 앱. 토큰/추론 소비가 아래 모든 수요의 뿌리.",
+      "size_usd_b": 80,
+      "size_label": "GenAI ~$54–104B (’25)",
+      "growth": "~30% CAGR",
+      "size_confidence": "low",
+      "demand_driver": "챗·코딩 에이전트·멀티모달·추론 모델의 토큰 폭증. 추론형 질의는 기존 검색의 수백~수천 배 연산 소비.",
+      "bottleneck": null,
+      "players": [
+        {
+          "name": "OpenAI",
+          "ticker": null,
+          "role": "프런티어 랩 (비상장, ~$852B 평가)"
+        },
+        {
+          "name": "Anthropic",
+          "ticker": null,
+          "role": "프런티어 랩 (비상장)"
+        },
+        {
+          "name": "Google DeepMind",
+          "ticker": "GOOGL",
+          "role": "Gemini",
+          "in_watchlist": true
+        },
+        {
+          "name": "Microsoft",
+          "ticker": "MSFT",
+          "role": "OpenAI 제휴 + 자체",
+          "in_watchlist": true
+        },
+        {
+          "name": "Meta",
+          "ticker": "META",
+          "role": "Llama (오픈웨이트)",
+          "in_watchlist": true
+        },
+        {
+          "name": "xAI",
+          "ticker": null,
+          "role": "Grok (비상장)"
+        }
+      ],
+      "sources": [
+        "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/",
+        "https://epoch.ai/trends"
+      ]
+    },
+    {
+      "id": "edge-smartphone",
+      "layer": "demand",
+      "name_kr": "온디바이스 AI 스마트폰",
+      "name_en": "On-Device AI Smartphone (AP/SoC)",
+      "definition": "NPU 탑재 SoC로 생성형 AI를 단말에서 직접 구동하는 스마트폰.",
+      "size_usd_b": 25,
+      "size_label": "AP/SoC ~$24.5B · GenAI폰 4억대 (’25)",
+      "growth": "+78% CAGR (’24–28, 단말수)",
+      "size_confidence": "med",
+      "demand_driver": "프리미엄 교체수요 + OEM AI 기능 차별화(Apple Intelligence·Galaxy AI·Gemini). 2026 중저가 확산.",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "칩은 충분 — 교체주기 장기화와 킬러앱 부재가 한계. 기술적으로는 단말 발열·DRAM 용량이 로컬 모델 크기(≤3~7B)를 제약."
+      },
+      "players": [
+        {
+          "name": "MediaTek",
+          "ticker": "2454.TW",
+          "role": "AP-SoC ~40% (물량 1위)"
+        },
+        {
+          "name": "Qualcomm",
+          "ticker": "QCOM",
+          "role": "~24% 프리미엄 Android",
+          "in_watchlist": true
+        },
+        {
+          "name": "Apple",
+          "ticker": "AAPL",
+          "role": "~17% 자체 A시리즈",
+          "in_watchlist": true
+        },
+        {
+          "name": "Samsung LSI",
+          "ticker": "005930.KS",
+          "role": "~5% Exynos"
+        }
+      ],
+      "sources": [
+        "https://counterpointresearch.com/en/insights/genai-smartphone-shipments-to-exceed-400-million-in-2025-capturing-onethird-of-global-market"
+      ]
+    },
+    {
+      "id": "edge-pc",
+      "layer": "demand",
+      "name_kr": "AI PC",
+      "name_en": "AI PC (CPU + NPU)",
+      "definition": "전용 NPU(Copilot+ 급 ≥40 TOPS)로 로컬 AI를 돌리는 PC.",
+      "size_usd_b": 30,
+      "size_label": "’25 ~1억대 (전체의 ~31–39%)",
+      "growth": "+44% CAGR (’24–28)",
+      "size_confidence": "low",
+      "demand_driver": "Windows 10 지원 종료(’25.10) 교체 사이클 + 기업 PC 대량 교체 + MS Copilot+ 인증(40 TOPS).",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "NPU 실리콘은 준비 완료 — 프리미엄을 정당화할 로컬 AI 킬러앱 부재. 대부분 'AI 가능하나 미활용'. 교체 시점이 속도를 결정."
+      },
+      "players": [
+        {
+          "name": "Intel",
+          "ticker": "INTC",
+          "role": "~45–56% (Core Ultra)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Apple",
+          "ticker": "AAPL",
+          "role": "~20–24% 자체 M시리즈",
+          "in_watchlist": true
+        },
+        {
+          "name": "AMD",
+          "ticker": "AMD",
+          "role": "#3 (Ryzen AI)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Qualcomm",
+          "ticker": "QCOM",
+          "role": "Snapdragon X (Arm, 최고속 성장)",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://counterpointresearch.com/en/reports/ai-advanced-pcs-to-surpass-half-of-global-shipments-in-2026"
+      ]
+    },
+    {
+      "id": "edge-auto",
+      "layer": "demand",
+      "name_kr": "차량용·자율주행 반도체",
+      "name_en": "Automotive & Autonomous Semis",
+      "definition": "ADAS·자율주행·디지털 콕핏용 칩. 고가 AD SoC가 다중 센서를 처리.",
+      "size_usd_b": 77,
+      "size_label": "차량용 반도체 $77B (’25) → $133B (’30)",
+      "growth": "~11% CAGR · ADAS ~15%",
+      "size_confidence": "med",
+      "demand_driver": "ADAS 규제 강화 + 전동화 + 중앙집중형 '카 컴퓨터' + 로보택시 상용화(’26–27). EV 칩탑재액 ICE의 ~3배.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "물량은 완성차 생산(~9천만대/년, 경기 민감)에 좌우. L4의 진짜 병목은 칩이 아니라 SW·규제·책임 검증. 차내 발열/전력이 연산 상한."
+      },
+      "players": [
+        {
+          "name": "Mobileye",
+          "ticker": "MBLY",
+          "role": "카메라 ADAS ~65–70% (점유율 하락중)"
+        },
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "role": "고급 AD/로보택시 (Drive Thor)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Qualcomm",
+          "ticker": "QCOM",
+          "role": "Snapdragon Ride",
+          "in_watchlist": true
+        },
+        {
+          "name": "Tesla",
+          "ticker": "TSLA",
+          "role": "자체 FSD/AI5 실리콘",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.marketsandmarkets.com/PressReleases/automotive-semiconductor.asp"
+      ]
+    },
+    {
+      "id": "robotics",
+      "layer": "demand",
+      "name_kr": "휴머노이드·피지컬 AI",
+      "name_en": "Humanoid Robotics / Physical AI",
+      "definition": "실세계 임베디드 AI를 엣지에서 구동하는 범용/휴머노이드 로봇.",
+      "size_usd_b": 6,
+      "size_label": "⚠️투기적 — $38B(’35, Goldman)~$5T(’50, MS)",
+      "growth": "추정치 자릿수 단위로 난립",
+      "size_confidence": "very_low",
+      "demand_driver": "제조·물류 노동력 부족 + VLA/파운데이션 모델 발전. 초기 수요 ~90%가 산업/상업용.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "공급(기술)·수요 모두 미검증. 정교한 조작·배터리/액추에이터 밀도·실세계 신뢰성·일반화 가능한 '로봇 파운데이션 모델' 부재. 가장 미성숙·과열 위험 구간."
+      },
+      "players": [
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "role": "엣지 연산 Jetson Thor + Isaac/GR00T (무기상)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Tesla",
+          "ticker": "TSLA",
+          "role": "Optimus ($20–30K 목표)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Figure AI · Apptronik",
+          "ticker": null,
+          "role": "휴머노이드 스타트업 (비상장)"
+        },
+        {
+          "name": "Unitree · UBTech",
+          "ticker": null,
+          "role": "중국 저가 양산 (비상장/해외)"
+        }
+      ],
+      "sources": [
+        "https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035"
+      ]
+    },
+    {
+      "id": "sovereign-ai",
+      "layer": "demand",
+      "name_kr": "소버린·엔터프라이즈 AI",
+      "name_en": "Sovereign & Enterprise On-Prem AI",
+      "definition": "정부·기업이 자국/사내에 직접 구축하는 AI 컴퓨팅. 클라우드와 별개의 수요원.",
+      "size_usd_b": 30,
+      "size_label": "독립 수치 없음 — NVIDIA ~$1T 누적수요에 포함",
+      "growth": "정책 주도, 증가",
+      "size_confidence": "low",
+      "demand_driver": "데이터 주권·국가안보·규제 현지화. 'AI를 국가 유틸리티로'. 독·사우디·UAE·일·영·인도·싱가포르 'AI 팩토리'.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "상단은 공급 한계형 — 첨단 GPU 할당·HBM·CoWoS·전력. 수출통제와 전력 가용성이 제약. 정책이 수요를 끌어당김."
+      },
+      "players": [
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "role": "국가 AI 팩토리 GPU 지배 공급",
+          "in_watchlist": true
+        },
+        {
+          "name": "AMD",
+          "ticker": "AMD",
+          "role": "MI 시리즈 대안",
+          "in_watchlist": true
+        },
+        {
+          "name": "Dell · HPE · Supermicro",
+          "ticker": "DELL",
+          "role": "온프렘 시스템 통합"
+        }
+      ],
+      "sources": [
+        "https://www.nvidia.com/en-us/industries/global-public-sector/"
+      ]
+    },
+    {
+      "id": "hyperscaler-capex",
+      "layer": "capital",
+      "name_kr": "하이퍼스케일러·프런티어 CAPEX",
+      "name_en": "Hyperscaler & Frontier-Lab Capex",
+      "definition": "모든 가속기를 실제로 사들이는 자본 — 산업 전체의 수요 엔진.",
+      "size_usd_b": 725,
+      "size_label": "$443B(’25) → $700–750B(’26)",
+      "growth": "+64–77% YoY",
+      "size_confidence": "med",
+      "demand_driver": "프런티어 모델 경쟁 + 클라우드/광고/생산성 수익화. 용량을 수년 선예약.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "수요가 건설 가능한 공급을 초과 — 전력/전력망 접속(5년+ 대기), CoWoS/HBM, 재무 부담이 제약. Stargate 약정 $1.4T→$600B 축소가 '약정 ≠ 실현' 신호. 거품 논쟁의 진앙."
+      },
+      "players": [
+        {
+          "name": "Amazon",
+          "ticker": "AMZN",
+          "role": "~$200B (’26)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Microsoft",
+          "ticker": "MSFT",
+          "role": "~$190B (’26)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Alphabet",
+          "ticker": "GOOGL",
+          "role": "$180–190B (’26)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Meta",
+          "ticker": "META",
+          "role": "$125–145B (’26)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Oracle",
+          "ticker": "ORCL",
+          "role": "Stargate 연계",
+          "in_watchlist": true
+        },
+        {
+          "name": "OpenAI",
+          "ticker": null,
+          "role": "26GW 약정 (비상장)"
+        }
+      ],
+      "sources": [
+        "https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion",
+        "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html"
+      ]
+    },
+    {
+      "id": "ai-gpu",
+      "layer": "compute",
+      "name_kr": "AI 가속기 (GPU)",
+      "name_en": "AI Accelerators / Data-Center GPU",
+      "definition": "AI 학습·추론을 돌리는 데이터센터 GPU — 프런티어 AI의 지배적 연산 기판.",
+      "size_usd_b": 185,
+      "size_label": "$170–200B (’25) → $370–600B (’30+)",
+      "growth": "~16% CAGR",
+      "size_confidence": "med",
+      "demand_driver": "프런티어 학습(연산 5배/년) + 추론 폭발. 전체 AI 연산 용량 ~7개월마다 2배.",
+      "bottleneck": {
+        "severity": "easing",
+        "limit": "칩 설계가 아니라 상류(CoWoS·HBM)와 하류(전력)가 제약. NVDA 자체는 공급 제약 상태 — 수요가 한계가 아님."
+      },
+      "players": [
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "role": "GPU 출하 ~90% · 가속기 매출 80–85%",
+          "in_watchlist": true
+        },
+        {
+          "name": "AMD",
+          "ticker": "AMD",
+          "role": "~5–8% (MI350/MI400)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Intel",
+          "ticker": "INTC",
+          "role": "<1% (Gaudi)",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.bloomberg.com/company/press/ai-accelerator-market-looks-set-to-exceed-600-billion-by-2033-driven-by-hyperscale-spending-and-asic-adoption-according-to-bloomberg-intelligence/"
+      ]
+    },
+    {
+      "id": "custom-asic",
+      "layer": "compute",
+      "name_kr": "맞춤형 AI ASIC·XPU",
+      "name_en": "Custom AI ASIC / XPU",
+      "definition": "하이퍼스케일러가 자사 워크로드(특히 추론) 토큰당 비용을 낮추려 설계하는 수직통합 가속기.",
+      "size_usd_b": 28,
+      "size_label": "~$25–30B (’25)",
+      "growth": "+44% CAGR (가장 빠름)",
+      "size_confidence": "med",
+      "demand_driver": "NVIDIA 마진 회피 + 공급 다변화. 추론(연산의 2/3)이 고정기능 ASIC에 적합. OpenAI·Anthropic 대형 약정이 수요 고정.",
+      "bottleneck": {
+        "severity": "easing",
+        "limit": "GPU와 동일한 CoWoS·HBM 상류 제약 공유. CUDA 생태계 락인으로 외부 판매성 제한 — 대부분 자가 소비용. 설계 사이클 길어 하이퍼스케일러 물량에서만 성립."
+      },
+      "players": [
+        {
+          "name": "Broadcom",
+          "ticker": "AVGO",
+          "role": "코디자인 ~60% (Google·Meta·OpenAI)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Marvell",
+          "ticker": "MRVL",
+          "role": "~25% (Amazon·Microsoft)"
+        },
+        {
+          "name": "Google TPU",
+          "ticker": "GOOGL",
+          "role": "최대 내부 XPU (v7 Ironwood)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Amazon Trainium",
+          "ticker": "AMZN",
+          "role": "Trainium3 (3nm)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Microsoft Maia · Meta MTIA",
+          "ticker": "MSFT",
+          "role": "내부용 자체 실리콘",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia"
+      ]
+    },
+    {
+      "id": "dc-networking",
+      "layer": "compute",
+      "name_kr": "데이터센터 네트워킹",
+      "name_en": "AI Data-Center Networking",
+      "definition": "GPU를 잇는 스위치 패브릭 — 스케일업(NVLink)과 스케일아웃(InfiniBand vs Ethernet).",
+      "size_usd_b": 12,
+      "size_label": "백엔드 스위치 ~$10–13B (’25) · 5년 누적 >$100B",
+      "growth": "~24% CAGR",
+      "size_confidence": "med",
+      "demand_driver": "GPU 클러스터 규모 확대(1만→10만→100만+). GPU마다 전용 고대역 포트 필요. 대역폭이 FLOPs와 함께 증가.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "표준 전쟁(NVLink 독점 vs UALink vs Scale-Up Ethernet)이 마찰. 구리 도달거리가 랙 밖에서 한계 → 병목이 광(아래)으로 이동."
+      },
+      "players": [
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "role": "NVLink 스케일업 준독점 + Spectrum-X",
+          "in_watchlist": true
+        },
+        {
+          "name": "Broadcom",
+          "ticker": "AVGO",
+          "role": "머천트 스위치 실리콘(Tomahawk)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Arista",
+          "ticker": "ANET",
+          "role": "DC 이더넷 ~19%"
+        },
+        {
+          "name": "Cisco · Marvell",
+          "ticker": "CSCO",
+          "role": "스위치·DPU"
+        }
+      ],
+      "sources": [
+        "https://www.delloro.com/news/data-center-switch-sales-in-ai-back-end-networks-to-exceed-100-b-over-the-next-five-years/"
+      ]
+    },
+    {
+      "id": "hbm",
+      "layer": "components",
+      "name_kr": "HBM (고대역폭 메모리)",
+      "name_en": "High Bandwidth Memory",
+      "definition": "GPU/가속기에 적층·동봉되어 연산에 데이터를 공급하는 초광대역 적층 DRAM.",
+      "size_usd_b": 35,
+      "size_label": "$34–35B(’25) → $54–56B(’26) → $100B(’28)",
+      "growth": "~40% CAGR",
+      "size_confidence": "med",
+      "demand_driver": "Blackwell/Rubin·MI 시리즈·ASIC마다 HBM 탑재량 증가(Rubin은 HBM4 16단). ’25 DRAM 매출의 >30%.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "전 3사 2026까지 매진(LTA 할당). 8→12→16단 적층 시 워피지 비선형 증가(3~4배)로 전환 구간 수율 15–20% 손실. 삼성 1c HBM4 샘플수율 ~50%(양산 ≥70% 필요). 12다이 스택 20–30°C 열구배. = 현재 1순위 병목."
+      },
+      "players": [
+        {
+          "name": "SK Hynix",
+          "ticker": "000660.KS",
+          "role": "~62% (HBM4 NVIDIA 최초 인증)"
+        },
+        {
+          "name": "Micron",
+          "ticker": "MU",
+          "role": "~21% (’26 완판)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Samsung",
+          "ticker": "005930.KS",
+          "role": "~17% (HBM4 Rubin 인증, 컴백중)"
+        }
+      ],
+      "sources": [
+        "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
+        "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
+      ],
+      "recent_news": [
+        {
+          "date": "2026-01",
+          "title": "삼성 HBM4, NVIDIA Rubin 퀄 통과 — 1c DRAM 2월 양산",
+          "source": "SemiEngineering",
+          "impact": "+",
+          "summary": "삼성이 HBM4 Rubin 인증을 통과하며 SK하이닉스·마이크론과 3강 경쟁 재점화.",
+          "url": "https://semiengineering.com/hbm4-sticks-with-microbumps-postponing-hybrid-bonding/"
+        },
+        {
+          "date": "2025-12",
+          "title": "HBM 공급곡선 가팔라져도 수요 못 따라가 — 2026까지 매진",
+          "source": "The Next Platform",
+          "impact": "-",
+          "summary": "전 3사 2026까지 HBM 매진, 12/16단 적층 수율이 증설 속도를 제약.",
+          "url": "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
+        }
+      ]
+    },
+    {
+      "id": "advanced-packaging",
+      "layer": "components",
+      "name_kr": "첨단 패키징 (CoWoS·SoIC)",
+      "name_en": "Advanced Packaging (2.5D/3D)",
+      "definition": "GPU 로직 다이와 HBM 스택을 실리콘 인터포저 위에 통합 — 가속기를 물리적으로 완성하는 단계.",
+      "size_usd_b": 25,
+      "size_label": "CoWoS 용량 35k→130k wpm (’24→’26, ~4배)",
+      "growth": "~80% CAGR (용량)",
+      "size_confidence": "med",
+      "demand_driver": "모든 고급 가속기에 필수. GPU 물량 × HBM 스택수(증가) × 다이 크기(레티클 초과 → CoWoS-L).",
+      "bottleneck": {
+        "severity": "easing",
+        "limit": "CoWoS-L/S ’26까지 매진이나 ~4배 증설로 급성 병목은 완화중 → 제약이 상류 HBM과 하류 전력으로 이동. 물리 한계: 레티클(~858mm²) → 멀티레티클 스티칭, 인터포저 워피지."
+      },
+      "players": [
+        {
+          "name": "TSMC",
+          "ticker": "TSM",
+          "role": "지배 (CoWoS-L/S·SoIC) · NVDA가 60–63% 선점",
+          "in_watchlist": true
+        },
+        {
+          "name": "Amkor",
+          "ticker": "AMKR",
+          "role": "2차 CoWoS · 미국 증설"
+        },
+        {
+          "name": "ASE",
+          "ticker": "ASX",
+          "role": "CoWoS + CoWoP 대안"
+        },
+        {
+          "name": "Intel",
+          "ticker": "INTC",
+          "role": "EMIB/Foveros (오버플로 수주)",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
+      ],
+      "recent_news": [
+        {
+          "date": "2025-12",
+          "title": "TSMC CoWoS-L/S 2026까지 완판 — OSAT가 CoWoP로 보완",
+          "source": "TrendForce",
+          "impact": "neutral",
+          "summary": "~4배 증설로 급성 CoWoS 병목은 완화 중, 제약이 HBM·전력으로 이동.",
+          "url": "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
+        }
+      ]
+    },
+    {
+      "id": "dram-nand",
+      "layer": "components",
+      "name_kr": "범용 DRAM·NAND",
+      "name_en": "Conventional DRAM & NAND",
+      "definition": "서버/PC/모바일 메인 메모리(DDR5)와 저장(eSSD). HBM이 웨이퍼를 잠식하며 동반 핍박.",
+      "size_usd_b": 200,
+      "size_label": "메모리 총 ~$200B(’25) → ~$552B(’26)",
+      "growth": "DRAM +144% YoY (’26)",
+      "size_confidence": "med",
+      "demand_driver": "AI 서버는 HBM과 함께 대용량 호스트 DRAM·eSSD도 소비. ’26 고급 DRAM의 ~70%를 AI DC가 흡수.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "HBM이 비트당 웨이퍼 ~3배 소비 → 일반 DRAM 급성 부족. DDR5 +58–63%, NAND +70–75% QoQ(2Q26), ’25초 대비 누적 >200%. 2027–28까지 신규 팹 없음. 과소평가된 병목 + PC/폰 BOM 전이 위험."
+      },
+      "players": [
+        {
+          "name": "Samsung",
+          "ticker": "005930.KS",
+          "role": "DRAM/NAND 1위"
+        },
+        {
+          "name": "SK Hynix",
+          "ticker": "000660.KS",
+          "role": "DRAM 2위 + Solidigm"
+        },
+        {
+          "name": "Micron",
+          "ticker": "MU",
+          "role": "DRAM/NAND 3강",
+          "in_watchlist": true
+        },
+        {
+          "name": "Kioxia · SanDisk",
+          "ticker": "SNDK",
+          "role": "NAND"
+        }
+      ],
+      "sources": [
+        "https://www.idc.com/resource-center/blog/global-memory-shortage-crisis-market-analysis-and-the-potential-impact-on-the-smartphone-and-pc-markets-in-2026/"
+      ]
+    },
+    {
+      "id": "optical",
+      "layer": "components",
+      "name_kr": "광 인터커넥트",
+      "name_en": "Optical Interconnect (transceivers, CPO)",
+      "definition": "스위치/GPU 간 데이터를 빛으로 전송 — 800G/1.6T 트랜시버, 차세대 공동패키징광학(CPO).",
+      "size_usd_b": 10,
+      "size_label": "AI 광 ~$10B(’26) · 전체 광 →$24B(’30)",
+      "growth": "1.6T 단위 2.6배/년",
+      "size_confidence": "med",
+      "demand_driver": "GPU당 대역폭 확대. 구리가 랙 밖에서 소진 → 광이 모든 GPU에 필요. 고급 GPU당 트랜시버 ~6개.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "전력과 직결된 부상 병목. 1.6T 플러거블 ~23–25W, GPU당 ~6개 → 100만 GPU 클러스터는 광모듈에만 ~180MW. CPO(<5 pJ/bit 목표)는 InP 레이저 공급·패키징 수율·표준 부재로 ~2028+ 본격화."
+      },
+      "players": [
+        {
+          "name": "InnoLight",
+          "ticker": null,
+          "role": "모듈 1위 (비상장/중국)"
+        },
+        {
+          "name": "Coherent",
+          "ticker": "COHR",
+          "role": "수직통합 · NVIDIA CPO 파트너"
+        },
+        {
+          "name": "Lumentum",
+          "ticker": "LITE",
+          "role": "레이저/CPO"
+        },
+        {
+          "name": "Marvell · Broadcom",
+          "ticker": "AVGO",
+          "role": "실리콘 포토닉스/DSP",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.lightcounting.com/newsletter/en/july-2025-cloud-data-center-optics-330",
+        "https://newsletter.semianalysis.com/p/co-packaged-optics-cpo-book-scaling"
+      ]
+    },
+    {
+      "id": "power-cooling",
+      "layer": "components",
+      "name_kr": "전력공급·냉각 장비",
+      "name_en": "Power Delivery & Cooling",
+      "definition": "전력을 칩까지 변환·분배하고 열을 제거하는 장비 — 변압기·스위치기어·PMIC·액침냉각.",
+      "size_usd_b": 12,
+      "size_label": "액침냉각 ~$6B(’25)→$19–29B(’30)",
+      "growth": "냉각 ~20%+ CAGR",
+      "size_confidence": "low",
+      "demand_driver": "랙 밀도 급증(GPU >1kW, 랙 100kW→MW급) → 액침냉각·800VDC/HVDC 전환(Rubin 세대).",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "전기 장비측이 가장 타이트한 단기 병목 중 하나. 변압기 리드타임 ~4–5년(2020 전 2~2.5년). '전기장비는 원가 <10%인데 병목의 ~100%'. 미국 신규 DC 50%+가 장비 부족으로 지연/취소(~7GW)."
+      },
+      "players": [
+        {
+          "name": "Vertiv",
+          "ticker": "VRT",
+          "role": "전력+액침냉각 (NVIDIA GB200 레퍼런스)"
+        },
+        {
+          "name": "Eaton",
+          "ticker": "ETN",
+          "role": "변압기·스위치기어·PDU"
+        },
+        {
+          "name": "Monolithic Power",
+          "ticker": "MPWR",
+          "role": "고밀도 GPU 전력전달 'last inch'"
+        },
+        {
+          "name": "Navitas · Infineon · ON",
+          "ticker": "NVTS",
+          "role": "GaN/SiC 800VDC"
+        }
+      ],
+      "sources": [
+        "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
+      ]
+    },
+    {
+      "id": "foundry",
+      "layer": "manufacturing",
+      "name_kr": "첨단 파운드리 (≤3nm)",
+      "name_en": "Leading-Edge Foundry",
+      "definition": "AI 가속기·모바일 AP·HPC를 만드는 최첨단 로직(3nm/2nm GAA) 위탁생산.",
+      "size_usd_b": 170,
+      "size_label": "파운드리 총 ~$169.5B (’25, +26% YoY)",
+      "growth": "선단(≤3nm)이 최고속",
+      "size_confidence": "high",
+      "demand_driver": "AI 가속기·HPC·프리미엄 모바일 AP. Apple이 N2 초기물량 >50% 선점, NVIDIA/AMD/QCOM이 잔여 경쟁.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "선단 웨이퍼 용량 ~2028까지 예약. GAA 나노시트 수율 램프 + EUV 멀티패터닝 복잡도. N2 웨이퍼 ASP ~$30,000(무할인). 대만에 ≤5nm 집중 = 시스템 단일 장애점."
+      },
+      "players": [
+        {
+          "name": "TSMC",
+          "ticker": "TSM",
+          "role": "총 ~70% · 선단 ≤5nm 90%+",
+          "in_watchlist": true
+        },
+        {
+          "name": "Samsung Foundry",
+          "ticker": "005930.KS",
+          "role": "~7% (2nm GAA)"
+        },
+        {
+          "name": "Intel Foundry",
+          "ticker": "INTC",
+          "role": "~6% (18A, 외부고객 1곳)",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.trendforce.com/presscenter/news/20260312-12965.html"
+      ]
+    },
+    {
+      "id": "abf-substrate",
+      "layer": "manufacturing",
+      "name_kr": "ABF 기판·패키징 소재",
+      "name_en": "ABF Substrates & Packaging Materials",
+      "definition": "패키징된 AI 다이를 PCB에 연결하는 고적층 IC 기판(FC-BGA)과 상류 소재(글라스 클로스·동박).",
+      "size_usd_b": 15,
+      "size_label": "다년 슈퍼사이클 진입 (수십억$대)",
+      "growth": "’26부터 공급부족 전환",
+      "size_confidence": "low",
+      "demand_driver": "AI GPU/ASIC 패키지의 기판 면적·적층수 증가(OAM/OCP 보드). CoWoS·EMIB 모두 고급 ABF 소비.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "2차 병목 — ’26 고급 ABF 부족 전환, ’28까지 확대. 진짜 제약은 상류 소재: T-glass 클로스 ~2027 부족, 동박·드릴비트. 최고급은 Ibiden·Unimicron 2사뿐 → 공급 취약."
+      },
+      "players": [
+        {
+          "name": "Unimicron",
+          "ticker": "3037.TW",
+          "role": "ABF 기판 선두"
+        },
+        {
+          "name": "Ibiden",
+          "ticker": "4062.T",
+          "role": "최고급 AI 서버 ABF"
+        },
+        {
+          "name": "Ajinomoto",
+          "ticker": "2802.T",
+          "role": "ABF 필름 사실상 독점"
+        }
+      ],
+      "sources": [
+        "https://www.digitimes.com/news/a20260130PD220/unimicron-abf-substrate-ai-server-market-capacity.html"
+      ]
+    },
+    {
+      "id": "euv-litho",
+      "layer": "foundation",
+      "name_kr": "EUV 노광",
+      "name_en": "EUV Lithography",
+      "definition": "≤7nm 로직·첨단 DRAM의 회로를 새기는 극자외선 노광 — 전 산업의 관문.",
+      "size_usd_b": 35,
+      "size_label": "ASML 매출 €32.7B (’25) · 백로그 €38.8B",
+      "growth": "High-NA ~25%(’28)",
+      "size_confidence": "high",
+      "demand_driver": "모든 ≤7nm 로직·고급 DRAM의 필수 입력. 선단 노드·HBM용 DRAM 증설이 수요.",
+      "bottleneck": {
+        "severity": "structural",
+        "limit": "전 밸류체인에서 구조적으로 가장 단단한 병목 — EUV/High-NA 대체 공급원 0. 그 아래 Zeiss 광학이 하위 독점. High-NA 1대 ~$3.5–4억. 수출통제(대중 EUV 금지)의 지렛대."
+      },
+      "players": [
+        {
+          "name": "ASML",
+          "ticker": "ASML",
+          "role": "EUV/High-NA 100% 독점",
+          "in_watchlist": true
+        },
+        {
+          "name": "Carl Zeiss SMT",
+          "ticker": null,
+          "role": "High-NA 광학 단독 공급 (비상장)"
+        }
+      ],
+      "sources": [
+        "https://counterpointresearch.com/en/insights/asml-2025-revenue-up-16-yoy-as-strong-euv-shipments-boost-systems-and-service-performance"
+      ]
+    },
+    {
+      "id": "etch-deposition",
+      "layer": "foundation",
+      "name_kr": "식각·증착 장비",
+      "name_en": "Etch & Deposition (WFE)",
+      "definition": "물질을 깎고(식각) 박막을 쌓는(증착) 전공정 장비. 노드·3D 스케일링마다 공정수 급증.",
+      "size_usd_b": 45,
+      "size_label": "WFE 최대 카테고리 · WFE 총 $115.7B (’25)",
+      "growth": "~+9–11% YoY",
+      "size_confidence": "high",
+      "demand_driver": "AI 선단 로직 + DRAM/HBM·3D NAND 증설. 중국 성숙노드 투자도 기여.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "복수 공급사라 절대 병목은 아니나(리소보다 약함), GAA/3D용 고종횡비 식각·원자층증착이 기술 난도·공정수 측면 비용/처리량 제약."
+      },
+      "players": [
+        {
+          "name": "Applied Materials",
+          "ticker": "AMAT",
+          "role": "종합 1위 (~30–35%)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Lam Research",
+          "ticker": "LRCX",
+          "role": "식각·증착 (메모리 강세)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Tokyo Electron",
+          "ticker": "TOELY",
+          "role": "코터/디벨로퍼 1위"
+        }
+      ],
+      "sources": [
+        "https://www.semi.org/en/semi-press-release/global-total-semiconductor-equipment-sales-forecast-to-reach-of-dollar-139-billion-in-2026-semi-reports"
+      ]
+    },
+    {
+      "id": "metrology",
+      "layer": "foundation",
+      "name_kr": "계측·검사 장비",
+      "name_en": "Metrology / Inspection",
+      "definition": "결함 검사·계측·수율 관리 장비. AI 칩 복잡도·수율 비용 상승의 수혜.",
+      "size_usd_b": 14,
+      "size_label": "계측·검사 ~$13–15B (’25) · KLA $12.16B",
+      "growth": "AI 복잡도와 동반 상승",
+      "size_confidence": "med",
+      "demand_driver": "AI 칩 복잡도·수율 비용 상승 → 검사 수요·KLA 가격결정력 확대.",
+      "bottleneck": {
+        "severity": "structural",
+        "limit": "KLA ~74% 계측·검사 준독점 — 용량 병목은 아니나 구조적 마진 포착점. GAA에서 수율 critical."
+      },
+      "players": [
+        {
+          "name": "KLA",
+          "ticker": "KLAC",
+          "role": "계측·검사 ~74% 준독점"
+        },
+        {
+          "name": "Applied Materials",
+          "ticker": "AMAT",
+          "role": "~9.8% (감소중)",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://247wallst.com/technology-3/2026/05/04/kla-is-gaining-share-as-ai-chip-complexity-drives-up-yield-costs/"
+      ]
+    },
+    {
+      "id": "materials",
+      "layer": "foundation",
+      "name_kr": "핵심 소재",
+      "name_en": "Critical Materials (Resist, Wafers, Gases)",
+      "definition": "팹 산출을 좌우하는 소모/구조 입력재 — 포토레지스트·실리콘 웨이퍼·특수가스.",
+      "size_usd_b": 40,
+      "size_label": "포토레지스트·웨이퍼·가스 합산 (수십억$)",
+      "growth": "AI 물량 동행",
+      "size_confidence": "low",
+      "demand_driver": "선단 팹 가동률 + HBM/패키징 확대. 다이 크기·적층 증가가 소재 소비 견인.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "잠재적 지정학 병목 — 고급 포토레지스트 일본 >90% 집중(대중 수출 규제설). 웨이퍼는 Shin-Etsu·SUMCO 듀오폴리. 네온은 한국 국산화·재활용으로 해소됨."
+      },
+      "players": [
+        {
+          "name": "JSR · Shin-Etsu · TOK",
+          "ticker": null,
+          "role": "포토레지스트 (일본 >90%)"
+        },
+        {
+          "name": "Shin-Etsu · SUMCO",
+          "ticker": null,
+          "role": "실리콘 웨이퍼 듀오폴리 (해외)"
+        }
+      ],
+      "sources": [
+        "https://www.trendforce.com/news/2025/12/03/news-japan-rumored-to-curb-photoresist-exports-as-china-targets-40-self-sufficiency-by-2026/"
+      ]
+    },
+    {
+      "id": "power-grid",
+      "layer": "foundation",
+      "name_kr": "전력 생산·전력망",
+      "name_en": "Power Generation & Grid",
+      "definition": "AI 데이터센터에 전기를 공급하는 발전·전력계약·전력망 접속.",
+      "size_usd_b": 80,
+      "size_label": "DC 전력 ~485 TWh(’25) → ~950 TWh(’30)",
+      "growth": "~2배 (AI는 3배)",
+      "size_confidence": "med",
+      "demand_driver": "AI 학습/추론 + GW급 단일 캠퍼스. ~$700B(’26) AI 투자가 전력으로 귀결.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "현재 가장 단단한 단기 병목으로 널리 지목 — 전력망 접속 대기 다년치, 발전 용량, 가스터빈 리드타임(2028–30까지 예약). 원자력/SMR은 ~2029 전 순증 불가. IEA도 공급망/전력망 제약이 공격적 시나리오를 제한한다 명시."
+      },
+      "players": [
+        {
+          "name": "Constellation",
+          "ticker": "CEG",
+          "role": "미 최대 원자력 (MS TMI 재가동)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Vistra",
+          "ticker": "VST",
+          "role": "원자력+가스",
+          "in_watchlist": true
+        },
+        {
+          "name": "NextEra",
+          "ticker": "NEE",
+          "role": "신재생 1위 (Dominion 딜)",
+          "in_watchlist": true
+        },
+        {
+          "name": "GE Vernova",
+          "ticker": "GEV",
+          "role": "가스터빈 (2030까지 예약) + SMR"
+        },
+        {
+          "name": "Talen",
+          "ticker": "TLN",
+          "role": "Susquehanna/AWS PPA"
+        }
+      ],
+      "sources": [
+        "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+      ],
+      "recent_news": [
+        {
+          "date": "2026-04",
+          "title": "IEA: AI 데이터센터 전력수요 2030년까지 3배",
+          "source": "IEA",
+          "impact": "-",
+          "summary": "DC 전력 485→950 TWh 전망. 전력망·공급망 제약이 더 공격적 시나리오를 가로막음.",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+        },
+        {
+          "date": "2026-05",
+          "title": "변압기 리드타임 4–5년으로 — 미국 신규 DC 50%+ 지연",
+          "source": "pv-magazine",
+          "impact": "-",
+          "summary": "전기장비는 원가 <10%인데 병목의 ~100%. GOES 강·동박 공급이 관건.",
+          "url": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "from": "ai-models",
+      "to": "hyperscaler-capex",
+      "label": "토큰 수요가 투자를 유발"
+    },
+    {
+      "from": "ai-models",
+      "to": "ai-gpu",
+      "label": "학습/추론 구동"
+    },
+    {
+      "from": "ai-models",
+      "to": "custom-asic",
+      "label": "추론 비용 절감"
+    },
+    {
+      "from": "sovereign-ai",
+      "to": "hyperscaler-capex",
+      "label": "국가 AI 팩토리 투자"
+    },
+    {
+      "from": "sovereign-ai",
+      "to": "ai-gpu",
+      "label": "GPU 대량 조달"
+    },
+    {
+      "from": "edge-smartphone",
+      "to": "foundry",
+      "label": "AP/SoC 위탁생산"
+    },
+    {
+      "from": "edge-pc",
+      "to": "foundry",
+      "label": "CPU/NPU 위탁생산"
+    },
+    {
+      "from": "edge-auto",
+      "to": "custom-asic",
+      "label": "AD SoC"
+    },
+    {
+      "from": "edge-auto",
+      "to": "foundry",
+      "label": "차량용 칩 제조"
+    },
+    {
+      "from": "robotics",
+      "to": "ai-gpu",
+      "label": "엣지 연산 + 학습"
+    },
+    {
+      "from": "hyperscaler-capex",
+      "to": "ai-gpu",
+      "label": "GPU 구매"
+    },
+    {
+      "from": "hyperscaler-capex",
+      "to": "custom-asic",
+      "label": "자체 칩 개발"
+    },
+    {
+      "from": "hyperscaler-capex",
+      "to": "dc-networking",
+      "label": "클러스터 패브릭"
+    },
+    {
+      "from": "hyperscaler-capex",
+      "to": "power-cooling",
+      "label": "DC 건설"
+    },
+    {
+      "from": "hyperscaler-capex",
+      "to": "power-grid",
+      "label": "전력 계약"
+    },
+    {
+      "from": "ai-gpu",
+      "to": "hbm",
+      "label": "HBM 동봉 (필수)"
+    },
+    {
+      "from": "ai-gpu",
+      "to": "advanced-packaging",
+      "label": "CoWoS 패키징"
+    },
+    {
+      "from": "ai-gpu",
+      "to": "foundry",
+      "label": "3nm 위탁생산"
+    },
+    {
+      "from": "ai-gpu",
+      "to": "dc-networking",
+      "label": "GPU-GPU 연결"
+    },
+    {
+      "from": "custom-asic",
+      "to": "hbm",
+      "label": "HBM 동봉"
+    },
+    {
+      "from": "custom-asic",
+      "to": "advanced-packaging",
+      "label": "CoWoS 패키징"
+    },
+    {
+      "from": "custom-asic",
+      "to": "foundry",
+      "label": "3nm 위탁생산"
+    },
+    {
+      "from": "dc-networking",
+      "to": "optical",
+      "label": "광 트랜시버"
+    },
+    {
+      "from": "dc-networking",
+      "to": "foundry",
+      "label": "스위치 ASIC 제조"
+    },
+    {
+      "from": "hbm",
+      "to": "dram-nand",
+      "label": "동일 웨이퍼 잠식"
+    },
+    {
+      "from": "hbm",
+      "to": "advanced-packaging",
+      "label": "스택 동봉"
+    },
+    {
+      "from": "hbm",
+      "to": "etch-deposition",
+      "label": "메모리 공정 장비"
+    },
+    {
+      "from": "advanced-packaging",
+      "to": "foundry",
+      "label": "TSMC 패키징"
+    },
+    {
+      "from": "advanced-packaging",
+      "to": "abf-substrate",
+      "label": "고급 기판"
+    },
+    {
+      "from": "dram-nand",
+      "to": "etch-deposition",
+      "label": "메모리 식각/증착"
+    },
+    {
+      "from": "optical",
+      "to": "foundry",
+      "label": "실리콘 포토닉스"
+    },
+    {
+      "from": "optical",
+      "to": "materials",
+      "label": "InP 레이저"
+    },
+    {
+      "from": "power-cooling",
+      "to": "power-grid",
+      "label": "전력 인입"
+    },
+    {
+      "from": "foundry",
+      "to": "euv-litho",
+      "label": "EUV 노광 (필수)"
+    },
+    {
+      "from": "foundry",
+      "to": "etch-deposition",
+      "label": "식각·증착 장비"
+    },
+    {
+      "from": "foundry",
+      "to": "metrology",
+      "label": "수율 검사"
+    },
+    {
+      "from": "foundry",
+      "to": "materials",
+      "label": "레지스트·웨이퍼·가스"
+    },
+    {
+      "from": "abf-substrate",
+      "to": "materials",
+      "label": "T-glass·ABF 필름"
+    }
+  ]
+}
