@@ -115,7 +115,8 @@
       "sources": [
         "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/",
         "https://epoch.ai/trends"
-      ]
+      ],
+      "weekly_note": "추론·에이전트 토큰 수요 폭증, 모델 효율 개선(증류·양자화)이 칩 수요를 일부 상쇄. 거품 논쟁에도 토큰 소비는 우상향."
     },
     {
       "id": "edge-smartphone",
@@ -136,29 +137,40 @@
         {
           "name": "MediaTek",
           "ticker": "2454.TW",
-          "role": "AP-SoC ~40% (물량 1위)"
+          "role": "AP-SoC ~40% (물량 1위)",
+          "share": 40
         },
         {
           "name": "Qualcomm",
           "ticker": "QCOM",
           "role": "~24% 프리미엄 Android",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 24
         },
         {
           "name": "Apple",
           "ticker": "AAPL",
           "role": "~17% 자체 A시리즈",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 17
         },
         {
           "name": "Samsung LSI",
           "ticker": "005930.KS",
-          "role": "~5% Exynos"
+          "role": "~5% Exynos",
+          "share": 5
+        },
+        {
+          "name": "UNISOC",
+          "ticker": null,
+          "role": "저가형 (비상장/중국)",
+          "share": 13
         }
       ],
       "sources": [
         "https://counterpointresearch.com/en/insights/genai-smartphone-shipments-to-exceed-400-million-in-2025-capturing-onethird-of-global-market"
-      ]
+      ],
+      "weekly_note": "GenAI폰이 ’26 기본 티어로 진입하나 킬러앱 부재로 교체수요가 관건. 중저가 확산이 다음 변곡점."
     },
     {
       "id": "edge-pc",
@@ -180,30 +192,35 @@
           "name": "Intel",
           "ticker": "INTC",
           "role": "~45–56% (Core Ultra)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 50
         },
         {
           "name": "Apple",
           "ticker": "AAPL",
           "role": "~20–24% 자체 M시리즈",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 22
         },
         {
           "name": "AMD",
           "ticker": "AMD",
           "role": "#3 (Ryzen AI)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 18
         },
         {
           "name": "Qualcomm",
           "ticker": "QCOM",
           "role": "Snapdragon X (Arm, 최고속 성장)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 5
         }
       ],
       "sources": [
         "https://counterpointresearch.com/en/reports/ai-advanced-pcs-to-surpass-half-of-global-shipments-in-2026"
-      ]
+      ],
+      "weekly_note": "Windows10 종료 교체 사이클이 버팀목이나 'AI 가능하나 미활용' 정체. Arm(Snapdragon) 침투가 변수."
     },
     {
       "id": "edge-auto",
@@ -224,30 +241,35 @@
         {
           "name": "Mobileye",
           "ticker": "MBLY",
-          "role": "카메라 ADAS ~65–70% (점유율 하락중)"
+          "role": "카메라 ADAS ~65–70% (점유율 하락중)",
+          "share": 65
         },
         {
           "name": "NVIDIA",
           "ticker": "NVDA",
           "role": "고급 AD/로보택시 (Drive Thor)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 10
         },
         {
           "name": "Qualcomm",
           "ticker": "QCOM",
           "role": "Snapdragon Ride",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 8
         },
         {
           "name": "Tesla",
           "ticker": "TSLA",
           "role": "자체 FSD/AI5 실리콘",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 7
         }
       ],
       "sources": [
         "https://www.marketsandmarkets.com/PressReleases/automotive-semiconductor.asp"
-      ]
+      ],
+      "weekly_note": "ADAS 침투·EV 칩탑재액 증가는 구조적이나 L4는 규제·검증에 막힘. 중국 SoC(Horizon·화웨이) 부상."
     },
     {
       "id": "robotics",
@@ -290,7 +312,8 @@
       ],
       "sources": [
         "https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035"
-      ]
+      ],
+      "weekly_note": "휴머노이드 파일럿 확산 단계. 파운데이션 모델·액추에이터 미해결로 추정치가 자릿수 단위로 난립."
     },
     {
       "id": "sovereign-ai",
@@ -328,7 +351,8 @@
       ],
       "sources": [
         "https://www.nvidia.com/en-us/industries/global-public-sector/"
-      ]
+      ],
+      "weekly_note": "각국 'AI 팩토리' 약정이 NVIDIA 수요의 증분 축. 수출통제·전력이 실현 속도를 좌우."
     },
     {
       "id": "hyperscaler-capex",
@@ -350,25 +374,29 @@
           "name": "Amazon",
           "ticker": "AMZN",
           "role": "~$200B (’26)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 28
         },
         {
           "name": "Microsoft",
           "ticker": "MSFT",
           "role": "~$190B (’26)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 26
         },
         {
           "name": "Alphabet",
           "ticker": "GOOGL",
           "role": "$180–190B (’26)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 26
         },
         {
           "name": "Meta",
           "ticker": "META",
           "role": "$125–145B (’26)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 19
         },
         {
           "name": "Oracle",
@@ -385,7 +413,8 @@
       "sources": [
         "https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion",
         "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html"
-      ]
+      ],
+      "weekly_note": "’26 빅4 capex $700B+로 재확대되나 현금 부담·Stargate 축소가 지속성 의문을 키움."
     },
     {
       "id": "ai-gpu",
@@ -407,24 +436,28 @@
           "name": "NVIDIA",
           "ticker": "NVDA",
           "role": "GPU 출하 ~90% · 가속기 매출 80–85%",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 85
         },
         {
           "name": "AMD",
           "ticker": "AMD",
           "role": "~5–8% (MI350/MI400)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 8
         },
         {
           "name": "Intel",
           "ticker": "INTC",
           "role": "<1% (Gaudi)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 1
         }
       ],
       "sources": [
         "https://www.bloomberg.com/company/press/ai-accelerator-market-looks-set-to-exceed-600-billion-by-2033-driven-by-hyperscale-spending-and-asic-adoption-according-to-bloomberg-intelligence/"
-      ]
+      ],
+      "weekly_note": "Blackwell→Rubin 전환기, 수요는 공급 초과 지속. 커스텀 ASIC이 점유율을 80%대로 잠식 중."
     },
     {
       "id": "custom-asic",
@@ -446,12 +479,14 @@
           "name": "Broadcom",
           "ticker": "AVGO",
           "role": "코디자인 ~60% (Google·Meta·OpenAI)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 60
         },
         {
           "name": "Marvell",
           "ticker": "MRVL",
-          "role": "~25% (Amazon·Microsoft)"
+          "role": "~25% (Amazon·Microsoft)",
+          "share": 25
         },
         {
           "name": "Google TPU",
@@ -466,15 +501,22 @@
           "in_watchlist": true
         },
         {
-          "name": "Microsoft Maia · Meta MTIA",
+          "name": "Microsoft Maia",
           "ticker": "MSFT",
           "role": "내부용 자체 실리콘",
+          "in_watchlist": true
+        },
+        {
+          "name": "Meta MTIA",
+          "ticker": "META",
+          "role": "추론·랭킹용 자체 칩",
           "in_watchlist": true
         }
       ],
       "sources": [
         "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia"
-      ]
+      ],
+      "weekly_note": "OpenAI·Anthropic 대형 약정으로 Broadcom AI 매출 +106% YoY. 추론 이동이 ASIC에 유리."
     },
     {
       "id": "dc-networking",
@@ -496,7 +538,8 @@
           "name": "NVIDIA",
           "ticker": "NVDA",
           "role": "NVLink 스케일업 준독점 + Spectrum-X",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 40
         },
         {
           "name": "Broadcom",
@@ -507,17 +550,25 @@
         {
           "name": "Arista",
           "ticker": "ANET",
-          "role": "DC 이더넷 ~19%"
+          "role": "DC 이더넷 ~19%",
+          "share": 20
         },
         {
-          "name": "Cisco · Marvell",
+          "name": "Cisco",
           "ticker": "CSCO",
-          "role": "스위치·DPU"
+          "role": "기존 강자, AI 점유율 하락",
+          "share": 15
+        },
+        {
+          "name": "Marvell",
+          "ticker": "MRVL",
+          "role": "DPU·커스텀 실리콘"
         }
       ],
       "sources": [
         "https://www.delloro.com/news/data-center-switch-sales-in-ai-back-end-networks-to-exceed-100-b-over-the-next-five-years/"
-      ]
+      ],
+      "weekly_note": "스케일업 표준 전쟁(NVLink vs UALink vs Ethernet) 격화. 이더넷이 InfiniBand를 추월."
     },
     {
       "id": "hbm",
@@ -538,18 +589,21 @@
         {
           "name": "SK Hynix",
           "ticker": "000660.KS",
-          "role": "~62% (HBM4 NVIDIA 최초 인증)"
+          "role": "~62% (HBM4 NVIDIA 최초 인증)",
+          "share": 62
         },
         {
           "name": "Micron",
           "ticker": "MU",
           "role": "~21% (’26 완판)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 21
         },
         {
           "name": "Samsung",
           "ticker": "005930.KS",
-          "role": "~17% (HBM4 Rubin 인증, 컴백중)"
+          "role": "~17% (HBM4 Rubin 인증, 컴백중)",
+          "share": 17
         }
       ],
       "sources": [
@@ -573,7 +627,8 @@
           "summary": "전 3사 2026까지 HBM 매진, 12/16단 적층 수율이 증설 속도를 제약.",
           "url": "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
         }
-      ]
+      ],
+      "weekly_note": "전 3사 ’26까지 매진, 삼성 HBM4 Rubin 인증으로 3강 경쟁 재점화. 적층 수율이 증설을 제약."
     },
     {
       "id": "advanced-packaging",
@@ -595,23 +650,27 @@
           "name": "TSMC",
           "ticker": "TSM",
           "role": "지배 (CoWoS-L/S·SoIC) · NVDA가 60–63% 선점",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 80
         },
         {
           "name": "Amkor",
           "ticker": "AMKR",
-          "role": "2차 CoWoS · 미국 증설"
+          "role": "2차 CoWoS · 미국 증설",
+          "share": 5
         },
         {
           "name": "ASE",
           "ticker": "ASX",
-          "role": "CoWoS + CoWoP 대안"
+          "role": "CoWoS + CoWoP 대안",
+          "share": 12
         },
         {
           "name": "Intel",
           "ticker": "INTC",
           "role": "EMIB/Foveros (오버플로 수주)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 3
         }
       ],
       "sources": [
@@ -626,7 +685,8 @@
           "summary": "~4배 증설로 급성 CoWoS 병목은 완화 중, 제약이 HBM·전력으로 이동.",
           "url": "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
         }
-      ]
+      ],
+      "weekly_note": "CoWoS 4배 증설로 ’23–24 급성 병목은 완화, 병목이 HBM·전력으로 이동."
     },
     {
       "id": "dram-nand",
@@ -647,28 +707,37 @@
         {
           "name": "Samsung",
           "ticker": "005930.KS",
-          "role": "DRAM/NAND 1위"
+          "role": "DRAM/NAND 1위",
+          "share": 40
         },
         {
           "name": "SK Hynix",
           "ticker": "000660.KS",
-          "role": "DRAM 2위 + Solidigm"
+          "role": "DRAM 2위 + Solidigm",
+          "share": 34
         },
         {
           "name": "Micron",
           "ticker": "MU",
           "role": "DRAM/NAND 3강",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 22
         },
         {
-          "name": "Kioxia · SanDisk",
+          "name": "Kioxia",
+          "ticker": "285A.T",
+          "role": "NAND 주요 공급사"
+        },
+        {
+          "name": "SanDisk",
           "ticker": "SNDK",
-          "role": "NAND"
+          "role": "NAND (구 WD)"
         }
       ],
       "sources": [
         "https://www.idc.com/resource-center/blog/global-memory-shortage-crisis-market-analysis-and-the-potential-impact-on-the-smartphone-and-pc-markets-in-2026/"
-      ]
+      ],
+      "weekly_note": "HBM 잠식으로 범용 메모리 급등(DDR5 +60% QoQ). ’27–28까지 증설 없어 PC·폰 BOM 전이 위험."
     },
     {
       "id": "optical",
@@ -689,29 +758,39 @@
         {
           "name": "InnoLight",
           "ticker": null,
-          "role": "모듈 1위 (비상장/중국)"
+          "role": "모듈 1위 (비상장/중국)",
+          "share": 25
         },
         {
           "name": "Coherent",
           "ticker": "COHR",
-          "role": "수직통합 · NVIDIA CPO 파트너"
+          "role": "수직통합 · NVIDIA CPO 파트너",
+          "share": 15
         },
         {
           "name": "Lumentum",
           "ticker": "LITE",
-          "role": "레이저/CPO"
+          "role": "레이저/CPO",
+          "share": 10
         },
         {
           "name": "Marvell · Broadcom",
           "ticker": "AVGO",
           "role": "실리콘 포토닉스/DSP",
           "in_watchlist": true
+        },
+        {
+          "name": "Eoptolink",
+          "ticker": null,
+          "role": "트랜시버 (비상장/중국)",
+          "share": 12
         }
       ],
       "sources": [
         "https://www.lightcounting.com/newsletter/en/july-2025-cloud-data-center-optics-330",
         "https://newsletter.semianalysis.com/p/co-packaged-optics-cpo-book-scaling"
-      ]
+      ],
+      "weekly_note": "1.6T 본격 양산 + CPO 초기 램프. 전력 효율이 100만 GPU 확장의 물리 한계."
     },
     {
       "id": "power-cooling",
@@ -732,12 +811,14 @@
         {
           "name": "Vertiv",
           "ticker": "VRT",
-          "role": "전력+액침냉각 (NVIDIA GB200 레퍼런스)"
+          "role": "전력+액침냉각 (NVIDIA GB200 레퍼런스)",
+          "share": 22
         },
         {
           "name": "Eaton",
           "ticker": "ETN",
-          "role": "변압기·스위치기어·PDU"
+          "role": "변압기·스위치기어·PDU",
+          "share": 12
         },
         {
           "name": "Monolithic Power",
@@ -748,11 +829,18 @@
           "name": "Navitas · Infineon · ON",
           "ticker": "NVTS",
           "role": "GaN/SiC 800VDC"
+        },
+        {
+          "name": "Schneider Electric",
+          "ticker": null,
+          "role": "변압기·스위치기어 (해외)",
+          "share": 12
         }
       ],
       "sources": [
         "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
-      ]
+      ],
+      "weekly_note": "변압기 리드타임 4–5년으로 미국 DC 50%+ 지연. 800VDC·액침냉각 전환 가속."
     },
     {
       "id": "foundry",
@@ -774,23 +862,37 @@
           "name": "TSMC",
           "ticker": "TSM",
           "role": "총 ~70% · 선단 ≤5nm 90%+",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 70
         },
         {
           "name": "Samsung Foundry",
           "ticker": "005930.KS",
-          "role": "~7% (2nm GAA)"
+          "role": "~7% (2nm GAA)",
+          "share": 7
         },
         {
           "name": "Intel Foundry",
           "ticker": "INTC",
           "role": "~6% (18A, 외부고객 1곳)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 6
+        },
+        {
+          "name": "GlobalFoundries",
+          "ticker": "GFS",
+          "role": "성숙·특수공정"
+        },
+        {
+          "name": "SMIC",
+          "ticker": "0981.HK",
+          "role": "중국 최대 (DUV 7nm)"
         }
       ],
       "sources": [
         "https://www.trendforce.com/presscenter/news/20260312-12965.html"
-      ]
+      ],
+      "weekly_note": "N2 양산 개시, 선단 용량 ’28까지 예약. 대만 집중 리스크에 미·일 증설 진행."
     },
     {
       "id": "abf-substrate",
@@ -811,22 +913,43 @@
         {
           "name": "Unimicron",
           "ticker": "3037.TW",
-          "role": "ABF 기판 선두"
+          "role": "ABF 기판 선두",
+          "share": 25
         },
         {
           "name": "Ibiden",
           "ticker": "4062.T",
-          "role": "최고급 AI 서버 ABF"
+          "role": "최고급 AI 서버 ABF",
+          "share": 20
         },
         {
           "name": "Ajinomoto",
           "ticker": "2802.T",
           "role": "ABF 필름 사실상 독점"
+        },
+        {
+          "name": "Shinko",
+          "ticker": null,
+          "role": "고급 ABF (일본)",
+          "share": 12
+        },
+        {
+          "name": "Nan Ya PCB",
+          "ticker": "8046.TW",
+          "role": "ABF 기판",
+          "share": 10
+        },
+        {
+          "name": "AT&S",
+          "ticker": "ATS.VI",
+          "role": "ABF (유럽)",
+          "share": 7
         }
       ],
       "sources": [
         "https://www.digitimes.com/news/a20260130PD220/unimicron-abf-substrate-ai-server-market-capacity.html"
-      ]
+      ],
+      "weekly_note": "’26 고급 ABF 부족 전환, T-glass 상류 병목이 ’27까지. 최고급은 2사 과점."
     },
     {
       "id": "euv-litho",
@@ -848,7 +971,8 @@
           "name": "ASML",
           "ticker": "ASML",
           "role": "EUV/High-NA 100% 독점",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 100
         },
         {
           "name": "Carl Zeiss SMT",
@@ -858,7 +982,8 @@
       ],
       "sources": [
         "https://counterpointresearch.com/en/insights/asml-2025-revenue-up-16-yoy-as-strong-euv-shipments-boost-systems-and-service-performance"
-      ]
+      ],
+      "weekly_note": "ASML 백로그 견조, High-NA 채택 초기. 대중 EUV 금지가 지정학 지렛대."
     },
     {
       "id": "etch-deposition",
@@ -880,23 +1005,27 @@
           "name": "Applied Materials",
           "ticker": "AMAT",
           "role": "종합 1위 (~30–35%)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 30
         },
         {
           "name": "Lam Research",
           "ticker": "LRCX",
           "role": "식각·증착 (메모리 강세)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 20
         },
         {
           "name": "Tokyo Electron",
           "ticker": "TOELY",
-          "role": "코터/디벨로퍼 1위"
+          "role": "코터/디벨로퍼 1위",
+          "share": 18
         }
       ],
       "sources": [
         "https://www.semi.org/en/semi-press-release/global-total-semiconductor-equipment-sales-forecast-to-reach-of-dollar-139-billion-in-2026-semi-reports"
-      ]
+      ],
+      "weekly_note": "AI 선단+메모리 증설로 견조. 중국 성숙노드 투자도 기여하나 GAA 난도 상승."
     },
     {
       "id": "metrology",
@@ -917,18 +1046,21 @@
         {
           "name": "KLA",
           "ticker": "KLAC",
-          "role": "계측·검사 ~74% 준독점"
+          "role": "계측·검사 ~74% 준독점",
+          "share": 74
         },
         {
           "name": "Applied Materials",
           "ticker": "AMAT",
           "role": "~9.8% (감소중)",
-          "in_watchlist": true
+          "in_watchlist": true,
+          "share": 10
         }
       ],
       "sources": [
         "https://247wallst.com/technology-3/2026/05/04/kla-is-gaining-share-as-ai-chip-complexity-drives-up-yield-costs/"
-      ]
+      ],
+      "weekly_note": "AI 칩 복잡도·수율 비용 상승으로 KLA 점유·마진 동반 확대."
     },
     {
       "id": "materials",
@@ -959,7 +1091,8 @@
       ],
       "sources": [
         "https://www.trendforce.com/news/2025/12/03/news-japan-rumored-to-curb-photoresist-exports-as-china-targets-40-self-sufficiency-by-2026/"
-      ]
+      ],
+      "weekly_note": "포토레지스트 일본 집중이 잠재 지정학 리스크. 네온은 국산화로 해소."
     },
     {
       "id": "power-grid",
@@ -1026,6 +1159,54 @@
           "summary": "전기장비는 원가 <10%인데 병목의 ~100%. GOES 강·동박 공급이 관건.",
           "url": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
         }
+      ],
+      "weekly_note": "DC 전력 ’30까지 2~3배, 전력망 접속 대기·가스터빈 리드타임이 최대 단기 병목."
+    },
+    {
+      "id": "semi-ip",
+      "layer": "foundation",
+      "name_kr": "반도체 IP · EDA",
+      "name_en": "Semiconductor IP & EDA Tools",
+      "definition": "칩 설계의 관문 — CPU/GPU 설계자산(ARM ISA)과 설계자동화 소프트웨어(EDA).",
+      "size_usd_b": 20,
+      "size_label": "EDA ~$15B + IP ~$7B (’25)",
+      "growth": "~12% CAGR",
+      "size_confidence": "med",
+      "demand_driver": "AI 칩 설계 복잡도 급증 → EDA·검증 수요. ARM ISA가 모바일·서버로 확장.",
+      "bottleneck": {
+        "severity": "structural",
+        "limit": "ARM ISA 사실상 표준 + Synopsys·Cadence EDA 듀오폴리(합산 ~60%). 대체 난도 극히 높고 대중 수출통제 대상 — 구조적 관문."
+      },
+      "players": [
+        {
+          "name": "Synopsys",
+          "ticker": "SNPS",
+          "role": "EDA 1위",
+          "share": 30
+        },
+        {
+          "name": "Cadence",
+          "ticker": "CDNS",
+          "role": "EDA 2위",
+          "share": 28
+        },
+        {
+          "name": "ARM",
+          "ticker": "ARM",
+          "role": "CPU/GPU IP (ISA 표준)"
+        },
+        {
+          "name": "Siemens EDA",
+          "ticker": null,
+          "role": "EDA 3위 (해외)",
+          "share": 12
+        }
+      ],
+      "weekly_note": "ARM ISA·Synopsys/Cadence EDA 듀오폴리가 설계의 관문. AI 설계 자동화로 EDA 수요 확대.",
+      "recent_news": [],
+      "sources": [
+        "https://www.synopsys.com/",
+        "https://www.arm.com/"
       ]
     }
   ],
@@ -1219,6 +1400,21 @@
       "from": "abf-substrate",
       "to": "materials",
       "label": "T-glass·ABF 필름"
+    },
+    {
+      "from": "ai-gpu",
+      "to": "semi-ip",
+      "label": "회로 IP·EDA"
+    },
+    {
+      "from": "custom-asic",
+      "to": "semi-ip",
+      "label": "IP·EDA"
+    },
+    {
+      "from": "foundry",
+      "to": "semi-ip",
+      "label": "셀 라이브러리"
     }
   ]
 }

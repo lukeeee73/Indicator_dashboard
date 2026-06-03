@@ -58,9 +58,11 @@
       "demand_driver": "무엇이 이 수요를 끌어당기는가",
       "bottleneck": { "severity": "acute", "limit": "기술적/물리적 한계 설명" },
       //  또는  "bottleneck": null  (병목 아님)
+      "weekly_note": "이번 주 시장 흐름·변화 1~2문장 (이 루틴이 매주 갱신)",
       "players": [
-        { "name": "SK Hynix", "ticker": "000660.KS", "role": "~62%" },
-        { "name": "Micron",   "ticker": "MU", "role": "~21%", "in_watchlist": true }
+        // share = 이 시장에서의 점유율(%) — 노드의 막대 그래프로 시각화됨
+        { "name": "SK Hynix", "ticker": "000660.KS", "role": "~62%", "share": 62 },
+        { "name": "Micron",   "ticker": "MU", "role": "~21%", "share": 21, "in_watchlist": true }
       ],
       "recent_news": [   // ← 시장 단위 헤드라인 (이 루틴이 채움, 최대 5개)
         { "date": "2026-01", "title": "...", "source": "...", "url": "https://...",
@@ -78,7 +80,14 @@
   있을 때만. 그래야 웹이 narrative_score 를 자동 집계한다.
 - watchlist 밖 핵심 기업(SK하이닉스·삼성·Marvell·Vertiv 등)도 `ticker` 와 함께
   넣되 `in_watchlist` 는 생략/false → 웹에 "데이터 예정"으로 표시된다.
+- `players[].share` 는 그 시장에서의 점유율(%, 숫자). 웹이 노드에 막대 그래프로
+  그리고, 합이 100 미만이면 '기타'로 채운다. 점유율이 무의미한 시장(전력망·소재
+  등)은 생략한다.
+- `weekly_note` 는 **매주 갱신**하는 시장 흐름·변화 1~2문장. 웹 상세 패널의
+  '이번 주 시장 흐름'에 표시된다 (시장의 '분위기'를 서술).
 - `bottleneck.severity` 는 `severity_legend` 의 키 중 하나여야 한다.
+  웹은 **`structural`(독점)·`acute`·`easing`·`emerging`(병목)만 색으로 강조**하고
+  `demand_limited`·비병목은 중립 톤으로 둔다.
 - `links` 의 `from`/`to` 는 반드시 존재하는 market `id`.
 
 ---
@@ -87,6 +96,6 @@
 
 | 파일 | 산업 | 시장 수 |
 |---|---|---|
-| `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` | AI · 반도체 | 22 |
+| `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` | AI · 반도체 | 23 |
 
 새 산업 추가 절차는 각 산업 md 의 "새 산업 맵 만들기" 절을 따른다.

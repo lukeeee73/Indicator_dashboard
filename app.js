@@ -1580,37 +1580,34 @@ function renderStocksTab(data) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-//  AI · 반도체 시장 지도 (market cascade) — 수요 → 공급, 병목 중심
+//  AI · 반도체 시장 지도 (market cascade) — 수요(좌) → 공급(우), 병목 중심
 // ════════════════════════════════════════════════════════════════════════
 //
-// 기업이 아니라 '시장(수요)' 단위로 본 밸류체인.
+// 기업이 아니라 '시장(수요)' 단위로 본 밸류체인. 가로(좌→우) 6개 층.
 // 데이터 SSOT 는  data/markets/ai-semiconductor.json  하나이며,
-// 이 JSON 만 고치면 노드·층·관계·병목·플레이어가 모두 바뀐다.
+// 이 JSON 만 고치면 노드·층·관계·병목·플레이어·점유율이 모두 바뀐다.
+//
+// 색은 절제한다: '독점(structural)'·'병목(acute/easing/emerging)'만 색으로
+// 강조하고, 그 외(수요 한계형·비병목)는 사이트 기본 톤(중립 회색)을 따른다.
 //
 // 시장 노드는 소속 기업(players[].ticker 중 watchlist 종목)의
-// data/stocks/{TICKER}.json → valuation.qualitative.narrative_score 를
-// 자동 집계해 "시장 단위 뉴스 시그널" 로 보여준다. (daily 루틴이 채우는 값)
+// narrative_score 를 자동 집계해 "시장 분위기" 로 보여주고,
+// weekly_note(주간 흐름)·recent_news(시장 헤드라인)는 market-research 루틴이 채운다.
 
 const MARKET_MAP_URL = "data/markets/ai-semiconductor.json";
 const MC_STATE = { map: null, activeNode: null, bottleneckOnly: false, loading: false };
 
-// 병목 심각도 → 색
+// 강조 색 — 독점/병목만. demand_limited·비병목은 null(중립 톤).
 const MC_SEVERITY_COLOR = {
   structural:     "#a855f7", // 보라 — 구조적 독점
-  acute:          "#e63030", // 빨강 — 급성 병목
-  easing:         "#f59e0b", // 주황 — 완화중
-  emerging:       "#eab308", // 노랑 — 부상하는 병목
-  demand_limited: "#5aa9e6", // 파랑 — 수요 한계형
+  acute:          "#cc2424", // 사이트 레드 — 급성 병목
+  easing:         "#b07d2b", // 머스타드 — 완화중 병목
+  emerging:       "#b07d2b", // 머스타드 — 부상하는 병목
+  demand_limited: null,      // 중립 — 수요 한계형(병목 아님)
 };
-// 층 → 색
-const MC_LAYER_COLOR = {
-  demand:        "#22d3ee",
-  capital:       "#a78bfa",
-  compute:       "#5acd80",
-  components:    "#e63030",
-  manufacturing: "#fbbf24",
-  foundation:    "#9aa0a9",
-};
+const MC_SEV_SHORT = { structural: "독점", acute: "급성 병목", easing: "병목 완화", emerging: "병목 부상", demand_limited: "수요 한계" };
+// 점유율 바 — 단색 회색 램프(톤 유지)
+const MC_SHARE_RAMP = ["#e6e6e6", "#bcbcbc", "#929292", "#6c6c6c", "#525252"];
 
 // 진입점 (renderStocksTab 에서 호출). 비동기 fetch 후 렌더. map 은 1회만 로드.
 async function renderMarketCascade(stocks) {
@@ -1635,29 +1632,25 @@ async function renderMarketCascade(stocks) {
   renderMarketBoard(stocks);
 }
 
-// 상단 크롬: 병목 범례 + '병목만 강조' 토글
+// 상단 크롬: 강조 범례 + '병목만 강조' 토글
 function renderMarketChrome() {
   const navHost = document.getElementById("vc-chain-nav");
   if (!navHost) return;
   const map = MC_STATE.map;
-  const legend = Object.entries(map.severity_legend || {}).map(([k, v]) =>
-    `<span class="mc-leg" title="${escapeHtml(v.desc || "")}" style="--mc-c:${MC_SEVERITY_COLOR[k] || "#888"}">
-       <i class="mc-leg-dot"></i>${escapeHtml(v.icon || "")} ${escapeHtml(v.label || k)}</span>`).join("");
+  const legend = Object.entries(map.severity_legend || {}).map(([k, v]) => {
+    const c = MC_SEVERITY_COLOR[k] || "var(--text-dim)";
+    return `<span class="mc-leg" title="${escapeHtml(v.desc || "")}" style="--mc-c:${c}">
+       <i class="mc-leg-dot"></i>${escapeHtml(v.label || k)}</span>`;
+  }).join("");
   navHost.innerHTML = `
     <div class="mc-legend">${legend}</div>
-    <label class="mc-toggle"><input type="checkbox" id="mc-bottleneck-only" ${MC_STATE.bottleneckOnly ? "checked" : ""}> 병목만 강조</label>`;
+    <label class="mc-toggle"><input type="checkbox" id="mc-bottleneck-only" ${MC_STATE.bottleneckOnly ? "checked" : ""}> 병목·독점만 강조</label>`;
   const cb = document.getElementById("mc-bottleneck-only");
   if (cb) cb.addEventListener("change", () => {
     MC_STATE.bottleneckOnly = cb.checked;
     const b = document.getElementById("vc-board");
     if (b) b.classList.toggle("mc-board--btlonly", cb.checked);
   });
-}
-
-// 시장 규모(대표값 $B) → 노드 폭 (sqrt 스케일 + clamp). 8→~116, 200→~195, 725→~284
-function mcNodeWidth(sizeB) {
-  const s = (typeof sizeB === "number" && sizeB > 0) ? sizeB : 8;
-  return Math.max(116, Math.min(300, Math.round(96 + Math.sqrt(s) * 7.0)));
 }
 
 // 시장 노드의 watchlist 기업 narrative_score 평균을 집계
@@ -1673,7 +1666,30 @@ function mcAggregateScore(m, stocks) {
   return { count: scores.length, score: avg, tone: avg > 0.05 ? "pos" : avg < -0.05 ? "neg" : "neutral" };
 }
 
-// 보드(층 밴드 + 노드) 렌더
+// 집계 점수 → 시장 분위기 라벨
+function mcMood(agg) {
+  if (!agg || agg.count === 0) return null;
+  const s = agg.score;
+  if (s >= 0.2)  return { t: "강한 긍정 모멘텀", tone: "pos" };
+  if (s >= 0.05) return { t: "약한 긍정", tone: "pos" };
+  if (s > -0.05) return { t: "중립", tone: "neutral" };
+  if (s > -0.2)  return { t: "약한 부정", tone: "neg" };
+  return { t: "강한 부정 모멘텀", tone: "neg" };
+}
+
+// 점유율 스택 바 (단색 회색 램프). 합이 100 미만이면 '기타' 세그먼트.
+function mcShareBar(players) {
+  const segs = (players || []).filter((p) => typeof p.share === "number" && p.share > 0)
+    .slice().sort((a, b) => b.share - a.share);
+  if (!segs.length) return "";
+  const sum = segs.reduce((a, p) => a + p.share, 0);
+  let html = segs.map((p, i) =>
+    `<span class="mc-sb-seg" style="width:${p.share}%;background:${MC_SHARE_RAMP[Math.min(i, MC_SHARE_RAMP.length - 1)]}" title="${escapeHtml(p.name)} ${p.share}%"></span>`).join("");
+  if (sum < 99) html += `<span class="mc-sb-seg mc-sb-etc" style="width:${100 - sum}%" title="기타 ${Math.round(100 - sum)}%"></span>`;
+  return `<span class="mc-sb">${html}</span>`;
+}
+
+// 보드(가로 6개 층 컬럼 + 노드) 렌더
 function renderMarketBoard(stocks) {
   const board = document.getElementById("vc-board");
   const map = MC_STATE.map;
@@ -1681,28 +1697,30 @@ function renderMarketBoard(stocks) {
   board.className = "vc-board mc-board" + (MC_STATE.bottleneckOnly ? " mc-board--btlonly" : "");
   board.innerHTML = "";
 
-  // 수요 → 공급 축 안내
+  // 수요(좌) → 공급(우) 축
   const axis = document.createElement("div");
   axis.className = "mc-axis";
-  axis.innerHTML = `<span class="mc-axis-top">▲ 수요 · 돈을 내는 곳</span>
-                    <span class="mc-axis-bot">공급 · 병목 · 만드는 곳 ▼</span>`;
+  axis.innerHTML = `<span class="mc-axis-l">◀ 수요 · 돈을 내는 곳</span>
+                    <span class="mc-axis-r">공급 · 병목 · 만드는 곳 ▶</span>`;
   board.appendChild(axis);
 
+  const cols = document.createElement("div");
+  cols.className = "mc-cols";
   map.layers.forEach((layer) => {
     const markets = map.markets.filter((m) => m.layer === layer.id);
     if (!markets.length) return;
-    const band = document.createElement("div");
-    band.className = "mc-layer";
-    band.dataset.layer = layer.id;
-    band.style.setProperty("--mc-layer", MC_LAYER_COLOR[layer.id] || "#888");
-    band.innerHTML = `
+    const col = document.createElement("div");
+    col.className = "mc-layer";
+    col.dataset.layer = layer.id;
+    col.innerHTML = `
       <div class="mc-layer-head">
         <span class="mc-layer-label">${escapeHtml(layer.label)}</span>
         <span class="mc-layer-desc">${escapeHtml(layer.desc)}</span>
       </div>
       <div class="mc-layer-nodes">${markets.map((m) => mcNodeHtml(m, stocks)).join("")}</div>`;
-    board.appendChild(band);
+    cols.appendChild(col);
   });
+  board.appendChild(cols);
 
   board.querySelectorAll(".mc-node[data-id]").forEach((el) =>
     el.addEventListener("click", () => selectMarketNode(el.dataset.id, stocks)));
@@ -1717,19 +1735,22 @@ function renderMarketBoard(stocks) {
 // 단일 시장 노드 HTML
 function mcNodeHtml(m, stocks) {
   const sev = m.bottleneck && m.bottleneck.severity;
-  const accent = sev ? (MC_SEVERITY_COLOR[sev] || "#888") : (MC_LAYER_COLOR[m.layer] || "#888");
-  const leg = sev && MC_STATE.map.severity_legend ? MC_STATE.map.severity_legend[sev] : null;
-  const icon = leg ? leg.icon : "";
+  const hi = sev ? MC_SEVERITY_COLOR[sev] : null;   // 독점/병목만 색, 그 외 null
+  const accent = hi || "var(--border-mid)";
+  const tag = hi ? (MC_SEV_SHORT[sev] || "") : "";
   const agg = mcAggregateScore(m, stocks);
   const scoreChip = agg.count > 0
-    ? `<span class="mc-node-score" data-tone="${agg.tone}">${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)}</span>`
+    ? `<span class="mc-node-score" data-tone="${agg.tone}">뉴스 ${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)}</span>`
     : "";
-  const w = mcNodeWidth(m.size_usd_b);
-  return `<button class="mc-node${sev ? " mc-node--btl mc-node--" + sev : ""}" data-id="${escapeHtml(m.id)}"
-            style="--mc-accent:${accent};--mc-w:${w}px" title="${escapeHtml(m.definition || "")}">
-      ${sev ? `<span class="mc-node-badge">${escapeHtml(icon)}</span>` : ""}
+  const lead = (m.players || []).filter((p) => typeof p.share === "number").sort((a, b) => b.share - a.share)[0];
+  const leadTxt = lead ? `<span class="mc-node-lead">${escapeHtml(lead.name)} ${lead.share}%</span>` : "";
+  return `<button class="mc-node${hi ? " mc-node--hi mc-node--" + sev : ""}" data-id="${escapeHtml(m.id)}"
+            style="--mc-accent:${accent}" title="${escapeHtml(m.definition || "")}">
+      ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}</span>` : ""}
       <span class="mc-node-name">${escapeHtml(m.name_kr)}</span>
       <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
+      ${mcShareBar(m.players)}
+      ${leadTxt}
       ${scoreChip}
     </button>`;
 }
@@ -1740,9 +1761,8 @@ function selectMarketNode(id, stocks) {
   const map = MC_STATE.map;
   const board = document.getElementById("vc-board");
   if (!map || !board) return;
-  // links: from = 수요(상류), to = 공급(하류)
-  const needs    = map.links.filter((l) => l.from === id).map((l) => l.to);   // 이 시장이 의존하는 공급(하류)
-  const pulledBy = map.links.filter((l) => l.to === id).map((l) => l.from);   // 이 시장을 끌어당기는 수요(상류)
+  const needs    = map.links.filter((l) => l.from === id).map((l) => l.to);   // 의존하는 공급(우)
+  const pulledBy = map.links.filter((l) => l.to === id).map((l) => l.from);   // 끌어당기는 수요(좌)
   const connected = new Set([...needs, ...pulledBy, id]);
   board.querySelectorAll(".mc-node").forEach((el) => {
     const t = el.dataset.id;
@@ -1754,7 +1774,7 @@ function selectMarketNode(id, stocks) {
   renderMarketDetail(id, needs, pulledBy, stocks);
 }
 
-// 활성 노드의 관계선만 SVG 로 그림 (세로 연결 + 동일층은 가로 연결)
+// 활성 노드의 관계선만 SVG 로 그림. 가로 연결(컬럼 간) / 세로 연결(동일 컬럼) 자동 판별.
 function drawMarketLinks(id) {
   const svg  = document.getElementById("vc-links");
   const wrap = svg && svg.parentElement;
@@ -1763,35 +1783,35 @@ function drawMarketLinks(id) {
   svg.innerHTML = "";
   const wrapRect = wrap.getBoundingClientRect();
   if (wrapRect.width === 0) return; // 패널이 숨겨져 있으면 skip
-  svg.setAttribute("width", wrapRect.width);
+  svg.setAttribute("width", Math.max(wrap.scrollWidth, wrapRect.width));
   svg.setAttribute("height", Math.max(wrap.scrollHeight, wrapRect.height));
 
   const rectOf = (t) => {
     const el = wrap.querySelector(`.mc-node[data-id="${CSS.escape(t)}"]`);
     if (!el) return null;
     const r = el.getBoundingClientRect();
-    return { x: r.left - wrapRect.left, y: r.top - wrapRect.top, w: r.width, h: r.height };
+    return { x: r.left - wrapRect.left + wrap.scrollLeft, y: r.top - wrapRect.top + wrap.scrollTop, w: r.width, h: r.height };
   };
 
   map.links.filter((l) => l.from === id || l.to === id).forEach((l) => {
     const a = rectOf(l.from), b = rectOf(l.to);
     if (!a || !b) return;
-    const aMid = a.y + a.h / 2, bMid = b.y + b.h / 2;
+    const acx = a.x + a.w / 2, acy = a.y + a.h / 2, bcx = b.x + b.w / 2, bcy = b.y + b.h / 2;
     let p1, p2, c1, c2;
-    if (Math.abs(aMid - bMid) > 24) {           // 세로: 위 노드 하단 → 아래 노드 상단
-      const up = aMid < bMid ? a : b, dn = aMid < bMid ? b : a;
-      p1 = { x: up.x + up.w / 2, y: up.y + up.h };
-      p2 = { x: dn.x + dn.w / 2, y: dn.y };
-      const dy = Math.max(28, (p2.y - p1.y) / 2);
-      c1 = { x: p1.x, y: p1.y + dy };
-      c2 = { x: p2.x, y: p2.y - dy };
-    } else {                                     // 동일층: 왼쪽 노드 오른쪽 → 오른쪽 노드 왼쪽
+    if (Math.abs(acx - bcx) >= Math.abs(acy - bcy)) {  // 가로: 왼쪽 노드 오른쪽 → 오른쪽 노드 왼쪽
       const lf = a.x < b.x ? a : b, rt = a.x < b.x ? b : a;
       p1 = { x: lf.x + lf.w, y: lf.y + lf.h / 2 };
       p2 = { x: rt.x, y: rt.y + rt.h / 2 };
-      const dx = Math.max(28, (p2.x - p1.x) / 2);
+      const dx = Math.max(24, (p2.x - p1.x) / 2);
       c1 = { x: p1.x + dx, y: p1.y };
       c2 = { x: p2.x - dx, y: p2.y };
+    } else {                                            // 세로: 위 노드 하단 → 아래 노드 상단
+      const up = a.y < b.y ? a : b, dn = a.y < b.y ? b : a;
+      p1 = { x: up.x + up.w / 2, y: up.y + up.h };
+      p2 = { x: dn.x + dn.w / 2, y: dn.y };
+      const dy = Math.max(20, (p2.y - p1.y) / 2);
+      c1 = { x: p1.x, y: p1.y + dy };
+      c2 = { x: p2.x, y: p2.y - dy };
     }
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", `M ${p1.x} ${p1.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${p2.x} ${p2.y}`);
@@ -1808,7 +1828,7 @@ function clearMarketLinks() {
     el.classList.remove("mc-node--active", "mc-node--linked", "mc-node--dim"));
 }
 
-// 상세 패널: 정의 · 규모 · 수요동인 · 병목 · 시장 뉴스 시그널 · 플레이어 · 관계 · 출처
+// 상세 패널: 분위기 · 주간 흐름 · 병목 · 시장 뉴스 · 점유율/플레이어 · 관계 · 출처
 function renderMarketDetail(id, needs, pulledBy, stocks) {
   const host = document.getElementById("vc-detail");
   const map = MC_STATE.map;
@@ -1834,39 +1854,23 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
   let btlHtml = "";
   if (m.bottleneck) {
     const sev = m.bottleneck.severity, leg = map.severity_legend[sev] || {};
-    btlHtml = `<div class="mc-btl-box" style="--mc-c:${MC_SEVERITY_COLOR[sev] || "#888"}">
-        <span class="mc-btl-tag">${escapeHtml(leg.icon || "")} ${escapeHtml(leg.label || sev)}</span>
+    const c = MC_SEVERITY_COLOR[sev] || "var(--text-dim)";
+    btlHtml = `<div class="mc-btl-box" style="--mc-c:${c}">
+        <span class="mc-btl-tag">${escapeHtml(leg.label || sev)}</span>
         <p class="mc-btl-text">${escapeHtml(m.bottleneck.limit)}</p>
       </div>`;
   }
 
-  const playersHtml = (m.players || []).map((p) => {
-    let chip = "", cls = "mc-player";
-    if (p.ticker && p.in_watchlist) {
-      cls += " mc-player--data";
-      const q = stocks && stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
-      if (q && typeof q.narrative_score === "number") {
-        const tone = q.narrative_score > 0.05 ? "pos" : q.narrative_score < -0.05 ? "neg" : "neutral";
-        chip = `<span class="mc-player-score" data-tone="${tone}">${q.narrative_score >= 0 ? "+" : ""}${q.narrative_score.toFixed(2)}</span>`;
-      } else {
-        chip = `<span class="mc-player-score" data-tone="neutral">—</span>`;
-      }
-    } else {
-      chip = `<span class="mc-player-ext">${p.ticker ? "데이터 예정" : "비상장"}</span>`;
-    }
-    const tk = p.ticker ? `<span class="mc-player-tk">${escapeHtml(p.ticker)}</span>` : "";
-    return `<li class="${cls}">
-        <span class="mc-player-name">${escapeHtml(p.name)} ${tk}</span>
-        <span class="mc-player-role">${escapeHtml(p.role || "")}</span>${chip}
-      </li>`;
-  }).join("");
-
   const agg = mcAggregateScore(m, stocks);
-  const aggHtml = agg.count > 0
-    ? `<p class="mc-agg" data-tone="${agg.tone}">시장 뉴스 시그널 <strong>${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)}</strong> · watchlist ${agg.count}곳 평균 narrative_score</p>`
-    : `<p class="mc-agg mc-agg--none">아직 watchlist 뉴스가 연결되지 않은 시장입니다.</p>`;
+  const mood = mcMood(agg);
+  const moodHtml = mood
+    ? `<p class="mc-mood" data-tone="${mood.tone}"><span>시장 분위기</span> <strong>${escapeHtml(mood.t)}</strong> · 뉴스 시그널 ${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)} (watchlist ${agg.count}곳)</p>`
+    : `<p class="mc-mood mc-mood--none"><span>시장 분위기</span> watchlist 뉴스 데이터 연결 전</p>`;
 
-  // 시장 단위 헤드라인 (특정 티커에 안 붙는 업황 뉴스 — market-research 루틴이 채움)
+  const weeklyHtml = m.weekly_note
+    ? `<div class="mc-weekly"><h5>이번 주 시장 흐름</h5><p>${escapeHtml(m.weekly_note)}</p></div>`
+    : "";
+
   const newsHtml = (m.recent_news || []).length
     ? `<div class="mc-news"><h5>최근 시장 뉴스</h5><ul>${
         m.recent_news.slice(0, 5).map((n) => {
@@ -1884,6 +1888,31 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
       }</ul></div>`
     : "";
 
+  // 점유율 바 + 플레이어 목록(점유율·뉴스 점수)
+  const barHtml = mcShareBar(m.players);
+  const playersHtml = (m.players || []).map((p) => {
+    let chip = "", cls = "mc-player";
+    if (p.ticker && p.in_watchlist) {
+      cls += " mc-player--data";
+      const q = stocks && stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
+      if (q && typeof q.narrative_score === "number") {
+        const tone = q.narrative_score > 0.05 ? "pos" : q.narrative_score < -0.05 ? "neg" : "neutral";
+        chip = `<span class="mc-player-score" data-tone="${tone}">${q.narrative_score >= 0 ? "+" : ""}${q.narrative_score.toFixed(2)}</span>`;
+      } else {
+        chip = `<span class="mc-player-score" data-tone="neutral">—</span>`;
+      }
+    } else {
+      chip = `<span class="mc-player-ext">${p.ticker ? "데이터 예정" : "비상장"}</span>`;
+    }
+    const tk = p.ticker ? `<span class="mc-player-tk">${escapeHtml(p.ticker)}</span>` : "";
+    const share = typeof p.share === "number" ? `<span class="mc-player-share">${p.share}%</span>` : "";
+    return `<li class="${cls}">
+        <span class="mc-player-name">${escapeHtml(p.name)} ${tk}</span>
+        <span class="mc-player-role">${escapeHtml(p.role || "")}</span>
+        ${share}${chip}
+      </li>`;
+  }).join("");
+
   const sizeMeta = [
     m.size_label ? `규모 <strong>${escapeHtml(m.size_label)}</strong>` : "",
     m.growth ? `성장 ${escapeHtml(m.growth)}` : "",
@@ -1897,9 +1926,10 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     : "";
 
   const layerLabel = (map.layers.find((l) => l.id === m.layer) || {}).label || "";
+  const accent = m.bottleneck ? (MC_SEVERITY_COLOR[m.bottleneck.severity] || "var(--border-mid)") : "var(--border-mid)";
 
   host.innerHTML = `
-    <header class="mc-detail-head" style="--mc-accent:${MC_LAYER_COLOR[m.layer] || "#888"}">
+    <header class="mc-detail-head" style="--mc-accent:${accent}">
       <span class="mc-detail-layer">${escapeHtml(layerLabel)}</span>
       <h4>${escapeHtml(m.name_kr)}</h4>
       <p class="mc-detail-en">${escapeHtml(m.name_en || "")}</p>
@@ -1908,11 +1938,16 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ${sizeMeta ? `<p class="mc-detail-size">${sizeMeta}</p>` : ""}
     ${m.demand_driver ? `<p class="mc-detail-driver"><span>수요 동인</span>${escapeHtml(m.demand_driver)}</p>` : ""}
     ${btlHtml}
-    ${aggHtml}
+    ${moodHtml}
+    ${weeklyHtml}
     ${newsHtml}
-    <div class="mc-players"><h5>핵심 플레이어</h5><ul>${playersHtml}</ul></div>
-    ${relHtml(needs, "need", "⬇ 의존하는 공급 (하류)")}
-    ${relHtml(pulledBy, "pull", "⬆ 끌어당기는 수요 (상류)")}
+    <div class="mc-players">
+      <h5>시장 점유율 · 핵심 플레이어</h5>
+      ${barHtml ? `<div class="mc-share-wrap">${barHtml}</div>` : ""}
+      <ul>${playersHtml}</ul>
+    </div>
+    ${relHtml(needs, "need", "▶ 의존하는 공급 (우측)")}
+    ${relHtml(pulledBy, "pull", "◀ 끌어당기는 수요 (좌측)")}
     ${srcHtml}`;
 
   host.querySelectorAll(".mc-rel-link[data-goto]").forEach((b) =>

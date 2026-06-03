@@ -53,8 +53,9 @@
 
 각 시장에서 다음을 갱신 후보로 본다:
 - **병목 상태 변화** (severity 승급/완화, limit 문구) ← 최우선
+- **이번 주 시장 흐름** (`weekly_note`) — 그 주의 분위기·변화를 1~2문장으로 ← 매주
 - 시장 규모/성장 (`size_label`, `growth`, 필요시 `size_usd_b`, `size_confidence`)
-- 플레이어 점유율·신제품·수율·할당 변화 (`players[].role`)
+- 플레이어 점유율 (`players[].share`, %) · 신제품·수율·할당 변화 (`players[].role`)
 - 시장 단위 헤드라인 (`recent_news`)
 
 ### 2.3 JSON 갱신
@@ -64,6 +65,10 @@
   (`structural|acute|easing|emerging|demand_limited`). `limit` 은 *왜* 병목인지
   기술적/물리적 근거를 한 문장으로.
 - 규모: 출처가 갈리면 범위로 적고 `size_confidence` 를 낮춘다. 추측 금지.
+- 점유율: `players[].share` (%) 는 출처 기준으로. 한 시장 안에서 합이 100 이하가
+  되게(나머지는 웹이 '기타'로 표시). 점유율이 무의미한 시장은 생략.
+- 주간 흐름: `weekly_note` 는 그 주의 수급·가격·병목·정책 변화를 종합한 1~2문장.
+  "분위기"가 드러나게 — 웹 상세의 '이번 주 시장 흐름'에 그대로 노출된다.
 - `recent_news[]`: 각 시장 **최대 5개**, 최신순. 스키마:
   ```json
   { "date": "2026-06", "title": "한국어 헤드라인",
