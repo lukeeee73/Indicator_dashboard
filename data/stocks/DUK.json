@@ -4,18 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-06-01",
-      "value": 52.59
-    },
-    {
-      "date": "2016-06-02",
-      "value": 52.53
-    },
-    {
-      "date": "2016-06-03",
-      "value": 53.29
-    },
-    {
       "date": "2016-06-06",
       "value": 53.13
     },
@@ -2741,7 +2729,7 @@
     },
     {
       "date": "2019-02-20",
-      "value": 66.61
+      "value": 66.62
     },
     {
       "date": "2019-02-21",
@@ -2861,7 +2849,7 @@
     },
     {
       "date": "2019-04-03",
-      "value": 66.61
+      "value": 66.62
     },
     {
       "date": "2019-04-04",
@@ -5685,7 +5673,7 @@
     },
     {
       "date": "2022-01-20",
-      "value": 85.96
+      "value": 85.95
     },
     {
       "date": "2022-01-21",
@@ -6981,7 +6969,7 @@
     },
     {
       "date": "2023-05-05",
-      "value": 87.63
+      "value": 87.64
     },
     {
       "date": "2023-05-08",
@@ -10057,19 +10045,35 @@
     },
     {
       "date": "2026-06-01",
-      "value": 121.25
+      "value": 119.89
+    },
+    {
+      "date": "2026-06-02",
+      "value": 121.09
+    },
+    {
+      "date": "2026-06-03",
+      "value": 121.04
+    },
+    {
+      "date": "2026-06-04",
+      "value": 121.82
+    },
+    {
+      "date": "2026-06-05",
+      "value": 124.22
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 94522146816.0,
-      "pe_ratio": 18.653078,
-      "forward_pe": 16.913887,
+      "market_cap": 96841441280.0,
+      "pe_ratio": 19.11077,
+      "forward_pe": 17.331516,
       "eps_ttm": 6.5,
-      "dividend_yield": 3.47,
+      "dividend_yield": 3.43,
       "profit_margin": 0.15706,
       "operating_margin": 0.25507,
-      "price_to_book": 1.7636663,
+      "price_to_book": 1.8069415,
       "return_on_equity": 0.09661
     },
     "quarterly": [
@@ -10125,8 +10129,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-01",
-    "current_price": 121.25,
+    "as_of": "2026-06-05",
+    "current_price": 124.22,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10135,7 +10139,7 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 107.53,
+        "fair_value": 107.51,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
@@ -10146,7 +10150,7 @@
       }
     },
     "fair_value": 104.31,
-    "valuation_gap": 0.1624,
+    "valuation_gap": 0.1909,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10282,10 +10286,10 @@
         "gap": 0.1747
       },
       {
-        "date": "2026-06-01",
-        "price": 121.25,
+        "date": "2026-06-05",
+        "price": 124.22,
         "fair_value": 104.48,
-        "gap": 0.1605
+        "gap": 0.1889
       }
     ],
     "qualitative": {

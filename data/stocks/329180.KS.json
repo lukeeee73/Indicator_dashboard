@@ -4578,15 +4578,31 @@
     {
       "date": "2026-06-01",
       "value": 684000.0
+    },
+    {
+      "date": "2026-06-02",
+      "value": 673000.0
+    },
+    {
+      "date": "2026-06-04",
+      "value": 651000.0
+    },
+    {
+      "date": "2026-06-05",
+      "value": 664000.0
+    },
+    {
+      "date": "2026-06-08",
+      "value": 621000.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 71793473748992.0,
+      "market_cap": 65180918611968.0,
       "pe_ratio": null,
-      "forward_pe": 20.340557,
+      "forward_pe": 18.458769,
       "eps_ttm": null,
-      "dividend_yield": 1.11,
+      "dividend_yield": 1.17,
       "profit_margin": 0.096829996,
       "operating_margin": 0.15303001,
       "price_to_book": null,
@@ -4645,18 +4661,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-01",
-    "current_price": 684000.0,
+    "as_of": "2026-06-08",
+    "current_price": 621000.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 571665.76,
+        "fair_value": 571923.3,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 571665.76,
-    "valuation_gap": 0.1965,
+    "fair_value": 571923.3,
+    "valuation_gap": 0.0858,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -4870,10 +4886,16 @@
         "gap": 0.9545
       },
       {
-        "date": "2026-06-01",
-        "price": 684000.0,
+        "date": "2026-06-05",
+        "price": 664000.0,
         "fair_value": 356100.0,
-        "gap": 0.9208
+        "gap": 0.8646
+      },
+      {
+        "date": "2026-06-08",
+        "price": 621000.0,
+        "fair_value": 356100.0,
+        "gap": 0.7439
       }
     ],
     "qualitative": {

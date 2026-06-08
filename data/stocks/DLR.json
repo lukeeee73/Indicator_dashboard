@@ -4,18 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-06-01",
-      "value": 67.72
-    },
-    {
-      "date": "2016-06-02",
-      "value": 68.81
-    },
-    {
-      "date": "2016-06-03",
-      "value": 69.73
-    },
-    {
       "date": "2016-06-06",
       "value": 70.61
     },
@@ -9313,7 +9301,7 @@
     },
     {
       "date": "2025-09-03",
-      "value": 158.01
+      "value": 158.02
     },
     {
       "date": "2025-09-04",
@@ -10057,19 +10045,35 @@
     },
     {
       "date": "2026-06-01",
-      "value": 186.2
+      "value": 185.0
+    },
+    {
+      "date": "2026-06-02",
+      "value": 187.26
+    },
+    {
+      "date": "2026-06-03",
+      "value": 183.5
+    },
+    {
+      "date": "2026-06-04",
+      "value": 188.7
+    },
+    {
+      "date": "2026-06-05",
+      "value": 186.79
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 66603565056.0,
-      "pe_ratio": 49.521275,
-      "forward_pe": 65.01079,
-      "eps_ttm": 3.76,
-      "dividend_yield": 2.57,
+      "market_cap": 66814607360.0,
+      "pe_ratio": 49.546417,
+      "forward_pe": 65.21678,
+      "eps_ttm": 3.77,
+      "dividend_yield": 2.61,
       "profit_margin": 0.21823,
       "operating_margin": 0.17191,
-      "price_to_book": 2.8700464,
+      "price_to_book": 2.8791404,
       "return_on_equity": 0.05688
     },
     "quarterly": [
@@ -10125,12 +10129,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-01",
-    "current_price": 186.2,
+    "as_of": "2026-06-05",
+    "current_price": 186.79,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 67.68,
+        "fair_value": 67.86,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
@@ -10140,13 +10144,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 74.09,
+        "fair_value": 74.18,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 62.41,
-    "valuation_gap": 1.9836,
+    "fair_value": 62.52,
+    "valuation_gap": 1.9879,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10282,10 +10286,10 @@
         "gap": 1.7851
       },
       {
-        "date": "2026-06-01",
-        "price": 186.2,
+        "date": "2026-06-05",
+        "price": 186.79,
         "fair_value": 68.22,
-        "gap": 1.7294
+        "gap": 1.7381
       }
     ],
     "qualitative": {

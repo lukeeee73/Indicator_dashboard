@@ -4,22 +4,6 @@
   "group": "조선 (한국)",
   "series": [
     {
-      "date": "2016-06-01",
-      "value": 6878.0
-    },
-    {
-      "date": "2016-06-02",
-      "value": 6863.25
-    },
-    {
-      "date": "2016-06-03",
-      "value": 7328.17
-    },
-    {
-      "date": "2016-06-07",
-      "value": 7527.43
-    },
-    {
       "date": "2016-06-08",
       "value": 7416.73
     },
@@ -9790,13 +9774,29 @@
     {
       "date": "2026-06-01",
       "value": 27550.0
+    },
+    {
+      "date": "2026-06-02",
+      "value": 27700.0
+    },
+    {
+      "date": "2026-06-04",
+      "value": 28400.0
+    },
+    {
+      "date": "2026-06-05",
+      "value": 27750.0
+    },
+    {
+      "date": "2026-06-08",
+      "value": 26100.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 23531842699264.0,
+      "market_cap": 22293325545472.0,
       "pe_ratio": null,
-      "forward_pe": 15.721156,
+      "forward_pe": 14.935955,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.05019,
@@ -9857,18 +9857,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-01",
-    "current_price": 27550.0,
+    "as_of": "2026-06-08",
+    "current_price": 26100.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 29791.07,
+        "fair_value": 29706.84,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 29791.07,
-    "valuation_gap": -0.0752,
+    "fair_value": 29706.84,
+    "valuation_gap": -0.1214,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10082,10 +10082,16 @@
         "gap": 1.17
       },
       {
-        "date": "2026-06-01",
-        "price": 27550.0,
+        "date": "2026-06-05",
+        "price": 27750.0,
         "fair_value": 12880.0,
-        "gap": 1.139
+        "gap": 1.1545
+      },
+      {
+        "date": "2026-06-08",
+        "price": 26100.0,
+        "fair_value": 12880.0,
+        "gap": 1.0264
       }
     ],
     "qualitative": {
