@@ -1,0 +1,66 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-06-09",
+  "as_of_utc": "2026-06-09T21:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia secures Apple as major AI client, shares tick higher",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/nvidia-secures-apple-major-ai-client-2026-06-09/",
+      "published": "2026-06-09T10:00:00Z",
+      "summary": "애플이 NVIDIA의 주요 AI 고객으로 확정, 주가 소폭 상승",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Google signs GPU rental contract with NVIDIA for AI infrastructure",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/2026/06/09/google-nvidia-gpu-rental-contract-ai-infrastructure",
+      "published": "2026-06-09T08:30:00Z",
+      "summary": "구글, NVIDIA GPU 대규모 렌탈 계약 체결 — AI 인프라 핵심 역할 재확인",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "NVIDIA CEO Jensen Huang declines Senate Banking Committee AI testimony",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/09/nvidia-jensen-huang-declines-senate-hearing-ai.html",
+      "published": "2026-06-09T12:00:00Z",
+      "summary": "젠슨 황, 엘리자베스 워런 상원 금융위원회 AI 청문회 참석 거부",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "NVIDIA stock trades between $199-$211 amid modest tech recovery",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/NVDA/",
+      "published": "2026-06-09T16:00:00Z",
+      "summary": "주가 $199~$211 박스권 — 6/5 -6.2% 조정 후 기술주 반등에 동조 회복세",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "INTC",
+      "headline": "Intel +11% as Google orders 3M+ TPUs from Intel Foundry for 2028; NVIDIA evaluating Intel 18A node",
+      "implication_for_target": "INTC 파운드리 반등이 단기 노이즈지만, NVDA의 18A 평가는 TSMC 독점 의존도 완화 신호로 해석 가능"
+    },
+    {
+      "ticker": "AMD",
+      "headline": "AMD YTD +130%, stock near $510; Barclays sets $665 target on data center +57% growth",
+      "implication_for_target": "AMD 강세는 AI GPU 시장 파이 확대 시사 — NVDA 독주 구도 속 하이엔드 AI 시장 구조 위협은 아님"
+    }
+  ],
+  "scores": {
+    "earnings_outlook":     0.40,
+    "competitive_position": 0.40,
+    "regulatory_risk":     -0.10,
+    "macro_sensitivity":    0.20
+  },
+  "narrative_score": 0.27,
+  "summary_kr": "애플 AI 고객 확보 및 구글 GPU 렌탈 계약으로 AI 인프라 공급자 지위 강화. 젠슨 황의 상원 청문회 거부는 소규모 규제 리스크로 부각. 6/5 조정 이후 회복 국면 진입.",
+  "key_events": ["애플 AI 고객 확보", "구글 GPU 렌탈 대형 계약", "젠슨 황 상원 청문회 거부"],
+  "risks": ["규제 강화 가능성 (청문회 압박 지속)", "고밸류에이션 유지 부담 (시총 ~$5.5T)"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}
