@@ -1592,10 +1592,15 @@ function renderStocksTab(data) {
 //
 // 시장 노드는 소속 기업(players[].ticker 중 watchlist 종목)의
 // narrative_score 를 자동 집계해 "시장 분위기" 로 보여주고,
-// weekly_note(주간 흐름)·recent_news(시장 헤드라인)는 market-research 루틴이 채운다.
+// weekly_note(주간 흐름)는 market-research 루틴이 채운다.
+//
+// 시장 단위 뉴스는 맵과 분리된  data/markets/news/ai-semiconductor.json  에
+// 시장 id 별로 누적된다. 웹은 노드 배지(건수·최신일), 노드 클릭 상세,
+// 보드 하단의 통합 뉴스 피드(클릭 → 해당 시장 선택) 세 곳에 꽂아 보여준다.
 
 const MARKET_MAP_URL = "data/markets/ai-semiconductor.json";
-const MC_STATE = { map: null, activeNode: null, bottleneckOnly: false, loading: false };
+const MARKET_NEWS_URL = "data/markets/news/ai-semiconductor.json";
+const MC_STATE = { map: null, news: null, activeNode: null, bottleneckOnly: false, loading: false };
 
 // 강조 색 — 독점/병목만. demand_limited·비병목은 null(중립 톤).
 const MC_SEVERITY_COLOR = {
@@ -1617,9 +1622,14 @@ async function renderMarketCascade(stocks) {
     MC_STATE.loading = true;
     board.innerHTML = emptyMessage("시장 지도를 불러오는 중…");
     try {
-      const res = await fetch(MARKET_MAP_URL, { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      MC_STATE.map = await res.json();
+      const [mapRes, newsRes] = await Promise.all([
+        fetch(MARKET_MAP_URL, { cache: "no-cache" }),
+        fetch(MARKET_NEWS_URL, { cache: "no-cache" }).catch(() => null),
+      ]);
+      if (!mapRes.ok) throw new Error(`HTTP ${mapRes.status}`);
+      MC_STATE.map = await mapRes.json();
+      // 뉴스 스토어는 없어도 지도는 그린다 (recent_news 폴백)
+      MC_STATE.news = newsRes && newsRes.ok ? await newsRes.json() : null;
     } catch (err) {
       board.innerHTML = emptyMessage(`시장 지도를 불러오지 못했습니다 (${err.message}).`);
       MC_STATE.loading = false;
@@ -1630,6 +1640,7 @@ async function renderMarketCascade(stocks) {
   if (!MC_STATE.map) return;
   renderMarketChrome();
   renderMarketBoard(stocks);
+  renderMarketNewsFeed(stocks);
 }
 
 // 상단 크롬: 강조 범례 + '병목만 강조' 토글
@@ -1689,6 +1700,39 @@ function mcShareBar(players) {
   return `<span class="mc-sb">${html}</span>`;
 }
 
+// ── 시장 단위 뉴스 헬퍼 ──────────────────────────────────────────────────
+// 뉴스 스토어(분리 파일) 우선, 없으면 맵 안의 recent_news 폴백. 최신순 보장.
+function mcNewsFor(m) {
+  const store = MC_STATE.news && MC_STATE.news.markets;
+  const items = (store && store[m.id]) || m.recent_news || [];
+  return items.slice().sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+}
+
+// "2026-05-11" | "2026-05" → Date (월만 있으면 1일로). 실패 시 null.
+function mcParseDate(s) {
+  if (!s) return null;
+  const t = Date.parse(/^\d{4}-\d{2}$/.test(s) ? s + "-01" : s);
+  return Number.isNaN(t) ? null : new Date(t);
+}
+
+// 노드 배지용 짧은 날짜 라벨: 같은 해면 "M.D" / "M월", 다르면 "YY.M"
+function mcDateShort(s) {
+  const d = mcParseDate(s);
+  if (!d) return "";
+  const now = new Date();
+  if (d.getFullYear() === now.getFullYear()) {
+    return /^\d{4}-\d{2}$/.test(s) ? `${d.getMonth() + 1}월` : `${d.getMonth() + 1}.${d.getDate()}`;
+  }
+  return `${String(d.getFullYear()).slice(2)}.${d.getMonth() + 1}`;
+}
+
+const MC_FRESH_DAYS = 14; // 이 기간 내 뉴스가 있으면 노드 배지를 '신규' 톤으로
+
+function mcNewsFresh(items) {
+  const d = items.length ? mcParseDate(items[0].date) : null;
+  return !!d && (Date.now() - d.getTime()) / 86400000 <= MC_FRESH_DAYS;
+}
+
 // 보드(가로 6개 층 컬럼 + 노드) 렌더
 function renderMarketBoard(stocks) {
   const board = document.getElementById("vc-board");
@@ -1744,14 +1788,18 @@ function mcNodeHtml(m, stocks) {
     : "";
   const lead = (m.players || []).filter((p) => typeof p.share === "number").sort((a, b) => b.share - a.share)[0];
   const leadTxt = lead ? `<span class="mc-node-lead">${escapeHtml(lead.name)} ${lead.share}%</span>` : "";
+  const news = mcNewsFor(m);
+  const newsChip = news.length
+    ? `<span class="mc-node-news${mcNewsFresh(news) ? " mc-node-news--fresh" : ""}"
+         title="${escapeHtml(news[0].title || "")}">📰 ${news.length} · ${mcDateShort(news[0].date)}</span>`
+    : "";
   return `<button class="mc-node${hi ? " mc-node--hi mc-node--" + sev : ""}" data-id="${escapeHtml(m.id)}"
             style="--mc-accent:${accent}" title="${escapeHtml(m.definition || "")}">
       ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}</span>` : ""}
       <span class="mc-node-name">${escapeHtml(m.name_kr)}</span>
       <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
       ${mcShareBar(m.players)}
-      ${leadTxt}
-      ${scoreChip}
+      <span class="mc-node-foot">${leadTxt}${newsChip}${scoreChip}</span>
     </button>`;
 }
 
@@ -1828,6 +1876,54 @@ function clearMarketLinks() {
     el.classList.remove("mc-node--active", "mc-node--linked", "mc-node--dim"));
 }
 
+// 보드 하단 통합 뉴스 피드 — 전 시장의 뉴스를 최신순 한 줄씩.
+// 시장 칩을 클릭하면 지도에서 그 시장 노드가 선택·스크롤된다 (뉴스 ↔ 지도 연결).
+function renderMarketNewsFeed(stocks) {
+  const host = document.getElementById("mc-feed");
+  const map = MC_STATE.map;
+  if (!host || !map) return;
+  const all = [];
+  map.markets.forEach((m) => mcNewsFor(m).forEach((n) => all.push({ m, n })));
+  all.sort((a, b) => String(b.n.date || "").localeCompare(String(a.n.date || "")));
+  if (!all.length) { host.innerHTML = ""; return; }
+
+  const row = ({ m, n }) => {
+    const tone = n.impact === "+" ? "pos" : n.impact === "-" ? "neg" : "neutral";
+    const sev = m.bottleneck && m.bottleneck.severity;
+    const accent = (sev && MC_SEVERITY_COLOR[sev]) || "var(--border-mid)";
+    const title = n.url
+      ? `<a class="mc-feed-title" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title || "")}</a>`
+      : `<span class="mc-feed-title">${escapeHtml(n.title || "")}</span>`;
+    return `<li class="mc-feed-item" data-tone="${tone}">
+        <span class="mc-feed-date">${escapeHtml(mcDateShort(n.date))}</span>
+        <button class="mc-feed-mkt" data-market="${escapeHtml(m.id)}" style="--mc-accent:${accent}"
+          title="지도에서 이 시장 보기">${escapeHtml(m.name_kr)}</button>
+        <span class="mc-feed-body">${title}
+          ${n.summary ? `<span class="mc-feed-sum">${escapeHtml(n.summary)}</span>` : ""}
+        </span>
+      </li>`;
+  };
+
+  const FEED_MAX = 12;
+  host.innerHTML = `
+    <header class="mc-feed-head">
+      <h3>시장 뉴스 피드</h3>
+      <span class="mc-feed-hint">전 시장 최신순 — 시장 이름을 누르면 지도에서 그 시장이 선택됩니다</span>
+    </header>
+    <ul class="mc-feed-list">${all.slice(0, FEED_MAX).map(row).join("")}</ul>
+    ${all.length > FEED_MAX
+      ? `<details class="mc-feed-more"><summary>지난 뉴스 ${all.length - FEED_MAX}건 더 보기</summary>
+           <ul class="mc-feed-list">${all.slice(FEED_MAX).map(row).join("")}</ul></details>`
+      : ""}`;
+
+  host.querySelectorAll(".mc-feed-mkt[data-market]").forEach((b) =>
+    b.addEventListener("click", () => {
+      selectMarketNode(b.dataset.market, stocks);
+      const node = document.querySelector(`.mc-node[data-id="${CSS.escape(b.dataset.market)}"]`);
+      if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+    }));
+}
+
 // 상세 패널: 분위기 · 주간 흐름 · 병목 · 시장 뉴스 · 점유율/플레이어 · 관계 · 출처
 function renderMarketDetail(id, needs, pulledBy, stocks) {
   const host = document.getElementById("vc-detail");
@@ -1871,22 +1967,29 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ? `<div class="mc-weekly"><h5>이번 주 시장 흐름</h5><p>${escapeHtml(m.weekly_note)}</p></div>`
     : "";
 
-  const newsHtml = (m.recent_news || []).length
-    ? `<div class="mc-news"><h5>최근 시장 뉴스</h5><ul>${
-        m.recent_news.slice(0, 5).map((n) => {
-          const tone = n.impact === "+" ? "pos" : n.impact === "-" ? "neg" : "neutral";
-          const meta = [n.source, n.date].filter(Boolean).join(" · ");
-          const title = n.url
-            ? `<a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title || "")}</a>`
-            : escapeHtml(n.title || "");
-          return `<li class="mc-news-item" data-tone="${tone}">
-              <span class="mc-news-title">${title}</span>
-              ${n.summary ? `<span class="mc-news-sum">${escapeHtml(n.summary)}</span>` : ""}
-              ${meta ? `<span class="mc-news-src">${escapeHtml(meta)}</span>` : ""}
-            </li>`;
-        }).join("")
-      }</ul></div>`
-    : "";
+  const newsItems = mcNewsFor(m);
+  const newsLi = (n) => {
+    const tone = n.impact === "+" ? "pos" : n.impact === "-" ? "neg" : "neutral";
+    const meta = [n.source, n.date].filter(Boolean).join(" · ");
+    const title = n.url
+      ? `<a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title || "")}</a>`
+      : escapeHtml(n.title || "");
+    return `<li class="mc-news-item" data-tone="${tone}">
+        <span class="mc-news-title">${title}</span>
+        ${n.summary ? `<span class="mc-news-sum">${escapeHtml(n.summary)}</span>` : ""}
+        ${meta ? `<span class="mc-news-src">${escapeHtml(meta)}</span>` : ""}
+      </li>`;
+  };
+  const NEWS_VISIBLE = 6;
+  const newsHtml = newsItems.length
+    ? `<div class="mc-news"><h5>이 시장의 뉴스 <span class="mc-news-count">${newsItems.length}건</span></h5>
+        <ul>${newsItems.slice(0, NEWS_VISIBLE).map(newsLi).join("")}</ul>
+        ${newsItems.length > NEWS_VISIBLE
+          ? `<details class="mc-news-more"><summary>지난 뉴스 ${newsItems.length - NEWS_VISIBLE}건 더 보기</summary>
+               <ul>${newsItems.slice(NEWS_VISIBLE).map(newsLi).join("")}</ul></details>`
+          : ""}
+      </div>`
+    : `<div class="mc-news mc-news--empty"><h5>이 시장의 뉴스</h5><p>아직 수집된 시장 뉴스가 없습니다 — 주간 리서치 루틴이 채웁니다.</p></div>`;
 
   // 점유율 바 + 플레이어 목록(점유율·뉴스 점수)
   const barHtml = mcShareBar(m.players);

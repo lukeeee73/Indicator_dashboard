@@ -1265,6 +1265,11 @@ section h2 {
 
 .mc-news { margin: 0 0 0.7rem; }
 .mc-news h5 { margin: 0.2rem 0 0.35rem; font-size: 0.76rem; color: var(--text-dim); }
+.mc-news-count { font-weight: 400; color: var(--text-dim); }
+.mc-news--empty p { margin: 0; font-size: 0.74rem; color: var(--text-dim); font-style: italic; }
+.mc-news-more { margin-top: 0.45rem; }
+.mc-news-more summary { cursor: pointer; font-size: 0.72rem; color: var(--text-dim); }
+.mc-news-more ul { margin-top: 0.4rem; }
 .mc-news ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
 .mc-news-item { border-left: 2px solid var(--border-mid); padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.1rem; }
 .mc-news-item[data-tone="pos"] { border-left-color: var(--up); }
@@ -1298,8 +1303,40 @@ section h2 {
 .mc-sources ul { margin: 0.3rem 0 0; padding-left: 1.1rem; }
 .mc-sources a { color: var(--text-dim); }
 
+/* 노드 하단 행: 1위 기업 · 뉴스 배지 · 뉴스 시그널 */
+.mc-node-foot { display: flex; flex-wrap: wrap; gap: 0.25rem 0.45rem; align-items: center; }
+.mc-node-news { font-size: 0.6rem; color: var(--text-dim); white-space: nowrap; }
+.mc-node-news--fresh { color: var(--text); font-weight: 600; }
+
+/* ── 시장 뉴스 피드 (보드 하단, 전 시장 최신순) ───────────────────────── */
+.mc-feed { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.7rem; }
+.mc-feed-head { display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; align-items: baseline; margin-bottom: 0.55rem; }
+.mc-feed-head h3 { margin: 0; font-size: 0.92rem; }
+.mc-feed-hint { font-size: 0.68rem; color: var(--text-dim); }
+.mc-feed-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.mc-feed-item { display: flex; gap: 0.55rem; align-items: baseline; border-left: 2px solid var(--border-mid); padding-left: 0.55rem; }
+.mc-feed-item[data-tone="pos"] { border-left-color: var(--up); }
+.mc-feed-item[data-tone="neg"] { border-left-color: var(--down); }
+.mc-feed-date { flex: 0 0 2.6rem; font-size: 0.68rem; color: var(--text-dim); white-space: nowrap; }
+.mc-feed-mkt {
+  flex: 0 0 auto; max-width: 11rem; cursor: pointer;
+  background: var(--bg-elev); color: var(--text); font-size: 0.66rem; font-weight: 600;
+  border: 1px solid var(--border-mid); border-left: 3px solid var(--mc-accent, var(--border-mid));
+  border-radius: 4px; padding: 0.08rem 0.4rem; text-align: left; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.mc-feed-mkt:hover { border-color: var(--mc-accent, var(--text-dim)); color: var(--text); }
+.mc-feed-body { display: flex; flex-direction: column; gap: 0.06rem; min-width: 0; }
+.mc-feed-title { font-size: 0.78rem; line-height: 1.35; color: var(--text); }
+a.mc-feed-title:hover { text-decoration: underline; }
+.mc-feed-sum { font-size: 0.7rem; color: var(--text-dim); line-height: 1.3; }
+.mc-feed-more { margin-top: 0.5rem; }
+.mc-feed-more summary { cursor: pointer; font-size: 0.72rem; color: var(--text-dim); }
+.mc-feed-more ul { margin-top: 0.45rem; }
+
 /* 좁은 화면: 컬럼 가로 스크롤 + 상세 패널 아래로 */
 @media (max-width: 720px) {
   .mc-cols { overflow-x: auto; }
   .mc-layer { min-width: 150px; }
+  .mc-feed-item { flex-wrap: wrap; }
 }

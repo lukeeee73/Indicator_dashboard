@@ -1,7 +1,7 @@
 {
   "id": "ai-semiconductor",
   "title": "AI · 반도체 밸류체인",
-  "subtitle": "수요 → 공급 캐스케이드 · 병목 중심 시장 지도",
+  "subtitle": "수요 → 공급 캐스케이드 · 병목 중심 시장 지도 (AI·반도체·피지컬 AI·국방·전력 인프라)",
   "as_of": "2026-06",
   "intro": "기업이 아니라 '시장(수요)' 단위로 본 AI·반도체 산업. 위에서 아래로 내려갈수록 최종 수요(AI 앱·엣지)에서 자본·컴퓨팅을 거쳐 핵심 부품·제조 기반·장비/전력으로 이어진다. 수요가 공급을 끌어당기며, 빨갛게 표시된 노드가 지금 그 흐름을 막고 있는 병목이다.",
   "data_note": "시장 규모·성장률은 2024~2026 업계 트래커(SemiAnalysis, Epoch AI, Yole, TrendForce, Counterpoint, Dell'Oro, LightCounting, IEA, SEMI) 및 기업 공시 기준의 추정치다. 출처가 갈리는 값은 confidence 로 표시했다. size_usd_b 는 노드 크기 시각화를 위한 대표값이며 정밀치가 아니다.",
@@ -36,12 +36,12 @@
     {
       "id": "demand",
       "label": "① 최종 수요",
-      "desc": "AI를 실제로 쓰고 돈을 내는 곳. 모든 수요의 근원."
+      "desc": "AI를 실제로 쓰고 돈을 내는 곳 — 모델·엣지·로봇·국방. 모든 수요의 근원."
     },
     {
       "id": "capital",
       "label": "② 자본 엔진",
-      "desc": "그 수요를 사들이는 돈. 하이퍼스케일러·프런티어 랩의 설비투자."
+      "desc": "그 수요를 사들이는 돈 — 하이퍼스케일러 CAPEX와 네오클라우드의 부채 조달."
     },
     {
       "id": "compute",
@@ -51,7 +51,7 @@
     {
       "id": "components",
       "label": "④ 핵심 부품 (병목)",
-      "desc": "가속기를 만들기 위해 반드시 필요한 부품. 현재 병목이 집중된 층."
+      "desc": "가속기·로봇을 만들기 위해 반드시 필요한 부품. 현재 병목이 집중된 층."
     },
     {
       "id": "manufacturing",
@@ -61,7 +61,7 @@
     {
       "id": "foundation",
       "label": "⑥ 장비·소재·전력",
-      "desc": "제조를 가능케 하는 최심층 인프라 — picks & shovels."
+      "desc": "제조와 가동을 가능케 하는 최심층 인프라 — 장비·소재·전력·데이터센터."
     }
   ],
   "markets": [
@@ -274,46 +274,121 @@
     {
       "id": "robotics",
       "layer": "demand",
-      "name_kr": "휴머노이드·피지컬 AI",
+      "name_kr": "휴머노이드 로봇 · 피지컬 AI",
       "name_en": "Humanoid Robotics / Physical AI",
-      "definition": "실세계 임베디드 AI를 엣지에서 구동하는 범용/휴머노이드 로봇.",
-      "size_usd_b": 6,
-      "size_label": "⚠️투기적 — $38B(’35, Goldman)~$5T(’50, MS)",
-      "growth": "추정치 자릿수 단위로 난립",
-      "size_confidence": "very_low",
-      "demand_driver": "제조·물류 노동력 부족 + VLA/파운데이션 모델 발전. 초기 수요 ~90%가 산업/상업용.",
+      "definition": "AI 파운데이션 모델(VLA)을 탑재해 실세계 범용 작업을 수행하는 휴머노이드·피지컬 AI 로봇.",
+      "size_usd_b": 5,
+      "size_label": "’26 ~$3–5B(출하 5만대+) → ’35 $30–38B · ’50 생태계 $5T(MS)",
+      "growth": "출하 +480%(’25) → +700%(’26 전망, TrendForce)",
+      "size_confidence": "low",
+      "demand_driver": "노동력 부족·인건비 상승 속 제조/물류 자동화 + 미·중 '피지컬 AI' 패권 경쟁. NVIDIA Jetson Thor·GR00T 풀스택 개방과 중국 정부 보조금이 양산을 가속.",
       "bottleneck": {
-        "severity": "emerging",
-        "limit": "공급(기술)·수요 모두 미검증. 정교한 조작·배터리/액추에이터 밀도·실세계 신뢰성·일반화 가능한 '로봇 파운데이션 모델' 부재. 가장 미성숙·과열 위험 구간."
+        "severity": "demand_limited",
+        "limit": "하드웨어 양산능력(중국이 대수 기준 ~90%)은 빠르게 확충되나, 로봇 파운데이션 모델의 일반화·신뢰성 부족과 손 재주(덱스터리티) 한계로 실사용 ROI 미검증. 중국 구매자 만족도 23% — '누가 사느냐'가 당면 제약. 테슬라도 핸드 설계·희토류 수급으로 양산 지연."
       },
       "players": [
         {
+          "name": "Tesla (Optimus)",
+          "ticker": "TSLA",
+          "role": "Optimus V3 ’26 양산 목표 — 핸드 설계·희토류 이슈로 지연",
+          "in_watchlist": true
+        },
+        {
           "name": "NVIDIA",
           "ticker": "NVDA",
-          "role": "엣지 연산 Jetson Thor + Isaac/GR00T (무기상)",
+          "role": "Jetson Thor + Isaac GR00T — 로보틱스의 '안드로이드' 전략 (무기상)",
           "in_watchlist": true
         },
         {
-          "name": "Tesla",
-          "ticker": "TSLA",
-          "role": "Optimus ($20–30K 목표)",
-          "in_watchlist": true
+          "name": "Figure AI",
+          "ticker": null,
+          "role": "Figure 03 + Helix VLA, BotQ 자체 양산 (비상장, ~$39B)"
         },
         {
-          "name": "Figure AI · Apptronik",
+          "name": "Unitree",
           "ticker": null,
-          "role": "휴머노이드 스타트업 (비상장)"
+          "role": "저가 휴머노이드(G1 $16K) 출하 1위권, 상하이 IPO 추진"
         },
         {
-          "name": "Unitree · UBTech",
+          "name": "UBTech",
+          "ticker": "9880.HK",
+          "role": "Walker S2 산업용 양산, ’26 5천대 목표·에어버스 공급"
+        },
+        {
+          "name": "XPeng (IRON)",
+          "ticker": "XPEV",
+          "role": "’26말 IRON 양산 목표, EV 공급망 활용"
+        },
+        {
+          "name": "Boston Dynamics · Agility · 1X",
           "ticker": null,
-          "role": "중국 저가 양산 (비상장/해외)"
+          "role": "전동 Atlas·물류 Digit·가정용 NEO (비상장)"
         }
       ],
       "sources": [
-        "https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035"
+        "https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035",
+        "https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050",
+        "https://www.trendforce.com/presscenter/news/20251209-12825.html",
+        "https://www.idtechex.com/en/research-report/humanoid-robots/1149"
       ],
-      "weekly_note": "휴머노이드 파일럿 확산 단계. 파운데이션 모델·액추에이터 미해결로 추정치가 자릿수 단위로 난립."
+      "weekly_note": "’26 출하 5만대(+700%) 전망으로 상용화 원년 진입. 중국이 대수 기준 양산을 선도하나 구매자 만족 23% — 실수요 검증이 다음 관문."
+    },
+    {
+      "id": "defense-ai",
+      "layer": "demand",
+      "name_kr": "국방 AI · 자율무기체계",
+      "name_en": "Defense AI & Autonomy",
+      "definition": "AI 기반 지휘통제(C2)·표적인식·드론 군집 등 군사용 AI 소프트웨어와 자율 무인체계.",
+      "size_usd_b": 15,
+      "size_label": "’26 ~$12–22B (Precedence $12.2B ~ Fortune BI $22.4B)",
+      "growth": "CAGR 13–33% → ’30년대 중반 $35–100B",
+      "size_confidence": "low",
+      "demand_driver": "우크라이나전이 입증한 드론·AI 전력의 비용 대비 효과 + 미 DoD 자율전 조직 DAWG $54.6B 요구 + NATO GDP 5%·유럽 ReArm €800B 재무장. Maven 사용자 2만+명.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "Replicator가 '수천 대' 목표 대비 '수백 대'만 실전 배치 — 저가 대량생산 능력 부족. 이기종 드론 군집을 통합 지휘하는 오케스트레이션 SW 공백이 커서 펜타곤이 $100M 'Orchestrator Prize'까지 내건 상태."
+      },
+      "players": [
+        {
+          "name": "Palantir",
+          "ticker": "PLTR",
+          "role": "Maven Smart System — DoD AI C2 사실상 표준 (한도 $1.3B)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Anduril",
+          "ticker": null,
+          "role": "Lattice OS·자율 무기체계 (비상장, ’26.5 $61B 밸류)"
+        },
+        {
+          "name": "AeroVironment",
+          "ticker": "AVAV",
+          "role": "Switchblade 자폭드론 — 美육군 $990M IDIQ"
+        },
+        {
+          "name": "Lockheed · RTX · Northrop",
+          "ticker": "LMT",
+          "role": "전통 프라임 — AI 통합 미사일·C2·CCA 무인기",
+          "in_watchlist": true
+        },
+        {
+          "name": "한화에어로스페이스",
+          "ticker": "012450.KS",
+          "role": "K9 수출 + ’28까지 UGV 전 제품군, 유무인복합 확장"
+        },
+        {
+          "name": "LIG넥스원",
+          "ticker": "079550.KS",
+          "role": "천궁 유도무기 수출 + AI 반도체·무인체계 투자"
+        }
+      ],
+      "sources": [
+        "https://www.precedenceresearch.com/artificial-intelligence-in-military-market",
+        "https://www.defenseone.com/ideas/2026/05/pentagons-54-billion-bet-autonomous-warfare/413735/",
+        "https://www.congress.gov/crs-product/IF12611",
+        "https://www.sipri.org/media/press-release/2026/global-military-spending-rise-continues-european-and-asian-expenditures-surge"
+      ],
+      "weekly_note": "세계 군비 $2.89조 사상 최대 + 펜타곤 DAWG $54.6B 요구로 정책 수요 급팽창. 병목은 칩이 아니라 저가 양산·군집 오케스트레이션 SW."
     },
     {
       "id": "sovereign-ai",
@@ -415,6 +490,62 @@
         "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html"
       ],
       "weekly_note": "’26 빅4 capex $700B+로 재확대되나 현금 부담·Stargate 축소가 지속성 의문을 키움."
+    },
+    {
+      "id": "neocloud",
+      "layer": "capital",
+      "name_kr": "네오클라우드 · GPU 클라우드",
+      "name_en": "Neocloud / GPU Cloud",
+      "definition": "하이퍼스케일러 외부에서 AI 학습·추론용 GPU 컴퓨트를 전문 임대하는 신흥 클라우드 계층.",
+      "size_usd_b": 25,
+      "size_label": "’26 매출 ~$20–35B → ’30 ~$180B · 잔고는 수십 배(CRWV $99.4B)",
+      "growth": "+200% YoY(’25) · ~69% CAGR(→’30)",
+      "size_confidence": "low",
+      "demand_driver": "프런티어 모델사의 만성적 컴퓨트 부족 + 하이퍼스케일러의 외부 용량 오프테이크(MS→IREN $9.7B, Meta→Nebius $27B)가 초대형 선계약으로 성장 견인.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "경쟁축이 GPU 확보전에서 '전력 전쟁'(GW급 부지·인도 속도)으로 이동. GPU 담보 6–9% 고금리 부채로 증설을 조달하고 NVIDIA 투자가 칩 구매로 환류하는 순환금융 구조 — GPU 잔존가치 3년 내 40–60% 하락 vs 장기부채 만기 불일치가 신용경색 시 시스템 리스크."
+      },
+      "players": [
+        {
+          "name": "CoreWeave",
+          "ticker": "CRWV",
+          "role": "최대 독립 네오클라우드 — Q1’26 매출 $2.08B(+112%), 잔고 $99.4B"
+        },
+        {
+          "name": "Nebius",
+          "ticker": "NBIS",
+          "role": "2위권 급성장 — 잔고 ~$50B(Meta·MS), 계약전력 3GW+"
+        },
+        {
+          "name": "Oracle OCI",
+          "ticker": "ORCL",
+          "role": "준네오클라우드 — OpenAI Stargate $300B, capex/매출 76%",
+          "in_watchlist": true
+        },
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "role": "공급자 겸 앵커 투자자 — $110B+ 순환금융의 중심",
+          "in_watchlist": true
+        },
+        {
+          "name": "Crusoe · Lambda · Together",
+          "ticker": null,
+          "role": "비상장 — 에너지 연계·MS 계약·추론 특화"
+        },
+        {
+          "name": "IREN · Cipher · Core Scientific",
+          "ticker": "IREN",
+          "role": "채굴사→AI 전환 — 전력자산 재평가 (MS $9.7B 등)"
+        }
+      ],
+      "sources": [
+        "https://www.srgresearch.com/articles/neoclouds-currently-growing-by-over-200-per-year-will-reach-180-billion-in-revenues-by-2030",
+        "https://www.cnbc.com/2026/05/07/coreweave-crwv-q1-earnings-report-2026.html",
+        "https://www.datacenterknowledge.com/cloud/earnings-roundup-neoclouds-shift-from-gpu-race-to-power-wars"
+      ],
+      "weekly_note": "실적 시즌 화두는 'GPU 확보전 → 전력 전쟁' 이동. 증설 자금이 VC에서 채권시장(전환사채·GPU 담보부채)으로 — 순환금융 리스크 주시."
     },
     {
       "id": "ai-gpu",
@@ -610,24 +741,6 @@
         "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
         "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
       ],
-      "recent_news": [
-        {
-          "date": "2026-01",
-          "title": "삼성 HBM4, NVIDIA Rubin 퀄 통과 — 1c DRAM 2월 양산",
-          "source": "SemiEngineering",
-          "impact": "+",
-          "summary": "삼성이 HBM4 Rubin 인증을 통과하며 SK하이닉스·마이크론과 3강 경쟁 재점화.",
-          "url": "https://semiengineering.com/hbm4-sticks-with-microbumps-postponing-hybrid-bonding/"
-        },
-        {
-          "date": "2025-12",
-          "title": "HBM 공급곡선 가팔라져도 수요 못 따라가 — 2026까지 매진",
-          "source": "The Next Platform",
-          "impact": "-",
-          "summary": "전 3사 2026까지 HBM 매진, 12/16단 적층 수율이 증설 속도를 제약.",
-          "url": "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
-        }
-      ],
       "weekly_note": "전 3사 ’26까지 매진, 삼성 HBM4 Rubin 인증으로 3강 경쟁 재점화. 적층 수율이 증설을 제약."
     },
     {
@@ -675,16 +788,6 @@
       ],
       "sources": [
         "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
-      ],
-      "recent_news": [
-        {
-          "date": "2025-12",
-          "title": "TSMC CoWoS-L/S 2026까지 완판 — OSAT가 CoWoP로 보완",
-          "source": "TrendForce",
-          "impact": "neutral",
-          "summary": "~4배 증설로 급성 CoWoS 병목은 완화 중, 제약이 HBM·전력으로 이동.",
-          "url": "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
-        }
       ],
       "weekly_note": "CoWoS 4배 증설로 ’23–24 급성 병목은 완화, 병목이 HBM·전력으로 이동."
     },
@@ -841,6 +944,61 @@
         "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
       ],
       "weekly_note": "변압기 리드타임 4–5년으로 미국 DC 50%+ 지연. 800VDC·액침냉각 전환 가속."
+    },
+    {
+      "id": "robot-components",
+      "layer": "components",
+      "name_kr": "로봇 핵심부품 (감속기·액추에이터·센서)",
+      "name_en": "Robot Components Supply Chain",
+      "definition": "피지컬 AI의 곡괭이·삽 — 하모닉 감속기·관절 액추에이터·희토류 모터/자석·힘토크 센서·라이다·덱스터러스 핸드.",
+      "size_usd_b": 5,
+      "size_label": "감속기 ~$2.1B(’26) + 액추에이터·센서·핸드 — 관절 액추에이터가 BOM의 30–50%",
+      "growth": "감속기 ~10% CAGR · 로봇용 라이다 출하 +426~1,459% YoY",
+      "size_confidence": "low",
+      "demand_driver": "휴머노이드 1대당 감속기·액추에이터 30–40개, NdPr 자석 ~0.9kg 소요. ’26 출하 5만대 → ’35 260만대 양산 곡선이 부품 수요를 기하급수로 견인.",
+      "bottleneck": {
+        "severity": "structural",
+        "limit": "희토류 정제 88%·소결 네오디뮴 자석 94%를 중국이 장악(수출통제 카드, ’26.11까지 시행 유예). 정밀 고토크 액추에이터 양산 가능 공급사는 전세계 10곳 미만, 덱스터러스 핸드용 센서는 규모 양산 전 — 대체 공급원 없는 구조적 병목."
+      },
+      "players": [
+        {
+          "name": "Harmonic Drive Systems",
+          "ticker": "6324.T",
+          "role": "스트레인 웨이브 감속기 글로벌 1위 — 휴머노이드 관절용 신제품"
+        },
+        {
+          "name": "Nabtesco",
+          "ticker": "6268.T",
+          "role": "RV 감속기 세계 1위 — 대관절·고하중용"
+        },
+        {
+          "name": "Leaderdrive",
+          "ticker": "688017.SS",
+          "role": "중국 하모닉 감속기 1위 (중국 30–40%, JPM)",
+          "share": 35
+        },
+        {
+          "name": "Sanhua · Tuopu",
+          "ticker": "002050.SZ",
+          "role": "테슬라 Optimus 액추에이터 모듈 체인"
+        },
+        {
+          "name": "Hesai · RoboSense",
+          "ticker": "HSAI",
+          "role": "라이다 — 로봇향 출하 +426~1,459% 폭증"
+        },
+        {
+          "name": "MP Materials",
+          "ticker": "MP",
+          "role": "비중국 희토류 채굴·자석 수직계열화 (美 국방부 지원)"
+        }
+      ],
+      "sources": [
+        "https://www.intelmarketresearch.com/robot-harmonic-drive-reduction-gear-market-43594",
+        "https://interactanalysis.com/insight/joint-actuators-the-fundamental-component-for-humanoid-robots-power-and-dexterity/",
+        "https://www.csis.org/analysis/chinas-new-rare-earth-and-magnet-restrictions-threaten-us-defense-supply-chains"
+      ],
+      "weekly_note": "中 희토류 수출통제 1년 유예로 단기 숨통이나 자석 94% 中 장악 구조는 그대로. 로봇용 라이다가 차량용을 첫 추월 — 부품 수요 변곡점."
     },
     {
       "id": "foundry",
@@ -1142,24 +1300,6 @@
       "sources": [
         "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
       ],
-      "recent_news": [
-        {
-          "date": "2026-04",
-          "title": "IEA: AI 데이터센터 전력수요 2030년까지 3배",
-          "source": "IEA",
-          "impact": "-",
-          "summary": "DC 전력 485→950 TWh 전망. 전력망·공급망 제약이 더 공격적 시나리오를 가로막음.",
-          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
-        },
-        {
-          "date": "2026-05",
-          "title": "변압기 리드타임 4–5년으로 — 미국 신규 DC 50%+ 지연",
-          "source": "pv-magazine",
-          "impact": "-",
-          "summary": "전기장비는 원가 <10%인데 병목의 ~100%. GOES 강·동박 공급이 관건.",
-          "url": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
-        }
-      ],
       "weekly_note": "DC 전력 ’30까지 2~3배, 전력망 접속 대기·가스터빈 리드타임이 최대 단기 병목."
     },
     {
@@ -1203,11 +1343,56 @@
         }
       ],
       "weekly_note": "ARM ISA·Synopsys/Cadence EDA 듀오폴리가 설계의 관문. AI 설계 자동화로 EDA 수요 확대.",
-      "recent_news": [],
       "sources": [
         "https://www.synopsys.com/",
         "https://www.arm.com/"
       ]
+    },
+    {
+      "id": "dc-infra",
+      "layer": "foundation",
+      "name_kr": "AI 데이터센터 인프라 · 코로케이션",
+      "name_en": "AI Data Center Infrastructure / Colocation",
+      "definition": "AI 서버를 수용하는 데이터센터 부동산·코로케이션·건설 — 부지·쉘·전력인입·냉각 포함.",
+      "size_usd_b": 51,
+      "size_label": "美 DC 건설 $51B SAAR(’26.4, 첫 $50B 돌파) · 공실률 1.0–1.4% 사상최저",
+      "growth": "건설지출 +28% YoY · 임대료 +9%/년",
+      "size_confidence": "high",
+      "demand_driver": "하이퍼스케일러 ’26 capex $700B±가 글로벌 35GW 신규 파이프라인을 발주(~60% 리스). 500MW+급 AI 캠퍼스(Stargate ~7GW 등)로 단위 규모가 산업단지급으로 확대.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "북미 공실률 1.0–1.4% 사상최저, 신규 공급 프리리스 74–92%로 짓기 전에 소진. ’26 예정 12GW 중 ~1/3만 실제 착공 — 변압기 리드타임 4년, 계통접속 대기 4–7년. 칩이 아닌 '전력 붙은 쉘'이 현재 AI 빌드아웃의 가장 타이트한 물리적 제약."
+      },
+      "players": [
+        {
+          "name": "Equinix",
+          "ticker": "EQIX",
+          "role": "글로벌 1위 리테일 코로케이션·상호접속 (260+ IBX)",
+          "in_watchlist": true
+        },
+        {
+          "name": "Digital Realty",
+          "ticker": "DLR",
+          "role": "글로벌 2위 — 하이퍼스케일+코로케이션 혼합 REIT",
+          "in_watchlist": true
+        },
+        {
+          "name": "Vantage",
+          "ticker": null,
+          "role": "$25B 텍사스 Frontier 1.4GW (Stargate 연계) 건설 중 (비상장)"
+        },
+        {
+          "name": "QTS · CyrusOne · Switch",
+          "ticker": null,
+          "role": "사모(BX·KKR·DigitalBridge) 하이퍼스케일 개발 (비상장)"
+        }
+      ],
+      "sources": [
+        "https://www.cbre.com/insights/books/north-america-data-center-trends-h2-2025",
+        "https://www.jll.com/en-us/newsroom/jll-north-america-data-center-report-year-end-2025",
+        "https://www.bloomberg.com/news/articles/2026-06-01/us-construction-spending-on-data-centers-eclipses-50-billion"
+      ],
+      "weekly_note": "美 DC 건설지출 첫 $50B 돌파에도 공실률 1% 사상최저 — 수요가 공급을 압도. 변압기·계통접속이 착공의 절반을 막는 중."
     }
   ],
   "links": [
@@ -1415,6 +1600,81 @@
       "from": "foundry",
       "to": "semi-ip",
       "label": "셀 라이브러리"
+    },
+    {
+      "from": "robotics",
+      "to": "robot-components",
+      "label": "감속기·액추에이터·센서 수요"
+    },
+    {
+      "from": "robotics",
+      "to": "ai-models",
+      "label": "로봇 파운데이션 모델(VLA)"
+    },
+    {
+      "from": "robot-components",
+      "to": "materials",
+      "label": "희토류 NdPr 자석 (中 통제 리스크)"
+    },
+    {
+      "from": "defense-ai",
+      "to": "ai-models",
+      "label": "표적인식·C2용 AI 모델"
+    },
+    {
+      "from": "defense-ai",
+      "to": "ai-gpu",
+      "label": "전장 데이터 학습·추론"
+    },
+    {
+      "from": "defense-ai",
+      "to": "robotics",
+      "label": "자율 무인 플랫폼(UAV·UGV)"
+    },
+    {
+      "from": "defense-ai",
+      "to": "edge-auto",
+      "label": "드론·무인체계 엣지 추론칩"
+    },
+    {
+      "from": "ai-models",
+      "to": "neocloud",
+      "label": "모델사 컴퓨트 장기임차"
+    },
+    {
+      "from": "hyperscaler-capex",
+      "to": "neocloud",
+      "label": "외부용량 오프테이크 (MS·Meta)"
+    },
+    {
+      "from": "neocloud",
+      "to": "ai-gpu",
+      "label": "GPU 대량 구매 (부채 조달)"
+    },
+    {
+      "from": "neocloud",
+      "to": "power-grid",
+      "label": "GW급 전력 확보 경쟁"
+    },
+    {
+      "from": "neocloud",
+      "to": "dc-infra",
+      "label": "코로케이션 임차·채굴장 전환"
+    },
+    {
+      "from": "hyperscaler-capex",
+      "to": "dc-infra",
+      "label": "리스·자체건설 발주"
+    },
+    {
+      "from": "dc-infra",
+      "to": "power-grid",
+      "label": "계통접속 (4–7년 대기)"
+    },
+    {
+      "from": "dc-infra",
+      "to": "power-cooling",
+      "label": "변압기·스위치기어·냉각 발주"
     }
   ]
 }

@@ -1,8 +1,14 @@
 # Market Research Routine — AI · 반도체
 
-이 루틴은 **AI·반도체 산업을 '시장(수요)' 단위로** 추적해
-`data/markets/ai-semiconductor.json` 을 최신으로 유지한다.
-웹 대시보드 **주식 탭 → '시장 지도'** 가 이 파일을 그대로 읽어 그린다.
+이 루틴은 **AI·반도체 산업을 '시장(수요)' 단위로** 추적해 두 파일을 최신으로 유지한다:
+
+| 파일 | 내용 |
+|---|---|
+| `data/markets/ai-semiconductor.json` | 시장 구조 — 노드·층·링크·병목·플레이어·weekly_note |
+| `data/markets/news/ai-semiconductor.json` | **시장 단위 뉴스 스토어** — 시장 id 별 뉴스 배열(최신순, 시장당 최대 20개 보관) |
+
+웹 대시보드 **주식 탭 → '시장 지도'** 가 두 파일을 읽어, 뉴스를 세 곳에 꽂아 보여준다:
+노드 배지(건수·최신일) · 노드 클릭 상세(최신 6개+더보기) · 보드 하단 통합 뉴스 피드(클릭 → 해당 시장 선택).
 
 > 먼저 `./README.md`(데이터 모델·두 파이프라인 관계)를 읽어라.
 > 티커별 일일 뉴스는 `../daily-market-analysis.md` 가 따로 처리한다 — **건드리지 않는다.**
@@ -13,14 +19,14 @@
 
 | 층 | id | 무엇 |
 |---|---|---|
-| ① 최종 수요 | `demand` | AI 모델·스마트폰·PC·차량·로보틱스·소버린 AI |
-| ② 자본 엔진 | `capital` | 하이퍼스케일러·프런티어 CAPEX |
+| ① 최종 수요 | `demand` | AI 모델·스마트폰·PC·차량·휴머노이드/피지컬 AI·국방 AI·소버린 AI |
+| ② 자본 엔진 | `capital` | 하이퍼스케일러 CAPEX·네오클라우드(GPU 클라우드) |
 | ③ AI 컴퓨팅 | `compute` | AI 가속기(GPU)·맞춤형 ASIC·네트워킹 |
-| ④ 핵심 부품(병목) | `components` | HBM·첨단 패키징·범용 DRAM/NAND·광·전력공급/냉각 |
+| ④ 핵심 부품(병목) | `components` | HBM·첨단 패키징·범용 DRAM/NAND·광·전력공급/냉각·로봇 핵심부품 |
 | ⑤ 제조 기반 | `manufacturing` | 첨단 파운드리·ABF 기판 |
-| ⑥ 장비·소재·전력 | `foundation` | EUV·식각/증착·계측·소재·전력 생산/전력망 |
+| ⑥ 장비·소재·전력 | `foundation` | EUV·식각/증착·계측·소재·전력 생산/전력망·DC 인프라/코로케이션 |
 
-**가장 중요한 산출물은 `bottleneck` 상태와 `recent_news` 다.** 규모 수치는
+**가장 중요한 산출물은 `bottleneck` 상태와 시장 뉴스 스토어다.** 규모 수치는
 분기마다 갱신하면 충분하지만, **병목은 빠르게 변한다**(예: 2024 CoWoS 급성 →
 2026 완화, HBM·전력으로 이동). 병목의 이동을 잡아내는 게 이 루틴의 핵심 가치다.
 
@@ -28,7 +34,7 @@
 
 ## 1. 실행 카데런스
 
-- **권장: 주 1회** (예: 매주 토요일) 전체 22개 시장 점검.
+- **권장: 주 1회** (예: 매주 토요일) 전체 27개 시장 점검.
 - 또는 사용자가 "AI·반도체 시장 지도 업데이트" 라고 지시할 때 on-demand.
 - 큰 이벤트(엔비디아 실적, 메모리 가격 급변, 신규 수출통제) 직후엔 즉시.
 
@@ -39,8 +45,9 @@
 ## 2. 작업 순서
 
 ### 2.1 현재 맵 로드
-`data/markets/ai-semiconductor.json` 을 읽어 각 시장의 현재
-`size_label / growth / bottleneck / players / recent_news / as_of` 를 파악한다.
+`data/markets/ai-semiconductor.json` 과 `data/markets/news/ai-semiconductor.json` 을
+읽어 각 시장의 현재 `size_label / growth / bottleneck / players / weekly_note / as_of`
+와 누적 뉴스를 파악한다.
 
 ### 2.2 시장별 리서치 (web)
 각 시장(또는 이번에 점검할 부분집합)에 대해 **최근 1~4주** 변화를 조사한다.
@@ -56,7 +63,7 @@
 - **이번 주 시장 흐름** (`weekly_note`) — 그 주의 분위기·변화를 1~2문장으로 ← 매주
 - 시장 규모/성장 (`size_label`, `growth`, 필요시 `size_usd_b`, `size_confidence`)
 - 플레이어 점유율 (`players[].share`, %) · 신제품·수율·할당 변화 (`players[].role`)
-- 시장 단위 헤드라인 (`recent_news`)
+- 시장 단위 헤드라인 (뉴스 스토어 `markets.<id>[]`)
 
 ### 2.3 JSON 갱신
 **검증된, 출처 있는 변화만** 반영한다.
@@ -69,15 +76,20 @@
   되게(나머지는 웹이 '기타'로 표시). 점유율이 무의미한 시장은 생략.
 - 주간 흐름: `weekly_note` 는 그 주의 수급·가격·병목·정책 변화를 종합한 1~2문장.
   "분위기"가 드러나게 — 웹 상세의 '이번 주 시장 흐름'에 그대로 노출된다.
-- `recent_news[]`: 각 시장 **최대 5개**, 최신순. 스키마:
+- 시장 뉴스: **`data/markets/news/ai-semiconductor.json`** 의 `markets.<시장id>[]`
+  배열에 **추가**한다(맵 JSON 에 넣지 않는다 — 구 `recent_news` 필드는 폐지됨). 스키마:
   ```json
-  { "date": "2026-06", "title": "한국어 헤드라인",
+  { "date": "2026-06-08", "title": "한국어 헤드라인",
     "source": "Reuters", "url": "https://...",
     "impact": "+ | - | neutral", "summary": "한 줄 한국어 요약 (50자 내외)" }
   ```
+  - `date` 는 가능하면 `YYYY-MM-DD`(일자 불명이면 `YYYY-MM`). **배열은 최신순 유지.**
   - **특정 티커에 직접 붙는 단일 기업 뉴스는 넣지 않는다** (그건 daily 루틴 몫).
     여기엔 *업황·수급·병목·정책* 같은 **시장 전체** 헤드라인만.
-  - 5개 초과 시 가장 오래된 것부터 제거. 중복 사건은 1건만.
+  - 시장당 **최대 20개 보관** — 초과 시 가장 오래된 것부터 제거. 같은 사건 중복 금지.
+    웹은 최신 6개 + '더 보기'로 표시하므로 과거 뉴스도 지우지 말고 누적한다.
+  - 새 시장 노드를 만들면 같은 id 키를 뉴스 스토어에도 만든다.
+  - 파일 최상위 `updated` 를 갱신 날짜로 바꾼다.
 - 새 플레이어/시장/링크가 생기면 추가하되, `links.from/to` 는 존재하는 `id` 만.
 - 맵 전체의 최상위 `as_of` 와, 손댄 시장은 의미가 있으면 갱신 날짜를 반영한다.
 
@@ -86,6 +98,7 @@
 python - <<'PY'
 import json
 d=json.load(open("data/markets/ai-semiconductor.json"))
+ns=json.load(open("data/markets/news/ai-semiconductor.json"))
 mids={m["id"] for m in d["markets"]}; lids={l["id"] for l in d["layers"]}
 sev=set(d["severity_legend"])
 assert all(m["layer"] in lids for m in d["markets"]), "bad layer ref"
@@ -93,16 +106,22 @@ assert all(l["from"] in mids and l["to"] in mids for l in d["links"]), "bad link
 for m in d["markets"]:
     b=m.get("bottleneck")
     assert b is None or b["severity"] in sev, f"bad severity in {m['id']}"
-    for n in m.get("recent_news",[]):
-        assert n.get("url","").startswith("http"), f"bad news url in {m['id']}"
-print("OK", len(d["markets"]), "markets")
+    assert not m.get("recent_news"), f"deprecated recent_news in {m['id']} - use news store"
+for mid, items in ns["markets"].items():
+    assert mid in mids, f"news for unknown market {mid}"
+    assert len(items) <= 20, f"too many news in {mid}"
+    assert items == sorted(items, key=lambda n: n.get("date",""), reverse=True), f"{mid} not newest-first"
+    for n in items:
+        assert n.get("url","").startswith("http"), f"bad news url in {mid}"
+        assert n.get("impact") in ("+","-","neutral"), f"bad impact in {mid}"
+print("OK", len(d["markets"]), "markets /", sum(len(v) for v in ns["markets"].values()), "news")
 PY
 ```
 실패하면 커밋하지 말고 원인을 고친다.
 
 ### 2.5 (선택) 렌더 스모크 테스트
 가능하면 `python -m http.server` 로 띄워 '시장 지도' 탭이 정상 렌더되는지 본다.
-(노드가 22개, 병목 노드가 펄스, 클릭 시 상세 패널에 recent_news 표시)
+(노드 27개·뉴스 배지, 병목 노드 펄스, 클릭 시 상세에 뉴스, 보드 하단에 뉴스 피드)
 
 ---
 
@@ -112,7 +131,7 @@ PY
 
 ```bash
 SESSION_BRANCH=$(git branch --show-current)
-git add data/markets/ai-semiconductor.json .claude/routines/market-research/
+git add data/markets/ai-semiconductor.json data/markets/news/ .claude/routines/market-research/
 git commit -m "chore(markets): AI·반도체 시장 지도 갱신 ($(date -u +%Y-%m-%d))"
 git push -u origin "$SESSION_BRANCH"
 ```
