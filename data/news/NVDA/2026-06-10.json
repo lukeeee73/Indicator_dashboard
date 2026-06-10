@@ -1,0 +1,74 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-06-10",
+  "as_of_utc": "2026-06-10T21:00:00Z",
+  "news": [
+    {
+      "title": "Apple Extends Private Cloud Compute via Google Cloud/NVIDIA Partnership",
+      "source": "Seeking Alpha / Reuters",
+      "url": "https://seekingalpha.com/news/4601876-apple-extends-private-cloud-compute-through-collaboration-with-google-and-nvidia",
+      "published": "2026-06-08T14:00:00Z",
+      "summary": "애플이 구글 클라우드의 NVIDIA GPU를 통해 Siri AI 서비스(AFM Cloud Pro) 백엔드를 확장. 9월 출시 예정.",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "TSMC Plans Up to 15% Price Hike on 3nm Wafers in H2 2026",
+      "source": "TrendForce / Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/06/52920523/tsmcs-price-hike-is-bad-for-nvidia-margins-and-potentially-great-for-nvidia-stock",
+      "published": "2026-06-09T10:00:00Z",
+      "summary": "TSMC 3nm 웨이퍼 H2 2026 최대 15% 인상 예고 — NVIDIA 하반기 칩 원가 상승 및 마진 압박 요인.",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "NVIDIA Evaluating Intel's 18A Process for 2028 GPU Architecture",
+      "source": "InsiderFinance",
+      "url": "https://www.insiderfinance.io/news/intel-stock-surges-on-reported-google-nvidia-foundry-deals",
+      "published": "2026-06-09T09:00:00Z",
+      "summary": "NVDA가 인텔 18A 공정 및 EMIB 패키징을 2028년 GPU 아키텍처 후보로 평가 중 — 아직 공식 수주는 아님.",
+      "impact": "neutral",
+      "category": "product"
+    },
+    {
+      "title": "Semiconductor Sector Selloff Triggered by Broadcom Guidance Miss (-6.2%)",
+      "source": "Intellectia AI",
+      "url": "https://intellectia.ai/blog/semiconductor-stocks-selloff-june-2026",
+      "published": "2026-06-05T20:00:00Z",
+      "summary": "브로드컴 Q2 AI 가이던스 미달($16B vs $17.2B 예상)로 SOX -10.3% 역대급 하락 — NVDA -6.2% 동반 하락 후 회복 중.",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "INTC",
+      "headline": "Google orders 3M TPUs from Intel Foundry (18A, 2028 delivery)",
+      "implication_for_target": "인텔 파운드리 18A 실력 검증 시 NVDA 대체 파운드리 옵션 다양화 — TSM 의존도 분산 가능"
+    },
+    {
+      "ticker": "TSM",
+      "headline": "TSMC 3nm wafer price hike up to 15% in H2 2026",
+      "implication_for_target": "NVDA Blackwell GPU 원가 구조에 직접 영향 — 2026년 하반기 영업이익률 압박 요인"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.2,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.1,
+  "summary_kr": "애플·구글 클라우드 AI 파트너십으로 하이퍼스케일러 전방위 공급 지위 재확인. 단, TSMC 3nm 가격 인상(15%)이 H2 마진 압박 요인으로 부상하고 브로드컴 촉발 섹터 셀오프 여진이 남아 있어 단기 조정 국면.",
+  "key_events": [
+    "애플 Google Cloud/NVIDIA AI 파트너십",
+    "TSMC 3nm 15% 인상 예고",
+    "인텔 18A 평가"
+  ],
+  "risks": [
+    "TSMC 3nm 가격 인상 → H2 마진 압박",
+    "의회 AI 규제 강화 압박 (상원 청문회)",
+    "섹터 셀오프 여진"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}
