@@ -10249,29 +10249,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-09",
-      "narrative_score": 0.27,
-      "summary_kr": "애플 AI 고객 확보 및 구글 GPU 렌탈 계약으로 AI 인프라 공급자 지위 강화. 젠슨 황의 상원 청문회 거부는 소규모 규제 리스크로 부각. 6/5 조정 이후 회복 국면 진입.",
+      "as_of": "2026-06-10",
+      "narrative_score": 0.1,
+      "summary_kr": "애플·구글 클라우드 AI 파트너십으로 하이퍼스케일러 전방위 공급 지위 재확인. 단, TSMC 3nm 가격 인상(15%)이 H2 마진 압박 요인으로 부상하고 브로드컴 촉발 섹터 셀오프 여진이 남아 있어 단기 조정 국면.",
       "key_events": [
-        "애플 AI 고객 확보",
-        "구글 GPU 렌탈 대형 계약",
-        "젠슨 황 상원 청문회 거부"
+        "애플 Google Cloud/NVIDIA AI 파트너십",
+        "TSMC 3nm 15% 인상 예고",
+        "인텔 18A 평가"
       ],
       "risks": [
-        "규제 강화 가능성 (청문회 압박 지속)",
-        "고밸류에이션 유지 부담 (시총 ~$5.5T)"
+        "TSMC 3nm 가격 인상 → H2 마진 압박",
+        "의회 AI 규제 강화 압박 (상원 청문회)",
+        "섹터 셀오프 여진"
       ],
       "news_count": 4,
       "competitor_context": [
         {
           "ticker": "INTC",
-          "headline": "Intel +11% as Google orders 3M+ TPUs from Intel Foundry for 2028; NVIDIA evaluating Intel 18A node",
-          "implication_for_target": "INTC 파운드리 반등이 단기 노이즈지만, NVDA의 18A 평가는 TSMC 독점 의존도 완화 신호로 해석 가능"
+          "headline": "Google orders 3M TPUs from Intel Foundry (18A, 2028 delivery)",
+          "implication_for_target": "인텔 파운드리 18A 실력 검증 시 NVDA 대체 파운드리 옵션 다양화 — TSM 의존도 분산 가능"
         },
         {
-          "ticker": "AMD",
-          "headline": "AMD YTD +130%, stock near $510; Barclays sets $665 target on data center +57% growth",
-          "implication_for_target": "AMD 강세는 AI GPU 시장 파이 확대 시사 — NVDA 독주 구도 속 하이엔드 AI 시장 구조 위협은 아님"
+          "ticker": "TSM",
+          "headline": "TSMC 3nm wafer price hike up to 15% in H2 2026",
+          "implication_for_target": "NVDA Blackwell GPU 원가 구조에 직접 영향 — 2026년 하반기 영업이익률 압박 요인"
         }
       ],
       "history": [
@@ -10306,6 +10307,10 @@
         {
           "date": "2026-06-09",
           "narrative_score": 0.27
+        },
+        {
+          "date": "2026-06-10",
+          "narrative_score": 0.1
         }
       ]
     }
