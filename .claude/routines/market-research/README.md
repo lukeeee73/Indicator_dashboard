@@ -88,6 +88,10 @@
   웹은 **`structural`(독점)·`acute`·`easing`·`emerging`(병목)만 색으로 강조**하고
   `demand_limited`·비병목은 중립 톤으로 둔다.
 - `links` 의 `from`/`to` 는 반드시 존재하는 market `id`.
+- `diagram` 블록이 웹 다이어그램의 배치를 정한다: `flow[]` = 좌(장비·소재)→우(수요)
+  메인 체인 클러스터(제목·색·소속 시장 id), `bands[]` = 하단 가로 밴드. 새 시장은
+  여기에도 배치한다(누락 시 `layer_default` 로 자동 배치). 화살표는 공급→수요
+  방향(`links` 의 to→from)으로 그려진다.
 
 ---
 

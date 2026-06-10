@@ -1676,5 +1676,111 @@
       "to": "power-cooling",
       "label": "변압기·스위치기어·냉각 발주"
     }
-  ]
+  ],
+  "diagram": {
+    "note": "시각화 배치 — flow: 좌(공급의 뿌리)→우(최종 수요) 메인 체인 클러스터, bands: 하단 가로 밴드. 새 시장을 추가하면 적절한 클러스터의 markets 에 id 를 넣는다. 누락된 시장은 layer_default 가 가리키는 클러스터에 자동 배치된다.",
+    "flow": [
+      {
+        "id": "equipment",
+        "title": "장비 · 소재 · 설계",
+        "desc": "공급의 뿌리 — picks & shovels",
+        "color": "#c2913a",
+        "markets": [
+          "euv-litho",
+          "etch-deposition",
+          "metrology",
+          "materials",
+          "semi-ip"
+        ]
+      },
+      {
+        "id": "manufacturing",
+        "title": "제조 기반",
+        "desc": "칩·기판을 실제로 만드는 곳",
+        "color": "#38a18c",
+        "markets": [
+          "foundry",
+          "abf-substrate"
+        ]
+      },
+      {
+        "id": "components",
+        "title": "핵심 부품",
+        "desc": "병목 집중 — 메모리·패키징·광",
+        "color": "#7da453",
+        "markets": [
+          "dram-nand",
+          "hbm",
+          "advanced-packaging",
+          "optical"
+        ]
+      },
+      {
+        "id": "compute",
+        "title": "AI 컴퓨팅",
+        "desc": "가속기·ASIC·네트워킹",
+        "color": "#5b8fc9",
+        "markets": [
+          "ai-gpu",
+          "custom-asic",
+          "dc-networking"
+        ]
+      },
+      {
+        "id": "capital",
+        "title": "자본 엔진",
+        "desc": "컴퓨트를 사들이는 돈",
+        "color": "#c178a8",
+        "markets": [
+          "hyperscaler-capex",
+          "neocloud"
+        ]
+      },
+      {
+        "id": "demand",
+        "title": "최종 수요",
+        "desc": "AI 를 쓰고 돈을 내는 곳",
+        "color": "#9aa3b2",
+        "markets": [
+          "ai-models",
+          "sovereign-ai",
+          "edge-smartphone",
+          "edge-pc",
+          "edge-auto"
+        ]
+      }
+    ],
+    "bands": [
+      {
+        "id": "physical-ai",
+        "title": "피지컬 AI 체인",
+        "desc": "부품 → 로봇 → 국방·실세계 수요",
+        "color": "#8d7bc6",
+        "markets": [
+          "robot-components",
+          "robotics",
+          "defense-ai"
+        ]
+      },
+      {
+        "id": "infra",
+        "title": "전력 · 데이터센터 기반",
+        "desc": "모든 컴퓨트가 올라서는 물리 인프라",
+        "color": "#7f8a99",
+        "markets": [
+          "power-grid",
+          "power-cooling",
+          "dc-infra"
+        ]
+      }
+    ],
+    "layer_default": {
+      "demand": "demand",
+      "capital": "capital",
+      "compute": "compute",
+      "components": "components",
+      "manufacturing": "manufacturing",
+      "foundation": "equipment"
+    }
+  }
 }

@@ -1580,12 +1580,14 @@ function renderStocksTab(data) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-//  AI · 반도체 시장 지도 (market cascade) — 수요(좌) → 공급(우), 병목 중심
+//  AI · 반도체 시장 구조도 (market diagram) — 공급의 뿌리(좌) → 최종 수요(우)
 // ════════════════════════════════════════════════════════════════════════
 //
-// 기업이 아니라 '시장(수요)' 단위로 본 밸류체인. 가로(좌→우) 6개 층.
-// 데이터 SSOT 는  data/markets/ai-semiconductor.json  하나이며,
-// 이 JSON 만 고치면 노드·층·관계·병목·플레이어·점유율이 모두 바뀐다.
+// 기업이 아니라 '시장' 단위로 본 밸류체인 다이어그램.
+// 메인 체인(장비·소재 → 제조 → 부품 → 컴퓨팅 → 자본 → 수요) + 하단 밴드
+// (피지컬 AI 체인 · 전력/DC 기반)로 배치되고, 모든 관계선이 항상 그려진다.
+// 데이터 SSOT 는  data/markets/ai-semiconductor.json  하나이며, 노드·관계·
+// 병목·플레이어는 물론 다이어그램 배치(diagram 블록)까지 이 JSON 이 정한다.
 //
 // 색은 절제한다: '독점(structural)'·'병목(acute/easing/emerging)'만 색으로
 // 강조하고, 그 외(수요 한계형·비병목)는 사이트 기본 톤(중립 회색)을 따른다.
@@ -1745,7 +1747,54 @@ function mcNewsFresh(items) {
   return !!d && (Date.now() - d.getTime()) / 86400000 <= MC_FRESH_DAYS;
 }
 
-// 보드(가로 6개 층 컬럼 + 노드) 렌더
+// ── 다이어그램 배치 ──────────────────────────────────────────────────────
+// JSON 의 diagram 블록이 배치의 SSOT: flow = 좌(공급의 뿌리)→우(최종 수요)
+// 메인 체인 클러스터, bands = 하단 가로 밴드(피지컬 AI 체인·전력/DC 기반).
+// diagram 에 없는 시장은 layer_default 가 가리키는 클러스터에 자동 배치.
+function mcDiagramConfig(map) {
+  let flow, bands, layerDefault;
+  if (map.diagram && Array.isArray(map.diagram.flow)) {
+    flow = map.diagram.flow.map((c) => ({ ...c, markets: [...(c.markets || [])] }));
+    bands = (map.diagram.bands || []).map((c) => ({ ...c, markets: [...(c.markets || [])] }));
+    layerDefault = map.diagram.layer_default || {};
+  } else {
+    // diagram 블록이 없으면 층 순서를 뒤집어(공급→수요) 클러스터로 사용
+    flow = map.layers.slice().reverse().map((l) => ({
+      id: l.id, title: l.label, desc: l.desc, color: null,
+      markets: map.markets.filter((m) => m.layer === l.id).map((m) => m.id),
+    }));
+    bands = [];
+    layerDefault = {};
+  }
+  const all = [...flow, ...bands];
+  const placed = new Set(all.flatMap((c) => c.markets));
+  map.markets.forEach((m) => {
+    if (placed.has(m.id)) return;
+    const target = all.find((c) => c.id === layerDefault[m.layer]) || flow[flow.length - 1];
+    target.markets.push(m.id);
+  });
+  return { flow, bands };
+}
+
+// 클러스터 패널 (메인 체인은 세로 스택, 밴드는 가로 스트립)
+function mcClusterEl(cl, stocks, band) {
+  const map = MC_STATE.map;
+  const el = document.createElement("section");
+  el.className = "mcd-cluster" + (band ? " mcd-cluster--band" : "");
+  el.style.setProperty("--cl-c", cl.color || "#7f8a99");
+  const nodes = cl.markets
+    .map((id) => map.markets.find((m) => m.id === id))
+    .filter(Boolean);
+  el.innerHTML = `
+    <header class="mcd-cluster-head">
+      <h4>${escapeHtml(cl.title || cl.id)}</h4>
+      ${cl.desc ? `<span>${escapeHtml(cl.desc)}</span>` : ""}
+    </header>
+    <div class="mcd-cluster-nodes">${nodes.map((m) => mcNodeHtml(m, stocks)).join("")}</div>`;
+  return el;
+}
+
+// 보드 렌더: 메인 체인(좌→우) + 하단 밴드들
 function renderMarketBoard(stocks) {
   const board = document.getElementById("vc-board");
   const map = MC_STATE.map;
@@ -1753,30 +1802,21 @@ function renderMarketBoard(stocks) {
   board.className = "vc-board mc-board" + (MC_STATE.bottleneckOnly ? " mc-board--btlonly" : "");
   board.innerHTML = "";
 
-  // 수요(좌) → 공급(우) 축
+  const dia = mcDiagramConfig(map);
+
   const axis = document.createElement("div");
   axis.className = "mc-axis";
-  axis.innerHTML = `<span class="mc-axis-l">◀ 수요 · 돈을 내는 곳</span>
-                    <span class="mc-axis-r">공급 · 병목 · 만드는 곳 ▶</span>`;
+  axis.innerHTML = `<span>공급의 뿌리 — 장비·소재</span>
+                    <span class="mc-axis-mid">물건·컴퓨트가 흐르는 방향 ▶</span>
+                    <span>최종 수요 — 돈을 내는 곳</span>`;
   board.appendChild(axis);
 
-  const cols = document.createElement("div");
-  cols.className = "mc-cols";
-  map.layers.forEach((layer) => {
-    const markets = map.markets.filter((m) => m.layer === layer.id);
-    if (!markets.length) return;
-    const col = document.createElement("div");
-    col.className = "mc-layer";
-    col.dataset.layer = layer.id;
-    col.innerHTML = `
-      <div class="mc-layer-head">
-        <span class="mc-layer-label">${escapeHtml(layer.label)}</span>
-        <span class="mc-layer-desc">${escapeHtml(layer.desc)}</span>
-      </div>
-      <div class="mc-layer-nodes">${markets.map((m) => mcNodeHtml(m, stocks)).join("")}</div>`;
-    cols.appendChild(col);
-  });
-  board.appendChild(cols);
+  const main = document.createElement("div");
+  main.className = "mcd-main";
+  dia.flow.forEach((cl) => main.appendChild(mcClusterEl(cl, stocks, false)));
+  board.appendChild(main);
+
+  dia.bands.forEach((cl) => board.appendChild(mcClusterEl(cl, stocks, true)));
 
   board.querySelectorAll(".mc-node[data-id]").forEach((el) =>
     el.addEventListener("click", () => selectMarketNode(el.dataset.id, stocks)));
@@ -1793,30 +1833,27 @@ function renderMarketBoard(stocks) {
   });
 }
 
-// 단일 시장 노드 HTML
+// 단일 시장 노드 — 콤팩트 (구조가 한눈에 읽히게 최소 정보만; 상세는 클릭 패널)
 function mcNodeHtml(m, stocks) {
   const sev = m.bottleneck && m.bottleneck.severity;
-  const hi = sev ? MC_SEVERITY_COLOR[sev] : null;   // 독점/병목만 강한 색, 그 외 층 색
-  const accent = hi || "var(--layer-c, var(--border-mid))";
+  const hi = sev ? MC_SEVERITY_COLOR[sev] : null;   // 독점/병목만 강한 색, 그 외 클러스터 색
+  const accent = hi || "var(--cl-c, var(--border-mid))";
   const tag = hi ? (MC_SEV_SHORT[sev] || "") : "";
   const agg = mcAggregateScore(m, stocks);
-  const scoreChip = agg.count > 0
-    ? `<span class="mc-node-score" data-tone="${agg.tone}">뉴스 ${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)}</span>`
+  const moodDot = agg.count > 0
+    ? `<i class="mc-node-mood" data-tone="${agg.tone}" title="뉴스 시그널 ${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)} (watchlist ${agg.count}곳)"></i>`
     : "";
-  const lead = (m.players || []).filter((p) => typeof p.share === "number").sort((a, b) => b.share - a.share)[0];
-  const leadTxt = lead ? `<span class="mc-node-lead">${escapeHtml(lead.name)} ${lead.share}%</span>` : "";
   const news = mcNewsFor(m);
   const newsChip = news.length
     ? `<span class="mc-node-news${mcNewsFresh(news) ? " mc-node-news--fresh" : ""}"
-         title="${escapeHtml(news[0].title || "")}">📰 ${news.length} · ${mcDateShort(news[0].date)}</span>`
+         title="${escapeHtml(news[0].title || "")}">📰 ${news.length}</span>`
     : "";
   return `<button class="mc-node${hi ? " mc-node--hi mc-node--" + sev : ""}" data-id="${escapeHtml(m.id)}"
             style="--mc-accent:${accent}" title="${escapeHtml(m.definition || "")}">
       ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}</span>` : ""}
-      <span class="mc-node-name">${escapeHtml(m.name_kr)}</span>
+      <span class="mc-node-name">${escapeHtml(m.name_kr)}${moodDot}</span>
       <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
-      ${mcShareBar(m.players)}
-      <span class="mc-node-foot">${leadTxt}${newsChip}${scoreChip}</span>
+      ${newsChip}
     </button>`;
 }
 
@@ -1912,7 +1949,8 @@ function drawAllMarketLinks() {
   svg.appendChild(defs);
 
   map.links.forEach((l) => {
-    const a = mcRectOf(l.from, wrap, wrapRect), b = mcRectOf(l.to, wrap, wrapRect);
+    // 화살표는 물건이 흐르는 방향(공급 to → 수요 from)으로 그린다
+    const a = mcRectOf(l.to, wrap, wrapRect), b = mcRectOf(l.from, wrap, wrapRect);
     if (!a || !b) return;
     const g = mcEdgeGeo(a, b);
     const path = document.createElementNS(MC_SVGNS, "path");
@@ -2156,8 +2194,8 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
       ${barHtml ? `<div class="mc-share-wrap">${barHtml}</div>` : ""}
       <ul>${playersHtml}</ul>
     </div>
-    ${relHtml(needs, "need", "▶ 의존하는 공급 (우측)")}
-    ${relHtml(pulledBy, "pull", "◀ 끌어당기는 수요 (좌측)")}
+    ${relHtml(needs, "need", "◀ 의존하는 공급 (상류)")}
+    ${relHtml(pulledBy, "pull", "끌어당기는 수요 (하류) ▶")}
     ${srcHtml}`;
 
   host.querySelectorAll(".mc-rel-link[data-goto]").forEach((b) =>

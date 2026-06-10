@@ -1197,47 +1197,58 @@ section h2 {
   padding: 0.65rem; overflow: auto; max-height: 78vh;
 }
 
-/* 보드: 축(상단) + 컬럼 행 */
-.mc-board { display: flex; flex-direction: column; gap: 0.5rem; align-items: stretch; min-width: 0; position: relative; z-index: 1; }
-.mc-axis { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text); letter-spacing: 0.02em; }
+/* 보드: 축(상단) + 메인 체인 + 하단 밴드들 */
+.mc-board { display: flex; flex-direction: column; gap: 0.8rem; align-items: stretch; min-width: 0; position: relative; z-index: 1; }
+.mc-axis { display: flex; justify-content: space-between; gap: 0.6rem; font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.02em; }
+.mc-axis-mid { color: var(--text); font-weight: 600; }
 
-.mc-cols { display: flex; flex-direction: row; gap: 1.4rem; align-items: flex-start; }
-.mc-layer { --layer-c: #7f8a99; flex: 1 1 0; min-width: 138px; border-top: 2px solid var(--layer-c); padding: 0.5rem 0 0.6rem; }
-.mc-layer[data-layer="demand"]        { --layer-c: #5b8fc9; }
-.mc-layer[data-layer="capital"]       { --layer-c: #c178a8; }
-.mc-layer[data-layer="compute"]       { --layer-c: #4aa789; }
-.mc-layer[data-layer="components"]    { --layer-c: #c2913a; }
-.mc-layer[data-layer="manufacturing"] { --layer-c: #8d7bc6; }
-.mc-layer[data-layer="foundation"]    { --layer-c: #7f8a99; }
-.mc-layer-head { display: flex; flex-direction: column; gap: 0.1rem; margin-bottom: 0.5rem; min-height: 2.6rem; }
-.mc-layer-label { font-weight: 700; font-size: 0.82rem; color: var(--text); }
-.mc-layer-label::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--layer-c); margin-right: 0.32rem; }
-.mc-layer-desc { font-size: 0.66rem; color: var(--text-dim); line-height: 1.3; }
-.mc-layer-nodes { display: flex; flex-direction: column; gap: 0.55rem; }
+/* 메인 체인: 좌(공급의 뿌리) → 우(최종 수요) 클러스터 패널 행 */
+.mcd-main { display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start; }
 
-/* 시장 노드 — 층 색을 아주 옅게 깔고, 독점/병목만 강한 색 */
+/* 클러스터 패널 — 피그마의 흰 섹션 컨테이너에 해당 (다크 테마 버전) */
+.mcd-cluster {
+  --cl-c: #7f8a99;
+  flex: 1 1 0; min-width: 148px;
+  /* 반투명 — 패널 아래를 지나는 관계선이 비쳐 보이게 */
+  background: color-mix(in srgb, var(--cl-c) 7%, rgba(20, 22, 26, 0.5));
+  border: 1px solid color-mix(in srgb, var(--border) 55%, var(--cl-c) 45%);
+  border-radius: 10px; padding: 0.5rem 0.5rem 0.6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.mcd-cluster-head { display: flex; flex-direction: column; gap: 0.1rem; margin-bottom: 0.5rem; }
+.mcd-cluster-head h4 { margin: 0; font-size: 0.8rem; font-weight: 700; color: var(--text); }
+.mcd-cluster-head h4::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--cl-c); margin-right: 0.35rem; }
+.mcd-cluster-head span { font-size: 0.64rem; color: var(--text-dim); line-height: 1.3; }
+.mcd-cluster-nodes { display: flex; flex-direction: column; gap: 0.5rem; }
+
+/* 하단 가로 밴드 (피지컬 AI 체인 · 전력/DC 기반): 노드를 가로로 흘림 */
+.mcd-cluster--band { flex: none; }
+.mcd-cluster--band .mcd-cluster-head { flex-direction: row; align-items: baseline; gap: 0.6rem; }
+.mcd-cluster--band .mcd-cluster-nodes { flex-direction: row; align-items: stretch; gap: 2.2rem; }
+.mcd-cluster--band .mc-node { flex: 1 1 0; max-width: 240px; }
+
+/* 시장 노드 — 콤팩트: 이름 + 핵심 수치 + 병목 태그 + 뉴스 배지 */
 .mc-node {
   --mc-accent: var(--border-mid);
   width: 100%; box-sizing: border-box; text-align: left; cursor: pointer;
-  background: color-mix(in srgb, var(--bg-card) 90%, var(--layer-c, #7f8a99) 10%);
+  background: color-mix(in srgb, var(--bg-elev) 90%, var(--cl-c, #7f8a99) 10%);
   color: var(--text);
-  border: 1px solid color-mix(in srgb, var(--border) 65%, var(--layer-c, #7f8a99) 35%);
-  border-top: 3px solid var(--mc-accent);
-  border-radius: 8px; padding: 0.45rem 0.55rem; position: relative;
-  display: flex; flex-direction: column; gap: 0.22rem;
+  border: 1px solid color-mix(in srgb, var(--border-mid) 70%, var(--cl-c, #7f8a99) 30%);
+  border-left: 3px solid var(--mc-accent);
+  border-radius: 7px; padding: 0.38rem 0.5rem; position: relative;
+  display: flex; flex-direction: column; gap: 0.16rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
   transition: transform .12s, box-shadow .12s, border-color .12s, opacity .15s;
 }
 .mc-node:hover { transform: translateY(-2px); border-color: var(--mc-accent); box-shadow: 0 3px 10px rgba(0,0,0,.4); }
-.mc-node-name { font-weight: 600; font-size: 0.8rem; line-height: 1.2; padding-right: 2.6rem; }
-.mc-node-size { font-size: 0.63rem; color: var(--text-dim); line-height: 1.25; }
-.mc-node-lead { font-size: 0.62rem; color: var(--text-dim); }
-.mc-node-tag { position: absolute; top: 0.35rem; right: 0.45rem; font-size: 0.57rem; font-weight: 700; color: var(--mc-accent); letter-spacing: 0.02em; }
-.mc-node-score { align-self: flex-start; font-size: 0.62rem; font-weight: 700; padding: 0.02rem 0.3rem; border-radius: 999px; background: var(--bg-elev); color: var(--text-dim); }
-.mc-node-score[data-tone="pos"] { color: var(--up); }
-.mc-node-score[data-tone="neg"] { color: var(--down); }
+.mc-node-name { font-weight: 600; font-size: 0.76rem; line-height: 1.25; padding-right: 2.4rem; }
+.mc-node-size { font-size: 0.6rem; color: var(--text-dim); line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.mc-node-tag { position: absolute; top: 0.32rem; right: 0.42rem; font-size: 0.56rem; font-weight: 700; color: var(--mc-accent); letter-spacing: 0.02em; }
+.mc-node-mood { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-left: 0.3rem; vertical-align: middle; background: var(--text-dim); }
+.mc-node-mood[data-tone="pos"] { background: var(--up); }
+.mc-node-mood[data-tone="neg"] { background: var(--down); }
 
-/* 점유율 스택 바 (단색 회색 램프) */
+/* 점유율 스택 바 (상세 패널에서 사용) */
 .mc-sb { display: flex; width: 100%; height: 6px; border-radius: 3px; overflow: hidden; background: #1f1f1f; }
 .mc-sb-seg { height: 100%; }
 .mc-sb-etc { background: #2a2a2a; }
@@ -1339,9 +1350,8 @@ section h2 {
 .mc-sources ul { margin: 0.3rem 0 0; padding-left: 1.1rem; }
 .mc-sources a { color: var(--text-dim); }
 
-/* 노드 하단 행: 1위 기업 · 뉴스 배지 · 뉴스 시그널 */
-.mc-node-foot { display: flex; flex-wrap: wrap; gap: 0.25rem 0.45rem; align-items: center; }
-.mc-node-news { font-size: 0.6rem; color: var(--text-dim); white-space: nowrap; }
+/* 노드 뉴스 배지 */
+.mc-node-news { align-self: flex-start; font-size: 0.6rem; color: var(--text-dim); white-space: nowrap; }
 .mc-node-news--fresh { color: var(--text); font-weight: 600; }
 
 /* ── 시장 뉴스 피드 (보드 하단, 전 시장 최신순) ───────────────────────── */
@@ -1370,9 +1380,9 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .mc-feed-more summary { cursor: pointer; font-size: 0.72rem; color: var(--text-dim); }
 .mc-feed-more ul { margin-top: 0.45rem; }
 
-/* 좁은 화면: 컬럼 가로 스크롤 + 상세 패널 아래로 */
+/* 좁은 화면: 캔버스 가로 스크롤 + 피드 줄바꿈 */
 @media (max-width: 720px) {
-  .mc-cols { overflow-x: auto; }
-  .mc-layer { min-width: 150px; }
+  .mcd-cluster { min-width: 150px; }
+  .mcd-cluster--band .mcd-cluster-nodes { gap: 1.2rem; }
   .mc-feed-item { flex-wrap: wrap; }
 }
