@@ -1643,6 +1643,7 @@ async function renderMarketCascade(stocks) {
   renderMarketChrome();
   renderMarketBoard(stocks);
   renderMarketNewsFeed(stocks);
+  mcWireCanvas();
 }
 
 // 상단 크롬: 강조 범례 + '병목만 강조' 토글
@@ -1662,6 +1663,9 @@ function renderMarketChrome() {
       <button type="button" id="mc-zoom-out" title="축소">−</button>
       <span id="mc-zoom-val">${Math.round((MC_STATE.zoom || 1) * 100)}%</span>
       <button type="button" id="mc-zoom-in" title="확대">+</button>
+      <button type="button" id="mc-zoom-fit" title="화면에 맞춤">맞춤</button>
+      <button type="button" id="mc-full" title="전체 화면 (ESC 로 종료)">⛶</button>
+      <span class="mc-zoom-hint">드래그 이동 · Ctrl+휠/핀치 줌</span>
     </div>`;
   const cb = document.getElementById("mc-bottleneck-only");
   if (cb) cb.addEventListener("change", () => {
@@ -1669,13 +1673,20 @@ function renderMarketChrome() {
     const b = document.getElementById("vc-board");
     if (b) b.classList.toggle("mc-board--btlonly", cb.checked);
   });
-  const zoomBy = (d) => {
-    MC_STATE.zoom = Math.min(1.5, Math.max(0.6, Math.round(((MC_STATE.zoom || 1) + d) * 10) / 10));
-    mcApplyZoom();
+  const zoomBy = (f) => {
+    const svg = document.getElementById("vc-links");
+    const wrap = svg && svg.parentElement;
+    if (!wrap) return;
+    const r = wrap.getBoundingClientRect();
+    mcZoomTo(r.left + r.width / 2, r.top + r.height / 2, (MC_STATE.zoom || 1) * f);
   };
   const zi = document.getElementById("mc-zoom-in"), zo = document.getElementById("mc-zoom-out");
-  if (zi) zi.addEventListener("click", () => zoomBy(+0.1));
-  if (zo) zo.addEventListener("click", () => zoomBy(-0.1));
+  if (zi) zi.addEventListener("click", () => zoomBy(1.15));
+  if (zo) zo.addEventListener("click", () => zoomBy(1 / 1.15));
+  const zf = document.getElementById("mc-zoom-fit");
+  if (zf) zf.addEventListener("click", () => { MC_STATE.userZoomed = false; mcFitZoom(); });
+  const fs = document.getElementById("mc-full");
+  if (fs) fs.addEventListener("click", () => mcToggleFull());
 }
 
 // 시장 노드의 watchlist 기업 narrative_score 평균을 집계
@@ -1781,6 +1792,7 @@ function mcClusterEl(cl, stocks, band) {
   const map = MC_STATE.map;
   const el = document.createElement("section");
   el.className = "mcd-cluster" + (band ? " mcd-cluster--band" : "");
+  el.dataset.cluster = cl.id;
   el.style.setProperty("--cl-c", cl.color || "#7f8a99");
   const nodes = cl.markets
     .map((id) => map.markets.find((m) => m.id === id))
@@ -1803,6 +1815,11 @@ function renderMarketBoard(stocks) {
   board.innerHTML = "";
 
   const dia = mcDiagramConfig(map);
+  // 시장 → 클러스터 매핑 (집계 흐름선용)
+  MC_STATE.clusterOf = {};
+  MC_STATE.bandClusters = new Set(dia.bands.map((c) => c.id));
+  [...dia.flow, ...dia.bands].forEach((c) =>
+    c.markets.forEach((mid) => { MC_STATE.clusterOf[mid] = c.id; }));
 
   const axis = document.createElement("div");
   axis.className = "mc-axis";
@@ -1925,15 +1942,80 @@ function mcEdgeGeo(a, b) {
   return { d: `M ${p1.x} ${p1.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${p2.x} ${p2.y}`, mx, my };
 }
 
-// 전체 엣지 렌더 (배경 레이어 — 항상 표시)
+// 클러스터 패널의 보드 기준 좌표 (줌 보정)
+function mcPanelRect(cid, wrap, wrapRect) {
+  const el = wrap.querySelector(`.mcd-cluster[data-cluster="${CSS.escape(cid)}"]`);
+  if (!el) return null;
+  const z = MC_STATE.zoom || 1;
+  const r = el.getBoundingClientRect();
+  return {
+    x: (r.left - wrapRect.left + wrap.scrollLeft) / z,
+    y: (r.top - wrapRect.top + wrap.scrollTop) / z,
+    w: r.width / z, h: r.height / z,
+  };
+}
+
+// 클러스터 흐름선 경로. 가로 흐름은 패널 상단 근처에 정렬해 선이 가지런하게.
+function mcFlowPath(a, b, horiz, offA, offB) {
+  if (horiz) {
+    const dir = (b.x + b.w / 2) >= (a.x + a.w / 2) ? 1 : -1;
+    const ay = a.y + Math.min(a.h / 2, 84) + offA;
+    const by = b.y + Math.min(b.h / 2, 84) + offB;
+    const p1 = { x: dir > 0 ? a.x + a.w : a.x, y: ay };
+    const p2 = { x: dir > 0 ? b.x : b.x + b.w, y: by };
+    const dx = Math.max(26, Math.abs(p2.x - p1.x) / 2) * dir;
+    return `M ${p1.x} ${p1.y} C ${p1.x + dx} ${p1.y}, ${p2.x - dx} ${p2.y}, ${p2.x} ${p2.y}`;
+  }
+  // 세로(밴드 ↔ 메인): 상대 패널의 중심 x 에 맞춰 내리꽂는다
+  const dir = (b.y + b.h / 2) >= (a.y + a.h / 2) ? 1 : -1;
+  const bcx = b.x + b.w / 2;
+  const x1 = Math.min(Math.max(bcx, a.x + 36), a.x + a.w - 36) + offA;
+  const x2 = Math.min(Math.max(x1, b.x + 36), b.x + b.w - 36) + offB;
+  const p1 = { x: x1, y: dir > 0 ? a.y + a.h : a.y };
+  const p2 = { x: x2, y: dir > 0 ? b.y : b.y + b.h };
+  const dy = Math.max(22, Math.abs(p2.y - p1.y) / 2) * dir;
+  return `M ${p1.x} ${p1.y} C ${p1.x} ${p1.y + dy}, ${p2.x} ${p2.y - dy}, ${p2.x} ${p2.y}`;
+}
+
+// 노드 단위 엣지 1개 (밴드 내부 체인·선택 노드 세부선). 방향: 공급(to) → 수요(from)
+function mcAddNodeEdge(svg, wrap, wrapRect, l, cls, marker, withLabel) {
+  const a = mcRectOf(l.to, wrap, wrapRect), b = mcRectOf(l.from, wrap, wrapRect);
+  if (!a || !b) return;
+  const g = mcEdgeGeo(a, b);
+  const path = document.createElementNS(MC_SVGNS, "path");
+  path.setAttribute("d", g.d);
+  path.setAttribute("class", cls);
+  path.setAttribute("marker-end", `url(#${marker})`);
+  svg.appendChild(path);
+  if (withLabel && l.label) {
+    const t = document.createElementNS(MC_SVGNS, "text");
+    t.setAttribute("class", "mc-edge-label");
+    t.setAttribute("x", g.mx.toFixed(1));
+    t.setAttribute("y", (g.my - 5).toFixed(1));
+    t.setAttribute("text-anchor", "middle");
+    t.textContent = l.label;
+    svg.appendChild(t);
+  }
+}
+
+// 전체 엣지 렌더. 기본 상태는 '클러스터 사이 집계 흐름선'만 보여 깔끔하게 유지하고,
+// 밴드 내부 체인(부품→로봇→국방 등)은 노드 단위로, 세부 관계선은 노드 선택 시에만.
 function drawAllMarketLinks() {
   const svg  = document.getElementById("vc-links");
   const wrap = svg && svg.parentElement;
   const map  = MC_STATE.map;
   if (!svg || !wrap || !map) return;
-  svg.innerHTML = "";
   const wrapRect = wrap.getBoundingClientRect();
   if (wrapRect.width === 0) return; // 패널이 숨겨져 있으면 skip
+
+  // 처음 보일 때 화면 폭에 맞춰 자동 줌 (mcFitZoom → mcApplyZoom → 여기로 재진입)
+  if (!MC_STATE.userZoomed && !MC_STATE.fitted) {
+    MC_STATE.fitted = true;
+    mcFitZoom();
+    return;
+  }
+
+  svg.innerHTML = "";
   const board = document.getElementById("vc-board");
   svg.setAttribute("width", board ? board.scrollWidth : wrap.scrollWidth);
   svg.setAttribute("height", board ? board.scrollHeight : wrap.scrollHeight);
@@ -1948,55 +2030,92 @@ function drawAllMarketLinks() {
     </marker>`;
   svg.appendChild(defs);
 
+  const cOf = MC_STATE.clusterOf || {};
+  const bands = MC_STATE.bandClusters || new Set();
+
+  // 1) 링크를 클러스터 쌍으로 집계 (방향: 공급 to → 수요 from)
+  const flows = new Map();
   map.links.forEach((l) => {
-    // 화살표는 물건이 흐르는 방향(공급 to → 수요 from)으로 그린다
-    const a = mcRectOf(l.to, wrap, wrapRect), b = mcRectOf(l.from, wrap, wrapRect);
-    if (!a || !b) return;
-    const g = mcEdgeGeo(a, b);
-    const path = document.createElementNS(MC_SVGNS, "path");
-    path.setAttribute("d", g.d);
-    path.setAttribute("class", "mc-edge");
-    path.setAttribute("marker-end", "url(#mc-arr)");
-    path.dataset.from = l.from;
-    path.dataset.to = l.to;
-    path.dataset.label = l.label || "";
-    path.dataset.mx = g.mx.toFixed(1);
-    path.dataset.my = g.my.toFixed(1);
-    svg.appendChild(path);
+    const src = cOf[l.to], dst = cOf[l.from];
+    if (!src || !dst) return;
+    if (src === dst) {
+      // 같은 클러스터 안: 밴드의 체인(부품→로봇→국방)만 노드 단위로 표시
+      if (bands.has(src)) mcAddNodeEdge(svg, wrap, wrapRect, l, "mc-edge mc-band-edge", "mc-arr", false);
+      return;
+    }
+    const k = `${src}→${dst}`;
+    const f = flows.get(k) || { src, dst, count: 0, labels: [] };
+    f.count += 1;
+    if (l.label && f.labels.length < 3) f.labels.push(l.label);
+    flows.set(k, f);
   });
+
+  // 2) 패널 좌표 + 방향 판별
+  const items = [];
+  flows.forEach((f) => {
+    const a = mcPanelRect(f.src, wrap, wrapRect), b = mcPanelRect(f.dst, wrap, wrapRect);
+    if (!a || !b) return;
+    const horiz = Math.abs((a.x + a.w / 2) - (b.x + b.w / 2)) >= Math.abs((a.y + a.h / 2) - (b.y + b.h / 2));
+    items.push({ ...f, a, b, horiz });
+  });
+
+  // 3) 같은 패널 면에서 나가는/들어오는 선끼리 anchor 를 벌려 겹침 방지
+  const groupPush = (m, k, it) => { const arr = m.get(k) || []; arr.push(it); m.set(k, arr); };
+  const outG = new Map(), inG = new Map();
+  items.forEach((it) => {
+    groupPush(outG, `${it.src}:${it.horiz ? "h" : "v"}`, it);
+    groupPush(inG,  `${it.dst}:${it.horiz ? "h" : "v"}`, it);
+  });
+  outG.forEach((arr) => {
+    arr.sort((p, q) => (p.horiz ? (p.b.y - q.b.y) : (p.b.x - q.b.x)));
+    arr.forEach((it, i) => { it.offA = (i - (arr.length - 1) / 2) * 22; });
+  });
+  inG.forEach((arr) => {
+    arr.sort((p, q) => (p.horiz ? (p.a.y - q.a.y) : (p.a.x - q.a.x)));
+    arr.forEach((it, i) => { it.offB = (i - (arr.length - 1) / 2) * 22; });
+  });
+
+  // 4) 흐름선 그리기 — 연결 수에 따라 굵기
+  items.forEach((it) => {
+    const p = document.createElementNS(MC_SVGNS, "path");
+    p.setAttribute("d", mcFlowPath(it.a, it.b, it.horiz, it.offA || 0, it.offB || 0));
+    p.setAttribute("class", "mc-flow");
+    p.setAttribute("stroke-width", (1.3 + Math.min(2.4, (it.count - 1) * 0.45)).toFixed(1));
+    p.setAttribute("marker-end", "url(#mc-arr)");
+    const ti = document.createElementNS(MC_SVGNS, "title");
+    ti.textContent = `${it.count}개 연결 — ${it.labels.join(" · ")}`;
+    p.appendChild(ti);
+    svg.appendChild(p);
+  });
+
+  // 5) 활성 노드가 있으면 세부 관계선
+  if (MC_STATE.activeNode) mcDrawActiveEdges(MC_STATE.activeNode);
 }
 
-// 선택 노드의 엣지 강조 + 관계 라벨 표시
+// 선택 노드의 세부 관계선 + 라벨. 흐름선은 흐리게.
+function mcDrawActiveEdges(id) {
+  const svg  = document.getElementById("vc-links");
+  const wrap = svg && svg.parentElement;
+  const map  = MC_STATE.map;
+  if (!svg || !wrap || !map) return;
+  svg.querySelectorAll(".mc-active-edge, .mc-edge-label").forEach((el) => el.remove());
+  svg.querySelectorAll(".mc-flow, .mc-band-edge").forEach((p) => p.classList.add("mc-flow--dim"));
+  const wrapRect = wrap.getBoundingClientRect();
+  map.links.filter((l) => l.from === id || l.to === id).forEach((l) =>
+    mcAddNodeEdge(svg, wrap, wrapRect, l, "mc-edge mc-active-edge", "mc-arr-hi", true));
+}
+
 function highlightMarketLinks(id) {
   const svg = document.getElementById("vc-links");
-  if (!svg) return;
-  if (!svg.querySelector("path.mc-edge")) drawAllMarketLinks(); // 탭 숨김 중 스킵됐으면 재시도
-  svg.querySelectorAll(".mc-edge-label").forEach((t) => t.remove());
-  svg.querySelectorAll("path.mc-edge").forEach((p) => {
-    const on = p.dataset.from === id || p.dataset.to === id;
-    p.classList.toggle("mc-edge--hi", on);
-    p.classList.toggle("mc-edge--dim", !on);
-    p.setAttribute("marker-end", on ? "url(#mc-arr-hi)" : "url(#mc-arr)");
-    if (on && p.dataset.label) {
-      const t = document.createElementNS(MC_SVGNS, "text");
-      t.setAttribute("class", "mc-edge-label");
-      t.setAttribute("x", p.dataset.mx);
-      t.setAttribute("y", String(Number(p.dataset.my) - 5));
-      t.setAttribute("text-anchor", "middle");
-      t.textContent = p.dataset.label;
-      svg.appendChild(t);
-    }
-  });
+  if (svg && !svg.querySelector(".mc-flow")) drawAllMarketLinks(); // 탭 숨김 중 스킵됐으면 재시도
+  mcDrawActiveEdges(id);
 }
 
 function clearMarketLinks() {
   const svg = document.getElementById("vc-links");
   if (svg) {
-    svg.querySelectorAll(".mc-edge-label").forEach((t) => t.remove());
-    svg.querySelectorAll("path.mc-edge").forEach((p) => {
-      p.classList.remove("mc-edge--hi", "mc-edge--dim");
-      p.setAttribute("marker-end", "url(#mc-arr)");
-    });
+    svg.querySelectorAll(".mc-active-edge, .mc-edge-label").forEach((el) => el.remove());
+    svg.querySelectorAll(".mc-flow--dim").forEach((p) => p.classList.remove("mc-flow--dim"));
   }
   const board = document.getElementById("vc-board");
   if (board) board.querySelectorAll(".mc-node").forEach((el) =>
@@ -2020,6 +2139,94 @@ function mcApplyZoom(redraw = true) {
     if (MC_STATE.activeNode) highlightMarketLinks(MC_STATE.activeNode);
   }
 }
+
+// 화면 폭에 맞춰 자동 줌 (처음 표시·전체화면 전환 시)
+function mcFitZoom() {
+  const svg = document.getElementById("vc-links");
+  const wrap = svg && svg.parentElement;
+  const board = document.getElementById("vc-board");
+  if (!wrap || !board || wrap.clientWidth === 0 || board.scrollWidth === 0) return;
+  const z = Math.min(1.8, Math.max(0.55, (wrap.clientWidth - 16) / board.scrollWidth));
+  MC_STATE.zoom = Math.round(z * 100) / 100;
+  mcApplyZoom();
+}
+
+// 지정 화면 좌표를 고정점으로 줌 (휠·핀치·버튼 공용)
+function mcZoomTo(clientX, clientY, z) {
+  const svg = document.getElementById("vc-links");
+  const wrap = svg && svg.parentElement;
+  if (!wrap) return;
+  const old = MC_STATE.zoom || 1;
+  z = Math.min(2.2, Math.max(0.4, z));
+  if (Math.abs(z - old) < 0.001) return;
+  const r = wrap.getBoundingClientRect();
+  const px = clientX - r.left, py = clientY - r.top;
+  const ratio = z / old;
+  MC_STATE.zoom = Math.round(z * 1000) / 1000;
+  MC_STATE.userZoomed = true;
+  mcApplyZoom();
+  wrap.scrollLeft = (wrap.scrollLeft + px) * ratio - px;
+  wrap.scrollTop  = (wrap.scrollTop + py) * ratio - py;
+}
+
+// 캔버스 인터랙션 (1회 와이어링): Ctrl/⌘+휠 줌 · 터치 핀치 줌 · 마우스 드래그 패닝
+function mcWireCanvas() {
+  const svg = document.getElementById("vc-links");
+  const wrap = svg && svg.parentElement;
+  if (!wrap || wrap.dataset.mcWired) return;
+  wrap.dataset.mcWired = "1";
+
+  wrap.addEventListener("wheel", (e) => {
+    if (!e.ctrlKey && !e.metaKey) return; // 일반 휠 = 스크롤
+    e.preventDefault();
+    mcZoomTo(e.clientX, e.clientY, (MC_STATE.zoom || 1) * (e.deltaY < 0 ? 1.12 : 1 / 1.12));
+  }, { passive: false });
+
+  let pinch = null;
+  const dist = (t) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  wrap.addEventListener("touchstart", (e) => {
+    if (e.touches.length === 2) pinch = { d: dist(e.touches), z: MC_STATE.zoom || 1 };
+  }, { passive: true });
+  wrap.addEventListener("touchmove", (e) => {
+    if (!pinch || e.touches.length !== 2) return;
+    e.preventDefault();
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    mcZoomTo(cx, cy, pinch.z * dist(e.touches) / pinch.d);
+  }, { passive: false });
+  wrap.addEventListener("touchend", () => { pinch = null; }, { passive: true });
+
+  let drag = null;
+  wrap.addEventListener("mousedown", (e) => {
+    if (e.button !== 0 || e.target.closest(".mc-node, button, a, input, label")) return;
+    drag = { x: e.clientX, y: e.clientY, sl: wrap.scrollLeft, st: wrap.scrollTop };
+    wrap.classList.add("mc-grabbing");
+    e.preventDefault();
+  });
+  window.addEventListener("mousemove", (e) => {
+    if (!drag) return;
+    wrap.scrollLeft = drag.sl - (e.clientX - drag.x);
+    wrap.scrollTop  = drag.st - (e.clientY - drag.y);
+  });
+  window.addEventListener("mouseup", () => { drag = null; wrap.classList.remove("mc-grabbing"); });
+}
+
+// 전체 화면 모드: 시장 지도 섹션을 화면에 고정하고 다시 맞춤 줌
+function mcToggleFull(force) {
+  const board = document.getElementById("vc-board");
+  const section = board && board.closest(".sector-panel");
+  if (!section) return;
+  const on = force !== undefined ? force : !section.classList.contains("mc-full");
+  if (force === false && !section.classList.contains("mc-full")) return;
+  section.classList.toggle("mc-full", on);
+  document.body.classList.toggle("mc-noscroll", on);
+  const btn = document.getElementById("mc-full");
+  if (btn) btn.textContent = on ? "✕" : "⛶";
+  MC_STATE.fitted = false;
+  MC_STATE.userZoomed = false;
+  requestAnimationFrame(() => drawAllMarketLinks());
+}
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") mcToggleFull(false); });
 
 // 보드 하단 통합 뉴스 피드 — 전 시장의 뉴스를 최신순 한 줄씩.
 // 시장 칩을 클릭하면 지도에서 그 시장 노드가 선택·스크롤된다 (뉴스 ↔ 지도 연결).
