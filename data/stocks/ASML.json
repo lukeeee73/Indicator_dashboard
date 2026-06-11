@@ -4,62 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 87.27
-    },
-    {
-      "date": "2016-05-24",
-      "value": 88.93
-    },
-    {
-      "date": "2016-05-25",
-      "value": 90.21
-    },
-    {
-      "date": "2016-05-26",
-      "value": 90.65
-    },
-    {
-      "date": "2016-05-27",
-      "value": 91.27
-    },
-    {
-      "date": "2016-05-31",
-      "value": 91.17
-    },
-    {
-      "date": "2016-06-01",
-      "value": 91.06
-    },
-    {
-      "date": "2016-06-02",
-      "value": 91.32
-    },
-    {
-      "date": "2016-06-03",
-      "value": 91.97
-    },
-    {
-      "date": "2016-06-06",
-      "value": 91.26
-    },
-    {
-      "date": "2016-06-07",
-      "value": 92.28
-    },
-    {
-      "date": "2016-06-08",
-      "value": 92.2
-    },
-    {
-      "date": "2016-06-09",
-      "value": 91.69
-    },
-    {
-      "date": "2016-06-10",
-      "value": 88.8
-    },
-    {
       "date": "2016-06-13",
       "value": 87.85
     },
@@ -1825,7 +1769,7 @@
     },
     {
       "date": "2018-03-14",
-      "value": 194.81
+      "value": 194.82
     },
     {
       "date": "2018-03-15",
@@ -2529,7 +2473,7 @@
     },
     {
       "date": "2018-11-21",
-      "value": 152.29
+      "value": 152.3
     },
     {
       "date": "2018-11-23",
@@ -3109,7 +3053,7 @@
     },
     {
       "date": "2019-06-24",
-      "value": 190.64
+      "value": 190.63
     },
     {
       "date": "2019-06-25",
@@ -4657,7 +4601,7 @@
     },
     {
       "date": "2021-01-05",
-      "value": 481.39
+      "value": 481.38
     },
     {
       "date": "2021-01-06",
@@ -6605,7 +6549,7 @@
     },
     {
       "date": "2022-12-09",
-      "value": 579.52
+      "value": 579.53
     },
     {
       "date": "2022-12-12",
@@ -7629,7 +7573,7 @@
     },
     {
       "date": "2023-12-18",
-      "value": 726.63
+      "value": 726.64
     },
     {
       "date": "2023-12-19",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 1632.9
+    },
+    {
+      "date": "2026-05-26",
+      "value": 1632.03
+    },
+    {
+      "date": "2026-05-27",
+      "value": 1597.87
+    },
+    {
+      "date": "2026-05-28",
+      "value": 1605.77
+    },
+    {
+      "date": "2026-05-29",
+      "value": 1612.76
+    },
+    {
+      "date": "2026-06-01",
+      "value": 1628.57
+    },
+    {
+      "date": "2026-06-02",
+      "value": 1705.37
+    },
+    {
+      "date": "2026-06-03",
+      "value": 1726.36
+    },
+    {
+      "date": "2026-06-04",
+      "value": 1757.47
+    },
+    {
+      "date": "2026-06-05",
+      "value": 1641.74
+    },
+    {
+      "date": "2026-06-08",
+      "value": 1749.04
+    },
+    {
+      "date": "2026-06-09",
+      "value": 1777.77
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 629348499456.0,
-      "pe_ratio": 54.339436,
-      "forward_pe": 34.391678,
-      "eps_ttm": 30.05,
-      "dividend_yield": 0.54,
+      "market_cap": 668387442688.0,
+      "pe_ratio": 58.13577,
+      "forward_pe": 36.24163,
+      "eps_ttm": 29.83,
+      "dividend_yield": 0.51,
       "profit_margin": 0.29713,
       "operating_margin": 0.36020002,
-      "price_to_book": 1446.1797,
+      "price_to_book": 1547.4062,
       "return_on_equity": 0.52236
     },
     "quarterly": [
@@ -10122,28 +10110,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 1632.9,
+    "as_of": "2026-06-09",
+    "current_price": 1777.77,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 841.4,
+        "fair_value": 835.24,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 1044.55,
+        "fair_value": 1079.17,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 27.63,
+        "fair_value": 27.77,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 739.59,
-    "valuation_gap": 1.2078,
+    "fair_value": 746.92,
+    "valuation_gap": 1.3801,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,32 +10259,46 @@
         "price": 1632.9,
         "fair_value": 727.16,
         "gap": 1.2456
+      },
+      {
+        "date": "2026-05-29",
+        "price": 1612.76,
+        "fair_value": 727.16,
+        "gap": 1.2179
+      },
+      {
+        "date": "2026-06-05",
+        "price": 1641.74,
+        "fair_value": 727.16,
+        "gap": 1.2577
+      },
+      {
+        "date": "2026-06-09",
+        "price": 1777.77,
+        "fair_value": 727.16,
+        "gap": 1.4448
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-26",
-      "narrative_score": 0.25,
-      "summary_kr": "UBS 유럽 최선호 반도체주 지정 + 2026 가이던스 €36-40B 공식 상향. High-NA EUV 독점으로 2nm 이하 첨단 반도체 제조 필수 공급사 지위 확인. 중국 DUV 매출 감소분을 고마진 EUV 수요로 대체하는 구조 전환 가속.",
+      "as_of": "2026-06-10",
+      "narrative_score": 0.29,
+      "summary_kr": "연간 기술 컨퍼런스에서 Terafab 직접 협상 확인과 BofA·JPM·바클레이즈·MS 4사 목표주가 동시 상향. EUV 독점 + AI 신팹 건설 붐의 수혜 중심 위치. 유럽 시총 기록($6,740억) 달성으로 글로벌 반도체 장비 지위 재확인.",
       "key_events": [
-        "UBS 유럽 최선호주 복귀 — 목표 €1,900",
-        "2026 가이던스 €36-40B 공식 상향 (기존 €34-39B)",
-        "High-NA EUV 첫 상용 칩 출하 수개월 내"
+        "CEO Terafab 협상 '매우 진지' 확인",
+        "4사 목표주가 동시 상향 (BofA €1,921)",
+        "유럽 시총 기록 $6,740억"
       ],
       "risks": [
-        "중국 수출 규제 강화 시 DUV 매출 추가 감소",
-        "신규 High-NA EUV 초기 마진 51-53%로 구 EUV 대비 낮음"
+        "중국 EUV 수출 제한 지속",
+        "Terafab 실제 수주까지 6~12개월 불확실성",
+        "유로화 변동성 (USD 환산 EPS)"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "AMAT",
-          "headline": "Morgan Stanley downgraded AMAT to Equal-weight citing China concerns",
-          "implication_for_target": "AMAT 하향 조정은 장비 섹터 내 ASML 상대적 강점 부각 — EUV 독점 vs 범용 장비 차별화"
-        },
-        {
-          "ticker": "LRCX",
-          "headline": "LRCX upgraded to Overweight by Morgan Stanley, WFE 2026 forecast raised to $140B",
-          "implication_for_target": "WFE $140B 상향은 ASML EUV 수주 잔고에도 긍정적 신호"
+          "headline": "Applied Materials raises WFE outlook to >30% growth, Singapore $500M facility opened",
+          "implication_for_target": "WFE 전체 사이클 강세 확인 — ASML EUV 수요도 동반 상승 전망 (AMAT 서브-공정 ASML 노광 후방 연계)"
         }
       ],
       "history": [
@@ -10311,6 +10313,18 @@
         {
           "date": "2026-05-26",
           "narrative_score": 0.25
+        },
+        {
+          "date": "2026-06-02",
+          "narrative_score": 0.33
+        },
+        {
+          "date": "2026-06-09",
+          "narrative_score": 0.3
+        },
+        {
+          "date": "2026-06-10",
+          "narrative_score": 0.29
         }
       ]
     }

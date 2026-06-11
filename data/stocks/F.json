@@ -4,62 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 7.75
-    },
-    {
-      "date": "2016-05-24",
-      "value": 7.84
-    },
-    {
-      "date": "2016-05-25",
-      "value": 7.98
-    },
-    {
-      "date": "2016-05-26",
-      "value": 7.94
-    },
-    {
-      "date": "2016-05-27",
-      "value": 7.93
-    },
-    {
-      "date": "2016-05-31",
-      "value": 7.96
-    },
-    {
-      "date": "2016-06-01",
-      "value": 7.73
-    },
-    {
-      "date": "2016-06-02",
-      "value": 7.79
-    },
-    {
-      "date": "2016-06-03",
-      "value": 7.69
-    },
-    {
-      "date": "2016-06-06",
-      "value": 7.78
-    },
-    {
-      "date": "2016-06-07",
-      "value": 7.89
-    },
-    {
-      "date": "2016-06-08",
-      "value": 7.88
-    },
-    {
-      "date": "2016-06-09",
-      "value": 7.82
-    },
-    {
-      "date": "2016-06-10",
-      "value": 7.73
-    },
-    {
       "date": "2016-06-13",
       "value": 7.66
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 14.93
+    },
+    {
+      "date": "2026-05-26",
+      "value": 15.32
+    },
+    {
+      "date": "2026-05-27",
+      "value": 15.88
+    },
+    {
+      "date": "2026-05-28",
+      "value": 16.65
+    },
+    {
+      "date": "2026-05-29",
+      "value": 17.44
+    },
+    {
+      "date": "2026-06-01",
+      "value": 16.63
+    },
+    {
+      "date": "2026-06-02",
+      "value": 16.15
+    },
+    {
+      "date": "2026-06-03",
+      "value": 15.71
+    },
+    {
+      "date": "2026-06-04",
+      "value": 15.34
+    },
+    {
+      "date": "2026-06-05",
+      "value": 14.9
+    },
+    {
+      "date": "2026-06-08",
+      "value": 15.0
+    },
+    {
+      "date": "2026-06-09",
+      "value": 14.95
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 59491463168.0,
+      "market_cap": 56981106688.0,
       "pe_ratio": null,
-      "forward_pe": 8.167843,
+      "forward_pe": 7.77081,
       "eps_ttm": -1.55,
-      "dividend_yield": 4.02,
+      "dividend_yield": 4.2,
       "profit_margin": -0.03216,
       "operating_margin": 0.05743,
-      "price_to_book": 1.5884669,
+      "price_to_book": 1.5214385,
       "return_on_equity": -0.14813
     },
     "quarterly": [
@@ -10122,18 +10110,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 14.93,
+    "as_of": "2026-06-09",
+    "current_price": 14.95,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 36.56,
+        "fair_value": 38.48,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 36.56,
-    "valuation_gap": -0.5916,
+    "fair_value": 38.48,
+    "valuation_gap": -0.6115,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10339,32 +10327,52 @@
         "price": 14.93,
         "fair_value": 33.5,
         "gap": -0.5543
+      },
+      {
+        "date": "2026-05-29",
+        "price": 17.44,
+        "fair_value": 33.5,
+        "gap": -0.4794
+      },
+      {
+        "date": "2026-06-05",
+        "price": 14.9,
+        "fair_value": 33.5,
+        "gap": -0.5552
+      },
+      {
+        "date": "2026-06-09",
+        "price": 14.95,
+        "fair_value": 33.5,
+        "gap": -0.5537
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-27",
-      "narrative_score": 0.13,
-      "summary_kr": "Q1 EPS·매출 모두 어닝 서프라이즈에 가이던스 상향, Ford Energy 에너지 저장 대형 계약으로 사업 다각화 가시화. 단 IEEPA 일회성 이익 제거 시 하반기 원자재 역풍 대비 필요.",
+      "as_of": "2026-06-03",
+      "narrative_score": -0.07,
+      "summary_kr": "Q1 순이익 급증에도 4월 판매 급감·EV 판매 붕괴가 핵심 악재. CMO 교체까지 겹쳐 단기 센티멘트 약함.",
       "key_events": [
-        "Q1 EPS $0.66 서프라이즈·가이던스 상향",
-        "Ford Energy EDF 4GWh 배터리 저장 계약",
-        "주가 +11.2% 급등"
+        "4월 미국 판매 -14.4%",
+        "EV 판매 -31.1%",
+        "Q1 순이익 +441%",
+        "CMO 퇴임"
       ],
       "risks": [
-        "하반기 ~$2B 원자재 비용 역풍",
-        "IEEPA 관세 혜택 소멸 시 실적 둔화"
+        "EV 수요 회복 지연",
+        "공급망 혼란 지속",
+        "경쟁사 대비 EV 경쟁력 열위"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "GM",
-          "headline": "GM Q1 EPS $3.70 vs $2.62 expected; guidance raised $500M; Supreme Court tariff relief",
-          "implication_for_target": "GM 대폭 어닝 서프라이즈 → F와 미국 픽업트럭·트럭 시장 경쟁 격화 예고"
+          "headline": "GM Q1 EBIT $4.3B; guidance raised on tariff Supreme Court ruling",
+          "implication_for_target": "GM이 관세 우호 환경 활용해 가이던스 상향 — 포드 대비 상대적 실적 불리"
         },
         {
-          "ticker": "RIVN",
-          "headline": "Rivian R2 launch June; VW top shareholder; 2026 guidance 62-67K deliveries",
-          "implication_for_target": "픽업트럭 EV 세그먼트 RIVN 경쟁 강화 → Ford F-150 Lightning 차별화 필요"
+          "ticker": "TSLA",
+          "headline": "Tesla Europe May sales double/triple-digit growth",
+          "implication_for_target": "TSLA 유럽 급성장 vs 포드 EV 판매 -31% — EV 경쟁력 격차 심화"
         }
       ],
       "history": [
@@ -10375,6 +10383,10 @@
         {
           "date": "2026-05-27",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-06-03",
+          "narrative_score": -0.07
         }
       ]
     }

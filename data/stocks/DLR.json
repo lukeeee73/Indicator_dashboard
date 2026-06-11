@@ -4,62 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 66.75
-    },
-    {
-      "date": "2016-05-24",
-      "value": 66.71
-    },
-    {
-      "date": "2016-05-25",
-      "value": 67.35
-    },
-    {
-      "date": "2016-05-26",
-      "value": 67.16
-    },
-    {
-      "date": "2016-05-27",
-      "value": 67.06
-    },
-    {
-      "date": "2016-05-31",
-      "value": 67.62
-    },
-    {
-      "date": "2016-06-01",
-      "value": 67.72
-    },
-    {
-      "date": "2016-06-02",
-      "value": 68.81
-    },
-    {
-      "date": "2016-06-03",
-      "value": 69.73
-    },
-    {
-      "date": "2016-06-06",
-      "value": 70.61
-    },
-    {
-      "date": "2016-06-07",
-      "value": 72.3
-    },
-    {
-      "date": "2016-06-08",
-      "value": 72.68
-    },
-    {
-      "date": "2016-06-09",
-      "value": 72.85
-    },
-    {
-      "date": "2016-06-10",
-      "value": 72.48
-    },
-    {
       "date": "2016-06-13",
       "value": 71.63
     },
@@ -8029,7 +7973,7 @@
     },
     {
       "date": "2024-05-13",
-      "value": 134.82
+      "value": 134.83
     },
     {
       "date": "2024-05-14",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 192.03
+    },
+    {
+      "date": "2026-05-26",
+      "value": 193.67
+    },
+    {
+      "date": "2026-05-27",
+      "value": 191.71
+    },
+    {
+      "date": "2026-05-28",
+      "value": 191.43
+    },
+    {
+      "date": "2026-05-29",
+      "value": 190.0
+    },
+    {
+      "date": "2026-06-01",
+      "value": 185.0
+    },
+    {
+      "date": "2026-06-02",
+      "value": 187.26
+    },
+    {
+      "date": "2026-06-03",
+      "value": 183.5
+    },
+    {
+      "date": "2026-06-04",
+      "value": 188.7
+    },
+    {
+      "date": "2026-06-05",
+      "value": 186.79
+    },
+    {
+      "date": "2026-06-08",
+      "value": 182.15
+    },
+    {
+      "date": "2026-06-09",
+      "value": 184.93
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 68688953344.0,
-      "pe_ratio": 51.071808,
-      "forward_pe": 67.0463,
-      "eps_ttm": 3.76,
-      "dividend_yield": 2.54,
+      "market_cap": 64664838144.0,
+      "pe_ratio": 47.825397,
+      "forward_pe": 63.118423,
+      "eps_ttm": 3.78,
+      "dividend_yield": 2.7,
       "profit_margin": 0.21823,
       "operating_margin": 0.17191,
-      "price_to_book": 2.9599087,
+      "price_to_book": 2.7865038,
       "return_on_equity": 0.05688
     },
     "quarterly": [
@@ -10129,28 +10117,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 192.03,
+    "as_of": "2026-06-09",
+    "current_price": 184.93,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 67.68,
+        "fair_value": 68.04,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 45.83,
+        "fair_value": 46.88,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 74.09,
+        "fair_value": 75.13,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 62.41,
-    "valuation_gap": 2.0771,
+    "fair_value": 63.11,
+    "valuation_gap": 1.9303,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,31 +10266,51 @@
         "price": 192.03,
         "fair_value": 68.22,
         "gap": 1.8149
+      },
+      {
+        "date": "2026-05-29",
+        "price": 190.0,
+        "fair_value": 68.22,
+        "gap": 1.7851
+      },
+      {
+        "date": "2026-06-05",
+        "price": 186.79,
+        "fair_value": 68.22,
+        "gap": 1.7381
+      },
+      {
+        "date": "2026-06-09",
+        "price": 184.93,
+        "fair_value": 68.22,
+        "gap": 1.7108
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.16,
-      "summary_kr": "DLR 역대 최대 AI 추론 임대 계약(200MW·AA급 하이퍼스케일러)·자본지출 $250M 상향·파이프라인 +60% — AI 인프라 수요 포착 가속. 구조적 성장 가시성 최상위 수준.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.12,
+      "summary_kr": "DLR이 Q1 강한 실적 이후 2026 가이던스를 상향하고 런던 AI 이노베이션 랩을 공개했다. Stifel $235 목표가 재확인으로 애널리스트 신뢰가 높지만, P/E 49배의 밸류에이션 부담이 최소 매력도 평가를 받고 있다.",
       "key_events": [
-        "역대 최대 AI 추론 200MW 임대",
-        "자본지출 $250M 상향·파이프라인 +60%"
+        "2026 가이던스 상향",
+        "Q2 배당 $1.22",
+        "런던 AI 이노베이션 랩",
+        "Stifel $235 목표가"
       ],
       "risks": [
-        "AI 투자 집중 → 경기 둔화 시 감소 리스크",
-        "EQIX와 데이터센터 경쟁 심화"
+        "P/E 49배로 업계 최저 밸류에이션 매력도(F등급)",
+        "하이퍼스케일 클라우드 자체 투자 증가로 외부 데이터센터 수요 장기 불확실"
       ],
-      "news_count": 2,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "EQIX",
-          "headline": "Equinix total borrowings rise to $21.4B for AI expansion; 9-10% revenue growth",
-          "implication_for_target": "EQIX AI 확장 가속 — DLR 역대 최대 계약과 함께 데이터센터 수요 섹터 동기화"
+          "headline": "Equinix AI Fabric bookings +70%; Citi Focus List; $10B guidance",
+          "implication_for_target": "EQIX의 AI 연결 강세 대비 DLR은 하이퍼스케일 클라우드 집중 전략으로 차별화"
         },
         {
-          "ticker": "PLD",
-          "headline": "Prologis AI-linked data center development starts $4.5-5.5B",
-          "implication_for_target": "PLD 데이터센터 진출 — DLR 순수 데이터센터 차별성 유지 중요"
+          "ticker": "AMT",
+          "headline": "AMT underperforms market; tower REIT headwinds from high rates",
+          "implication_for_target": "DLR의 AI 수요 드리븐 성장은 AMT 타워 부진과 대조적 — 데이터센터 REIT 우위 지속"
         }
       ],
       "history": [
@@ -10317,6 +10325,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.16
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.12
         }
       ]
     }

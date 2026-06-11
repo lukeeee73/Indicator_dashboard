@@ -4,62 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 55.29
-    },
-    {
-      "date": "2016-05-24",
-      "value": 56.4
-    },
-    {
-      "date": "2016-05-25",
-      "value": 56.78
-    },
-    {
-      "date": "2016-05-26",
-      "value": 56.72
-    },
-    {
-      "date": "2016-05-27",
-      "value": 56.97
-    },
-    {
-      "date": "2016-05-31",
-      "value": 57.18
-    },
-    {
-      "date": "2016-06-01",
-      "value": 57.31
-    },
-    {
-      "date": "2016-06-02",
-      "value": 57.74
-    },
-    {
-      "date": "2016-06-03",
-      "value": 56.94
-    },
-    {
-      "date": "2016-06-06",
-      "value": 57.33
-    },
-    {
-      "date": "2016-06-07",
-      "value": 57.29
-    },
-    {
-      "date": "2016-06-08",
-      "value": 57.61
-    },
-    {
-      "date": "2016-06-09",
-      "value": 57.13
-    },
-    {
-      "date": "2016-06-10",
-      "value": 56.49
-    },
-    {
       "date": "2016-06-13",
       "value": 55.36
     },
@@ -3401,7 +3345,7 @@
     },
     {
       "date": "2019-10-07",
-      "value": 104.4
+      "value": 104.41
     },
     {
       "date": "2019-10-08",
@@ -5413,7 +5357,7 @@
     },
     {
       "date": "2021-10-05",
-      "value": 164.91
+      "value": 164.9
     },
     {
       "date": "2021-10-06",
@@ -8789,7 +8733,7 @@
     },
     {
       "date": "2025-02-14",
-      "value": 306.8
+      "value": 306.79
     },
     {
       "date": "2025-02-18",
@@ -9325,7 +9269,7 @@
     },
     {
       "date": "2025-08-28",
-      "value": 324.42
+      "value": 324.41
     },
     {
       "date": "2025-08-29",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 311.78
+    },
+    {
+      "date": "2026-05-26",
+      "value": 310.72
+    },
+    {
+      "date": "2026-05-27",
+      "value": 312.54
+    },
+    {
+      "date": "2026-05-28",
+      "value": 315.12
+    },
+    {
+      "date": "2026-05-29",
+      "value": 316.47
+    },
+    {
+      "date": "2026-06-01",
+      "value": 313.54
+    },
+    {
+      "date": "2026-06-02",
+      "value": 310.97
+    },
+    {
+      "date": "2026-06-03",
+      "value": 300.57
+    },
+    {
+      "date": "2026-06-04",
+      "value": 312.53
+    },
+    {
+      "date": "2026-06-05",
+      "value": 310.66
+    },
+    {
+      "date": "2026-06-08",
+      "value": 312.3
+    },
+    {
+      "date": "2026-06-09",
+      "value": 318.38
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 212735737856.0,
-      "pe_ratio": 19.449781,
-      "forward_pe": 15.49239,
-      "eps_ttm": 16.03,
-      "dividend_yield": 1.22,
+      "market_cap": 213800173568.0,
+      "pe_ratio": 19.571518,
+      "forward_pe": 15.567005,
+      "eps_ttm": 16.01,
+      "dividend_yield": 1.21,
       "profit_margin": 0.16305,
       "operating_margin": 0.21245001,
-      "price_to_book": 6.2548647,
+      "price_to_book": 6.2861614,
       "return_on_equity": 0.34419
     },
     "quarterly": [
@@ -10129,28 +10117,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 311.78,
+    "as_of": "2026-06-09",
+    "current_price": 318.38,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 224.42,
+        "fair_value": 224.14,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 241.5,
+        "fair_value": 245.43,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 134.08,
+        "fair_value": 135.07,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 211.48,
-    "valuation_gap": 0.4743,
+    "fair_value": 212.71,
+    "valuation_gap": 0.4968,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,31 +10266,49 @@
         "price": 311.78,
         "fair_value": 224.42,
         "gap": 0.3893
+      },
+      {
+        "date": "2026-05-29",
+        "price": 316.47,
+        "fair_value": 224.42,
+        "gap": 0.4102
+      },
+      {
+        "date": "2026-06-05",
+        "price": 310.66,
+        "fair_value": 224.42,
+        "gap": 0.3843
+      },
+      {
+        "date": "2026-06-09",
+        "price": 318.38,
+        "fair_value": 224.42,
+        "gap": 0.4187
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.05,
-      "summary_kr": "AXP Q1 EPS 비트·FY 가이던스 재확인. 폐쇄형 네트워크 구조로 AI 에이전틱 커머스 위협 상대적 면역 — V·MA 대비 차별화. 반독점 합의 6월 승인이 남은 규제 변수.",
+      "as_of": "2026-06-06",
+      "narrative_score": -0.04,
+      "summary_kr": "BofA가 AXP를 매수→중립으로 하향했고 신용카드 연체율이 15년 최고(13%)에 달해 거시 역풍이 강해졌다. Q1 EPS는 양호하고 Fanatics 파트너십이 고객 확장에 기여하지만 단기 부정 모멘텀이 우세하다.",
       "key_events": [
-        "Q1 EPS +7% 비트·FY 가이던스 재확인",
-        "프리미엄 카드 스테이블코인 상대적 면역"
+        "BofA 투자의견 하향(매수→중립)",
+        "신용카드 연체율 13%(15년 최고)",
+        "Fanatics 공동브랜드 카드"
       ],
       "risks": [
-        "반독점 합의 6월 17일 승인 대기",
-        "YTD 이중자리 하락 투자심리 회복 과제"
+        "연체율 악화 시 신용 손실 증가 위험, 경기 둔화 시 고급 소비 지출 감소, 반독점 소송(6/17 청문회)"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "V",
-          "headline": "Visa down double-digits YTD despite earnings; stablecoin threat dominates narrative",
-          "implication_for_target": "V·MA 취약 vs AXP 폐쇄형 네트워크 차별화 — 상대 경쟁 우위 부각"
+          "headline": "Visa FQ2 beat; stablecoin pilot; stock at $323",
+          "implication_for_target": "Visa·MA의 네트워크 모델 대비 AXP의 closed-loop 모델, 프리미엄 고객 차별화로 경쟁"
         },
         {
           "ticker": "MA",
-          "headline": "Mastercard Q1 beat but same stablecoin concern",
-          "implication_for_target": "V·MA 동일 위협 — AXP 프리미엄 고객층·폐쇄형 모델이 완충 역할"
+          "headline": "MA CFO reshuffle; stablecoin platform; stock in downtrend",
+          "implication_for_target": "결제 양강(V·MA) 모두 디지털 강화 중 — AXP는 리워드·프리미엄 서비스로 차별화 필요"
         }
       ],
       "history": [
@@ -10317,6 +10323,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": -0.04
         }
       ]
     }

@@ -7738,18 +7738,62 @@
     {
       "date": "2026-05-22",
       "value": 5.2
+    },
+    {
+      "date": "2026-05-26",
+      "value": 5.26
+    },
+    {
+      "date": "2026-05-27",
+      "value": 5.75
+    },
+    {
+      "date": "2026-05-28",
+      "value": 5.55
+    },
+    {
+      "date": "2026-05-29",
+      "value": 5.6
+    },
+    {
+      "date": "2026-06-01",
+      "value": 5.98
+    },
+    {
+      "date": "2026-06-02",
+      "value": 6.01
+    },
+    {
+      "date": "2026-06-03",
+      "value": 5.75
+    },
+    {
+      "date": "2026-06-04",
+      "value": 5.69
+    },
+    {
+      "date": "2026-06-05",
+      "value": 5.36
+    },
+    {
+      "date": "2026-06-08",
+      "value": 5.45
+    },
+    {
+      "date": "2026-06-09",
+      "value": 5.28
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 13029468160.0,
+      "market_cap": 12979354624.0,
       "pe_ratio": null,
-      "forward_pe": 53.36496,
-      "eps_ttm": -0.55,
+      "forward_pe": 34.829895,
+      "eps_ttm": -0.56,
       "dividend_yield": null,
       "profit_margin": -0.09086,
       "operating_margin": -0.01209,
-      "price_to_book": 21.036646,
+      "price_to_book": 20.059551,
       "return_on_equity": -0.83959
     },
     "quarterly": [
@@ -7805,45 +7849,40 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 5.2,
+    "as_of": "2026-06-09",
+    "current_price": 5.28,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 1.95,
+        "fair_value": 3.03,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 1.95,
-    "valuation_gap": 1.6667,
+    "fair_value": 3.03,
+    "valuation_gap": 0.7426,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-05-27",
-      "narrative_score": 0.18,
-      "summary_kr": "Q1 납품 83,465대(+98.3%), 조정 영업이익 2분기 연속 흑자, 차량마진 18.8%로 대폭 개선 — NIO 흑자 전환 내러티브가 구체화되는 분기.",
+      "as_of": "2026-06-03",
+      "narrative_score": 0.2,
+      "summary_kr": "5월 인도 +62.3% 급증으로 분기 가이던스 달성 경로 순조. ONVO L80 출시로 라인업 확장 긍정적 — 6월 인도량이 최대 관심사.",
       "key_events": [
-        "Q1 납품 83,465대 +98.3%, 가이던스 초과",
-        "조정 영업이익 2분기 연속 흑자",
-        "ES8 215일 만에 10만대 누적 기록"
+        "5월 인도 37,705대 (+62.3% YoY)",
+        "ONVO L80 출시·인도 시작",
+        "Q2 가이던스 110k-115k"
       ],
       "risks": [
-        "BYD 등 중국 내 EV 가격 경쟁 심화",
-        "GAAP 기준 영업손실 지속 여부",
-        "중국 소비 둔화 매크로 리스크"
+        "6월 4.3~4.8만대 인도 달성 불확실",
+        "중국 EV 가격전쟁 심화",
+        "달러 기준 수익성 개선 속도"
       ],
       "news_count": 4,
       "competitor_context": [
         {
           "ticker": "TSLA",
-          "headline": "Tesla Q1 2026: 358K deliveries (missed consensus); Robotaxi expanding to 12 states",
-          "implication_for_target": "TSLA 글로벌 납품 둔화 → NIO 중국 프리미엄 시장 점유율 확대 기회"
-        },
-        {
-          "ticker": "RIVN",
-          "headline": "Rivian VW top shareholder; R2 launch June; 2026 guidance 62-67K",
-          "implication_for_target": "글로벌 EV 스타트업 경쟁 — NIO ONVO·FIREFLY 브랜드 확장으로 가격대별 시장 커버리지 확대"
+          "headline": "Tesla China sales continue as key NIO market rival",
+          "implication_for_target": "중국 시장 내 TSLA Model Y와 직접 경쟁 — NIO의 배터리 스왑 차별화가 핵심"
         }
       ],
       "history": [
@@ -7854,6 +7893,10 @@
         {
           "date": "2026-05-27",
           "narrative_score": 0.18
+        },
+        {
+          "date": "2026-06-03",
+          "narrative_score": 0.2
         }
       ]
     }

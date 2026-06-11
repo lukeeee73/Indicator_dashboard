@@ -4,62 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 71.96
-    },
-    {
-      "date": "2016-05-24",
-      "value": 73.98
-    },
-    {
-      "date": "2016-05-25",
-      "value": 73.68
-    },
-    {
-      "date": "2016-05-26",
-      "value": 73.63
-    },
-    {
-      "date": "2016-05-27",
-      "value": 74.24
-    },
-    {
-      "date": "2016-05-31",
-      "value": 73.57
-    },
-    {
-      "date": "2016-06-01",
-      "value": 73.83
-    },
-    {
-      "date": "2016-06-02",
-      "value": 74.51
-    },
-    {
-      "date": "2016-06-03",
-      "value": 74.5
-    },
-    {
-      "date": "2016-06-06",
-      "value": 75.06
-    },
-    {
-      "date": "2016-06-07",
-      "value": 75.12
-    },
-    {
-      "date": "2016-06-08",
-      "value": 76.1
-    },
-    {
-      "date": "2016-06-09",
-      "value": 75.73
-    },
-    {
-      "date": "2016-06-10",
-      "value": 74.73
-    },
-    {
       "date": "2016-06-13",
       "value": 73.07
     },
@@ -801,7 +745,7 @@
     },
     {
       "date": "2017-03-08",
-      "value": 83.38
+      "value": 83.39
     },
     {
       "date": "2017-03-09",
@@ -3793,7 +3737,7 @@
     },
     {
       "date": "2020-02-27",
-      "value": 172.07
+      "value": 172.08
     },
     {
       "date": "2020-02-28",
@@ -4409,7 +4353,7 @@
     },
     {
       "date": "2020-10-06",
-      "value": 192.22
+      "value": 192.23
     },
     {
       "date": "2020-10-07",
@@ -4829,7 +4773,7 @@
     },
     {
       "date": "2021-03-09",
-      "value": 211.96
+      "value": 211.97
     },
     {
       "date": "2021-03-10",
@@ -5721,7 +5665,7 @@
     },
     {
       "date": "2022-01-25",
-      "value": 195.2
+      "value": 195.19
     },
     {
       "date": "2022-01-26",
@@ -7149,7 +7093,7 @@
     },
     {
       "date": "2023-06-28",
-      "value": 222.81
+      "value": 222.82
     },
     {
       "date": "2023-06-29",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 328.88
+    },
+    {
+      "date": "2026-05-26",
+      "value": 326.48
+    },
+    {
+      "date": "2026-05-27",
+      "value": 327.61
+    },
+    {
+      "date": "2026-05-28",
+      "value": 324.95
+    },
+    {
+      "date": "2026-05-29",
+      "value": 326.36
+    },
+    {
+      "date": "2026-06-01",
+      "value": 322.77
+    },
+    {
+      "date": "2026-06-02",
+      "value": 317.32
+    },
+    {
+      "date": "2026-06-03",
+      "value": 312.4
+    },
+    {
+      "date": "2026-06-04",
+      "value": 320.18
+    },
+    {
+      "date": "2026-06-05",
+      "value": 323.57
+    },
+    {
+      "date": "2026-06-08",
+      "value": 319.67
+    },
+    {
+      "date": "2026-06-09",
+      "value": 325.05
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 625445502976.0,
-      "pe_ratio": 28.648085,
-      "forward_pe": 22.145384,
-      "eps_ttm": 11.48,
-      "dividend_yield": 0.81,
+      "market_cap": 614187139072.0,
+      "pe_ratio": 28.156929,
+      "forward_pe": 21.72803,
+      "eps_ttm": 11.47,
+      "dividend_yield": 0.83,
       "profit_margin": 0.51679003,
       "operating_margin": 0.67346,
-      "price_to_book": 16.416092,
+      "price_to_book": 17.32432,
       "return_on_equity": 0.60349
     },
     "quarterly": [
@@ -10115,28 +10103,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 328.88,
+    "as_of": "2026-06-09",
+    "current_price": 325.05,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 160.72,
+        "fair_value": 160.58,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 178.21,
+        "fair_value": 179.52,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 71.94,
+        "fair_value": 69.59,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 148.21,
-    "valuation_gap": 1.219,
+    "fair_value": 148.06,
+    "valuation_gap": 1.1953,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10264,31 +10252,49 @@
         "price": 328.88,
         "fair_value": 160.72,
         "gap": 1.0463
+      },
+      {
+        "date": "2026-05-29",
+        "price": 326.36,
+        "fair_value": 160.72,
+        "gap": 1.0306
+      },
+      {
+        "date": "2026-06-05",
+        "price": 323.57,
+        "fair_value": 160.72,
+        "gap": 1.0133
+      },
+      {
+        "date": "2026-06-09",
+        "price": 325.05,
+        "fair_value": 160.72,
+        "gap": 1.0225
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": -0.06,
-      "summary_kr": "V Q1 실적 강세(+15%)에도 AI 에이전틱 커머스·스테이블코인 대체 위협으로 10년 최저 밸류에이션. 실적과 내러티브의 극단적 괴리 — 구조적 위협 구체화 여부가 2027년 핵심 변수.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.17,
+      "summary_kr": "Visa가 FQ2 실적 컨센서스 상회와 함께 Canton Network 스테이블코인 결제 파일럿으로 블록체인 결제 인프라 주도권을 확보했다. 쿠바 거래 중단은 실질 영향이 미미하며, 주가 +3.66% 상승으로 시장의 긍정 반응을 확인했다.",
       "key_events": [
-        "AI 에이전틱 커머스 스테이블코인 위협",
-        "Q1 매출 +15% 실적 강세"
+        "Canton Network 스테이블코인 결제 파일럿",
+        "FQ2 매출·EPS 컨센서스 상회",
+        "주가 $323.82 +3.66%"
       ],
       "risks": [
-        "Citrini 2027년 스테이블코인 대체 시나리오",
-        "UK FCA 디지털 지갑 조사 결과"
+        "쿠바 거래 중단(미미), 글로벌 소비 둔화 시 결제 볼륨 감소 우려"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "MA",
-          "headline": "Mastercard Q1 cross-border volume +14%, EPS beats by 12%; same stablecoin concerns",
-          "implication_for_target": "MA 동반 실적 강세 but 구조적 스테이블코인 위협 공유 — V 단독 리스크 아님"
+          "headline": "Mastercard names Ling Hai new CFO; joins stablecoin platform with Visa and Stripe",
+          "implication_for_target": "MA와 동일 스테이블코인 플랫폼 참여 — 공동 시장 개척으로 디지털 결제 파이 확대"
         },
         {
-          "ticker": "PYPL",
-          "headline": "PayPal shares recover as AI agentic payments narrative seen as multi-year risk",
-          "implication_for_target": "PYPL 기존 디지털 결제도 같은 위협 — 결제 섹터 전체 재평가 중"
+          "ticker": "AXP",
+          "headline": "BofA downgrades AXP; delinquency rates at 13% 15yr high",
+          "implication_for_target": "신용카드 연체 악화는 V의 크레딧 관련 사업에 간접 우려 — 단 V는 네트워크 수수료 모델로 직접 신용 노출 제한적"
         }
       ],
       "history": [
@@ -10303,6 +10309,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": -0.06
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.17
         }
       ]
     }

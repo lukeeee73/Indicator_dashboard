@@ -4,62 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 102.58
-    },
-    {
-      "date": "2016-05-24",
-      "value": 103.76
-    },
-    {
-      "date": "2016-05-25",
-      "value": 104.04
-    },
-    {
-      "date": "2016-05-26",
-      "value": 103.59
-    },
-    {
-      "date": "2016-05-27",
-      "value": 103.59
-    },
-    {
-      "date": "2016-05-31",
-      "value": 103.28
-    },
-    {
-      "date": "2016-06-01",
-      "value": 104.27
-    },
-    {
-      "date": "2016-06-02",
-      "value": 103.91
-    },
-    {
-      "date": "2016-06-03",
-      "value": 103.73
-    },
-    {
-      "date": "2016-06-06",
-      "value": 105.4
-    },
-    {
-      "date": "2016-06-07",
-      "value": 105.17
-    },
-    {
-      "date": "2016-06-08",
-      "value": 106.36
-    },
-    {
-      "date": "2016-06-09",
-      "value": 106.15
-    },
-    {
-      "date": "2016-06-10",
-      "value": 106.0
-    },
-    {
       "date": "2016-06-13",
       "value": 104.29
     },
@@ -137,7 +81,7 @@
     },
     {
       "date": "2016-07-11",
-      "value": 105.56
+      "value": 105.55
     },
     {
       "date": "2016-07-12",
@@ -2977,7 +2921,7 @@
     },
     {
       "date": "2019-05-07",
-      "value": 170.19
+      "value": 170.18
     },
     {
       "date": "2019-05-08",
@@ -4885,7 +4829,7 @@
     },
     {
       "date": "2021-03-29",
-      "value": 249.31
+      "value": 249.3
     },
     {
       "date": "2021-03-30",
@@ -4901,7 +4845,7 @@
     },
     {
       "date": "2021-04-05",
-      "value": 255.53
+      "value": 255.52
     },
     {
       "date": "2021-04-06",
@@ -8457,7 +8401,7 @@
     },
     {
       "date": "2024-10-15",
-      "value": 310.97
+      "value": 310.96
     },
     {
       "date": "2024-10-16",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 289.47
+    },
+    {
+      "date": "2026-05-26",
+      "value": 289.6
+    },
+    {
+      "date": "2026-05-27",
+      "value": 285.73
+    },
+    {
+      "date": "2026-05-28",
+      "value": 283.65
+    },
+    {
+      "date": "2026-05-29",
+      "value": 278.62
+    },
+    {
+      "date": "2026-06-01",
+      "value": 278.89
+    },
+    {
+      "date": "2026-06-02",
+      "value": 279.29
+    },
+    {
+      "date": "2026-06-03",
+      "value": 282.27
+    },
+    {
+      "date": "2026-06-04",
+      "value": 282.85
+    },
+    {
+      "date": "2026-06-05",
+      "value": 282.35
+    },
+    {
+      "date": "2026-06-08",
+      "value": 276.77
+    },
+    {
+      "date": "2026-06-09",
+      "value": 282.98
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 64459378688.0,
-      "pe_ratio": 30.502636,
-      "forward_pe": 20.32274,
-      "eps_ttm": 9.49,
-      "dividend_yield": 2.5,
+      "market_cap": 61573439488.0,
+      "pe_ratio": 29.167725,
+      "forward_pe": 19.425259,
+      "eps_ttm": 9.48,
+      "dividend_yield": 2.62,
       "profit_margin": 0.16906999,
       "operating_margin": 0.23595,
-      "price_to_book": 4.1188107,
+      "price_to_book": 3.9344053,
       "return_on_equity": 0.12353
     },
     "quarterly": [
@@ -10122,28 +10110,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 289.47,
+    "as_of": "2026-06-09",
+    "current_price": 282.98,
     "sector": "Materials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 151.84,
+        "fair_value": 151.68,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 199.41,
+        "fair_value": 203.95,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (14)"
       },
       "graham_number": {
-        "fair_value": 122.5,
+        "fair_value": 123.86,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 160.24,
-    "valuation_gap": 0.8064,
+    "fair_value": 161.8,
+    "valuation_gap": 0.749,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10193,27 +10181,45 @@
         "price": 289.47,
         "fair_value": 151.2,
         "gap": 0.9145
+      },
+      {
+        "date": "2026-05-29",
+        "price": 278.62,
+        "fair_value": 151.2,
+        "gap": 0.8427
+      },
+      {
+        "date": "2026-06-05",
+        "price": 282.35,
+        "fair_value": 151.2,
+        "gap": 0.8674
+      },
+      {
+        "date": "2026-06-09",
+        "price": 282.98,
+        "fair_value": 151.2,
+        "gap": 0.8716
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-29",
-      "narrative_score": -0.08,
-      "summary_kr": "미국 3개 프로젝트 철수 + $31억 손상으로 전략 축소. NEOM 80% 완공은 긍정적이나 불확실성 잔존. 신임 CEO 전략 발표가 재평가 핵심 이벤트.",
+      "as_of": "2026-06-05",
+      "narrative_score": 0.17,
+      "summary_kr": "회계Q2 EPS +19% YoY 강세, 웰스파고 Overweight 상향, 미주리 최대 단일 투자 확대로 모멘텀 재확인. 최근 1개월 -6.9% 하락은 매력적 진입 기회로 볼 수 있음.",
       "key_events": [
-        "미국 3개 프로젝트 철수 ($31억 손상)",
-        "NEOM 그린수소 80% 완공",
-        "신임 CEO Bernstein 컨퍼런스 발표"
+        "회계Q2 EPS +19% YoY, 연간 가이던스 $13.00-$13.25 상향",
+        "웰스파고 Overweight 상향 (목표가 $325)",
+        "$70M 미주리 최대 단일 사이트 확장"
       ],
       "risks": [
-        "추가 프로젝트 철수 가능성",
-        "수소 수요 지연 시 NEOM 사업화 불확실"
+        "헬륨 가격 하락 중기 도전",
+        "NEOM 그린수소 프로젝트 일정 지연 리스크"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "LIN",
-          "headline": "Linde Q1 EPS +10% YoY, raises guidance",
-          "implication_for_target": "LIN 강세 실적 대비 APD 구조조정 — 산업가스 섹터 내 차별화 심화"
+          "headline": "Linde also wins Samsung semiconductor fab gas contract in South Korea",
+          "implication_for_target": "LIN도 삼성 반도체 공급 확보 — 산업가스 시장 AI 반도체 수요 공동 수혜"
         }
       ],
       "history": [
@@ -10224,6 +10230,10 @@
         {
           "date": "2026-05-29",
           "narrative_score": -0.08
+        },
+        {
+          "date": "2026-06-05",
+          "narrative_score": 0.17
         }
       ]
     }

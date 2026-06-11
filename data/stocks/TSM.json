@@ -4,62 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 18.64
-    },
-    {
-      "date": "2016-05-24",
-      "value": 18.79
-    },
-    {
-      "date": "2016-05-25",
-      "value": 18.91
-    },
-    {
-      "date": "2016-05-26",
-      "value": 19.04
-    },
-    {
-      "date": "2016-05-27",
-      "value": 19.05
-    },
-    {
-      "date": "2016-05-31",
-      "value": 18.99
-    },
-    {
-      "date": "2016-06-01",
-      "value": 19.39
-    },
-    {
-      "date": "2016-06-02",
-      "value": 19.34
-    },
-    {
-      "date": "2016-06-03",
-      "value": 19.61
-    },
-    {
-      "date": "2016-06-06",
-      "value": 19.56
-    },
-    {
-      "date": "2016-06-07",
-      "value": 20.02
-    },
-    {
-      "date": "2016-06-08",
-      "value": 20.22
-    },
-    {
-      "date": "2016-06-09",
-      "value": 20.15
-    },
-    {
-      "date": "2016-06-10",
-      "value": 19.86
-    },
-    {
       "date": "2016-06-13",
       "value": 19.69
     },
@@ -8505,7 +8449,7 @@
     },
     {
       "date": "2024-10-31",
-      "value": 186.88
+      "value": 186.89
     },
     {
       "date": "2024-11-01",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 404.52
+    },
+    {
+      "date": "2026-05-26",
+      "value": 412.32
+    },
+    {
+      "date": "2026-05-27",
+      "value": 422.73
+    },
+    {
+      "date": "2026-05-28",
+      "value": 424.86
+    },
+    {
+      "date": "2026-05-29",
+      "value": 418.45
+    },
+    {
+      "date": "2026-06-01",
+      "value": 435.63
+    },
+    {
+      "date": "2026-06-02",
+      "value": 446.69
+    },
+    {
+      "date": "2026-06-03",
+      "value": 436.69
+    },
+    {
+      "date": "2026-06-04",
+      "value": 444.92
+    },
+    {
+      "date": "2026-06-05",
+      "value": 415.17
+    },
+    {
+      "date": "2026-06-08",
+      "value": 426.8
+    },
+    {
+      "date": "2026-06-09",
+      "value": 427.92
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 2098032410624.0,
-      "pe_ratio": 34.722748,
-      "forward_pe": 20.726833,
+      "market_cap": 2119971241984.0,
+      "pe_ratio": 35.08584,
+      "forward_pe": 20.93054,
       "eps_ttm": 11.65,
-      "dividend_yield": 0.94,
+      "dividend_yield": 0.93,
       "profit_margin": 0.46505,
       "operating_margin": 0.58105,
-      "price_to_book": 61.87825,
+      "price_to_book": 62.525303,
       "return_on_equity": 0.3621
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 404.52,
+    "as_of": "2026-06-09",
+    "current_price": 427.92,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 429.37,
+        "fair_value": 449.78,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 41.4,
+        "fair_value": 42.36,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 300.19,
-    "valuation_gap": 0.3475,
+    "fair_value": 306.51,
+    "valuation_gap": 0.3961,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,32 +10266,46 @@
         "price": 404.52,
         "fair_value": 10413.2,
         "gap": -0.9612
+      },
+      {
+        "date": "2026-05-29",
+        "price": 418.45,
+        "fair_value": 10413.2,
+        "gap": -0.9598
+      },
+      {
+        "date": "2026-06-05",
+        "price": 415.17,
+        "fair_value": 10413.2,
+        "gap": -0.9601
+      },
+      {
+        "date": "2026-06-09",
+        "price": 427.92,
+        "fair_value": 10413.2,
+        "gap": -0.9589
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-26",
-      "narrative_score": 0.2,
-      "summary_kr": "TSMC 주도로 대만 시총이 세계 5위로 부상, 전 세계 AI 반도체 인프라 핵심 위상 재확인. JPMorgan: 규제 완화로 $60억 이상 외국인 유입 가능. NVDA·AMD 수요 강세가 선단공정 수주 잔고를 탄탄히 지탱.",
+      "as_of": "2026-06-10",
+      "narrative_score": 0.23,
+      "summary_kr": "5월 매출 +30.1% YoY 발표로 연간 30%+ 성장 가이던스 재확인. 3nm 가격 인상(최대 15%)은 수익성 개선 신호. 52주 고점 대비 7.7% 조정은 AI capex 붐 지속 기대감 속 기술적 과매수 해소 과정.",
       "key_events": [
-        "대만 시총 세계 5위 — TSMC YTD +46% 주도",
-        "JPMorgan: 규제 완화 $60억 외국인 유입 전망",
-        "강한 AI/HPC 수요 지속 — 19개 애널리스트 평균 목표 $467.84"
+        "5월 매출 +30.1% YoY 확인",
+        "CEO 연간 가이던스 30%+로 상향",
+        "3nm 15% 가격 인상 예고"
       ],
       "risks": [
-        "대만 지정학 리스크 (중국)",
-        "대만 시총 급등에 따른 글로벌 주목으로 지정학적 민감도 상승"
+        "대만 지정학 리스크 (양안 관계)",
+        "인텔 파운드리 18A 중장기 경쟁",
+        "차익실현 매도 기술적 조정"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "NVDA",
-          "headline": "NVDA Q1 data center $75.2B (+92%), Q2 guide $91B — Blackwell demand continues",
-          "implication_for_target": "NVDA Blackwell 300 공급은 TSMC N3/N4 공정 의존 — 강한 NVDA 수요가 TSMC 수주 잔고 직접 지탱"
-        },
-        {
-          "ticker": "MU",
-          "headline": "Micron HBM4 in volume shipment for NVIDIA, 5-year strategic agreement signed",
-          "implication_for_target": "MU HBM4 수요 급증은 TSMC CoWoS 첨단 패키징 수주와 연동 — 간접 수혜"
+          "ticker": "INTC",
+          "headline": "Google orders 3M TPUs from Intel Foundry (18A, 2028)",
+          "implication_for_target": "2028년 이후 첨단 파운드리 경쟁 심화 가능성 — 단기(2~3년)는 TSM 독주 체제 유지 전망"
         }
       ],
       "history": [
@@ -10318,6 +10320,18 @@
         {
           "date": "2026-05-26",
           "narrative_score": 0.2
+        },
+        {
+          "date": "2026-06-02",
+          "narrative_score": 0.41
+        },
+        {
+          "date": "2026-06-09",
+          "narrative_score": 0.24
+        },
+        {
+          "date": "2026-06-10",
+          "narrative_score": 0.23
         }
       ]
     }

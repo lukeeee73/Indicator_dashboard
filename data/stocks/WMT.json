@@ -4,62 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 19.52
-    },
-    {
-      "date": "2016-05-24",
-      "value": 19.72
-    },
-    {
-      "date": "2016-05-25",
-      "value": 19.79
-    },
-    {
-      "date": "2016-05-26",
-      "value": 19.9
-    },
-    {
-      "date": "2016-05-27",
-      "value": 19.87
-    },
-    {
-      "date": "2016-05-31",
-      "value": 19.88
-    },
-    {
-      "date": "2016-06-01",
-      "value": 19.8
-    },
-    {
-      "date": "2016-06-02",
-      "value": 19.92
-    },
-    {
-      "date": "2016-06-03",
-      "value": 19.9
-    },
-    {
-      "date": "2016-06-06",
-      "value": 19.95
-    },
-    {
-      "date": "2016-06-07",
-      "value": 19.95
-    },
-    {
-      "date": "2016-06-08",
-      "value": 20.02
-    },
-    {
-      "date": "2016-06-09",
-      "value": 19.96
-    },
-    {
-      "date": "2016-06-10",
-      "value": 19.98
-    },
-    {
       "date": "2016-06-13",
       "value": 19.81
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 120.27
+    },
+    {
+      "date": "2026-05-26",
+      "value": 118.57
+    },
+    {
+      "date": "2026-05-27",
+      "value": 118.54
+    },
+    {
+      "date": "2026-05-28",
+      "value": 118.9
+    },
+    {
+      "date": "2026-05-29",
+      "value": 115.75
+    },
+    {
+      "date": "2026-06-01",
+      "value": 114.6
+    },
+    {
+      "date": "2026-06-02",
+      "value": 113.06
+    },
+    {
+      "date": "2026-06-03",
+      "value": 116.89
+    },
+    {
+      "date": "2026-06-04",
+      "value": 117.74
+    },
+    {
+      "date": "2026-06-05",
+      "value": 118.88
+    },
+    {
+      "date": "2026-06-08",
+      "value": 119.83
+    },
+    {
+      "date": "2026-06-09",
+      "value": 118.88
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 958671028224.0,
-      "pe_ratio": 42.34859,
-      "forward_pe": 36.56701,
-      "eps_ttm": 2.84,
+      "market_cap": 959664685056.0,
+      "pe_ratio": 42.312283,
+      "forward_pe": 36.67512,
+      "eps_ttm": 2.85,
       "dividend_yield": 0.82,
       "profit_margin": 0.03135,
-      "operating_margin": 0.043169998,
-      "price_to_book": 9.62083,
+      "operating_margin": 0.042150002,
+      "price_to_book": 9.646428,
       "return_on_equity": 0.24132
     },
     "quarterly": [
@@ -10086,9 +10074,9 @@
       },
       {
         "date": "2025-01-31",
-        "revenue": 180554000000.0,
-        "operating_income": 7859000000.0,
-        "net_income": 5254000000.0,
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
         "eps": null
       },
       {
@@ -10121,36 +10109,36 @@
       },
       {
         "date": "2026-04-30",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
+        "revenue": 177751000000.0,
+        "operating_income": 7493000000.0,
+        "net_income": 5330000000.0,
         "eps": 0.67
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 120.27,
+    "as_of": "2026-06-09",
+    "current_price": 118.88,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 62.48,
+        "fair_value": 62.7,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 59.2,
+        "fair_value": 58.35,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 28.26,
+        "fair_value": 28.11,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 54.65,
-    "valuation_gap": 1.2007,
+    "fair_value": 54.48,
+    "valuation_gap": 1.1822,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10248,33 +10236,51 @@
         "price": 120.27,
         "fair_value": 62.7,
         "gap": 0.9182
+      },
+      {
+        "date": "2026-05-29",
+        "price": 115.75,
+        "fair_value": 62.7,
+        "gap": 0.8461
+      },
+      {
+        "date": "2026-06-05",
+        "price": 118.88,
+        "fair_value": 62.7,
+        "gap": 0.896
+      },
+      {
+        "date": "2026-06-09",
+        "price": 118.88,
+        "fair_value": 62.7,
+        "gap": 0.896
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": -0.15,
-      "summary_kr": "월마트 1분기 실적 부진과 관세 불확실성으로 주가 7% 급락. CFO가 관세 과다 경고하며 EPS 가이던스를 미제시했으나 이커머스 +22%로 구조적 강세는 유지. 급락 후 '매수 기회' 의견도 상존.",
+      "as_of": "2026-06-07",
+      "narrative_score": 0.11,
+      "summary_kr": "월마트 Q1 FY27 이커머스 +26%, 동일점포 +4.1%로 구조적 강세 유지. 관세 불확실성 속에도 Q2 가이던스 제시. 강력한 실적에도 주가 조정은 소비 경기 우려를 반영.",
       "key_events": [
-        "Q1 FY27 실적 미스",
-        "관세 불확실성 가이던스 철회",
-        "COO 샘스클럽 이탈"
+        "Q1 FY27 이커머스 +26% 성장",
+        "Q2 가이던스: 매출 +4-5%",
+        "주가 실적 후 조정"
       ],
       "risks": [
         "관세 비용 전가 한계",
-        "임원 이탈 리더십 공백",
-        "소비자 신뢰지수 하락"
+        "소비자 지출 둔화 신호",
+        "아마존 식료품 경쟁 심화"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "COST",
-          "headline": "Costco steady membership model insulates from tariff volatility",
-          "implication_for_target": "COST의 회원제 모델이 WMT 대비 관세 충격에 더 내성 — WMT 가격 경쟁력 압박 가중"
+          "headline": "Costco Q3 FY26 revenue +11.6% YoY, highest growth since 2022",
+          "implication_for_target": "COST 회원제 모델도 동반 강세 — 대형 유통 섹터 전반 수요 견조 확인"
         },
         {
           "ticker": "AMZN",
-          "headline": "Amazon growing e-commerce share in grocery segment",
-          "implication_for_target": "AMZN 식료품 이커머스 확장이 WMT 온라인 강점과 정면 충돌"
+          "headline": "Amazon grocery e-commerce continuing to gain share",
+          "implication_for_target": "아마존 식료품 이커머스 확장으로 WMT 온라인 식료품 부문 경쟁 심화"
         }
       ],
       "history": [
@@ -10285,6 +10291,10 @@
         {
           "date": "2026-05-24",
           "narrative_score": -0.15
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.11
         }
       ]
     }

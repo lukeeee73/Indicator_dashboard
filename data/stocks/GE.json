@@ -4,62 +4,6 @@
   "group": "산업재 / 방산",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 125.7
-    },
-    {
-      "date": "2016-05-24",
-      "value": 127.24
-    },
-    {
-      "date": "2016-05-25",
-      "value": 128.26
-    },
-    {
-      "date": "2016-05-26",
-      "value": 127.96
-    },
-    {
-      "date": "2016-05-27",
-      "value": 128.39
-    },
-    {
-      "date": "2016-05-31",
-      "value": 128.86
-    },
-    {
-      "date": "2016-06-01",
-      "value": 128.35
-    },
-    {
-      "date": "2016-06-02",
-      "value": 128.09
-    },
-    {
-      "date": "2016-06-03",
-      "value": 127.62
-    },
-    {
-      "date": "2016-06-06",
-      "value": 128.39
-    },
-    {
-      "date": "2016-06-07",
-      "value": 128.47
-    },
-    {
-      "date": "2016-06-08",
-      "value": 129.2
-    },
-    {
-      "date": "2016-06-09",
-      "value": 128.9
-    },
-    {
-      "date": "2016-06-10",
-      "value": 128.05
-    },
-    {
       "date": "2016-06-13",
       "value": 127.15
     },
@@ -101,7 +45,7 @@
     },
     {
       "date": "2016-06-27",
-      "value": 125.92
+      "value": 125.93
     },
     {
       "date": "2016-06-28",
@@ -7997,7 +7941,7 @@
     },
     {
       "date": "2024-05-01",
-      "value": 157.81
+      "value": 157.8
     },
     {
       "date": "2024-05-02",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 302.84
+    },
+    {
+      "date": "2026-05-26",
+      "value": 314.49
+    },
+    {
+      "date": "2026-05-27",
+      "value": 317.21
+    },
+    {
+      "date": "2026-05-28",
+      "value": 320.82
+    },
+    {
+      "date": "2026-05-29",
+      "value": 323.76
+    },
+    {
+      "date": "2026-06-01",
+      "value": 324.6
+    },
+    {
+      "date": "2026-06-02",
+      "value": 317.72
+    },
+    {
+      "date": "2026-06-03",
+      "value": 314.64
+    },
+    {
+      "date": "2026-06-04",
+      "value": 327.65
+    },
+    {
+      "date": "2026-06-05",
+      "value": 328.0
+    },
+    {
+      "date": "2026-06-08",
+      "value": 322.04
+    },
+    {
+      "date": "2026-06-09",
+      "value": 330.44
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 316416196608.0,
-      "pe_ratio": 37.5732,
-      "forward_pe": 34.901222,
+      "market_cap": 332997656576.0,
+      "pe_ratio": 39.54218,
+      "forward_pe": 36.69073,
       "eps_ttm": 8.06,
-      "dividend_yield": 0.62,
+      "dividend_yield": 0.59,
       "profit_margin": 0.17863001,
       "operating_margin": 0.20207001,
-      "price_to_book": 17.004885,
+      "price_to_book": 17.896008,
       "return_on_equity": 0.45428002
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 302.84,
+    "as_of": "2026-06-09",
+    "current_price": 330.44,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 147.51,
+        "fair_value": 153.1,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 56.83,
+        "fair_value": 57.87,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 136.22,
-    "valuation_gap": 1.2232,
+    "fair_value": 138.1,
+    "valuation_gap": 1.3927,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,36 +10266,61 @@
         "price": 302.84,
         "fair_value": 162.4,
         "gap": 0.8648
+      },
+      {
+        "date": "2026-05-29",
+        "price": 323.76,
+        "fair_value": 162.4,
+        "gap": 0.9936
+      },
+      {
+        "date": "2026-06-05",
+        "price": 328.0,
+        "fair_value": 162.4,
+        "gap": 1.0197
+      },
+      {
+        "date": "2026-06-09",
+        "price": 330.44,
+        "fair_value": 162.4,
+        "gap": 1.0347
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.05,
-      "summary_kr": "GE 에어로스페이스 산업재 시가총액 2위 유지. 항공여행 수요 회복에 따른 엔진 납품·MRO 수요 강세 지속 전망.",
+      "as_of": "2026-06-07",
+      "narrative_score": 0.23,
+      "summary_kr": "GE Aerospace 1분기 주문 +87%·수주잔고 $2,100억으로 역대 최강 펀더멘털. EPS 컨센서스 대비 +15.5% 서프라이즈. 주가 기술적 지지 후 반등. 밸류에이션 부담 만이 리스크.",
       "key_events": [
-        "산업재 시가총액 2위 확인"
+        "Q1 주문 +87%, EPS 어닝 서프라이즈 +15.5%",
+        "수주잔고 $2,100억 역대 최대",
+        "100일 이평선 지지 후 +4% 반등"
       ],
       "risks": [
-        "보잉 MAX 생산 차질 시 엔진 납품 영향",
-        "군용기 예산 삭감"
+        "밸류에이션 '퍼펙션 프라이스' 부담",
+        "항공사 재정 악화 시 서비스 계약 지연",
+        "LEAP 엔진 공급망 병목"
       ],
-      "news_count": 1,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "RTX",
-          "headline": "RTX Pratt & Whitney engine portfolio and defense contracts",
-          "implication_for_target": "RTX와 민항기·군용기 엔진 시장 경쟁 — GE 신형 엔진 LEAP·GE9X로 차별화"
+          "headline": "RTX Pratt & Whitney engines competing in commercial aviation with GE LEAP",
+          "implication_for_target": "Pratt & Whitney GTF와 LEAP 엔진 시장 경쟁 — 보잉·에어버스 생산 증가로 양사 모두 수혜"
         },
         {
           "ticker": "HON",
-          "headline": "Honeywell $249M Army helicopter engine maintenance contract",
-          "implication_for_target": "HON 방산 유지보수 계약 — GE 항공기 엔진 MRO 시장 경쟁"
+          "headline": "Honeywell Aerospace spin-off targets $6.5B earnings by 2030",
+          "implication_for_target": "HONA 분사 후 항공우주 전문 기업으로 GE와 직접 경쟁 심화 가능"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.23
         }
       ]
     }

@@ -4,62 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 33.74
-    },
-    {
-      "date": "2016-05-24",
-      "value": 34.36
-    },
-    {
-      "date": "2016-05-25",
-      "value": 34.56
-    },
-    {
-      "date": "2016-05-26",
-      "value": 34.4
-    },
-    {
-      "date": "2016-05-27",
-      "value": 34.51
-    },
-    {
-      "date": "2016-05-31",
-      "value": 34.62
-    },
-    {
-      "date": "2016-06-01",
-      "value": 34.67
-    },
-    {
-      "date": "2016-06-02",
-      "value": 33.29
-    },
-    {
-      "date": "2016-06-03",
-      "value": 33.67
-    },
-    {
-      "date": "2016-06-06",
-      "value": 33.96
-    },
-    {
-      "date": "2016-06-07",
-      "value": 33.7
-    },
-    {
-      "date": "2016-06-08",
-      "value": 33.83
-    },
-    {
-      "date": "2016-06-09",
-      "value": 33.63
-    },
-    {
-      "date": "2016-06-10",
-      "value": 33.36
-    },
-    {
       "date": "2016-06-13",
       "value": 33.26
     },
@@ -10062,19 +10006,63 @@
     {
       "date": "2026-05-22",
       "value": 192.08
+    },
+    {
+      "date": "2026-05-26",
+      "value": 193.06
+    },
+    {
+      "date": "2026-05-27",
+      "value": 190.96
+    },
+    {
+      "date": "2026-05-28",
+      "value": 203.7
+    },
+    {
+      "date": "2026-05-29",
+      "value": 225.78
+    },
+    {
+      "date": "2026-06-01",
+      "value": 248.15
+    },
+    {
+      "date": "2026-06-02",
+      "value": 244.58
+    },
+    {
+      "date": "2026-06-03",
+      "value": 230.33
+    },
+    {
+      "date": "2026-06-04",
+      "value": 236.34
+    },
+    {
+      "date": "2026-06-05",
+      "value": 213.68
+    },
+    {
+      "date": "2026-06-08",
+      "value": 211.82
+    },
+    {
+      "date": "2026-06-09",
+      "value": 205.81
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 552430927872.0,
-      "pe_ratio": 34.484737,
-      "forward_pe": 23.912825,
+      "market_cap": 578833022976.0,
+      "pe_ratio": 36.13285,
+      "forward_pe": 18.565308,
       "eps_ttm": 5.57,
-      "dividend_yield": 1.04,
-      "profit_margin": 0.25298,
-      "operating_margin": 0.32676,
-      "price_to_book": 16.464941,
-      "return_on_equity": 0.57572
+      "dividend_yield": 0.99,
+      "profit_margin": 0.25368,
+      "operating_margin": 0.36259,
+      "price_to_book": 17.251842,
+      "return_on_equity": 0.53376
     },
     "quarterly": [
       {
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 192.08,
+    "as_of": "2026-06-09",
+    "current_price": 205.81,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 176.72,
+        "fair_value": 243.89,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 38.24,
+        "fair_value": 38.67,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 138.64,
-    "valuation_gap": 0.3854,
+    "fair_value": 158.88,
+    "valuation_gap": 0.2954,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10295,33 +10283,52 @@
         "price": 192.08,
         "fair_value": 151.2,
         "gap": 0.2704
+      },
+      {
+        "date": "2026-05-29",
+        "price": 225.78,
+        "fair_value": 151.2,
+        "gap": 0.4933
+      },
+      {
+        "date": "2026-06-05",
+        "price": 213.68,
+        "fair_value": 151.2,
+        "gap": 0.4132
+      },
+      {
+        "date": "2026-06-09",
+        "price": 205.81,
+        "fair_value": 151.2,
+        "gap": 0.3612
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-25",
-      "narrative_score": 0.25,
-      "summary_kr": "오라클 Q3 FY2026 어닝 서프라이즈: 매출 +22%, OCI +84%, AI 인프라 +243%. 미이행 계약 잔고 $5530억(+325%) 폭발적 성장. $300억 미국 정부 클라우드 계약으로 엔터프라이즈 AI 인프라 선두 경쟁자로 부상.",
+      "as_of": "2026-06-08",
+      "narrative_score": 0.3,
+      "summary_kr": "6월 12일 Q4 발표를 앞두고 매출 +20% 기대와 RPO +325% 실적으로 강한 어닝 모멘텀. 3개 주요 증권사 목표가 상향, 4월 저점 대비 60% 랠리 지속 중.",
       "key_events": [
-        "Q3 매출 $17.2B +22% vs 예상 상회",
-        "OCI +84%, AI 인프라 +243%, 멀티클라우드 DB +531%",
-        "미이행 잔고 $5530억 +325%",
-        "$300억 미국 정부 클라우드 계약"
+        "Q4 실적 발표 6/12 예정 (매출 +20% 기대)",
+        "Q3 RPO +325% $533B",
+        "Evercore·Oppenheimer·TD Cowen 목표가 상향",
+        "4월 저점 대비 +60% 랠리"
       ],
       "risks": [
-        "$5530억 백로그 실제 이행 능력 검증 필요",
-        "Azure/AWS DB 경쟁 장기 지속"
+        "Q4 실망 시 랠리 되돌림 가능성",
+        "AI 클라우드 채무 부담 (부채비율 높음)",
+        "소수 대형 AI 고객 의존 집중 리스크"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Azure SQL/Fabric 엔터프라이즈 DB 확장 중",
-          "implication_for_target": "Oracle Cloud DB와 장기 경쟁 지속 — 그러나 Oracle 락인 효과 강력"
+          "headline": "Microsoft Azure expands AI model portfolio with 7 proprietary models",
+          "implication_for_target": "Azure AI 모델 확장으로 오라클 클라우드 AI 서비스 경쟁 압박"
         },
         {
-          "ticker": "AMZN",
-          "headline": "AWS 데이터베이스 서비스 성장 지속",
-          "implication_for_target": "멀티클라우드 DB 수요에서 Oracle 포지션 견고"
+          "ticker": "CRM",
+          "headline": "Salesforce Agentforce ARR hits $1.2B (+205% YoY), fastest enterprise AI scale in 2026",
+          "implication_for_target": "Agentforce의 CRM AI 지배력 확대는 Oracle CRM 클라우드 경쟁 약화 요인"
         }
       ],
       "history": [
@@ -10340,6 +10347,14 @@
         {
           "date": "2026-05-25",
           "narrative_score": 0.25
+        },
+        {
+          "date": "2026-06-01",
+          "narrative_score": 0.2
+        },
+        {
+          "date": "2026-06-08",
+          "narrative_score": 0.3
         }
       ]
     }

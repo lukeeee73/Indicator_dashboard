@@ -4,62 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 21.95
-    },
-    {
-      "date": "2016-05-24",
-      "value": 22.29
-    },
-    {
-      "date": "2016-05-25",
-      "value": 22.68
-    },
-    {
-      "date": "2016-05-26",
-      "value": 22.86
-    },
-    {
-      "date": "2016-05-27",
-      "value": 22.84
-    },
-    {
-      "date": "2016-05-31",
-      "value": 22.73
-    },
-    {
-      "date": "2016-06-01",
-      "value": 22.41
-    },
-    {
-      "date": "2016-06-02",
-      "value": 22.25
-    },
-    {
-      "date": "2016-06-03",
-      "value": 22.29
-    },
-    {
-      "date": "2016-06-06",
-      "value": 22.45
-    },
-    {
-      "date": "2016-06-07",
-      "value": 22.54
-    },
-    {
-      "date": "2016-06-08",
-      "value": 22.52
-    },
-    {
-      "date": "2016-06-09",
-      "value": 22.69
-    },
-    {
-      "date": "2016-06-10",
-      "value": 22.5
-    },
-    {
       "date": "2016-06-13",
       "value": 22.16
     },
@@ -5325,7 +5269,7 @@
     },
     {
       "date": "2021-09-02",
-      "value": 149.99
+      "value": 150.0
     },
     {
       "date": "2021-09-03",
@@ -6025,7 +5969,7 @@
     },
     {
       "date": "2022-05-13",
-      "value": 144.21
+      "value": 144.22
     },
     {
       "date": "2022-05-16",
@@ -8781,7 +8725,7 @@
     },
     {
       "date": "2025-02-12",
-      "value": 235.62
+      "value": 235.63
     },
     {
       "date": "2025-02-13",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 308.82
+    },
+    {
+      "date": "2026-05-26",
+      "value": 308.33
+    },
+    {
+      "date": "2026-05-27",
+      "value": 310.85
+    },
+    {
+      "date": "2026-05-28",
+      "value": 312.51
+    },
+    {
+      "date": "2026-05-29",
+      "value": 312.06
+    },
+    {
+      "date": "2026-06-01",
+      "value": 306.31
+    },
+    {
+      "date": "2026-06-02",
+      "value": 315.2
+    },
+    {
+      "date": "2026-06-03",
+      "value": 310.26
+    },
+    {
+      "date": "2026-06-04",
+      "value": 311.23
+    },
+    {
+      "date": "2026-06-05",
+      "value": 307.34
+    },
+    {
+      "date": "2026-06-08",
+      "value": 301.54
+    },
+    {
+      "date": "2026-06-09",
+      "value": 290.55
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 4535749181440.0,
-      "pe_ratio": 37.432728,
-      "forward_pe": 32.155922,
+      "market_cap": 4282539048960.0,
+      "pe_ratio": 35.34303,
+      "forward_pe": 30.394382,
       "eps_ttm": 8.25,
-      "dividend_yield": 0.35,
+      "dividend_yield": 0.37,
       "profit_margin": 0.27152002,
       "operating_margin": 0.32275,
-      "price_to_book": 42.53719,
+      "price_to_book": 40.162533,
       "return_on_equity": 1.4147099
     },
     "quarterly": [
@@ -10115,8 +10103,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 308.82,
+    "as_of": "2026-06-09",
+    "current_price": 290.55,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10125,18 +10113,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 211.28,
+        "fair_value": 210.31,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 36.71,
+        "fair_value": 36.65,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 186.23,
-    "valuation_gap": 0.6583,
+    "fair_value": 185.92,
+    "valuation_gap": 0.5627,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10264,28 +10252,51 @@
         "price": 308.82,
         "fair_value": 231.56,
         "gap": 0.3337
+      },
+      {
+        "date": "2026-05-29",
+        "price": 312.06,
+        "fair_value": 231.56,
+        "gap": 0.3476
+      },
+      {
+        "date": "2026-06-05",
+        "price": 307.34,
+        "fair_value": 231.56,
+        "gap": 0.3273
+      },
+      {
+        "date": "2026-06-09",
+        "price": 290.55,
+        "fair_value": 231.56,
+        "gap": 0.2548
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-25",
-      "narrative_score": -0.1,
-      "summary_kr": "개별 뉴스 없음. 관세 부담(미국 비제조 아이폰 25%)·EU DMA 규제 매크로 기조 변화 없이 지속. GOOGL 클라우드 가격 전쟁·MSFT AI 투자 확대로 AI 생태계 경쟁 심화.",
-      "key_events": [],
-      "risks": [
-        "미국 비제조 아이폰 25% 관세 부담 지속",
-        "EU DMA App Store 수수료 압박"
+      "as_of": "2026-06-08",
+      "narrative_score": 0.09,
+      "summary_kr": "WWDC 2026에서 Apple Intelligence·AI 시리 공개로 AI 생태계 경쟁력 일부 회복했으나, '뉴스에 팔자' 심리로 주가 1.89% 하락. Tim Cook의 마지막 WWDC로 리더십 전환 국면 진입.",
+      "key_events": [
+        "WWDC 2026 Apple Intelligence 공개",
+        "AI 시리 차세대 버전 발표",
+        "Tim Cook 마지막 WWDC"
       ],
-      "news_count": 0,
+      "risks": [
+        "주가 단기 sell-the-news 하락",
+        "경쟁사(MS·Google) AI 인프라 확장 압박",
+        "CEO 교체 전환기 불확실성"
+      ],
+      "news_count": 3,
       "competitor_context": [
         {
-          "ticker": "GOOGL",
-          "headline": "Alphabet Q1 cloud +63%, Gemini 기업 $1B 절감 가격 전쟁 선언",
-          "implication_for_target": "AI 하드웨어·서비스 생태계 확장으로 AAPL 경쟁 압박 지속"
+          "ticker": "MSFT",
+          "headline": "Microsoft expands proprietary AI model portfolio with 7 new models including MAI-Thinking-1",
+          "implication_for_target": "Apple Intelligence 론칭과 동시에 MS도 AI 모델 확장 — 소프트웨어 AI 경쟁 심화"
         },
         {
-          "ticker": "MSFT",
-          "headline": "Bill Ackman $2.1B MSFT 신규 매수",
-          "implication_for_target": "AI/클라우드 thesis 강화에 따른 빅테크 자금 이동 — AAPL 하드웨어 중심 포트 상대 약세 가능성"
+          "ticker": "GOOGL",
+          "headline": "Alphabet raises 2026 capex guidance to $180-190B and launches $25B TPU venture with Blackstone",
+          "implication_for_target": "Google의 AI 인프라 초대형 투자 — AAPL AI 생태계 격차 압박 지속"
         }
       ],
       "history": [
@@ -10308,6 +10319,14 @@
         {
           "date": "2026-05-25",
           "narrative_score": -0.1
+        },
+        {
+          "date": "2026-06-01",
+          "narrative_score": 0.13
+        },
+        {
+          "date": "2026-06-08",
+          "narrative_score": 0.09
         }
       ]
     }

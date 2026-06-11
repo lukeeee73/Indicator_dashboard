@@ -4,62 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 48.64
-    },
-    {
-      "date": "2016-05-24",
-      "value": 49.46
-    },
-    {
-      "date": "2016-05-25",
-      "value": 50.22
-    },
-    {
-      "date": "2016-05-26",
-      "value": 49.84
-    },
-    {
-      "date": "2016-05-27",
-      "value": 50.15
-    },
-    {
-      "date": "2016-05-31",
-      "value": 50.02
-    },
-    {
-      "date": "2016-06-01",
-      "value": 50.35
-    },
-    {
-      "date": "2016-06-02",
-      "value": 50.44
-    },
-    {
-      "date": "2016-06-03",
-      "value": 49.54
-    },
-    {
-      "date": "2016-06-06",
-      "value": 50.03
-    },
-    {
-      "date": "2016-06-07",
-      "value": 49.86
-    },
-    {
-      "date": "2016-06-08",
-      "value": 50.01
-    },
-    {
-      "date": "2016-06-09",
-      "value": 49.63
-    },
-    {
-      "date": "2016-06-10",
-      "value": 48.93
-    },
-    {
       "date": "2016-06-13",
       "value": 48.49
     },
@@ -4469,7 +4413,7 @@
     },
     {
       "date": "2020-10-27",
-      "value": 86.4
+      "value": 86.41
     },
     {
       "date": "2020-10-28",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 306.38
+    },
+    {
+      "date": "2026-05-26",
+      "value": 306.74
+    },
+    {
+      "date": "2026-05-27",
+      "value": 299.28
+    },
+    {
+      "date": "2026-05-28",
+      "value": 296.73
+    },
+    {
+      "date": "2026-05-29",
+      "value": 299.31
+    },
+    {
+      "date": "2026-06-01",
+      "value": 296.58
+    },
+    {
+      "date": "2026-06-02",
+      "value": 300.96
+    },
+    {
+      "date": "2026-06-03",
+      "value": 300.85
+    },
+    {
+      "date": "2026-06-04",
+      "value": 310.89
+    },
+    {
+      "date": "2026-06-05",
+      "value": 312.37
+    },
+    {
+      "date": "2026-06-08",
+      "value": 311.11
+    },
+    {
+      "date": "2026-06-09",
+      "value": 312.7
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 820948697088.0,
-      "pe_ratio": 14.65933,
-      "forward_pe": 13.008805,
+      "market_cap": 828344172544.0,
+      "pe_ratio": 14.7913885,
+      "forward_pe": 13.125995,
       "eps_ttm": 20.9,
-      "dividend_yield": 1.96,
+      "dividend_yield": 1.94,
       "profit_margin": 0.33936,
       "operating_margin": 0.43741,
-      "price_to_book": 2.3865275,
+      "price_to_book": 2.4080265,
       "return_on_equity": 0.16465001
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 306.38,
+    "as_of": "2026-06-09",
+    "current_price": 312.7,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 282.62,
+        "fair_value": 285.88,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 245.7,
+        "fair_value": 247.11,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 280.23,
-    "valuation_gap": 0.0933,
+    "fair_value": 281.49,
+    "valuation_gap": 0.1109,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10278,31 +10266,49 @@
         "price": 306.38,
         "fair_value": 292.32,
         "gap": 0.0481
+      },
+      {
+        "date": "2026-05-29",
+        "price": 299.31,
+        "fair_value": 292.32,
+        "gap": 0.0239
+      },
+      {
+        "date": "2026-06-05",
+        "price": 312.37,
+        "fair_value": 292.32,
+        "gap": 0.0686
+      },
+      {
+        "date": "2026-06-09",
+        "price": 312.7,
+        "fair_value": 292.32,
+        "gap": 0.0697
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.08,
-      "summary_kr": "JPM AI 주도 인력 효율화($1.5조 방산·AI 이니셔티브) — 비용 절감 장기 긍정. 주총 거버넌스 우려와 WFC 대출 경쟁 심화가 단기 변수.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.19,
+      "summary_kr": "JPM이 BAC·C와 함께 토큰화 예금 네트워크 'The Bridge'에 합류해 핀테크 인프라 주도권을 확보했다. 주가는 $312로 역대 최고권이며 Q2 실적 발표(7월14일)와 배당 일정이 순조롭게 진행 중이다.",
       "key_events": [
-        "AI 인력 효율화",
-        "$1.5조 방산·AI 이니셔티브"
+        "토큰화 예금 네트워크 'The Bridge' 참여",
+        "주가 $312 역대 최고권",
+        "Q2 실적 7월14일 예정"
       ],
       "risks": [
-        "WFC 대출 경쟁 가열",
-        "주총 로비 공시 부결 거버넌스 리스크"
+        "AI 열풍으로 시장 밸류에이션 전반 과대평가 우려(Dimon 이전 경고 유효)"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "BAC",
-          "headline": "Bank of America joins LTX AI corporate bond trading platform",
-          "implication_for_target": "경쟁사 BAC의 AI 채권 거래 진출 — JPM 기관 트레이딩 경쟁 심화"
+          "headline": "BAC launches cross-border real-time payments; Q2 dividend $0.28 declared",
+          "implication_for_target": "동종 은행 혁신 가속, 결제 인프라 경쟁 강도 상승 — JPM 유사 서비스 출시 필요성 증가"
         },
         {
           "ticker": "WFC",
-          "headline": "Wells Fargo reports loans crossing $1 trillion for first time since 2020",
-          "implication_for_target": "WFC 자산제한 해제 후 대출 급증 — JPM 소매대출 시장점유율 경쟁 가열"
+          "headline": "WFC CEO forecasts mid-teen IB/trading revenue growth in Q2",
+          "implication_for_target": "섹터 전반 IB 수수료 호조 확인 — JPM IB도 동일 수혜 기대"
         }
       ],
       "history": [
@@ -10317,6 +10323,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.08
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.19
         }
       ]
     }

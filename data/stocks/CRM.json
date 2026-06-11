@@ -4,62 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 80.55
-    },
-    {
-      "date": "2016-05-24",
-      "value": 81.55
-    },
-    {
-      "date": "2016-05-25",
-      "value": 82.36
-    },
-    {
-      "date": "2016-05-26",
-      "value": 82.14
-    },
-    {
-      "date": "2016-05-27",
-      "value": 82.56
-    },
-    {
-      "date": "2016-05-31",
-      "value": 82.5
-    },
-    {
-      "date": "2016-06-01",
-      "value": 82.24
-    },
-    {
-      "date": "2016-06-02",
-      "value": 82.04
-    },
-    {
-      "date": "2016-06-03",
-      "value": 81.36
-    },
-    {
-      "date": "2016-06-06",
-      "value": 81.63
-    },
-    {
-      "date": "2016-06-07",
-      "value": 81.94
-    },
-    {
-      "date": "2016-06-08",
-      "value": 82.14
-    },
-    {
-      "date": "2016-06-09",
-      "value": 81.53
-    },
-    {
-      "date": "2016-06-10",
-      "value": 80.65
-    },
-    {
       "date": "2016-06-13",
       "value": 80.31
     },
@@ -2101,7 +2045,7 @@
     },
     {
       "date": "2018-06-21",
-      "value": 135.88
+      "value": 135.89
     },
     {
       "date": "2018-06-22",
@@ -4993,7 +4937,7 @@
     },
     {
       "date": "2021-05-06",
-      "value": 214.89
+      "value": 214.9
     },
     {
       "date": "2021-05-07",
@@ -6537,7 +6481,7 @@
     },
     {
       "date": "2022-11-15",
-      "value": 159.73
+      "value": 159.72
     },
     {
       "date": "2022-11-16",
@@ -7829,7 +7773,7 @@
     },
     {
       "date": "2024-03-01",
-      "value": 312.3
+      "value": 312.29
     },
     {
       "date": "2024-03-04",
@@ -10062,28 +10006,65 @@
     {
       "date": "2026-05-22",
       "value": 180.07
+    },
+    {
+      "date": "2026-05-26",
+      "value": 179.08
+    },
+    {
+      "date": "2026-05-27",
+      "value": 177.51
+    },
+    {
+      "date": "2026-05-28",
+      "value": 176.17
+    },
+    {
+      "date": "2026-05-29",
+      "value": 191.1
+    },
+    {
+      "date": "2026-06-01",
+      "value": 209.6
+    },
+    {
+      "date": "2026-06-02",
+      "value": 200.84
+    },
+    {
+      "date": "2026-06-03",
+      "value": 190.61
+    },
+    {
+      "date": "2026-06-04",
+      "value": 188.75
+    },
+    {
+      "date": "2026-06-05",
+      "value": 185.66
+    },
+    {
+      "date": "2026-06-08",
+      "value": 182.55
+    },
+    {
+      "date": "2026-06-09",
+      "value": 175.35
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 147306938368.0,
-      "pe_ratio": 23.085897,
-      "forward_pe": 12.0300665,
-      "eps_ttm": 7.8,
-      "dividend_yield": 0.98,
-      "profit_margin": 0.17958,
-      "operating_margin": 0.19239001,
-      "price_to_book": 2.8285322,
-      "return_on_equity": 0.123959996
+      "market_cap": 139983470592.0,
+      "pe_ratio": 19.80533,
+      "forward_pe": 10.998288,
+      "eps_ttm": 8.63,
+      "dividend_yield": 1.03,
+      "profit_margin": 0.18733,
+      "operating_margin": 0.218,
+      "price_to_book": 4.0888977,
+      "return_on_equity": 0.16908
     },
     "quarterly": [
-      {
-        "date": "2025-01-31",
-        "revenue": 9993000000.0,
-        "operating_income": 2118000000.0,
-        "net_income": 1708000000.0,
-        "eps": 1.75
-      },
       {
         "date": "2025-04-30",
         "revenue": 9829000000.0,
@@ -10111,118 +10092,41 @@
         "operating_income": 2155000000.0,
         "net_income": 1943000000.0,
         "eps": 2.07
+      },
+      {
+        "date": "2026-04-30",
+        "revenue": 11133000000.0,
+        "operating_income": 2427000000.0,
+        "net_income": 2107000000.0,
+        "eps": 2.42
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 180.07,
+    "as_of": "2026-06-09",
+    "current_price": 175.35,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 218.4,
+        "fair_value": 241.64,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 329.3,
+        "fair_value": 350.75,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 105.7,
+        "fair_value": 91.25,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 229.13,
-    "valuation_gap": -0.2141,
+    "fair_value": 244.29,
+    "valuation_gap": -0.2822,
     "signal": "deep_value",
     "gap_series_weekly": [
-      {
-        "date": "2025-10-31",
-        "price": 259.34,
-        "fair_value": 209.72,
-        "gap": 0.2366
-      },
-      {
-        "date": "2025-11-07",
-        "price": 238.9,
-        "fair_value": 209.72,
-        "gap": 0.1391
-      },
-      {
-        "date": "2025-11-14",
-        "price": 242.66,
-        "fair_value": 209.72,
-        "gap": 0.1571
-      },
-      {
-        "date": "2025-11-21",
-        "price": 226.18,
-        "fair_value": 209.72,
-        "gap": 0.0785
-      },
-      {
-        "date": "2025-11-28",
-        "price": 229.59,
-        "fair_value": 209.72,
-        "gap": 0.0947
-      },
-      {
-        "date": "2025-12-05",
-        "price": 259.5,
-        "fair_value": 209.72,
-        "gap": 0.2374
-      },
-      {
-        "date": "2025-12-12",
-        "price": 261.15,
-        "fair_value": 209.72,
-        "gap": 0.2452
-      },
-      {
-        "date": "2025-12-19",
-        "price": 259.26,
-        "fair_value": 209.72,
-        "gap": 0.2362
-      },
-      {
-        "date": "2025-12-26",
-        "price": 265.42,
-        "fair_value": 209.72,
-        "gap": 0.2656
-      },
-      {
-        "date": "2026-01-02",
-        "price": 252.99,
-        "fair_value": 209.72,
-        "gap": 0.2063
-      },
-      {
-        "date": "2026-01-09",
-        "price": 259.29,
-        "fair_value": 209.72,
-        "gap": 0.2364
-      },
-      {
-        "date": "2026-01-16",
-        "price": 226.54,
-        "fair_value": 209.72,
-        "gap": 0.0802
-      },
-      {
-        "date": "2026-01-23",
-        "price": 227.48,
-        "fair_value": 209.72,
-        "gap": 0.0847
-      },
-      {
-        "date": "2026-01-30",
-        "price": 211.76,
-        "fair_value": 209.72,
-        "gap": 0.0097
-      },
       {
         "date": "2026-02-06",
         "price": 190.87,
@@ -10298,52 +10202,72 @@
       {
         "date": "2026-05-01",
         "price": 183.82,
-        "fair_value": 218.68,
-        "gap": -0.1594
+        "fair_value": 241.92,
+        "gap": -0.2402
       },
       {
         "date": "2026-05-08",
         "price": 181.82,
-        "fair_value": 218.68,
-        "gap": -0.1686
+        "fair_value": 241.92,
+        "gap": -0.2484
       },
       {
         "date": "2026-05-15",
         "price": 173.51,
-        "fair_value": 218.68,
-        "gap": -0.2066
+        "fair_value": 241.92,
+        "gap": -0.2828
       },
       {
         "date": "2026-05-22",
         "price": 180.07,
-        "fair_value": 218.68,
-        "gap": -0.1766
+        "fair_value": 241.92,
+        "gap": -0.2557
+      },
+      {
+        "date": "2026-05-29",
+        "price": 191.1,
+        "fair_value": 241.92,
+        "gap": -0.2101
+      },
+      {
+        "date": "2026-06-05",
+        "price": 185.66,
+        "fair_value": 241.92,
+        "gap": -0.2326
+      },
+      {
+        "date": "2026-06-09",
+        "price": 175.35,
+        "fair_value": 241.92,
+        "gap": -0.2752
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-25",
-      "narrative_score": -0.03,
-      "summary_kr": "FY26 Agentforce 2만9천 계약·ARR $8억 +169%로 AI 피벗 성과 가시화. 5월 27일 Q1 FY27 실적 발표 예정. 주가 YTD -38%로 AI 에이전트 SaaS 좌석 잠식 우려 해소가 관건.",
+      "as_of": "2026-06-08",
+      "narrative_score": 0.47,
+      "summary_kr": "Q1 FY2027 EPS 컨센서스 24% 초과와 Agentforce ARR +205%로 2026년 엔터프라이즈 AI SaaS 최강 성장주로 부상. 강한 어닝 모멘텀과 AI 플랫폼 지배력이 긍정 요인.",
       "key_events": [
-        "FY26 Agentforce 29,000건 ARR $800M +169%",
-        "Q1 FY27 실적 5월 27일 발표",
-        "FY27 AI 수익 별도 공시 예정"
+        "Q1 FY2027 EPS $3.88 (+50% YoY, 24% 어닝 서프라이즈)",
+        "Agentforce ARR $1.2B (+205%)",
+        "$0.44 분기 배당",
+        "새 최고회계책임자 임명"
       ],
       "risks": [
-        "AI 에이전트 SaaS 좌석 수익모델 대체 위험(Piper Sandler 경고)",
-        "주가 YTD -38% 52주 최저권 신뢰 회복 필요"
+        "Microsoft Copilot CRM 영역 확장으로 점유율 경쟁",
+        "Oracle CX Cloud 중견기업 고객 잠식",
+        "고밸류에이션 지속 리스크"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Dynamics 365/Copilot 영업 자동화 확장 — Salesforce 핵심 시장 공략",
-          "implication_for_target": "CRM 핵심 SaaS 고객 이탈 압박"
+          "headline": "Microsoft Copilot for Sales expands AI integrations within Teams and Dynamics 365",
+          "implication_for_target": "Microsoft Copilot 세일즈 기능 강화는 Salesforce CRM 시장 점유율 도전 요인"
         },
         {
-          "ticker": "ADBE",
-          "headline": "Piper Sandler 소프트웨어 좌석 압축 우려로 ADBE Neutral 하향",
-          "implication_for_target": "동종 소프트웨어 섹터 좌석 기반 모델 구조적 우려 — CRM에도 동일 적용"
+          "ticker": "ORCL",
+          "headline": "Oracle Q4 earnings due June 12; RPO +325% signals strong cloud AI backlog",
+          "implication_for_target": "Oracle CX Cloud 성장은 Salesforce 중견기업 고객 경쟁에서 압박 요인"
         }
       ],
       "history": [
@@ -10354,6 +10278,14 @@
         {
           "date": "2026-05-25",
           "narrative_score": -0.03
+        },
+        {
+          "date": "2026-06-01",
+          "narrative_score": 0.24
+        },
+        {
+          "date": "2026-06-08",
+          "narrative_score": 0.47
         }
       ]
     }

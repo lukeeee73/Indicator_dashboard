@@ -4,62 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 20.47
-    },
-    {
-      "date": "2016-05-24",
-      "value": 20.73
-    },
-    {
-      "date": "2016-05-25",
-      "value": 20.88
-    },
-    {
-      "date": "2016-05-26",
-      "value": 20.93
-    },
-    {
-      "date": "2016-05-27",
-      "value": 21.04
-    },
-    {
-      "date": "2016-05-31",
-      "value": 21.09
-    },
-    {
-      "date": "2016-06-01",
-      "value": 21.12
-    },
-    {
-      "date": "2016-06-02",
-      "value": 21.19
-    },
-    {
-      "date": "2016-06-03",
-      "value": 21.09
-    },
-    {
-      "date": "2016-06-06",
-      "value": 21.23
-    },
-    {
-      "date": "2016-06-07",
-      "value": 21.18
-    },
-    {
-      "date": "2016-06-08",
-      "value": 21.43
-    },
-    {
-      "date": "2016-06-09",
-      "value": 21.46
-    },
-    {
-      "date": "2016-06-10",
-      "value": 21.45
-    },
-    {
       "date": "2016-06-13",
       "value": 21.12
     },
@@ -965,7 +909,7 @@
     },
     {
       "date": "2017-05-05",
-      "value": 20.94
+      "value": 20.93
     },
     {
       "date": "2017-05-08",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 25.9
+    },
+    {
+      "date": "2026-05-26",
+      "value": 25.85
+    },
+    {
+      "date": "2026-05-27",
+      "value": 26.21
+    },
+    {
+      "date": "2026-05-28",
+      "value": 26.14
+    },
+    {
+      "date": "2026-05-29",
+      "value": 26.18
+    },
+    {
+      "date": "2026-06-01",
+      "value": 25.63
+    },
+    {
+      "date": "2026-06-02",
+      "value": 25.55
+    },
+    {
+      "date": "2026-06-03",
+      "value": 25.34
+    },
+    {
+      "date": "2026-06-04",
+      "value": 25.69
+    },
+    {
+      "date": "2026-06-05",
+      "value": 26.04
+    },
+    {
+      "date": "2026-06-08",
+      "value": 25.62
+    },
+    {
+      "date": "2026-06-09",
+      "value": 25.7
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 147615596544.0,
-      "pe_ratio": 19.770992,
-      "forward_pe": 9.127753,
+      "market_cap": 145905778688.0,
+      "pe_ratio": 19.541986,
+      "forward_pe": 9.022026,
       "eps_ttm": 1.31,
-      "dividend_yield": 6.64,
+      "dividend_yield": 6.72,
       "profit_margin": 0.118310004,
       "operating_margin": 0.31617,
-      "price_to_book": 1.702939,
+      "price_to_book": 1.6192284,
       "return_on_equity": 0.083100006
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 25.9,
+    "as_of": "2026-06-09",
+    "current_price": 25.7,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 45.4,
+        "fair_value": 45.58,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 21.17,
+        "fair_value": 21.63,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 29.64,
-    "valuation_gap": -0.1263,
+    "fair_value": 29.79,
+    "valuation_gap": -0.1373,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10278,39 +10266,59 @@
         "price": 25.9,
         "fair_value": 23.58,
         "gap": 0.0984
+      },
+      {
+        "date": "2026-05-29",
+        "price": 26.18,
+        "fair_value": 23.58,
+        "gap": 0.1103
+      },
+      {
+        "date": "2026-06-05",
+        "price": 26.04,
+        "fair_value": 23.58,
+        "gap": 0.1043
+      },
+      {
+        "date": "2026-06-09",
+        "price": 25.7,
+        "fair_value": 23.58,
+        "gap": 0.0899
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-28",
-      "narrative_score": -0.13,
-      "summary_kr": "코로나 후유증 매출 감소와 특허 만료 압박이 지속되며 EPS 18% 하락. MRK·ABBV의 항암·면역학 강세와 대비되며 상대적 열위가 뚜렷하다. 구겐하임 Buy 의견이 유일한 지지선이며 파이프라인 데이터(H2)가 반전 열쇠.",
+      "as_of": "2026-06-04",
+      "narrative_score": -0.02,
+      "summary_kr": "350번째 연속 분기 배당(수익률 6.8%)으로 인컴 투자자 매력은 유지됐으나, 주가는 한 달간 -3% 하락하며 재건 국면이 계속된다. 2026년 20개 피벗 임상 시작으로 파이프라인 재건 의지는 명확하다.",
       "key_events": [
-        "Q1 EPS 18% 하락",
-        "FY 가이던스 유지",
-        "Mevpro-1 Phase 3 데이터 H2 기대"
+        "2026년 비만·항암 중심 20개 피벗 임상 시작 계획",
+        "350번째 연속 분기 배당 $0.43"
       ],
       "risks": [
-        "코로나 매출 감소 지속",
-        "특허 만료 품목 매출 손실 $1.5B 추가",
-        "파이프라인 데이터 실패 시 추가 하락"
+        "주가 $25대 저점권 지속, 팬데믹 이후 성장 동력 불확실",
+        "MRK·LLY 대비 파이프라인 재건 속도 격차"
       ],
-      "news_count": 4,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "MRK",
-          "headline": "Keytruda EU CHMP approval for bladder cancer — +5.6% stock surge",
-          "implication_for_target": "MRK 항암 모멘텀 강화 — PFE 종양학 포트폴리오 대비 상대적 열위"
+          "headline": "Merck acquires Terns Pharmaceuticals for $6.7B, expanding pipeline",
+          "implication_for_target": "MRK 대형 M&A로 파이프라인 확충 — PFE도 적극적 파이프라인 재건 필요성 부각"
         },
         {
           "ticker": "ABBV",
-          "headline": "SKYRIZI and RINVOQ strong growth offsetting HUMIRA decline",
-          "implication_for_target": "ABBV 면역학 성장세 — PFE 면역학 자산 Xeljanz 특허 만료 압박 대비"
+          "headline": "AbbVie EU approval for Aquipta in migraine — immunology portfolio growing",
+          "implication_for_target": "ABBV 규제 승인 가속 — PFE 대비 포트폴리오 전환 속도 차이 확대"
         }
       ],
       "history": [
         {
           "date": "2026-05-28",
           "narrative_score": -0.13
+        },
+        {
+          "date": "2026-06-04",
+          "narrative_score": -0.02
         }
       ]
     }

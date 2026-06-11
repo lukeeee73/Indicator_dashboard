@@ -4,62 +4,6 @@
   "group": "산업재 / 방산",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 49.42
-    },
-    {
-      "date": "2016-05-24",
-      "value": 49.93
-    },
-    {
-      "date": "2016-05-25",
-      "value": 50.13
-    },
-    {
-      "date": "2016-05-26",
-      "value": 50.18
-    },
-    {
-      "date": "2016-05-27",
-      "value": 50.35
-    },
-    {
-      "date": "2016-05-31",
-      "value": 50.26
-    },
-    {
-      "date": "2016-06-01",
-      "value": 50.15
-    },
-    {
-      "date": "2016-06-02",
-      "value": 50.37
-    },
-    {
-      "date": "2016-06-03",
-      "value": 50.19
-    },
-    {
-      "date": "2016-06-06",
-      "value": 50.65
-    },
-    {
-      "date": "2016-06-07",
-      "value": 50.7
-    },
-    {
-      "date": "2016-06-08",
-      "value": 51.01
-    },
-    {
-      "date": "2016-06-09",
-      "value": 51.13
-    },
-    {
-      "date": "2016-06-10",
-      "value": 50.97
-    },
-    {
       "date": "2016-06-13",
       "value": 50.58
     },
@@ -5253,7 +5197,7 @@
     },
     {
       "date": "2021-08-09",
-      "value": 78.01
+      "value": 78.0
     },
     {
       "date": "2021-08-10",
@@ -7113,7 +7057,7 @@
     },
     {
       "date": "2023-06-14",
-      "value": 90.9
+      "value": 90.91
     },
     {
       "date": "2023-06-15",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 177.01
+    },
+    {
+      "date": "2026-05-26",
+      "value": 178.97
+    },
+    {
+      "date": "2026-05-27",
+      "value": 176.59
+    },
+    {
+      "date": "2026-05-28",
+      "value": 178.96
+    },
+    {
+      "date": "2026-05-29",
+      "value": 179.66
+    },
+    {
+      "date": "2026-06-01",
+      "value": 174.41
+    },
+    {
+      "date": "2026-06-02",
+      "value": 174.26
+    },
+    {
+      "date": "2026-06-03",
+      "value": 172.55
+    },
+    {
+      "date": "2026-06-04",
+      "value": 179.41
+    },
+    {
+      "date": "2026-06-05",
+      "value": 180.99
+    },
+    {
+      "date": "2026-06-08",
+      "value": 178.66
+    },
+    {
+      "date": "2026-06-09",
+      "value": 181.56
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 238376419328.0,
-      "pe_ratio": 33.210133,
-      "forward_pe": 23.41018,
-      "eps_ttm": 5.33,
+      "market_cap": 238915108864.0,
+      "pe_ratio": 33.347744,
+      "forward_pe": 23.40523,
+      "eps_ttm": 5.32,
       "dividend_yield": 1.56,
       "profit_margin": 0.080290005,
       "operating_margin": 0.13182001,
-      "price_to_book": 3.6416566,
+      "price_to_book": 3.6046488,
       "return_on_equity": 0.11571
     },
     "quarterly": [
@@ -10115,28 +10103,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 177.01,
+    "as_of": "2026-06-09",
+    "current_price": 181.56,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 106.6,
+        "fair_value": 106.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 128.54,
+        "fair_value": 131.87,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 76.35,
+        "fair_value": 77.65,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 107.13,
-    "valuation_gap": 0.6523,
+    "fair_value": 108.29,
+    "valuation_gap": 0.6766,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10264,36 +10252,61 @@
         "price": 177.01,
         "fair_value": 106.6,
         "gap": 0.6605
+      },
+      {
+        "date": "2026-05-29",
+        "price": 179.66,
+        "fair_value": 106.6,
+        "gap": 0.6854
+      },
+      {
+        "date": "2026-06-05",
+        "price": 180.99,
+        "fair_value": 106.6,
+        "gap": 0.6978
+      },
+      {
+        "date": "2026-06-09",
+        "price": 181.56,
+        "fair_value": 106.6,
+        "gap": 0.7032
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.05,
-      "summary_kr": "대형 투자자 $100M 방산 베팅에 RTX 포함. 국방 예산 강화 환경에서 미사일·엔진 포트폴리오 구조적 수혜 지속.",
+      "as_of": "2026-06-07",
+      "narrative_score": 0.16,
+      "summary_kr": "RTX 1분기 조정 EPS +21%로 방산·항공 수요 강세 확인. 패트리엇·토마호크 수요와 Pratt & Whitney 엔진 공급 확대가 성장 동력. 애널리스트 목표가 $215~$240.",
       "key_events": [
-        "대형 투자자 방산 $100M 베팅"
+        "Q1 조정 EPS +21%",
+        "신규 방산 계약 수주",
+        "Pratt & Whitney 생산 확대"
       ],
       "risks": [
-        "방산 예산 삭감 리스크",
-        "GTF 엔진 결함 수리 비용"
+        "Pratt & Whitney GTF 엔진 결함 리콜 비용",
+        "방산 예산 승인 지연",
+        "공급망 병목"
       ],
-      "news_count": 1,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "LMT",
-          "headline": "Lockheed Martin $879M Navy contract and Munitions Production Center",
-          "implication_for_target": "LMT와 방산 계약 경쟁 — RTX 미사일·항공기 엔진 포트폴리오로 차별화"
+          "headline": "Lockheed Martin benefiting from same defense budget expansion",
+          "implication_for_target": "LMT와 동일한 방위예산 수혜 구조 — RTX 미사일·엔진은 LMT 전투기와 시스템 통합"
         },
         {
           "ticker": "GE",
-          "headline": "GE Aerospace second largest industrials by market cap",
-          "implication_for_target": "GE Aerospace와 항공기 엔진 시장에서 경쟁"
+          "headline": "GE Aerospace strong backlog competing in commercial aviation engines",
+          "implication_for_target": "Pratt & Whitney(RTX)와 GE Aerospace의 상업용 엔진 시장 경쟁 지속"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.16
         }
       ]
     }

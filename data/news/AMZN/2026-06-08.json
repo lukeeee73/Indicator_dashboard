@@ -1,0 +1,57 @@
+{
+  "ticker": "AMZN",
+  "date": "2026-06-08",
+  "as_of_utc": "2026-06-08T22:00:00Z",
+  "news": [
+    {
+      "title": "Amazon signs multibillion-dollar optical fiber deal with Corning for AI data centers",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/quotes/AMZN",
+      "published": "2026-06-08T13:00:00Z",
+      "summary": "코닝과 광섬유 대규모 공급 계약 체결, 미국 내 AI 데이터센터 인프라 급속 확장 가속",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Amazon rolls out next-gen warehouse robots with natural language interface",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/AMZN/news/",
+      "published": "2026-06-08T11:00:00Z",
+      "summary": "자연어 인식 차세대 물류 로봇 도입, 운영 효율화·인건비 절감 기대",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Amazon stock at $244.72; 62 analysts rate Strong Buy with $312 average target",
+      "source": "Morningstar",
+      "url": "https://www.morningstar.com/stocks/xnas/amzn/quote",
+      "published": "2026-06-08T18:00:00Z",
+      "summary": "62명 전원 매수 추천, 12개월 목표가 평균 $312.79 (+27.8% 상승여력)",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft Azure expands AI infrastructure with new model portfolio and quantum chip",
+      "implication_for_target": "Azure vs. AWS AI 인프라 경쟁 격화 — AWS 클라우드 점유율 방어 필요"
+    },
+    {
+      "ticker": "GOOGL",
+      "headline": "Google Cloud raises AI capex to $180-190B with Blackstone TPU venture",
+      "implication_for_target": "GCP의 TPU 기반 AI 인프라 확대 — AWS AI 서비스 경쟁력 유지 과제"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.4,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.17,
+  "summary_kr": "코닝 광섬유 대규모 계약으로 AI 데이터센터 인프라 확장 가속, 차세대 물류 로봇 도입으로 운영 효율화. 62명 전원 매수 추천으로 강한 긍정 시장 신호.",
+  "key_events": ["Corning 광섬유 대규모 공급 계약", "차세대 자연어 물류 로봇 출시", "62명 전원 매수 추천"],
+  "risks": ["주가 소폭 하락 (-0.5%)", "AWS vs. Azure/GCP AI 인프라 경쟁 심화", "물류 자동화 인건비 갈등 리스크"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/AMZN%20-%20Amazon.com%20Inc.md"
+}

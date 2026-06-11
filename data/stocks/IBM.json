@@ -4,62 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 92.39
-    },
-    {
-      "date": "2016-05-24",
-      "value": 93.36
-    },
-    {
-      "date": "2016-05-25",
-      "value": 95.49
-    },
-    {
-      "date": "2016-05-26",
-      "value": 95.96
-    },
-    {
-      "date": "2016-05-27",
-      "value": 96.21
-    },
-    {
-      "date": "2016-05-31",
-      "value": 96.78
-    },
-    {
-      "date": "2016-06-01",
-      "value": 96.0
-    },
-    {
-      "date": "2016-06-02",
-      "value": 96.63
-    },
-    {
-      "date": "2016-06-03",
-      "value": 96.24
-    },
-    {
-      "date": "2016-06-06",
-      "value": 96.14
-    },
-    {
-      "date": "2016-06-07",
-      "value": 96.52
-    },
-    {
-      "date": "2016-06-08",
-      "value": 96.94
-    },
-    {
-      "date": "2016-06-09",
-      "value": 96.57
-    },
-    {
-      "date": "2016-06-10",
-      "value": 95.91
-    },
-    {
       "date": "2016-06-13",
       "value": 95.23
     },
@@ -721,7 +665,7 @@
     },
     {
       "date": "2017-02-07",
-      "value": 114.33
+      "value": 114.34
     },
     {
       "date": "2017-02-08",
@@ -2201,7 +2145,7 @@
     },
     {
       "date": "2018-07-27",
-      "value": 98.63
+      "value": 98.64
     },
     {
       "date": "2018-07-30",
@@ -3513,7 +3457,7 @@
     },
     {
       "date": "2019-11-14",
-      "value": 97.68
+      "value": 97.69
     },
     {
       "date": "2019-11-15",
@@ -4453,7 +4397,7 @@
     },
     {
       "date": "2020-10-21",
-      "value": 87.02
+      "value": 87.01
     },
     {
       "date": "2020-10-22",
@@ -4701,7 +4645,7 @@
     },
     {
       "date": "2021-01-21",
-      "value": 101.0
+      "value": 101.01
     },
     {
       "date": "2021-01-22",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 253.84
+    },
+    {
+      "date": "2026-05-26",
+      "value": 250.69
+    },
+    {
+      "date": "2026-05-27",
+      "value": 255.2
+    },
+    {
+      "date": "2026-05-28",
+      "value": 264.22
+    },
+    {
+      "date": "2026-05-29",
+      "value": 297.8
+    },
+    {
+      "date": "2026-06-01",
+      "value": 320.42
+    },
+    {
+      "date": "2026-06-02",
+      "value": 329.23
+    },
+    {
+      "date": "2026-06-03",
+      "value": 305.63
+    },
+    {
+      "date": "2026-06-04",
+      "value": 301.77
+    },
+    {
+      "date": "2026-06-05",
+      "value": 284.84
+    },
+    {
+      "date": "2026-06-08",
+      "value": 280.82
+    },
+    {
+      "date": "2026-06-09",
+      "value": 277.49
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 238580482048.0,
-      "pe_ratio": 22.463717,
-      "forward_pe": 18.866283,
-      "eps_ttm": 11.3,
-      "dividend_yield": 2.66,
+      "market_cap": 255987154944.0,
+      "pe_ratio": 24.124002,
+      "forward_pe": 20.29106,
+      "eps_ttm": 11.29,
+      "dividend_yield": 2.48,
       "profit_margin": 0.15606,
       "operating_margin": 0.13809,
-      "price_to_book": 7.235413,
+      "price_to_book": 7.7633038,
       "return_on_equity": 0.35772
     },
     "quarterly": [
@@ -10115,28 +10103,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 253.84,
+    "as_of": "2026-06-09",
+    "current_price": 277.49,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 316.4,
+        "fair_value": 316.12,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 296.0,
+        "fair_value": 300.86,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 94.44,
+        "fair_value": 95.29,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 265.89,
-    "valuation_gap": -0.0453,
+    "fair_value": 267.38,
+    "valuation_gap": 0.0378,
     "signal": "fair",
     "gap_series_weekly": [
       {
@@ -10264,29 +10252,52 @@
         "price": 253.84,
         "fair_value": 316.68,
         "gap": -0.1984
+      },
+      {
+        "date": "2026-05-29",
+        "price": 297.8,
+        "fair_value": 316.68,
+        "gap": -0.0596
+      },
+      {
+        "date": "2026-06-05",
+        "price": 284.84,
+        "fair_value": 316.68,
+        "gap": -0.1005
+      },
+      {
+        "date": "2026-06-09",
+        "price": 277.49,
+        "fair_value": 316.68,
+        "gap": -0.1238
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-25",
-      "narrative_score": -0.1,
-      "summary_kr": "개별 뉴스 없음. Oracle AI 인프라 +243%·$5530억 백로그 급성장이 IBM WatsonX 엔터프라이즈 AI 포지셔닝 위협. YTD 메가캡 최하위 성과 추세 지속.",
-      "key_events": [],
-      "risks": [
-        "Oracle AI 인프라 급성장으로 엔터프라이즈 AI 시장 잠식",
-        "Azure·Oracle에 기관 AI 자금 이동 가속",
-        "YTD 최하위 성과 지속"
+      "as_of": "2026-06-08",
+      "narrative_score": 0.24,
+      "summary_kr": "$100억 양자컴퓨팅 투자 발표로 주가 7% 급등, Nvidia 베라루빈 파트너십 및 Google Cloud 협약으로 AI 생태계 입지 강화. BofA 목표가 $315 상향으로 긍정적 모멘텀.",
+      "key_events": [
+        "$10B 양자컴퓨팅 투자 발표 (주가 +7%)",
+        "Nvidia Vera Rubin AI 파트너",
+        "Google Cloud 엔터프라이즈 AI 협약",
+        "BofA 목표가 $315 상향"
       ],
-      "news_count": 0,
+      "risks": [
+        "MS Majorana 2 양자칩과의 직접 경쟁",
+        "Oracle·PLTR 엔터프라이즈 AI 고객 경쟁",
+        "대규모 자본 투자 후 수익화 일정 불확실"
+      ],
+      "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "ORCL",
-          "headline": "Oracle Q3 AI 인프라 +243%, 미이행 잔고 $5530억 — 엔터프라이즈 AI 시장 선점",
-          "implication_for_target": "Oracle의 폭발적 AI 인프라 성장이 IBM WatsonX 시장 지위 위협"
+          "ticker": "MSFT",
+          "headline": "Microsoft launches Majorana 2 quantum chip in direct competition with IBM's quantum roadmap",
+          "implication_for_target": "MS의 Majorana 2 양자칩은 IBM 양자컴퓨팅 시장 지위에 직접 위협"
         },
         {
-          "ticker": "MSFT",
-          "headline": "Ackman $2.1B MSFT 매수 — Azure AI 기업 배포 역량 검증",
-          "implication_for_target": "기관 AI 자금이 IBM 대신 MSFT·ORCL로 이동하는 구도"
+          "ticker": "ORCL",
+          "headline": "Oracle cloud AI infrastructure RPO surges 325%; competes in enterprise cloud AI",
+          "implication_for_target": "Oracle AI 클라우드 성장은 IBM watsonx 엔터프라이즈 AI 고객 경쟁 심화"
         }
       ],
       "history": [
@@ -10297,6 +10308,14 @@
         {
           "date": "2026-05-25",
           "narrative_score": -0.1
+        },
+        {
+          "date": "2026-06-01",
+          "narrative_score": 0.18
+        },
+        {
+          "date": "2026-06-08",
+          "narrative_score": 0.24
         }
       ]
     }

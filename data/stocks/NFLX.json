@@ -4,62 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 9.49
-    },
-    {
-      "date": "2016-05-24",
-      "value": 9.79
-    },
-    {
-      "date": "2016-05-25",
-      "value": 10.02
-    },
-    {
-      "date": "2016-05-26",
-      "value": 10.28
-    },
-    {
-      "date": "2016-05-27",
-      "value": 10.33
-    },
-    {
-      "date": "2016-05-31",
-      "value": 10.26
-    },
-    {
-      "date": "2016-06-01",
-      "value": 10.15
-    },
-    {
-      "date": "2016-06-02",
-      "value": 10.12
-    },
-    {
-      "date": "2016-06-03",
-      "value": 9.96
-    },
-    {
-      "date": "2016-06-06",
-      "value": 10.07
-    },
-    {
-      "date": "2016-06-07",
-      "value": 9.99
-    },
-    {
-      "date": "2016-06-08",
-      "value": 9.79
-    },
-    {
-      "date": "2016-06-09",
-      "value": 9.71
-    },
-    {
-      "date": "2016-06-10",
-      "value": 9.38
-    },
-    {
       "date": "2016-06-13",
       "value": 9.39
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 88.6
+    },
+    {
+      "date": "2026-05-26",
+      "value": 87.68
+    },
+    {
+      "date": "2026-05-27",
+      "value": 87.35
+    },
+    {
+      "date": "2026-05-28",
+      "value": 86.36
+    },
+    {
+      "date": "2026-05-29",
+      "value": 86.02
+    },
+    {
+      "date": "2026-06-01",
+      "value": 85.85
+    },
+    {
+      "date": "2026-06-02",
+      "value": 83.33
+    },
+    {
+      "date": "2026-06-03",
+      "value": 81.52
+    },
+    {
+      "date": "2026-06-04",
+      "value": 81.56
+    },
+    {
+      "date": "2026-06-05",
+      "value": 82.18
+    },
+    {
+      "date": "2026-06-08",
+      "value": 82.64
+    },
+    {
+      "date": "2026-06-09",
+      "value": 81.41
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 373076754432.0,
-      "pe_ratio": 28.580645,
-      "forward_pe": 23.055685,
+      "market_cap": 345285492736.0,
+      "pe_ratio": 26.451614,
+      "forward_pe": 21.345829,
       "eps_ttm": 3.1,
       "dividend_yield": null,
       "profit_margin": 0.28521,
       "operating_margin": 0.32303002,
-      "price_to_book": 11.990797,
+      "price_to_book": 11.097577,
       "return_on_equity": 0.48494998
     },
     "quarterly": [
@@ -10115,8 +10103,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 88.6,
+    "as_of": "2026-06-09",
+    "current_price": 81.41,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10125,18 +10113,18 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 65.33,
+        "fair_value": 64.84,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 22.7,
+        "fair_value": 22.62,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 55.14,
-    "valuation_gap": 0.6068,
+    "fair_value": 54.98,
+    "valuation_gap": 0.4808,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10264,38 +10252,62 @@
         "price": 88.6,
         "fair_value": 61.92,
         "gap": 0.4309
+      },
+      {
+        "date": "2026-05-29",
+        "price": 86.02,
+        "fair_value": 61.92,
+        "gap": 0.3892
+      },
+      {
+        "date": "2026-06-05",
+        "price": 82.18,
+        "fair_value": 61.92,
+        "gap": 0.3272
+      },
+      {
+        "date": "2026-06-09",
+        "price": 81.41,
+        "fair_value": 61.92,
+        "gap": 0.3148
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.13,
-      "summary_kr": "넷플릭스 광고 지원 티어 2억5천만 명으로 글로벌 최대 광고 플랫폼 등극. 디즈니 대비 안정적 매출 성장 궤도 우위 확인. IP 상업화(Wonka·Ferrero) 확장.",
+      "as_of": "2026-06-07",
+      "narrative_score": 0.2,
+      "summary_kr": "넷플릭스 광고 매출 2배 성장 경로, 3억2,500만 가입자, 자사주 $13억 매입으로 주주환원 강화. SPOT과 독점 팟캐스트 계약으로 콘텐츠 다각화. AI 개인화 롤아웃 시장 기대.",
       "key_events": [
-        "광고 티어 2.5억 MAU",
-        "DIS 대비 매출 성장 우위",
-        "Ferrero·Wonka 브랜드 협력"
+        "광고 고객사 +70% YoY, 매출 $30억 경로",
+        "Q1 가입자 3.25억+, 자사주 $13억 매입",
+        "Jay Hoag 의장 취임",
+        "SPOT $1억 독점 팟캐스트 계약"
       ],
       "risks": [
-        "DIS 스트리밍 +88% 성장 경쟁 압박",
-        "콘텐츠 제작비 상승"
+        "AI 개인화 투자 비용 과다",
+        "회장 매각 신호 해석 논쟁",
+        "경쟁사 스트리밍 수익성 개선"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "DIS",
-          "headline": "Disney streaming profits +88% under new CEO D'Amaro",
-          "implication_for_target": "DIS 스트리밍 급성장이 NFLX 경쟁 압박 — 그러나 NFLX 규모 광고 플랫폼 선도"
+          "headline": "Disney Q2 FY26 streaming operating income +88%; SVOD margin 11%",
+          "implication_for_target": "DIS 스트리밍 흑자 전환 확인 — NFLX 시장 지배력이 경쟁사 수익성 개선에도 유지"
         },
         {
           "ticker": "SPOT",
-          "headline": "Spotify analyst coverage alongside NFLX",
-          "implication_for_target": "미디어 소비 시간 경쟁 — NFLX 영상 vs SPOT 음악 플랫폼 상호보완적"
+          "headline": "Spotify partners with Netflix for exclusive podcast deal",
+          "implication_for_target": "SPOT·NFLX 협력 강화 — 오디오·비디오 콘텐츠 교차 확장"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.2
         }
       ]
     }

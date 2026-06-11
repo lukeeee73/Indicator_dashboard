@@ -4,62 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 96.62
-    },
-    {
-      "date": "2016-05-24",
-      "value": 99.63
-    },
-    {
-      "date": "2016-05-25",
-      "value": 99.61
-    },
-    {
-      "date": "2016-05-26",
-      "value": 99.37
-    },
-    {
-      "date": "2016-05-27",
-      "value": 100.14
-    },
-    {
-      "date": "2016-05-31",
-      "value": 99.47
-    },
-    {
-      "date": "2016-06-01",
-      "value": 100.04
-    },
-    {
-      "date": "2016-06-02",
-      "value": 100.17
-    },
-    {
-      "date": "2016-06-03",
-      "value": 98.7
-    },
-    {
-      "date": "2016-06-06",
-      "value": 99.12
-    },
-    {
-      "date": "2016-06-07",
-      "value": 98.52
-    },
-    {
-      "date": "2016-06-08",
-      "value": 98.68
-    },
-    {
-      "date": "2016-06-09",
-      "value": 98.07
-    },
-    {
-      "date": "2016-06-10",
-      "value": 97.09
-    },
-    {
       "date": "2016-06-13",
       "value": 96.96
     },
@@ -10062,28 +10006,65 @@
     {
       "date": "2026-05-22",
       "value": 244.76
+    },
+    {
+      "date": "2026-05-26",
+      "value": 240.49
+    },
+    {
+      "date": "2026-05-27",
+      "value": 238.24
+    },
+    {
+      "date": "2026-05-28",
+      "value": 241.44
+    },
+    {
+      "date": "2026-05-29",
+      "value": 259.21
+    },
+    {
+      "date": "2026-06-01",
+      "value": 274.03
+    },
+    {
+      "date": "2026-06-02",
+      "value": 262.11
+    },
+    {
+      "date": "2026-06-03",
+      "value": 256.24
+    },
+    {
+      "date": "2026-06-04",
+      "value": 258.42
+    },
+    {
+      "date": "2026-06-05",
+      "value": 251.44
+    },
+    {
+      "date": "2026-06-08",
+      "value": 244.99
+    },
+    {
+      "date": "2026-06-09",
+      "value": 237.88
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 98931990528.0,
-      "pe_ratio": 14.263403,
-      "forward_pe": 9.276124,
-      "eps_ttm": 17.16,
+      "market_cap": 94332198912.0,
+      "pe_ratio": 13.608164,
+      "forward_pe": 8.811042,
+      "eps_ttm": 17.15,
       "dividend_yield": null,
       "profit_margin": 0.29477,
       "operating_margin": 0.38762,
-      "price_to_book": 8.691761,
+      "price_to_book": 8.2876425,
       "return_on_equity": 0.58774
     },
     "quarterly": [
-      {
-        "date": "2024-08-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2024-11-30",
         "revenue": null,
@@ -10129,28 +10110,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 244.76,
+    "as_of": "2026-06-09",
+    "current_price": 237.88,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 480.48,
+        "fair_value": 480.2,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 580.49,
+        "fair_value": 593.95,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 104.27,
+        "fair_value": 105.24,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 435.24,
-    "valuation_gap": -0.4376,
+    "fair_value": 439.33,
+    "valuation_gap": -0.4585,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10302,32 +10283,52 @@
         "price": 244.76,
         "fair_value": 480.76,
         "gap": -0.4909
+      },
+      {
+        "date": "2026-05-29",
+        "price": 259.21,
+        "fair_value": 480.76,
+        "gap": -0.4608
+      },
+      {
+        "date": "2026-06-05",
+        "price": 251.44,
+        "fair_value": 480.76,
+        "gap": -0.477
+      },
+      {
+        "date": "2026-06-09",
+        "price": 237.88,
+        "fair_value": 480.76,
+        "gap": -0.5052
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-25",
-      "narrative_score": -0.1,
-      "summary_kr": "파이퍼 샌들러 ADBE Neutral 하향·목표주가 $470→$330. AI 코딩 도구 확산('바이브 코딩')과 좌석 압축 리스크가 크리에이티브 소프트웨어 멀티플 상한을 제한한다는 구조적 우려. 전회 +0.12 대비 내러티브 역전.",
+      "as_of": "2026-06-08",
+      "narrative_score": -0.17,
+      "summary_kr": "Q2 실적 발표(6/11) 불확실성 속 주가 1% 하락, YTD -27.49%. 애널리스트 목표가 상충(Stifel 상향 vs. TD Cowen 하향)으로 방향성 불명확. AI 경쟁 심화와 CEO 교체가 핵심 리스크.",
       "key_events": [
-        "Piper Sandler Neutral 하향 목표 $330($470 대비 -30%)",
-        "바이브 코딩·좌석 압축 구조적 우려 부각"
+        "Q2 FY2026 실적 발표 6/11 예정",
+        "Stifel 목표가 $400 상향",
+        "TD Cowen 목표가 $285 하향",
+        "YTD -27.49%"
       ],
       "risks": [
-        "AI 코딩 도구 확산으로 전문 디자인 수요 잠식",
-        "목표주가 대폭 하향 기관 매도 압박",
-        "소프트웨어 섹터 전반 멀티플 압축"
+        "Q2 실망 시 추가 하락 가능성",
+        "AI 경쟁 심화 (MSFT Designer, Canva 등)",
+        "CEO 교체 후 전략 연속성 불확실"
       ],
-      "news_count": 1,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Copilot 창작·문서 생산성 기능 확장 중",
-          "implication_for_target": "Acrobat AI·Firefly 등 Adobe 핵심 제품군 직접 경쟁"
+          "headline": "Microsoft Designer and Copilot creative tools expand AI-generated image capabilities",
+          "implication_for_target": "MS 크리에이티브 AI 도구 확장은 Adobe Firefly의 핵심 시장 압박"
         },
         {
           "ticker": "CRM",
-          "headline": "Salesforce 주가 YTD -38%로 소프트웨어 좌석 모델 위기 공유",
-          "implication_for_target": "소프트웨어 섹터 전반 구조적 멀티플 압축 우려 공유"
+          "headline": "Salesforce Agentforce AI platform shows fastest enterprise SaaS scale in 2026",
+          "implication_for_target": "Adobe 마케팅 클라우드 vs. Salesforce Agentforce 고객 유치 경쟁 심화 가능성"
         }
       ],
       "history": [
@@ -10338,6 +10339,14 @@
         {
           "date": "2026-05-25",
           "narrative_score": -0.1
+        },
+        {
+          "date": "2026-06-01",
+          "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-08",
+          "narrative_score": -0.17
         }
       ]
     }

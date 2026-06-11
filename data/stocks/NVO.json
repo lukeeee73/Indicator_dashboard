@@ -4,62 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 21.35
-    },
-    {
-      "date": "2016-05-24",
-      "value": 21.83
-    },
-    {
-      "date": "2016-05-25",
-      "value": 22.36
-    },
-    {
-      "date": "2016-05-26",
-      "value": 22.26
-    },
-    {
-      "date": "2016-05-27",
-      "value": 22.02
-    },
-    {
-      "date": "2016-05-31",
-      "value": 22.25
-    },
-    {
-      "date": "2016-06-01",
-      "value": 22.32
-    },
-    {
-      "date": "2016-06-02",
-      "value": 22.24
-    },
-    {
-      "date": "2016-06-03",
-      "value": 22.47
-    },
-    {
-      "date": "2016-06-06",
-      "value": 22.67
-    },
-    {
-      "date": "2016-06-07",
-      "value": 22.76
-    },
-    {
-      "date": "2016-06-08",
-      "value": 22.71
-    },
-    {
-      "date": "2016-06-09",
-      "value": 22.58
-    },
-    {
-      "date": "2016-06-10",
-      "value": 21.98
-    },
-    {
       "date": "2016-06-13",
       "value": 21.73
     },
@@ -3909,7 +3853,7 @@
     },
     {
       "date": "2020-04-08",
-      "value": 26.2
+      "value": 26.21
     },
     {
       "date": "2020-04-09",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 44.96
+    },
+    {
+      "date": "2026-05-26",
+      "value": 44.19
+    },
+    {
+      "date": "2026-05-27",
+      "value": 44.55
+    },
+    {
+      "date": "2026-05-28",
+      "value": 45.51
+    },
+    {
+      "date": "2026-05-29",
+      "value": 45.58
+    },
+    {
+      "date": "2026-06-01",
+      "value": 44.07
+    },
+    {
+      "date": "2026-06-02",
+      "value": 42.92
+    },
+    {
+      "date": "2026-06-03",
+      "value": 42.0
+    },
+    {
+      "date": "2026-06-04",
+      "value": 43.75
+    },
+    {
+      "date": "2026-06-05",
+      "value": 42.96
+    },
+    {
+      "date": "2026-06-08",
+      "value": 41.02
+    },
+    {
+      "date": "2026-06-09",
+      "value": 42.19
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 199254425600.0,
-      "pe_ratio": 10.553989,
-      "forward_pe": 13.398614,
+      "market_cap": 189607870464.0,
+      "pe_ratio": 10.049295,
+      "forward_pe": 12.920577,
       "eps_ttm": 4.26,
-      "dividend_yield": 4.01,
+      "dividend_yield": 4.21,
       "profit_margin": 0.37205002,
       "operating_margin": 0.61574,
-      "price_to_book": 6.334085,
+      "price_to_book": 6.0685863,
       "return_on_equity": 0.71402
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 44.96,
+    "as_of": "2026-06-09",
+    "current_price": 42.19,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 53.69,
+        "fair_value": 52.25,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 26.08,
+        "fair_value": 25.81,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 59.66,
-    "valuation_gap": -0.2464,
+    "fair_value": 59.18,
+    "valuation_gap": -0.2871,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10271,39 +10259,54 @@
         "price": 44.96,
         "fair_value": 493.38,
         "gap": -0.9089
+      },
+      {
+        "date": "2026-05-29",
+        "price": 45.58,
+        "fair_value": 493.38,
+        "gap": -0.9076
+      },
+      {
+        "date": "2026-06-05",
+        "price": 42.96,
+        "fair_value": 493.38,
+        "gap": -0.9129
+      },
+      {
+        "date": "2026-06-09",
+        "price": 42.19,
+        "fair_value": 493.38,
+        "gap": -0.9145
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-28",
-      "narrative_score": -0.05,
-      "summary_kr": "Q1 실적은 웨고비 강세로 가이던스 소폭 개선됐으나, LLY 경구 비만약 파운다요 PBM 전면 등재와 레타트루타이드 임상 성공이 NVO 경쟁 포지션을 위협한다. 주가는 52주 최고가($81.44) 대비 45% 이상 하락 중.",
+      "as_of": "2026-06-04",
+      "narrative_score": -0.07,
+      "summary_kr": "경구형 위고비의 UAE 론칭으로 글로벌 확장을 시작했으나, 주가는 1년간 약 39% 하락하며 투자 심리가 회복되지 못한 상태다. 애널리스트 컨센서스는 Hold이며, LLY의 공격적 M&A로 중기 경쟁 강도가 높아질 전망이다.",
       "key_events": [
-        "CHMP 고용량 웨고비 단독 펜 지지",
-        "AMAZE 3/4 적응증 확대 임상",
-        "LLY 경구 GLP-1 PBM 전면 등재(경쟁 압력)"
+        "경구형 위고비 UAE 출시 (첫 글로벌 론칭)",
+        "주가 1년 -38.9% 하락 지속"
       ],
       "risks": [
-        "LLY 경구 GLP-1 출시로 시장 잠식",
-        "덴마크 크로네 환율 리스크",
-        "바이오시밀러 경쟁 진입 시기"
+        "LLY 파이프라인 확대로 GLP-1 시장 점유율 경쟁 심화",
+        "주가 하락으로 투자 심리 취약"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "LLY",
-          "headline": "CVS adds LLY oral obesity pill Foundayo to preferred formulary — full PBM coverage achieved",
-          "implication_for_target": "LLY 경구 GLP-1의 PBM 전면 등재 — NVO 웨고비 주사제 시장 점유율 잠식 압력 증가"
-        },
-        {
-          "ticker": "LLY",
-          "headline": "Retatrutide 28% weight loss in 18-month trial — next-gen approval path secured",
-          "implication_for_target": "레타트루타이드 임상 성공 — NVO의 차세대 비만약 경쟁 우위 위협"
+          "headline": "Eli Lilly accelerates $10B+ acquisition strategy and cuts German investment",
+          "implication_for_target": "LLY M&A 가속화로 파이프라인 다변화 — GLP-1 시장 경쟁 중기적으로 심화 예상"
         }
       ],
       "history": [
         {
           "date": "2026-05-28",
           "narrative_score": -0.05
+        },
+        {
+          "date": "2026-06-04",
+          "narrative_score": -0.07
         }
       ]
     }

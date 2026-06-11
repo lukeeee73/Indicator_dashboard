@@ -4,62 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 20.35
-    },
-    {
-      "date": "2016-05-24",
-      "value": 20.66
-    },
-    {
-      "date": "2016-05-25",
-      "value": 21.09
-    },
-    {
-      "date": "2016-05-26",
-      "value": 21.2
-    },
-    {
-      "date": "2016-05-27",
-      "value": 20.76
-    },
-    {
-      "date": "2016-05-31",
-      "value": 21.38
-    },
-    {
-      "date": "2016-06-01",
-      "value": 21.16
-    },
-    {
-      "date": "2016-06-02",
-      "value": 20.84
-    },
-    {
-      "date": "2016-06-03",
-      "value": 20.71
-    },
-    {
-      "date": "2016-06-06",
-      "value": 20.77
-    },
-    {
-      "date": "2016-06-07",
-      "value": 20.85
-    },
-    {
-      "date": "2016-06-08",
-      "value": 20.9
-    },
-    {
-      "date": "2016-06-09",
-      "value": 20.54
-    },
-    {
-      "date": "2016-06-10",
-      "value": 20.17
-    },
-    {
       "date": "2016-06-13",
       "value": 19.81
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 26.47
+    },
+    {
+      "date": "2026-05-26",
+      "value": 26.42
+    },
+    {
+      "date": "2026-05-27",
+      "value": 26.88
+    },
+    {
+      "date": "2026-05-28",
+      "value": 27.29
+    },
+    {
+      "date": "2026-05-29",
+      "value": 26.99
+    },
+    {
+      "date": "2026-06-01",
+      "value": 26.24
+    },
+    {
+      "date": "2026-06-02",
+      "value": 26.48
+    },
+    {
+      "date": "2026-06-03",
+      "value": 27.71
+    },
+    {
+      "date": "2026-06-04",
+      "value": 27.93
+    },
+    {
+      "date": "2026-06-05",
+      "value": 26.7
+    },
+    {
+      "date": "2026-06-08",
+      "value": 26.97
+    },
+    {
+      "date": "2026-06-09",
+      "value": 26.71
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 34345533440.0,
+      "market_cap": 33878425600.0,
       "pe_ratio": null,
-      "forward_pe": 5.3366933,
-      "eps_ttm": -2.0,
-      "dividend_yield": 5.07,
+      "forward_pe": 5.264113,
+      "eps_ttm": -1.98,
+      "dividend_yield": 5.14,
       "profit_margin": -0.019450001,
       "operating_margin": -0.1728,
-      "price_to_book": 0.46220186,
+      "price_to_book": 0.45979124,
       "return_on_equity": -0.028499998
     },
     "quarterly": [
@@ -10115,45 +10103,40 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 26.47,
+    "as_of": "2026-06-09",
+    "current_price": 26.71,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 99.2,
+        "fair_value": 101.48,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 99.2,
-    "valuation_gap": -0.7332,
+    "fair_value": 101.48,
+    "valuation_gap": -0.7368,
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-05-27",
-      "narrative_score": -0.15,
-      "summary_kr": "FY2026 EV 손실·관세 ¥346.9B 이중 타격으로 영업손실 ¥414.3B. 혼다-닛산 합병 7~8월 상장폐지 단계 진입, 합산 $191B 그룹으로 장기 경쟁력 강화 기대.",
+      "as_of": "2026-06-03",
+      "narrative_score": 0.02,
+      "summary_kr": "5월 미국 판매 +9.9%로 자동차 섹터 내 판매 강세 유지. Q4 FY2026 대규모 손실은 구조조정 비용 추정되며 장기 우려 포인트.",
       "key_events": [
-        "Q4 FY2026 영업손실 ¥414.3B·관세 ¥346.9B",
-        "혼다-닛산 합병 7~8월 상장폐지",
-        "오토바이 역대 최고 판매"
+        "5월 미국 판매 +9.9%",
+        "Q4 FY2026 대규모 순손실",
+        "102회 주총 6월 26일"
       ],
       "risks": [
-        "합병 이행 리스크 (주주·정부 승인)",
-        "EV 사업 손실 구조적 지속 가능성",
-        "관세 협상 장기화 시 추가 손실"
+        "Q4 손실 원인 추가 공개 여부",
+        "EV 전환 투자 속도",
+        "엔화 환율 민감도"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "TM",
-          "headline": "Toyota FY2026 operating income -21.5% YoY; tariffs cost ¥1.38T; Texas factory plan",
-          "implication_for_target": "도요타와 동일 관세 역풍 — 닛산 합병으로 규모의 경제로 장기 대응 전략 차별화"
-        },
-        {
-          "ticker": "005380.KS",
-          "headline": "Hyundai Q1 operating profit -30.8% YoY; 25% tariff vs 15% for Japan/EU peers",
-          "implication_for_target": "현대차 관세 25% vs 일본차 관세 15% — HMC 상대적 관세 이점"
+          "headline": "Toyota May U.S. sales -0.6%; certification scandal halts 3 models",
+          "implication_for_target": "도요타 인증 스캔들로 일본 내 판매 중단 — 혼다에 일본·미국 시장 반사이익 가능"
         }
       ],
       "history": [
@@ -10164,6 +10147,10 @@
         {
           "date": "2026-05-27",
           "narrative_score": -0.15
+        },
+        {
+          "date": "2026-06-03",
+          "narrative_score": 0.02
         }
       ]
     }

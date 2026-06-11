@@ -4,62 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 24.31
-    },
-    {
-      "date": "2016-05-24",
-      "value": 24.98
-    },
-    {
-      "date": "2016-05-25",
-      "value": 25.24
-    },
-    {
-      "date": "2016-05-26",
-      "value": 25.32
-    },
-    {
-      "date": "2016-05-27",
-      "value": 25.39
-    },
-    {
-      "date": "2016-05-31",
-      "value": 25.4
-    },
-    {
-      "date": "2016-06-01",
-      "value": 25.46
-    },
-    {
-      "date": "2016-06-02",
-      "value": 25.54
-    },
-    {
-      "date": "2016-06-03",
-      "value": 25.43
-    },
-    {
-      "date": "2016-06-06",
-      "value": 25.48
-    },
-    {
-      "date": "2016-06-07",
-      "value": 25.64
-    },
-    {
-      "date": "2016-06-08",
-      "value": 25.64
-    },
-    {
-      "date": "2016-06-09",
-      "value": 25.68
-    },
-    {
-      "date": "2016-06-10",
-      "value": 25.77
-    },
-    {
       "date": "2016-06-13",
       "value": 25.87
     },
@@ -5693,7 +5637,7 @@
     },
     {
       "date": "2022-01-13",
-      "value": 50.95
+      "value": 50.96
     },
     {
       "date": "2022-01-14",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 119.84
+    },
+    {
+      "date": "2026-05-26",
+      "value": 123.52
+    },
+    {
+      "date": "2026-05-27",
+      "value": 121.77
+    },
+    {
+      "date": "2026-05-28",
+      "value": 120.89
+    },
+    {
+      "date": "2026-05-29",
+      "value": 114.68
+    },
+    {
+      "date": "2026-06-01",
+      "value": 109.33
+    },
+    {
+      "date": "2026-06-02",
+      "value": 107.93
+    },
+    {
+      "date": "2026-06-03",
+      "value": 112.71
+    },
+    {
+      "date": "2026-06-04",
+      "value": 111.78
+    },
+    {
+      "date": "2026-06-05",
+      "value": 99.17
+    },
+    {
+      "date": "2026-06-08",
+      "value": 110.27
+    },
+    {
+      "date": "2026-06-09",
+      "value": 107.92
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 602315816960.0,
+      "market_cap": 537983025152.0,
       "pe_ratio": null,
-      "forward_pe": 77.83233,
+      "forward_pe": 69.6005,
       "eps_ttm": -0.6,
       "dividend_yield": null,
       "profit_margin": -0.05904,
       "operating_margin": 0.06879,
-      "price_to_book": 5.4037967,
+      "price_to_book": 4.826622,
       "return_on_equity": -0.02911
     },
     "quarterly": [
@@ -10115,44 +10103,40 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 119.84,
+    "as_of": "2026-06-09",
+    "current_price": 107.92,
     "sector": "Technology",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 33.87,
+        "fair_value": 34.11,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       }
     },
-    "fair_value": 33.87,
-    "valuation_gap": 2.5382,
+    "fair_value": 34.11,
+    "valuation_gap": 2.1639,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-05-26",
-      "narrative_score": 0.03,
-      "summary_kr": "INTC 26년 신고가 갱신 (+4.5%) — Apple 파운드리 협상 기대감과 COMPUTEX Core Ultra 신제품 발표 주도. 그러나 Q1 파운드리 $2.3B 적자 지속, 서버 CPU 점유율 하락 기조 유지. 주가 vs 펀더멘털 괴리 확대.",
+      "as_of": "2026-06-10",
+      "narrative_score": 0.19,
+      "summary_kr": "구글 TPU 300만+ 파운드리 수주와 NVDA 18A 평가, 웰스파고·바클레이즈 목표주가 동시 상향으로 인텔 파운드리 전략의 구조적 전환점 확인. EPS 6분기 연속 컨센서스 상회. GAAP 순손실과 음수 FCF는 여전한 재무 리스크.",
       "key_events": [
-        "INTC 주가 26년 신고가 +4.5%",
-        "Core Ultra Series 3 + SuperClaw AI 플랫폼 COMPUTEX 발표",
-        "Apple 파운드리 협상 18A 기대감"
+        "구글 TPU 300만+ 18A 파운드리 수주",
+        "NVDA 18A 공정 평가 진행",
+        "WF $110 / 바클레이즈 $100 상향"
       ],
       "risks": [
-        "파운드리 Q1 $2.3B 적자 — 18A/14A 수율 문제 지속",
-        "서버 CPU 점유율 지속 하락 구조적 손실"
+        "GAAP 순손실 $37억·FCF 음수 지속",
+        "수율·원가 경쟁력 미검증 (구글 납기 2028)",
+        "NVDA 18A 수주 미확정"
       ],
       "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "AMD",
-          "headline": "AMD server CPU continues to gain share — EPYC absorbing Intel's lost market share",
-          "implication_for_target": "AMD EPYC가 INTC 서버 점유율 직접 흡수 — 서버 CPU 회복 경로 더욱 어렵게 만드는 압력"
-        },
-        {
           "ticker": "TSM",
-          "headline": "TSMC N2/N3 process roadmap acceleration for AI chips",
-          "implication_for_target": "TSMC 선단공정 가속은 INTC 파운드리 18A 대비 고객 전환 장벽을 높임"
+          "headline": "TSMC May revenue +30.1% YoY, 30%+ growth forecast confirmed",
+          "implication_for_target": "파운드리 1위 TSM의 가격 인상은 INTC 파운드리 서비스 가격경쟁력 상대적 개선 — 고객사 원가 다각화 수요 증가"
         }
       ],
       "history": [
@@ -10167,6 +10151,18 @@
         {
           "date": "2026-05-26",
           "narrative_score": 0.03
+        },
+        {
+          "date": "2026-06-02",
+          "narrative_score": -0.2
+        },
+        {
+          "date": "2026-06-09",
+          "narrative_score": 0.35
+        },
+        {
+          "date": "2026-06-10",
+          "narrative_score": 0.19
         }
       ]
     }

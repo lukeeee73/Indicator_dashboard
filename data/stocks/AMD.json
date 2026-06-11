@@ -4,62 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 4.04
-    },
-    {
-      "date": "2016-05-24",
-      "value": 4.2
-    },
-    {
-      "date": "2016-05-25",
-      "value": 4.18
-    },
-    {
-      "date": "2016-05-26",
-      "value": 4.35
-    },
-    {
-      "date": "2016-05-27",
-      "value": 4.6
-    },
-    {
-      "date": "2016-05-31",
-      "value": 4.57
-    },
-    {
-      "date": "2016-06-01",
-      "value": 4.43
-    },
-    {
-      "date": "2016-06-02",
-      "value": 4.24
-    },
-    {
-      "date": "2016-06-03",
-      "value": 4.16
-    },
-    {
-      "date": "2016-06-06",
-      "value": 4.47
-    },
-    {
-      "date": "2016-06-07",
-      "value": 4.51
-    },
-    {
-      "date": "2016-06-08",
-      "value": 4.46
-    },
-    {
-      "date": "2016-06-09",
-      "value": 4.52
-    },
-    {
-      "date": "2016-06-10",
-      "value": 4.32
-    },
-    {
       "date": "2016-06-13",
       "value": 4.4
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 467.51
+    },
+    {
+      "date": "2026-05-26",
+      "value": 503.89
+    },
+    {
+      "date": "2026-05-27",
+      "value": 495.54
+    },
+    {
+      "date": "2026-05-28",
+      "value": 518.09
+    },
+    {
+      "date": "2026-05-29",
+      "value": 516.1
+    },
+    {
+      "date": "2026-06-01",
+      "value": 510.13
+    },
+    {
+      "date": "2026-06-02",
+      "value": 521.54
+    },
+    {
+      "date": "2026-06-03",
+      "value": 542.52
+    },
+    {
+      "date": "2026-06-04",
+      "value": 523.2
+    },
+    {
+      "date": "2026-06-05",
+      "value": 466.38
+    },
+    {
+      "date": "2026-06-08",
+      "value": 490.33
+    },
+    {
+      "date": "2026-06-09",
+      "value": 475.51
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 762322092032.0,
-      "pe_ratio": 156.35786,
-      "forward_pe": 36.07458,
+      "market_cap": 737683701760.0,
+      "pe_ratio": 151.30435,
+      "forward_pe": 34.596123,
       "eps_ttm": 2.99,
       "dividend_yield": null,
       "profit_margin": 0.13374,
       "operating_margin": 0.14396,
-      "price_to_book": 11.82163,
+      "price_to_book": 11.439552,
       "return_on_equity": 0.08063
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 467.51,
+    "as_of": "2026-06-09",
+    "current_price": 475.51,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 285.11,
+        "fair_value": 302.38,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 51.58,
+        "fair_value": 52.88,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 137.71,
-    "valuation_gap": 2.3949,
+    "fair_value": 143.15,
+    "valuation_gap": 2.3218,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,32 +10266,46 @@
         "price": 467.51,
         "fair_value": 85.4,
         "gap": 4.4744
+      },
+      {
+        "date": "2026-05-29",
+        "price": 516.1,
+        "fair_value": 85.4,
+        "gap": 5.0433
+      },
+      {
+        "date": "2026-06-05",
+        "price": 466.38,
+        "fair_value": 85.4,
+        "gap": 4.4611
+      },
+      {
+        "date": "2026-06-09",
+        "price": 475.51,
+        "fair_value": 85.4,
+        "gap": 4.568
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-26",
-      "narrative_score": 0.23,
-      "summary_kr": "Q1 $10.3B(+38%) 이후 주가 YTD 두 배 이상. Lisa Su CEO가 서버 프로세서 시장 2030년 $1200억 초과 성장 경로 제시. 인텔 서버 점유율 지속 하락으로 EPYC 수혜 구조 확고. 단기 고밸류에이션 조정 리스크 공존.",
+      "as_of": "2026-06-10",
+      "narrative_score": 0.11,
+      "summary_kr": "Q2 가이던스 +45% YoY와 에이전틱 AI 수요 강세는 긍정적이나, ARK·내부자의 대규모 매도(총 $1.6억)와 6개월 2배 급등 후 4.74% 차익실현 하락이 단기 과열 신호. MI350 주요 고객 확보로 AI GPU 2위 입지 강화.",
       "key_events": [
-        "Q1 매출 $10.3B(+38%) 컨센서스 상회",
-        "서버 프로세서 시장 2030년 $1200억 이상 성장 전망",
-        "YTD +100% 이상 고밸류에이션"
+        "Q2 가이던스 $11.2B +45% YoY",
+        "ARK $3900만 + 내부자 $1.2억 매도",
+        "MI350 MSFT·Meta·OpenAI 확보"
       ],
       "risks": [
-        "YTD +100% 이상 후 조정 리스크",
-        "NVDA Blackwell 대비 AI GPU 성능 격차 지속"
+        "ARK/내부자 대규모 매도 — 고점 경계",
+        "NVDA AI GPU 80%+ 독주 지속",
+        "섹터 셀오프 여진"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "NVDA",
-          "headline": "NVDA Q1 FY2027 record $81.6B, Q2 guide $91B — AI GPU market keeps expanding",
-          "implication_for_target": "NVDA Blackwell 압도적 AI GPU 지위 유지 — AMD MI450 출시 전 시장 점유율 격차 계속 과제"
-        },
-        {
-          "ticker": "INTC",
-          "headline": "Intel foundry Q1 $2.3B operating loss, server CPU share continues to decline",
-          "implication_for_target": "INTC 서버 CPU 점유율 지속 하락 → AMD EPYC 직접 수혜 구도"
+          "headline": "NVIDIA ecosystem dominance reconfirmed via Apple/Google AI partnerships",
+          "implication_for_target": "NVDA AI GPU 시장 80%+ 점유 지속 — AMD MI350이 메모리 용량(288GB) 특화로 일부 inference 시장 공략 가능"
         }
       ],
       "history": [
@@ -10318,6 +10320,18 @@
         {
           "date": "2026-05-26",
           "narrative_score": 0.23
+        },
+        {
+          "date": "2026-06-02",
+          "narrative_score": 0.16
+        },
+        {
+          "date": "2026-06-09",
+          "narrative_score": 0.29
+        },
+        {
+          "date": "2026-06-10",
+          "narrative_score": 0.11
         }
       ]
     }

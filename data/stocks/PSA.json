@@ -4,62 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 168.97
-    },
-    {
-      "date": "2016-05-24",
-      "value": 170.66
-    },
-    {
-      "date": "2016-05-25",
-      "value": 169.96
-    },
-    {
-      "date": "2016-05-26",
-      "value": 170.49
-    },
-    {
-      "date": "2016-05-27",
-      "value": 171.23
-    },
-    {
-      "date": "2016-05-31",
-      "value": 170.21
-    },
-    {
-      "date": "2016-06-01",
-      "value": 172.27
-    },
-    {
-      "date": "2016-06-02",
-      "value": 173.07
-    },
-    {
-      "date": "2016-06-03",
-      "value": 174.6
-    },
-    {
-      "date": "2016-06-06",
-      "value": 172.69
-    },
-    {
-      "date": "2016-06-07",
-      "value": 171.53
-    },
-    {
-      "date": "2016-06-08",
-      "value": 169.06
-    },
-    {
-      "date": "2016-06-09",
-      "value": 164.65
-    },
-    {
-      "date": "2016-06-10",
-      "value": 162.21
-    },
-    {
       "date": "2016-06-13",
       "value": 162.45
     },
@@ -1193,7 +1137,7 @@
     },
     {
       "date": "2017-07-27",
-      "value": 138.97
+      "value": 138.96
     },
     {
       "date": "2017-07-28",
@@ -1389,7 +1333,7 @@
     },
     {
       "date": "2017-10-05",
-      "value": 151.18
+      "value": 151.17
     },
     {
       "date": "2017-10-06",
@@ -1657,7 +1601,7 @@
     },
     {
       "date": "2018-01-11",
-      "value": 140.08
+      "value": 140.07
     },
     {
       "date": "2018-01-12",
@@ -5025,7 +4969,7 @@
     },
     {
       "date": "2021-05-18",
-      "value": 221.91
+      "value": 221.92
     },
     {
       "date": "2021-05-19",
@@ -5693,7 +5637,7 @@
     },
     {
       "date": "2022-01-13",
-      "value": 298.96
+      "value": 298.97
     },
     {
       "date": "2022-01-14",
@@ -5941,7 +5885,7 @@
     },
     {
       "date": "2022-04-13",
-      "value": 334.68
+      "value": 334.69
     },
     {
       "date": "2022-04-14",
@@ -8357,7 +8301,7 @@
     },
     {
       "date": "2024-09-10",
-      "value": 335.14
+      "value": 335.13
     },
     {
       "date": "2024-09-11",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 305.25
+    },
+    {
+      "date": "2026-05-26",
+      "value": 304.47
+    },
+    {
+      "date": "2026-05-27",
+      "value": 306.79
+    },
+    {
+      "date": "2026-05-28",
+      "value": 309.25
+    },
+    {
+      "date": "2026-05-29",
+      "value": 303.69
+    },
+    {
+      "date": "2026-06-01",
+      "value": 295.8
+    },
+    {
+      "date": "2026-06-02",
+      "value": 299.14
+    },
+    {
+      "date": "2026-06-03",
+      "value": 301.97
+    },
+    {
+      "date": "2026-06-04",
+      "value": 306.66
+    },
+    {
+      "date": "2026-06-05",
+      "value": 309.68
+    },
+    {
+      "date": "2026-06-08",
+      "value": 311.08
+    },
+    {
+      "date": "2026-06-09",
+      "value": 322.86
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 53585338368.0,
-      "pe_ratio": 31.53409,
-      "forward_pe": 30.194431,
+      "market_cap": 56853999616.0,
+      "pe_ratio": 33.45764,
+      "forward_pe": 31.870758,
       "eps_ttm": 9.68,
-      "dividend_yield": 3.93,
+      "dividend_yield": 3.71,
       "profit_margin": 0.39061,
       "operating_margin": 0.46032003,
-      "price_to_book": 10.93694,
+      "price_to_book": 11.604084,
       "return_on_equity": 0.20175
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 305.25,
+    "as_of": "2026-06-09",
+    "current_price": 322.86,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 161.75,
+        "fair_value": 162.08,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 77.97,
+        "fair_value": 77.84,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 151.24,
-    "valuation_gap": 1.0183,
+    "fair_value": 151.31,
+    "valuation_gap": 1.1337,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,31 +10259,50 @@
         "price": 305.25,
         "fair_value": 174.42,
         "gap": 0.7501
+      },
+      {
+        "date": "2026-05-29",
+        "price": 303.69,
+        "fair_value": 174.42,
+        "gap": 0.7411
+      },
+      {
+        "date": "2026-06-05",
+        "price": 309.68,
+        "fair_value": 174.42,
+        "gap": 0.7755
+      },
+      {
+        "date": "2026-06-09",
+        "price": 322.86,
+        "fair_value": 174.42,
+        "gap": 0.851
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.04,
-      "summary_kr": "PSA WELL과 시니어 주택 데이터/ML 파트너십 신사업 개척·NSA 인수 규제 심사 진행. 자가창고 수요 약세 속 규모 확대와 데이터 활용으로 반전 모색 중.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.16,
+      "summary_kr": "PSA가 NSA 인수 제안으로 포트폴리오를 30% 확장하는 대규모 M&A 전략을 발표했다. 기존 자산의 점유율(92.2%)과 고객 이탈률 개선도 긍정적이며 주가는 연초 대비 +19.8% 상승 중이다.",
       "key_events": [
-        "WELL 데이터·ML 파트너십",
-        "NSA 인수 규제 심사 진행"
+        "NSA 인수 제안(+30% 부동산)",
+        "시너지 $110-130M",
+        "점유율 92.2% 유지",
+        "고객 이탈률 개선"
       ],
       "risks": [
-        "자가창고 수요 구조적 약세 지속 가능성",
-        "NSA 주식교환 인수 주식 희석"
+        "NSA 인수 시 통합 리스크, 스토리지 공급 과잉 지역 임대료 압박, 소비자 경기 둔화 시 수요 감소"
       ],
-      "news_count": 2,
+      "news_count": 3,
       "competitor_context": [
         {
-          "ticker": "WELL",
-          "headline": "Welltower closes $4.2B Q2 acquisitions; data/ML partnership with PSA highlighted",
-          "implication_for_target": "WELL PSA 파트너십 발표로 PSA 데이터 역량 부각 — 포지셔닝 재평가"
+          "ticker": "O",
+          "headline": "Realty Income 671st monthly dividend; Q1 AFFO +6.6%",
+          "implication_for_target": "소매 임대 강세는 스토리지 섹터 소비자 활동과 상관 — 경기 호조 시 PSA 보관 수요도 견조"
         },
         {
-          "ticker": "EQIX",
-          "headline": "Equinix 9-10% revenue growth; AI data center boom",
-          "implication_for_target": "AI 데이터센터 REIT 강세 vs PSA 자가창고 수요 상대적 약세 대조"
+          "ticker": "WELL",
+          "headline": "Welltower Q1 revenue +38.3%; occupancy 88.8%",
+          "implication_for_target": "REIT 전반 강한 운영 지표 확인 — PSA의 보관 자산도 유사 추세 유지"
         }
       ],
       "history": [
@@ -10310,6 +10317,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.04
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.16
         }
       ]
     }

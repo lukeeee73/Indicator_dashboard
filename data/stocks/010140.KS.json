@@ -4,62 +4,6 @@
   "group": "조선 (한국)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 6449.97
-    },
-    {
-      "date": "2016-05-24",
-      "value": 6154.78
-    },
-    {
-      "date": "2016-05-25",
-      "value": 6287.62
-    },
-    {
-      "date": "2016-05-26",
-      "value": 6656.61
-    },
-    {
-      "date": "2016-05-27",
-      "value": 6523.77
-    },
-    {
-      "date": "2016-05-30",
-      "value": 6545.91
-    },
-    {
-      "date": "2016-05-31",
-      "value": 7040.36
-    },
-    {
-      "date": "2016-06-01",
-      "value": 6878.0
-    },
-    {
-      "date": "2016-06-02",
-      "value": 6863.25
-    },
-    {
-      "date": "2016-06-03",
-      "value": 7328.17
-    },
-    {
-      "date": "2016-06-07",
-      "value": 7527.43
-    },
-    {
-      "date": "2016-06-08",
-      "value": 7416.73
-    },
-    {
-      "date": "2016-06-09",
-      "value": 7173.2
-    },
-    {
-      "date": "2016-06-10",
-      "value": 7232.24
-    },
-    {
       "date": "2016-06-13",
       "value": 6944.42
     },
@@ -9798,19 +9742,67 @@
     {
       "date": "2026-05-22",
       "value": 29500.0
+    },
+    {
+      "date": "2026-05-26",
+      "value": 30450.0
+    },
+    {
+      "date": "2026-05-27",
+      "value": 29450.0
+    },
+    {
+      "date": "2026-05-28",
+      "value": 28400.0
+    },
+    {
+      "date": "2026-05-29",
+      "value": 27950.0
+    },
+    {
+      "date": "2026-06-01",
+      "value": 27550.0
+    },
+    {
+      "date": "2026-06-02",
+      "value": 27700.0
+    },
+    {
+      "date": "2026-06-04",
+      "value": 28400.0
+    },
+    {
+      "date": "2026-06-05",
+      "value": 27750.0
+    },
+    {
+      "date": "2026-06-08",
+      "value": 26100.0
+    },
+    {
+      "date": "2026-06-09",
+      "value": 25850.0
+    },
+    {
+      "date": "2026-06-10",
+      "value": 26000.0
+    },
+    {
+      "date": "2026-06-11",
+      "value": 25300.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 25197436469248.0,
+      "market_cap": 21610004217856.0,
       "pe_ratio": null,
-      "forward_pe": 16.833906,
+      "forward_pe": 14.827469,
       "eps_ttm": null,
       "dividend_yield": null,
-      "profit_margin": 0.051220004,
-      "operating_margin": 0.10438,
+      "profit_margin": 0.05019,
+      "operating_margin": 0.094110005,
       "price_to_book": null,
-      "return_on_equity": 0.13659
+      "return_on_equity": 0.13207
     },
     "quarterly": [
       {
@@ -9865,19 +9857,19 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 29500.0,
+    "as_of": "2026-06-11",
+    "current_price": 25300.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 29791.07,
+        "fair_value": 29006.97,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 29791.07,
-    "valuation_gap": -0.0098,
-    "signal": "fair",
+    "fair_value": 29006.97,
+    "valuation_gap": -0.1278,
+    "signal": "undervalued",
     "gap_series_weekly": [
       {
         "date": "2025-10-02",
@@ -10082,33 +10074,51 @@
         "price": 29500.0,
         "fair_value": 12880.0,
         "gap": 1.2904
+      },
+      {
+        "date": "2026-05-29",
+        "price": 27950.0,
+        "fair_value": 12880.0,
+        "gap": 1.17
+      },
+      {
+        "date": "2026-06-05",
+        "price": 27750.0,
+        "fair_value": 12880.0,
+        "gap": 1.1545
+      },
+      {
+        "date": "2026-06-11",
+        "price": 25300.0,
+        "fair_value": 12880.0,
+        "gap": 0.9643
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-27",
+      "as_of": "2026-06-03",
       "narrative_score": 0.25,
-      "summary_kr": "5월 한 달 6척·2.36조원 수주 기록, LNG 반기 수주량이 2025년 연간치 이미 초과 — LNG 조선 슈퍼사이클 수혜 강도 최상급.",
+      "summary_kr": "FDC(해상 부유식 데이터센터)를 핵심 신사업으로 선점 — Supermicro JDP + Capital/LR MOU로 생태계 구축 가속. AI 인프라 수요와 조선기술 융합이 장기 성장 테마.",
       "key_events": [
-        "LNG 3척 1.1조원 수주 (오세아니아)",
-        "5월 합계 6척·2.36조원 수주",
-        "반기 LNG 수주량 2025 연간치 초과"
+        "FDC 시장 선점 전략 공개",
+        "Capital·LR과 FDC 3자 MOU (포시도니아)",
+        "Supermicro AI 서버 해상 JDP"
       ],
       "risks": [
-        "후판 원자재 가격 상승 마진 압박",
-        "환율 원화 강세 수출 손익 영향",
-        "납기 집중으로 인한 생산 차질 리스크"
+        "FDC 시장 성숙까지 장기 사이클",
+        "전통 선박 수주 vs 신사업 자원 배분",
+        "AI 수요 둔화 시 FDC 사업 리스크"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "329180.KS",
-          "headline": "HD Hyundai Heavy: 98 vessels YTD including 16 LNG carriers; $1.2B ONE order",
-          "implication_for_target": "HD현대중공업도 강한 수주 — 조선 빅3 모두 슈퍼사이클 수혜 재확인"
+          "headline": "HD Hyundai Heavy wins massive VLGC orders at Posidonia",
+          "implication_for_target": "HD현대重 전통 선박 수주 강세 vs 삼성重 FDC 신사업 — 포지셔닝 차별화"
         },
         {
           "ticker": "042660.KS",
-          "headline": "Hanwha Ocean: 200th LNG carrier delivered; 18 vessels/$3.2B YTD; VLAC 3 vessels",
-          "implication_for_target": "삼성중공업 LNG 전문성 vs 한화오션 LNG+암모니아 차별화 — 수주 경쟁 심화 속 마진 유지 관건"
+          "headline": "Hanwha Ocean focuses on defense naval shipbuilding partnerships",
+          "implication_for_target": "한화오션 방산, 삼성重 FDC, HD현대重 LNG — 한국 빅3 각자 신사업 경쟁"
         }
       ],
       "history": [
@@ -10118,6 +10128,10 @@
         },
         {
           "date": "2026-05-27",
+          "narrative_score": 0.25
+        },
+        {
+          "date": "2026-06-03",
           "narrative_score": 0.25
         }
       ]

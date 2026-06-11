@@ -4,62 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 47.52
-    },
-    {
-      "date": "2016-05-24",
-      "value": 47.77
-    },
-    {
-      "date": "2016-05-25",
-      "value": 47.72
-    },
-    {
-      "date": "2016-05-26",
-      "value": 47.94
-    },
-    {
-      "date": "2016-05-27",
-      "value": 48.18
-    },
-    {
-      "date": "2016-05-31",
-      "value": 47.93
-    },
-    {
-      "date": "2016-06-01",
-      "value": 47.98
-    },
-    {
-      "date": "2016-06-02",
-      "value": 48.32
-    },
-    {
-      "date": "2016-06-03",
-      "value": 49.6
-    },
-    {
-      "date": "2016-06-06",
-      "value": 48.56
-    },
-    {
-      "date": "2016-06-07",
-      "value": 49.18
-    },
-    {
-      "date": "2016-06-08",
-      "value": 49.94
-    },
-    {
-      "date": "2016-06-09",
-      "value": 50.18
-    },
-    {
-      "date": "2016-06-10",
-      "value": 50.17
-    },
-    {
       "date": "2016-06-13",
       "value": 50.57
     },
@@ -5205,7 +5149,7 @@
     },
     {
       "date": "2021-07-22",
-      "value": 77.23
+      "value": 77.22
     },
     {
       "date": "2021-07-23",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 216.17
+    },
+    {
+      "date": "2026-05-26",
+      "value": 218.13
+    },
+    {
+      "date": "2026-05-27",
+      "value": 214.18
+    },
+    {
+      "date": "2026-05-28",
+      "value": 210.29
+    },
+    {
+      "date": "2026-05-29",
+      "value": 205.33
+    },
+    {
+      "date": "2026-06-01",
+      "value": 197.36
+    },
+    {
+      "date": "2026-06-02",
+      "value": 195.35
+    },
+    {
+      "date": "2026-06-03",
+      "value": 199.59
+    },
+    {
+      "date": "2026-06-04",
+      "value": 200.85
+    },
+    {
+      "date": "2026-06-05",
+      "value": 206.93
+    },
+    {
+      "date": "2026-06-08",
+      "value": 200.0
+    },
+    {
+      "date": "2026-06-09",
+      "value": 206.77
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 152597528576.0,
-      "pe_ratio": 103.92789,
-      "forward_pe": 64.33631,
-      "eps_ttm": 2.08,
-      "dividend_yield": 1.37,
+      "market_cap": 149202075648.0,
+      "pe_ratio": 102.106285,
+      "forward_pe": 62.904762,
+      "eps_ttm": 2.07,
+      "dividend_yield": 1.4,
       "profit_margin": 0.119619995,
       "operating_margin": 0.18039,
-      "price_to_book": 3.5738258,
+      "price_to_book": 3.4943047,
       "return_on_equity": 0.03665
     },
     "quarterly": [
@@ -10129,28 +10117,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 216.17,
+    "as_of": "2026-06-09",
+    "current_price": 206.77,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 37.44,
+        "fair_value": 37.26,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 53.76,
+        "fair_value": 52.59,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 53.21,
+        "fair_value": 52.5,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 45.49,
-    "valuation_gap": 3.752,
+    "fair_value": 44.91,
+    "valuation_gap": 3.6044,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,31 +10266,50 @@
         "price": 216.17,
         "fair_value": 36.36,
         "gap": 4.9453
+      },
+      {
+        "date": "2026-05-29",
+        "price": 205.33,
+        "fair_value": 36.36,
+        "gap": 4.6471
+      },
+      {
+        "date": "2026-06-05",
+        "price": 206.93,
+        "fair_value": 36.36,
+        "gap": 4.6911
+      },
+      {
+        "date": "2026-06-09",
+        "price": 206.77,
+        "fair_value": 36.36,
+        "gap": 4.6867
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.14,
-      "summary_kr": "WELL Q2 $4.2B 인수(아미카 캐나다) 완료·PSA 데이터/ML 파트너십 — 시니어 주택 '최고의 시기' 구조적 수혜 포착 가속. 인구 고령화 사이클 직접 수혜 REIT로 포지셔닝 최상.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.19,
+      "summary_kr": "WELL이 Q1 매출 +38.3%, 동일점포 NOI +16.4%의 초강세 실적을 기록했다. 노인주택 점유율 88.8%와 구조적 인구 고령화 수혜로 헬스케어 REIT 중 최강 모멘텀을 유지하고 있다.",
       "key_events": [
-        "Q2 $4.2B 인수 완료 (아미카 캐나다)",
-        "PSA 데이터·ML 전략 파트너십"
+        "Q1 매출 +38.3% YoY",
+        "동일점포 NOI +16.4%",
+        "노인주택 점유율 88.8%",
+        "정상화 FFO +23%"
       ],
       "risks": [
-        "인수 가격 프리미엄 → AFFO 희석 단기 가능성",
-        "의료비·규제 정책 리스크"
+        "주가 $200 수준의 높은 밸류에이션, 에퀴티 조달로 희석 효과, 미국·영국·캐나다 각국 노인주택 규제 리스크"
       ],
       "news_count": 3,
       "competitor_context": [
         {
-          "ticker": "PSA",
-          "headline": "Public Storage strategic partnership with Welltower on senior housing data/ML",
-          "implication_for_target": "PSA 데이터 제공 → WELL 운영 효율 강화 — 긍정적 시너지"
+          "ticker": "VICI",
+          "headline": "VICI closes casino acquisitions; AFFO +5.7%; valuation grade A-",
+          "implication_for_target": "VICI의 엔터 자산 강세와 달리 WELL은 헬스케어 인구통계 수혜 — 서로 다른 REIT 하위 섹터"
         },
         {
-          "ticker": "SPG",
-          "headline": "Simon Property 96% occupancy; consumer spending solid",
-          "implication_for_target": "소비자 지출 건전 → 시니어 가족들의 WELL 입주 지불 능력 유지"
+          "ticker": "PSA",
+          "headline": "PSA proposes NSA acquisition; 92.2% occupancy; churn declining",
+          "implication_for_target": "PSA M&A 전략과 유사하게 WELL도 시니어 헬스케어 자산 통합 가속 가능성"
         }
       ],
       "history": [
@@ -10317,6 +10324,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.14
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.19
         }
       ]
     }

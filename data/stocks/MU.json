@@ -4,62 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 10.86
-    },
-    {
-      "date": "2016-05-24",
-      "value": 11.21
-    },
-    {
-      "date": "2016-05-25",
-      "value": 11.31
-    },
-    {
-      "date": "2016-05-26",
-      "value": 11.65
-    },
-    {
-      "date": "2016-05-27",
-      "value": 12.01
-    },
-    {
-      "date": "2016-05-31",
-      "value": 12.41
-    },
-    {
-      "date": "2016-06-01",
-      "value": 12.77
-    },
-    {
-      "date": "2016-06-02",
-      "value": 12.79
-    },
-    {
-      "date": "2016-06-03",
-      "value": 12.54
-    },
-    {
-      "date": "2016-06-06",
-      "value": 12.45
-    },
-    {
-      "date": "2016-06-07",
-      "value": 12.68
-    },
-    {
-      "date": "2016-06-08",
-      "value": 12.27
-    },
-    {
-      "date": "2016-06-09",
-      "value": 12.2
-    },
-    {
-      "date": "2016-06-10",
-      "value": 11.84
-    },
-    {
       "date": "2016-06-13",
       "value": 11.75
     },
@@ -10062,28 +10006,65 @@
     {
       "date": "2026-05-22",
       "value": 751.0
+    },
+    {
+      "date": "2026-05-26",
+      "value": 895.88
+    },
+    {
+      "date": "2026-05-27",
+      "value": 928.41
+    },
+    {
+      "date": "2026-05-28",
+      "value": 923.52
+    },
+    {
+      "date": "2026-05-29",
+      "value": 971.0
+    },
+    {
+      "date": "2026-06-01",
+      "value": 1035.5
+    },
+    {
+      "date": "2026-06-02",
+      "value": 1064.1
+    },
+    {
+      "date": "2026-06-03",
+      "value": 1079.57
+    },
+    {
+      "date": "2026-06-04",
+      "value": 996.0
+    },
+    {
+      "date": "2026-06-05",
+      "value": 864.01
+    },
+    {
+      "date": "2026-06-08",
+      "value": 949.28
+    },
+    {
+      "date": "2026-06-09",
+      "value": 935.89
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 846928216064.0,
-      "pe_ratio": 35.457977,
-      "forward_pe": 7.309794,
-      "eps_ttm": 21.18,
-      "dividend_yield": 0.08,
+      "market_cap": 1005803405312.0,
+      "pe_ratio": 42.010365,
+      "forward_pe": 7.9984946,
+      "eps_ttm": 21.23,
+      "dividend_yield": 0.07,
       "profit_margin": 0.41486,
       "operating_margin": 0.67624,
-      "price_to_book": 11.691082,
+      "price_to_book": 13.884211,
       "return_on_equity": 0.39823002
     },
     "quarterly": [
-      {
-        "date": "2024-08-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2025-02-28",
         "revenue": 8053000000.0,
@@ -10122,29 +10103,29 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 751.0,
+    "as_of": "2026-06-09",
+    "current_price": 935.89,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 593.04,
+        "fair_value": 594.44,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 2260.26,
+        "fair_value": 2574.18,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 174.96,
+        "fair_value": 179.44,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 1009.59,
-    "valuation_gap": -0.2561,
-    "signal": "deep_value",
+    "fair_value": 1105.36,
+    "valuation_gap": -0.1533,
+    "signal": "undervalued",
     "gap_series_weekly": [
       {
         "date": "2025-12-05",
@@ -10295,32 +10276,46 @@
         "price": 751.0,
         "fair_value": 593.04,
         "gap": 0.2664
+      },
+      {
+        "date": "2026-05-29",
+        "price": 971.0,
+        "fair_value": 593.04,
+        "gap": 0.6373
+      },
+      {
+        "date": "2026-06-05",
+        "price": 864.01,
+        "fair_value": 593.04,
+        "gap": 0.4569
+      },
+      {
+        "date": "2026-06-09",
+        "price": 935.89,
+        "fair_value": 593.04,
+        "gap": 0.5781
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-26",
-      "narrative_score": 0.4,
-      "summary_kr": "MU +17.82% 단일 거래일 급등 — CEO가 HBM·DRAM 공급 부족 '2026년 이후에도 지속' 공식 확인. 첫 5년 전략 고객 계약(NVDA 향 HBM4 볼륨 출하)으로 구조적 AI 메모리 수퍼사이클 진입 검증. Citi $840, CFRA $900, HSBC $1,100 목표 대폭 상향.",
+      "as_of": "2026-06-10",
+      "narrative_score": 0.21,
+      "summary_kr": "HBM 2026년 전량 매진·$2,000억 증설·골드만삭스 $900/Cantor $1,500 강세 목표주가·Bechtel NY 팹 착공으로 HBM 슈퍼사이클 중심 위치 확인. 6/24 Q3 FY2026 어닝이 ±20% 방향성 결정 핵심 이벤트. 오늘 -2.05%는 AVGO 여진.",
       "key_events": [
-        "MU +17.82% 단일 거래일 급등",
-        "CEO: HBM·DRAM 공급 부족 2026년 이후에도 지속 확인",
-        "첫 5년 전략 고객 계약 체결 — NVDA 향 HBM4 볼륨 출하 시작"
+        "HBM 2026 전량 매진·$2,000억 증설",
+        "골드만삭스 $900·Cantor $1,500 상향",
+        "6/24 Q3 FY2026 어닝 예정"
       ],
       "risks": [
-        "YTD +162% 이상 고밸류에이션 조정 위험",
-        "HBM4E 수요가 TSMC 전환 시 MU 점유율 영향"
+        "AVGO 가이던스 미달 → AI 인프라 수요 peak-out 우려 연쇄",
+        "DRAM 가격 컨센서스(+58~63%) 미달 시 급락",
+        "중국 HBM 수출 규제 확대 가능성"
       ],
       "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "NVDA",
-          "headline": "NVDA Q1 data center $75.2B (+92%), Q2 guide $91B — HBM demand to remain at peak",
-          "implication_for_target": "NVDA Blackwell GPU 수요 폭증은 HBM3e/HBM4 수요 직접 연동 — MU 구조적 수혜 지속"
-        },
-        {
-          "ticker": "LRCX",
-          "headline": "Lam Research WFE forecast raised to $140B — memory equipment demand strong",
-          "implication_for_target": "LRCX 장비 수요 강세는 MU HBM 증산 공급망 전반의 강세를 상호 검증"
+          "ticker": "AVGO",
+          "headline": "Broadcom Q2 AI revenue $10.8B (2x); no guidance raise → -15%",
+          "implication_for_target": "AVGO 어닝 가이던스 실망이 AI 인프라 수요 peak-out 우려를 자극 — MU HBM 수요에 간접 심리 압박"
         }
       ],
       "history": [
@@ -10335,6 +10330,18 @@
         {
           "date": "2026-05-26",
           "narrative_score": 0.4
+        },
+        {
+          "date": "2026-06-02",
+          "narrative_score": 0.47
+        },
+        {
+          "date": "2026-06-09",
+          "narrative_score": 0.35
+        },
+        {
+          "date": "2026-06-10",
+          "narrative_score": 0.21
         }
       ]
     }

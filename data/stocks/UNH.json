@@ -4,62 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 110.71
-    },
-    {
-      "date": "2016-05-24",
-      "value": 112.55
-    },
-    {
-      "date": "2016-05-25",
-      "value": 113.26
-    },
-    {
-      "date": "2016-05-26",
-      "value": 112.88
-    },
-    {
-      "date": "2016-05-27",
-      "value": 113.75
-    },
-    {
-      "date": "2016-05-31",
-      "value": 113.47
-    },
-    {
-      "date": "2016-06-01",
-      "value": 114.2
-    },
-    {
-      "date": "2016-06-02",
-      "value": 115.48
-    },
-    {
-      "date": "2016-06-03",
-      "value": 116.16
-    },
-    {
-      "date": "2016-06-06",
-      "value": 117.27
-    },
-    {
-      "date": "2016-06-07",
-      "value": 116.24
-    },
-    {
-      "date": "2016-06-08",
-      "value": 119.18
-    },
-    {
-      "date": "2016-06-09",
-      "value": 119.42
-    },
-    {
-      "date": "2016-06-10",
-      "value": 118.2
-    },
-    {
       "date": "2016-06-13",
       "value": 117.22
     },
@@ -981,7 +925,7 @@
     },
     {
       "date": "2017-05-11",
-      "value": 149.63
+      "value": 149.62
     },
     {
       "date": "2017-05-12",
@@ -1805,7 +1749,7 @@
     },
     {
       "date": "2018-03-07",
-      "value": 198.42
+      "value": 198.43
     },
     {
       "date": "2018-03-08",
@@ -2301,7 +2245,7 @@
     },
     {
       "date": "2018-08-31",
-      "value": 235.99
+      "value": 236.0
     },
     {
       "date": "2018-09-04",
@@ -2809,7 +2753,7 @@
     },
     {
       "date": "2019-03-07",
-      "value": 209.45
+      "value": 209.44
     },
     {
       "date": "2019-03-08",
@@ -3729,7 +3673,7 @@
     },
     {
       "date": "2020-02-04",
-      "value": 252.71
+      "value": 252.7
     },
     {
       "date": "2020-02-05",
@@ -5177,7 +5121,7 @@
     },
     {
       "date": "2021-07-13",
-      "value": 385.58
+      "value": 385.57
     },
     {
       "date": "2021-07-14",
@@ -6821,7 +6765,7 @@
     },
     {
       "date": "2023-03-01",
-      "value": 446.41
+      "value": 446.4
     },
     {
       "date": "2023-03-02",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 388.47
+    },
+    {
+      "date": "2026-05-26",
+      "value": 376.86
+    },
+    {
+      "date": "2026-05-27",
+      "value": 384.01
+    },
+    {
+      "date": "2026-05-28",
+      "value": 382.53
+    },
+    {
+      "date": "2026-05-29",
+      "value": 380.31
+    },
+    {
+      "date": "2026-06-01",
+      "value": 379.86
+    },
+    {
+      "date": "2026-06-02",
+      "value": 377.92
+    },
+    {
+      "date": "2026-06-03",
+      "value": 377.0
+    },
+    {
+      "date": "2026-06-04",
+      "value": 396.47
+    },
+    {
+      "date": "2026-06-05",
+      "value": 399.47
+    },
+    {
+      "date": "2026-06-08",
+      "value": 406.57
+    },
+    {
+      "date": "2026-06-09",
+      "value": 413.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 352786841600.0,
-      "pe_ratio": 29.23025,
-      "forward_pe": 18.670914,
-      "eps_ttm": 13.29,
+      "market_cap": 370032508928.0,
+      "pe_ratio": 30.682228,
+      "forward_pe": 19.494164,
+      "eps_ttm": 13.28,
       "dividend_yield": 2.28,
       "profit_margin": 0.02678,
       "operating_margin": 0.080469996,
-      "price_to_book": 3.603685,
+      "price_to_book": 3.7798476,
       "return_on_equity": 0.121759996
     },
     "quarterly": [
@@ -10122,28 +10110,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 388.47,
+    "as_of": "2026-06-09",
+    "current_price": 413.0,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 239.22,
+        "fair_value": 239.04,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 332.9,
+        "fair_value": 338.97,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 179.54,
+        "fair_value": 180.69,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 255.39,
-    "valuation_gap": 0.5211,
+    "fair_value": 257.35,
+    "valuation_gap": 0.6048,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,34 +10259,55 @@
         "price": 388.47,
         "fair_value": 238.32,
         "gap": 0.63
+      },
+      {
+        "date": "2026-05-29",
+        "price": 380.31,
+        "fair_value": 238.32,
+        "gap": 0.5958
+      },
+      {
+        "date": "2026-06-05",
+        "price": 399.47,
+        "fair_value": 238.32,
+        "gap": 0.6762
+      },
+      {
+        "date": "2026-06-09",
+        "price": 413.0,
+        "fair_value": 238.32,
+        "gap": 0.733
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-28",
-      "narrative_score": 0.1,
-      "summary_kr": "Q1 어닝 서프라이즈와 가이던스 상향으로 6연속 하락 반등, 버스타인·UBS 목표가 동시 상향. 다만 버크셔 해서웨이의 전량 매각이 잠재적 경고 신호. Optum Rx 투명 PBM 모델로 규제 리스크 선제 대응 중.",
+      "as_of": "2026-06-04",
+      "narrative_score": 0.09,
+      "summary_kr": "BofA·MS·트루이스트 등 복수 기관이 동시에 목표주가를 $450 내외로 인상하며 Q2 개선 신호를 확인했다. 그러나 매사추세츠 소송 재부상과 CMS 2027년 메디케어 수가 인상 동결이 규제 리스크로 남아있다.",
       "key_events": [
-        "Q1 EPS $7.23 어닝 서프라이즈",
-        "Optum Rx 투명 PBM 모델 출시",
-        "버크셔 지분 전량 매각"
+        "BofA Neutral→Buy 업그레이드 ($450)",
+        "모건스탠리·트루이스트 목표주가 $450+ 상향",
+        "매사추세츠 메디케이드 과다청구 소송 재부상"
       ],
       "risks": [
-        "버크셔 매각 이후 기관 수요 공백",
-        "비만치료제 확산에 따른 보험 원가 상승",
-        "PBM 규제 강화 리스크"
+        "메디케이드 소송 확대 시 법적 비용 증가",
+        "CMS 2027 메디케어 수가 동결로 수익성 압박"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
-          "ticker": "LLY",
-          "headline": "LLY Foundayo oral obesity pill added to CVS preferred formulary — full PBM coverage",
-          "implication_for_target": "비만치료제 PBM 접근성 확대 → 의료비 청구 규모 증가, UNH 보험 원가 구조에 영향"
+          "ticker": "JNJ",
+          "headline": "J&J announces 64th consecutive dividend increase — healthcare sector stability signal",
+          "implication_for_target": "헬스케어 메이저들의 배당 성장 재확인 — UNH도 5% 배당 인상으로 동조"
         }
       ],
       "history": [
         {
           "date": "2026-05-28",
           "narrative_score": 0.1
+        },
+        {
+          "date": "2026-06-04",
+          "narrative_score": 0.09
         }
       ]
     }

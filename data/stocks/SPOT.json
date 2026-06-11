@@ -8190,18 +8190,62 @@
     {
       "date": "2026-05-22",
       "value": 519.86
+    },
+    {
+      "date": "2026-05-26",
+      "value": 529.71
+    },
+    {
+      "date": "2026-05-27",
+      "value": 512.83
+    },
+    {
+      "date": "2026-05-28",
+      "value": 516.71
+    },
+    {
+      "date": "2026-05-29",
+      "value": 497.68
+    },
+    {
+      "date": "2026-06-01",
+      "value": 507.76
+    },
+    {
+      "date": "2026-06-02",
+      "value": 501.5
+    },
+    {
+      "date": "2026-06-03",
+      "value": 487.54
+    },
+    {
+      "date": "2026-06-04",
+      "value": 493.58
+    },
+    {
+      "date": "2026-06-05",
+      "value": 496.95
+    },
+    {
+      "date": "2026-06-08",
+      "value": 503.13
+    },
+    {
+      "date": "2026-06-09",
+      "value": 496.22
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 106893639680.0,
-      "pe_ratio": 34.726784,
-      "forward_pe": 28.201345,
-      "eps_ttm": 14.97,
+      "market_cap": 103447453696.0,
+      "pe_ratio": 33.90162,
+      "forward_pe": 27.529114,
+      "eps_ttm": 14.84,
       "dividend_yield": null,
       "profit_margin": 0.15449001,
       "operating_margin": 0.15773,
-      "price_to_book": 10.88917,
+      "price_to_book": 10.538109,
       "return_on_equity": 0.37987998
     },
     "quarterly": [
@@ -8243,28 +8287,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 519.86,
+    "as_of": "2026-06-09",
+    "current_price": 496.22,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 299.4,
+        "fair_value": 296.8,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 313.38,
+        "fair_value": 306.43,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 126.81,
+        "fair_value": 125.39,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 269.08,
-    "valuation_gap": 0.932,
+    "fair_value": 265.41,
+    "valuation_gap": 0.8697,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8392,34 +8436,59 @@
         "price": 519.86,
         "fair_value": 214.8,
         "gap": 1.4202
+      },
+      {
+        "date": "2026-05-29",
+        "price": 497.68,
+        "fair_value": 214.8,
+        "gap": 1.3169
+      },
+      {
+        "date": "2026-06-05",
+        "price": 496.95,
+        "fair_value": 214.8,
+        "gap": 1.3135
+      },
+      {
+        "date": "2026-06-09",
+        "price": 496.22,
+        "fair_value": 214.8,
+        "gap": 1.3101
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.0,
-      "summary_kr": "신규 이슈 없음. 음악 스트리밍 1위 포지션 유지 중이나 팟캐스트·오디오북 수익화 진행 속 경쟁 환경 모니터링 필요.",
-      "key_events": [],
+      "as_of": "2026-06-07",
+      "narrative_score": 0.09,
+      "summary_kr": "스포티파이 넷플릭스와 $1억 독점 팟캐스트 영상 계약으로 콘텐츠 수익화 강화. 가입자 6억+ 기반 위에 팟캐스트·오디오북 사업 확장 지속.",
+      "key_events": [
+        "NFLX와 $1억 독점 팟캐스트 영상 계약"
+      ],
       "risks": [
-        "NFLX 광고 플랫폼 광고비 경쟁",
-        "Apple Music 구독 경쟁"
+        "음악 레이블 로열티 비용 구조",
+        "Apple Music·YouTube Music 경쟁",
+        "구독료 인상 저항"
       ],
       "news_count": 1,
       "competitor_context": [
         {
           "ticker": "NFLX",
-          "headline": "Netflix 250M ad-tier MAU milestone",
-          "implication_for_target": "NFLX 광고 플랫폼 성장이 SPOT 광고 인벤토리와 광고주 예산 경쟁"
+          "headline": "Netflix partners with Spotify for $100M exclusive podcast deal",
+          "implication_for_target": "NFLX·SPOT 상호 보완 — 팟캐스트 독점 영상화는 SPOT 콘텐츠 가치 수익화"
         },
         {
           "ticker": "AAPL",
-          "headline": "Apple Music competing for streaming audio subscribers",
-          "implication_for_target": "애플뮤직과 프리미엄 음악 스트리밍 지속 경쟁"
+          "headline": "Apple Podcasts and Apple Music as key Spotify competitor",
+          "implication_for_target": "AAPL 음악·팟캐스트와 경쟁 — SPOT의 NFLX 파트너십은 애플 생태계 외 차별화"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.09
         }
       ]
     }

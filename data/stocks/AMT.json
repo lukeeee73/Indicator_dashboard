@@ -4,62 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 81.11
-    },
-    {
-      "date": "2016-05-24",
-      "value": 82.0
-    },
-    {
-      "date": "2016-05-25",
-      "value": 82.68
-    },
-    {
-      "date": "2016-05-26",
-      "value": 82.0
-    },
-    {
-      "date": "2016-05-27",
-      "value": 82.59
-    },
-    {
-      "date": "2016-05-31",
-      "value": 82.37
-    },
-    {
-      "date": "2016-06-01",
-      "value": 82.13
-    },
-    {
-      "date": "2016-06-02",
-      "value": 82.98
-    },
-    {
-      "date": "2016-06-03",
-      "value": 83.3
-    },
-    {
-      "date": "2016-06-06",
-      "value": 83.48
-    },
-    {
-      "date": "2016-06-07",
-      "value": 84.0
-    },
-    {
-      "date": "2016-06-08",
-      "value": 83.76
-    },
-    {
-      "date": "2016-06-09",
-      "value": 84.93
-    },
-    {
-      "date": "2016-06-10",
-      "value": 84.72
-    },
-    {
       "date": "2016-06-13",
       "value": 84.82
     },
@@ -529,7 +473,7 @@
     },
     {
       "date": "2016-11-28",
-      "value": 83.44
+      "value": 83.45
     },
     {
       "date": "2016-11-29",
@@ -2109,7 +2053,7 @@
     },
     {
       "date": "2018-06-25",
-      "value": 115.9
+      "value": 115.91
     },
     {
       "date": "2018-06-26",
@@ -5497,7 +5441,7 @@
     },
     {
       "date": "2021-11-03",
-      "value": 243.43
+      "value": 243.42
     },
     {
       "date": "2021-11-04",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 183.85
+    },
+    {
+      "date": "2026-05-26",
+      "value": 184.95
+    },
+    {
+      "date": "2026-05-27",
+      "value": 184.98
+    },
+    {
+      "date": "2026-05-28",
+      "value": 186.68
+    },
+    {
+      "date": "2026-05-29",
+      "value": 186.96
+    },
+    {
+      "date": "2026-06-01",
+      "value": 187.53
+    },
+    {
+      "date": "2026-06-02",
+      "value": 185.53
+    },
+    {
+      "date": "2026-06-03",
+      "value": 182.24
+    },
+    {
+      "date": "2026-06-04",
+      "value": 193.91
+    },
+    {
+      "date": "2026-06-05",
+      "value": 194.12
+    },
+    {
+      "date": "2026-06-08",
+      "value": 189.1
+    },
+    {
+      "date": "2026-06-09",
+      "value": 190.83
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 85654437888.0,
-      "pe_ratio": 29.653227,
-      "forward_pe": 26.621317,
+      "market_cap": 89684410368.0,
+      "pe_ratio": 31.048388,
+      "forward_pe": 27.873829,
       "eps_ttm": 6.2,
-      "dividend_yield": 3.8,
+      "dividend_yield": 3.63,
       "profit_margin": 0.26806998,
       "operating_margin": 0.45907003,
-      "price_to_book": 24.322,
+      "price_to_book": 25.466331,
       "return_on_equity": 0.29952
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 183.85,
+    "as_of": "2026-06-09",
+    "current_price": 190.83,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 110.5,
+        "fair_value": 109.54,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 32.47,
+        "fair_value": 32.33,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 95.44,
-    "valuation_gap": 0.9263,
+    "fair_value": 95.13,
+    "valuation_gap": 1.006,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,31 +10266,49 @@
         "price": 183.85,
         "fair_value": 111.42,
         "gap": 0.6501
+      },
+      {
+        "date": "2026-05-29",
+        "price": 186.96,
+        "fair_value": 111.42,
+        "gap": 0.678
+      },
+      {
+        "date": "2026-06-05",
+        "price": 194.12,
+        "fair_value": 111.42,
+        "gap": 0.7422
+      },
+      {
+        "date": "2026-06-09",
+        "price": 190.83,
+        "fair_value": 111.42,
+        "gap": 0.7127
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.05,
-      "summary_kr": "Bernstein AMT 아웃퍼폼 업그레이드($207 목표)로 타워 REIT 회복 기대감 반영. CCI 순수 타워 전환 완료로 직접 경쟁 심화가 단기 변수.",
+      "as_of": "2026-06-06",
+      "narrative_score": -0.06,
+      "summary_kr": "AMT가 Nareit REITweek에서 전략을 발표했으나 최근 1년간 미국 시장(+14.7%) 및 업종(-3.5%)에 모두 하회하는 부진한 상대 수익률을 보이고 있다. 금리 고정(3.5%) 환경이 타워 REIT 밸류에이션에 계속 부담이다.",
       "key_events": [
-        "Bernstein 아웃퍼폼 업그레이드 $207",
-        "타워 REIT 회복 국면"
+        "Nareit REITweek CEO 발표",
+        "1년 상대 수익률 시장 대비 부진"
       ],
       "risks": [
-        "CCI 순수 타워 전환 직접 경쟁 심화",
-        "EchoStar 매출 손실로 AFFO 성장 제한"
+        "Fed 금리 유지(3.5%) 환경에서 고배당 REIT 밸류에이션 압박",
+        "신흥국 통화 약세로 해외 매출 환산 손실"
       ],
-      "news_count": 2,
+      "news_count": 1,
       "competitor_context": [
         {
           "ticker": "CCI",
-          "headline": "Crown Castle completes $8.5B divestiture; raises AFFO guidance; pure-play tower",
-          "implication_for_target": "CCI 순수 타워 전환 완료 — AMT와 직접 경쟁 심화, 시장 재평가 촉매"
+          "headline": "Crown Castle completes $8.5B Fiber/Small Cell asset sale; focuses on organic tower growth",
+          "implication_for_target": "CCI가 파이버 사업 매각 후 순수 타워 REIT로 전환 — AMT와 직접 경쟁 강도 일부 증가"
         },
         {
           "ticker": "EQIX",
-          "headline": "Equinix 2026 guidance 9-10% revenue growth; debt rising to $21.4B for AI expansion",
-          "implication_for_target": "데이터센터 REIT 강세 — AMT 데이터센터 사업 성장 기대 유지"
+          "headline": "Equinix Q1 revenue +10% YoY; Fabric AI bookings +70%; $10B guidance",
+          "implication_for_target": "데이터센터 REIT의 AI 수요 강세는 AMT의 데이터센터 부문에 긍정적 벤치마크"
         }
       ],
       "history": [
@@ -10317,6 +10323,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": -0.06
         }
       ]
     }

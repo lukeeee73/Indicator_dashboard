@@ -4,62 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 50.68
-    },
-    {
-      "date": "2016-05-24",
-      "value": 51.23
-    },
-    {
-      "date": "2016-05-25",
-      "value": 51.21
-    },
-    {
-      "date": "2016-05-26",
-      "value": 51.88
-    },
-    {
-      "date": "2016-05-27",
-      "value": 51.89
-    },
-    {
-      "date": "2016-05-31",
-      "value": 52.06
-    },
-    {
-      "date": "2016-06-01",
-      "value": 52.59
-    },
-    {
-      "date": "2016-06-02",
-      "value": 52.53
-    },
-    {
-      "date": "2016-06-03",
-      "value": 53.29
-    },
-    {
-      "date": "2016-06-06",
-      "value": 53.13
-    },
-    {
-      "date": "2016-06-07",
-      "value": 53.23
-    },
-    {
-      "date": "2016-06-08",
-      "value": 53.58
-    },
-    {
-      "date": "2016-06-09",
-      "value": 54.08
-    },
-    {
-      "date": "2016-06-10",
-      "value": 54.06
-    },
-    {
       "date": "2016-06-13",
       "value": 54.31
     },
@@ -2765,7 +2709,7 @@
     },
     {
       "date": "2019-02-20",
-      "value": 66.62
+      "value": 66.61
     },
     {
       "date": "2019-02-21",
@@ -2885,7 +2829,7 @@
     },
     {
       "date": "2019-04-03",
-      "value": 66.62
+      "value": 66.61
     },
     {
       "date": "2019-04-04",
@@ -7005,7 +6949,7 @@
     },
     {
       "date": "2023-05-05",
-      "value": 87.63
+      "value": 87.64
     },
     {
       "date": "2023-05-08",
@@ -8773,7 +8717,7 @@
     },
     {
       "date": "2025-02-10",
-      "value": 109.68
+      "value": 109.67
     },
     {
       "date": "2025-02-11",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 125.67
+    },
+    {
+      "date": "2026-05-26",
+      "value": 124.97
+    },
+    {
+      "date": "2026-05-27",
+      "value": 125.35
+    },
+    {
+      "date": "2026-05-28",
+      "value": 123.76
+    },
+    {
+      "date": "2026-05-29",
+      "value": 122.73
+    },
+    {
+      "date": "2026-06-01",
+      "value": 119.89
+    },
+    {
+      "date": "2026-06-02",
+      "value": 121.09
+    },
+    {
+      "date": "2026-06-03",
+      "value": 121.04
+    },
+    {
+      "date": "2026-06-04",
+      "value": 121.82
+    },
+    {
+      "date": "2026-06-05",
+      "value": 124.22
+    },
+    {
+      "date": "2026-06-08",
+      "value": 122.05
+    },
+    {
+      "date": "2026-06-09",
+      "value": 123.82
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 97971855360.0,
-      "pe_ratio": 19.333845,
-      "forward_pe": 17.53155,
+      "market_cap": 97480712192.0,
+      "pe_ratio": 19.236923,
+      "forward_pe": 17.445925,
       "eps_ttm": 6.5,
-      "dividend_yield": 3.39,
+      "dividend_yield": 3.41,
       "profit_margin": 0.15706,
       "operating_margin": 0.25507,
-      "price_to_book": 1.8280336,
+      "price_to_book": 1.8188695,
       "return_on_equity": 0.09661
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 125.67,
+    "as_of": "2026-06-09",
+    "current_price": 123.82,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10139,19 +10127,19 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 107.52,
+        "fair_value": 106.46,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
       "graham_number": {
-        "fair_value": 100.27,
+        "fair_value": 99.78,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 104.31,
-    "valuation_gap": 0.2048,
-    "signal": "expensive",
+    "fair_value": 103.89,
+    "valuation_gap": 0.1918,
+    "signal": "overvalued",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10278,27 +10266,45 @@
         "price": 125.67,
         "fair_value": 104.48,
         "gap": 0.2028
+      },
+      {
+        "date": "2026-05-29",
+        "price": 122.73,
+        "fair_value": 104.48,
+        "gap": 0.1747
+      },
+      {
+        "date": "2026-06-05",
+        "price": 124.22,
+        "fair_value": 104.48,
+        "gap": 0.1889
+      },
+      {
+        "date": "2026-06-09",
+        "price": 123.82,
+        "fair_value": 104.48,
+        "gap": 0.1851
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-29",
-      "narrative_score": 0.13,
-      "summary_kr": "Q1 EPS 상회 + $1022억 대규모 자본투자 계획으로 성장 비전 제시. 인디애나 18% 요금 인상 신청으로 규제 수익 확대 기대. NEE-D 합병 이후 M&A 프리미엄 주목.",
+      "as_of": "2026-06-05",
+      "narrative_score": 0.08,
+      "summary_kr": "Q1 실적 강세 + 가이던스 재확인 + AI 데이터센터 원전 공급 논의로 중장기 성장 스토리 강화. 테크 기업과 비용 분담 계약 체결 시 주가 재평가 카탈리스트.",
       "key_events": [
-        "Q1 조정 EPS $1.76 (컨센서스 상회)",
-        "$1022억 2030년 자본투자 계획",
-        "인디애나 18% 요금 인상 신청"
+        "AI 데이터센터 신규 원전 건설 테크 기업 논의 중",
+        "Q1 조정 EPS $1.93 (+, 가이던스 재확인)",
+        "분기 배당 $1.065 6/16 지급"
       ],
       "risks": [
-        "요금 인상 규제 승인 불확실성",
-        "대규모 자본투자에 따른 재무 레버리지 증가"
+        "신규 원전 건설 비용·일정 리스크",
+        "금리 환경 유틸리티 밸류에이션 압박"
       ],
       "news_count": 3,
       "competitor_context": [
         {
-          "ticker": "NEE",
-          "headline": "NextEra-Dominion merger creates world's largest regulated utility",
-          "implication_for_target": "섹터 재편으로 DUK도 M&A 프리미엄 수혜 가능성"
+          "ticker": "CEG",
+          "headline": "Constellation Energy already has 5,650 MW hyperscaler nuclear PPAs locked in",
+          "implication_for_target": "CEG이 MSFT·Meta 원전 PPA 선점 — DUK는 협상 단계로 계약 확보 시 주가 재평가 기대"
         }
       ],
       "history": [
@@ -10309,6 +10315,10 @@
         {
           "date": "2026-05-29",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-06-05",
+          "narrative_score": 0.08
         }
       ]
     }

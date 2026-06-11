@@ -4,62 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 141.48
-    },
-    {
-      "date": "2016-05-24",
-      "value": 143.71
-    },
-    {
-      "date": "2016-05-25",
-      "value": 144.08
-    },
-    {
-      "date": "2016-05-26",
-      "value": 143.05
-    },
-    {
-      "date": "2016-05-27",
-      "value": 143.35
-    },
-    {
-      "date": "2016-05-31",
-      "value": 140.54
-    },
-    {
-      "date": "2016-06-01",
-      "value": 141.99
-    },
-    {
-      "date": "2016-06-02",
-      "value": 142.11
-    },
-    {
-      "date": "2016-06-03",
-      "value": 141.14
-    },
-    {
-      "date": "2016-06-06",
-      "value": 141.82
-    },
-    {
-      "date": "2016-06-07",
-      "value": 141.41
-    },
-    {
-      "date": "2016-06-08",
-      "value": 142.53
-    },
-    {
-      "date": "2016-06-09",
-      "value": 142.23
-    },
-    {
-      "date": "2016-06-10",
-      "value": 141.76
-    },
-    {
       "date": "2016-06-13",
       "value": 140.94
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 486.38
+    },
+    {
+      "date": "2026-05-26",
+      "value": 483.62
+    },
+    {
+      "date": "2026-05-27",
+      "value": 479.92
+    },
+    {
+      "date": "2026-05-28",
+      "value": 477.42
+    },
+    {
+      "date": "2026-05-29",
+      "value": 474.48
+    },
+    {
+      "date": "2026-06-01",
+      "value": 470.29
+    },
+    {
+      "date": "2026-06-02",
+      "value": 471.51
+    },
+    {
+      "date": "2026-06-03",
+      "value": 475.37
+    },
+    {
+      "date": "2026-06-04",
+      "value": 478.63
+    },
+    {
+      "date": "2026-06-05",
+      "value": 488.13
+    },
+    {
+      "date": "2026-06-08",
+      "value": 487.0
+    },
+    {
+      "date": "2026-06-09",
+      "value": 487.77
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1049050546176.0,
-      "pe_ratio": 14.471288,
-      "forward_pe": 22.827251,
-      "eps_ttm": 33.61,
+      "market_cap": 1043227017216.0,
+      "pe_ratio": 14.386675,
+      "forward_pe": 22.52435,
+      "eps_ttm": 33.62,
       "dividend_yield": null,
       "profit_margin": 0.19305,
       "operating_margin": 0.14352,
-      "price_to_book": 0.000962063,
+      "price_to_book": 0.0009567223,
       "return_on_equity": 0.10499
     },
     "quarterly": [
@@ -10129,28 +10117,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 486.38,
+    "as_of": "2026-06-09",
+    "current_price": 487.77,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 470.54,
+        "fair_value": 470.68,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 255.68,
+        "fair_value": 259.86,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 19552.92,
+        "fair_value": 19638.34,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 4222.56,
-    "valuation_gap": -0.8848,
+    "fair_value": 4240.97,
+    "valuation_gap": -0.885,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10200,31 +10188,49 @@
         "price": 486.38,
         "fair_value": 346.27,
         "gap": 0.4046
+      },
+      {
+        "date": "2026-05-29",
+        "price": 474.48,
+        "fair_value": 346.27,
+        "gap": 0.3703
+      },
+      {
+        "date": "2026-06-05",
+        "price": 488.13,
+        "fair_value": 346.27,
+        "gap": 0.4097
+      },
+      {
+        "date": "2026-06-09",
+        "price": 487.77,
+        "fair_value": 346.27,
+        "gap": 0.4087
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.1,
-      "summary_kr": "Abel CEO 첫 주총 성공: 분할 불가 선언·포트폴리오 대전환(GOOGL +224%). Q1 영업이익 +18%·현금 $3,970억으로 행동 여지 극대화. BAC·AXP 핵심 보유 지분 실적도 견조.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.15,
+      "summary_kr": "버핏이 Alphabet $80B AI 인프라 자금 조달에 $10B를 6% 할인 가격으로 투자해 AI 시대 방향성을 확인했다. 시총 $1.02조 돌파와 포트폴리오 금융주 강세로 BRK-B는 견조한 상승세를 유지하고 있다.",
       "key_events": [
-        "Abel 첫 주총 분할 불가 선언",
-        "GOOGL +224% 포트폴리오 개편"
+        "Alphabet $10B 투자(6% 할인)",
+        "시총 $1.02조 돌파",
+        "포트폴리오 금융주 강세"
       ],
       "risks": [
-        "$3,970억 현금 투자 기회비용",
-        "Abel 리더십 초기 시장 신뢰 구축 과정"
+        "포트폴리오 AAPL 의존도 높음, 버핏 후계자 체제 안정성 점검 필요"
       ],
       "news_count": 3,
       "competitor_context": [
         {
-          "ticker": "BAC",
-          "headline": "Bank of America Q1 EPS +25%; BRK's largest bank holding outperforms",
-          "implication_for_target": "BRK 대형 BAC 지분 가치 상승 — 포트폴리오 NAV 증가"
+          "ticker": "JPM",
+          "headline": "JPM at all-time high $312; tokenized deposit network",
+          "implication_for_target": "BRK-B 포트폴리오 금융주(JPM, BAC, AXP 등) 상승이 순자산가치에 긍정적 기여"
         },
         {
-          "ticker": "AXP",
-          "headline": "American Express Q1 EPS +7% beat; BRK's core four holding solid",
-          "implication_for_target": "BRK 핵심 4대 지분(AXP) 실적 견조 — 포트폴리오 안정성 확인"
+          "ticker": "BAC",
+          "headline": "BofA cross-border payments launch; dividend $0.28",
+          "implication_for_target": "BRK-B가 BAC 대주주로, BAC 주가 강세는 직접 순자산 증가로 연결"
         }
       ],
       "history": [
@@ -10239,6 +10245,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.1
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.15
         }
       ]
     }

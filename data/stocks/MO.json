@@ -4,62 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 32.19
-    },
-    {
-      "date": "2016-05-24",
-      "value": 32.47
-    },
-    {
-      "date": "2016-05-25",
-      "value": 32.54
-    },
-    {
-      "date": "2016-05-26",
-      "value": 32.58
-    },
-    {
-      "date": "2016-05-27",
-      "value": 32.56
-    },
-    {
-      "date": "2016-05-31",
-      "value": 32.39
-    },
-    {
-      "date": "2016-06-01",
-      "value": 32.76
-    },
-    {
-      "date": "2016-06-02",
-      "value": 32.74
-    },
-    {
-      "date": "2016-06-03",
-      "value": 33.24
-    },
-    {
-      "date": "2016-06-06",
-      "value": 33.19
-    },
-    {
-      "date": "2016-06-07",
-      "value": 33.14
-    },
-    {
-      "date": "2016-06-08",
-      "value": 33.4
-    },
-    {
-      "date": "2016-06-09",
-      "value": 33.52
-    },
-    {
-      "date": "2016-06-10",
-      "value": 33.66
-    },
-    {
       "date": "2016-06-13",
       "value": 33.29
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 73.9
+    },
+    {
+      "date": "2026-05-26",
+      "value": 72.37
+    },
+    {
+      "date": "2026-05-27",
+      "value": 72.11
+    },
+    {
+      "date": "2026-05-28",
+      "value": 71.97
+    },
+    {
+      "date": "2026-05-29",
+      "value": 69.58
+    },
+    {
+      "date": "2026-06-01",
+      "value": 68.65
+    },
+    {
+      "date": "2026-06-02",
+      "value": 69.24
+    },
+    {
+      "date": "2026-06-03",
+      "value": 70.3
+    },
+    {
+      "date": "2026-06-04",
+      "value": 70.6
+    },
+    {
+      "date": "2026-06-05",
+      "value": 72.19
+    },
+    {
+      "date": "2026-06-08",
+      "value": 71.29
+    },
+    {
+      "date": "2026-06-09",
+      "value": 71.56
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 123404959744.0,
-      "pe_ratio": 15.427976,
-      "forward_pe": 12.594974,
+      "market_cap": 122119135232.0,
+      "pe_ratio": 15.267223,
+      "forward_pe": 12.450689,
       "eps_ttm": 4.79,
-      "dividend_yield": 5.74,
+      "dividend_yield": 5.8,
       "profit_margin": 0.39518002,
       "operating_margin": 0.62294996,
-      "price_to_book": -38.44953,
+      "price_to_book": -38.048904,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 73.9,
+    "as_of": "2026-06-09",
+    "current_price": 71.56,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10139,13 +10127,13 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 105.61,
+        "fair_value": 103.45,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       }
     },
-    "fair_value": 105.47,
-    "valuation_gap": -0.2993,
+    "fair_value": 104.66,
+    "valuation_gap": -0.3162,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10351,29 +10339,52 @@
         "price": 73.9,
         "fair_value": 104.5,
         "gap": -0.2928
+      },
+      {
+        "date": "2026-05-29",
+        "price": 69.58,
+        "fair_value": 104.5,
+        "gap": -0.3342
+      },
+      {
+        "date": "2026-06-05",
+        "price": 72.19,
+        "fair_value": 104.5,
+        "gap": -0.3092
+      },
+      {
+        "date": "2026-06-09",
+        "price": 71.56,
+        "fair_value": 104.5,
+        "gap": -0.3152
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": -0.03,
-      "summary_kr": "신규 이슈 없음. 담배 규제 장기 헤드윈드와 제품 다각화(Helix·On!포치) 진행 중 — 방어적 배당주로서 포지션 유지.",
+      "as_of": "2026-06-07",
+      "narrative_score": -0.02,
+      "summary_kr": "금일 의미 있는 신규 뉴스 없음. 알트리아는 Marlboro 담배 시장 집중, 배당수익률 7%대 인컴주 특성. 규제 리스크와 담배 볼륨 감소가 구조적 변수.",
       "key_events": [],
       "risks": [
-        "FDA 담배 규제 강화",
-        "전자담배·연초 가격 경쟁"
+        "미국 담배 볼륨 감소 추세",
+        "FDA 멘솔 담배 규제 불확실성",
+        "차세대 담배 전환 속도"
       ],
       "news_count": 0,
       "competitor_context": [
         {
           "ticker": "PM",
-          "headline": "Philip Morris heated tobacco international growth",
-          "implication_for_target": "MO 미국 내 시장, PM 해외 성장 대비 성숙 시장 한계 지속"
+          "headline": "Philip Morris continues iQOS expansion globally",
+          "implication_for_target": "PM의 가열담배 글로벌 확장 vs. MO 미국 담배 시장 집중 구도 — 해외 없는 MO는 볼륨 감소 헤드윈드"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": -0.03
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": -0.02
         }
       ]
     }

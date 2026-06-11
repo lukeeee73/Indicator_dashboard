@@ -4,62 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 43.04
-    },
-    {
-      "date": "2016-05-24",
-      "value": 44.29
-    },
-    {
-      "date": "2016-05-25",
-      "value": 45.04
-    },
-    {
-      "date": "2016-05-26",
-      "value": 44.99
-    },
-    {
-      "date": "2016-05-27",
-      "value": 44.89
-    },
-    {
-      "date": "2016-05-31",
-      "value": 44.62
-    },
-    {
-      "date": "2016-06-01",
-      "value": 44.24
-    },
-    {
-      "date": "2016-06-02",
-      "value": 44.57
-    },
-    {
-      "date": "2016-06-03",
-      "value": 44.66
-    },
-    {
-      "date": "2016-06-06",
-      "value": 44.87
-    },
-    {
-      "date": "2016-06-07",
-      "value": 44.84
-    },
-    {
-      "date": "2016-06-08",
-      "value": 44.53
-    },
-    {
-      "date": "2016-06-09",
-      "value": 43.51
-    },
-    {
-      "date": "2016-06-10",
-      "value": 42.02
-    },
-    {
       "date": "2016-06-13",
       "value": 41.46
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 187.03
+    },
+    {
+      "date": "2026-05-26",
+      "value": 187.19
+    },
+    {
+      "date": "2026-05-27",
+      "value": 185.65
+    },
+    {
+      "date": "2026-05-28",
+      "value": 185.33
+    },
+    {
+      "date": "2026-05-29",
+      "value": 185.67
+    },
+    {
+      "date": "2026-06-01",
+      "value": 179.71
+    },
+    {
+      "date": "2026-06-02",
+      "value": 177.45
+    },
+    {
+      "date": "2026-06-03",
+      "value": 176.28
+    },
+    {
+      "date": "2026-06-04",
+      "value": 181.8
+    },
+    {
+      "date": "2026-06-05",
+      "value": 185.95
+    },
+    {
+      "date": "2026-06-08",
+      "value": 181.55
+    },
+    {
+      "date": "2026-06-09",
+      "value": 183.43
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 290055127040.0,
-      "pe_ratio": 28.16717,
-      "forward_pe": 23.312658,
+      "market_cap": 277542305792.0,
+      "pe_ratio": 26.951809,
+      "forward_pe": 22.251291,
       "eps_ttm": 6.64,
-      "dividend_yield": 1.69,
+      "dividend_yield": 1.77,
       "profit_margin": 0.17188999,
       "operating_margin": 0.27943,
-      "price_to_book": 6.1206927,
+      "price_to_book": 5.8565965,
       "return_on_equity": 0.23482999
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 187.03,
+    "as_of": "2026-06-09",
+    "current_price": 183.43,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 128.36,
+        "fair_value": 131.9,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 67.57,
+        "fair_value": 68.4,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 111.78,
-    "valuation_gap": 0.6732,
+    "fair_value": 113.01,
+    "valuation_gap": 0.6231,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,39 +10259,60 @@
         "price": 187.03,
         "fair_value": 124.2,
         "gap": 0.5059
+      },
+      {
+        "date": "2026-05-29",
+        "price": 185.67,
+        "fair_value": 124.2,
+        "gap": 0.4949
+      },
+      {
+        "date": "2026-06-05",
+        "price": 185.95,
+        "fair_value": 124.2,
+        "gap": 0.4972
+      },
+      {
+        "date": "2026-06-09",
+        "price": 183.43,
+        "fair_value": 124.2,
+        "gap": 0.4769
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-28",
-      "narrative_score": 0.13,
-      "summary_kr": "5월 한 달간 FDA 승인 3건(BAXFENDY, 다트로웨이, 엔허투 조기 유방암) 획득으로 파이프라인 실행력 입증. 카미제스트란트 심사 연장이 단기 불확실성 제공.",
+      "as_of": "2026-06-04",
+      "narrative_score": -0.09,
+      "summary_kr": "카미제스트란트 FDA 결정 연기(자문위 부정적 투표)와 안셀라미맙 Phase 3 실패가 겹치면서 단기 규제 리스크가 높아졌다. SERENA-6 긍정 데이터가 부분적으로 상쇄하지만, 주가 6/1 -3.17% 하락이 시장 우려를 반영한다.",
       "key_events": [
-        "BAXFENDY FDA 고혈압 승인",
-        "다트로웨이 유방암 승인",
-        "엔허투 HER2+ 조기 유방암 승인"
+        "카미제스트란트 FDA 결정 연기 (자문위 부결)",
+        "안셀라미맙 CARES Phase 3 실패",
+        "SERENA-6 카미제스트란트+CDK4/6 긍정"
       ],
       "risks": [
-        "카미제스트란트 심사 지연",
-        "MRK Keytruda와 종양학 경쟁 심화",
-        "달러 강세 시 환율 영향"
+        "카미제스트란트 FDA 재심 결과 불확실",
+        "CARES 실패로 파이프라인 가치 감소"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "MRK",
-          "headline": "Keytruda EU CHMP positive opinion for bladder cancer",
-          "implication_for_target": "MRK 항암 적응증 확대 — AZN 엔허투와 항암 분야 경쟁 심화"
+          "headline": "Merck ASCO melanoma 5-year data positive; FDA Breakthrough designation for lung cancer drug",
+          "implication_for_target": "MRK 면역항암제 장기 데이터 강화 — AZN 항암 파이프라인과의 경쟁 불리"
         },
         {
-          "ticker": "ABBV",
-          "headline": "AbbVie DECNUPAZ FDA approval for rare blood cancer BPDCN",
-          "implication_for_target": "ABBV 희귀암 포트폴리오 강화 — AZN과 희귀 적응증 경쟁"
+          "ticker": "LLY",
+          "headline": "Eli Lilly expands acquisition strategy with $10B+ biotech deals",
+          "implication_for_target": "빅파마 M&A 경쟁 — AZN도 규제 역풍 속 파이프라인 보강 압력"
         }
       ],
       "history": [
         {
           "date": "2026-05-28",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-06-04",
+          "narrative_score": -0.09
         }
       ]
     }

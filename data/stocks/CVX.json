@@ -4,62 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 65.07
-    },
-    {
-      "date": "2016-05-24",
-      "value": 65.6
-    },
-    {
-      "date": "2016-05-25",
-      "value": 66.63
-    },
-    {
-      "date": "2016-05-26",
-      "value": 66.45
-    },
-    {
-      "date": "2016-05-27",
-      "value": 66.79
-    },
-    {
-      "date": "2016-05-31",
-      "value": 66.13
-    },
-    {
-      "date": "2016-06-01",
-      "value": 66.21
-    },
-    {
-      "date": "2016-06-02",
-      "value": 65.82
-    },
-    {
-      "date": "2016-06-03",
-      "value": 65.9
-    },
-    {
-      "date": "2016-06-06",
-      "value": 66.24
-    },
-    {
-      "date": "2016-06-07",
-      "value": 67.64
-    },
-    {
-      "date": "2016-06-08",
-      "value": 67.49
-    },
-    {
-      "date": "2016-06-09",
-      "value": 67.31
-    },
-    {
-      "date": "2016-06-10",
-      "value": 66.77
-    },
-    {
       "date": "2016-06-13",
       "value": 66.85
     },
@@ -349,7 +293,7 @@
     },
     {
       "date": "2016-09-23",
-      "value": 65.65
+      "value": 65.64
     },
     {
       "date": "2016-09-26",
@@ -4241,7 +4185,7 @@
     },
     {
       "date": "2020-08-06",
-      "value": 67.42
+      "value": 67.43
     },
     {
       "date": "2020-08-07",
@@ -4265,7 +4209,7 @@
     },
     {
       "date": "2020-08-14",
-      "value": 69.64
+      "value": 69.65
     },
     {
       "date": "2020-08-17",
@@ -7529,7 +7473,7 @@
     },
     {
       "date": "2023-11-10",
-      "value": 127.19
+      "value": 127.2
     },
     {
       "date": "2023-11-13",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 191.43
+    },
+    {
+      "date": "2026-05-26",
+      "value": 184.71
+    },
+    {
+      "date": "2026-05-27",
+      "value": 182.4
+    },
+    {
+      "date": "2026-05-28",
+      "value": 183.03
+    },
+    {
+      "date": "2026-05-29",
+      "value": 182.46
+    },
+    {
+      "date": "2026-06-01",
+      "value": 185.83
+    },
+    {
+      "date": "2026-06-02",
+      "value": 187.55
+    },
+    {
+      "date": "2026-06-03",
+      "value": 189.71
+    },
+    {
+      "date": "2026-06-04",
+      "value": 188.35
+    },
+    {
+      "date": "2026-06-05",
+      "value": 187.31
+    },
+    {
+      "date": "2026-06-08",
+      "value": 189.24
+    },
+    {
+      "date": "2026-06-09",
+      "value": 186.76
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 381251518464.0,
-      "pe_ratio": 33.350174,
-      "forward_pe": 15.701022,
-      "eps_ttm": 5.74,
-      "dividend_yield": 3.72,
+      "market_cap": 378005258240.0,
+      "pe_ratio": 33.12391,
+      "forward_pe": 15.10336,
+      "eps_ttm": 5.73,
+      "dividend_yield": 3.75,
       "profit_margin": 0.059270002,
       "operating_margin": 0.07312,
-      "price_to_book": 2.0604696,
+      "price_to_book": 2.0429251,
       "return_on_equity": 0.06638
     },
     "quarterly": [
@@ -10115,28 +10103,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 191.43,
+    "as_of": "2026-06-09",
+    "current_price": 186.76,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 68.88,
+        "fair_value": 68.76,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 134.11,
+        "fair_value": 136.02,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
       "graham_number": {
-        "fair_value": 109.54,
+        "fair_value": 108.56,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 96.58,
-    "valuation_gap": 0.9821,
+    "fair_value": 96.9,
+    "valuation_gap": 0.9274,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10264,27 +10252,45 @@
         "price": 191.43,
         "fair_value": 69.24,
         "gap": 1.7647
+      },
+      {
+        "date": "2026-05-29",
+        "price": 182.46,
+        "fair_value": 69.24,
+        "gap": 1.6352
+      },
+      {
+        "date": "2026-06-05",
+        "price": 187.31,
+        "fair_value": 69.24,
+        "gap": 1.7052
+      },
+      {
+        "date": "2026-06-09",
+        "price": 186.76,
+        "fair_value": 69.24,
+        "gap": 1.6973
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-29",
-      "narrative_score": 0.1,
-      "summary_kr": "Q1 강세 + 지중해 가스전 신규 진출로 포트폴리오 다변화. 이사 $7300만 블록 매도가 단기 주의 신호.",
+      "as_of": "2026-06-05",
+      "narrative_score": -0.05,
+      "summary_kr": "원유 레버리지 높아 이란 휴전 시 유가 하락 직격탄 우려. 싱가포르 정제 지분 매각, 지중해·중동 가스전 확대로 장기 포트폴리오 재편 진행 중.",
       "key_events": [
-        "Q1 강세 실적",
-        "그리스 Helleniq Energy 지중해 블록 지분 신청",
-        "이사 $7300만 블록 매도"
+        "싱가포르 정제 지분 50% ENEOS에 $21.7억 매각",
+        "그리스·이집트·이스라엘 가스전 확대",
+        "호르무즈 리스크 직격탄 종목으로 주목"
       ],
       "risks": [
-        "이란 휴전 시 유가 하락",
-        "이사 대규모 내부자 매도"
+        "이란 휴전 시 유가 20% 추가 하락 가능",
+        "Hess 인수 관련 헤징 비용"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "XOM",
-          "headline": "Exxon warns of dangerously low oil inventories",
-          "implication_for_target": "유가 지지 요인 — CVX 실적에도 긍정적"
+          "headline": "Exxon Guyana record production above 900k bpd reinforces operational edge",
+          "implication_for_target": "XOM의 가이아나 기록 생산이 상류 경쟁력 우위 — CVX는 Hess 인수로 가이아나 진입 초기 단계"
         }
       ],
       "history": [
@@ -10295,6 +10301,10 @@
         {
           "date": "2026-05-29",
           "narrative_score": 0.1
+        },
+        {
+          "date": "2026-06-05",
+          "narrative_score": -0.05
         }
       ]
     }

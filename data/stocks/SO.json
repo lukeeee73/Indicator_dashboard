@@ -4,62 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 31.8
-    },
-    {
-      "date": "2016-05-24",
-      "value": 32.05
-    },
-    {
-      "date": "2016-05-25",
-      "value": 32.1
-    },
-    {
-      "date": "2016-05-26",
-      "value": 32.55
-    },
-    {
-      "date": "2016-05-27",
-      "value": 32.51
-    },
-    {
-      "date": "2016-05-31",
-      "value": 32.69
-    },
-    {
-      "date": "2016-06-01",
-      "value": 32.78
-    },
-    {
-      "date": "2016-06-02",
-      "value": 32.64
-    },
-    {
-      "date": "2016-06-03",
-      "value": 33.18
-    },
-    {
-      "date": "2016-06-06",
-      "value": 33.15
-    },
-    {
-      "date": "2016-06-07",
-      "value": 33.12
-    },
-    {
-      "date": "2016-06-08",
-      "value": 33.31
-    },
-    {
-      "date": "2016-06-09",
-      "value": 33.63
-    },
-    {
-      "date": "2016-06-10",
-      "value": 33.8
-    },
-    {
       "date": "2016-06-13",
       "value": 33.72
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 94.55
+    },
+    {
+      "date": "2026-05-26",
+      "value": 94.09
+    },
+    {
+      "date": "2026-05-27",
+      "value": 93.74
+    },
+    {
+      "date": "2026-05-28",
+      "value": 92.52
+    },
+    {
+      "date": "2026-05-29",
+      "value": 92.05
+    },
+    {
+      "date": "2026-06-01",
+      "value": 89.03
+    },
+    {
+      "date": "2026-06-02",
+      "value": 90.51
+    },
+    {
+      "date": "2026-06-03",
+      "value": 90.49
+    },
+    {
+      "date": "2026-06-04",
+      "value": 91.62
+    },
+    {
+      "date": "2026-06-05",
+      "value": 92.6
+    },
+    {
+      "date": "2026-06-08",
+      "value": 91.28
+    },
+    {
+      "date": "2026-06-09",
+      "value": 92.95
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 106586324992.0,
-      "pe_ratio": 24.181585,
-      "forward_pe": 19.22905,
+      "market_cap": 105988849664.0,
+      "pe_ratio": 24.046034,
+      "forward_pe": 19.12126,
       "eps_ttm": 3.91,
-      "dividend_yield": 3.22,
+      "dividend_yield": 3.23,
       "profit_margin": 0.14458999,
       "operating_margin": 0.25819,
-      "price_to_book": 2.871242,
+      "price_to_book": 2.8551471,
       "return_on_equity": 0.109910004
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 94.55,
+    "as_of": "2026-06-09",
+    "current_price": 92.95,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 73.76,
+        "fair_value": 72.92,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
       "graham_number": {
-        "fair_value": 53.82,
+        "fair_value": 53.52,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 64.17,
-    "valuation_gap": 0.4734,
+    "fair_value": 63.86,
+    "valuation_gap": 0.4555,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10349,27 +10337,44 @@
         "price": 94.55,
         "fair_value": 75.84,
         "gap": 0.2467
+      },
+      {
+        "date": "2026-05-29",
+        "price": 92.05,
+        "fair_value": 75.84,
+        "gap": 0.2137
+      },
+      {
+        "date": "2026-06-05",
+        "price": 92.6,
+        "fair_value": 75.84,
+        "gap": 0.221
+      },
+      {
+        "date": "2026-06-09",
+        "price": 92.95,
+        "fair_value": 75.84,
+        "gap": 0.2256
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-29",
-      "narrative_score": 0.1,
-      "summary_kr": "Q1 EPS 컨센서스 상회 + 연간 가이던스 상향. Vogtle 4호기 정격출력으로 원자력 안정화. 데이터센터 전력 수요 수혜 포지션. NEE-D 합병으로 섹터 재편 주목.",
+      "as_of": "2026-06-05",
+      "narrative_score": -0.01,
+      "summary_kr": "Vogtle 원전 두 기 정격 출력으로 원자력 베이스로드 경쟁력 확보. 그러나 조지아 파워 요금 인하 명령이 단기 매출 압박으로 작용.",
       "key_events": [
-        "Q1 EPS $1.14 (컨센서스 상회)",
-        "2026 가이던스 $4.40-$4.52로 상향",
-        "Vogtle 4호기 정격출력 달성"
+        "조지아 파워 요금 인하 명령 (규제 리스크)",
+        "Vogtle 3·4호기 정격 출력 운전"
       ],
       "risks": [
-        "규제 금리 인상 시 자본비용 증가",
-        "섹터 M&A 재편 불확실성"
+        "조지아 파워 요금 인하로 단기 매출 압박",
+        "허리케인 시즌 인프라 리스크"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
-          "ticker": "NEE",
-          "headline": "NextEra-Dominion $400B merger reshapes utility landscape",
-          "implication_for_target": "대형 M&A로 섹터 재편 — SO의 독립 유지 전략 vs 인수 대상 가능성"
+          "ticker": "DUK",
+          "headline": "Duke Energy exploring nuclear-tech partnerships for AI data center power supply",
+          "implication_for_target": "DUK 데이터센터 원전 공급 논의 — SO도 Vogtle 활용 유사 계약 가능성"
         }
       ],
       "history": [
@@ -10380,6 +10385,10 @@
         {
           "date": "2026-05-29",
           "narrative_score": 0.1
+        },
+        {
+          "date": "2026-06-05",
+          "narrative_score": -0.01
         }
       ]
     }

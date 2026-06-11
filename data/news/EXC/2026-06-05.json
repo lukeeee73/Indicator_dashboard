@@ -1,0 +1,50 @@
+{
+  "ticker": "EXC",
+  "date": "2026-06-05",
+  "as_of_utc": "2026-06-05T22:00:00Z",
+  "news": [
+    {
+      "title": "Exelon Q1 2026 GAAP EPS $0.90; Adjusted EPS $0.91; 2026 Guidance Affirmed $2.81–$2.91",
+      "source": "SEC EDGAR",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001109357/000110935726000061/exc-20260506ex991.htm",
+      "published": "2026-05-06T09:00:00Z",
+      "summary": "Q1 GAAP EPS $0.90, 조정 EPS $0.91. 2026년 조정 EPS 가이던스 $2.81~$2.91 유지.",
+      "impact": "neutral",
+      "category": "earnings"
+    },
+    {
+      "title": "Exelon Increases Transmission Investment by $1.5B; Withdraws PECO Rate Cases for Customer Affordability",
+      "source": "SEC EDGAR",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001109357/000110935726000061/exc-20260506.htm",
+      "published": "2026-05-06T10:00:00Z",
+      "summary": "송전 투자 $15억 증액, 동시에 PECO 전기·가스 요금 인상 신청 철회 (고객 부담 완화).",
+      "impact": "neutral",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AEP",
+      "headline": "AEP Q1 EPS +7.3% YoY, $41.7B capex plan with 7.9% rate base growth",
+      "implication_for_target": "AEP의 더 공격적인 성장 계획과 비교 시 EXC는 보수적 운영 스탠스 — 장기 성장 프리미엄 차이"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.0,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": -0.01,
+  "summary_kr": "Q1 가이던스 부합으로 안정적이나 PECO 요금 신청 철회는 단기 수익 성장 제약. 송전 투자 증액으로 장기 T&D 경쟁력은 유지.",
+  "key_events": [
+    "Q1 조정 EPS $0.91 (가이던스 부합)",
+    "PECO 요금 인상 신청 철회 (고객 부담 이유)",
+    "송전 투자 $1.5B 증액"
+  ],
+  "risks": [
+    "PECO 요금 철회로 단기 수익 성장 제약",
+    "고금리 환경 T&D 유틸리티 밸류에이션 압박"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/EXC%20-%20Exelon%20Corporation.md"
+}

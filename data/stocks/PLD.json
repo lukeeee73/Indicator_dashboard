@@ -4,62 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 35.0
-    },
-    {
-      "date": "2016-05-24",
-      "value": 35.54
-    },
-    {
-      "date": "2016-05-25",
-      "value": 35.41
-    },
-    {
-      "date": "2016-05-26",
-      "value": 35.43
-    },
-    {
-      "date": "2016-05-27",
-      "value": 35.78
-    },
-    {
-      "date": "2016-05-31",
-      "value": 35.74
-    },
-    {
-      "date": "2016-06-01",
-      "value": 35.94
-    },
-    {
-      "date": "2016-06-02",
-      "value": 36.11
-    },
-    {
-      "date": "2016-06-03",
-      "value": 36.44
-    },
-    {
-      "date": "2016-06-06",
-      "value": 36.34
-    },
-    {
-      "date": "2016-06-07",
-      "value": 36.86
-    },
-    {
-      "date": "2016-06-08",
-      "value": 37.12
-    },
-    {
-      "date": "2016-06-09",
-      "value": 37.83
-    },
-    {
-      "date": "2016-06-10",
-      "value": 37.86
-    },
-    {
       "date": "2016-06-13",
       "value": 37.91
     },
@@ -4205,7 +4149,7 @@
     },
     {
       "date": "2020-07-24",
-      "value": 85.18
+      "value": 85.17
     },
     {
       "date": "2020-07-27",
@@ -4281,7 +4225,7 @@
     },
     {
       "date": "2020-08-20",
-      "value": 87.54
+      "value": 87.55
     },
     {
       "date": "2020-08-21",
@@ -4445,7 +4389,7 @@
     },
     {
       "date": "2020-10-19",
-      "value": 88.33
+      "value": 88.32
     },
     {
       "date": "2020-10-20",
@@ -8637,7 +8581,7 @@
     },
     {
       "date": "2024-12-18",
-      "value": 99.53
+      "value": 99.54
     },
     {
       "date": "2024-12-19",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 145.9
+    },
+    {
+      "date": "2026-05-26",
+      "value": 146.94
+    },
+    {
+      "date": "2026-05-27",
+      "value": 146.52
+    },
+    {
+      "date": "2026-05-28",
+      "value": 145.64
+    },
+    {
+      "date": "2026-05-29",
+      "value": 143.47
+    },
+    {
+      "date": "2026-06-01",
+      "value": 139.02
+    },
+    {
+      "date": "2026-06-02",
+      "value": 140.41
+    },
+    {
+      "date": "2026-06-03",
+      "value": 141.82
+    },
+    {
+      "date": "2026-06-04",
+      "value": 143.79
+    },
+    {
+      "date": "2026-06-05",
+      "value": 144.54
+    },
+    {
+      "date": "2026-06-08",
+      "value": 142.78
+    },
+    {
+      "date": "2026-06-09",
+      "value": 147.52
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 136028102656.0,
-      "pe_ratio": 36.65829,
-      "forward_pe": 42.938534,
+      "market_cap": 136592900096.0,
+      "pe_ratio": 36.62563,
+      "forward_pe": 43.515385,
       "eps_ttm": 3.98,
-      "dividend_yield": 2.93,
+      "dividend_yield": 2.94,
       "profit_margin": 0.39646,
       "operating_margin": 0.38491002,
-      "price_to_book": 2.545315,
+      "price_to_book": 2.5430472,
       "return_on_equity": 0.06844
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 145.9,
+    "as_of": "2026-06-09",
+    "current_price": 147.52,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 54.37,
+        "fair_value": 54.24,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 71.65,
+        "fair_value": 72.07,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 66.46,
-    "valuation_gap": 1.1953,
+    "fair_value": 66.51,
+    "valuation_gap": 1.2181,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10356,31 +10344,49 @@
         "price": 145.9,
         "fair_value": 55.98,
         "gap": 1.6063
+      },
+      {
+        "date": "2026-05-29",
+        "price": 143.47,
+        "fair_value": 55.98,
+        "gap": 1.5629
+      },
+      {
+        "date": "2026-06-05",
+        "price": 144.54,
+        "fair_value": 55.98,
+        "gap": 1.582
+      },
+      {
+        "date": "2026-06-09",
+        "price": 147.52,
+        "fair_value": 55.98,
+        "gap": 1.6352
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.05,
-      "summary_kr": "PLD Q1 동일점포 NOI +8.8%·배당 인상·Core FFO 가이던스 $6.07-6.23 견조. DLR 역대 최대 AI 임대 계약이 PLD 데이터센터 개발 착공 전망에 긍정적 시사점.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.12,
+      "summary_kr": "PLD가 Q1 역대 최대 임대와 데이터센터 BTS 확장으로 실적 모멘텀은 강하지만, 주가는 최근 주간 3-4% 하락하며 P/E 34.9배의 밸류에이션 부담이 반영되고 있다.",
       "key_events": [
-        "Q1 동일점포 NOI +8.8%",
-        "배당 $1.01→$1.07 인상"
+        "Q1 역대 최대 임대 64M sqft",
+        "데이터센터 BTS $1.3B",
+        "연간 EPS 가이던스 상향"
       ],
       "risks": [
-        "데이터센터 공급 과잉 중기 리스크",
-        "금리 장기화 REIT 밸류에이션 압박"
+        "P/E 34.9배(업종 평균의 2배), 금리 3.5% 유지 환경에서 고밸류 REIT 압박, e-commerce 성장 둔화 가능성"
       ],
-      "news_count": 2,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "EQIX",
-          "headline": "Equinix 9-10% revenue growth guided; dividend raised 10% for 11th year",
-          "implication_for_target": "데이터센터 REIT 배당 성장 확인 — PLD 데이터센터 전환 수익 기대 지지"
+          "headline": "Equinix $10B guidance; AI Fabric bookings triple YoY",
+          "implication_for_target": "PLD의 데이터센터 BTS 확장 전략과 EQIX의 성장 데이터가 AI 물류·데이터 수요 동반 강세 시사"
         },
         {
-          "ticker": "DLR",
-          "headline": "Digital Realty signs 200MW AI inference lease; largest in company history",
-          "implication_for_target": "DLR 역대 최대 AI 임대 계약 — PLD 데이터센터 개발 착공 $4.5-5.5B 수요 확인"
+          "ticker": "PSA",
+          "headline": "Public Storage proposes NSA acquisition; 92.2% occupancy",
+          "implication_for_target": "창고 REIT 섹터 M&A 활성화 — PLD의 물류창고 자산도 통합 기회 검토 가능성"
         }
       ],
       "history": [
@@ -10395,6 +10401,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.12
         }
       ]
     }

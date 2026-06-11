@@ -4,62 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 59.55
-    },
-    {
-      "date": "2016-05-24",
-      "value": 60.16
-    },
-    {
-      "date": "2016-05-25",
-      "value": 60.02
-    },
-    {
-      "date": "2016-05-26",
-      "value": 59.85
-    },
-    {
-      "date": "2016-05-27",
-      "value": 59.84
-    },
-    {
-      "date": "2016-05-31",
-      "value": 59.85
-    },
-    {
-      "date": "2016-06-01",
-      "value": 59.84
-    },
-    {
-      "date": "2016-06-02",
-      "value": 60.5
-    },
-    {
-      "date": "2016-06-03",
-      "value": 61.13
-    },
-    {
-      "date": "2016-06-06",
-      "value": 61.32
-    },
-    {
-      "date": "2016-06-07",
-      "value": 61.96
-    },
-    {
-      "date": "2016-06-08",
-      "value": 61.94
-    },
-    {
-      "date": "2016-06-09",
-      "value": 62.23
-    },
-    {
-      "date": "2016-06-10",
-      "value": 62.03
-    },
-    {
       "date": "2016-06-13",
       "value": 62.28
     },
@@ -1349,7 +1293,7 @@
     },
     {
       "date": "2017-09-21",
-      "value": 71.03
+      "value": 71.04
     },
     {
       "date": "2017-09-22",
@@ -3957,7 +3901,7 @@
     },
     {
       "date": "2020-04-27",
-      "value": 125.42
+      "value": 125.41
     },
     {
       "date": "2020-04-28",
@@ -6913,7 +6857,7 @@
     },
     {
       "date": "2023-04-03",
-      "value": 112.08
+      "value": 112.07
     },
     {
       "date": "2023-04-04",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 91.46
+    },
+    {
+      "date": "2026-05-26",
+      "value": 90.64
+    },
+    {
+      "date": "2026-05-27",
+      "value": 90.87
+    },
+    {
+      "date": "2026-05-28",
+      "value": 91.09
+    },
+    {
+      "date": "2026-05-29",
+      "value": 91.5
+    },
+    {
+      "date": "2026-06-01",
+      "value": 91.03
+    },
+    {
+      "date": "2026-06-02",
+      "value": 89.92
+    },
+    {
+      "date": "2026-06-03",
+      "value": 88.62
+    },
+    {
+      "date": "2026-06-04",
+      "value": 93.79
+    },
+    {
+      "date": "2026-06-05",
+      "value": 94.49
+    },
+    {
+      "date": "2026-06-08",
+      "value": 91.79
+    },
+    {
+      "date": "2026-06-09",
+      "value": 92.57
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 39917895680.0,
-      "pe_ratio": 38.590717,
-      "forward_pe": 30.884563,
+      "market_cap": 40755884032.0,
+      "pe_ratio": 39.400845,
+      "forward_pe": 31.532915,
       "eps_ttm": 2.37,
-      "dividend_yield": 4.65,
+      "dividend_yield": 4.55,
       "profit_margin": 0.25136,
       "operating_margin": 0.47722998,
-      "price_to_book": -20.767485,
+      "price_to_book": -21.203451,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 91.46,
+    "as_of": "2026-06-09",
+    "current_price": 92.57,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10132,13 +10120,13 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 47.38,
+        "fair_value": 46.97,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       }
     },
-    "fair_value": 44.43,
-    "valuation_gap": 1.0585,
+    "fair_value": 44.28,
+    "valuation_gap": 1.0907,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10266,31 +10254,49 @@
         "price": 91.46,
         "fair_value": 43.56,
         "gap": 1.0996
+      },
+      {
+        "date": "2026-05-29",
+        "price": 91.5,
+        "fair_value": 43.56,
+        "gap": 1.1006
+      },
+      {
+        "date": "2026-06-05",
+        "price": 94.49,
+        "fair_value": 43.56,
+        "gap": 1.1692
+      },
+      {
+        "date": "2026-06-09",
+        "price": 92.57,
+        "fair_value": 43.56,
+        "gap": 1.1251
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.14,
-      "summary_kr": "CCI $8.5B 파이버·소형기지국 매각 완료 — 미국 유일 대형 순수 타워 REIT 전환 확정. AFFO 가이던스 16센트 상향·$70억 부채 감소·$10억 자사주매입. 전략 전환 이정표 달성.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.12,
+      "summary_kr": "CCI가 $8.5B 파이버·스몰셀 매각을 완료하고 순수 타워 REIT로 전환해 자본 배분 효율성이 개선됐다. CEO의 유기적 성장 전략 발표와 배당 선언으로 긍정적 모멘텀이 유지되고 있다.",
       "key_events": [
-        "$8.5B 매각 완료 순수 타워 전환",
-        "AFFO 가이던스 16센트 상향"
+        "$8.5B 파이버·스몰셀 매각 완료",
+        "타워 전문 REIT 전환",
+        "배당 $1.0625 선언"
       ],
       "risks": [
-        "순수 타워 집중으로 다각화 제한",
-        "타워 임대료 협상 주기 도래 시 협상력"
+        "순수 타워 집중으로 다각화 감소, 5G 업그레이드 사이클 후반부 진입 시 신규 임대 성장 둔화"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "AMT",
-          "headline": "Bernstein upgrades American Tower to Outperform with $207 target",
-          "implication_for_target": "AMT 애널리스트 업그레이드 — 타워 REIT 섹터 전반 재평가 긍정"
+          "headline": "AMT CEO at REITweek; underperforms market over past year",
+          "implication_for_target": "CCI의 타워 집중 전환은 AMT와 직접 경쟁 — 단순화된 사업구조로 운영 효율 개선 기대"
         },
         {
-          "ticker": "SBAC",
-          "headline": "SBA Communications pure-play competition intensifies after CCI transformation",
-          "implication_for_target": "CCI 순수 타워 집중으로 SBAC와 직접 경쟁 — 타워 REIT 내 경쟁 재편"
+          "ticker": "EQIX",
+          "headline": "EQIX Q1 AI Fabric bookings +70%; $10B revenue guidance",
+          "implication_for_target": "데이터센터 REIT 강세와 달리 타워 REIT는 상대적으로 AI 수혜 제한적"
         }
       ],
       "history": [
@@ -10305,6 +10311,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.14
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.12
         }
       ]
     }

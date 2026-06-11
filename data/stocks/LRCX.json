@@ -4,62 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 6.69
-    },
-    {
-      "date": "2016-05-24",
-      "value": 6.9
-    },
-    {
-      "date": "2016-05-25",
-      "value": 7.02
-    },
-    {
-      "date": "2016-05-26",
-      "value": 7.06
-    },
-    {
-      "date": "2016-05-27",
-      "value": 7.23
-    },
-    {
-      "date": "2016-05-31",
-      "value": 7.21
-    },
-    {
-      "date": "2016-06-01",
-      "value": 7.24
-    },
-    {
-      "date": "2016-06-02",
-      "value": 7.28
-    },
-    {
-      "date": "2016-06-03",
-      "value": 7.24
-    },
-    {
-      "date": "2016-06-06",
-      "value": 7.19
-    },
-    {
-      "date": "2016-06-07",
-      "value": 7.25
-    },
-    {
-      "date": "2016-06-08",
-      "value": 7.29
-    },
-    {
-      "date": "2016-06-09",
-      "value": 7.31
-    },
-    {
-      "date": "2016-06-10",
-      "value": 7.2
-    },
-    {
       "date": "2016-06-13",
       "value": 7.16
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 305.35
+    },
+    {
+      "date": "2026-05-26",
+      "value": 322.68
+    },
+    {
+      "date": "2026-05-27",
+      "value": 318.93
+    },
+    {
+      "date": "2026-05-28",
+      "value": 318.0
+    },
+    {
+      "date": "2026-05-29",
+      "value": 318.18
+    },
+    {
+      "date": "2026-06-01",
+      "value": 317.12
+    },
+    {
+      "date": "2026-06-02",
+      "value": 334.41
+    },
+    {
+      "date": "2026-06-03",
+      "value": 343.71
+    },
+    {
+      "date": "2026-06-04",
+      "value": 336.41
+    },
+    {
+      "date": "2026-06-05",
+      "value": 303.28
+    },
+    {
+      "date": "2026-06-08",
+      "value": 324.45
+    },
+    {
+      "date": "2026-06-09",
+      "value": 327.16
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 381861855232.0,
-      "pe_ratio": 57.83144,
-      "forward_pe": 38.498783,
+      "market_cap": 402433736704.0,
+      "pe_ratio": 60.946964,
+      "forward_pe": 40.392574,
       "eps_ttm": 5.28,
-      "dividend_yield": 0.34,
+      "dividend_yield": 0.32,
       "profit_margin": 0.30938998,
       "operating_margin": 0.35042998,
-      "price_to_book": 36.076324,
+      "price_to_book": 38.019848,
       "return_on_equity": 0.66762
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 305.35,
+    "as_of": "2026-06-09",
+    "current_price": 327.16,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 174.49,
+        "fair_value": 178.19,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 31.71,
+        "fair_value": 31.97,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 132.61,
-    "valuation_gap": 1.3026,
+    "fair_value": 133.77,
+    "valuation_gap": 1.4457,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,32 +10266,46 @@
         "price": 305.35,
         "fair_value": 148.4,
         "gap": 1.0576
+      },
+      {
+        "date": "2026-05-29",
+        "price": 318.18,
+        "fair_value": 148.4,
+        "gap": 1.1441
+      },
+      {
+        "date": "2026-06-05",
+        "price": 303.28,
+        "fair_value": 148.4,
+        "gap": 1.0437
+      },
+      {
+        "date": "2026-06-09",
+        "price": 327.16,
+        "fair_value": 148.4,
+        "gap": 1.2046
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-26",
-      "narrative_score": 0.23,
-      "summary_kr": "Morgan Stanley Overweight 업그레이드 ($331), WFE 2026 업계 지출 $1400억 상향, NAND 회복 + AI 메모리 수요 수혜 확인. 삼성 파업 영향 미미한 것으로 판단. MU HBM4 증산 계획이 LRCX 장비 수요를 직접 지지.",
+      "as_of": "2026-06-10",
+      "narrative_score": 0.13,
+      "summary_kr": "Q3 강세와 WFE $1,400억 사이클, 어드밴스드 패키징 50%+ 성장으로 3사 동시 목표주가 상향. 단, MATCH Act 수출 규제로 중국 매출 43%→30% 이하 하락이 가장 큰 리스크. IBM 파트너십이 전환 완충 역할.",
       "key_events": [
-        "Morgan Stanley Overweight 업그레이드 — 목표 $331",
-        "WFE 2026 $1400억 상향 + 2027 추가 성장 전망",
-        "NAND 회복·AI HBM 수혜 차별화 구조"
+        "미즈호·MS·B.Riley 3사 목표주가 동시 상향",
+        "MATCH Act 중국 매출 30% 이하 전망",
+        "IBM 파트너십으로 전환 완충"
       ],
       "risks": [
-        "삼성 파업 장기화 시 메모리 고객 발주 지연 잔존 위험",
-        "AMAT 대비 메모리 집중으로 로직 장비 다각화 부재"
+        "MATCH Act 수출 규제 — 중국 매출 30%+ 추가 하락 가능",
+        "P/E 61x (5년 중위 23x 대비 과도한 프리미엄)",
+        "임원 매도 패턴"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "MU",
-          "headline": "Micron HBM4 volume shipments for NVIDIA, CEO confirms structural shortage beyond 2026",
-          "implication_for_target": "MU HBM4 증산은 LRCX 식각·증착 장비 수주 직접 연동 — 메모리 증설 사이클 지속 확인"
-        },
-        {
           "ticker": "AMAT",
-          "headline": "Morgan Stanley downgrades AMAT while upgrading LRCX in same report",
-          "implication_for_target": "같은 리포트에서 LRCX만 업그레이드 — NAND 회복 수혜 차별화 구조 확인"
+          "headline": "Applied Materials +7.43% June 10; WFE >30% outlook raised; Singapore $500M facility",
+          "implication_for_target": "AMAT의 WFE 상향 전망은 LRCX 식각·증착 수주에도 동일하게 적용 — 장비 듀오 동반 수혜 확인"
         }
       ],
       "history": [
@@ -10318,6 +10320,18 @@
         {
           "date": "2026-05-26",
           "narrative_score": 0.23
+        },
+        {
+          "date": "2026-06-02",
+          "narrative_score": 0.4
+        },
+        {
+          "date": "2026-06-09",
+          "narrative_score": 0.21
+        },
+        {
+          "date": "2026-06-10",
+          "narrative_score": 0.13
         }
       ]
     }

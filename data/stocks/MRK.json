@@ -4,62 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 38.52
-    },
-    {
-      "date": "2016-05-24",
-      "value": 39.0
-    },
-    {
-      "date": "2016-05-25",
-      "value": 39.68
-    },
-    {
-      "date": "2016-05-26",
-      "value": 39.55
-    },
-    {
-      "date": "2016-05-27",
-      "value": 39.62
-    },
-    {
-      "date": "2016-05-31",
-      "value": 39.46
-    },
-    {
-      "date": "2016-06-01",
-      "value": 39.51
-    },
-    {
-      "date": "2016-06-02",
-      "value": 39.86
-    },
-    {
-      "date": "2016-06-03",
-      "value": 39.73
-    },
-    {
-      "date": "2016-06-06",
-      "value": 40.1
-    },
-    {
-      "date": "2016-06-07",
-      "value": 39.98
-    },
-    {
-      "date": "2016-06-08",
-      "value": 40.42
-    },
-    {
-      "date": "2016-06-09",
-      "value": 40.11
-    },
-    {
-      "date": "2016-06-10",
-      "value": 39.85
-    },
-    {
       "date": "2016-06-13",
       "value": 39.68
     },
@@ -865,7 +809,7 @@
     },
     {
       "date": "2017-03-30",
-      "value": 45.87
+      "value": 45.88
     },
     {
       "date": "2017-03-31",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 122.41
+    },
+    {
+      "date": "2026-05-26",
+      "value": 119.72
+    },
+    {
+      "date": "2026-05-27",
+      "value": 120.24
+    },
+    {
+      "date": "2026-05-28",
+      "value": 119.89
+    },
+    {
+      "date": "2026-05-29",
+      "value": 118.72
+    },
+    {
+      "date": "2026-06-01",
+      "value": 115.17
+    },
+    {
+      "date": "2026-06-02",
+      "value": 115.65
+    },
+    {
+      "date": "2026-06-03",
+      "value": 114.7
+    },
+    {
+      "date": "2026-06-04",
+      "value": 120.26
+    },
+    {
+      "date": "2026-06-05",
+      "value": 120.79
+    },
+    {
+      "date": "2026-06-08",
+      "value": 119.52
+    },
+    {
+      "date": "2026-06-09",
+      "value": 119.6
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 302331232256.0,
-      "pe_ratio": 34.481693,
-      "forward_pe": 12.854453,
+      "market_cap": 294131400704.0,
+      "pe_ratio": 33.54648,
+      "forward_pe": 12.451981,
       "eps_ttm": 3.55,
-      "dividend_yield": 2.78,
+      "dividend_yield": 2.85,
       "profit_margin": 0.13586001,
       "operating_margin": 0.38604,
-      "price_to_book": 6.589686,
+      "price_to_book": 6.41096,
       "return_on_equity": 0.18944
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 122.41,
+    "as_of": "2026-06-09",
+    "current_price": 119.6,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 152.36,
+        "fair_value": 153.68,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 38.52,
+        "fair_value": 38.6,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 85.36,
-    "valuation_gap": 0.434,
+    "fair_value": 85.77,
+    "valuation_gap": 0.3944,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,39 +10259,61 @@
         "price": 122.41,
         "fair_value": 63.9,
         "gap": 0.9156
+      },
+      {
+        "date": "2026-05-29",
+        "price": 118.72,
+        "fair_value": 63.9,
+        "gap": 0.8579
+      },
+      {
+        "date": "2026-06-05",
+        "price": 120.79,
+        "fair_value": 63.9,
+        "gap": 0.8903
+      },
+      {
+        "date": "2026-06-09",
+        "price": 119.6,
+        "fair_value": 63.9,
+        "gap": 0.8717
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-28",
-      "narrative_score": 0.18,
-      "summary_kr": "키트루다의 EU 방광암 CHMP 승인 권고와 자궁내막암 3상 성공으로 주가 +5.6% 급등, 두 건의 항암 마일스톤이 겹치며 종양학 리더십이 재확인됐다. 탈크 소송 공동피고 판결과 $6B 채무 발행이 일부 부담으로 작용.",
+      "as_of": "2026-06-04",
+      "narrative_score": 0.11,
+      "summary_kr": "ASCO 흑색종 5년 데이터 및 Terns 인수로 성장 모멘텀이 강화된 반면, LITESPARK-012 RCC 임상 실패와 가다실 소송 합의($50M)가 단기 리스크로 남았다. 주가는 6/4 +3.33% 반등.",
       "key_events": [
-        "키트루다 EU CHMP 방광암 승인 권고",
-        "자궁내막암 3상 성공",
-        "주가 +5.6%"
+        "ASCO 인티스메란+키트루다 흑색종 5년 데이터 긍정",
+        "Terns 파마슈티컬스 $6.7B 인수",
+        "LITESPARK-012 Phase 3 RCC 실패",
+        "가다실 소송 $50M 합의"
       ],
       "risks": [
-        "키트루다 특허 만료 대비 신약 파이프라인 속도",
-        "탈크 소송 추가 배상 가능성",
-        "$6B 부채 증가"
+        "LITESPARK-012 실패로 신장암 신규 적응증 손실",
+        "키트루다 2028 특허 만료 대비 파이프라인 의존성"
       ],
-      "news_count": 5,
+      "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "ABBV",
-          "headline": "AbbVie FDA approval for DECNUPAZ (rare blood cancer) + Q1 guidance raise",
-          "implication_for_target": "ABBV 항암·면역 분야 동시 강세 — MRK 면역학 시장과 경쟁"
+          "ticker": "LLY",
+          "headline": "Eli Lilly accelerates M&A with $10B+ biotech acquisitions",
+          "implication_for_target": "LLY M&A 가속화 — MRK도 Terns 67억달러 인수로 대응, 섹터 전반 M&A 경쟁"
         },
         {
           "ticker": "AZN",
-          "headline": "Enhertu and Datroway multiple FDA approvals in oncology space",
-          "implication_for_target": "AZN 항암 파이프라인 경쟁력 강화 — MRK 키트루다 독주 체제 도전"
+          "headline": "AstraZeneca FDA delays camizestrant decision after negative advisory committee",
+          "implication_for_target": "경쟁사 FDA 역풍 — MRK 면역항암제 규제 환경 상대적으로 유리"
         }
       ],
       "history": [
         {
           "date": "2026-05-28",
           "narrative_score": 0.18
+        },
+        {
+          "date": "2026-06-04",
+          "narrative_score": 0.11
         }
       ]
     }

@@ -4,62 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 63.04
-    },
-    {
-      "date": "2016-05-24",
-      "value": 63.81
-    },
-    {
-      "date": "2016-05-25",
-      "value": 63.43
-    },
-    {
-      "date": "2016-05-26",
-      "value": 64.26
-    },
-    {
-      "date": "2016-05-27",
-      "value": 63.81
-    },
-    {
-      "date": "2016-05-31",
-      "value": 63.84
-    },
-    {
-      "date": "2016-06-01",
-      "value": 63.77
-    },
-    {
-      "date": "2016-06-02",
-      "value": 64.21
-    },
-    {
-      "date": "2016-06-03",
-      "value": 63.92
-    },
-    {
-      "date": "2016-06-06",
-      "value": 63.68
-    },
-    {
-      "date": "2016-06-07",
-      "value": 63.56
-    },
-    {
-      "date": "2016-06-08",
-      "value": 63.74
-    },
-    {
-      "date": "2016-06-09",
-      "value": 63.33
-    },
-    {
-      "date": "2016-06-10",
-      "value": 62.93
-    },
-    {
       "date": "2016-06-13",
       "value": 62.85
     },
@@ -3201,7 +3145,7 @@
     },
     {
       "date": "2019-07-26",
-      "value": 99.25
+      "value": 99.26
     },
     {
       "date": "2019-07-29",
@@ -3453,7 +3397,7 @@
     },
     {
       "date": "2019-10-24",
-      "value": 99.42
+      "value": 99.41
     },
     {
       "date": "2019-10-25",
@@ -6385,7 +6329,7 @@
     },
     {
       "date": "2022-09-22",
-      "value": 301.7
+      "value": 301.71
     },
     {
       "date": "2022-09-23",
@@ -6493,7 +6437,7 @@
     },
     {
       "date": "2022-10-31",
-      "value": 351.42
+      "value": 351.41
     },
     {
       "date": "2022-11-01",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 1065.0
+    },
+    {
+      "date": "2026-05-26",
+      "value": 1064.74
+    },
+    {
+      "date": "2026-05-27",
+      "value": 1082.92
+    },
+    {
+      "date": "2026-05-28",
+      "value": 1126.8
+    },
+    {
+      "date": "2026-05-29",
+      "value": 1105.0
+    },
+    {
+      "date": "2026-06-01",
+      "value": 1082.2
+    },
+    {
+      "date": "2026-06-02",
+      "value": 1064.15
+    },
+    {
+      "date": "2026-06-03",
+      "value": 1078.78
+    },
+    {
+      "date": "2026-06-04",
+      "value": 1125.27
+    },
+    {
+      "date": "2026-06-05",
+      "value": 1131.42
+    },
+    {
+      "date": "2026-06-08",
+      "value": 1149.15
+    },
+    {
+      "date": "2026-06-09",
+      "value": 1144.68
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 949704589312.0,
-      "pe_ratio": 37.873398,
-      "forward_pe": 23.967415,
-      "eps_ttm": 28.12,
-      "dividend_yield": 0.65,
+      "market_cap": 1013348171776.0,
+      "pe_ratio": 40.32541,
+      "forward_pe": 25.541162,
+      "eps_ttm": 28.18,
+      "dividend_yield": 0.61,
       "profit_margin": 0.34986,
       "operating_margin": 0.49386,
-      "price_to_book": 30.500902,
+      "price_to_book": 32.54489,
       "return_on_equity": 1.07459
     },
     "quarterly": [
@@ -10129,28 +10117,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 1065.0,
+    "as_of": "2026-06-09",
+    "current_price": 1144.68,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 506.16,
+        "fair_value": 507.24,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 710.97,
+        "fair_value": 717.07,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 148.63,
+        "fair_value": 149.34,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 496.1,
-    "valuation_gap": 1.1468,
+    "fair_value": 498.61,
+    "valuation_gap": 1.2957,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,38 +10266,59 @@
         "price": 1065.0,
         "fair_value": 506.7,
         "gap": 1.1018
+      },
+      {
+        "date": "2026-05-29",
+        "price": 1105.0,
+        "fair_value": 506.7,
+        "gap": 1.1808
+      },
+      {
+        "date": "2026-06-05",
+        "price": 1131.42,
+        "fair_value": 506.7,
+        "gap": 1.2329
+      },
+      {
+        "date": "2026-06-09",
+        "price": 1144.68,
+        "fair_value": 506.7,
+        "gap": 1.2591
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-28",
-      "narrative_score": 0.35,
-      "summary_kr": "CVS의 파운다요 선호 등재로 PBM 전면 접근성 완성, Q1 56% 매출 성장·연간 가이던스 상향, 레타트루타이드 28% 체중감소 데이터까지 겹치며 섹터 내 최강 모멘텀. LLY는 비만치료제 시장 지배력을 더욱 공고히 하고 있다.",
+      "as_of": "2026-06-04",
+      "narrative_score": 0.22,
+      "summary_kr": "릴리는 종양학 중심의 공격적 M&A(10B달러+)로 GLP-1 이후 성장 축을 다변화하는 동시에, 독일 투자 절반 삭감으로 미국 우선 전략을 선명히 했다. 시총 1조 달러 기업으로서 파이프라인 확장에 가속이 붙고 있다.",
       "key_events": [
-        "CVS 파운다요 선호 의약품 추가",
-        "FY 가이던스 $82-85B 상향",
-        "레타트루타이드 28% 체중감소 18개월 임상"
+        "바이오텍 3사 포함 M&A 10B달러+ 가속화",
+        "독일 투자 €23억→€11.5억 삭감"
       ],
       "risks": [
-        "경구 비만약 출시 이후 주사제 수요 잠식 가능성",
-        "NVO와의 시장 점유율 경쟁 심화"
+        "독일·EU 시장 관계 악화 시 규제 역풍 가능성",
+        "NVO 경구 비만약 글로벌 확장으로 점유율 경쟁 심화"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "NVO",
-          "headline": "Novo Nordisk CHMP backing for high-dose Wegovy single-dose pen in EU",
-          "implication_for_target": "NVO EU 입지 유지 시도 — LLY 경구 GLP-1 출시와 정면 경쟁 예고"
+          "headline": "Novo Nordisk launches Wegovy oral pill in UAE — first international rollout",
+          "implication_for_target": "NVO 경구 위고비 글로벌 출시 시작 — LLY 경구 비만약 파이프라인과 직접 경쟁 예고"
         },
         {
           "ticker": "JNJ",
-          "headline": "J&J new psoriasis pill could be one of its biggest drugs ever",
-          "implication_for_target": "면역항암제 경쟁 심화, LLY 종양학 파이프라인과 간접 경쟁"
+          "headline": "J&J nipocalimab Phase 2 positive in SLE and Sjögren's — pipeline strengthening",
+          "implication_for_target": "JNJ 면역질환 파이프라인 강화 — LLY 면역·종양학 분야 경쟁 심화"
         }
       ],
       "history": [
         {
           "date": "2026-05-28",
           "narrative_score": 0.35
+        },
+        {
+          "date": "2026-06-04",
+          "narrative_score": 0.22
         }
       ]
     }

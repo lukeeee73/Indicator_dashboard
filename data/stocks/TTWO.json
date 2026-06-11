@@ -4,62 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 36.43
-    },
-    {
-      "date": "2016-05-24",
-      "value": 38.33
-    },
-    {
-      "date": "2016-05-25",
-      "value": 38.19
-    },
-    {
-      "date": "2016-05-26",
-      "value": 38.65
-    },
-    {
-      "date": "2016-05-27",
-      "value": 38.8
-    },
-    {
-      "date": "2016-05-31",
-      "value": 38.91
-    },
-    {
-      "date": "2016-06-01",
-      "value": 38.5
-    },
-    {
-      "date": "2016-06-02",
-      "value": 38.9
-    },
-    {
-      "date": "2016-06-03",
-      "value": 38.79
-    },
-    {
-      "date": "2016-06-06",
-      "value": 39.09
-    },
-    {
-      "date": "2016-06-07",
-      "value": 39.87
-    },
-    {
-      "date": "2016-06-08",
-      "value": 39.66
-    },
-    {
-      "date": "2016-06-09",
-      "value": 39.58
-    },
-    {
-      "date": "2016-06-10",
-      "value": 39.04
-    },
-    {
       "date": "2016-06-13",
       "value": 38.23
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 227.55
+    },
+    {
+      "date": "2026-05-26",
+      "value": 220.67
+    },
+    {
+      "date": "2026-05-27",
+      "value": 218.46
+    },
+    {
+      "date": "2026-05-28",
+      "value": 217.87
+    },
+    {
+      "date": "2026-05-29",
+      "value": 224.16
+    },
+    {
+      "date": "2026-06-01",
+      "value": 226.98
+    },
+    {
+      "date": "2026-06-02",
+      "value": 222.38
+    },
+    {
+      "date": "2026-06-03",
+      "value": 215.8
+    },
+    {
+      "date": "2026-06-04",
+      "value": 216.65
+    },
+    {
+      "date": "2026-06-05",
+      "value": 214.39
+    },
+    {
+      "date": "2026-06-08",
+      "value": 212.55
+    },
+    {
+      "date": "2026-06-09",
+      "value": 212.05
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 42187771904.0,
+      "market_cap": 39075405824.0,
       "pe_ratio": null,
-      "forward_pe": 22.442644,
-      "eps_ttm": -1.62,
+      "forward_pe": 20.862764,
+      "eps_ttm": -1.61,
       "dividend_yield": null,
       "profit_margin": -0.0448,
       "operating_margin": 0.02328,
-      "price_to_book": 12.049246,
+      "price_to_book": 11.144295,
       "return_on_equity": -0.105579995
     },
     "quarterly": [
@@ -10086,9 +10074,9 @@
       },
       {
         "date": "2024-12-31",
-        "revenue": 1359800000.0,
-        "operating_income": -109000000.0,
-        "net_income": -125200000.0,
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
         "eps": null
       },
       {
@@ -10121,57 +10109,63 @@
       },
       {
         "date": "2026-03-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
+        "revenue": 1679800000.0,
+        "operating_income": 10000000.0,
+        "net_income": -59500000.0,
         "eps": -0.32
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 227.55,
+    "as_of": "2026-06-09",
+    "current_price": 212.05,
     "sector": "Communication Services",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 172.37,
+        "fair_value": 172.79,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 172.37,
-    "valuation_gap": 0.3201,
+    "fair_value": 172.79,
+    "valuation_gap": 0.2272,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.18,
-      "summary_kr": "GTA VI 11월 출시 확정으로 테이크투 최대 카탈리스트 현실화. 웰스파고 목표주가 소폭 하향에도 Overweight 의견 유지로 실적 신뢰도 유지.",
+      "as_of": "2026-06-07",
+      "narrative_score": 0.22,
+      "summary_kr": "테이크투 Q4 실적 어닝 비트 + GTA VI 2026년 11월 출시 확정. 애널리스트 목표가 $280~$320. 13년 기다린 GTA VI가 회사 역사상 최대 촉매로 작동 중.",
       "key_events": [
-        "GTA VI 11월 출시 확정",
-        "웰스파고 Overweight 유지"
+        "GTA VI 2026년 11월 19일 출시 확정",
+        "Q4 FY26 어닝 비트",
+        "목표가 $280(PS)~$320(BofA)"
       ],
       "risks": [
-        "GTA VI 개발 마지막 단계 딜레이 리스크",
-        "초기 출시 품질 이슈"
+        "GTA VI 출시 일정 재연기 리스크",
+        "콘솔 판매량 부진 시 수요 한계",
+        "인수합병 자금 조달 부담"
       ],
-      "news_count": 2,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "EA",
-          "headline": "Electronic Arts no major news; GTA VI competition looming",
-          "implication_for_target": "GTA VI 출시가 EA 스포츠 타이틀과 게이머 예산 경쟁 — TTWO 최대 이벤트"
+          "headline": "EA FY26 record bookings; $55B take-private deal pending CFIUS",
+          "implication_for_target": "EA 인수 이벤트와 TTWO GTA VI 출시 — 게임 섹터 대형 이벤트 동반, TTWO 게임 촉매 더 명확"
         },
         {
           "ticker": "MSFT",
-          "headline": "Xbox Game Pass expanding content library",
-          "implication_for_target": "MSFT Game Pass에 GTA VI 편입 여부가 초기 판매 지표 핵심"
+          "headline": "Microsoft Game Pass subscriber growth ongoing",
+          "implication_for_target": "MSFT 게임패스 GTA VI 포함 여부가 TTWO 수익성 핵심 변수"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.18
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.22
         }
       ]
     }

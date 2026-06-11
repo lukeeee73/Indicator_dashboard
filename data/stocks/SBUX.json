@@ -4,62 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 44.11
-    },
-    {
-      "date": "2016-05-24",
-      "value": 44.79
-    },
-    {
-      "date": "2016-05-25",
-      "value": 44.56
-    },
-    {
-      "date": "2016-05-26",
-      "value": 44.67
-    },
-    {
-      "date": "2016-05-27",
-      "value": 44.56
-    },
-    {
-      "date": "2016-05-31",
-      "value": 44.35
-    },
-    {
-      "date": "2016-06-01",
-      "value": 44.29
-    },
-    {
-      "date": "2016-06-02",
-      "value": 44.13
-    },
-    {
-      "date": "2016-06-03",
-      "value": 44.12
-    },
-    {
-      "date": "2016-06-06",
-      "value": 44.91
-    },
-    {
-      "date": "2016-06-07",
-      "value": 44.68
-    },
-    {
-      "date": "2016-06-08",
-      "value": 44.61
-    },
-    {
-      "date": "2016-06-09",
-      "value": 44.9
-    },
-    {
-      "date": "2016-06-10",
-      "value": 44.33
-    },
-    {
       "date": "2016-06-13",
       "value": 44.47
     },
@@ -993,7 +937,7 @@
     },
     {
       "date": "2017-05-16",
-      "value": 49.28
+      "value": 49.27
     },
     {
       "date": "2017-05-17",
@@ -2037,7 +1981,7 @@
     },
     {
       "date": "2018-05-30",
-      "value": 48.19
+      "value": 48.2
     },
     {
       "date": "2018-05-31",
@@ -3005,7 +2949,7 @@
     },
     {
       "date": "2019-05-16",
-      "value": 67.64
+      "value": 67.63
     },
     {
       "date": "2019-05-17",
@@ -4837,7 +4781,7 @@
     },
     {
       "date": "2021-03-11",
-      "value": 95.13
+      "value": 95.12
     },
     {
       "date": "2021-03-12",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 103.11
+    },
+    {
+      "date": "2026-05-26",
+      "value": 101.42
+    },
+    {
+      "date": "2026-05-27",
+      "value": 102.1
+    },
+    {
+      "date": "2026-05-28",
+      "value": 100.75
+    },
+    {
+      "date": "2026-05-29",
+      "value": 99.16
+    },
+    {
+      "date": "2026-06-01",
+      "value": 96.51
+    },
+    {
+      "date": "2026-06-02",
+      "value": 95.51
+    },
+    {
+      "date": "2026-06-03",
+      "value": 95.89
+    },
+    {
+      "date": "2026-06-04",
+      "value": 94.14
+    },
+    {
+      "date": "2026-06-05",
+      "value": 95.29
+    },
+    {
+      "date": "2026-06-08",
+      "value": 94.82
+    },
+    {
+      "date": "2026-06-09",
+      "value": 97.41
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 117514461184.0,
-      "pe_ratio": 78.70993,
-      "forward_pe": 34.067368,
+      "market_cap": 112556769280.0,
+      "pe_ratio": 75.38932,
+      "forward_pe": 32.799408,
       "eps_ttm": 1.31,
-      "dividend_yield": 2.41,
+      "dividend_yield": 2.51,
       "profit_margin": 0.03888,
       "operating_margin": 0.084180005,
-      "price_to_book": -13.879392,
+      "price_to_book": -13.293849,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 103.11,
+    "as_of": "2026-06-09",
+    "current_price": 97.41,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10132,13 +10120,13 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 60.53,
+        "fair_value": 59.4,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 43.17,
-    "valuation_gap": 1.3886,
+    "fair_value": 42.74,
+    "valuation_gap": 1.2789,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10266,32 +10254,56 @@
         "price": 103.11,
         "fair_value": 32.82,
         "gap": 2.1414
+      },
+      {
+        "date": "2026-05-29",
+        "price": 99.16,
+        "fair_value": 32.82,
+        "gap": 2.0211
+      },
+      {
+        "date": "2026-06-05",
+        "price": 95.29,
+        "fair_value": 32.82,
+        "gap": 1.9032
+      },
+      {
+        "date": "2026-06-09",
+        "price": 97.41,
+        "fair_value": 32.82,
+        "gap": 1.9678
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": -0.03,
-      "summary_kr": "스타벅스 CEO 소비 환경 경고에도 불구 고객 트래픽 회복 중. AI 이니셔티브 중단으로 전략 단순화 집중. 브랜드 재건은 진행 중.",
+      "as_of": "2026-06-07",
+      "narrative_score": -0.15,
+      "summary_kr": "스타벅스 AI 재고관리 시스템 폐기, 기관 투자자 대규모 매도, 월간 -9% 하락. 턴어라운드 전략 실행력에 대한 시장 신뢰 급락. 치폴레 대비 부진.",
       "key_events": [
-        "고객 트래픽 회복",
-        "AI 이니셔티브 중단"
+        "AI 재고관리 시스템 폐기",
+        "TD자산운용 지분 41.9% 매도",
+        "1개월 주가 -9%"
       ],
       "risks": [
-        "커피 원두 가격 상승",
-        "경쟁 심화 (MCD 맥카페 등)"
+        "턴어라운드 전략 실행 지연",
+        "기관 투자자 이탈",
+        "중국 시장 회복 불확실성"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "MCD",
-          "headline": "McDonald's reports similar customer traffic recovery via value menu",
-          "implication_for_target": "MCD·CMG 동반 회복 — 외식 소비 전반 개선이지만 SBUX 전략 재정비 중"
+          "headline": "McDonald's testing hand-breaded chicken, maintaining steady QSR execution",
+          "implication_for_target": "MCD 안정적 실행력 대비 SBUX 턴어라운드 지연 — QSR 투자자 자금 이동 가능성"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": -0.03
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": -0.15
         }
       ]
     }

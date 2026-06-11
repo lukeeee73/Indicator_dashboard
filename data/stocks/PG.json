@@ -4,62 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 61.06
-    },
-    {
-      "date": "2016-05-24",
-      "value": 61.64
-    },
-    {
-      "date": "2016-05-25",
-      "value": 62.03
-    },
-    {
-      "date": "2016-05-26",
-      "value": 61.83
-    },
-    {
-      "date": "2016-05-27",
-      "value": 61.99
-    },
-    {
-      "date": "2016-05-31",
-      "value": 61.69
-    },
-    {
-      "date": "2016-06-01",
-      "value": 62.27
-    },
-    {
-      "date": "2016-06-02",
-      "value": 62.39
-    },
-    {
-      "date": "2016-06-03",
-      "value": 62.78
-    },
-    {
-      "date": "2016-06-06",
-      "value": 63.01
-    },
-    {
-      "date": "2016-06-07",
-      "value": 62.67
-    },
-    {
-      "date": "2016-06-08",
-      "value": 62.92
-    },
-    {
-      "date": "2016-06-09",
-      "value": 63.32
-    },
-    {
-      "date": "2016-06-10",
-      "value": 63.34
-    },
-    {
       "date": "2016-06-13",
       "value": 62.86
     },
@@ -2421,7 +2365,7 @@
     },
     {
       "date": "2018-10-15",
-      "value": 65.56
+      "value": 65.57
     },
     {
       "date": "2018-10-16",
@@ -4093,7 +4037,7 @@
     },
     {
       "date": "2020-06-15",
-      "value": 100.29
+      "value": 100.28
     },
     {
       "date": "2020-06-16",
@@ -5933,7 +5877,7 @@
     },
     {
       "date": "2022-04-11",
-      "value": 142.95
+      "value": 142.96
     },
     {
       "date": "2022-04-12",
@@ -6089,7 +6033,7 @@
     },
     {
       "date": "2022-06-07",
-      "value": 132.45
+      "value": 132.44
     },
     {
       "date": "2022-06-08",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 144.44
+    },
+    {
+      "date": "2026-05-26",
+      "value": 142.96
+    },
+    {
+      "date": "2026-05-27",
+      "value": 147.49
+    },
+    {
+      "date": "2026-05-28",
+      "value": 145.91
+    },
+    {
+      "date": "2026-05-29",
+      "value": 143.56
+    },
+    {
+      "date": "2026-06-01",
+      "value": 140.28
+    },
+    {
+      "date": "2026-06-02",
+      "value": 140.82
+    },
+    {
+      "date": "2026-06-03",
+      "value": 140.19
+    },
+    {
+      "date": "2026-06-04",
+      "value": 140.78
+    },
+    {
+      "date": "2026-06-05",
+      "value": 146.54
+    },
+    {
+      "date": "2026-06-08",
+      "value": 145.1
+    },
+    {
+      "date": "2026-06-09",
+      "value": 148.67
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 336342843392.0,
-      "pe_ratio": 21.086132,
-      "forward_pe": 20.371695,
-      "eps_ttm": 6.85,
-      "dividend_yield": 2.95,
+      "market_cap": 347077705728.0,
+      "pe_ratio": 21.790936,
+      "forward_pe": 21.037077,
+      "eps_ttm": 6.84,
+      "dividend_yield": 2.86,
       "profit_margin": 0.19162,
       "operating_margin": 0.23047,
-      "price_to_book": 6.2579613,
+      "price_to_book": 6.4576926,
       "return_on_equity": 0.31112
     },
     "quarterly": [
@@ -10122,28 +10110,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 144.44,
+    "as_of": "2026-06-09",
+    "current_price": 148.67,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 150.7,
+        "fair_value": 150.48,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 127.62,
+        "fair_value": 127.21,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 59.64,
+        "fair_value": 59.52,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 125.56,
-    "valuation_gap": 0.1503,
+    "fair_value": 125.31,
+    "valuation_gap": 0.1864,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10271,31 +10259,55 @@
         "price": 144.44,
         "fair_value": 150.48,
         "gap": -0.0401
+      },
+      {
+        "date": "2026-05-29",
+        "price": 143.56,
+        "fair_value": 150.48,
+        "gap": -0.046
+      },
+      {
+        "date": "2026-06-05",
+        "price": 146.54,
+        "fair_value": 150.48,
+        "gap": -0.0262
+      },
+      {
+        "date": "2026-06-09",
+        "price": 148.67,
+        "fair_value": 150.48,
+        "gap": -0.012
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.03,
-      "summary_kr": "소비재 섹터 전반 강한 분기 실적 속 PG 제품 수요 견조. 관세 비용 압박은 업계 공통 부담이나 프리미엄 브랜드력으로 방어 가능.",
+      "as_of": "2026-06-07",
+      "narrative_score": 0.11,
+      "summary_kr": "P&G 소비자 수요 서프라이즈로 주가 +5%. Native 클린뷰티·Secret 젠Z 마케팅 등 브랜드 혁신 성과 가시화. 경영진 IR 컨퍼런스 참석으로 커뮤니케이션 강화.",
       "key_events": [
-        "소비재 섹터 강한 실적 서프라이즈"
+        "주가 +5% 소비자 수요 서프라이즈",
+        "Native Surf Club × Target 협업",
+        "경영진 소비재 컨퍼런스 참석"
       ],
       "risks": [
-        "관세 원가 상승 비용 전가 한계",
-        "고가 브랜드 소비 이탈"
+        "성장 둔화 및 주가 저성과 이력",
+        "원자재 비용 상승"
       ],
       "news_count": 2,
       "competitor_context": [
         {
           "ticker": "CL",
-          "headline": "Colgate-Palmolive maintaining pricing power amid tariff pressures",
-          "implication_for_target": "PG vs CL 가격 전가력 경쟁 — PG 프리미엄 브랜드 강점으로 방어"
+          "headline": "Colgate-Palmolive navigating same consumer staples environment",
+          "implication_for_target": "소비재 섹터 전반 수요 견조 확인 — PG의 프리미엄 브랜드 파워 경쟁 우위"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.03
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.11
         }
       ]
     }

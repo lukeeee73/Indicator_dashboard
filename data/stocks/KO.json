@@ -4,62 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 32.14
-    },
-    {
-      "date": "2016-05-24",
-      "value": 32.43
-    },
-    {
-      "date": "2016-05-25",
-      "value": 32.44
-    },
-    {
-      "date": "2016-05-26",
-      "value": 32.67
-    },
-    {
-      "date": "2016-05-27",
-      "value": 32.73
-    },
-    {
-      "date": "2016-05-31",
-      "value": 32.6
-    },
-    {
-      "date": "2016-06-01",
-      "value": 32.67
-    },
-    {
-      "date": "2016-06-02",
-      "value": 32.69
-    },
-    {
-      "date": "2016-06-03",
-      "value": 32.92
-    },
-    {
-      "date": "2016-06-06",
-      "value": 33.16
-    },
-    {
-      "date": "2016-06-07",
-      "value": 33.13
-    },
-    {
-      "date": "2016-06-08",
-      "value": 33.3
-    },
-    {
-      "date": "2016-06-09",
-      "value": 33.45
-    },
-    {
-      "date": "2016-06-10",
-      "value": 33.62
-    },
-    {
       "date": "2016-06-13",
       "value": 33.23
     },
@@ -309,7 +253,7 @@
     },
     {
       "date": "2016-09-09",
-      "value": 31.14
+      "value": 31.13
     },
     {
       "date": "2016-09-12",
@@ -9017,7 +8961,7 @@
     },
     {
       "date": "2025-05-08",
-      "value": 69.17
+      "value": 69.16
     },
     {
       "date": "2025-05-09",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 81.48
+    },
+    {
+      "date": "2026-05-26",
+      "value": 80.46
+    },
+    {
+      "date": "2026-05-27",
+      "value": 81.62
+    },
+    {
+      "date": "2026-05-28",
+      "value": 80.41
+    },
+    {
+      "date": "2026-05-29",
+      "value": 79.01
+    },
+    {
+      "date": "2026-06-01",
+      "value": 78.64
+    },
+    {
+      "date": "2026-06-02",
+      "value": 78.41
+    },
+    {
+      "date": "2026-06-03",
+      "value": 78.76
+    },
+    {
+      "date": "2026-06-04",
+      "value": 76.82
+    },
+    {
+      "date": "2026-06-05",
+      "value": 79.48
+    },
+    {
+      "date": "2026-06-08",
+      "value": 79.54
+    },
+    {
+      "date": "2026-06-09",
+      "value": 81.34
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 350566285312.0,
-      "pe_ratio": 25.622643,
-      "forward_pe": 23.389397,
+      "market_cap": 359644495872.0,
+      "pe_ratio": 26.286161,
+      "forward_pe": 23.995085,
       "eps_ttm": 3.18,
-      "dividend_yield": 2.6,
+      "dividend_yield": 2.54,
       "profit_margin": 0.278,
       "operating_margin": 0.35055,
-      "price_to_book": 10.42477,
+      "price_to_book": 10.694728,
       "return_on_equity": 0.43372002
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 81.48,
+    "as_of": "2026-06-09",
+    "current_price": 81.34,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 62.71,
+        "fair_value": 61.02,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 23.65,
+        "fair_value": 23.33,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 58.52,
-    "valuation_gap": 0.3923,
+    "fair_value": 57.95,
+    "valuation_gap": 0.4036,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,32 +10266,50 @@
         "price": 81.48,
         "fair_value": 69.96,
         "gap": 0.1647
+      },
+      {
+        "date": "2026-05-29",
+        "price": 79.01,
+        "fair_value": 69.96,
+        "gap": 0.1294
+      },
+      {
+        "date": "2026-06-05",
+        "price": 79.48,
+        "fair_value": 69.96,
+        "gap": 0.1361
+      },
+      {
+        "date": "2026-06-09",
+        "price": 81.34,
+        "fair_value": 69.96,
+        "gap": 0.1627
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.1,
-      "summary_kr": "코카콜라 1분기 EPS·매출 모두 강세(+12% YoY), 경쟁사 펩시코 대비 성장률 우위. 포장재 비용·관세 압박은 지속 모니터링 필요.",
-      "key_events": [
-        "Q1 EPS $0.86 강세",
-        "매출 +12% YoY — PEP 상회"
-      ],
+      "as_of": "2026-06-07",
+      "narrative_score": 0.0,
+      "summary_kr": "금일 의미 있는 신규 뉴스 없음. 코카콜라는 60년 연속 배당 증가의 배당귀족으로 방어적 성격 유지.",
+      "key_events": [],
       "risks": [
-        "포장재 관세 비용 전가",
-        "소비자 건강 음료 트렌드"
+        "달러 강세에 따른 해외 매출 환산 손실"
       ],
-      "news_count": 2,
+      "news_count": 0,
       "competitor_context": [
         {
           "ticker": "PEP",
-          "headline": "PepsiCo Q1 core EPS $1.61 beat, 54th consecutive dividend increase",
-          "implication_for_target": "PEP 견조하나 KO 매출 성장률 +12% vs PEP +8.5%로 KO 상대적 우위"
+          "headline": "PepsiCo navigating consumer staples sector alongside Coca-Cola",
+          "implication_for_target": "PEP와 함께 소비재 방어주 특성 유지 — 경기 둔화 국면에서 상대적 안정성"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.1
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": 0.0
         }
       ]
     }

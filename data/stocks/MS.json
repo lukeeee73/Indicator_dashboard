@@ -4,62 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 20.22
-    },
-    {
-      "date": "2016-05-24",
-      "value": 20.66
-    },
-    {
-      "date": "2016-05-25",
-      "value": 20.94
-    },
-    {
-      "date": "2016-05-26",
-      "value": 20.67
-    },
-    {
-      "date": "2016-05-27",
-      "value": 20.75
-    },
-    {
-      "date": "2016-05-31",
-      "value": 20.63
-    },
-    {
-      "date": "2016-06-01",
-      "value": 20.72
-    },
-    {
-      "date": "2016-06-02",
-      "value": 20.56
-    },
-    {
-      "date": "2016-06-03",
-      "value": 20.0
-    },
-    {
-      "date": "2016-06-06",
-      "value": 20.24
-    },
-    {
-      "date": "2016-06-07",
-      "value": 19.99
-    },
-    {
-      "date": "2016-06-08",
-      "value": 20.0
-    },
-    {
-      "date": "2016-06-09",
-      "value": 19.66
-    },
-    {
-      "date": "2016-06-10",
-      "value": 19.25
-    },
-    {
       "date": "2016-06-13",
       "value": 19.04
     },
@@ -7937,7 +7881,7 @@
     },
     {
       "date": "2024-04-10",
-      "value": 85.92
+      "value": 85.93
     },
     {
       "date": "2024-04-11",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 201.03
+    },
+    {
+      "date": "2026-05-26",
+      "value": 201.76
+    },
+    {
+      "date": "2026-05-27",
+      "value": 201.61
+    },
+    {
+      "date": "2026-05-28",
+      "value": 203.79
+    },
+    {
+      "date": "2026-05-29",
+      "value": 208.0
+    },
+    {
+      "date": "2026-06-01",
+      "value": 211.01
+    },
+    {
+      "date": "2026-06-02",
+      "value": 214.98
+    },
+    {
+      "date": "2026-06-03",
+      "value": 210.14
+    },
+    {
+      "date": "2026-06-04",
+      "value": 218.27
+    },
+    {
+      "date": "2026-06-05",
+      "value": 211.93
+    },
+    {
+      "date": "2026-06-08",
+      "value": 212.24
+    },
+    {
+      "date": "2026-06-09",
+      "value": 210.25
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 317081583616.0,
-      "pe_ratio": 18.20924,
-      "forward_pe": 15.829457,
+      "market_cap": 325961711616.0,
+      "pe_ratio": 18.719204,
+      "forward_pe": 16.272774,
       "eps_ttm": 11.04,
-      "dividend_yield": 1.99,
+      "dividend_yield": 1.94,
       "profit_margin": 0.24753,
       "operating_margin": 0.40616,
-      "price_to_book": 3.0377164,
+      "price_to_book": 3.12279,
       "return_on_equity": 0.16388
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 201.03,
+    "as_of": "2026-06-09",
+    "current_price": 210.25,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 152.4,
+        "fair_value": 155.04,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 128.21,
+        "fair_value": 129.32,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 148.64,
-    "valuation_gap": 0.3524,
+    "fair_value": 149.66,
+    "valuation_gap": 0.4049,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,31 +10259,49 @@
         "price": 201.03,
         "fair_value": 154.56,
         "gap": 0.3007
+      },
+      {
+        "date": "2026-05-29",
+        "price": 208.0,
+        "fair_value": 154.56,
+        "gap": 0.3458
+      },
+      {
+        "date": "2026-06-05",
+        "price": 211.93,
+        "fair_value": 154.56,
+        "gap": 0.3712
+      },
+      {
+        "date": "2026-06-09",
+        "price": 210.25,
+        "fair_value": 154.56,
+        "gap": 0.3603
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-23",
-      "narrative_score": 0.08,
-      "summary_kr": "MS 웰스 매니지먼트 +16% 강세·E*TRADE 암호화폐 기관 확대. CEO 사모 크레딧 성장 기회 강조 — 경쟁사 GS 대비 공격적 포지션. FINRA 조사가 유일한 규제 변수.",
+      "as_of": "2026-06-06",
+      "narrative_score": 0.19,
+      "summary_kr": "MS가 Q1 EPS $3.43 컨센서스 상회, ROTCE 27.1%의 역대급 수익성을 기록했다. M&A·IPO 물결 전망으로 IB 사이클 강세가 지속되며 목표주가가 $165로 상향됐다.",
       "key_events": [
-        "웰스 매니지먼트 +16%",
-        "E*TRADE 암호화폐 기관 확대"
+        "Q1 EPS $3.43 컨센서스 상회",
+        "ROTCE 27.1% 업계 최고 수준",
+        "M&A·IPO 물결 2026 전망"
       ],
       "risks": [
-        "FINRA 해외 부문 조사",
-        "금리 장기화 시 웰스 AUM 성장 둔화"
+        "부유층 자산관리 수익 금리 환경 변화에 취약, 시장 변동성 확대 시 트레이딩 손익 불확실"
       ],
-      "news_count": 2,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "GS",
-          "headline": "Goldman issues cautious private credit outlook",
-          "implication_for_target": "GS vs MS 사모 크레딧 전략 상이 — MS 보다 공격적 확장으로 차별화"
+          "headline": "GS launches blockchain real estate fund; 84% 1yr share surge",
+          "implication_for_target": "GS의 디지털 자산 확장과 동일한 M&A 물결 수혜 — IB 상위 2사 모두 긍정"
         },
         {
           "ticker": "JPM",
-          "headline": "JPMorgan and Morgan Stanley co-lead $13B Meta data center deal",
-          "implication_for_target": "JPM·MS 대형 IB 딜 공동 수임 확인 — 기업금융 파이프라인 건전"
+          "headline": "JPM co-led $13B Meta data center financing",
+          "implication_for_target": "대형 데이터센터 금융 딜 수요 증가 — MS IB에도 유사 수주 기회 확대"
         }
       ],
       "history": [
@@ -10310,6 +10316,10 @@
         {
           "date": "2026-05-23",
           "narrative_score": 0.08
+        },
+        {
+          "date": "2026-06-06",
+          "narrative_score": 0.19
         }
       ]
     }

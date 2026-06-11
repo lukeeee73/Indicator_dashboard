@@ -4,62 +4,6 @@
   "group": "조선 (한국)",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 39196.68
-    },
-    {
-      "date": "2016-05-24",
-      "value": 37849.57
-    },
-    {
-      "date": "2016-05-25",
-      "value": 38153.75
-    },
-    {
-      "date": "2016-05-26",
-      "value": 39240.14
-    },
-    {
-      "date": "2016-05-27",
-      "value": 37936.48
-    },
-    {
-      "date": "2016-05-30",
-      "value": 37284.65
-    },
-    {
-      "date": "2016-05-31",
-      "value": 42499.28
-    },
-    {
-      "date": "2016-06-01",
-      "value": 39761.6
-    },
-    {
-      "date": "2016-06-02",
-      "value": 40065.79
-    },
-    {
-      "date": "2016-06-03",
-      "value": 40891.44
-    },
-    {
-      "date": "2016-06-07",
-      "value": 42455.83
-    },
-    {
-      "date": "2016-06-08",
-      "value": 41890.91
-    },
-    {
-      "date": "2016-06-09",
-      "value": 41065.26
-    },
-    {
-      "date": "2016-06-10",
-      "value": 42282.01
-    },
-    {
       "date": "2016-06-13",
       "value": 40674.16
     },
@@ -9798,13 +9742,61 @@
     {
       "date": "2026-05-22",
       "value": 122200.0
+    },
+    {
+      "date": "2026-05-26",
+      "value": 134700.0
+    },
+    {
+      "date": "2026-05-27",
+      "value": 134900.0
+    },
+    {
+      "date": "2026-05-28",
+      "value": 124200.0
+    },
+    {
+      "date": "2026-05-29",
+      "value": 123300.0
+    },
+    {
+      "date": "2026-06-01",
+      "value": 124900.0
+    },
+    {
+      "date": "2026-06-02",
+      "value": 116000.0
+    },
+    {
+      "date": "2026-06-04",
+      "value": 115100.0
+    },
+    {
+      "date": "2026-06-05",
+      "value": 112200.0
+    },
+    {
+      "date": "2026-06-08",
+      "value": 103100.0
+    },
+    {
+      "date": "2026-06-09",
+      "value": 102200.0
+    },
+    {
+      "date": "2026-06-10",
+      "value": 110200.0
+    },
+    {
+      "date": "2026-06-11",
+      "value": 104500.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 37436923052032.0,
+      "market_cap": 32014388428800.0,
       "pe_ratio": null,
-      "forward_pe": 20.349169,
+      "forward_pe": 17.401703,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.11906999,
@@ -9865,8 +9857,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 122200.0,
+    "as_of": "2026-06-11",
+    "current_price": 104500.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
@@ -9876,8 +9868,8 @@
       }
     },
     "fair_value": 102087.71,
-    "valuation_gap": 0.197,
-    "signal": "overvalued",
+    "valuation_gap": 0.0236,
+    "signal": "fair",
     "gap_series_weekly": [
       {
         "date": "2025-10-02",
@@ -10082,33 +10074,50 @@
         "price": 122200.0,
         "fair_value": 62020.0,
         "gap": 0.9703
+      },
+      {
+        "date": "2026-05-29",
+        "price": 123300.0,
+        "fair_value": 62020.0,
+        "gap": 0.9881
+      },
+      {
+        "date": "2026-06-05",
+        "price": 112200.0,
+        "fair_value": 62020.0,
+        "gap": 0.8091
+      },
+      {
+        "date": "2026-06-11",
+        "price": 104500.0,
+        "fair_value": 62020.0,
+        "gap": 0.6849
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-27",
-      "narrative_score": 0.25,
-      "summary_kr": "세계 최초 LNG 운반선 200번째 인도 달성으로 기술력 세계 1위 공식화. 2026 YTD 18척·$32억 수주 — LNG+암모니아 이원화 포트폴리오로 에너지 전환 수혜 최선두.",
+      "as_of": "2026-06-03",
+      "narrative_score": 0.13,
+      "summary_kr": "미국(Leidos)·캐나다(Ontario) 방산 조선 협력으로 글로벌 해군 시장 영역 확장. 민간 LNG 수주 뉴스는 없으나 방산 파이프라인 강화.",
       "key_events": [
-        "세계 최초 LNG 200번째 인도 이정표",
-        "VLAC 암모니아선 3척 수주",
-        "2026 YTD 18척·$3.2B 수주"
+        "Leidos와 미 해군 차세대 함정 설계 협력",
+        "캐나다 온타리오 해군 조선 MOU"
       ],
       "risks": [
-        "원화 강세 환율 리스크",
-        "암모니아선 기술 표준화 지연",
-        "방산 사업 원가 초과 리스크"
+        "방산 프로젝트 수익화 장기 사이클",
+        "민간 LNG 수주 가시적 성과 필요",
+        "환율 원화 강세 수익 압박"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "329180.KS",
-          "headline": "HD Hyundai Heavy: $1.2B LNG containership order; 98 vessels YTD; 30%+ market share",
-          "implication_for_target": "HD현대중공업과 LNG 수주 경쟁 — 한화오션 200번째 인도 이정표로 기술력 브랜드 강화"
+          "headline": "HD Hyundai Heavy wins 8 VLGCs worth 1.4T won; 60.8% annual target in 5 months",
+          "implication_for_target": "HD현대重 민간 수주 강세 — 한화오션 방산 중심 전략과 병행한 차별화 포트폴리오"
         },
         {
           "ticker": "010140.KS",
-          "headline": "Samsung Heavy: 6 vessels/2.36T won in May; surpassed 2025 full-year LNG count already",
-          "implication_for_target": "삼성중공업 LNG 수주 급증 — 한화오션 암모니아·LNG 이원화 포트폴리오로 차별화"
+          "headline": "Samsung Heavy signs FDC MOU at Posidonia with Capital and Lloyd's Register",
+          "implication_for_target": "삼성重 FDC 신사업 — 한화오션 방산 vs 삼성重 FDC 신사업 경쟁구도 형성"
         }
       ],
       "history": [
@@ -10119,6 +10128,10 @@
         {
           "date": "2026-05-27",
           "narrative_score": 0.25
+        },
+        {
+          "date": "2026-06-03",
+          "narrative_score": 0.13
         }
       ]
     }

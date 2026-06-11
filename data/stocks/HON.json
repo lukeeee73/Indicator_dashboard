@@ -4,62 +4,6 @@
   "group": "산업재 / 방산",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 82.38
-    },
-    {
-      "date": "2016-05-24",
-      "value": 83.52
-    },
-    {
-      "date": "2016-05-25",
-      "value": 83.78
-    },
-    {
-      "date": "2016-05-26",
-      "value": 83.39
-    },
-    {
-      "date": "2016-05-27",
-      "value": 83.49
-    },
-    {
-      "date": "2016-05-31",
-      "value": 83.13
-    },
-    {
-      "date": "2016-06-01",
-      "value": 83.21
-    },
-    {
-      "date": "2016-06-02",
-      "value": 83.64
-    },
-    {
-      "date": "2016-06-03",
-      "value": 83.83
-    },
-    {
-      "date": "2016-06-06",
-      "value": 84.38
-    },
-    {
-      "date": "2016-06-07",
-      "value": 84.24
-    },
-    {
-      "date": "2016-06-08",
-      "value": 84.76
-    },
-    {
-      "date": "2016-06-09",
-      "value": 85.6
-    },
-    {
-      "date": "2016-06-10",
-      "value": 85.21
-    },
-    {
       "date": "2016-06-13",
       "value": 84.08
     },
@@ -2821,7 +2765,7 @@
     },
     {
       "date": "2019-03-12",
-      "value": 124.48
+      "value": 124.49
     },
     {
       "date": "2019-03-13",
@@ -2893,7 +2837,7 @@
     },
     {
       "date": "2019-04-05",
-      "value": 131.14
+      "value": 131.13
     },
     {
       "date": "2019-04-08",
@@ -4193,7 +4137,7 @@
     },
     {
       "date": "2020-07-21",
-      "value": 129.01
+      "value": 129.02
     },
     {
       "date": "2020-07-22",
@@ -5581,7 +5525,7 @@
     },
     {
       "date": "2021-12-03",
-      "value": 174.34
+      "value": 174.33
     },
     {
       "date": "2021-12-06",
@@ -8113,7 +8057,7 @@
     },
     {
       "date": "2024-06-12",
-      "value": 188.36
+      "value": 188.35
     },
     {
       "date": "2024-06-13",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 227.92
+    },
+    {
+      "date": "2026-05-26",
+      "value": 231.72
+    },
+    {
+      "date": "2026-05-27",
+      "value": 231.55
+    },
+    {
+      "date": "2026-05-28",
+      "value": 233.0
+    },
+    {
+      "date": "2026-05-29",
+      "value": 237.86
+    },
+    {
+      "date": "2026-06-01",
+      "value": 236.54
+    },
+    {
+      "date": "2026-06-02",
+      "value": 235.23
+    },
+    {
+      "date": "2026-06-03",
+      "value": 223.26
+    },
+    {
+      "date": "2026-06-04",
+      "value": 217.64
+    },
+    {
+      "date": "2026-06-05",
+      "value": 213.97
+    },
+    {
+      "date": "2026-06-08",
+      "value": 211.8
+    },
+    {
+      "date": "2026-06-09",
+      "value": 215.7
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 144422223872.0,
-      "pe_ratio": 36.350876,
-      "forward_pe": 19.890354,
-      "eps_ttm": 6.27,
-      "dividend_yield": 2.09,
+      "market_cap": 130456510464.0,
+      "pe_ratio": 32.88818,
+      "forward_pe": 17.974287,
+      "eps_ttm": 6.26,
+      "dividend_yield": 2.31,
       "profit_margin": 0.1089,
       "operating_margin": 0.21,
-      "price_to_book": 10.627127,
+      "price_to_book": 9.599478,
       "return_on_equity": 0.24264
     },
     "quarterly": [
@@ -10129,28 +10117,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 227.92,
+    "as_of": "2026-06-09",
+    "current_price": 215.7,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 125.4,
+        "fair_value": 125.2,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 194.8,
+        "fair_value": 204.01,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 55.01,
+        "fair_value": 56.26,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 132.14,
-    "valuation_gap": 0.7248,
+    "fair_value": 135.06,
+    "valuation_gap": 0.5971,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,32 +10266,61 @@
         "price": 227.92,
         "fair_value": 141.2,
         "gap": 0.6142
+      },
+      {
+        "date": "2026-05-29",
+        "price": 237.86,
+        "fair_value": 141.2,
+        "gap": 0.6846
+      },
+      {
+        "date": "2026-06-05",
+        "price": 213.97,
+        "fair_value": 141.2,
+        "gap": 0.5154
+      },
+      {
+        "date": "2026-06-09",
+        "price": 215.7,
+        "fair_value": 141.2,
+        "gap": 0.5276
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.13,
-      "summary_kr": "하니웰 퀀티넘 상무부 보조금 + $2.49억 육군 헬기 계약 동시 수주. 양자컴퓨팅과 방산 유지보수 두 축에서 수주 모멘텀 강화.",
+      "as_of": "2026-06-07",
+      "narrative_score": -0.02,
+      "summary_kr": "하니웰 6/29 에어로스페이스 분사 이벤트 임박. 기준일 6/15, 1:2 역분할 동반. Q1 실적 미스는 단기 부정적이나 분사 후 가치 재평가 기대.",
       "key_events": [
-        "Quantinuum 상무부 양자컴퓨팅 보조금",
-        "$249M 육군 CH-47 헬기 계약"
+        "Honeywell Aerospace 분사 기준일 6/15",
+        "분사 완료 6/29 (HONA 상장)",
+        "1:2 역분할 동시 실행"
       ],
       "risks": [
-        "양자컴퓨팅 사업화 일정 지연",
-        "방산 예산 삭감"
+        "Q1 실적 미스 모멘텀 약화",
+        "분사 과정 세금·주주 반응 불확실성",
+        "자동화 사업 단독 성장성 증명 과제"
       ],
-      "news_count": 2,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "GE",
-          "headline": "GE Aerospace second largest industrials by market cap",
-          "implication_for_target": "GE Aerospace와 항공기 엔진·유지보수 시장 경쟁 — HON 퀀텀 차별화로 미래 포지셔닝"
+          "headline": "GE Aerospace Q1 2026 beats forecasts with orders +87%, revenue +25%",
+          "implication_for_target": "GE Aerospace 강세 대비 HON 에어로스페이스 분사 준비 중 — 분사 후 직접 비교 가능"
+        },
+        {
+          "ticker": "RTX",
+          "headline": "RTX Q1 EPS +21% highlighting defense and aerospace demand",
+          "implication_for_target": "항공우주·방산 수요 강세 — HONA 분사 후 수혜 가능한 섹터 환경"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": -0.02
         }
       ]
     }

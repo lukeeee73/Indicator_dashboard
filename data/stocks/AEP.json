@@ -4,62 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 44.32
-    },
-    {
-      "date": "2016-05-24",
-      "value": 44.8
-    },
-    {
-      "date": "2016-05-25",
-      "value": 44.66
-    },
-    {
-      "date": "2016-05-26",
-      "value": 45.29
-    },
-    {
-      "date": "2016-05-27",
-      "value": 45.28
-    },
-    {
-      "date": "2016-05-31",
-      "value": 45.58
-    },
-    {
-      "date": "2016-06-01",
-      "value": 45.69
-    },
-    {
-      "date": "2016-06-02",
-      "value": 45.54
-    },
-    {
-      "date": "2016-06-03",
-      "value": 46.34
-    },
-    {
-      "date": "2016-06-06",
-      "value": 46.26
-    },
-    {
-      "date": "2016-06-07",
-      "value": 46.36
-    },
-    {
-      "date": "2016-06-08",
-      "value": 46.61
-    },
-    {
-      "date": "2016-06-09",
-      "value": 47.15
-    },
-    {
-      "date": "2016-06-10",
-      "value": 47.07
-    },
-    {
       "date": "2016-06-13",
       "value": 46.86
     },
@@ -3209,7 +3153,7 @@
     },
     {
       "date": "2019-07-30",
-      "value": 69.4
+      "value": 69.41
     },
     {
       "date": "2019-07-31",
@@ -4677,7 +4621,7 @@
     },
     {
       "date": "2021-01-12",
-      "value": 63.84
+      "value": 63.85
     },
     {
       "date": "2021-01-13",
@@ -8413,7 +8357,7 @@
     },
     {
       "date": "2024-09-30",
-      "value": 96.72
+      "value": 96.71
     },
     {
       "date": "2024-10-01",
@@ -9185,7 +9129,7 @@
     },
     {
       "date": "2025-07-10",
-      "value": 102.78
+      "value": 102.79
     },
     {
       "date": "2025-07-11",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 131.59
+    },
+    {
+      "date": "2026-05-26",
+      "value": 130.9
+    },
+    {
+      "date": "2026-05-27",
+      "value": 129.57
+    },
+    {
+      "date": "2026-05-28",
+      "value": 127.76
+    },
+    {
+      "date": "2026-05-29",
+      "value": 126.67
+    },
+    {
+      "date": "2026-06-01",
+      "value": 123.79
+    },
+    {
+      "date": "2026-06-02",
+      "value": 127.11
+    },
+    {
+      "date": "2026-06-03",
+      "value": 126.31
+    },
+    {
+      "date": "2026-06-04",
+      "value": 127.79
+    },
+    {
+      "date": "2026-06-05",
+      "value": 129.14
+    },
+    {
+      "date": "2026-06-08",
+      "value": 126.77
+    },
+    {
+      "date": "2026-06-09",
+      "value": 127.76
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 71598776320.0,
-      "pe_ratio": 19.465975,
-      "forward_pe": 19.189152,
+      "market_cap": 69933817856.0,
+      "pe_ratio": 19.013313,
+      "forward_pe": 18.749763,
       "eps_ttm": 6.76,
-      "dividend_yield": 2.89,
+      "dividend_yield": 2.96,
       "profit_margin": 0.16289,
       "operating_margin": 0.23738001,
-      "price_to_book": 2.2504404,
+      "price_to_book": 2.1981084,
       "return_on_equity": 0.12585
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 131.59,
+    "as_of": "2026-06-09",
+    "current_price": 127.76,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10127,18 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 102.86,
+        "fair_value": 102.21,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
       "graham_number": {
-        "fair_value": 94.31,
+        "fair_value": 94.02,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 103.8,
-    "valuation_gap": 0.2677,
+    "fair_value": 103.55,
+    "valuation_gap": 0.2338,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10356,27 +10344,45 @@
         "price": 131.59,
         "fair_value": 115.2,
         "gap": 0.1423
+      },
+      {
+        "date": "2026-05-29",
+        "price": 126.67,
+        "fair_value": 115.2,
+        "gap": 0.0996
+      },
+      {
+        "date": "2026-06-05",
+        "price": 129.14,
+        "fair_value": 115.2,
+        "gap": 0.121
+      },
+      {
+        "date": "2026-06-09",
+        "price": 127.76,
+        "fair_value": 115.2,
+        "gap": 0.109
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-29",
-      "narrative_score": 0.15,
-      "summary_kr": "Q1 EPS 상회 + 연간 가이던스 상향. 오하이오 3GW 데이터센터 계약으로 AI 전력 수요 직접 수혜. 유틸리티 M&A 파도 속 프리미엄 부각 가능.",
+      "as_of": "2026-06-05",
+      "narrative_score": 0.08,
+      "summary_kr": "Q1 실적 YoY 성장 + 4년간 $417억 자본투자 계획으로 AI 데이터센터 전력 수요 수혜 구체화. 미국 최대 765kV 초고압 송전망 운영이 핵심 경쟁 우위.",
       "key_events": [
-        "Q1 EPS $1.54 (컨센서스 상회)",
-        "2026 가이던스 $5.75-$5.95로 상향",
-        "오하이오 3GW 데이터센터 전력 계약"
+        "Q1 EPS $1.61 (+7.3% YoY)",
+        "$417억 4년 자본투자 계획 (7.9% 요금기반 성장)",
+        "배당 $0.95 6/10 지급"
       ],
       "risks": [
-        "규제 승인 지연 리스크",
-        "금리 상승 시 자본비용 증가"
+        "$417억 대규모 투자에 따른 부채 증가",
+        "금리 환경 유틸리티 밸류에이션 압박"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "NEE",
-          "headline": "NextEra-Dominion merger — utility M&A wave begins",
-          "implication_for_target": "유틸리티 M&A 파도 — AEP도 잠재적 통합 대상으로 프리미엄 부각 가능"
+          "headline": "NextEra-Dominion merger creates 130 GW large-load pipeline for AI data centers",
+          "implication_for_target": "NEE-D 합병 이후 AEP의 미국 최대 송전망 경쟁력이 차별화 포인트로 부각"
         }
       ],
       "history": [
@@ -10387,6 +10393,10 @@
         {
           "date": "2026-05-29",
           "narrative_score": 0.15
+        },
+        {
+          "date": "2026-06-05",
+          "narrative_score": 0.08
         }
       ]
     }

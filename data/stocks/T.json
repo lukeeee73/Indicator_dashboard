@@ -4,62 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 14.39
-    },
-    {
-      "date": "2016-05-24",
-      "value": 14.45
-    },
-    {
-      "date": "2016-05-25",
-      "value": 14.5
-    },
-    {
-      "date": "2016-05-26",
-      "value": 14.58
-    },
-    {
-      "date": "2016-05-27",
-      "value": 14.64
-    },
-    {
-      "date": "2016-05-31",
-      "value": 14.7
-    },
-    {
-      "date": "2016-06-01",
-      "value": 14.54
-    },
-    {
-      "date": "2016-06-02",
-      "value": 14.58
-    },
-    {
-      "date": "2016-06-03",
-      "value": 14.72
-    },
-    {
-      "date": "2016-06-06",
-      "value": 14.77
-    },
-    {
-      "date": "2016-06-07",
-      "value": 14.94
-    },
-    {
-      "date": "2016-06-08",
-      "value": 14.96
-    },
-    {
-      "date": "2016-06-09",
-      "value": 15.05
-    },
-    {
-      "date": "2016-06-10",
-      "value": 15.14
-    },
-    {
       "date": "2016-06-13",
       "value": 15.09
     },
@@ -1525,7 +1469,7 @@
     },
     {
       "date": "2017-11-22",
-      "value": 14.4
+      "value": 14.41
     },
     {
       "date": "2017-11-24",
@@ -7329,7 +7273,7 @@
     },
     {
       "date": "2023-08-31",
-      "value": 12.79
+      "value": 12.8
     },
     {
       "date": "2023-09-01",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 25.26
+    },
+    {
+      "date": "2026-05-26",
+      "value": 25.02
+    },
+    {
+      "date": "2026-05-27",
+      "value": 24.89
+    },
+    {
+      "date": "2026-05-28",
+      "value": 24.88
+    },
+    {
+      "date": "2026-05-29",
+      "value": 24.8
+    },
+    {
+      "date": "2026-06-01",
+      "value": 24.55
+    },
+    {
+      "date": "2026-06-02",
+      "value": 24.64
+    },
+    {
+      "date": "2026-06-03",
+      "value": 23.55
+    },
+    {
+      "date": "2026-06-04",
+      "value": 22.77
+    },
+    {
+      "date": "2026-06-05",
+      "value": 22.75
+    },
+    {
+      "date": "2026-06-08",
+      "value": 22.5
+    },
+    {
+      "date": "2026-06-09",
+      "value": 22.71
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 175515041792.0,
-      "pe_ratio": 8.309211,
-      "forward_pe": 9.893545,
+      "market_cap": 161270939648.0,
+      "pe_ratio": 7.634868,
+      "forward_pe": 9.093722,
       "eps_ttm": 3.04,
-      "dividend_yield": 4.39,
+      "dividend_yield": 4.78,
       "profit_margin": 0.16938,
       "operating_margin": 0.22723,
-      "price_to_book": 1.6083026,
+      "price_to_book": 1.4741187,
       "return_on_equity": 0.18370001
     },
     "quarterly": [
@@ -10115,8 +10103,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 25.26,
+    "as_of": "2026-06-09",
+    "current_price": 22.71,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10125,18 +10113,18 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 43.4,
+        "fair_value": 42.45,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 32.78,
+        "fair_value": 32.46,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 49.98,
-    "valuation_gap": -0.4946,
+    "fair_value": 49.63,
+    "valuation_gap": -0.5424,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10342,37 +10330,60 @@
         "price": 25.26,
         "fair_value": 61.0,
         "gap": -0.5859
+      },
+      {
+        "date": "2026-05-29",
+        "price": 24.8,
+        "fair_value": 61.0,
+        "gap": -0.5934
+      },
+      {
+        "date": "2026-06-05",
+        "price": 22.75,
+        "fair_value": 61.0,
+        "gap": -0.627
+      },
+      {
+        "date": "2026-06-09",
+        "price": 22.71,
+        "fair_value": 61.0,
+        "gap": -0.6277
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-24",
-      "narrative_score": 0.05,
-      "summary_kr": "AT&T 3사 위성 JV로 음영지역 서비스 협력, 커버리지 경쟁력 강화. 스타링크 1천만 가입자 돌파로 위성 경쟁도 심화 — JV 시너지 속도가 관건.",
+      "as_of": "2026-06-07",
+      "narrative_score": -0.09,
+      "summary_kr": "대법원 FCC 판결로 AT&T 주가 -4%. 광케이블 확장은 장기 긍정 요인이나 단기 규제 리스크 우세. T-Mobile 대비 성장 모멘텀 열위.",
       "key_events": [
-        "3사 위성 JV (5/16)",
-        "스타링크 1천만 가입자 돌파 경쟁 심화"
+        "대법원 FCC 과징금 판결 → 주가 -4%",
+        "광케이블 전국 확장 진행"
       ],
       "risks": [
-        "Starlink Mobile 빠른 가입자 성장",
-        "JV 실행 일정 지연"
+        "FCC 규제 강화",
+        "T-Mobile 무선 점유율 잠식",
+        "광케이블 투자 ROI 지연"
       ],
       "news_count": 2,
       "competitor_context": [
         {
-          "ticker": "TMUS",
-          "headline": "T-Mobile MVNO deal with Comcast/Charter, satellite JV partner",
-          "implication_for_target": "TMUS 브로드밴드 MVNO 확장 + JV 협력 — T와 경쟁 협력 복합 관계"
+          "ticker": "VZ",
+          "headline": "Verizon also fell 4% on FCC ruling; CEO pivoting to AI customer service",
+          "implication_for_target": "VZ와 동반 하락 — 두 회사 모두 FCC 규제 및 T-Mobile 경쟁에 공동 노출"
         },
         {
-          "ticker": "VZ",
-          "headline": "Verizon 5G home broadband gaining cable subscribers",
-          "implication_for_target": "VZ·T 모두 케이블 이탈 수혜 — 5G 홈인터넷 확장 공동 주목"
+          "ticker": "TMUS",
+          "headline": "T-Mobile Q1 2026 solid; analysts project 30%+ upside",
+          "implication_for_target": "T-Mobile의 상대적 강세와 광대역 확장이 T의 무선·인터넷 양방향 압박"
         }
       ],
       "history": [
         {
           "date": "2026-05-24",
           "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-07",
+          "narrative_score": -0.09
         }
       ]
     }

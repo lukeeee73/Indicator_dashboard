@@ -4,62 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 37.58
-    },
-    {
-      "date": "2016-05-24",
-      "value": 38.13
-    },
-    {
-      "date": "2016-05-25",
-      "value": 38.22
-    },
-    {
-      "date": "2016-05-26",
-      "value": 38.29
-    },
-    {
-      "date": "2016-05-27",
-      "value": 38.5
-    },
-    {
-      "date": "2016-05-31",
-      "value": 39.15
-    },
-    {
-      "date": "2016-06-01",
-      "value": 39.02
-    },
-    {
-      "date": "2016-06-02",
-      "value": 39.0
-    },
-    {
-      "date": "2016-06-03",
-      "value": 40.0
-    },
-    {
-      "date": "2016-06-06",
-      "value": 39.84
-    },
-    {
-      "date": "2016-06-07",
-      "value": 39.72
-    },
-    {
-      "date": "2016-06-08",
-      "value": 40.03
-    },
-    {
-      "date": "2016-06-09",
-      "value": 40.2
-    },
-    {
-      "date": "2016-06-10",
-      "value": 39.93
-    },
-    {
       "date": "2016-06-13",
       "value": 39.98
     },
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 92.8
+    },
+    {
+      "date": "2026-05-26",
+      "value": 91.55
+    },
+    {
+      "date": "2026-05-27",
+      "value": 91.26
+    },
+    {
+      "date": "2026-05-28",
+      "value": 90.03
+    },
+    {
+      "date": "2026-05-29",
+      "value": 89.13
+    },
+    {
+      "date": "2026-06-01",
+      "value": 87.13
+    },
+    {
+      "date": "2026-06-02",
+      "value": 89.55
+    },
+    {
+      "date": "2026-06-03",
+      "value": 89.53
+    },
+    {
+      "date": "2026-06-04",
+      "value": 90.34
+    },
+    {
+      "date": "2026-06-05",
+      "value": 91.42
+    },
+    {
+      "date": "2026-06-08",
+      "value": 89.0
+    },
+    {
+      "date": "2026-06-09",
+      "value": 90.87
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 60662439936.0,
-      "pe_ratio": 31.564627,
-      "forward_pe": 16.759857,
+      "market_cap": 59506982912.0,
+      "pe_ratio": 30.962584,
+      "forward_pe": 16.440191,
       "eps_ttm": 2.94,
-      "dividend_yield": 2.83,
+      "dividend_yield": 2.89,
       "profit_margin": 0.1443,
       "operating_margin": 0.30616,
-      "price_to_book": 1.9172366,
+      "price_to_book": 1.8806685,
       "return_on_equity": 0.05689
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 92.8,
+    "as_of": "2026-06-09",
+    "current_price": 90.87,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10120,18 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 83.06,
+        "fair_value": 82.91,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
       "graham_number": {
-        "fair_value": 56.58,
+        "fair_value": 56.54,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 59.75,
-    "valuation_gap": 0.553,
+    "fair_value": 59.7,
+    "valuation_gap": 0.5221,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,26 +10259,44 @@
         "price": 92.8,
         "fair_value": 47.2,
         "gap": 0.9661
+      },
+      {
+        "date": "2026-05-29",
+        "price": 89.13,
+        "fair_value": 47.2,
+        "gap": 0.8883
+      },
+      {
+        "date": "2026-06-05",
+        "price": 91.42,
+        "fair_value": 47.2,
+        "gap": 0.9369
+      },
+      {
+        "date": "2026-06-09",
+        "price": 90.87,
+        "fair_value": 47.2,
+        "gap": 0.9252
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-29",
-      "narrative_score": 0.0,
-      "summary_kr": "Q1 EPS 컨센서스 하회로 단기 실망. LNG 수출 용량 확대 승인은 장기 긍정. 캘리포니아 규제 비용 증가가 지속 리스크.",
+      "as_of": "2026-06-05",
+      "narrative_score": 0.03,
+      "summary_kr": "Voss Capital의 Oncor 분리 요구가 구조적 가치 부각의 촉매. 분기 배당 유지로 인컴 지지. 캘리포니아 규제 리스크는 상시 체크 항목.",
       "key_events": [
-        "Q1 EPS $1.23 (컨센서스 하회)",
-        "LNG 수출 용량 확대 승인"
+        "Voss Capital Oncor 분리 공식 촉구",
+        "분기 배당 $0.658 배당락일 6/25"
       ],
       "risks": [
-        "캘리포니아 규제 비용 증가",
-        "LNG 프로젝트 건설 지연 가능성"
+        "Oncor 분리 실현 불확실성",
+        "캘리포니아 유틸리티 규제 환경 강화"
       ],
       "news_count": 2,
       "competitor_context": [
         {
           "ticker": "NEE",
-          "headline": "NextEra-Dominion merger reshapes utility sector",
-          "implication_for_target": "유틸리티 섹터 재편 — SRE LNG 인프라 자산 가치 재조명 가능"
+          "headline": "NextEra-Dominion merger accelerates utility sector M&A pressure on all players",
+          "implication_for_target": "유틸리티 섹터 M&A 가속화 — Oncor 분리 압박이 실제로 행동으로 이어질 경우 주가 재평가"
         }
       ],
       "history": [
@@ -10301,6 +10307,10 @@
         {
           "date": "2026-05-29",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-06-05",
+          "narrative_score": 0.03
         }
       ]
     }

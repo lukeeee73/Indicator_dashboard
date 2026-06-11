@@ -4,62 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-05-23",
-      "value": 39.27
-    },
-    {
-      "date": "2016-05-24",
-      "value": 40.2
-    },
-    {
-      "date": "2016-05-25",
-      "value": 40.54
-    },
-    {
-      "date": "2016-05-26",
-      "value": 40.99
-    },
-    {
-      "date": "2016-05-27",
-      "value": 41.53
-    },
-    {
-      "date": "2016-05-31",
-      "value": 41.68
-    },
-    {
-      "date": "2016-06-01",
-      "value": 41.61
-    },
-    {
-      "date": "2016-06-02",
-      "value": 43.11
-    },
-    {
-      "date": "2016-06-03",
-      "value": 43.05
-    },
-    {
-      "date": "2016-06-06",
-      "value": 41.6
-    },
-    {
-      "date": "2016-06-07",
-      "value": 41.79
-    },
-    {
-      "date": "2016-06-08",
-      "value": 40.88
-    },
-    {
-      "date": "2016-06-09",
-      "value": 40.23
-    },
-    {
-      "date": "2016-06-10",
-      "value": 40.4
-    },
-    {
       "date": "2016-06-13",
       "value": 39.69
     },
@@ -4341,7 +4285,7 @@
     },
     {
       "date": "2020-09-11",
-      "value": 71.64
+      "value": 71.65
     },
     {
       "date": "2020-09-14",
@@ -5941,7 +5885,7 @@
     },
     {
       "date": "2022-04-13",
-      "value": 137.42
+      "value": 137.41
     },
     {
       "date": "2022-04-14",
@@ -9405,7 +9349,7 @@
     },
     {
       "date": "2025-09-26",
-      "value": 215.49
+      "value": 215.5
     },
     {
       "date": "2025-09-29",
@@ -10062,18 +10006,62 @@
     {
       "date": "2026-05-22",
       "value": 215.7
+    },
+    {
+      "date": "2026-05-26",
+      "value": 213.12
+    },
+    {
+      "date": "2026-05-27",
+      "value": 215.4
+    },
+    {
+      "date": "2026-05-28",
+      "value": 218.63
+    },
+    {
+      "date": "2026-05-29",
+      "value": 217.72
+    },
+    {
+      "date": "2026-06-01",
+      "value": 212.93
+    },
+    {
+      "date": "2026-06-02",
+      "value": 215.4
+    },
+    {
+      "date": "2026-06-03",
+      "value": 217.13
+    },
+    {
+      "date": "2026-06-04",
+      "value": 224.94
+    },
+    {
+      "date": "2026-06-05",
+      "value": 227.23
+    },
+    {
+      "date": "2026-06-08",
+      "value": 223.07
+    },
+    {
+      "date": "2026-06-09",
+      "value": 225.42
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 381097213952.0,
-      "pe_ratio": 105.21951,
-      "forward_pe": 13.290391,
+      "market_cap": 397440057344.0,
+      "pe_ratio": 109.731705,
+      "forward_pe": 13.838325,
       "eps_ttm": 2.05,
-      "dividend_yield": 3.21,
+      "dividend_yield": 3.08,
       "profit_margin": 0.05786,
       "operating_margin": 0.32156,
-      "price_to_book": -57.260418,
+      "price_to_book": -59.715954,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10122,8 +10110,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-05-22",
-    "current_price": 215.7,
+    "as_of": "2026-06-09",
+    "current_price": 225.42,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10132,13 +10120,13 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 259.68,
+        "fair_value": 260.63,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       }
     },
-    "fair_value": 120.44,
-    "valuation_gap": 0.7909,
+    "fair_value": 120.8,
+    "valuation_gap": 0.8661,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10266,39 +10254,59 @@
         "price": 215.7,
         "fair_value": 36.54,
         "gap": 4.9031
+      },
+      {
+        "date": "2026-05-29",
+        "price": 217.72,
+        "fair_value": 36.54,
+        "gap": 4.9584
+      },
+      {
+        "date": "2026-06-05",
+        "price": 227.23,
+        "fair_value": 36.54,
+        "gap": 5.2187
+      },
+      {
+        "date": "2026-06-09",
+        "price": 225.42,
+        "fair_value": 36.54,
+        "gap": 5.1691
       }
     ],
     "qualitative": {
-      "as_of": "2026-05-28",
-      "narrative_score": 0.3,
-      "summary_kr": "FDA DECNUPAZ 승인, Q1 12% 매출 성장, 연간 가이던스 $67.3B 상향까지 세 가지 호재가 겹쳤다. 스카이리지·린보크가 HUMIRA 바이오시밀러 잠식을 완전히 상쇄하며 성장 스토리가 신뢰성을 얻고 있다.",
+      "as_of": "2026-06-04",
+      "narrative_score": 0.15,
+      "summary_kr": "유럽 아퀴프타 편두통 승인으로 규제 모멘텀이 확인됐고, 스카이리지·린보크 중심 면역학 포트폴리오가 휴미라 특허 만료를 성공적으로 상쇄 중이다. 골드만삭스 컨퍼런스(6/9)가 다음 모멘텀.",
       "key_events": [
-        "DECNUPAZ FDA 승인",
-        "FY 가이던스 $67.3B 상향",
-        "스카이리지·린보크 성장 지속"
+        "아퀴프타 EU 편두통 치료제 승인",
+        "골드만삭스 헬스케어 컨퍼런스 6/9 참가"
       ],
       "risks": [
-        "HUMIRA 바이오시밀러 경쟁 장기화",
-        "SKYRIZI/RINVOQ 특허 리스크",
-        "M&A로 인한 밸류에이션 부담"
+        "휴미라 바이오시밀러 경쟁 지속",
+        "JNJ·MRK 자가면역·면역항암 경쟁 심화"
       ],
-      "news_count": 4,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "JNJ",
-          "headline": "J&J new psoriasis pill could be biggest drug — immunology competition",
-          "implication_for_target": "JNJ 건선 신약 출시 시 ABBV 스카이리지 건선 시장 점유율 경쟁 심화"
+          "headline": "J&J nipocalimab Phase 2 success in SLE and Sjögren's — autoimmune pipeline expanding",
+          "implication_for_target": "JNJ 자가면역 파이프라인 강화 — ABBV 린보크·스카이리지와 면역질환 시장 경쟁 심화"
         },
         {
           "ticker": "MRK",
-          "headline": "Merck Keytruda EU CHMP approval + endometrial cancer Phase 3 success",
-          "implication_for_target": "MRK 항암 포트폴리오 강화 — ABBV 희귀암 자산과 경쟁 영역 일부 중복"
+          "headline": "Merck acquires Terns Pharmaceuticals for $6.7B",
+          "implication_for_target": "경쟁사 대형 M&A — ABBV 6/9 컨퍼런스서 전략적 방향성 명확히 할 필요"
         }
       ],
       "history": [
         {
           "date": "2026-05-28",
           "narrative_score": 0.3
+        },
+        {
+          "date": "2026-06-04",
+          "narrative_score": 0.15
         }
       ]
     }
