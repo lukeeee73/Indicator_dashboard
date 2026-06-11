@@ -17,20 +17,23 @@
                                         │
                                         │  ← 웹이 시장 노드별로 "자동 집계"
                                         ▼
-[시장 리서치 루틴]  ───────────►  data/markets/{industry}.json
-   (이 디렉토리)                    · 시장 규모/성장/병목 상태 갱신
-                                    · 시장 단위 헤드라인(recent_news) 추가
+[시장 리서치 루틴]  ───────►  data/markets/{industry}.json          (시장 구조)
+   (이 디렉토리)              data/markets/news/{industry}.json     (시장 뉴스 스토어)
+                                    · 시장 규모/성장/병목 상태 갱신 (구조 파일)
+                                    · 시장 단위 헤드라인 누적 (뉴스 스토어, 시장당 ≤20)
                                         │
                                         ▼
               웹 대시보드  주식 탭 → '시장 지도' (app.js renderMarketCascade)
+              뉴스는 ① 노드 배지 ② 클릭 상세 ③ 하단 통합 피드 세 곳에 표시
 ```
 
 - **티커 뉴스**는 daily 루틴이 채우고, 시장 노드는 소속 watchlist 기업의
   `narrative_score` 를 **자동 평균**해 "시장 뉴스 시그널"로 보여준다.
   → 시장 리서치 루틴이 이걸 다시 쓸 필요는 없다.
 - **시장 단위 뉴스**(특정 티커에 안 붙는 업황 — "HBM 매진", "전력망 병목",
-  "CoWoS 증설" 등)는 이 루틴이 `data/markets/{industry}.json` 의 각 시장
-  `recent_news[]` 에 직접 채운다.
+  "CoWoS 증설" 등)는 이 루틴이 **`data/markets/news/{industry}.json`** 의
+  `markets.<시장id>[]` 에 누적한다(최신순, 시장당 최대 20개 보관).
+  맵 JSON 안의 구 `recent_news` 필드는 폐지됐다.
 - **시장 구조·규모·병목 상태**(노드/링크/severity)도 이 루틴이 갱신한다.
   이게 시각화의 핵심 — 뉴스가 "적소에" 꽂히는 곳이다.
 
@@ -64,10 +67,6 @@
         { "name": "SK Hynix", "ticker": "000660.KS", "role": "~62%", "share": 62 },
         { "name": "Micron",   "ticker": "MU", "role": "~21%", "share": 21, "in_watchlist": true }
       ],
-      "recent_news": [   // ← 시장 단위 헤드라인 (이 루틴이 채움, 최대 5개)
-        { "date": "2026-01", "title": "...", "source": "...", "url": "https://...",
-          "impact": "+|-|neutral", "summary": "한 줄 한국어 요약" }
-      ],
       "sources": [ "https://...", "https://..." ]
   } ],
   "links": [ { "from": "ai-gpu", "to": "hbm", "label": "HBM 동봉 (필수)" } ]
@@ -89,6 +88,34 @@
   웹은 **`structural`(독점)·`acute`·`easing`·`emerging`(병목)만 색으로 강조**하고
   `demand_limited`·비병목은 중립 톤으로 둔다.
 - `links` 의 `from`/`to` 는 반드시 존재하는 market `id`.
+- `diagram` 블록이 웹 다이어그램의 배치를 정한다: `flow[]` = 좌(장비·소재)→우(수요)
+  메인 체인 클러스터(제목·색·소속 시장 id), `bands[]` = 하단 가로 밴드. 새 시장은
+  여기에도 배치한다(누락 시 `layer_default` 로 자동 배치). 화살표는 공급→수요
+  방향(`links` 의 to→from)으로 그려진다.
+
+---
+
+## 데이터 모델 — `data/markets/news/{industry}.json` (시장 뉴스 스토어)
+
+시장 단위 뉴스의 SSOT. 맵(구조)과 분리되어 있어 뉴스만 자주 갱신해도 diff 가 깨끗하다.
+
+```jsonc
+{
+  "industry": "ai-semiconductor",
+  "updated": "2026-06-10",            // 마지막 갱신일 — 손댈 때마다 갱신
+  "markets": {
+    "hbm": [                           // key = 맵의 market id (반드시 존재해야 함)
+      { "date": "2026-01-15",          // YYYY-MM-DD (일자 불명이면 YYYY-MM)
+        "title": "한국어 헤드라인", "source": "SemiEngineering",
+        "url": "https://...", "impact": "+|-|neutral",
+        "summary": "한 줄 한국어 요약 (~50자)" }
+    ]                                  // 배열은 최신순 · 시장당 최대 20개 보관
+  }
+}
+```
+
+웹은 이 파일로 노드 뉴스 배지(건수·최신일·14일 내 신규 강조), 클릭 상세(최신 6개
++ 더보기), 보드 하단 통합 뉴스 피드(시장 칩 클릭 → 지도에서 해당 노드 선택)를 그린다.
 
 ---
 
@@ -96,6 +123,6 @@
 
 | 파일 | 산업 | 시장 수 |
 |---|---|---|
-| `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` | AI · 반도체 | 23 |
+| `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` (+ `data/markets/news/ai-semiconductor.json`) | AI · 반도체 · 피지컬 AI | 30 |
 
 새 산업 추가 절차는 각 산업 md 의 "새 산업 맵 만들기" 절을 따른다.
