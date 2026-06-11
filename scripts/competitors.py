@@ -36,6 +36,10 @@ COMPETITORS: dict[str, list[str]] = {
     "LRCX":  ["AMAT", "ASML", "KLAC"],
     "AVGO":  ["NVDA", "AMD", "QCOM", "TSM"],
     "MU":    ["INTC", "AVGO", "QCOM"],
+    # ── 로보틱스 / 피지컬 AI ─────────────────────────────────────
+    "TER":   ["6857.T", "AMAT", "LRCX"],
+    "HSAI":  ["2498.HK", "OUST", "MBLY"],
+    "MP":    ["LYC.AX", "FCX", "NEM"],
     # ── 자동차 / 모빌리티 ─────────────────────────────────────
     "TSLA":       ["BYDDY", "GM", "F", "RIVN", "NIO"],
     "TM":         ["GM", "F", "HMC", "STLA"],
@@ -92,16 +96,20 @@ COMPETITORS: dict[str, list[str]] = {
     "NKE":   ["LULU", "ADDYY", "UAA"],
     "SBUX":  ["MCD", "DPZ", "YUM"],
     # ── 산업재 / 방산 ─────────────────────────────────────
-    "CAT":  ["DE", "CNH", "KMTUY"],
-    "DE":   ["CAT", "CNH", "AGCO"],
-    "BA":   ["EADSY", "LMT", "RTX", "NOC"],
-    "LMT":  ["RTX", "NOC", "GD", "BA"],
-    "RTX":  ["LMT", "NOC", "GD", "BA"],
-    "NOC":  ["LMT", "RTX", "GD", "BA"],
-    "HON":  ["GE", "RTX", "MMM"],
-    "GE":   ["RTX", "HON", "BA"],
-    "UPS":  ["FDX", "AMZN"],
-    "FDX":  ["UPS", "AMZN"],
+    "CAT":        ["DE", "CNH", "KMTUY"],
+    "DE":         ["CAT", "CNH", "AGCO"],
+    "BA":         ["EADSY", "LMT", "RTX", "NOC"],
+    "LMT":        ["RTX", "NOC", "GD", "BA"],
+    "RTX":        ["LMT", "NOC", "GD", "BA"],
+    "NOC":        ["LMT", "RTX", "GD", "BA"],
+    "HON":        ["GE", "RTX", "MMM"],
+    "GE":         ["RTX", "HON", "BA"],
+    "UPS":        ["FDX", "AMZN"],
+    "FDX":        ["UPS", "AMZN"],
+    "AVAV":       ["KTOS", "LMT", "NOC"],
+    "KTOS":       ["AVAV", "NOC", "GE"],
+    "012450.KS":  ["079550.KS", "042660.KS", "LMT"],
+    "079550.KS":  ["012450.KS", "LMT", "RTX"],
     # ── 부동산 (REITs) ─────────────────────────────────────
     "AMT":   ["CCI", "SBAC", "EQIX", "DLR"],
     "CCI":   ["AMT", "SBAC", "DLR"],
@@ -141,8 +149,6 @@ COMPETITORS: dict[str, list[str]] = {
     "010140.KS":  ["329180.KS", "042660.KS", "010620.KS"],
     "010620.KS":  ["329180.KS", "042660.KS", "010140.KS"],
 }
-
-
 def get_competitors(ticker: str) -> list[str]:
     return COMPETITORS.get(ticker, [])
 

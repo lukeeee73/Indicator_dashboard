@@ -272,6 +272,61 @@
       "weekly_note": "ADAS 침투·EV 칩탑재액 증가는 구조적이나 L4는 규제·검증에 막힘. 중국 SoC(Horizon·화웨이) 부상."
     },
     {
+      "id": "industrial-robotics",
+      "layer": "demand",
+      "name_kr": "산업용 · 협동 로봇",
+      "name_en": "Industrial & Collaborative Robotics",
+      "definition": "공장 자동화용 검증된 로봇 시장 — 투기적 휴머노이드와 달리 이미 매출·이익을 내는 실수요.",
+      "size_usd_b": 18,
+      "size_label": "$16–20B (본체, IFR) · ’24 설치 54.2만대 (10년새 2배)",
+      "growth": "설치대수 +6%(’25) → ’28 70만대 · 금액은 가격하락으로 저성장",
+      "size_confidence": "med",
+      "demand_driver": "인건비 상승·리쇼어링·EV/전자 자동화. 중국이 글로벌 설치의 54%로 수요 견인, AI 통합(NVIDIA Isaac·코그니티브 코봇)이 차기 성장 변수.",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "공급은 과잉 — 중국 로컬(Estun·Inovance)이 자국 점유율 57%로 첫 외자 추월, 가격경쟁 심화. 자동차 설비투자 약세가 수요측 제약(야스카와 로봇 영업익 -14%), 2026년 바닥 통과 후 회복 기대."
+      },
+      "players": [
+        {
+          "name": "FANUC",
+          "ticker": "6954.T",
+          "role": "글로벌 선두권 (4강 합산 55%+)"
+        },
+        {
+          "name": "ABB Robotics",
+          "ticker": "ABBNY",
+          "role": "4대 메이저 — 소프트뱅크에 $5.4B 매각 (’26 종결)"
+        },
+        {
+          "name": "Yaskawa",
+          "ticker": "6506.T",
+          "role": "모션컨트롤·로봇 (NVIDIA 협력)"
+        },
+        {
+          "name": "KUKA",
+          "ticker": null,
+          "role": "4대 메이저 (Midea 자회사)"
+        },
+        {
+          "name": "Universal Robots · MiR",
+          "ticker": "TER",
+          "role": "협동로봇 1위 + AMR (Teradyne) — Q1’26 +32%",
+          "in_watchlist": true
+        },
+        {
+          "name": "Estun · Inovance",
+          "ticker": "002747.SZ",
+          "role": "중국 로컬 — 자국 점유율 57%로 상승"
+        }
+      ],
+      "sources": [
+        "https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years",
+        "https://group.softbank/en/news/press/20251008",
+        "https://www.therobotreport.com/teradyne-robotics-revenue-rises-start-2026/"
+      ],
+      "weekly_note": "ABB 로봇사업 소프트뱅크 매각 등 피지컬 AI발 산업 재편. 中 로컬 추월·가격경쟁이 압박, AI 코봇이 반전 카드."
+    },
+    {
       "id": "robotics",
       "layer": "demand",
       "name_kr": "휴머노이드 로봇 · 피지컬 AI",
@@ -334,11 +389,69 @@
       "weekly_note": "’26 출하 5만대(+700%) 전망으로 상용화 원년 진입. 중국이 대수 기준 양산을 선도하나 구매자 만족 23% — 실수요 검증이 다음 관문."
     },
     {
+      "id": "military-drones",
+      "layer": "demand",
+      "name_kr": "군용 드론 · 자율 무기체계",
+      "name_en": "Military Drones & Autonomous Systems",
+      "definition": "군용 UAS·배회폭탄·CCA 무인전투기·요격드론 등 자율 무기 하드웨어와 그 양산 (C2 SW는 별도 노드).",
+      "size_usd_b": 21,
+      "size_label": "군용 드론 $14–21B(’26) + 대드론(C-UAS) $10–12.6B 별도",
+      "growth": "~10–14% CAGR · 美 FY27 드론 예산 $75B 요청으로 단기 가속",
+      "size_confidence": "med",
+      "demand_driver": "우크라이나전이 입증한 소모성 드론 전쟁 패러다임이 각국 조달을 구조 전환. 美 DAWG FY27 최대 $54.6B + 'Drone Dominance' FPV급 20만대 목표, 유럽 재무장·중동·아시아 동반 확대.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "수요 대비 서방 양산능력 절대 부족 — 우크라이나 연 400만+ 대 생산 vs 미국 목표 20만대. 모터·배터리·자석의 중국 의존 탈피와 저비용 대량생산 체계가 가장 타이트한 제약. Anduril Arsenal-1 등 신규 공장이 이제 막 가동."
+      },
+      "players": [
+        {
+          "name": "AeroVironment",
+          "ticker": "AVAV",
+          "role": "배회폭탄(Switchblade)·소형 UAS 1위 + BlueHalo 인수로 C-UAS·레이저",
+          "in_watchlist": true
+        },
+        {
+          "name": "Kratos",
+          "ticker": "KTOS",
+          "role": "저가 무인전투기 XQ-58 Valkyrie — 해병대 CCA 기체 선정",
+          "in_watchlist": true
+        },
+        {
+          "name": "Anduril",
+          "ticker": null,
+          "role": "Fury CCA·Roadrunner — Arsenal-1 대량생산 (비상장, $61B)"
+        },
+        {
+          "name": "General Atomics",
+          "ticker": null,
+          "role": "MQ-9·공군 CCA YFQ-42 (비상장)"
+        },
+        {
+          "name": "한화에어로스페이스",
+          "ticker": "012450.KS",
+          "role": "유무인복합·다목적 무인차량 — ’26 기대수주 23조원대",
+          "in_watchlist": true
+        },
+        {
+          "name": "LIG넥스원",
+          "ticker": "079550.KS",
+          "role": "중형무인기 공통플랫폼·유도무기·대드론 — ’26 기대수주 3.6조",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.gminsights.com/industry-analysis/military-drone-market",
+        "https://defensescoop.com/2026/04/21/dod-plans-largest-ever-investment-drones-anti-drone-weapons/",
+        "https://breakingdefense.com/2026/03/as-fury-production-starts-anduril-pledging-a-different-production-approach-at-arsenal-1/"
+      ],
+      "weekly_note": "美 FY27 드론·대드론 $75B 사상 최대 요청. 병목은 수요가 아니라 서방의 저비용 양산능력 — 신규 메가팩토리 가동이 관건."
+    },
+    {
       "id": "defense-ai",
       "layer": "demand",
-      "name_kr": "국방 AI · 자율무기체계",
-      "name_en": "Defense AI & Autonomy",
-      "definition": "AI 기반 지휘통제(C2)·표적인식·드론 군집 등 군사용 AI 소프트웨어와 자율 무인체계.",
+      "name_kr": "국방 AI · 지휘통제 (C2)",
+      "name_en": "Defense AI Software & C2",
+      "definition": "AI 기반 지휘통제(C2)·표적인식·군집 오케스트레이션 소프트웨어. 무인 하드웨어(드론)는 별도 노드.",
       "size_usd_b": 15,
       "size_label": "’26 ~$12–22B (Precedence $12.2B ~ Fortune BI $22.4B)",
       "growth": "CAGR 13–33% → ’30년대 중반 $35–100B",
@@ -358,28 +471,13 @@
         {
           "name": "Anduril",
           "ticker": null,
-          "role": "Lattice OS·자율 무기체계 (비상장, ’26.5 $61B 밸류)"
-        },
-        {
-          "name": "AeroVironment",
-          "ticker": "AVAV",
-          "role": "Switchblade 자폭드론 — 美육군 $990M IDIQ"
+          "role": "Lattice OS — 자율체계 통합 SW (비상장, $61B)"
         },
         {
           "name": "Lockheed · RTX · Northrop",
           "ticker": "LMT",
-          "role": "전통 프라임 — AI 통합 미사일·C2·CCA 무인기",
+          "role": "전통 프라임 — AI 통합 미사일·C2·CCA",
           "in_watchlist": true
-        },
-        {
-          "name": "한화에어로스페이스",
-          "ticker": "012450.KS",
-          "role": "K9 수출 + ’28까지 UGV 전 제품군, 유무인복합 확장"
-        },
-        {
-          "name": "LIG넥스원",
-          "ticker": "079550.KS",
-          "role": "천궁 유도무기 수출 + AI 반도체·무인체계 투자"
         }
       ],
       "sources": [
@@ -388,7 +486,7 @@
         "https://www.congress.gov/crs-product/IF12611",
         "https://www.sipri.org/media/press-release/2026/global-military-spending-rise-continues-european-and-asian-expenditures-surge"
       ],
-      "weekly_note": "세계 군비 $2.89조 사상 최대 + 펜타곤 DAWG $54.6B 요구로 정책 수요 급팽창. 병목은 칩이 아니라 저가 양산·군집 오케스트레이션 SW."
+      "weekly_note": "DAWG $54.6B 요구로 자율전 SW 수요 급팽창. 이기종 군집 오케스트레이션 SW 공백이 핵심 병목 — 펜타곤 $100M Orchestrator Prize."
     },
     {
       "id": "sovereign-ai",
@@ -948,9 +1046,9 @@
     {
       "id": "robot-components",
       "layer": "components",
-      "name_kr": "로봇 핵심부품 (감속기·액추에이터·센서)",
-      "name_en": "Robot Components Supply Chain",
-      "definition": "피지컬 AI의 곡괭이·삽 — 하모닉 감속기·관절 액추에이터·희토류 모터/자석·힘토크 센서·라이다·덱스터러스 핸드.",
+      "name_kr": "로봇 구동부품 (감속기·액추에이터·자석)",
+      "name_en": "Robot Actuation Components",
+      "definition": "피지컬 AI의 '근육' — 하모닉 감속기·관절 액추에이터·희토류 모터/자석. 인지 센서는 별도 노드.",
       "size_usd_b": 5,
       "size_label": "감속기 ~$2.1B(’26) + 액추에이터·센서·핸드 — 관절 액추에이터가 BOM의 30–50%",
       "growth": "감속기 ~10% CAGR · 로봇용 라이다 출하 +426~1,459% YoY",
@@ -983,14 +1081,10 @@
           "role": "테슬라 Optimus 액추에이터 모듈 체인"
         },
         {
-          "name": "Hesai · RoboSense",
-          "ticker": "HSAI",
-          "role": "라이다 — 로봇향 출하 +426~1,459% 폭증"
-        },
-        {
           "name": "MP Materials",
           "ticker": "MP",
-          "role": "비중국 희토류 채굴·자석 수직계열화 (美 국방부 지원)"
+          "role": "비중국 희토류 채굴→자석 수직계열화 — DoD 우선주 $4억 + 10년 구매보증",
+          "in_watchlist": true
         }
       ],
       "sources": [
@@ -999,6 +1093,61 @@
         "https://www.csis.org/analysis/chinas-new-rare-earth-and-magnet-restrictions-threaten-us-defense-supply-chains"
       ],
       "weekly_note": "中 희토류 수출통제 1년 유예로 단기 숨통이나 자석 94% 中 장악 구조는 그대로. 로봇용 라이다가 차량용을 첫 추월 — 부품 수요 변곡점."
+    },
+    {
+      "id": "robot-sensors",
+      "layer": "components",
+      "name_kr": "로봇 인지 센서 (라이다·비전·촉각)",
+      "name_en": "Robot Perception Sensors",
+      "definition": "로봇의 '눈과 피부' — 라이다·3D 비전·힘토크/촉각 센서·IMU.",
+      "size_usd_b": 10,
+      "size_label": "~$8–15B (로봇 라이다 ~$1B · 촉각 ~$4B · 토크센서 $1.3B→$7.9B(’32))",
+      "growth": "로봇 라이다 출하 +138~1,459% YoY · 토크센서 ~48% CAGR",
+      "size_confidence": "low",
+      "demand_driver": "휴머노이드·이동로봇·자율주행 L3 확산으로 라이다 단가 하락과 물량 폭증 동시 진행. 휴머노이드 BOM에서 손(핸드)이 31% — 센서가 최대 원가 항목.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "라이다·카메라는 공급 충분(가격경쟁 심화)하나, 6축 힘토크·촉각 센서는 대량생산·내구성·캘리브레이션이 미성숙해 휴머노이드 양산의 부상 병목. 손가락용 초소형 다축 센서는 검증된 공급사가 소수."
+      },
+      "players": [
+        {
+          "name": "Hesai",
+          "ticker": "HSAI",
+          "role": "라이다 출하 1위 (’25 162만개, 첫 연간 흑자) — 로봇향 +138%",
+          "in_watchlist": true
+        },
+        {
+          "name": "RoboSense",
+          "ticker": "2498.HK",
+          "role": "로보틱스 라이다 출하 1위 주장 — Q1’26 +1,459%"
+        },
+        {
+          "name": "Keyence",
+          "ticker": "6861.T",
+          "role": "머신비전·3D 카메라 강자"
+        },
+        {
+          "name": "Orbbec",
+          "ticker": "688322.SS",
+          "role": "3D 깊이카메라 (휴머노이드 채택)"
+        },
+        {
+          "name": "Novanta (ATI)",
+          "ticker": "NOVT",
+          "role": "산업용 6축 힘토크 센서"
+        },
+        {
+          "name": "XELA · PaXini",
+          "ticker": null,
+          "role": "촉각센서·전자피부 (비상장)"
+        }
+      ],
+      "sources": [
+        "https://www.stocktitan.net/news/HSAI/hesai-group-reports-first-quarter-2026-unaudited-financial-wgvrptc5slt8.html",
+        "https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html",
+        "https://www.intelmarketresearch.com/torque-sensor-for-humanoid-robot-market-2830"
+      ],
+      "weekly_note": "라이다 양사(Hesai·RoboSense) 모두 로봇향 폭증으로 흑자 전환 — '로봇의 눈'은 이미 돈이 되는 시장. 다음 병목은 촉각·힘토크."
     },
     {
       "id": "foundry",
@@ -1632,11 +1781,6 @@
       "label": "자율 무인 플랫폼(UAV·UGV)"
     },
     {
-      "from": "defense-ai",
-      "to": "edge-auto",
-      "label": "드론·무인체계 엣지 추론칩"
-    },
-    {
       "from": "ai-models",
       "to": "neocloud",
       "label": "모델사 컴퓨트 장기임차"
@@ -1675,6 +1819,51 @@
       "from": "dc-infra",
       "to": "power-cooling",
       "label": "변압기·스위치기어·냉각 발주"
+    },
+    {
+      "from": "robotics",
+      "to": "robot-sensors",
+      "label": "라이다·촉각·힘토크 센서"
+    },
+    {
+      "from": "industrial-robotics",
+      "to": "robot-components",
+      "label": "감속기·서보 모터"
+    },
+    {
+      "from": "industrial-robotics",
+      "to": "robot-sensors",
+      "label": "비전·힘토크 센서"
+    },
+    {
+      "from": "industrial-robotics",
+      "to": "ai-models",
+      "label": "AI 통합 (코그니티브 코봇)"
+    },
+    {
+      "from": "military-drones",
+      "to": "robot-sensors",
+      "label": "탐색·항법 센서"
+    },
+    {
+      "from": "military-drones",
+      "to": "robot-components",
+      "label": "모터·자석 (中 의존 리스크)"
+    },
+    {
+      "from": "military-drones",
+      "to": "edge-auto",
+      "label": "엣지 추론 칩"
+    },
+    {
+      "from": "defense-ai",
+      "to": "military-drones",
+      "label": "C2 가 드론 군집 지휘"
+    },
+    {
+      "from": "edge-auto",
+      "to": "robot-sensors",
+      "label": "차량 ADAS 라이다"
     }
   ],
   "diagram": {
@@ -1754,11 +1943,14 @@
       {
         "id": "physical-ai",
         "title": "피지컬 AI 체인",
-        "desc": "부품 → 로봇 → 국방·실세계 수요",
+        "desc": "구동부품·센서 → 산업로봇·휴머노이드 → 드론·국방 AI",
         "color": "#8d7bc6",
         "markets": [
           "robot-components",
+          "robot-sensors",
+          "industrial-robotics",
           "robotics",
+          "military-drones",
           "defense-ai"
         ]
       },

@@ -123,6 +123,6 @@
 
 | 파일 | 산업 | 시장 수 |
 |---|---|---|
-| `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` (+ `data/markets/news/ai-semiconductor.json`) | AI · 반도체 · 피지컬 AI | 27 |
+| `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` (+ `data/markets/news/ai-semiconductor.json`) | AI · 반도체 · 피지컬 AI | 30 |
 
 새 산업 추가 절차는 각 산업 md 의 "새 산업 맵 만들기" 절을 따른다.

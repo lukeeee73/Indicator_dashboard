@@ -233,6 +233,10 @@ const STOCK_META = {
   LRCX: { displayName: "Lam Research", fullName: "Lam Research Corp.", group: "반도체", sector: "반도체 장비 (식각·증착)", color: "#10b981", decimals: 2, currency: "USD", business: "반도체 식각·증착 장비 강자. 메모리(DRAM·NAND) 공정에 특히 강세. 한국 삼성·SK 가 큰 고객." },
   AVGO: { displayName: "Broadcom", fullName: "Broadcom Inc.", group: "반도체", sector: "통신·네트워크 칩 + 인프라 SW", color: "#e60024", decimals: 2, currency: "USD", business: "통신·네트워크용 맞춤형 칩 + VMware 인수로 인프라 SW까지 확장. AI 데이터센터 네트워킹 핵심." },
   MU: { displayName: "Micron", fullName: "Micron Technology, Inc.", group: "반도체", sector: "메모리 (DRAM·NAND) 3강", color: "#00a85b", decimals: 2, currency: "USD", business: "메모리(DRAM·NAND) 글로벌 3강(삼성·SK·마이크론). AI 가속기에 필수인 HBM(고대역폭 메모리) 시장 진입." },
+  // ── 로보틱스 / 피지컬 AI ─────────────────────────────────────
+  TER: { displayName: "TER", fullName: "Teradyne, Inc.", group: "로보틱스 / 피지컬 AI", sector: "반도체 테스트 + 협동로봇", color: "#e31837", decimals: 2, currency: "USD", business: "반도체 자동시험장비(ATE) 양강 + 협동로봇(Universal Robots)·자율이동로봇(MiR). AI 칩 테스트 수요와 피지컬 AI 양쪽에 걸친 이중 노출." },
+  HSAI: { displayName: "HSAI", fullName: "Hesai Group", group: "로보틱스 / 피지컬 AI", sector: "라이다 출하 세계 1위", color: "#0084ff", decimals: 2, currency: "USD", business: "차량 ADAS·로보틱스용 라이다 출하 세계 1위(연 160만개+, 첫 흑자전환). 로봇향 출하 +400%대 폭증 — 휴머노이드·로보택시의 '눈'." },
+  MP: { displayName: "MP", fullName: "MP Materials Corp.", group: "로보틱스 / 피지컬 AI", sector: "비중국 희토류·자석 수직계열화", color: "#b87333", decimals: 2, currency: "USD", business: "미국 유일 희토류 채굴(Mountain Pass)→정제→네오디뮴 자석 수직계열화. 美 국방부 지분 투자. 로봇 모터·액추에이터 핵심 소재 NdPr 자석의 비중국 대안." },
   // ── 자동차 / 모빌리티 ─────────────────────────────────────
   TSLA: { displayName: "Tesla", fullName: "Tesla Inc.", group: "자동차 / 모빌리티", sector: "전기차 + 에너지 + 자율주행", color: "#cc0000", decimals: 2, currency: "USD", business: "전기차 매출 위주. 에너지 저장(Megapack)·자율주행(FSD)·로봇(Optimus) 개발 중. CEO 일론 머스크 영향력 큼." },
   TM: { displayName: "Toyota", fullName: "Toyota Motor Corporation", group: "자동차 / 모빌리티", sector: "글로벌 1위 완성차", color: "#eb0a1e", decimals: 2, currency: "USD", business: "글로벌 판매량 1위 완성차 (일본). 하이브리드(프리우스) 강자. EV 전환은 상대적으로 보수적." },
@@ -299,6 +303,10 @@ const STOCK_META = {
   GE: { displayName: "GE Aerospace", fullName: "GE Aerospace", group: "산업재 / 방산", sector: "항공기 엔진 (LEAP) 1위", color: "#005eb8", decimals: 2, currency: "USD", business: "민항기 엔진(LEAP) Safran 합작 통해 글로벌 1위. 2024 GE 분할로 항공우주만 남음. 항공 운항 시간(FH) 연동." },
   UPS: { displayName: "UPS", fullName: "United Parcel Service", group: "산업재 / 방산", sector: "글로벌 물류 1위", color: "#351c15", decimals: 2, currency: "USD", business: "글로벌 물류·택배 1위 (갈색 트럭). 220개 국가 배송. e-commerce 성장과 동행, B2B 산업 사이클에 민감." },
   FDX: { displayName: "FedEx", fullName: "FedEx Corporation", group: "산업재 / 방산", sector: "글로벌 익일배송 1위", color: "#4d148c", decimals: 2, currency: "USD", business: "글로벌 익일·국제 배송 1위 (Express). UPS 와 양대. 보잉 757/767 항공기 다수 보유." },
+  AVAV: { displayName: "AVAV", fullName: "AeroVironment, Inc.", group: "산업재 / 방산", sector: "소모성 드론·배회폭탄 1위", color: "#1f6fb2", decimals: 2, currency: "USD", business: "Switchblade 배회폭탄·소형 UAS 1위 + BlueHalo 인수로 대드론·레이저·우주 확장. 美 'Drone Dominance' 조달 확대의 직접 수혜 퓨어플레이." },
+  KTOS: { displayName: "KTOS", fullName: "Kratos Defense & Security", group: "산업재 / 방산", sector: "저가 무인전투기 (CCA)", color: "#5a7d9a", decimals: 2, currency: "USD", business: "저가 무인전투기 XQ-58 Valkyrie·표적드론·제트엔진. 해병대 CCA 기체 선정 — '소모 가능한 무인 윙맨' 대량생산 테마의 핵심 상장주." },
+  "012450.KS": { displayName: "012450.KS", fullName: "Hanwha Aerospace", group: "산업재 / 방산", sector: "K-방산 대장주 (K9·유무인복합)", color: "#f37321", decimals: 0, currency: "KRW", business: "K9 자주포·천무 수출 + 항공엔진. 유럽 재무장 최대 수혜 K-방산 대장주. UGV·유무인복합으로 피지컬 AI 확장." },
+  "079550.KS": { displayName: "079550.KS", fullName: "LIG Nex1", group: "산업재 / 방산", sector: "유도무기·대드론 (천궁)", color: "#c4122f", decimals: 0, currency: "KRW", business: "천궁-II 등 유도무기 수출 주력. 중형무인기 공통플랫폼·대드론 체계로 무인전 확장. 중동 수출 모멘텀." },
   // ── 부동산 (REITs) ─────────────────────────────────────
   AMT: { displayName: "American Tower", fullName: "American Tower Corporation", group: "부동산 (REITs)", sector: "세계 최대 통신탑 REIT", color: "#4ea1ff", decimals: 2, currency: "USD", business: "세계 최대 통신탑(셀타워) REIT. 통신사들에 5G 안테나 임대. 디지털 인프라의 'toll bridge' 모델." },
   CCI: { displayName: "Crown Castle", fullName: "Crown Castle Inc.", group: "부동산 (REITs)", sector: "통신탑 REIT 2위", color: "#005faf", decimals: 2, currency: "USD", business: "미국 통신탑 REIT 2위. 광케이블(Fiber) 사업 보유. AMT 와 양대. 5G 인프라 임대수익." },
@@ -338,12 +346,12 @@ const STOCK_META = {
   "010140.KS": { displayName: "삼성중공업", fullName: "Samsung Heavy Industries", group: "조선 (한국)", sector: "삼성그룹 조선·해양플랜트", color: "#1428a0", decimals: 0, currency: "KRW", business: "삼성그룹 조선·해양플랜트. LNG 운반선·드릴십·FPSO. 카타르·모잠비크 LNG 메가 프로젝트 참여." },
   "010620.KS": { displayName: "HD현대미포", fullName: "HD Hyundai Mipo Dockyard", group: "조선 (한국)", sector: "중형 선박 (MR 탱커) 전문", color: "#0072bc", decimals: 0, currency: "KRW", business: "HD현대그룹 중형 조선사. MR(Medium Range) 탱커·PC선·중형 컨테이너선 전문. 친환경 메탄올 추진 선박 강세." },
 };
-
 // 섹터 그룹 표시 순서 + 그룹별 한 줄 설명 (대시보드 헤더에 노출).
 // 새 그룹을 추가하면 여기에도 한 줄 추가하여 카드 묶음 순서를 제어한다.
 const STOCK_GROUPS = [
   { key: "빅테크 / 소프트웨어", desc: "글로벌 시총 상위 빅테크 + 엔터프라이즈 소프트웨어. 광고·SaaS·DB 등 다양한 수익모델." },
   { key: "반도체", desc: "AI·자동차·서버 등 전 산업의 'OPEC' 격. CPU·GPU·메모리·장비·파운드리 포함." },
+  { key: "로보틱스 / 피지컬 AI", desc: "휴머노이드·산업로봇·자율 시스템과 그 부품(라이다·희토류 자석·로봇 테스트). 피지컬 AI 시대의 곡괭이와 삽." },
   { key: "자동차 / 모빌리티", desc: "내연기관·EV·자율주행 전환기. 기존 완성차 + 신규 진입자 + 한국 빅2." },
   { key: "바이오 / 제약 / 헬스케어", desc: "글로벌 시총 상위 제약 + 의료기기/진단 + 의료보험. 인구 고령화 장기 수혜." },
   { key: "에너지 / 원자재", desc: "원유·가스·구리·금·산업용가스 등 실물 자산. 인플레이션·달러 약세 국면 방어주." },
@@ -355,7 +363,6 @@ const STOCK_GROUPS = [
   { key: "유틸리티 / 전력", desc: "전력·가스 유틸리티. 신재생·원자력 비중 확대 + AI 데이터센터 전력수요의 수혜." },
   { key: "조선 (한국)", desc: "K-조선 르네상스. LNG·암모니아 친환경 선박 글로벌 1위 한국 조선사들." },
 ];
-
 // 시장 지수 UI 메타데이터. summary 는 부제, description 은 한 줄 설명.
 const INDEX_META = {
   "^GSPC": { displayName: "S&P 500",          color: "#c084fc", decimals: 2, summary: "미국 대형주 500개 가중평균",   description: "미국 시가총액 상위 500개 기업. 미국 시장 전체의 대표 지수." },
@@ -2753,6 +2760,10 @@ const PEER_COMPETITORS = {
   LRCX: ["AMAT", "ASML"],
   AVGO: ["NVDA", "AMD", "QCOM", "TSM"],
   MU: ["INTC", "AVGO", "QCOM"],
+  // ── 로보틱스 / 피지컬 AI ─────────────────────────────────────
+  TER: ["AMAT", "LRCX"],
+  HSAI: [],
+  MP: ["FCX", "NEM"],
   // ── 자동차 / 모빌리티 ─────────────────────────────────────
   TSLA: ["GM", "F", "RIVN", "NIO"],
   TM: ["GM", "F", "HMC", "STLA"],
@@ -2819,6 +2830,10 @@ const PEER_COMPETITORS = {
   GE: ["RTX", "HON", "BA"],
   UPS: ["FDX", "AMZN"],
   FDX: ["UPS", "AMZN"],
+  AVAV: ["KTOS", "LMT", "NOC"],
+  KTOS: ["AVAV", "NOC", "GE"],
+  "012450.KS": ["079550.KS", "042660.KS", "LMT"],
+  "079550.KS": ["012450.KS", "LMT", "RTX"],
   // ── 부동산 (REITs) ─────────────────────────────────────
   AMT: ["CCI", "EQIX", "DLR"],
   CCI: ["AMT", "DLR"],
