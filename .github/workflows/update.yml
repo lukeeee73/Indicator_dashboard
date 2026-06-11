@@ -1,11 +1,18 @@
 name: Update FRED Indicators
 
-# 주 1회 FRED API 호출 → data/index.json + data/indicators/*.json + data/assets/*.json 갱신
-# → 변경 시 자동 커밋. 매주 월요일 09:00 UTC (= 한국시간 월요일 18:00) 자동 + 수동 실행.
+# 주 1회 FRED API + Yahoo Finance 호출 → data/index.json + data/indicators/*.json
+# + data/assets/*.json + data/stocks/*.json 갱신 → 변경 시 자동 커밋.
+# 매주 월요일 09:00 UTC (= 한국시간 월요일 18:00) 자동 + 수동 실행.
+# 워치리스트(종목 목록)가 바뀌어 main 에 머지되면 즉시 실행해 신규 종목 데이터를 시딩한다.
 on:
   schedule:
     - cron: "0 9 * * 1"
   workflow_dispatch:
+  push:
+    branches: [claude/build-indicators-pipeline-QFtLk]  # 레포 기본 브랜치
+    paths:
+      - "scripts/watchlist_data.py"
+      - "scripts/fetch_fred.py"
 
 # GITHUB_TOKEN 에 푸시 권한 부여 (자동 커밋을 위해 필요)
 permissions:
