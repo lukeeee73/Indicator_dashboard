@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-06-06",
-      "value": 33.19
-    },
-    {
-      "date": "2016-06-07",
-      "value": 33.14
-    },
-    {
-      "date": "2016-06-08",
-      "value": 33.4
-    },
-    {
-      "date": "2016-06-09",
-      "value": 33.52
-    },
-    {
-      "date": "2016-06-10",
-      "value": 33.66
-    },
-    {
       "date": "2016-06-13",
       "value": 33.29
     },
@@ -2333,7 +2313,7 @@
     },
     {
       "date": "2018-09-26",
-      "value": 34.16
+      "value": 34.15
     },
     {
       "date": "2018-09-27",
@@ -10062,18 +10042,26 @@
     {
       "date": "2026-06-05",
       "value": 72.19
+    },
+    {
+      "date": "2026-06-08",
+      "value": 71.29
+    },
+    {
+      "date": "2026-06-09",
+      "value": 71.56
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 120549449728.0,
-      "pe_ratio": 15.070982,
-      "forward_pe": 12.290651,
+      "market_cap": 122119135232.0,
+      "pe_ratio": 15.267223,
+      "forward_pe": 12.450689,
       "eps_ttm": 4.79,
-      "dividend_yield": 5.87,
+      "dividend_yield": 5.8,
       "profit_margin": 0.39518002,
       "operating_margin": 0.62294996,
-      "price_to_book": -37.559834,
+      "price_to_book": -38.048904,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10129,8 +10117,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-05",
-    "current_price": 72.19,
+    "as_of": "2026-06-09",
+    "current_price": 71.56,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10139,13 +10127,13 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 105.72,
+        "fair_value": 103.45,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       }
     },
-    "fair_value": 105.51,
-    "valuation_gap": -0.3158,
+    "fair_value": 104.66,
+    "valuation_gap": -0.3162,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10363,6 +10351,12 @@
         "price": 72.19,
         "fair_value": 104.5,
         "gap": -0.3092
+      },
+      {
+        "date": "2026-06-09",
+        "price": 71.56,
+        "fair_value": 104.5,
+        "gap": -0.3152
       }
     ],
     "qualitative": {
