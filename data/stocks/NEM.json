@@ -10287,24 +10287,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-05",
-      "narrative_score": 0.24,
-      "summary_kr": "금값 $4,900/oz 고점에서 Q1 FCF $31억 기록 달성, $60억 자사주매입 승인으로 주주환원 강화. CEO 내부자 소량 매도는 10b5-1 예정 거래로 우려 불필요.",
+      "as_of": "2026-06-12",
+      "narrative_score": -0.16,
+      "summary_kr": "금 가격 $4,331로 1월 고점 대비 -16.6% 하락하며 핵심 매크로 역풍. 2026년 생산 -10%에 AISC $1,680/oz 상승으로 이중 압박. 이란 전쟁 초기 금 수혜 모멘텀 소멸 — 강한 부정 국면.",
       "key_events": [
-        "Q1 FCF $31억 기록 (금 $4,900/oz)",
-        "$60억 자사주매입 프로그램 승인",
-        "CEO 10b5-1 계획에 따라 소량 매도"
+        "금 가격 $4,331/oz (-16.6% from Jan peak, -7.68% in past month)",
+        "2026년 생산 ~10% 감소 예상",
+        "AISC $1,680/oz로 상승 (높은 로열티·세금)"
       ],
       "risks": [
-        "금값 $4,900 수준에서 조정 시 수익성 직격",
-        "2026년 생산량 5.26M oz 계획 (트로프 이어)"
+        "금 가격 추가 하락 시 FCF 크게 악화",
+        "생산 감소 + 비용 상승 동시 진행으로 이익 레버리지 역작용",
+        "미·이란 협상 타결 시 안전자산 수요 추가 감소"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "GOLD",
-          "headline": "Barrick Gold Q1 production in line; gold price at $4,900 benefits all major miners",
-          "implication_for_target": "금값 $4,900 지속 시 NEM 뿐 아니라 Barrick도 동반 수혜 — 섹터 전반 긍정"
+          "headline": "Barrick Gold faces similar gold price pressure but has lower cost mines in Africa",
+          "implication_for_target": "배릭의 저비용 아프리카 광산 대비 NEM의 AISC 상승이 상대적 불리"
+        },
+        {
+          "ticker": "FCX",
+          "headline": "Freeport Q1 earnings beat but Grasberg production cut",
+          "implication_for_target": "귀금속·광산 섹터 전반 생산 차질 공통 우려"
         }
       ],
       "history": [
@@ -10319,6 +10325,10 @@
         {
           "date": "2026-06-05",
           "narrative_score": 0.24
+        },
+        {
+          "date": "2026-06-12",
+          "narrative_score": -0.16
         }
       ]
     }

@@ -10358,23 +10358,28 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-05",
-      "narrative_score": -0.01,
-      "summary_kr": "Vogtle 원전 두 기 정격 출력으로 원자력 베이스로드 경쟁력 확보. 그러나 조지아 파워 요금 인하 명령이 단기 매출 압박으로 작용.",
+      "as_of": "2026-06-12",
+      "narrative_score": 0.08,
+      "summary_kr": "보글 원전 완전 가동으로 탄소제로 기저발전 확보. 조지아·앨라배마 데이터센터 증가로 전력 수요 구조적 성장. 안정적 규제 유틸리티 모델로 방어적 인컴 투자처.",
       "key_events": [
-        "조지아 파워 요금 인하 명령 (규제 리스크)",
-        "Vogtle 3·4호기 정격 출력 운전"
+        "보글 원전 3·4호기 완전 가동 (미국 최신 원전)",
+        "조지아·앨라배마 AI 데이터센터 수요 증가"
       ],
       "risks": [
-        "조지아 파워 요금 인하로 단기 매출 압박",
-        "허리케인 시즌 인프라 리스크"
+        "원전 운영 비용 예상 외 상승 리스크",
+        "규제당국 요금 결정이 수익성 제약"
       ],
       "news_count": 2,
       "competitor_context": [
         {
           "ticker": "DUK",
-          "headline": "Duke Energy exploring nuclear-tech partnerships for AI data center power supply",
-          "implication_for_target": "DUK 데이터센터 원전 공급 논의 — SO도 Vogtle 활용 유사 계약 가능성"
+          "headline": "Duke Energy procuring 10 GW new generation in Carolinas for data center surge",
+          "implication_for_target": "캐롤라이나(DUK)와 조지아(SO) 모두 미 동남부 데이터센터 벨트 — 전력 수요 공동 수혜"
+        },
+        {
+          "ticker": "CEG",
+          "headline": "Constellation Energy 5,650 MW hyperscaler clean energy contracts",
+          "implication_for_target": "CEG의 공격적 하이퍼스케일러 계약 vs SO의 지역 규제 유틸리티 안정성"
         }
       ],
       "history": [
@@ -10389,6 +10394,10 @@
         {
           "date": "2026-06-05",
           "narrative_score": -0.01
+        },
+        {
+          "date": "2026-06-12",
+          "narrative_score": 0.08
         }
       ]
     }

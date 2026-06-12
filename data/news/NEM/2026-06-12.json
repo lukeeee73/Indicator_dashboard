@@ -1,0 +1,65 @@
+{
+  "ticker": "NEM",
+  "date": "2026-06-12",
+  "as_of_utc": "2026-06-12T22:00:00Z",
+  "news": [
+    {
+      "title": "Gold Price Falls to $4,331/oz — Down 7.68% in Past Month, 16.6% Below January Peak",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/NEM/",
+      "published": "2026-06-12T08:00:00Z",
+      "summary": "금 가격 $4,331/oz — 최근 1개월 -7.68%, 1월 최고점($5,193) 대비 -16.6% 하락.",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Newmont 2026 Gold Production Expected to Fall ~10%, All-in Sustaining Costs Rise to $1,680/oz",
+      "source": "Reuters",
+      "url": "https://finance.yahoo.com/quote/NEM/",
+      "published": "2026-06-09T10:00:00Z",
+      "summary": "2026년 생산량 약 10% 감소 예상, AISC $1,680/oz 상승 — 높은 로열티·세금 부담.",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Newmont Stock Down 25% Since February 28, 2026 as Iran War Gold Euphoria Fades",
+      "source": "247 Wall St.",
+      "url": "https://247wallst.com/investing/2026/03/20/freeport-mcmoran-vs-newmont-which-crushed-mining-giant-looks-like-the-cleaner-bet/",
+      "published": "2026-06-10T12:00:00Z",
+      "summary": "이란 전쟁 초기 금 급등 이후 NEM 주가 25% 하락 — 생산 비용 상승과 생산량 감소 이중고.",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOLD",
+      "headline": "Barrick Gold faces similar gold price pressure but has lower cost mines in Africa",
+      "implication_for_target": "배릭의 저비용 아프리카 광산 대비 NEM의 AISC 상승이 상대적 불리"
+    },
+    {
+      "ticker": "FCX",
+      "headline": "Freeport Q1 earnings beat but Grasberg production cut",
+      "implication_for_target": "귀금속·광산 섹터 전반 생산 차질 공통 우려"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.25,
+    "competitive_position": -0.05,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.16,
+  "summary_kr": "금 가격 $4,331로 1월 고점 대비 -16.6% 하락하며 핵심 매크로 역풍. 2026년 생산 -10%에 AISC $1,680/oz 상승으로 이중 압박. 이란 전쟁 초기 금 수혜 모멘텀 소멸 — 강한 부정 국면.",
+  "key_events": [
+    "금 가격 $4,331/oz (-16.6% from Jan peak, -7.68% in past month)",
+    "2026년 생산 ~10% 감소 예상",
+    "AISC $1,680/oz로 상승 (높은 로열티·세금)"
+  ],
+  "risks": [
+    "금 가격 추가 하락 시 FCF 크게 악화",
+    "생산 감소 + 비용 상승 동시 진행으로 이익 레버리지 역작용",
+    "미·이란 협상 타결 시 안전자산 수요 추가 감소"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/NEM%20-%20Newmont%20Corporation.md"
+}
