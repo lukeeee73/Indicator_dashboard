@@ -37,6 +37,19 @@
       <section class="assessment" id="assessment-US" hidden>
         <h2>현재 국면 (자동 판정)</h2>
         <div class="assessment-grid">
+          <div class="assessment-card assessment-card-primary" data-window="primary"
+               id="assessment-US-primary-card" hidden>
+            <div class="aw-header">
+              <span class="aw-title">종합 판정</span>
+              <span class="aw-sub" id="assessment-US-primary-sub">백테스트 검증 모델</span>
+            </div>
+            <div class="aw-quadrant" id="assessment-US-primary-quadrant">—</div>
+            <div class="aw-scores">
+              <span class="aw-score">성장 <b id="assessment-US-primary-growth">—</b></span>
+              <span class="aw-score">인플레 <b id="assessment-US-primary-inflation">—</b></span>
+            </div>
+          </div>
+
           <div class="assessment-card" data-window="full">
             <div class="aw-header">
               <span class="aw-title">장기 기준</span>
@@ -63,7 +76,7 @@
 
           <div class="assessment-scatter">
             <div class="aw-header">
-              <span class="aw-title">궤적 (최근 24개월, 장기 기준)</span>
+              <span class="aw-title" id="assessment-US-scatter-title">궤적 (최근 24개월, 장기 기준)</span>
               <span class="aw-sub">X: 인플레 · Y: 성장 · 경계 40/60</span>
             </div>
             <div class="scatter-chart"><canvas id="assessment-scatter-US"></canvas></div>

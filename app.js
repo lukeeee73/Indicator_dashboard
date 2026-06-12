@@ -727,7 +727,9 @@ function wireSectorNav(tab) {
 }
 
 // 현재 국면 자동 판정 패널.
-// assessment = { full, rolling_10y, config, trajectory }
+// assessment = { primary?, full, rolling_10y, config, trajectory }
+//   primary — 백테스트 검증 모델(scripts/compare_models.py 승자)의 종합 판정.
+//             US 에만 존재. full/rolling_10y 는 참조용 백분위 뷰.
 // tab: "US" | "KR"
 function renderAssessment(assessment, tab) {
   const section = document.getElementById(`assessment-${tab}`);
@@ -770,18 +772,46 @@ function renderAssessment(assessment, tab) {
   fillPanel("full", assessment.full);
   fillPanel("10y",  assessment.rolling_10y);
 
-  // 분면이 두 창에서 다르면 그 자체가 레짐 전환 힌트 → 문구 생성
+  // 종합 판정 (primary) — 존재하는 탭(US)에서만 카드 표시
+  const primary = assessment.primary || null;
+  const primaryCard = document.getElementById(`assessment-${tab}-primary-card`);
+  if (primaryCard) {
+    primaryCard.hidden = !primary;
+    if (primary) {
+      fillPanel("primary", primary);
+      const sub = document.getElementById(`assessment-${tab}-primary-sub`);
+      if (sub && primary.backtest && primary.backtest.recession) {
+        const r = primary.backtest.recession;
+        const lead = r.median_lead_months;
+        sub.textContent =
+          `백테스트: 침체 ${r.hit} 적중 · 중위 선행 ${lead >= 0 ? "+" : ""}${lead}개월`;
+        sub.title = `검증 구간 ${primary.backtest.window} · ` +
+          `FPR ${(r.false_positive_rate * 100).toFixed(1)}% · ` +
+          `모델 ${primary.model} (${primary.method})`;
+      }
+    }
+  }
+  const grid = section.querySelector(".assessment-grid");
+  if (grid) grid.classList.toggle("has-primary", !!(primary && primaryCard));
+
+  // 판정 요약 문구: primary 가 있으면 그것이 헤드라인, full/10y 는 보조 비교
   const note = document.getElementById(`assessment-${tab}-note`);
   if (note) {
     const f = assessment.full;
     const s = assessment.rolling_10y;
     const qf = f.quadrant;
     const qs = s.quadrant;
+    let text;
     if (qf === qs) {
-      note.textContent = `장기·단기 기준 모두 ${QUADRANT_LABEL[qf] || qf}. 분면 판정이 일관됨.`;
+      text = `장기·단기 기준 모두 ${QUADRANT_LABEL[qf] || qf}. 분면 판정이 일관됨.`;
     } else {
-      note.textContent = `장기 기준은 ${QUADRANT_LABEL[qf] || qf}, 단기 기준은 ${QUADRANT_LABEL[qs] || qs}. 두 창의 판정이 엇갈리면 레짐 전환 가능성에 주목.`;
+      text = `장기 기준은 ${QUADRANT_LABEL[qf] || qf}, 단기 기준은 ${QUADRANT_LABEL[qs] || qs}. 두 창의 판정이 엇갈리면 레짐 전환 가능성에 주목.`;
     }
+    if (primary) {
+      const qp = primary.quadrant;
+      text = `종합 판정(검증 모델)은 ${QUADRANT_LABEL[qp] || qp}. ` + text;
+    }
+    note.textContent = text;
   }
 
   // 2D 산점도
@@ -791,8 +821,19 @@ function renderAssessment(assessment, tab) {
 function renderScatter(assessment, tab) {
   const canvas = document.getElementById(`assessment-scatter-${tab}`);
   if (!canvas) return;
-  const traj = assessment.trajectory || [];
-  const cur  = assessment.full;
+
+  // primary(종합 판정) 가 있으면 그 궤적·현재값을 그린다. 없으면 장기 기준.
+  const primary  = assessment.primary || null;
+  const usePrimary = !!(primary && primary.trajectory && primary.trajectory.length);
+  const traj = usePrimary ? primary.trajectory : (assessment.trajectory || []);
+  const cur  = usePrimary ? primary : assessment.full;
+
+  const title = document.getElementById(`assessment-${tab}-scatter-title`);
+  if (title) {
+    title.textContent = usePrimary
+      ? "궤적 (최근 24개월, 종합 판정)"
+      : "궤적 (최근 24개월, 장기 기준)";
+  }
 
   // 궤적: 과거 → 현재 순으로 dot + 선. 마지막 점은 크게 강조.
   const trajectoryPoints = traj.map((p, idx) => ({
@@ -804,7 +845,7 @@ function renderScatter(assessment, tab) {
   const currentPoint = {
     x: cur.inflation_score,
     y: cur.growth_score,
-    date: "지금 (장기 기준)",
+    date: usePrimary ? "지금 (종합 판정)" : "지금 (장기 기준)",
     isCurrent: true,
   };
 

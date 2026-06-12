@@ -16,6 +16,12 @@ E  cycle-relative : 8년 사이클 백분위(50%) + 6개월 변화 백분위(30%
                     지표별 가중치는 C 와 동일.
 F  EC-hybrid      : 성장 축 = E(8년 사이클), 인플레 축 = C(full 창 가중치).
                     E 의 침체 선행력 + C 의 인플레 정밀도를 조합.
+G  F + smooth     : F 의 축 점수에 D 와 동일한 EWMA(span=3) 평활 + 히스테리시스
+                    임계를 적용. F 의 약점(flips/yr ≈ 1.1)을 깎는 것이 목적.
+                    새 하이퍼파라미터는 없다 — D 에서 사전 등록한 값 재사용.
+H  F + EWMA only  : G 의 절제(ablation) — EWMA(span=3) 평활만 적용하고 라벨은
+                    기존 60/40 임계 그대로. 히스테리시스가 FPR 을 올리는 주범인지
+                    평활 자체가 올리는지 분리해서 본다. 새 파라미터 없음.
 
 하이퍼파라미터 사전 등록(pre-registered)
 ---------------------------------------
@@ -47,7 +53,12 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from analyze import (  # noqa: E402
     POSTWAR_CUTOFF, ROLLING_YEARS,
     _series_to_pandas, _percentile_rank, _apply_polarity, _label_from_percentile,
-    compute_current_stats,
+    _weighted_mean, compute_current_stats, cycle_relative_percentile,
+    # 사전 등록 하이퍼파라미터 — 프로덕션(analyze.py) 과 단일 출처 공유
+    INDICATOR_WEIGHTS, EWMA_SPAN,
+    CYCLE_YEARS, LONG_YEARS, CYCLE_DIFF_MONTHS,
+    CYCLE_WEIGHT, DIFF_WEIGHT, LONG_WEIGHT,
+    MIN_MONTHS_WINDOW, MIN_DIFFS_FOR_DIST,
 )
 from backtest import (  # noqa: E402
     load_indicators, slice_series, load_recession_episodes,
@@ -57,57 +68,22 @@ from backtest import (  # noqa: E402
 
 EVAL_DIR = ROOT / "data" / "eval"
 
-# ── 사전 등록 하이퍼파라미터 ──────────────────────────────────────────────────
+# ── 사전 등록 하이퍼파라미터 (이 파일 고유분) ──────────────────────────────────
+# INDICATOR_WEIGHTS / EWMA_SPAN / 사이클-상대(Tier E) 파라미터는 analyze.py 에서
+# import — 프로덕션 primary 모델과 단일 출처를 공유한다.
 ALPHA_DIFF   = 0.40    # Tier B: 방향 백분위 가중
 DIFF_MONTHS  = 6       # Tier B: 몇 개월 변화 기준
-EWMA_SPAN    = 3       # Tier D: EWMA 평활 창
-ENTRY_HIGH   = 60.0    # Tier D: high 진입 임계
-EXIT_HIGH    = 50.0    # Tier D: high 이탈 임계
-ENTRY_LOW    = 40.0    # Tier D: low  진입 임계
-EXIT_LOW     = 50.0    # Tier D: low  이탈 임계
+ENTRY_HIGH   = 60.0    # Tier D/G: high 진입 임계
+EXIT_HIGH    = 50.0    # Tier D/G: high 이탈 임계
+ENTRY_LOW    = 40.0    # Tier D/G: low  진입 임계
+EXIT_LOW     = 50.0    # Tier D/G: low  이탈 임계
 
-# Tier E 사이클-상대 가중치 및 창
-CYCLE_YEARS        = 8     # 사이클 참조 창
-LONG_YEARS         = 10    # 장기 참조 창 (analyze.py ROLLING_YEARS 와 동일)
-DIFF_MONTHS_E      = 6     # 6개월 변화
-CYCLE_WEIGHT       = 0.5
-DIFF_WEIGHT_E      = 0.3
-LONG_WEIGHT        = 0.2
-MIN_MONTHS_WINDOW  = 24    # 창 내 최소 데이터 포인트
-MIN_DIFFS_FOR_DIST = 12    # diff 분포에 최소 12개
-
-# Tier C 지표별 가중치 (선행=2, 동행=1, 후행/공급측=0.5)
-INDICATOR_WEIGHTS: dict[str, float] = {
-    # ── Growth ──────────────────────────────────
-    "T10Y2Y":    2.0,   # 선행 – 수익률 곡선
-    "USSLIND":   2.0,   # 선행 – Philly Fed 선행지수
-    "UMCSENT":   1.5,   # 선행 – 소비자심리
-    "INDPRO":    1.0,   # 동행 – 산업생산
-    "PAYEMS":    1.0,   # 동행 – 비농업 고용
-    "ICSA":      0.5,   # 후행(지연) – 주간 실업청구
-    # ── Inflation ───────────────────────────────
-    "T10YIE":    2.0,   # 선행 – 10년 기대인플레
-    "T5YIFR":    2.0,   # 선행 – 5Y5Y 기대인플레
-    "CPILFESL":  1.5,   # 동행 – Core CPI (끈적한 인플레)
-    "PCEPI":     1.5,   # 동행 – PCE (Fed 준거)
-    "CPIAUCSL":  1.0,   # 동행 – 헤드라인 CPI
-    "DCOILWTICO":0.5,   # 후행/공급 – WTI YoY
-    "WPSID61":   0.5,   # 후행/공급 – PPI 중간재
-    "PCUOMFGOMFG":0.5,  # 후행/공급 – 제조업 PPI
-}
+# 기존 이름 호환 (Tier E 구현이 쓰던 별칭)
+DIFF_MONTHS_E = CYCLE_DIFF_MONTHS
+DIFF_WEIGHT_E = DIFF_WEIGHT
 
 
 # ── 공통 유틸 ──────────────────────────────────────────────────────────────────
-def _weighted_mean(vals: list[tuple[float | None, float]]) -> float | None:
-    """(percentile, weight) 쌍 목록 → 가중 평균. None 은 skip."""
-    num, den = 0.0, 0.0
-    for p, w in vals:
-        if p is not None:
-            num += p * w
-            den += w
-    return round(num / den, 1) if den > 0 else None
-
-
 def _blend(level: float | None, diff: float | None) -> float | None:
     if level is None:
         return None
@@ -159,42 +135,14 @@ def _stats_level_full(code: str, sliced: list[dict]) -> tuple[float | None, None
 
 def _stats_E(code: str, sliced: list[dict]) -> tuple[float | None, None]:
     """8년 사이클 백분위(50%) + 6개월 변화 백분위(30%) + 10년 백분위(20%).
-    컴포넌트 데이터 불충분 시 해당 가중치를 자동 정규화."""
+    코어 산식은 analyze.cycle_relative_percentile — 프로덕션과 동일 코드."""
     s = _series_to_pandas(sliced)
     if s.empty:
         return None, None
-
     monthly = s.resample("ME").last().dropna()
     if monthly.empty:
         return None, None
-
-    latest_date = monthly.index[-1]
-    latest = float(monthly.iloc[-1])
-
-    cycle_cutoff = latest_date - pd.DateOffset(years=CYCLE_YEARS)
-    long_cutoff  = latest_date - pd.DateOffset(years=LONG_YEARS)
-    cycle_s = monthly[monthly.index >= cycle_cutoff]
-    long_s  = monthly[monthly.index >= long_cutoff]
-
-    # ① 8년 사이클 백분위
-    p_cycle: float | None = None
-    if len(cycle_s) >= MIN_MONTHS_WINDOW:
-        p_cycle = _apply_polarity(code, _percentile_rank(cycle_s, latest))
-
-    # ② 6개월 변화 백분위 — 8년 창 내 diff 분포를 참조
-    p_diff: float | None = None
-    if len(cycle_s) > DIFF_MONTHS_E:
-        diffs = cycle_s.diff(DIFF_MONTHS_E).dropna()
-        if len(diffs) >= MIN_DIFFS_FOR_DIST:
-            p_diff = _apply_polarity(code, _percentile_rank(diffs, float(diffs.iloc[-1])))
-
-    # ③ 10년 백분위
-    p_long: float | None = None
-    if len(long_s) >= MIN_MONTHS_WINDOW:
-        p_long = _apply_polarity(code, _percentile_rank(long_s, latest))
-
-    score = _weighted_mean([(p_cycle, CYCLE_WEIGHT), (p_diff, DIFF_WEIGHT_E), (p_long, LONG_WEIGHT)])
-    return score, None
+    return cycle_relative_percentile(code, monthly), None
 
 
 # ── 통합 row 빌더 ──────────────────────────────────────────────────────────────
@@ -244,6 +192,8 @@ def walk_model(model: str, indicators: dict,
         "D": (_stats_level_full, INDICATOR_WEIGHTS, None),
         "E": (_stats_E,          INDICATOR_WEIGHTS, None),
         "F": (None,              INDICATOR_WEIGHTS, _F_FN_MAP),
+        "G": (None,              INDICATOR_WEIGHTS, _F_FN_MAP),
+        "H": (None,              INDICATOR_WEIGHTS, _F_FN_MAP),
     }
     stats_fn, weights, fn_map = stats_map[model]
     rows = [
@@ -252,7 +202,23 @@ def walk_model(model: str, indicators: dict,
         for as_of in pd.date_range(start, end, freq="ME")
     ]
     df = pd.DataFrame(rows).set_index("month")
-    return _apply_smooth_hysteresis(df) if model == "D" else df
+    if model in ("D", "G"):
+        return _apply_smooth_hysteresis(df)
+    if model == "H":
+        return _apply_smooth_only(df)
+    return df
+
+
+def _apply_smooth_only(df: pd.DataFrame) -> pd.DataFrame:
+    """EWMA 평활만 적용, 라벨은 60/40 임계 재산출 (히스테리시스 없음)."""
+    df = df.copy()
+    for axis in ("growth", "infl"):
+        col = f"{axis}_full"
+        smoothed = df[col].ewm(span=EWMA_SPAN, min_periods=1).mean().round(1)
+        df[col] = smoothed
+        lab_col = f"{'g' if axis == 'growth' else 'i'}_lab_full"
+        df[lab_col] = smoothed.map(_label_from_percentile)
+    return df
 
 
 def _apply_smooth_hysteresis(df: pd.DataFrame) -> pd.DataFrame:
@@ -292,7 +258,7 @@ def run_comparison() -> None:
 
     results: dict[str, dict] = {}
 
-    for model in ("A", "B", "C", "D", "E", "F"):
+    for model in ("A", "B", "C", "D", "E", "F", "G", "H"):
         print(f"Walking model {model}…", flush=True)
         df = walk_model(model, indicators, start, end_dt)
         results[model] = {
@@ -340,6 +306,8 @@ def run_comparison() -> None:
         "D": "D C+smooth+hyst",
         "E": "E cycle-relative(8y)",
         "F": "F E(성장)+C(인플레)",
+        "G": "G F+smooth+hyst",
+        "H": "H F+EWMA only",
     }
     for model, mres in results.items():
         tag = labels[model]

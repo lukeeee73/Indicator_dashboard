@@ -629,8 +629,8 @@
         "fair_value": 498.61,
         "valuation_gap": 1.2957,
         "signal": "expensive",
-        "narrative_score": 0.22,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": 0.34,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -649,8 +649,8 @@
         "fair_value": 59.18,
         "valuation_gap": -0.2871,
         "signal": "deep_value",
-        "narrative_score": -0.07,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": -0.14,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -670,8 +670,8 @@
         "fair_value": 154.47,
         "valuation_gap": 0.5343,
         "signal": "expensive",
-        "narrative_score": 0.13,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": 0.19,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -688,8 +688,8 @@
         "fair_value": 257.35,
         "valuation_gap": 0.6048,
         "signal": "expensive",
-        "narrative_score": 0.09,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": -0.2,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -1396,8 +1396,8 @@
         "fair_value": 29.79,
         "valuation_gap": -0.1373,
         "signal": "undervalued",
-        "narrative_score": -0.02,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": -0.08,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -1416,8 +1416,8 @@
         "fair_value": 85.77,
         "valuation_gap": 0.3944,
         "signal": "expensive",
-        "narrative_score": 0.11,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": 0.03,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -1436,8 +1436,8 @@
         "fair_value": 120.8,
         "valuation_gap": 0.8661,
         "signal": "expensive",
-        "narrative_score": 0.15,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": 0.17,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -1456,8 +1456,8 @@
         "fair_value": 113.01,
         "valuation_gap": 0.6231,
         "signal": "expensive",
-        "narrative_score": -0.09,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": 0.19,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -1474,8 +1474,8 @@
         "fair_value": 346.43,
         "valuation_gap": 0.4262,
         "signal": "expensive",
-        "narrative_score": -0.03,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": 0.15,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -1493,8 +1493,8 @@
         "fair_value": 71.82,
         "valuation_gap": 0.2706,
         "signal": "expensive",
-        "narrative_score": 0.03,
-        "qualitative_as_of": "2026-06-04"
+        "narrative_score": 0.08,
+        "qualitative_as_of": "2026-06-11"
       }
     },
     {
@@ -2695,6 +2695,153 @@
     }
   ],
   "assessment": {
+    "primary": {
+      "model": "H",
+      "method": "growth: cycle-relative percentile (8y 50% + 6m-diff 30% + 10y 20%); inflation: post-1945 full-window percentile; lead-weighted; EWMA(span=3)",
+      "as_of": "2026-06-30",
+      "growth_score": 52.2,
+      "inflation_score": 64.1,
+      "growth_label": "neutral",
+      "inflation_label": "high",
+      "quadrant": "Q1/Q3-edge",
+      "trajectory": [
+        {
+          "date": "2024-07-31",
+          "growth_score": 44.3,
+          "inflation_score": 53.2
+        },
+        {
+          "date": "2024-08-31",
+          "growth_score": 45.3,
+          "inflation_score": 48.6
+        },
+        {
+          "date": "2024-09-30",
+          "growth_score": 45.1,
+          "inflation_score": 45.5
+        },
+        {
+          "date": "2024-10-31",
+          "growth_score": 46.0,
+          "inflation_score": 47.1
+        },
+        {
+          "date": "2024-11-30",
+          "growth_score": 46.7,
+          "inflation_score": 46.3
+        },
+        {
+          "date": "2024-12-31",
+          "growth_score": 51.3,
+          "inflation_score": 50.2
+        },
+        {
+          "date": "2025-01-31",
+          "growth_score": 55.9,
+          "inflation_score": 53.5
+        },
+        {
+          "date": "2025-02-28",
+          "growth_score": 52.8,
+          "inflation_score": 52.0
+        },
+        {
+          "date": "2025-03-31",
+          "growth_score": 51.2,
+          "inflation_score": 49.3
+        },
+        {
+          "date": "2025-04-30",
+          "growth_score": 51.5,
+          "inflation_score": 44.8
+        },
+        {
+          "date": "2025-05-31",
+          "growth_score": 51.4,
+          "inflation_score": 47.4
+        },
+        {
+          "date": "2025-06-30",
+          "growth_score": 52.2,
+          "inflation_score": 48.5
+        },
+        {
+          "date": "2025-07-31",
+          "growth_score": 53.4,
+          "inflation_score": 52.1
+        },
+        {
+          "date": "2025-08-31",
+          "growth_score": 54.9,
+          "inflation_score": 55.4
+        },
+        {
+          "date": "2025-09-30",
+          "growth_score": 55.5,
+          "inflation_score": 56.5
+        },
+        {
+          "date": "2025-10-31",
+          "growth_score": 54.8,
+          "inflation_score": 53.7
+        },
+        {
+          "date": "2025-11-30",
+          "growth_score": 54.9,
+          "inflation_score": 51.0
+        },
+        {
+          "date": "2025-12-31",
+          "growth_score": 55.3,
+          "inflation_score": 50.5
+        },
+        {
+          "date": "2026-01-31",
+          "growth_score": 55.3,
+          "inflation_score": 51.3
+        },
+        {
+          "date": "2026-02-28",
+          "growth_score": 55.1,
+          "inflation_score": 49.0
+        },
+        {
+          "date": "2026-03-31",
+          "growth_score": 53.6,
+          "inflation_score": 52.4
+        },
+        {
+          "date": "2026-04-30",
+          "growth_score": 54.5,
+          "inflation_score": 60.7
+        },
+        {
+          "date": "2026-05-31",
+          "growth_score": 53.6,
+          "inflation_score": 63.6
+        },
+        {
+          "date": "2026-06-30",
+          "growth_score": 52.2,
+          "inflation_score": 64.1
+        }
+      ],
+      "backtest": {
+        "window": "1980-01-31 ~ 2026-06-30",
+        "recession": {
+          "hit": "4/4",
+          "median_lead_months": 16.0,
+          "false_positive_rate": 0.0774,
+          "flips_per_year": 0.54
+        },
+        "inflation": {
+          "hit": "3/3",
+          "median_lead_months": 0.0,
+          "false_positive_rate": 0.0593,
+          "flips_per_year": 0.52
+        }
+      }
+    },
     "full": {
       "growth_score": 37.6,
       "inflation_score": 71.8,
