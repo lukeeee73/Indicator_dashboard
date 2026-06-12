@@ -10280,24 +10280,29 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-05",
-      "narrative_score": 0.04,
-      "summary_kr": "Grasberg 복구 지연이 단기 생산 우려를 높이나, EV·데이터센터 구리 장기 수요 성장 기대로 UBS 목표주가 상향. YTD +41.2%의 강세 지속.",
+      "as_of": "2026-06-12",
+      "narrative_score": 0.01,
+      "summary_kr": "Q1 어닝 서프라이즈에도 불구하고 그라스베르그 H2 생산 40% 삭감이 중장기 우려. 구리 가격 $5.80/lb 역대 최고 수준이 매크로 지지대. 생산 차질 vs 높은 구리 가격의 상충 국면.",
       "key_events": [
-        "Grasberg 복구 당초 예상보다 지연",
-        "$3B 신용한도 신규 체결",
-        "UBS $75 목표주가 상향 (Buy)"
+        "Q1 EPS $0.57 컨센서스 21% 상회 (발표 후 -12% 급락)",
+        "그라스베르그 H2 생산 60k톤/일로 40% 삭감 (구리 -9%, 금 -7% through 2031)",
+        "구리 가격 $5.80/lb 역대 최고"
       ],
       "risks": [
-        "Grasberg 생산 차질 장기화 시 FCF 훼손",
-        "인도네시아 광업 규제 리스크"
+        "그라스베르그 생산 차질이 2031년까지 지속",
+        "발표 후 주가 급락으로 밸류에이션 우려 잔존"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
+          "ticker": "NEM",
+          "headline": "Newmont gold price declining to $4,331/oz, production down 10% in 2026",
+          "implication_for_target": "금 가격 하락과 NEM 생산 감소 — FCX 금 부산물 수익에도 부정적"
+        },
+        {
           "ticker": "BHP",
-          "headline": "BHP copper production guidance reaffirmed, Escondida mine output stable",
-          "implication_for_target": "BHP 에스콘디다 생산 안정 → FCX Grasberg 복구 지연과 대비"
+          "headline": "BHP copper assets in Chile benefit from same structural demand trends",
+          "implication_for_target": "글로벌 구리 메이저들과 수요 모멘텀 공유하나 FCX의 그라스베르그 생산 차질이 취약점"
         }
       ],
       "history": [
@@ -10312,6 +10317,10 @@
         {
           "date": "2026-06-05",
           "narrative_score": 0.04
+        },
+        {
+          "date": "2026-06-12",
+          "narrative_score": 0.01
         }
       ]
     }
