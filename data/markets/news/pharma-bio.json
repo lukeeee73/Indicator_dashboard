@@ -1,0 +1,155 @@
+{
+  "industry": "pharma-bio",
+  "updated": "2026-06-11",
+  "schema_note": "markets.<market-id> = 시장 단위 뉴스 배열(최신순). 파일당 시장별 최대 20개 보관, 웹은 최신 6개+더보기 표시. 단일 기업 뉴스는 data/news/<TICKER>/ (daily 루틴) 몫.",
+  "markets": {
+    "obesity-glp1": [
+      {
+        "date": "2026-02",
+        "title": "릴리 ’26 매출 $80–83B 가이던스 — 노보는 매출 감소 전망으로 양극화",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "릴리가 처방 점유 57%로 역전을 굳히는 가운데 노보는 ’26 매출 감소를 가이던스 — GLP-1 양강의 운명이 갈리는 중.",
+        "url": "https://www.cnbc.com/2026/02/04/eli-lilly-novo-nordisk-earnings-glp1-market.html"
+      },
+      {
+        "date": "2026-01",
+        "title": "’26년은 비만 경구약의 해 — 위고비 필 출시 3주만에 주간 처방 5만건",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "노보가 최초 경구 비만약을 출시, 릴리 오르포글리프론도 연내 미국 승인 예상. 경쟁축이 공급에서 제형·가격으로 이동.",
+        "url": "https://www.cnbc.com/2026/01/10/2026-is-the-year-of-obesity-pills-from-novo-nordisk-eli-lilly-.html"
+      }
+    ],
+    "pharma-rd-capital": [
+      {
+        "date": "2026-06",
+        "title": "바이오텍 M&A ’26 상반기 $106B — 코로나 전 이후 최대 페이스",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "특허절벽($400B, ’26–30)에 쫓기는 빅파마가 '유행 지나가듯 사들이는' 국면 — 딜 프리미엄 동반 급등.",
+        "url": "https://www.cnbc.com/2026/06/04/biotech-ma-dealmaking-pharma-106-billion.html"
+      },
+      {
+        "date": "2026-03",
+        "title": "3월 M&A 서지로 ’26 사상 최대 딜 기대 고조",
+        "source": "Fierce Pharma",
+        "impact": "+",
+        "summary": "’25 M&A $228B에 이어 ’26이 기록 경신 페이스 — 절벽 노출 기업(BMS·화이자)의 후기 자산 쟁탈전.",
+        "url": "https://www.fiercepharma.com/pharma/march-ma-surge-triggers-high-expectations-2026"
+      }
+    ],
+    "china-licensing": [
+      {
+        "date": "2026-04",
+        "title": "중국 바이오텍 아웃라이선싱 Q1에만 $60B — 전년比 +73% 사상 최대",
+        "source": "Reuters/Yahoo",
+        "impact": "+",
+        "summary": "’25 연간($135.7B)의 절반이 3개월에 압축. 업프런트 평균 $172M로 ’22 대비 +230% — 바겐세일 시대 종료.",
+        "url": "https://finance.yahoo.com/news/analysis-china-biotech-licensing-boom-092338804.html"
+      },
+      {
+        "date": "2026-02",
+        "title": "중국 자산 프리미엄 급등 — '더 이상 바겐 풀이 아니다'",
+        "source": "BioSpace",
+        "impact": "neutral",
+        "summary": "AZ·화이자·BMS 각 $16B+ 약정. 가격 상승과 미국의 대중 바이오 규제 리스크가 동시에 커지는 중.",
+        "url": "https://www.biospace.com/business/no-longer-a-bargain-pool-chinese-biotechs-command-higher-premiums"
+      }
+    ],
+    "ai-pharma-infra": [
+      {
+        "date": "2026-04",
+        "title": "Anthropic, Coefficient Bio $400M 인수 — 모델사의 신약 가치사슬 직접 진입",
+        "source": "BioSpace",
+        "impact": "+",
+        "summary": "Claude for Life Sciences 출시 후 Genentech Prescient Design 출신 팀 인수 — 빅테크가 '도구 판매'에서 '신약 참여'로.",
+        "url": "https://www.biospace.com/business/ai-giant-anthropic-leans-into-life-sciences-with-400m-coefficient-bio-catch"
+      },
+      {
+        "date": "2026-03",
+        "title": "BMS, Claude 를 전사 AI 플랫폼으로 — 직원 3만명 배치",
+        "source": "Fierce Pharma",
+        "impact": "+",
+        "summary": "R&D부터 글로벌 워크플로까지 Anthropic Claude 전면 도입 — 빅파마 전사 AI 채택의 분수령.",
+        "url": "https://www.fiercepharma.com/pharma/bristol-myers-taps-anthropic-claude-enterprise-wide-ai-adoption-speed-drug-rd-global"
+      }
+    ],
+    "ai-drug-discovery": [
+      {
+        "date": "2026-06",
+        "title": "AI 신약 리더들, 미 연구비 삭감이 글로벌 경쟁력 위협 경고",
+        "source": "Fortune",
+        "impact": "-",
+        "summary": "NVIDIA·Isomorphic 등이 NIH 삭감발 기초연구 공백을 경고 — AI 신약의 상류(데이터·인재) 리스크.",
+        "url": "https://fortune.com/2026/06/10/nvidia-drug-pharma-isomorphic-brainstorm-tech-ai-healthcare-biotech-term-sheet/"
+      },
+      {
+        "date": "2026-02",
+        "title": "Isomorphic Labs $2.1B 시리즈B — Lilly·Novartis 딜에 이은 초대형 조달",
+        "source": "IntuitionLabs",
+        "impact": "+",
+        "summary": "알파폴드 계열 AI 신약 설계의 대표주자가 역대급 라운드 — AI 발굴 임상 프로그램 173개+ 시대.",
+        "url": "https://intuitionlabs.ai/articles/isomorphic-labs-series-b-ai-drug-discovery"
+      }
+    ],
+    "cro": [
+      {
+        "date": "2026-04",
+        "title": "IQVIA, NVIDIA 와 에이전틱 AI 플랫폼 'IQVIA.ai' 출시",
+        "source": "Fierce Biotech",
+        "impact": "+",
+        "summary": "임상·RWD 데이터 자산에 NVIDIA 인프라를 결합 — CRO 의 AI 전환이 본격화.",
+        "url": "https://www.fiercebiotech.com/cro/iqvia-unveils-ai-suite-managing-clinical-trial-finances"
+      }
+    ],
+    "us-payers": [
+      {
+        "date": "2026-05",
+        "title": "백악관, MFN 약가 정책 절감 효과 발표 — 실효성 논쟁 지속",
+        "source": "White House",
+        "impact": "neutral",
+        "summary": "MFN 협약은 자율·비공개·3년 한시 — 법정 구속력 있는 IRA 협상가와 달리 실제 절감 효과는 불투명.",
+        "url": "https://www.whitehouse.gov/research/2026/05/savings-from-most-favored-nation-drug-pricing-policy/"
+      },
+      {
+        "date": "2026-01",
+        "title": "IRA 협상가 1차분(10개 약) 발효 — 정가 대비 -38~79%",
+        "source": "Medicare Rights Center",
+        "impact": "-",
+        "summary": "메디케어 연 $6B 절감 추산, 차기 15개 약 지정. MFN 17사 자율협약·100% 관세와 함께 약가 압박 3중주.",
+        "url": "https://www.medicarerights.org/medicare-watch/2025/10/09/negotiated-prices-take-effect-for-ten-drugs-in-2026"
+      }
+    ],
+    "cdmo-biologics": [
+      {
+        "date": "2026-03",
+        "title": "삼성바이오로직스 글로벌 3위 진입 — Biosecure 발 탈중국 수혜",
+        "source": "Korea Biomedical Review",
+        "impact": "+",
+        "summary": "’25 CDMO 신규 투자 발표 $24.9B 중 74%가 미국행. 한국 3사 동시 증설의 공급과잉 리스크도 부상.",
+        "url": "https://www.koreabiomed.com/news/articleView.html?idxno=29468"
+      }
+    ],
+    "api-generics": [
+      {
+        "date": "2026-02",
+        "title": "수입 브랜드 의약품 100% 관세 행정명령 — 의약품 공급망 안보 전면화",
+        "source": "IntuitionLabs",
+        "impact": "-",
+        "summary": "API 의 중국 의존(40–45%)이 다음 무역 전선 — 미국 상위 100대 제네릭 중 83개는 미국 내 API 공급원 0.",
+        "url": "https://intuitionlabs.ai/articles/pharma-tariffs-2026-supply-chain-onshoring"
+      }
+    ],
+    "health-data": [
+      {
+        "date": "2026-01",
+        "title": "Illumina 'Billion Cell Atlas' 공개 — AI 신약용 50억 세포 퍼터베이션 데이터",
+        "source": "Mordor/업계",
+        "impact": "+",
+        "summary": "AI 학습용 대규모 생물학 데이터 생성 자체가 사업이 되는 신호 — 데이터 해자 기업 재평가.",
+        "url": "https://www.mordorintelligence.com/industry-reports/life-science-tools-market"
+      }
+    ]
+  }
+}

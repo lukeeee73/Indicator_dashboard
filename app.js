@@ -1587,13 +1587,14 @@ function renderStocksTab(data) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-//  AI · 반도체 시장 구조도 (market diagram) — 공급의 뿌리(좌) → 최종 수요(우)
+//  시장 구조도 (market diagram) — 공급의 뿌리(좌) → 최종 수요(우)
 // ════════════════════════════════════════════════════════════════════════
 //
-// 기업이 아니라 '시장' 단위로 본 밸류체인 다이어그램.
-// 메인 체인(장비·소재 → 제조 → 부품 → 컴퓨팅 → 자본 → 수요) + 하단 밴드
-// (피지컬 AI 체인 · 전력/DC 기반)로 배치되고, 모든 관계선이 항상 그려진다.
-// 데이터 SSOT 는  data/markets/ai-semiconductor.json  하나이며, 노드·관계·
+// 기업이 아니라 '시장' 단위로 본 밸류체인 다이어그램. 산업별 지도를
+// MARKET_MAPS 레지스트리(탭)로 전환한다 — AI·반도체 / 제약·바이오.
+// 메인 체인(장비·소재 → 제조 → … → 자본 → 수요/지불자) + 하단 밴드로
+// 배치되고, 모든 관계선이 항상 그려진다.
+// 데이터 SSOT 는  data/markets/<id>.json  (지도당 1개)이며, 노드·관계·
 // 병목·플레이어는 물론 다이어그램 배치(diagram 블록)까지 이 JSON 이 정한다.
 //
 // 색은 절제한다: '독점(structural)'·'병목(acute/easing/emerging)'만 색으로
@@ -1603,13 +1604,16 @@ function renderStocksTab(data) {
 // narrative_score 를 자동 집계해 "시장 분위기" 로 보여주고,
 // weekly_note(주간 흐름)는 market-research 루틴이 채운다.
 //
-// 시장 단위 뉴스는 맵과 분리된  data/markets/news/ai-semiconductor.json  에
+// 시장 단위 뉴스는 맵과 분리된  data/markets/news/<id>.json  에
 // 시장 id 별로 누적된다. 웹은 노드 배지(건수·최신일), 노드 클릭 상세,
 // 보드 하단의 통합 뉴스 피드(클릭 → 해당 시장 선택) 세 곳에 꽂아 보여준다.
 
-const MARKET_MAP_URL = "data/markets/ai-semiconductor.json";
-const MARKET_NEWS_URL = "data/markets/news/ai-semiconductor.json";
-const MC_STATE = { map: null, news: null, activeNode: null, bottleneckOnly: false, loading: false, zoom: 1 };
+// 시장 지도 레지스트리 — data/markets/<id>.json (+ news/<id>.json) 쌍을 추가하면 탭이 생긴다.
+const MARKET_MAPS = [
+  { id: "ai-semiconductor", label: "AI · 반도체" },
+  { id: "pharma-bio",       label: "제약 · 바이오" },
+];
+const MC_STATE = { mapId: MARKET_MAPS[0].id, cache: {}, map: null, news: null, activeNode: null, bottleneckOnly: false, loading: false, zoom: 1 };
 
 // 강조 색 — 독점/병목만. demand_limited·비병목은 null(중립 톤).
 const MC_SEVERITY_COLOR = {
@@ -1623,22 +1627,26 @@ const MC_SEV_SHORT = { structural: "독점", acute: "급성 병목", easing: "�
 // 점유율 바 — 단색 회색 램프(톤 유지)
 const MC_SHARE_RAMP = ["#e6e6e6", "#bcbcbc", "#929292", "#6c6c6c", "#525252"];
 
-// 진입점 (renderStocksTab 에서 호출). 비동기 fetch 후 렌더. map 은 1회만 로드.
+// 진입점 (renderStocksTab 에서 호출). 비동기 fetch 후 렌더. map 은 id 별 1회만 로드.
 async function renderMarketCascade(stocks) {
   const board = document.getElementById("vc-board");
   if (!board) return;
-  if (!MC_STATE.map && !MC_STATE.loading) {
+  MC_STATE.stocks = stocks;
+  const mapId = MC_STATE.mapId;
+  if (!MC_STATE.cache[mapId] && !MC_STATE.loading) {
     MC_STATE.loading = true;
     board.innerHTML = emptyMessage("시장 지도를 불러오는 중…");
     try {
       const [mapRes, newsRes] = await Promise.all([
-        fetch(MARKET_MAP_URL, { cache: "no-cache" }),
-        fetch(MARKET_NEWS_URL, { cache: "no-cache" }).catch(() => null),
+        fetch(`data/markets/${mapId}.json`, { cache: "no-cache" }),
+        fetch(`data/markets/news/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
       ]);
       if (!mapRes.ok) throw new Error(`HTTP ${mapRes.status}`);
-      MC_STATE.map = await mapRes.json();
-      // 뉴스 스토어는 없어도 지도는 그린다 (recent_news 폴백)
-      MC_STATE.news = newsRes && newsRes.ok ? await newsRes.json() : null;
+      MC_STATE.cache[mapId] = {
+        map: await mapRes.json(),
+        // 뉴스 스토어는 없어도 지도는 그린다 (recent_news 폴백)
+        news: newsRes && newsRes.ok ? await newsRes.json() : null,
+      };
     } catch (err) {
       board.innerHTML = emptyMessage(`시장 지도를 불러오지 못했습니다 (${err.message}).`);
       MC_STATE.loading = false;
@@ -1646,11 +1654,26 @@ async function renderMarketCascade(stocks) {
     }
     MC_STATE.loading = false;
   }
-  if (!MC_STATE.map) return;
+  const entry = MC_STATE.cache[mapId];
+  if (!entry) return;
+  MC_STATE.map = entry.map;
+  MC_STATE.news = entry.news;
   renderMarketChrome();
   renderMarketBoard(stocks);
   renderMarketNewsFeed(stocks);
   mcWireCanvas();
+}
+
+// 지도 전환 (AI·반도체 ↔ 제약·바이오) — 선택·줌 상태를 초기화하고 다시 그린다
+function mcSwitchMap(mapId) {
+  if (mapId === MC_STATE.mapId) return;
+  MC_STATE.mapId = mapId;
+  MC_STATE.activeNode = null;
+  MC_STATE.userZoomed = false;
+  MC_STATE.fitted = false;
+  const detail = document.getElementById("vc-detail");
+  if (detail) detail.innerHTML = `<p class="vc-detail-hint">시장 노드를 클릭하면 상세 정보가 표시됩니다.</p>`;
+  renderMarketCascade(MC_STATE.stocks || {});
 }
 
 // 상단 크롬: 강조 범례 + '병목만 강조' 토글
@@ -1663,7 +1686,11 @@ function renderMarketChrome() {
     return `<span class="mc-leg" title="${escapeHtml(v.desc || "")}" style="--mc-c:${c}">
        <i class="mc-leg-dot"></i>${escapeHtml(v.label || k)}</span>`;
   }).join("");
+  const mapTabs = MARKET_MAPS.map((m) =>
+    `<button type="button" class="vc-chain-btn mc-map-btn${m.id === MC_STATE.mapId ? " active" : ""}"
+       data-map="${escapeHtml(m.id)}" role="tab" aria-selected="${m.id === MC_STATE.mapId}">${escapeHtml(m.label)}</button>`).join("");
   navHost.innerHTML = `
+    <div class="mc-mapsel" role="tablist" aria-label="시장 지도 선택">${mapTabs}</div>
     <div class="mc-legend">${legend}</div>
     <label class="mc-toggle"><input type="checkbox" id="mc-bottleneck-only" ${MC_STATE.bottleneckOnly ? "checked" : ""}> 병목·독점만 강조</label>
     <div class="mc-zoom" role="group" aria-label="지도 줌">
@@ -1674,6 +1701,8 @@ function renderMarketChrome() {
       <button type="button" id="mc-full" title="전체 화면 (ESC 로 종료)">⛶</button>
       <span class="mc-zoom-hint">드래그 이동 · Ctrl+휠/핀치 줌</span>
     </div>`;
+  navHost.querySelectorAll(".mc-map-btn").forEach((btn) =>
+    btn.addEventListener("click", () => mcSwitchMap(btn.dataset.map)));
   const cb = document.getElementById("mc-bottleneck-only");
   if (cb) cb.addEventListener("change", () => {
     MC_STATE.bottleneckOnly = cb.checked;
@@ -1830,9 +1859,10 @@ function renderMarketBoard(stocks) {
 
   const axis = document.createElement("div");
   axis.className = "mc-axis";
-  axis.innerHTML = `<span>공급의 뿌리 — 장비·소재</span>
-                    <span class="mc-axis-mid">물건·컴퓨트가 흐르는 방향 ▶</span>
-                    <span>최종 수요 — 돈을 내는 곳</span>`;
+  const ax = (map.diagram && map.diagram.axis) || {};
+  axis.innerHTML = `<span>${escapeHtml(ax.left || "공급의 뿌리 — 장비·소재")}</span>
+                    <span class="mc-axis-mid">${escapeHtml(ax.mid || "물건·컴퓨트가 흐르는 방향 ▶")}</span>
+                    <span>${escapeHtml(ax.right || "최종 수요 — 돈을 내는 곳")}</span>`;
   board.appendChild(axis);
 
   const main = document.createElement("div");

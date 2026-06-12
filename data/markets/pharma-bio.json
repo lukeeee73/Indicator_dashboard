@@ -1,0 +1,1246 @@
+{
+  "id": "pharma-bio",
+  "title": "제약 · 바이오 밸류체인",
+  "subtitle": "지불자 → 신약 → R&D 자본 캐스케이드 · 돈의 흐름 중심 시장 지도 (블록버스터·파이프라인·CDMO·AI 신약)",
+  "as_of": "2026-06",
+  "intro": "기업이 아니라 '시장(돈의 흐름)' 단위로 본 제약·바이오 산업. 오른쪽 끝의 지불자(보험·정부)가 모든 돈의 원천이고, 그 돈이 블록버스터 신약 매출 → 빅파마 R&D·M&A 자본 → 임상·AI 신약 서비스 → 위탁생산 → 장비·소재로 흘러내린다. 산업의 최대 동력은 ① $400B 특허절벽이 강제하는 파이프라인 쟁탈전(중국 라이선싱·M&A), ② GLP-1 비만약의 슈퍼사이클, ③ 빅테크 AI의 신약개발 침투다. 빨갛게 표시된 노드가 지금 돈이 가장 절박하게 몰리는 압박 지점이다.",
+  "data_note": "시장 규모·성장률은 2024~2026 업계 트래커(IQVIA, Evaluate, Drug Channels, Mordor, PharmaSource, DealForma)와 기업 공시 기준 추정치다. 출처가 갈리는 값은 confidence 로 표시했다. size_usd_b 는 노드 크기 시각화를 위한 대표값이며 정밀치가 아니다. 치료영역 노드는 가장 큰 3대 영역(항암·면역·비만대사)+기타로 묶었다.",
+  "severity_legend": {
+    "structural": {
+      "label": "구조적 독점·의존",
+      "icon": "⚫",
+      "desc": "대체 공급원이 없는 구조적 관문 — 과점 장비사·중국 API 의존"
+    },
+    "acute": {
+      "label": "급성 압박",
+      "icon": "🔴",
+      "desc": "현재 가장 타이트 — 특허절벽 자산 쟁탈전·약가 정책 압박"
+    },
+    "easing": {
+      "label": "압박 완화중",
+      "icon": "🟠",
+      "desc": "병목이었으나 증설·회복으로 완화되는 중 (GLP-1 공급·바이오텍 자금)"
+    },
+    "emerging": {
+      "label": "부상하는 병목",
+      "icon": "🟡",
+      "desc": "지금은 아니나 빠르게 조여오는 2차 병목·리스크"
+    },
+    "demand_limited": {
+      "label": "수요·검증 한계형",
+      "icon": "🔵",
+      "desc": "공급은 충분 — 수요 둔화·임상 검증 미완이 한계"
+    }
+  },
+  "layers": [
+    {
+      "id": "payer",
+      "label": "① 지불자·유통",
+      "desc": "모든 돈의 원천 — 보험·정부가 약값을 내고, 유통·PBM 과점이 그 길목을 쥔다."
+    },
+    {
+      "id": "products",
+      "label": "② 신약 시장 (블록버스터)",
+      "desc": "실제로 돈이 모이는 치료영역 — 항암·면역·비만대사가 성장의 3축."
+    },
+    {
+      "id": "capital",
+      "label": "③ R&D 자본 엔진",
+      "desc": "블록버스터 현금흐름이 파이프라인을 사들이는 돈 — R&D·M&A·라이선싱·VC."
+    },
+    {
+      "id": "services",
+      "label": "④ R&D 서비스 · AI",
+      "desc": "신약을 실제로 개발해주는 곳 — 임상 CRO와 AI 신약개발·데이터."
+    },
+    {
+      "id": "manufacturing",
+      "label": "⑤ 제조 기반",
+      "desc": "약을 실제로 만들어내는 곳 — 바이오 CDMO·펩타이드 자체생산·제네릭 API."
+    },
+    {
+      "id": "foundation",
+      "label": "⑥ 장비·소재·도구",
+      "desc": "제조와 연구를 가능케 하는 최심층 — 바이오프로세싱 장비·연구 도구."
+    }
+  ],
+  "markets": [
+    {
+      "id": "us-payers",
+      "layer": "payer",
+      "name_kr": "지불자 (보험·정부 약가)",
+      "name_en": "Payers — Insurers & Government Drug Pricing",
+      "definition": "의약품 값을 실제로 내는 곳 — 미국 메디케어/메디케이드·민간보험이 글로벌 제약 매출의 ~45%를 결정한다.",
+      "size_usd_b": 800,
+      "size_label": "글로벌 의약품 지출 ~$1.7T(’26) · 미국 ~$800B(gross)",
+      "growth": "글로벌 +6~9% CAGR",
+      "size_confidence": "med",
+      "demand_driver": "고령화 + 비만·항암 신약 수요. 미국이 세계 최고가 시장으로 산업 전체 이익의 절반 이상을 부담 — 그래서 미국 약가 정책이 곧 산업 전체의 매출 함수.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "약가 인하 압박이 산업 수익의 최대 외생 변수 — IRA 협상 1차분(10개 약, 정가 대비 -38~79%)이 ’26.1 발효, 차기 15개 지정. MFN(최혜국 약가) 자율협약에 17개 대형 제약사 서명 + 수입 브랜드약 100% 관세 행정명령. '약가 vs 혁신 보상'의 줄다리기가 모든 노드의 할인율을 결정."
+      },
+      "players": [
+        {
+          "name": "Medicare / Medicaid (CMS)",
+          "ticker": null,
+          "role": "최대 단일 지불자 — IRA 약가협상·MFN 모델 주관"
+        },
+        {
+          "name": "UnitedHealth",
+          "ticker": "UNH",
+          "role": "최대 민간보험 + Optum Rx (PBM 3강)",
+          "in_watchlist": true
+        },
+        {
+          "name": "CVS Health (Aetna)",
+          "ticker": "CVS",
+          "role": "보험 + Caremark PBM 수직통합"
+        },
+        {
+          "name": "Cigna (Evernorth)",
+          "ticker": "CI",
+          "role": "Express Scripts PBM"
+        },
+        {
+          "name": "Elevance",
+          "ticker": "ELV",
+          "role": "블루크로스 계열 대형 보험"
+        }
+      ],
+      "sources": [
+        "https://www.iqvia.com/insights/the-iqvia-institute/reports-and-publications/reports/global-medicine-use-trends-2026",
+        "https://www.medicarerights.org/medicare-watch/2025/10/09/negotiated-prices-take-effect-for-ten-drugs-in-2026",
+        "https://www.sidley.com/en/insights/newsupdates/2025/12/us-drug-pricing-year-in-review-reflections-on-2025-and-getting-ready-for-2026"
+      ],
+      "weekly_note": "IRA 1차 협상가 ’26.1 발효(연 $6B 절감), 차기 15개 약 지정. MFN 17사 서명에도 실효성 논쟁 — 정책 헤드라인이 섹터 멀티플을 흔드는 국면."
+    },
+    {
+      "id": "distribution-pbm",
+      "layer": "payer",
+      "name_kr": "의약품 유통 · PBM",
+      "name_en": "Drug Distribution & PBM",
+      "definition": "약이 환자에게 가는 길목 — 도매 3사가 유통 90%+, PBM 3사가 처방 ~80%를 통제하는 이중 과점.",
+      "size_usd_b": 265,
+      "size_label": "스페셜티 파마시 ~$265B · 도매 3사 합산 매출 ~$880B",
+      "growth": "스페셜티 +10%+ · GLP-1 물량이 견인",
+      "size_confidence": "med",
+      "demand_driver": "고가 스페셜티(항암·면역·GLP-1) 비중 확대가 유통·조제 마진의 원천. 도매 3사가 $16B+ 인수로 스페셜티 유통·온콜로지 GPO로 영역 확장.",
+      "bottleneck": {
+        "severity": "structural",
+        "limit": "도매 3사(McKesson·Cencora·Cardinal) 90%+ · PBM 3사(Caremark·Optum·Express Scripts) ~80% — 대체 불가 과점 관문. 단, PBM 개혁 입법(리베이트 100% 패스스루·수수료 분리, ’28–29 시행)이 리베이트 기반 수익모델을 근본 재편 — 구조적 지위와 정책 리스크가 공존."
+      },
+      "players": [
+        {
+          "name": "McKesson",
+          "ticker": "MCK",
+          "role": "유통 1위 (매출 ~$360B) + 온콜로지 GPO",
+          "share": 35
+        },
+        {
+          "name": "Cencora",
+          "ticker": "COR",
+          "role": "유통 2위 — 스페셜티 강자",
+          "share": 31
+        },
+        {
+          "name": "Cardinal Health",
+          "ticker": "CAH",
+          "role": "유통 3위",
+          "share": 24
+        },
+        {
+          "name": "CVS Caremark",
+          "ticker": "CVS",
+          "role": "PBM 1위 + 스페셜티 파마시"
+        },
+        {
+          "name": "Optum Rx",
+          "ticker": "UNH",
+          "role": "PBM 3강 (UnitedHealth)",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://intuitionlabs.ai/articles/drug-wholesaler-market-concentration",
+        "https://intuitionlabs.ai/articles/specialty-pharmacy-key-players",
+        "https://www.firstanalysis.com/research/healthcare-technology-apr-2026/"
+      ],
+      "weekly_note": "GLP-1·스페셜티 물량이 유통 실적을 견인. PBM 개혁(’28–29 시행)으로 리베이트 모델 해체가 예고 — 'Net Pricing' 전환이 중기 화두."
+    },
+    {
+      "id": "oncology",
+      "layer": "products",
+      "name_kr": "항암제 (ADC·면역항암)",
+      "name_en": "Oncology (IO · ADC)",
+      "definition": "최대 치료영역. 면역항암제(키트루다)와 차세대 ADC(항체-약물 접합체)·이중항체가 성장 축.",
+      "size_usd_b": 273,
+      "size_label": "$273B(’25) → $300B+(’30) · ADC $15–20B(’26) → $70B(’31)",
+      "growth": "전체 ~10% · ADC ~29% CAGR",
+      "size_confidence": "high",
+      "demand_driver": "암 유병률 증가 + 치료 라인 확장. ADC가 화학요법을 대체하며 가장 빠르게 성장(승인 15개·임상 200개+), 이중특이성 ADC가 차기 프런티어.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "단일 최대 리스크는 키트루다 절벽 — $32.7B(’26 피크) IV 특허가 ’28 만료, 단일 제품 기준 사상 최대 매출이 증발 위험(머크는 피하주사 전환·20개 신규 출시로 방어). ADC는 고활성 접합 생산캐파가 타이트해 위탁생산 병목 공유."
+      },
+      "players": [
+        {
+          "name": "Merck",
+          "ticker": "MRK",
+          "role": "키트루다 — 세계 1위 의약품 (~$32B)",
+          "in_watchlist": true
+        },
+        {
+          "name": "AstraZeneca",
+          "ticker": "AZN",
+          "role": "타그리소·엔허투(다이이찌 제휴) — ADC 선두",
+          "in_watchlist": true
+        },
+        {
+          "name": "Daiichi Sankyo",
+          "ticker": "4568.T",
+          "role": "엔허투·다토포타맙 — ADC 기술 원조"
+        },
+        {
+          "name": "J&J",
+          "ticker": "JNJ",
+          "role": "다잘렉스·카빅티 — 혈액암 강자",
+          "in_watchlist": true
+        },
+        {
+          "name": "Pfizer (Seagen)",
+          "ticker": "PFE",
+          "role": "$43B 시젠 인수로 ADC 포트폴리오",
+          "in_watchlist": true
+        },
+        {
+          "name": "BMS · Roche",
+          "ticker": "BMY",
+          "role": "옵디보(’28 LOE)·면역항암 빅4"
+        }
+      ],
+      "sources": [
+        "https://www.iqvia.com/insights/the-iqvia-institute/reports-and-publications/reports/global-medicine-use-trends-2026",
+        "https://www.mordorintelligence.com/industry-reports/antibody-drug-conjugates-market",
+        "https://www.pharmavoice.com/news/big-pharma-navigating-patent-cliff-300-billion-jnj-merck-abbvie/810915/"
+      ],
+      "weekly_note": "키트루다 피하주사 전환으로 절벽 방어 중. ADC 라이선싱 $5B+(’25 이후)·이중특이성 ADC 12개 임상 진입 — 항암 BD의 중심축."
+    },
+    {
+      "id": "immunology",
+      "layer": "products",
+      "name_kr": "면역질환 (자가면역)",
+      "name_en": "Immunology",
+      "definition": "류마티스·건선·아토피·IBD 등 자가면역 치료제 — 항암 다음의 2위 치료영역.",
+      "size_usd_b": 175,
+      "size_label": "~$175B(’25)",
+      "growth": "~8% · 단 바이오시밀러 잠식 동시 진행",
+      "size_confidence": "high",
+      "demand_driver": "만성질환 특성상 장기 복용 + 적응증 확장(듀피젠트 COPD 등). 휴미라($21B 피크) 절벽을 스카이리치·린버크가 성공적으로 대체한 것이 LOE 방어의 교과서.",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "성숙 영역 — 휴미라·스텔라라가 바이오시밀러에 잠식되며 금액 성장이 둔화. 신규 성장은 차세대 기전(경구 IL-23·TL1A·OX40)과 적응증 확장에 의존. 스카이리치+린버크(~$25B)·듀피젠트(~$16B)가 견인하나 ’30년대 초 이들의 LOE가 다음 절벽."
+      },
+      "players": [
+        {
+          "name": "AbbVie",
+          "ticker": "ABBV",
+          "role": "스카이리치+린버크 ~$25B — 휴미라 절벽 방어 성공",
+          "in_watchlist": true
+        },
+        {
+          "name": "Sanofi · Regeneron",
+          "ticker": "REGN",
+          "role": "듀피젠트 ~$16B (적응증 확장 중)"
+        },
+        {
+          "name": "J&J",
+          "ticker": "JNJ",
+          "role": "트렘피아 — 스텔라라 LOE 방어",
+          "in_watchlist": true
+        },
+        {
+          "name": "Amgen · Novartis",
+          "ticker": "AMGN",
+          "role": "바이오시밀러 겸업 + 신규 기전"
+        }
+      ],
+      "sources": [
+        "https://www.iqvia.com/insights/the-iqvia-institute/reports-and-publications/reports/global-medicine-use-trends-2026",
+        "https://intuitionlabs.ai/articles/pharmaceutical-market-analysis-trends"
+      ],
+      "weekly_note": "휴미라 바이오시밀러 침식 가속에도 스카이리치·듀피젠트가 영역 성장을 유지. 경구 면역약(TL1A 등)이 차기 BD 테마."
+    },
+    {
+      "id": "obesity-glp1",
+      "layer": "products",
+      "name_kr": "비만·대사 (GLP-1)",
+      "name_en": "Obesity & Cardiometabolic (GLP-1)",
+      "definition": "GLP-1 계열 비만·당뇨약 — 제약 역사상 가장 빠른 슈퍼사이클. ’26년은 경구약 원년.",
+      "size_usd_b": 100,
+      "size_label": "GLP-1 ~$58–101B(’26) → $180B(’34–35)",
+      "growth": "시장 4배 성장(’22–25) · ~9–15% CAGR 지속",
+      "size_confidence": "low",
+      "demand_driver": "전세계 비만 인구 10억+ 의 미충족 수요 + 심혈관·수면무호흡·신장 적응증 확장이 급여 대상을 확대. 경구약(위고비 필·오르포글리프론)이 주사 거부층과 신흥시장을 연다.",
+      "bottleneck": {
+        "severity": "easing",
+        "limit": "’23–24 급성 공급부족은 양사 메가 증설로 완화(FDA 부족 해제) — 제약이 공급에서 '가격·접근성'으로 이동. 릴리가 처방 57%로 역전, 노보는 ’26 매출 감소 가이던스로 수세. 미국 약가 인하(TrumpRx·메디케어 급여)와 컴파운딩 잔존이 단가를 압박."
+      },
+      "players": [
+        {
+          "name": "Eli Lilly",
+          "ticker": "LLY",
+          "role": "젭바운드·마운자로 — 처방 점유 ~57%, ’26 매출 $80–83B 가이던스",
+          "in_watchlist": true,
+          "share": 57
+        },
+        {
+          "name": "Novo Nordisk",
+          "ticker": "NVO",
+          "role": "위고비·오젬픽 ~43% — 최초 경구 비만약 출시",
+          "in_watchlist": true,
+          "share": 43
+        },
+        {
+          "name": "Amgen",
+          "ticker": "AMGN",
+          "role": "마리타이드 (월 1회 주사, 3상)"
+        },
+        {
+          "name": "AstraZeneca (CSPC)",
+          "ticker": "AZN",
+          "role": "중국 도입 경구 GLP-1 — $18.5B 딜",
+          "in_watchlist": true
+        },
+        {
+          "name": "Roche (Zealand)",
+          "ticker": null,
+          "role": "아밀린 계열 페트렐린타이드 제휴 ($5.3B)"
+        }
+      ],
+      "sources": [
+        "https://www.cnbc.com/2026/02/04/eli-lilly-novo-nordisk-earnings-glp1-market.html",
+        "https://www.cnbc.com/2026/01/10/2026-is-the-year-of-obesity-pills-from-novo-nordisk-eli-lilly-.html",
+        "https://www.rootsanalysis.com/reports/glp-1-market.html"
+      ],
+      "weekly_note": "’26은 경구약 원년 — 위고비 필 3주만에 주간 처방 5만건, 릴리 오르포글리프론 연내 승인 예상. 경쟁축이 공급에서 가격·제형으로 이동."
+    },
+    {
+      "id": "other-specialty",
+      "layer": "products",
+      "name_kr": "신경·희귀·백신 등",
+      "name_en": "Neuro, Rare Disease & Vaccines",
+      "definition": "3대 영역 밖의 주요 시장 — 알츠하이머·희귀질환·HIV·백신. 개별로는 작지만 합산하면 거대.",
+      "size_usd_b": 200,
+      "size_label": "신경 ~$100B + 희귀·HIV·백신 등 (합산 수백$B)",
+      "growth": "알츠하이머·희귀질환 고성장 · 백신은 역성장",
+      "size_confidence": "low",
+      "demand_driver": "고령화발 알츠하이머 치료제(레켐비·키순라) 첫 상용화 + 희귀질환의 높은 약가·급여 방어력. HIV 장기지속형(예즈투고)이 예방 시장을 재편.",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "알츠하이머약은 효능 대비 비용·투여 부담 논쟁으로 침투 느림. 백신은 코로나 수요 소멸 + 미국 백신 정책 불확실성(접종 권고 축소)이라는 정책 역풍 — 화이자·모더나 백신 매출 역성장."
+      },
+      "players": [
+        {
+          "name": "Biogen · Eisai",
+          "ticker": "BIIB",
+          "role": "레켐비 — 첫 항아밀로이드 항체"
+        },
+        {
+          "name": "Eli Lilly",
+          "ticker": "LLY",
+          "role": "키순라 (알츠하이머) + 도나네맙 후속",
+          "in_watchlist": true
+        },
+        {
+          "name": "Vertex",
+          "ticker": "VRTX",
+          "role": "낭포성섬유증 독점 + 비마약성 진통제"
+        },
+        {
+          "name": "Gilead",
+          "ticker": "GILD",
+          "role": "HIV 장기지속형 예즈투고 (연 2회)"
+        },
+        {
+          "name": "Pfizer · GSK · Moderna",
+          "ticker": "PFE",
+          "role": "백신 — 코로나 후 역성장 + 정책 리스크",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.evaluate.com/press-release/evaluate-releases-2030-forecasts-for-global-pharmaceutical-market/",
+        "https://intuitionlabs.ai/articles/pharmaceutical-market-analysis-trends"
+      ],
+      "weekly_note": "알츠하이머 항체가 느리지만 꾸준히 침투. 백신 섹터는 미 접종정책 축소로 투자심리 최악 — 역발상 가치 논쟁 진행 중."
+    },
+    {
+      "id": "pharma-rd-capital",
+      "layer": "capital",
+      "name_kr": "빅파마 R&D·M&A 자본",
+      "name_en": "Big Pharma R&D · M&A Capital",
+      "definition": "블록버스터 현금흐름으로 파이프라인을 사들이는 산업의 자본 엔진 — 사내 R&D + M&A + 라이선싱 업프런트.",
+      "size_usd_b": 300,
+      "size_label": "R&D ~$300B/년 + M&A $228B(’25) · ’26 상반기에만 $106B",
+      "growth": "M&A ’26 코로나 전 이후 최대 페이스",
+      "size_confidence": "med",
+      "demand_driver": "$400B 특허절벽(’26–30, 약 200개 만료 — 키트루다·엘리퀴스·다잘렉스)이 강제하는 파이프라인 보충. 빅파마 현금 + 차입 여력 ~$1T 이상이 자산을 쫓는다.",
+      "bottleneck": {
+        "severity": "acute",
+        "limit": "돈은 넘치는데 살 만한 검증된 자산이 부족 — 산업 전체의 진짜 병목. 후기 자산 인수 경쟁으로 딜 프리미엄 급등(중국 자산 업프런트 ’22 대비 +230%). BMS 성장 갭 $38B 등 절벽 노출 기업은 ’30년까지 매출 -60% 시나리오 — 자산 확보 실패가 곧 생존 문제."
+      },
+      "players": [
+        {
+          "name": "Eli Lilly",
+          "ticker": "LLY",
+          "role": "시총 1위 — 5개월간 중국 딜 5건 $13B+",
+          "in_watchlist": true
+        },
+        {
+          "name": "Merck",
+          "ticker": "MRK",
+          "role": "키트루다 절벽 대응 — 후기 자산 3배 확충",
+          "in_watchlist": true
+        },
+        {
+          "name": "Pfizer",
+          "ticker": "PFE",
+          "role": "시젠 $43B 등 — 절벽 노출 최대급",
+          "in_watchlist": true
+        },
+        {
+          "name": "AbbVie",
+          "ticker": "ABBV",
+          "role": "면역 후속 + 신경·미용 BD",
+          "in_watchlist": true
+        },
+        {
+          "name": "J&J",
+          "ticker": "JNJ",
+          "role": "제약 1위급 R&D ~$17B/년",
+          "in_watchlist": true
+        },
+        {
+          "name": "AstraZeneca · Novartis · BMS · Roche",
+          "ticker": "AZN",
+          "role": "유럽계 빅파마 — 중국 라이선싱 큰손",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.cnbc.com/2026/06/04/biotech-ma-dealmaking-pharma-106-billion.html",
+        "https://www.drugpatentwatch.com/blog/kill-the-patent-cliff-how-to-turn-a-400-billion-revenue-loss-into-a-competitive-edge/",
+        "https://www.foley.com/insights/publications/2025/09/patent-cliff-ma-activity-for-companies-right-now/"
+      ],
+      "weekly_note": "’26 M&A가 코로나 전 이후 최대 페이스($106B) — 특허절벽 시계가 돌수록 딜은 커지고 비싸진다. 절벽 노출(BMS·화이자) vs 무풍(릴리)의 양극화."
+    },
+    {
+      "id": "biotech-funding",
+      "layer": "capital",
+      "name_kr": "바이오텍 벤처·자본시장",
+      "name_en": "Biotech VC & Capital Markets",
+      "definition": "신약 후보를 만들어내는 혁신의 돈줄 — VC, IPO, 후속 공모. 빅파마 M&A가 엑시트로 환류한다.",
+      "size_usd_b": 40,
+      "size_label": "VC ~$38B(’25, +28%) · IPO는 ’25 $1.6B 로 5년 최저 후 재개방",
+      "growth": "XBI +64%(최근 1년) — 3년 겨울 탈출",
+      "size_confidence": "med",
+      "demand_driver": "빅파마 M&A $228B가 만든 VC 유동성 환류 + 금리 인하 기대. 자금이 후기·검증 자산과 AI 플랫폼으로 양극화 집중.",
+      "bottleneck": {
+        "severity": "easing",
+        "limit": "’22–24 자금 겨울은 끝나는 중 — XBI +64%, IPO 창 재개방. 단 회복이 선별적: 임상 데이터 없는 초기 바이오텍·플랫폼은 여전히 조달난, 대형 라운드 집중(승자독식). NIH 예산 삭감이 기초연구 파이프라인의 장기 상류 리스크."
+      },
+      "players": [
+        {
+          "name": "Flagship Pioneering",
+          "ticker": null,
+          "role": "컴퍼니 빌더 (모더나 산실, 비상장)"
+        },
+        {
+          "name": "ARCH Venture",
+          "ticker": null,
+          "role": "초대형 초기 라운드 주도 (비상장)"
+        },
+        {
+          "name": "OrbiMed · RA Capital",
+          "ticker": null,
+          "role": "크로스오버 — IPO 창 게이트키퍼"
+        },
+        {
+          "name": "XBI (바이오텍 ETF)",
+          "ticker": "XBI",
+          "role": "섹터 자금흐름의 바로미터"
+        }
+      ],
+      "sources": [
+        "https://www.ropesgray.com/en/insights/alerts/2026/03/from-volatility-to-vitality-how-2025-reset-the-life-sciences-market-and-whats-next-for-2026",
+        "https://www.bioxconomy.com/investment/reflecting-on-the-biotech-funding-landscape-of-2025-and-looking-ahead-to-2026"
+      ],
+      "weekly_note": "XBI 회복 + M&A 유동성 환류로 자금 겨울 탈출 중. 단 초기 단계는 여전히 선별적 — AI·후기 자산으로 쏠림."
+    },
+    {
+      "id": "china-licensing",
+      "layer": "capital",
+      "name_kr": "중국 파이프라인 라이선싱",
+      "name_en": "China Biotech Out-Licensing",
+      "definition": "중국 바이오텍이 개발한 후보물질을 빅파마가 사오는 신흥 파이프라인 공급원 — 특허절벽의 최대 해법으로 부상.",
+      "size_usd_b": 60,
+      "size_label": "딜 총가치 $135.7B(’25) · Q1’26 에만 $60B(+73%)",
+      "growth": "업프런트 평균 $52M(’22) → $172M(’26, +230%)",
+      "size_confidence": "med",
+      "demand_driver": "중국의 빠른 임상 속도·낮은 개발비 + 빅파마의 절벽 압박이 결합. ADC·이중항체·경구 GLP-1 등 핫 모달리티에서 중국 자산이 글로벌 베스트인클래스로 — AZ·화이자·BMS 가 각 $16B+ 약정.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "지정학이 최대 리스크 — 미 행정부의 대중 바이오 견제(Biosecure 류 규제 확장) 시 딜 구조 자체가 흔들린다. '바겐세일 시대 종료'로 가격이 급등 중이고, NewCo 우회 구조(미국 법인화)가 규제 회피 수단으로 확산."
+      },
+      "players": [
+        {
+          "name": "Hengrui Pharma",
+          "ticker": "600276.SS",
+          "role": "중국 1위 — GSK 와 $12B 패키지 딜"
+        },
+        {
+          "name": "Akeso",
+          "ticker": "9926.HK",
+          "role": "이보네스시맙 — 키트루다 직접 도전"
+        },
+        {
+          "name": "CSPC",
+          "ticker": "1093.HK",
+          "role": "AZ 경구 GLP-1 $18.5B 딜"
+        },
+        {
+          "name": "BeOne (BeiGene)",
+          "ticker": "ONC",
+          "role": "글로벌화 선두 — 자체 상업화"
+        },
+        {
+          "name": "Innovent · Duality · 3SBio",
+          "ticker": "1801.HK",
+          "role": "ADC·이중항체 라이선싱 다수"
+        }
+      ],
+      "sources": [
+        "https://finance.yahoo.com/news/analysis-china-biotech-licensing-boom-092338804.html",
+        "https://www.pharmavoice.com/news/china-biotech-recognize-value-bargain-over/814979/",
+        "https://www.biopharmadive.com/news/china-biotech-drug-licensing-deals-pipeline/758283/"
+      ],
+      "weekly_note": "Q1’26 아웃라이선싱 $60B 사상 최대 — ’25 연간의 절반이 3개월에 압축. 가격 급등 + 지정학 리스크가 동시에 커지는 중."
+    },
+    {
+      "id": "cro",
+      "layer": "services",
+      "name_kr": "임상시험 CRO",
+      "name_en": "Clinical CRO",
+      "definition": "임상시험을 대행하는 수탁연구기관 — 신약 개발비의 최대 항목(임상)을 처리하는 인프라.",
+      "size_usd_b": 45,
+      "size_label": "임상 CRO $42B(’26) → $62B(’31)",
+      "growth": "~8% CAGR · 스폰서 예산의 50%+ 가 외주",
+      "size_confidence": "high",
+      "demand_driver": "빅파마 R&D 고정비 절감 외주화 + 바이오텍의 인프라 부재. 임상 1건당 수억$ 비용 구조에서 AI 환자모집·합성대조군이 효율 혁신 축.",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "공급(캐파)은 충분 — 수요가 바이오텍 자금시장에 후행하는 경기민감 구조. ’25 수주 회복 중이나 빅파마 R&D 구조조정·우선순위 축소가 수요 상한. AI 가 임상 비용구조 자체를 바꾸면 매출 모델(인력 기반)이 디플레 압력."
+      },
+      "players": [
+        {
+          "name": "IQVIA",
+          "ticker": "IQV",
+          "role": "1위 — 데이터+CRO 복합, NVIDIA 와 IQVIA.ai",
+          "share": 25
+        },
+        {
+          "name": "ICON",
+          "ticker": "ICLR",
+          "role": "2위 글로벌 풀서비스",
+          "share": 15
+        },
+        {
+          "name": "Thermo Fisher (PPD)",
+          "ticker": "TMO",
+          "role": "장비→서비스 수직통합",
+          "in_watchlist": true,
+          "share": 13
+        },
+        {
+          "name": "Medpace",
+          "ticker": "MEDP",
+          "role": "중소 바이오텍 특화 — 고성장"
+        },
+        {
+          "name": "Fortrea",
+          "ticker": "FTRE",
+          "role": "랩콥 분사 CRO"
+        }
+      ],
+      "sources": [
+        "https://www.mordorintelligence.com/industry-reports/clinical-trial-management-contract-research-organization-cro-market",
+        "https://www.fiercebiotech.com/cro/iqvia-unveils-ai-suite-managing-clinical-trial-finances",
+        "https://www.clinicalleader.com/doc/cro-industry-outlook-the-next-stage-of-clinical-trial-transformation-0001"
+      ],
+      "weekly_note": "바이오텍 자금 회복으로 수주 반등. IQVIA 가 NVIDIA 와 에이전틱 AI 플랫폼(IQVIA.ai) 출시 — CRO 의 AI 전환이 본격화."
+    },
+    {
+      "id": "ai-drug-discovery",
+      "layer": "services",
+      "name_kr": "AI 신약개발 (테크바이오)",
+      "name_en": "AI Drug Discovery / TechBio",
+      "definition": "AI 로 신약 후보를 설계·발굴하는 신흥 산업 — 알파폴드 이후 빅파마가 R&D 엔진으로 채택 중.",
+      "size_usd_b": 5,
+      "size_label": "시장 ~$3–4B(’26) → $10B+(’31) · 딜 플로우는 수십$B",
+      "growth": "~26% CAGR · AI 발굴 임상 프로그램 173개+",
+      "size_confidence": "low",
+      "demand_driver": "신약 1개당 ~$2.6B·10년+ 의 개발 비용/기간을 단축하려는 빅파마의 절박함. 메가딜 러시 — Novo×Valo $2.76B, Lilly×Isomorphic $1.75B, Bayer×Recursion $1.5B, AZ 의 Modella AI 인수. Isomorphic 은 $2.1B 시리즈B.",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "검증 한계형 — AI 설계 분자의 대규모 3상 성공 사례가 아직 없다. 173개+ 임상 진입에도 '발굴 단축'은 입증, '성공률 개선'은 미입증. 진짜 병목은 고품질 실험 데이터 부족(공개 데이터 고갈) — wet lab 루프 없는 순수 SW 모델의 한계가 드러나는 중."
+      },
+      "players": [
+        {
+          "name": "Isomorphic Labs",
+          "ticker": "GOOGL",
+          "role": "알파폴드 계열 — Lilly·Novartis 딜, $2.1B 조달",
+          "in_watchlist": true
+        },
+        {
+          "name": "Recursion (+Exscientia)",
+          "ticker": "RXRX",
+          "role": "상장 테크바이오 최대 — ’25 합병"
+        },
+        {
+          "name": "Xaira Therapeutics",
+          "ticker": null,
+          "role": "$1B+ 시드 (ARCH, 비상장)"
+        },
+        {
+          "name": "Insilico Medicine",
+          "ticker": null,
+          "role": "AI 설계 분자 임상 다수 (홍콩 상장 추진)"
+        },
+        {
+          "name": "Schrödinger",
+          "ticker": "SDGR",
+          "role": "물리 기반 시뮬레이션 + AI"
+        }
+      ],
+      "sources": [
+        "https://intuitionlabs.ai/articles/isomorphic-labs-series-b-ai-drug-discovery",
+        "https://ai2.work/blog/why-big-pharma-is-betting-its-r-d-pipeline-on-ai-drug-discovery",
+        "https://fortune.com/2026/06/10/nvidia-drug-pharma-isomorphic-brainstorm-tech-ai-healthcare-biotech-term-sheet/"
+      ],
+      "weekly_note": "메가딜 러시 지속(누적 업프런트+마일스톤 수십$B). ’26–27 AI 설계 분자의 후기 임상 결과가 산업 전체의 검증 이벤트."
+    },
+    {
+      "id": "ai-pharma-infra",
+      "layer": "services",
+      "name_kr": "빅테크 AI 플랫폼 · 인프라",
+      "name_en": "Big Tech AI Platforms for Pharma",
+      "definition": "프런티어 AI 기업·빅테크가 제약사에 파는 모델·플랫폼·컴퓨트 — AI 산업이 제약에 침투하는 접점.",
+      "size_usd_b": 15,
+      "size_label": "독립 집계 없음 — 파마 IT·AI 지출의 일부 (딜 단위 $1B+ 등장)",
+      "growth": "전사 도입 단계 진입 (’25–26)",
+      "size_confidence": "low",
+      "demand_driver": "제약사가 R&D 부터 영업까지 전사 AI 도입 경쟁 — BMS×Anthropic(직원 3만명 Claude 전면 배치), Novo×OpenAI 전략 제휴, Lilly×NVIDIA $1B 코이노베이션(제약 최대 슈퍼컴), IQVIA×NVIDIA. Anthropic 은 Claude for Life Sciences 출시 후 Coefficient Bio 를 $400M 에 인수.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "부상 중인 관문 — 프런티어 모델·GPU 는 소수 빅테크가 과점하고, 제약사의 사일로화된 데이터·규제(GxP) 통합이 도입 속도를 제약. 빅테크가 '도구 판매자'에서 '신약 지분 참여자'(Isomorphic·Coefficient 모델)로 진화하면 가치 배분 자체가 재편될 수 있다."
+      },
+      "players": [
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "role": "BioNeMo + Lilly $1B 코이노베이션 — 바이오의 '무기상'",
+          "in_watchlist": true
+        },
+        {
+          "name": "Anthropic",
+          "ticker": null,
+          "role": "Claude for Life Sciences · BMS 전사 배치 · Coefficient Bio 인수 (비상장)"
+        },
+        {
+          "name": "OpenAI",
+          "ticker": null,
+          "role": "Novo Nordisk 전략 제휴 — 발굴→커머셜 전반 (비상장)"
+        },
+        {
+          "name": "Microsoft · AWS",
+          "ticker": "MSFT",
+          "role": "제약 클라우드·AI 인프라",
+          "in_watchlist": true
+        },
+        {
+          "name": "Google (Isomorphic·DeepMind)",
+          "ticker": "GOOGL",
+          "role": "알파폴드 생태계 수직통합",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.anthropic.com/news/claude-for-life-sciences",
+        "https://www.fiercepharma.com/pharma/bristol-myers-taps-anthropic-claude-enterprise-wide-ai-adoption-speed-drug-rd-global",
+        "https://www.biospace.com/business/ai-giant-anthropic-leans-into-life-sciences-with-400m-coefficient-bio-catch",
+        "https://www.dcatvci.org/features/ai-the-marriage-of-high-tech-big-pharma/"
+      ],
+      "weekly_note": "빅테크×빅파마 제휴가 분기마다 대형화 — Anthropic 의 Coefficient Bio 인수(4월)는 모델사가 신약 가치사슬 직접 참여로 넘어가는 신호."
+    },
+    {
+      "id": "health-data",
+      "layer": "services",
+      "name_kr": "임상·헬스 데이터 (RWD)",
+      "name_en": "Clinical & Real-World Data",
+      "definition": "AI 신약·임상의 연료 — 처방·청구·EHR·오믹스 데이터와 그 플랫폼. AI 시대의 '훈련 데이터' 자산.",
+      "size_usd_b": 10,
+      "size_label": "RWD/RWE ~$5–10B + 데이터 플랫폼 (집계 기준 상이)",
+      "growth": "AI 수요로 가속 — 데이터가 새 병목",
+      "size_confidence": "low",
+      "demand_driver": "AI 모델 성능이 데이터 질·양에 수렴하면서 독점 데이터 보유자의 가치 재평가 — IQVIA(처방 데이터), Tempus(분자+임상), Illumina 의 Billion Cell Atlas(AI 신약용 50억 세포 퍼터베이션). 규제기관도 RWE 승인 활용 확대.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "고품질·정합 라벨 데이터의 부족이 AI 신약의 진짜 상류 병목 — 공개 데이터는 고갈, 병원 데이터는 사일로·프라이버시 규제에 묶임. 대규모 퍼터베이션 데이터 생성(wet lab)에는 자본이 들어 소수만 가능 — 데이터 해자가 곧 기업가치."
+      },
+      "players": [
+        {
+          "name": "IQVIA",
+          "ticker": "IQV",
+          "role": "최대 처방·임상 데이터 자산"
+        },
+        {
+          "name": "Tempus AI",
+          "ticker": "TEM",
+          "role": "분자+임상 멀티모달 데이터 — AI 진단"
+        },
+        {
+          "name": "Veeva",
+          "ticker": "VEEV",
+          "role": "제약 CRM·임상 SW 표준"
+        },
+        {
+          "name": "Flatiron (Roche)",
+          "ticker": null,
+          "role": "온콜로지 RWD"
+        },
+        {
+          "name": "Datavant · Truveta",
+          "ticker": null,
+          "role": "데이터 연결·병원 컨소시엄 (비상장)"
+        }
+      ],
+      "sources": [
+        "https://www.biospace.com/press-releases/u-s-life-science-tools-market-size-to-hit-usd-156-51-billion-by-2034",
+        "https://intuitionlabs.ai/articles/pharma-ai-vendor-landscape-2026"
+      ],
+      "weekly_note": "Illumina Billion Cell Atlas 등 'AI 학습용 데이터 생성' 자체가 사업이 되는 중 — 데이터 해자 기업의 재평가 진행."
+    },
+    {
+      "id": "cdmo-biologics",
+      "layer": "manufacturing",
+      "name_kr": "바이오 CDMO (위탁개발생산)",
+      "name_en": "Biologics CDMO",
+      "definition": "항체·ADC·세포유전자 치료제를 위탁 개발·생산 — 바이오 시대의 '파운드리'.",
+      "size_usd_b": 30,
+      "size_label": "바이오 CDMO ~$30B (전체 CDMO ~$150B) · ’25 신규 투자 발표 $24.9B",
+      "growth": "~10–14% CAGR · 투자의 74%가 미국행",
+      "size_confidence": "med",
+      "demand_driver": "바이오의약품 비중 확대(신약 승인의 절반+) + Biosecure 법(’25.12 서명)발 탈중국 재편 + 관세 회피용 미국 onshoring. 빅파마가 자체 공장 대신 외주 — TSMC 모델과 동형.",
+      "bottleneck": {
+        "severity": "emerging",
+        "limit": "이중 구조 — ADC(고활성 접합)·무균충전 등 특수 캐파는 타이트하나, 일반 항체 배양은 한국 3사 동시 증설(삼성 5공장·롯데·셀트리온)로 ’27+ 공급과잉 리스크. WuXi 물량의 행선지(한국·미국·유럽)가 향후 3년 점유율을 결정."
+      },
+      "players": [
+        {
+          "name": "Lonza",
+          "ticker": "LONN.SW",
+          "role": "매출 1위 ($7.5B) — 스위스",
+          "share": 25
+        },
+        {
+          "name": "Samsung Biologics",
+          "ticker": "207940.KS",
+          "role": "캐파 1위 (78.4만L→5공장 ’26) — Biosecure 수혜",
+          "share": 11
+        },
+        {
+          "name": "WuXi Biologics",
+          "ticker": "2269.HK",
+          "role": "중국 — Biosecure 직격, 그래도 수주 견조",
+          "share": 13
+        },
+        {
+          "name": "Fujifilm Diosynth",
+          "ticker": "4901.T",
+          "role": "미국 NC 메가사이트 증설"
+        },
+        {
+          "name": "Catalent (Novo Holdings)",
+          "ticker": null,
+          "role": "$16.5B 인수 — 충전 캐파 노보 우선"
+        },
+        {
+          "name": "Thermo Fisher (Patheon)",
+          "ticker": "TMO",
+          "role": "장비+CDMO 수직통합",
+          "in_watchlist": true
+        }
+      ],
+      "sources": [
+        "https://www.koreabiomed.com/news/articleView.html?idxno=29468",
+        "https://visionlifesciences.com/insights/cdmo-market-analysis",
+        "https://www.pharmanow.live/pharma-manufacturing/pharmaceutical-contract-manufacturing-market-2026"
+      ],
+      "weekly_note": "Biosecure 서명 후 첫 해 — ’25 CDMO 투자 발표 $24.9B 중 74%가 미국. 한국 3사 동시 증설의 공급과잉 리스크도 부상."
+    },
+    {
+      "id": "glp1-manufacturing",
+      "layer": "manufacturing",
+      "name_kr": "GLP-1·펩타이드 생산 CAPEX",
+      "name_en": "GLP-1 / Peptide Manufacturing Buildout",
+      "definition": "비만약 슈퍼사이클이 강제한 사상 최대 제약 설비투자 — 펩타이드 API 합성과 무균 충전(fill-finish).",
+      "size_usd_b": 60,
+      "size_label": "릴리 美 누적 $50B+ 약정 · 노보 capex ~DKK 55B/년(~$8.5B)",
+      "growth": "제약 역사상 최대 단일 증설 사이클",
+      "size_confidence": "med",
+      "demand_driver": "GLP-1 수요가 기존 캐파를 수년치 초과 — 릴리 TX $6.5B(API)·VA $5B·PR $1.2B, 노보는 Catalent 충전소 3곳 인수($16.5B)로 수직통합. 경구약 전환은 정제 캐파라는 새 축을 연다.",
+      "bottleneck": {
+        "severity": "easing",
+        "limit": "’23–24 급성 부족(충전 캐파)은 메가 증설로 완화 — FDA 부족 리스트 해제. 단 잔여 병목은 무균충전 장비 리드타임과 펩타이드 원료의 대량 합성 수율. 증설이 수요 정점과 어긋나면 ’28+ 과잉 리스크 — 반도체식 캐파 사이클이 제약에 이식된 첫 사례."
+      },
+      "players": [
+        {
+          "name": "Eli Lilly",
+          "ticker": "LLY",
+          "role": "美 제조 $50B+ — 자체 수직통합",
+          "in_watchlist": true
+        },
+        {
+          "name": "Novo Nordisk",
+          "ticker": "NVO",
+          "role": "capex DKK 55B/년 + Catalent 인수",
+          "in_watchlist": true
+        },
+        {
+          "name": "Bachem",
+          "ticker": "BANB.SW",
+          "role": "펩타이드 CDMO 1위 (스위스)"
+        },
+        {
+          "name": "PolyPeptide · CordenPharma",
+          "ticker": "PPGN.SW",
+          "role": "펩타이드 위탁 합성 증설 경쟁"
+        }
+      ],
+      "sources": [
+        "https://www.bioprocessintl.com/facilities-capacity/eli-lilly-novo-nordisk-expand-operations-amid-glp-1-drug-boom",
+        "https://intuitionlabs.ai/articles/glp-1-drug-manufacturing-cdmo-tech-transfer",
+        "https://www.sec.gov/Archives/edgar/data/0000353278/000035327826000018/caq12026.htm"
+      ],
+      "weekly_note": "공급부족은 해소 국면 — 관심은 '캐파가 수요를 추월하는 시점'으로 이동. 경구약 램프가 정제·원료 합성의 새 병목을 만들지 주시."
+    },
+    {
+      "id": "api-generics",
+      "layer": "manufacturing",
+      "name_kr": "제네릭 · API 공급망",
+      "name_en": "Generics & API Supply Chain",
+      "definition": "특허 만료 의약품과 그 원료(API) — 미국 처방의 ~90%(물량)를 차지하나 금액은 ~13%. 공급망의 최하층.",
+      "size_usd_b": 200,
+      "size_label": "글로벌 제네릭 ~$430B · API 시장 ~$250B",
+      "growth": "물량 꾸준 · 금액은 디플레 구조",
+      "size_confidence": "low",
+      "demand_driver": "$400B 특허절벽이 곧 제네릭·바이오시밀러의 기회 — 키트루다·엘리퀴스 만료가 ’28부터 물량을 연다. 각국 의료비 절감 정책이 구조적 순풍.",
+      "bottleneck": {
+        "severity": "structural",
+        "limit": "반도체의 희토류와 동형인 구조적 중국 의존 — 글로벌 API 의 40–45%가 중국, 인도 제네릭도 원료의 ~70%(항생제는 90%)를 중국에 의존. 미국 상위 100대 제네릭 중 83개는 미국 내 API 공급원 0, 제네릭 API 의 1/3은 단독 공급원. 관세·수출통제 시 의약품 안보 직격."
+      },
+      "players": [
+        {
+          "name": "Teva",
+          "ticker": "TEVA",
+          "role": "제네릭 1위 (이스라엘)"
+        },
+        {
+          "name": "Sandoz",
+          "ticker": "SDZ.SW",
+          "role": "바이오시밀러 1위 (노바티스 분사)"
+        },
+        {
+          "name": "Sun Pharma",
+          "ticker": "SUNPHARMA.NS",
+          "role": "인도 1위 — 스페셜티 전환 중"
+        },
+        {
+          "name": "Divi's Labs",
+          "ticker": "DIVISLAB.NS",
+          "role": "인도 API 대형 — 탈중국 수혜"
+        },
+        {
+          "name": "중국 API 클러스터",
+          "ticker": null,
+          "role": "화하이 등 — KSM·중간체 장악 (비상장 다수)"
+        }
+      ],
+      "sources": [
+        "https://www.drugpatentwatch.com/blog/the-role-of-china-in-the-global-generic-drug-api-market/",
+        "https://www.atlanticcouncil.org/blogs/econographics/sinographs/pharmaceuticals-are-chinas-next-trade-weapon/",
+        "https://intuitionlabs.ai/articles/pharma-tariffs-2026-supply-chain-onshoring"
+      ],
+      "weekly_note": "관세·온쇼어링 압박 속 인도 PLI·미국 필수의약품 리쇼어링 진행 — 단가 디플레 구조는 그대로라 '안보 프리미엄'을 누가 내느냐가 쟁점."
+    },
+    {
+      "id": "bioprocessing",
+      "layer": "foundation",
+      "name_kr": "바이오프로세싱 장비·소모품",
+      "name_en": "Bioprocessing Equipment & Consumables",
+      "definition": "바이오의약품 생산의 '장비·소재' — 배양기·크로마토그래피·필터·싱글유즈 백. 생산량에 비례하는 소모품 반복매출.",
+      "size_usd_b": 25,
+      "size_label": "싱글유즈 ~$13B + 장비·레진·필터 (합산 수십$B)",
+      "growth": "~10–14% CAGR — 바이오 생산량 동행",
+      "size_confidence": "med",
+      "demand_driver": "전세계 CDMO·제약사 증설이 모두 이 장비를 산다 — 반도체의 WFE 와 동형 포지션. 항체·ADC·세포유전자 모든 모달리티가 소모품을 반복 소비, Cytiva 는 $1.6B 증설(’28까지).",
+      "bottleneck": {
+        "severity": "structural",
+        "limit": "4사(Cytiva·Sartorius·Thermo·Merck KGaA)가 싱글유즈 50–55% 과점 — 검증·규제(공정 변경 시 재허가) 때문에 교체 비용이 극도로 높은 구조적 락인. 코로나기 과잉재고 소화는 완료, 수요 정상화 국면."
+      },
+      "players": [
+        {
+          "name": "Danaher (Cytiva)",
+          "ticker": "DHR",
+          "role": "바이오프로세싱 1위 — $1.6B 증설",
+          "share": 20
+        },
+        {
+          "name": "Sartorius",
+          "ticker": "SRT3.DE",
+          "role": "싱글유즈·Ambr 표준 (독일)",
+          "share": 15
+        },
+        {
+          "name": "Thermo Fisher",
+          "ticker": "TMO",
+          "role": "장비+소모품+CDMO 풀스택",
+          "in_watchlist": true,
+          "share": 12
+        },
+        {
+          "name": "Merck KGaA (MilliporeSigma)",
+          "ticker": "MRK.DE",
+          "role": "필터·레진 강자",
+          "share": 10
+        },
+        {
+          "name": "Repligen",
+          "ticker": "RGEN",
+          "role": "필터레이션·신공정 혁신"
+        }
+      ],
+      "sources": [
+        "https://www.marketsandmarkets.com/ResearchInsight/single-use-bioprocessing-market.asp",
+        "https://www.futuremarketinsights.com/reports/bioprocessing-supplies-market"
+      ],
+      "weekly_note": "재고 소화 완료 + CDMO 증설 사이클로 수주 회복. Biosecure 발 신공장 러시가 ’26–28 장비 수요의 가시성을 높임."
+    },
+    {
+      "id": "life-science-tools",
+      "layer": "foundation",
+      "name_kr": "연구 도구 · 시퀀싱",
+      "name_en": "Life Science Tools & Sequencing",
+      "definition": "신약 연구의 픽앤셔블 — 시퀀서·질량분석기·시약·실험 자동화. 모든 R&D 가 이 위에서 돌아간다.",
+      "size_usd_b": 164,
+      "size_label": "$164B(’26) → $230B(’31)",
+      "growth": "~7% CAGR",
+      "size_confidence": "high",
+      "demand_driver": "제약 R&D + 학술(NIH·Horizon) + 진단 수요의 합. AI 신약이 만드는 신규 수요 — 대규모 오믹스 데이터 생성(Illumina Billion Cell Atlas)·자동화 랩(lab-in-the-loop)이 차세대 성장 축.",
+      "bottleneck": {
+        "severity": "demand_limited",
+        "limit": "수요 한계형 — 미국 NIH 예산 삭감과 바이오텍 자금시장에 수요가 후행(Illumina 주가 하락·감원, Thermo 가이던스 하향). 중국 로컬 장비 대체·반중 규제도 역풍. AI 발 데이터 생성 수요가 학술 공백을 메울지가 관건."
+      },
+      "players": [
+        {
+          "name": "Thermo Fisher",
+          "ticker": "TMO",
+          "role": "종합 1위 — 장비·시약·서비스",
+          "in_watchlist": true
+        },
+        {
+          "name": "Danaher",
+          "ticker": "DHR",
+          "role": "진단+바이오텍 툴 복합"
+        },
+        {
+          "name": "Illumina",
+          "ticker": "ILMN",
+          "role": "시퀀싱 ~80% — NIH 삭감 직격"
+        },
+        {
+          "name": "Agilent",
+          "ticker": "A",
+          "role": "분석기기 (질량분석·크로마토)"
+        },
+        {
+          "name": "Bruker · Revvity · Waters",
+          "ticker": "BRKR",
+          "role": "분석·오믹스 장비군"
+        }
+      ],
+      "sources": [
+        "https://www.mordorintelligence.com/industry-reports/life-science-tools-market",
+        "https://www.marketsandmarkets.com/ResearchInsight/genomics-market.asp"
+      ],
+      "weekly_note": "NIH 삭감·중국 역풍으로 섹터 밸류에이션 바닥권 — AI 데이터 생성 수요(Billion Cell Atlas 등)가 반전 카드인지 검증 중."
+    }
+  ],
+  "links": [
+    {
+      "from": "us-payers",
+      "to": "distribution-pbm",
+      "label": "급여 지급 — 처방 ~80%가 3대 PBM 경유"
+    },
+    {
+      "from": "distribution-pbm",
+      "to": "obesity-glp1",
+      "label": "GLP-1 조달·급여 관리"
+    },
+    {
+      "from": "distribution-pbm",
+      "to": "oncology",
+      "label": "스페셜티 유통 ($265B)"
+    },
+    {
+      "from": "distribution-pbm",
+      "to": "immunology",
+      "label": "스페셜티 약국 조제"
+    },
+    {
+      "from": "distribution-pbm",
+      "to": "other-specialty",
+      "label": "백신·전문약 유통"
+    },
+    {
+      "from": "distribution-pbm",
+      "to": "api-generics",
+      "label": "제네릭 대량 조달 (물량 ~90%)"
+    },
+    {
+      "from": "us-payers",
+      "to": "obesity-glp1",
+      "label": "급여 확대가 수요 상한 결정"
+    },
+    {
+      "from": "obesity-glp1",
+      "to": "pharma-rd-capital",
+      "label": "GLP-1 현금흐름 재투자"
+    },
+    {
+      "from": "oncology",
+      "to": "pharma-rd-capital",
+      "label": "키트루다 등 블록버스터 재투자"
+    },
+    {
+      "from": "immunology",
+      "to": "pharma-rd-capital",
+      "label": "절벽 방어용 후속 BD"
+    },
+    {
+      "from": "pharma-rd-capital",
+      "to": "china-licensing",
+      "label": "특허절벽 대응 자산 인수 (업프런트 +230%)"
+    },
+    {
+      "from": "pharma-rd-capital",
+      "to": "biotech-funding",
+      "label": "M&A $228B 가 VC 엑시트로 환류"
+    },
+    {
+      "from": "pharma-rd-capital",
+      "to": "cro",
+      "label": "임상 외주 (R&D 예산 50%+)"
+    },
+    {
+      "from": "pharma-rd-capital",
+      "to": "ai-drug-discovery",
+      "label": "AI 신약 메가딜 (Lilly·Novo·Bayer)"
+    },
+    {
+      "from": "pharma-rd-capital",
+      "to": "ai-pharma-infra",
+      "label": "전사 AI 도입 (BMS×Anthropic·Novo×OpenAI)"
+    },
+    {
+      "from": "pharma-rd-capital",
+      "to": "cdmo-biologics",
+      "label": "상업 생산 위탁"
+    },
+    {
+      "from": "pharma-rd-capital",
+      "to": "life-science-tools",
+      "label": "연구 장비·시약 구매"
+    },
+    {
+      "from": "obesity-glp1",
+      "to": "glp1-manufacturing",
+      "label": "공급부족 해소 CAPEX (릴리 $50B+)"
+    },
+    {
+      "from": "oncology",
+      "to": "cdmo-biologics",
+      "label": "ADC 위탁생산 (특수 캐파 타이트)"
+    },
+    {
+      "from": "immunology",
+      "to": "cdmo-biologics",
+      "label": "항체·바이오시밀러 생산"
+    },
+    {
+      "from": "biotech-funding",
+      "to": "cro",
+      "label": "바이오텍 임상 외주"
+    },
+    {
+      "from": "biotech-funding",
+      "to": "cdmo-biologics",
+      "label": "개발·생산 위탁 (CMC)"
+    },
+    {
+      "from": "biotech-funding",
+      "to": "ai-drug-discovery",
+      "label": "테크바이오 펀딩 (Xaira $1B+)"
+    },
+    {
+      "from": "china-licensing",
+      "to": "cdmo-biologics",
+      "label": "WuXi 의존 → Biosecure 재편"
+    },
+    {
+      "from": "glp1-manufacturing",
+      "to": "bioprocessing",
+      "label": "무균충전·합성 장비 발주"
+    },
+    {
+      "from": "cdmo-biologics",
+      "to": "bioprocessing",
+      "label": "배양기·싱글유즈 소모품"
+    },
+    {
+      "from": "cro",
+      "to": "health-data",
+      "label": "임상·RWD 데이터"
+    },
+    {
+      "from": "cro",
+      "to": "ai-pharma-infra",
+      "label": "에이전틱 임상 플랫폼 (IQVIA.ai×NVIDIA)"
+    },
+    {
+      "from": "ai-drug-discovery",
+      "to": "ai-pharma-infra",
+      "label": "GPU·바이오 파운데이션 모델 (BioNeMo)"
+    },
+    {
+      "from": "ai-drug-discovery",
+      "to": "health-data",
+      "label": "학습 데이터 확보 — 진짜 병목"
+    },
+    {
+      "from": "ai-drug-discovery",
+      "to": "life-science-tools",
+      "label": "자동화 랩 (lab-in-the-loop)"
+    },
+    {
+      "from": "health-data",
+      "to": "life-science-tools",
+      "label": "오믹스 데이터 생성 (시퀀싱)"
+    }
+  ],
+  "diagram": {
+    "note": "시각화 배치 — flow: 좌(장비·소재 = 공급의 뿌리)→우(지불자 = 돈의 원천) 메인 체인, bands: 하단 가로 밴드. 새 시장을 추가하면 적절한 클러스터의 markets 에 id 를 넣는다. 누락된 시장은 layer_default 가 가리키는 클러스터에 자동 배치된다.",
+    "axis": {
+      "left": "공급의 뿌리 — 장비·소재·도구",
+      "mid": "약·서비스가 흐르는 방향 ▶ (돈은 반대로 흐른다)",
+      "right": "돈의 원천 — 지불자·유통"
+    },
+    "flow": [
+      {
+        "id": "tools",
+        "title": "장비 · 소재 · 도구",
+        "desc": "공급의 뿌리 — picks & shovels",
+        "color": "#c2913a",
+        "markets": [
+          "bioprocessing",
+          "life-science-tools"
+        ]
+      },
+      {
+        "id": "manufacturing",
+        "title": "제조 기반",
+        "desc": "약을 실제로 만드는 곳",
+        "color": "#38a18c",
+        "markets": [
+          "cdmo-biologics",
+          "glp1-manufacturing",
+          "api-generics"
+        ]
+      },
+      {
+        "id": "services",
+        "title": "R&D 서비스",
+        "desc": "신약을 개발해주는 곳",
+        "color": "#7da453",
+        "markets": [
+          "cro"
+        ]
+      },
+      {
+        "id": "capital",
+        "title": "R&D 자본 엔진",
+        "desc": "파이프라인을 사들이는 돈",
+        "color": "#c178a8",
+        "markets": [
+          "pharma-rd-capital",
+          "biotech-funding",
+          "china-licensing"
+        ]
+      },
+      {
+        "id": "products",
+        "title": "신약 시장",
+        "desc": "돈이 모이는 블록버스터 치료영역",
+        "color": "#5b8fc9",
+        "markets": [
+          "oncology",
+          "immunology",
+          "obesity-glp1",
+          "other-specialty"
+        ]
+      },
+      {
+        "id": "payer",
+        "title": "지불자 · 유통",
+        "desc": "모든 돈의 원천",
+        "color": "#9aa3b2",
+        "markets": [
+          "us-payers",
+          "distribution-pbm"
+        ]
+      }
+    ],
+    "bands": [
+      {
+        "id": "ai-bio",
+        "title": "AI × 바이오 체인",
+        "desc": "데이터 → AI 신약개발 → 빅테크 플랫폼 — AI 산업이 제약에 침투하는 경로",
+        "color": "#8d7bc6",
+        "markets": [
+          "health-data",
+          "ai-drug-discovery",
+          "ai-pharma-infra"
+        ]
+      }
+    ],
+    "layer_default": {
+      "payer": "payer",
+      "products": "products",
+      "capital": "capital",
+      "services": "services",
+      "manufacturing": "manufacturing",
+      "foundation": "tools"
+    }
+  }
+}
