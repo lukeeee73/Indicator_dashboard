@@ -1,0 +1,64 @@
+{
+  "ticker": "BAC",
+  "date": "2026-06-13",
+  "as_of_utc": "2026-06-13T21:00:00Z",
+  "news": [
+    {
+      "title": "Bank of America Declares Preferred Stock Dividends for July and August 2026",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/BAC/press-releases/",
+      "published": "2026-06-12T13:00:00Z",
+      "summary": "BofA, 2026년 7~8월 우선주 배당 공시 — 주주환원 지속",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Bank of America to Launch Cross-Border Real-Time Payments Tool",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/BAC/press-releases/",
+      "published": "2026-06-09T12:00:00Z",
+      "summary": "BofA, 연내 크로스보더 실시간 결제 플랫폼 출시 예정 — 핀테크 경쟁력 강화",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "US Banking Regulators Increase Scrutiny on AI Use; DOJ Subpoenas Big Banks",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/",
+      "published": "2026-06-10T15:00:00Z",
+      "summary": "금융당국 AI 활용 규제 강화 + 법무부 대형 은행 디뱅킹 관련 소환장",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JPM",
+      "headline": "JPMorgan deploys AI agents and backs $12B AI startup",
+      "implication_for_target": "JPM AI 기술 우위 확대 — BAC 크로스보더 결제로 차별화 필요"
+    },
+    {
+      "ticker": "WFC",
+      "headline": "Wells Fargo projects mid-teen markets growth in Q2",
+      "implication_for_target": "동종 은행 수익 전망 호조 — BAC IB 수익도 유사 개선 기대"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": 0.1
+  },
+  "narrative_score": 0.04,
+  "summary_kr": "BofA는 실시간 크로스보더 결제 툴 출시와 배당 공시로 긍정 신호를 보냈으나, DOJ 소환장과 AI 규제 강화로 규제 리스크가 높아졌다. 소폭 긍정 중립 구간.",
+  "key_events": [
+    "크로스보더 실시간 결제 도구 연내 출시",
+    "우선주 배당 7~8월 공시",
+    "DOJ 디뱅킹 소환장"
+  ],
+  "risks": [
+    "AI 활용 규제 강화 대응 비용",
+    "DOJ 규제 조사 장기화 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/BAC%20-%20Bank%20of%20America%20Corp.md"
+}
