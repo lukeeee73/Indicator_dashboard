@@ -160,9 +160,10 @@ git push -u origin "$SESSION_BRANCH"
 
 1. `data/markets/{industry}.json` 을 이 파일과 같은 스키마로 생성
    (`./README.md` 데이터 모델 참고). 6개 층은 산업에 맞게 재정의 가능.
-2. `app.js` 의 `MARKET_MAP_URL` 은 현재 단일 맵을 가리킨다. 다중 산업을 웹에서
-   토글하려면 `vc-chain-nav` 에 산업 셀렉터를 추가하고 `MARKET_MAP_URL` 을
-   배열로 확장하면 된다(구조는 동일하므로 렌더 로직 재사용).
+2. `app.js` 의 `MARKET_MAPS` 레지스트리에 `{ id, label }` 한 줄을 추가하면
+   '시장 지도' 상단에 산업 전환 탭이 자동으로 생긴다(렌더 로직은 공유). 메인
+   체인 좌/우 축 라벨은 맵 JSON 의 `diagram.axis` (left/mid/right)로 산업에
+   맞게 바꿀 수 있다.
 3. `.claude/routines/market-research/{industry}.md` 를 이 파일을 복사해 만들고
    층/시장/병목을 그 산업에 맞게 조사·기술한다.
 4. `./README.md` 의 "현재 산업 맵" 표에 한 줄 추가.

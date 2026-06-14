@@ -1188,9 +1188,11 @@ section h2 {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   AI · 반도체 시장 지도 (market cascade) — 가로(좌→우), 색 절제
+   시장 지도 (market cascade) — 가로(좌→우), 색 절제 · 지도 탭 전환
    #vc-chain-nav / #vc-board / #vc-links / #vc-detail 컨테이너 재사용
    ════════════════════════════════════════════════════════════════ */
+.mc-mapsel { display: inline-flex; gap: 0.4rem; margin-right: 0.8rem; }
+.mc-mapsel .mc-map-btn { font-weight: 600; }
 .mc-legend { display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; align-items: center; }
 .mc-leg { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--text-dim); }
 .mc-leg-dot { width: 9px; height: 9px; border-radius: 2px; background: var(--mc-c, #888); }

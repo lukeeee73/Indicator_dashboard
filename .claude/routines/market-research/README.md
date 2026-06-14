@@ -124,5 +124,9 @@
 | 파일 | 산업 | 시장 수 |
 |---|---|---|
 | `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` (+ `data/markets/news/ai-semiconductor.json`) | AI · 반도체 · 피지컬 AI | 30 |
+| `pharma-bio.md` → `data/markets/pharma-bio.json` (+ `data/markets/news/pharma-bio.json`) | 제약 · 바이오 | 18 |
+
+웹의 '시장 지도' 탭은 `app.js` 의 `MARKET_MAPS` 레지스트리(`{ id, label }`)로
+산업을 전환한다. 새 산업 맵을 추가하면 여기에 한 줄, `MARKET_MAPS` 에 한 줄을 넣는다.
 
 새 산업 추가 절차는 각 산업 md 의 "새 산업 맵 만들기" 절을 따른다.
