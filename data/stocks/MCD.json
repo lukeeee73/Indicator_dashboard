@@ -1465,7 +1465,7 @@
     },
     {
       "date": "2017-11-21",
-      "value": 136.97
+      "value": 136.98
     },
     {
       "date": "2017-11-22",
@@ -3357,7 +3357,7 @@
     },
     {
       "date": "2019-10-10",
-      "value": 180.9
+      "value": 180.89
     },
     {
       "date": "2019-10-11",
@@ -4769,7 +4769,7 @@
     },
     {
       "date": "2021-03-08",
-      "value": 185.39
+      "value": 185.4
     },
     {
       "date": "2021-03-09",
@@ -6365,7 +6365,7 @@
     },
     {
       "date": "2022-10-05",
-      "value": 219.09
+      "value": 219.1
     },
     {
       "date": "2022-10-06",
@@ -7221,7 +7221,7 @@
     },
     {
       "date": "2023-08-14",
-      "value": 269.1
+      "value": 269.11
     },
     {
       "date": "2023-08-15",
@@ -9465,7 +9465,7 @@
     },
     {
       "date": "2025-11-06",
-      "value": 292.99
+      "value": 293.0
     },
     {
       "date": "2025-11-07",
@@ -10050,18 +10050,30 @@
     {
       "date": "2026-06-09",
       "value": 282.25
+    },
+    {
+      "date": "2026-06-10",
+      "value": 282.52
+    },
+    {
+      "date": "2026-06-11",
+      "value": 284.77
+    },
+    {
+      "date": "2026-06-12",
+      "value": 284.81
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 200732098560.0,
-      "pe_ratio": 23.31023,
-      "forward_pe": 19.868168,
-      "eps_ttm": 12.12,
-      "dividend_yield": 2.63,
+      "market_cap": 202359177216.0,
+      "pe_ratio": 23.479801,
+      "forward_pe": 20.030453,
+      "eps_ttm": 12.13,
+      "dividend_yield": 2.61,
       "profit_margin": 0.31618,
       "operating_margin": 0.44252998,
-      "price_to_book": -156.0884,
+      "price_to_book": -157.35359,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10103,23 +10115,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 282.25,
+    "as_of": "2026-06-12",
+    "current_price": 284.81,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 303.0,
+        "fair_value": 303.25,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 284.12,
+        "fair_value": 284.38,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 295.92,
-    "valuation_gap": -0.0462,
+    "fair_value": 296.17,
+    "valuation_gap": -0.0384,
     "signal": "fair",
     "gap_series_weekly": [
       {
@@ -10261,10 +10273,10 @@
         "gap": -0.0772
       },
       {
-        "date": "2026-06-09",
-        "price": 282.25,
+        "date": "2026-06-12",
+        "price": 284.81,
         "fair_value": 303.25,
-        "gap": -0.0692
+        "gap": -0.0608
       }
     ],
     "qualitative": {

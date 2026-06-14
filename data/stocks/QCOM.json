@@ -1301,7 +1301,7 @@
     },
     {
       "date": "2017-09-25",
-      "value": 41.15
+      "value": 41.16
     },
     {
       "date": "2017-09-26",
@@ -3233,7 +3233,7 @@
     },
     {
       "date": "2019-08-27",
-      "value": 63.11
+      "value": 63.12
     },
     {
       "date": "2019-08-28",
@@ -4513,7 +4513,7 @@
     },
     {
       "date": "2020-12-02",
-      "value": 133.31
+      "value": 133.32
     },
     {
       "date": "2020-12-03",
@@ -4557,7 +4557,7 @@
     },
     {
       "date": "2020-12-17",
-      "value": 132.91
+      "value": 132.92
     },
     {
       "date": "2020-12-18",
@@ -4661,7 +4661,7 @@
     },
     {
       "date": "2021-01-27",
-      "value": 136.6
+      "value": 136.59
     },
     {
       "date": "2021-01-28",
@@ -4689,7 +4689,7 @@
     },
     {
       "date": "2021-02-05",
-      "value": 129.64
+      "value": 129.63
     },
     {
       "date": "2021-02-08",
@@ -8377,7 +8377,7 @@
     },
     {
       "date": "2024-10-07",
-      "value": 160.81
+      "value": 160.8
     },
     {
       "date": "2024-10-08",
@@ -10050,18 +10050,30 @@
     {
       "date": "2026-06-09",
       "value": 205.42
+    },
+    {
+      "date": "2026-06-10",
+      "value": 191.2
+    },
+    {
+      "date": "2026-06-11",
+      "value": 202.96
+    },
+    {
+      "date": "2026-06-12",
+      "value": 211.72
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 201524789248.0,
-      "pe_ratio": 20.58127,
-      "forward_pe": 17.924171,
+      "market_cap": 223152881664.0,
+      "pe_ratio": 22.790096,
+      "forward_pe": 19.847832,
       "eps_ttm": 9.29,
-      "dividend_yield": 1.92,
+      "dividend_yield": 1.74,
       "profit_margin": 0.22308001,
       "operating_margin": 0.22059,
-      "price_to_book": 7.4229364,
+      "price_to_book": 8.219583,
       "return_on_equity": 0.36083
     },
     "quarterly": [
@@ -10117,8 +10129,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 205.42,
+    "as_of": "2026-06-12",
+    "current_price": 211.72,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10127,19 +10139,19 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 252.13,
+        "fair_value": 234.68,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 76.06,
+        "fair_value": 73.38,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 220.91,
-    "valuation_gap": -0.0701,
-    "signal": "undervalued",
+    "fair_value": 215.14,
+    "valuation_gap": -0.0159,
+    "signal": "fair",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10280,10 +10292,10 @@
         "gap": -0.1617
       },
       {
-        "date": "2026-06-09",
-        "price": 205.42,
+        "date": "2026-06-12",
+        "price": 211.72,
         "fair_value": 257.6,
-        "gap": -0.2026
+        "gap": -0.1781
       }
     ],
     "qualitative": {

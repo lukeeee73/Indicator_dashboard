@@ -1841,7 +1841,7 @@
     },
     {
       "date": "2018-04-10",
-      "value": 65.9
+      "value": 65.89
     },
     {
       "date": "2018-04-11",
@@ -4285,7 +4285,7 @@
     },
     {
       "date": "2020-09-11",
-      "value": 71.65
+      "value": 71.64
     },
     {
       "date": "2020-09-14",
@@ -10050,18 +10050,30 @@
     {
       "date": "2026-06-09",
       "value": 225.42
+    },
+    {
+      "date": "2026-06-10",
+      "value": 224.95
+    },
+    {
+      "date": "2026-06-11",
+      "value": 224.77
+    },
+    {
+      "date": "2026-06-12",
+      "value": 227.73
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 397440057344.0,
-      "pe_ratio": 109.731705,
-      "forward_pe": 13.838325,
+      "market_cap": 402351718400.0,
+      "pe_ratio": 111.08781,
+      "forward_pe": 14.009342,
       "eps_ttm": 2.05,
-      "dividend_yield": 3.08,
+      "dividend_yield": 3.04,
       "profit_margin": 0.05786,
       "operating_margin": 0.32156,
-      "price_to_book": -59.715954,
+      "price_to_book": -60.45394,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10110,8 +10122,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 225.42,
+    "as_of": "2026-06-12",
+    "current_price": 227.73,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10120,13 +10132,13 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 260.63,
+        "fair_value": 260.09,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       }
     },
-    "fair_value": 120.8,
-    "valuation_gap": 0.8661,
+    "fair_value": 120.6,
+    "valuation_gap": 0.8884,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10268,10 +10280,10 @@
         "gap": 5.2187
       },
       {
-        "date": "2026-06-09",
-        "price": 225.42,
+        "date": "2026-06-12",
+        "price": 227.73,
         "fair_value": 36.54,
-        "gap": 5.1691
+        "gap": 5.2323
       }
     ],
     "qualitative": {

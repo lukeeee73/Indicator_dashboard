@@ -1249,7 +1249,7 @@
     },
     {
       "date": "2017-09-06",
-      "value": 144.12
+      "value": 144.11
     },
     {
       "date": "2017-09-07",
@@ -3053,7 +3053,7 @@
     },
     {
       "date": "2019-06-24",
-      "value": 190.63
+      "value": 190.64
     },
     {
       "date": "2019-06-25",
@@ -3797,7 +3797,7 @@
     },
     {
       "date": "2020-03-19",
-      "value": 202.07
+      "value": 202.06
     },
     {
       "date": "2020-03-20",
@@ -4065,7 +4065,7 @@
     },
     {
       "date": "2020-06-24",
-      "value": 343.1
+      "value": 343.09
     },
     {
       "date": "2020-06-25",
@@ -4601,7 +4601,7 @@
     },
     {
       "date": "2021-01-05",
-      "value": 481.38
+      "value": 481.39
     },
     {
       "date": "2021-01-06",
@@ -4953,7 +4953,7 @@
     },
     {
       "date": "2021-05-12",
-      "value": 574.99
+      "value": 574.98
     },
     {
       "date": "2021-05-13",
@@ -5805,7 +5805,7 @@
     },
     {
       "date": "2022-03-16",
-      "value": 623.17
+      "value": 623.16
     },
     {
       "date": "2022-03-17",
@@ -6549,7 +6549,7 @@
     },
     {
       "date": "2022-12-09",
-      "value": 579.53
+      "value": 579.52
     },
     {
       "date": "2022-12-12",
@@ -6649,7 +6649,7 @@
     },
     {
       "date": "2023-01-18",
-      "value": 632.46
+      "value": 632.45
     },
     {
       "date": "2023-01-19",
@@ -7105,7 +7105,7 @@
     },
     {
       "date": "2023-07-03",
-      "value": 715.19
+      "value": 715.2
     },
     {
       "date": "2023-07-05",
@@ -7573,7 +7573,7 @@
     },
     {
       "date": "2023-12-18",
-      "value": 726.64
+      "value": 726.63
     },
     {
       "date": "2023-12-19",
@@ -10050,18 +10050,30 @@
     {
       "date": "2026-06-09",
       "value": 1777.77
+    },
+    {
+      "date": "2026-06-10",
+      "value": 1734.19
+    },
+    {
+      "date": "2026-06-11",
+      "value": 1899.48
+    },
+    {
+      "date": "2026-06-12",
+      "value": 1863.55
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 668387442688.0,
-      "pe_ratio": 58.13577,
-      "forward_pe": 36.24163,
-      "eps_ttm": 29.83,
-      "dividend_yield": 0.51,
+      "market_cap": 718245134336.0,
+      "pe_ratio": 62.493294,
+      "forward_pe": 38.819508,
+      "eps_ttm": 29.82,
+      "dividend_yield": 0.47,
       "profit_margin": 0.29713,
       "operating_margin": 0.36020002,
-      "price_to_book": 1547.4062,
+      "price_to_book": 1660.671,
       "return_on_equity": 0.52236
     },
     "quarterly": [
@@ -10110,28 +10122,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 1777.77,
+    "as_of": "2026-06-12",
+    "current_price": 1863.55,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 835.24,
+        "fair_value": 834.96,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 1079.17,
+        "fair_value": 1056.12,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 27.77,
+        "fair_value": 27.44,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 746.92,
-    "valuation_gap": 1.3801,
+    "fair_value": 739.8,
+    "valuation_gap": 1.519,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10273,10 +10285,10 @@
         "gap": 1.2577
       },
       {
-        "date": "2026-06-09",
-        "price": 1777.77,
+        "date": "2026-06-12",
+        "price": 1863.55,
         "fair_value": 727.16,
-        "gap": 1.4448
+        "gap": 1.5628
       }
     ],
     "qualitative": {

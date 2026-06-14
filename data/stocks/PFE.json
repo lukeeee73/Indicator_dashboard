@@ -10050,18 +10050,30 @@
     {
       "date": "2026-06-09",
       "value": 25.7
+    },
+    {
+      "date": "2026-06-10",
+      "value": 25.6
+    },
+    {
+      "date": "2026-06-11",
+      "value": 26.17
+    },
+    {
+      "date": "2026-06-12",
+      "value": 26.21
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 145905778688.0,
-      "pe_ratio": 19.541986,
-      "forward_pe": 9.022026,
+      "market_cap": 149382430720.0,
+      "pe_ratio": 20.007633,
+      "forward_pe": 9.264135,
       "eps_ttm": 1.31,
-      "dividend_yield": 6.72,
+      "dividend_yield": 6.56,
       "profit_margin": 0.118310004,
       "operating_margin": 0.31617,
-      "price_to_book": 1.6192284,
+      "price_to_book": 1.6578114,
       "return_on_equity": 0.083100006
     },
     "quarterly": [
@@ -10082,43 +10094,43 @@
       {
         "date": "2025-03-31",
         "revenue": 13715000000.0,
-        "operating_income": 4416000000.0,
+        "operating_income": 4425000000.0,
         "net_income": 2967000000.0,
         "eps": 0.52
       },
       {
         "date": "2025-06-30",
         "revenue": 14653000000.0,
-        "operating_income": 3765000000.0,
+        "operating_income": 3767000000.0,
         "net_income": 2910000000.0,
         "eps": 0.51
       },
       {
         "date": "2025-09-30",
         "revenue": 16654000000.0,
-        "operating_income": 4137000000.0,
+        "operating_income": 5527000000.0,
         "net_income": 3541000000.0,
         "eps": 0.62
       },
       {
         "date": "2025-12-31",
         "revenue": 17557000000.0,
-        "operating_income": 3475000000.0,
+        "operating_income": 3687000000.0,
         "net_income": -1648000000.0,
         "eps": -0.29
       },
       {
         "date": "2026-03-31",
         "revenue": 14450000000.0,
-        "operating_income": 4131000000.0,
+        "operating_income": 4268000000.0,
         "net_income": 2687000000.0,
         "eps": 0.47
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 25.7,
+    "as_of": "2026-06-12",
+    "current_price": 26.21,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10127,18 +10139,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 45.58,
+        "fair_value": 45.27,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 21.63,
+        "fair_value": 21.59,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 29.79,
-    "valuation_gap": -0.1373,
+    "fair_value": 29.69,
+    "valuation_gap": -0.1172,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10280,10 +10292,10 @@
         "gap": 0.1043
       },
       {
-        "date": "2026-06-09",
-        "price": 25.7,
+        "date": "2026-06-12",
+        "price": 26.21,
         "fair_value": 23.58,
-        "gap": 0.0899
+        "gap": 0.1115
       }
     ],
     "qualitative": {

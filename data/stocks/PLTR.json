@@ -5718,18 +5718,30 @@
     {
       "date": "2026-06-09",
       "value": 132.07
+    },
+    {
+      "date": "2026-06-10",
+      "value": 130.21
+    },
+    {
+      "date": "2026-06-11",
+      "value": 131.08
+    },
+    {
+      "date": "2026-06-12",
+      "value": 127.99
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 312153997312.0,
-      "pe_ratio": 146.30338,
-      "forward_pe": 62.77359,
-      "eps_ttm": 0.89,
+      "market_cap": 306831949824.0,
+      "pe_ratio": 142.2111,
+      "forward_pe": 61.703335,
+      "eps_ttm": 0.9,
       "dividend_yield": null,
       "profit_margin": 0.43673,
       "operating_margin": 0.46183997,
-      "price_to_book": 36.939007,
+      "price_to_book": 36.30922,
       "return_on_equity": 0.32587
     },
     "quarterly": [
@@ -5771,28 +5783,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 132.07,
+    "as_of": "2026-06-12",
+    "current_price": 127.99,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 24.92,
+        "fair_value": 25.2,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 46.29,
+        "fair_value": 45.63,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 8.46,
+        "fair_value": 8.45,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 28.04,
-    "valuation_gap": 3.7102,
+    "fair_value": 27.98,
+    "valuation_gap": 3.5745,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -5934,10 +5946,10 @@
         "gap": 4.4358
       },
       {
-        "date": "2026-06-09",
-        "price": 132.07,
+        "date": "2026-06-12",
+        "price": 127.99,
         "fair_value": 24.93,
-        "gap": 4.2971
+        "gap": 4.1334
       }
     ],
     "qualitative": {

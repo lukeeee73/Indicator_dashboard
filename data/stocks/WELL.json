@@ -10050,18 +10050,30 @@
     {
       "date": "2026-06-09",
       "value": 206.77
+    },
+    {
+      "date": "2026-06-10",
+      "value": 211.36
+    },
+    {
+      "date": "2026-06-11",
+      "value": 210.67
+    },
+    {
+      "date": "2026-06-12",
+      "value": 214.23
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 149202075648.0,
-      "pe_ratio": 102.106285,
-      "forward_pe": 62.904762,
-      "eps_ttm": 2.07,
-      "dividend_yield": 1.4,
+      "market_cap": 151228039168.0,
+      "pe_ratio": 102.99519,
+      "forward_pe": 63.75893,
+      "eps_ttm": 2.08,
+      "dividend_yield": 1.38,
       "profit_margin": 0.119619995,
       "operating_margin": 0.18039,
-      "price_to_book": 3.4943047,
+      "price_to_book": 3.5417528,
       "return_on_equity": 0.03665
     },
     "quarterly": [
@@ -10117,28 +10129,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 206.77,
+    "as_of": "2026-06-12",
+    "current_price": 214.23,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 37.26,
+        "fair_value": 37.44,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 52.59,
+        "fair_value": 53.76,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 52.5,
+        "fair_value": 53.21,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 44.91,
-    "valuation_gap": 3.6044,
+    "fair_value": 45.49,
+    "valuation_gap": 3.7094,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10280,10 +10292,10 @@
         "gap": 4.6911
       },
       {
-        "date": "2026-06-09",
-        "price": 206.77,
+        "date": "2026-06-12",
+        "price": 214.23,
         "fair_value": 36.36,
-        "gap": 4.6867
+        "gap": 4.8919
       }
     ],
     "qualitative": {

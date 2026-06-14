@@ -8973,7 +8973,7 @@
     },
     {
       "date": "2025-05-13",
-      "value": 95.09
+      "value": 95.08
     },
     {
       "date": "2025-05-14",
@@ -10050,18 +10050,30 @@
     {
       "date": "2026-06-09",
       "value": 118.88
+    },
+    {
+      "date": "2026-06-10",
+      "value": 120.59
+    },
+    {
+      "date": "2026-06-11",
+      "value": 120.5
+    },
+    {
+      "date": "2026-06-12",
+      "value": 121.04
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 959664685056.0,
-      "pe_ratio": 42.312283,
-      "forward_pe": 36.67512,
-      "eps_ttm": 2.85,
+      "market_cap": 963245899776.0,
+      "pe_ratio": 42.61972,
+      "forward_pe": 36.81198,
+      "eps_ttm": 2.84,
       "dividend_yield": 0.82,
       "profit_margin": 0.03135,
       "operating_margin": 0.042150002,
-      "price_to_book": 9.646428,
+      "price_to_book": 9.6824255,
       "return_on_equity": 0.24132
     },
     "quarterly": [
@@ -10117,28 +10129,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-09",
-    "current_price": 118.88,
+    "as_of": "2026-06-12",
+    "current_price": 121.04,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 62.7,
+        "fair_value": 62.48,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 58.35,
+        "fair_value": 59.19,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 28.11,
+        "fair_value": 28.26,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 54.48,
-    "valuation_gap": 1.1822,
+    "fair_value": 54.65,
+    "valuation_gap": 1.2149,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10250,10 +10262,10 @@
         "gap": 0.896
       },
       {
-        "date": "2026-06-09",
-        "price": 118.88,
+        "date": "2026-06-12",
+        "price": 121.04,
         "fair_value": 62.7,
-        "gap": 0.896
+        "gap": 0.9305
       }
     ],
     "qualitative": {
