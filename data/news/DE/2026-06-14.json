@@ -1,0 +1,60 @@
+{
+  "ticker": "DE",
+  "date": "2026-06-14",
+  "as_of_utc": "2026-06-14T21:00:00Z",
+  "news": [
+    {
+      "title": "Deere construction equipment revenue surges 29% YoY in Q2 FY26",
+      "source": "Deere IR",
+      "url": "https://investor.deere.com/news-releases",
+      "published": "2026-06-14T09:00:00Z",
+      "summary": "건설장비 매출 +29% YoY — 인프라 지출 수혜, 대형 농기계는 부진 지속",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Deere estimates $1.2B tariff headwind in FY2026 guidance",
+      "source": "WSJ",
+      "url": "https://www.wsj.com/articles/deere-tariff-headwind-2026",
+      "published": "2026-06-14T08:00:00Z",
+      "summary": "FY26 관세 비용 $12억 추정 — 철강·부품 관세로 대형 농기계 마진 압박",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Large agriculture equipment demand remains subdued as corn prices stay low",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/business/agriculture/deere-large-ag-demand-2026-06",
+      "published": "2026-06-14T07:30:00Z",
+      "summary": "대형 농기계 수요 부진 — 옥수수·대두 가격 하락으로 농가 구매력 약화",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CAT",
+      "headline": "Caterpillar backlog hits record $62.7B, dividend raised 8%",
+      "implication_for_target": "CAT 건설기계 강세가 DE 건설 세그먼트에도 긍정적 수요 배경 — 대형 농기계 부진과 대비"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.05,
+    "macro_sensitivity": 0.1
+  },
+  "narrative_score": 0.11,
+  "summary_kr": "건설장비 +29% 서프라이즈지만 대형 농기계 부진·관세 $1.2B 역풍으로 DE 혼조. 농업 사이클 회복 전 관망.",
+  "key_events": [
+    "건설장비 +29% YoY 서프라이즈",
+    "FY26 관세 비용 $1.2B 추정",
+    "대형 농기계 수요 부진 지속"
+  ],
+  "risks": [
+    "글로벌 곡물 가격 추가 하락 시 농기계 수요 급감",
+    "관세 비용 마진 압박 심화",
+    "중국 농업 보조금 정책 변화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/DE%20-%20Deere%20%26%20Company.md"
+}
