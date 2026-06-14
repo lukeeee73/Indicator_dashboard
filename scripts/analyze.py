@@ -3,7 +3,9 @@
 각 지표의 "현재 위치" 를 과거 분포에 대한 백분위로 환산하고, 그 결과를
 성장/인플레 두 축의 종합 점수로 묶어 4분면을 자동 판정하는 모듈.
 
-접근:
+두 층의 판정을 함께 제공한다.
+
+1) 참조용 백분위 뷰 (full / rolling_10y) — 기존 동작 그대로
     - 두 개의 참조 창(window) 을 병행한다.
         1) full       : 1945-09-02(2차대전 종전) 이후 전체 분포
         2) rolling_10y: 최근 10년 분포
@@ -15,12 +17,25 @@
     - 축별 종합 점수 = 해당 축 지표들의 백분위 평균.
     - 분면: Q1 (G↑ I↑), Q2 (G↑ I↓), Q3 (G↓ I↑), Q4 (G↓ I↓), 가장자리/중립 라벨도 지원.
 
+2) Primary 종합 판정 (백테스트 승자 — comparison.json 의 모델 H)
+    - 성장 축  : 지표별 사이클-상대 백분위
+                 = 8년 사이클 창 백분위 50% + 6개월 변화 백분위 30% + 10년 창 백분위 20%
+    - 인플레 축: 지표별 full(전후) 창 레벨 백분위
+    - 두 축 모두 선행/동행/후행 가중치(INDICATOR_WEIGHTS) 로 가중 평균
+    - 축 점수를 월 단위로 산출한 뒤 EWMA(span=3) 평활 → 60/40 임계로 라벨
+    - 1980-2026 backtest (scripts/compare_models.py) 기준:
+        침체  4/4 적중 · 중위 선행 +16개월 · FPR  7.7% · flips/yr 0.54
+        인플레 3/3 적중 · 중위 선행  +0개월 · FPR  5.9% · flips/yr 0.52
+      (베이스라인 full-창 평균 대비 FPR 을 1/3~1/2 로 줄이면서 선행성 유지)
+
 주의:
     - 모든 지표가 "값이 높을수록 해당 축이 높다" 는 polarity 라고 가정한다.
       (T10Y2Y 확장, INDPRO YoY ↑, PAYEMS YoY ↑, USSLIND ↑, 물가 YoY ↑, BEI ↑, WTI YoY ↑)
       polarity 가 다른 지표를 추가하면 INVERTED_CODES 세트에 넣어 뒤집는다.
     - 원시 시계열 자체는 변경하지 않는다. 기존 payload 에 "current" 필드만 덧붙이고
       최상위에 "assessment" 필드를 추가할 뿐이다.
+    - 하이퍼파라미터는 compare_models.py 에서 사전 등록(pre-registered)된 값.
+      백테스트 결과를 보고 사후 조정하지 않는다 (과적합 방지).
 """
 
 from __future__ import annotations
@@ -44,6 +59,47 @@ TRAJECTORY_MONTHS = 24          # 2D 산점도에 그릴 최근 궤적 길이
 # LRUNTTTTKOR156S: 실업률 — 높을수록 성장 악화이므로 역방향 적용.
 # ICSA: 신규 실업수당 청구 — 높을수록(YoY 급등) 성장 악화이므로 역방향 적용.
 INVERTED_CODES: set[str] = {"LRUNTTTTKOR156S", "ICSA"}
+
+# --------------------------------------------------------------------------
+# Primary 모델 (백테스트 승자 H) 하이퍼파라미터
+# --------------------------------------------------------------------------
+# 모두 compare_models.py 에서 사전 등록된 값. 단일 출처 유지를 위해 여기에 두고
+# compare_models.py 가 import 한다. 백테스트 결과를 보고 조정하지 않는다.
+PRIMARY_MODEL_KEY = "H"        # data/eval/comparison.json 의 모델 키
+
+# 지표별 가중치 (선행=2, 동행=1, 후행/공급측=0.5)
+INDICATOR_WEIGHTS: dict[str, float] = {
+    # ── Growth ──────────────────────────────────
+    "T10Y2Y":    2.0,   # 선행 – 수익률 곡선
+    "USSLIND":   2.0,   # 선행 – Philly Fed 선행지수
+    "UMCSENT":   1.5,   # 선행 – 소비자심리
+    "INDPRO":    1.0,   # 동행 – 산업생산
+    "PAYEMS":    1.0,   # 동행 – 비농업 고용
+    "ICSA":      0.5,   # 후행(지연) – 주간 실업청구
+    # ── Inflation ───────────────────────────────
+    "T10YIE":    2.0,   # 선행 – 10년 기대인플레
+    "T5YIFR":    2.0,   # 선행 – 5Y5Y 기대인플레
+    "CPILFESL":  1.5,   # 동행 – Core CPI (끈적한 인플레)
+    "PCEPI":     1.5,   # 동행 – PCE (Fed 준거)
+    "CPIAUCSL":  1.0,   # 동행 – 헤드라인 CPI
+    "DCOILWTICO":0.5,   # 후행/공급 – WTI YoY
+    "WPSID61":   0.5,   # 후행/공급 – PPI 중간재
+    "PCUOMFGOMFG":0.5,  # 후행/공급 – 제조업 PPI
+}
+
+# 성장 축: 사이클-상대 백분위 구성
+CYCLE_YEARS        = 8     # 사이클 참조 창 (단기부채 사이클)
+LONG_YEARS         = 10    # 장기 참조 창
+CYCLE_DIFF_MONTHS  = 6     # 변화(모멘텀) 기준 개월
+CYCLE_WEIGHT       = 0.5   # 8년 창 백분위 가중
+DIFF_WEIGHT        = 0.3   # 6개월 변화 백분위 가중
+LONG_WEIGHT        = 0.2   # 10년 창 백분위 가중
+MIN_MONTHS_WINDOW  = 24    # 창 내 최소 데이터 포인트
+MIN_DIFFS_FOR_DIST = 12    # diff 분포에 최소 12개
+
+# 축 점수 평활
+EWMA_SPAN          = 3     # half-life ≈ 2개월
+PRIMARY_EWMA_WARMUP = 12   # 궤적 앞에 붙이는 워밍업 개월 수 (EWMA 초기화 안정용)
 
 
 # --------------------------------------------------------------------------
@@ -85,6 +141,55 @@ def _apply_polarity(code: str, percentile: Optional[float]) -> Optional[float]:
     if code in INVERTED_CODES:
         return 100.0 - percentile
     return percentile
+
+
+def _weighted_mean(vals: list[tuple[Optional[float], float]]) -> Optional[float]:
+    """(percentile, weight) 쌍 목록 → 가중 평균. None 은 skip."""
+    num, den = 0.0, 0.0
+    for p, w in vals:
+        if p is not None:
+            num += p * w
+            den += w
+    return round(num / den, 1) if den > 0 else None
+
+
+def cycle_relative_percentile(code: str, monthly: pd.Series) -> Optional[float]:
+    """Primary 모델의 성장축 코어 — 사이클-상대 백분위.
+
+    8년 사이클 창 백분위(50%) + 6개월 변화 백분위(30%) + 10년 창 백분위(20%).
+    "역사 전체에서 어디인가" 보다 "지금 사이클에서 어디이고 어디로 가는가" 를
+    우선시한다. 컴포넌트 데이터가 부족하면 해당 가중치는 자동 정규화된다.
+
+    monthly: 월말(ME) last 로 리샘플된 시계열. 마지막 값이 '현재' 로 간주된다.
+    """
+    if monthly.empty:
+        return None
+    latest_date = monthly.index[-1]
+    latest = float(monthly.iloc[-1])
+
+    cycle_s = monthly[monthly.index >= latest_date - pd.DateOffset(years=CYCLE_YEARS)]
+    long_s  = monthly[monthly.index >= latest_date - pd.DateOffset(years=LONG_YEARS)]
+
+    # ① 8년 사이클 백분위
+    p_cycle: Optional[float] = None
+    if len(cycle_s) >= MIN_MONTHS_WINDOW:
+        p_cycle = _apply_polarity(code, _percentile_rank(cycle_s, latest))
+
+    # ② 6개월 변화 백분위 — 8년 창 내 diff 분포를 참조
+    p_diff: Optional[float] = None
+    if len(cycle_s) > CYCLE_DIFF_MONTHS:
+        diffs = cycle_s.diff(CYCLE_DIFF_MONTHS).dropna()
+        if len(diffs) >= MIN_DIFFS_FOR_DIST:
+            p_diff = _apply_polarity(code, _percentile_rank(diffs, float(diffs.iloc[-1])))
+
+    # ③ 10년 백분위
+    p_long: Optional[float] = None
+    if len(long_s) >= MIN_MONTHS_WINDOW:
+        p_long = _apply_polarity(code, _percentile_rank(long_s, latest))
+
+    return _weighted_mean([
+        (p_cycle, CYCLE_WEIGHT), (p_diff, DIFF_WEIGHT), (p_long, LONG_WEIGHT),
+    ])
 
 
 # --------------------------------------------------------------------------
@@ -243,6 +348,144 @@ def compute_trajectory(indicators: dict, region: str | None = None) -> list[dict
 
 
 # --------------------------------------------------------------------------
+# Primary 종합 판정 (모델 H = 사이클-상대 성장 + 가중 인플레 + EWMA 평활)
+# --------------------------------------------------------------------------
+def _load_primary_backtest_summary() -> Optional[dict]:
+    """data/eval/comparison.json 에서 primary 모델의 핵심 성능 요약을 읽는다.
+
+    대시보드에 "이 판정이 얼마나 믿을 만한가" 를 함께 보여주기 위한 것.
+    파일이 없으면 None — 판정 자체는 영향받지 않는다.
+    """
+    import json
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parent.parent / "data" / "eval" / "comparison.json"
+    try:
+        with path.open(encoding="utf-8") as f:
+            comp = json.load(f)
+        model = comp["models"][PRIMARY_MODEL_KEY]
+    except (OSError, KeyError, ValueError):
+        return None
+
+    def _sig(m: dict) -> dict:
+        return {
+            "hit":                  f"{m['n_caught']}/{m['n_episodes_in_window']}",
+            "median_lead_months":   m["median_lead_months"],
+            "false_positive_rate":  m["false_positive_rate"],
+            "flips_per_year":       m["flips_per_year"],
+        }
+
+    return {
+        "window":    f"{comp['config']['backtest_start']} ~ {comp['config']['backtest_end']}",
+        "recession": _sig(model["growth_vs_recession"]),
+        "inflation": _sig(model["inflation_vs_episode"]),
+    }
+
+
+def compute_primary_assessment(indicators: dict) -> Optional[dict]:
+    """미국 성장/인플레 지표로 primary 종합 판정 + 궤적을 계산한다.
+
+    backtest(compare_models.py 모델 H) 와 동일한 산식:
+      - 성장 축  : cycle_relative_percentile() 의 INDICATOR_WEIGHTS 가중 평균
+      - 인플레 축: full(전후) 창 레벨 백분위의 INDICATOR_WEIGHTS 가중 평균
+      - 월 단위로 (TRAJECTORY_MONTHS + PRIMARY_EWMA_WARMUP) 개월 걸어가며 산출
+        후 EWMA(span=EWMA_SPAN) 평활. 마지막 달이 '현재' 판정.
+    backtest 와 달리 발표 지연(release lag) 시뮬레이션은 하지 않는다 — 운영
+    시점에는 '지금 손에 있는 데이터' 가 곧 알 수 있는 전부이므로.
+    """
+    growth_monthly: dict[str, pd.Series] = {}
+    infl_raw:       dict[str, pd.Series] = {}
+
+    for code, payload in indicators.items():
+        if payload.get("exclude_assessment") or payload.get("region") == "KR":
+            continue
+        cat = payload.get("category")
+        if cat not in ("growth", "inflation"):
+            continue
+        s = _series_to_pandas(payload.get("series", []))
+        if s.empty:
+            continue
+        if cat == "growth":
+            monthly = s.resample("ME").last().dropna()
+            if not monthly.empty:
+                growth_monthly[code] = monthly
+        else:
+            infl_raw[code] = s
+
+    if not growth_monthly or not infl_raw:
+        return None
+
+    end = max(
+        max(s.index.max() for s in growth_monthly.values()),
+        max(s.index.max() for s in infl_raw.values()),
+    )
+    end_month = pd.Timestamp(end).to_period("M").to_timestamp("M")
+    month_index = pd.date_range(
+        end=end_month, periods=TRAJECTORY_MONTHS + PRIMARY_EWMA_WARMUP, freq="ME",
+    )
+
+    g_scores: list[Optional[float]] = []
+    i_scores: list[Optional[float]] = []
+    for t in month_index:
+        g_vals: list[tuple[Optional[float], float]] = []
+        for code, monthly in growth_monthly.items():
+            m = monthly[monthly.index <= t]
+            if m.empty:
+                continue
+            g_vals.append((cycle_relative_percentile(code, m),
+                           INDICATOR_WEIGHTS.get(code, 1.0)))
+        g_scores.append(_weighted_mean(g_vals))
+
+        i_vals: list[tuple[Optional[float], float]] = []
+        for code, s in infl_raw.items():
+            sub = s[s.index <= t]
+            if sub.empty:
+                continue
+            full = sub[sub.index >= POSTWAR_CUTOFF]
+            if full.empty:
+                continue
+            p = _apply_polarity(code, _percentile_rank(full, float(sub.iloc[-1])))
+            i_vals.append((p, INDICATOR_WEIGHTS.get(code, 1.0)))
+        i_scores.append(_weighted_mean(i_vals))
+
+    df = pd.DataFrame({"g": g_scores, "i": i_scores}, index=month_index).dropna()
+    if df.empty:
+        return None
+
+    smoothed = df.ewm(span=EWMA_SPAN, min_periods=1).mean().round(1)
+    tail = smoothed.tail(TRAJECTORY_MONTHS)
+
+    g_now = float(smoothed["g"].iloc[-1])
+    i_now = float(smoothed["i"].iloc[-1])
+
+    return {
+        "model": PRIMARY_MODEL_KEY,
+        "method": (
+            "growth: cycle-relative percentile "
+            f"({CYCLE_YEARS}y {CYCLE_WEIGHT:.0%} + {CYCLE_DIFF_MONTHS}m-diff {DIFF_WEIGHT:.0%} "
+            f"+ {LONG_YEARS}y {LONG_WEIGHT:.0%}); "
+            "inflation: post-1945 full-window percentile; "
+            f"lead-weighted; EWMA(span={EWMA_SPAN})"
+        ),
+        "as_of":            smoothed.index[-1].strftime("%Y-%m-%d"),
+        "growth_score":     g_now,
+        "inflation_score":  i_now,
+        "growth_label":     _label_from_percentile(g_now),
+        "inflation_label":  _label_from_percentile(i_now),
+        "quadrant":         _classify_quadrant(g_now, i_now),
+        "trajectory": [
+            {
+                "date": d.strftime("%Y-%m-%d"),
+                "growth_score":    round(float(row["g"]), 1),
+                "inflation_score": round(float(row["i"]), 1),
+            }
+            for d, row in tail.iterrows()
+        ],
+        "backtest": _load_primary_backtest_summary(),
+    }
+
+
+# --------------------------------------------------------------------------
 # 메인 진입점
 # --------------------------------------------------------------------------
 def enrich_with_assessment(output: dict) -> dict:
@@ -251,6 +494,7 @@ def enrich_with_assessment(output: dict) -> dict:
     1) 각 indicator payload 에 "current" 필드 주입
     2) 최상위에 "assessment" 블록 추가
         {
+          "primary":     { model, growth_score, ..., quadrant, trajectory, backtest },
           "full":        { growth_score, inflation_score, quadrant, ... },
           "rolling_10y": { ... },
           "config":      { postwar_cutoff, rolling_years, thresholds },
@@ -288,8 +532,11 @@ def enrich_with_assessment(output: dict) -> dict:
         "low_threshold":  LOW_THRESHOLD,
     }
 
-    # 미국 4분면 assessment (기존 동작 그대로)
+    # 미국 4분면 assessment
+    #   primary     — 백테스트 승자 모델(H) 의 종합 판정. 대시보드의 헤드라인.
+    #   full/10y    — 참조용 단순 백분위 뷰 (기존 동작 그대로 유지).
     output["assessment"] = {
+        "primary":     compute_primary_assessment(indicators),
         "full":        _make_summary(growth_full, infl_full),
         "rolling_10y": _make_summary(growth_10y, infl_10y),
         "config":      _config,
@@ -344,6 +591,10 @@ def _main() -> int:
     save_split_store(data)
     a = data.get("assessment", {})
     print("Assessment re-computed.")
+    p = a.get("primary") or {}
+    print("  primary    :", {k: p.get(k) for k in
+                             ("model", "as_of", "growth_score", "inflation_score",
+                              "growth_label", "inflation_label", "quadrant")})
     print("  full       :", a.get("full"))
     print("  rolling_10y:", a.get("rolling_10y"))
     return 0

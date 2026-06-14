@@ -192,6 +192,10 @@ section h2 {
   grid-template-columns: 1fr 1fr 1.4fr;
   gap: 0.75rem;
 }
+/* 종합 판정(primary) 카드가 있는 탭은 4열 — 종합 | 장기 | 단기 | 궤적 */
+.assessment-grid.has-primary {
+  grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+}
 .assessment-card,
 .assessment-scatter {
   background: var(--bg-elev);
@@ -203,6 +207,9 @@ section h2 {
   gap: 0.5rem;
 }
 .assessment-card { border-left: 2px solid var(--red-dim); }
+.assessment-card-primary { border-left: 2px solid var(--red-bright); }
+.assessment-card-primary .aw-quadrant { font-size: 1.4rem; }
+.assessment-card[hidden] { display: none !important; }
 
 .aw-header {
   display: flex;
@@ -265,8 +272,13 @@ section h2 {
 }
 
 @media (max-width: 900px) {
-  .assessment-grid { grid-template-columns: 1fr; }
+  .assessment-grid,
+  .assessment-grid.has-primary { grid-template-columns: 1fr; }
   .scatter-chart   { min-height: 260px; }
+}
+/* 중간 폭: primary 포함 4열이 좁아지면 2×2 로 접는다 */
+@media (min-width: 901px) and (max-width: 1280px) {
+  .assessment-grid.has-primary { grid-template-columns: 1fr 1fr; }
 }
 
 /* ---------- 4분면 카드 ---------- */

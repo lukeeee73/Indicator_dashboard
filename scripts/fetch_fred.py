@@ -782,8 +782,14 @@ def load_split_store() -> dict:
             if payload is not None:
                 stocks[code] = payload
         indices: dict[str, dict] = {}
-        for code in [entry["code"] for entry in idx.get("indices", []) if "code" in entry]:
-            payload = _read_json(INDICES_DIR / f"{code}.json")
+        for entry in idx.get("indices", []):
+            code = entry.get("code")
+            if not code:
+                continue
+            # 저장 시 ^ 접두사를 제거한 filename 으로 기록되므로 그걸로 읽는다.
+            # (code 로 읽으면 항상 miss → save 시 stale 정리에 전부 삭제되는 버그였음)
+            filename = entry.get("filename") or code.lstrip("^") or code
+            payload = _read_json(INDICES_DIR / f"{filename}.json")
             if payload is not None:
                 indices[code] = payload
         return {

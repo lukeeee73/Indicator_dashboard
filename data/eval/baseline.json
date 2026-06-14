@@ -2,8 +2,8 @@
   "config": {
     "model": "baseline (analyze.py percentile + 60/40 threshold)",
     "backtest_start": "1980-01-31",
-    "backtest_end": "2026-05-01",
-    "n_months": 556,
+    "backtest_end": "2026-06-30",
+    "n_months": 558,
     "release_lag_days": {
       "T10Y2Y": 1,
       "DGS10": 1,
@@ -31,10 +31,10 @@
     "hit_rate": 1.0,
     "median_lead_months": 15.0,
     "mean_lead_months": 13.75,
-    "false_positive_rate": 0.2151,
-    "fp_months": 94,
-    "nonepisode_months": 437,
-    "flips_per_year": 0.78,
+    "false_positive_rate": 0.2164,
+    "fp_months": 95,
+    "nonepisode_months": 439,
+    "flips_per_year": 0.82,
     "per_episode": [
       {
         "start": "1980-02",
@@ -96,10 +96,10 @@
     "hit_rate": 1.0,
     "median_lead_months": 15.0,
     "mean_lead_months": 15.25,
-    "false_positive_rate": 0.2037,
-    "fp_months": 89,
-    "nonepisode_months": 437,
-    "flips_per_year": 0.71,
+    "false_positive_rate": 0.205,
+    "fp_months": 90,
+    "nonepisode_months": 439,
+    "flips_per_year": 0.75,
     "per_episode": [
       {
         "start": "1980-02",
@@ -161,9 +161,9 @@
     "hit_rate": 1.0,
     "median_lead_months": 2.0,
     "mean_lead_months": 9.33,
-    "false_positive_rate": 0.1166,
-    "fp_months": 45,
-    "nonepisode_months": 386,
+    "false_positive_rate": 0.1211,
+    "fp_months": 47,
+    "nonepisode_months": 388,
     "flips_per_year": 0.82,
     "per_episode": [
       {
@@ -209,9 +209,9 @@
     "hit_rate": 0.667,
     "median_lead_months": -7.0,
     "mean_lead_months": -7.0,
-    "false_positive_rate": 0.2565,
-    "fp_months": 99,
-    "nonepisode_months": 386,
+    "false_positive_rate": 0.2603,
+    "fp_months": 101,
+    "nonepisode_months": 388,
     "flips_per_year": 0.95,
     "per_episode": [
       {
