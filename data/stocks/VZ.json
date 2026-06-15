@@ -4,14 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-06-13",
-      "value": 30.91
-    },
-    {
-      "date": "2016-06-14",
-      "value": 31.15
-    },
-    {
       "date": "2016-06-15",
       "value": 31.06
     },
@@ -10062,21 +10054,32 @@
     {
       "date": "2026-06-12",
       "value": 48.11
+    },
+    {
+      "date": "2026-06-15",
+      "value": 47.62
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 200886140928.0,
-      "pe_ratio": 11.734147,
-      "forward_pe": 9.136192,
+      "market_cap": 198819250176.0,
+      "pe_ratio": 11.613416,
+      "forward_pe": 9.042191,
       "eps_ttm": 4.1,
       "dividend_yield": 5.88,
       "profit_margin": 0.12462,
       "operating_margin": 0.25186002,
-      "price_to_book": 1.9422688,
+      "price_to_book": 1.9222851,
       "return_on_equity": 0.17198
     },
     "quarterly": [
+      {
+        "date": "2024-12-31",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": null
+      },
       {
         "date": "2025-03-31",
         "revenue": 33485000000.0,
@@ -10115,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-12",
-    "current_price": 48.11,
+    "as_of": "2026-06-15",
+    "current_price": 47.62,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10125,7 +10128,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 89.52,
+        "fair_value": 89.53,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -10136,7 +10139,7 @@
       }
     },
     "fair_value": 77.42,
-    "valuation_gap": -0.3786,
+    "valuation_gap": -0.3849,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10282,6 +10285,12 @@
         "price": 48.11,
         "fair_value": 82.0,
         "gap": -0.4133
+      },
+      {
+        "date": "2026-06-15",
+        "price": 47.62,
+        "fair_value": 82.0,
+        "gap": -0.4193
       }
     ],
     "qualitative": {

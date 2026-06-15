@@ -4,14 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-06-13",
-      "value": 96.96
-    },
-    {
-      "date": "2016-06-14",
-      "value": 96.98
-    },
-    {
       "date": "2016-06-15",
       "value": 97.02
     },
@@ -10062,18 +10054,22 @@
     {
       "date": "2026-06-12",
       "value": 204.02
+    },
+    {
+      "date": "2026-06-15",
+      "value": 210.07
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 82464882688.0,
-      "pe_ratio": 11.671625,
-      "forward_pe": 7.4538746,
+      "market_cap": 84910292992.0,
+      "pe_ratio": 12.0177355,
+      "forward_pe": 7.6699686,
       "eps_ttm": 17.48,
       "dividend_yield": null,
       "profit_margin": 0.28689,
       "operating_margin": 0.33817002,
-      "price_to_book": 7.12062,
+      "price_to_book": 7.3317747,
       "return_on_equity": 0.62953997
     },
     "quarterly": [
@@ -10129,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-12",
-    "current_price": 204.02,
+    "as_of": "2026-06-15",
+    "current_price": 210.07,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10139,7 +10135,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 602.16,
+        "fair_value": 602.55,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -10149,8 +10145,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 446.6,
-    "valuation_gap": -0.5432,
+    "fair_value": 446.71,
+    "valuation_gap": -0.5297,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10242,6 +10238,12 @@
         "price": 204.02,
         "fair_value": 489.44,
         "gap": -0.5832
+      },
+      {
+        "date": "2026-06-15",
+        "price": 210.07,
+        "fair_value": 489.44,
+        "gap": -0.5708
       }
     ],
     "qualitative": {

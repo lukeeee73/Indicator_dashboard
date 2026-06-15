@@ -4,14 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-06-13",
-      "value": 140.94
-    },
-    {
-      "date": "2016-06-14",
-      "value": 141.3
-    },
-    {
       "date": "2016-06-15",
       "value": 140.45
     },
@@ -10062,18 +10054,22 @@
     {
       "date": "2026-06-12",
       "value": 489.25
+    },
+    {
+      "date": "2026-06-15",
+      "value": 495.8
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1055240683520.0,
-      "pe_ratio": 14.55668,
-      "forward_pe": 22.783737,
+      "market_cap": 1069174226944.0,
+      "pe_ratio": 14.748887,
+      "forward_pe": 23.084576,
       "eps_ttm": 33.61,
       "dividend_yield": null,
       "profit_margin": 0.19305,
       "operating_margin": 0.14352,
-      "price_to_book": 0.00096773985,
+      "price_to_book": 0.000980518,
       "return_on_equity": 0.10499
     },
     "quarterly": [
@@ -10129,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-12",
-    "current_price": 489.25,
+    "as_of": "2026-06-15",
+    "current_price": 495.8,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10139,18 +10135,18 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 257.68,
+        "fair_value": 257.73,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 19552.92,
+        "fair_value": 19554.69,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 4223.16,
-    "valuation_gap": -0.8842,
+    "fair_value": 4223.53,
+    "valuation_gap": -0.8826,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10218,6 +10214,12 @@
         "price": 489.25,
         "fair_value": 346.27,
         "gap": 0.4129
+      },
+      {
+        "date": "2026-06-15",
+        "price": 495.8,
+        "fair_value": 346.27,
+        "gap": 0.4318
       }
     ],
     "qualitative": {

@@ -4610,13 +4610,17 @@
     {
       "date": "2026-06-12",
       "value": 650000.0
+    },
+    {
+      "date": "2026-06-15",
+      "value": 714000.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 68206303641600.0,
+      "market_cap": 74922005102592.0,
       "pe_ratio": null,
-      "forward_pe": 19.282885,
+      "forward_pe": 21.181507,
       "eps_ttm": null,
       "dividend_yield": 1.19,
       "profit_margin": 0.096829996,
@@ -4677,19 +4681,19 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-12",
-    "current_price": 650000.0,
+    "as_of": "2026-06-15",
+    "current_price": 714000.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 573047.03,
+        "fair_value": 573047.05,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 573047.03,
-    "valuation_gap": 0.1343,
-    "signal": "overvalued",
+    "fair_value": 573047.05,
+    "valuation_gap": 0.246,
+    "signal": "expensive",
     "gap_series_weekly": [
       {
         "date": "2025-10-02",
@@ -4912,6 +4916,12 @@
         "price": 650000.0,
         "fair_value": 356100.0,
         "gap": 0.8253
+      },
+      {
+        "date": "2026-06-15",
+        "price": 714000.0,
+        "fair_value": 356100.0,
+        "gap": 1.0051
       }
     ],
     "qualitative": {

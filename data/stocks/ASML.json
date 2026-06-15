@@ -4,14 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-06-13",
-      "value": 87.85
-    },
-    {
-      "date": "2016-06-14",
-      "value": 86.27
-    },
-    {
       "date": "2016-06-15",
       "value": 85.89
     },
@@ -1249,7 +1241,7 @@
     },
     {
       "date": "2017-09-06",
-      "value": 144.11
+      "value": 144.12
     },
     {
       "date": "2017-09-07",
@@ -1985,7 +1977,7 @@
     },
     {
       "date": "2018-05-31",
-      "value": 182.72
+      "value": 182.71
     },
     {
       "date": "2018-06-01",
@@ -2053,7 +2045,7 @@
     },
     {
       "date": "2018-06-25",
-      "value": 182.72
+      "value": 182.71
     },
     {
       "date": "2018-06-26",
@@ -3797,7 +3789,7 @@
     },
     {
       "date": "2020-03-19",
-      "value": 202.06
+      "value": 202.07
     },
     {
       "date": "2020-03-20",
@@ -4065,7 +4057,7 @@
     },
     {
       "date": "2020-06-24",
-      "value": 343.09
+      "value": 343.1
     },
     {
       "date": "2020-06-25",
@@ -4873,7 +4865,7 @@
     },
     {
       "date": "2021-04-14",
-      "value": 601.05
+      "value": 601.06
     },
     {
       "date": "2021-04-15",
@@ -4953,7 +4945,7 @@
     },
     {
       "date": "2021-05-12",
-      "value": 574.98
+      "value": 574.99
     },
     {
       "date": "2021-05-13",
@@ -4985,7 +4977,7 @@
     },
     {
       "date": "2021-05-24",
-      "value": 629.5
+      "value": 629.51
     },
     {
       "date": "2021-05-25",
@@ -6549,7 +6541,7 @@
     },
     {
       "date": "2022-12-09",
-      "value": 579.52
+      "value": 579.53
     },
     {
       "date": "2022-12-12",
@@ -6685,7 +6677,7 @@
     },
     {
       "date": "2023-01-31",
-      "value": 640.74
+      "value": 640.75
     },
     {
       "date": "2023-02-01",
@@ -7573,7 +7565,7 @@
     },
     {
       "date": "2023-12-18",
-      "value": 726.63
+      "value": 726.64
     },
     {
       "date": "2023-12-19",
@@ -10062,18 +10054,22 @@
     {
       "date": "2026-06-12",
       "value": 1863.55
+    },
+    {
+      "date": "2026-06-15",
+      "value": 1878.63
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 718245134336.0,
-      "pe_ratio": 62.493294,
-      "forward_pe": 38.819508,
+      "market_cap": 724057194496.0,
+      "pe_ratio": 62.998993,
+      "forward_pe": 39.14717,
       "eps_ttm": 29.82,
       "dividend_yield": 0.47,
       "profit_margin": 0.29713,
       "operating_margin": 0.36020002,
-      "price_to_book": 1660.671,
+      "price_to_book": 1669.3481,
       "return_on_equity": 0.52236
     },
     "quarterly": [
@@ -10122,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-12",
-    "current_price": 1863.55,
+    "as_of": "2026-06-15",
+    "current_price": 1878.63,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10132,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 1056.12,
+        "fair_value": 1055.76,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 27.44,
+        "fair_value": 27.48,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 739.8,
-    "valuation_gap": 1.519,
+    "fair_value": 739.7,
+    "valuation_gap": 1.5397,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10289,6 +10285,12 @@
         "price": 1863.55,
         "fair_value": 727.16,
         "gap": 1.5628
+      },
+      {
+        "date": "2026-06-15",
+        "price": 1878.63,
+        "fair_value": 727.16,
+        "gap": 1.5835
       }
     ],
     "qualitative": {

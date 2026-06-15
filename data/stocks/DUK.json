@@ -4,14 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-06-13",
-      "value": 54.31
-    },
-    {
-      "date": "2016-06-14",
-      "value": 54.84
-    },
-    {
       "date": "2016-06-15",
       "value": 54.26
     },
@@ -8717,7 +8709,7 @@
     },
     {
       "date": "2025-02-10",
-      "value": 109.67
+      "value": 109.68
     },
     {
       "date": "2025-02-11",
@@ -10062,18 +10054,22 @@
     {
       "date": "2026-06-12",
       "value": 124.97
+    },
+    {
+      "date": "2026-06-15",
+      "value": 125.42
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 97426137088.0,
-      "pe_ratio": 19.226154,
-      "forward_pe": 17.428911,
+      "market_cap": 97773060096.0,
+      "pe_ratio": 19.294615,
+      "forward_pe": 17.490973,
       "eps_ttm": 6.5,
       "dividend_yield": 3.41,
       "profit_margin": 0.15706,
       "operating_margin": 0.25507,
-      "price_to_book": 1.8178512,
+      "price_to_book": 1.8243243,
       "return_on_equity": 0.09661
     },
     "quarterly": [
@@ -10129,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-12",
-    "current_price": 124.97,
+    "as_of": "2026-06-15",
+    "current_price": 125.42,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10139,7 +10135,7 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 107.55,
+        "fair_value": 107.56,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
@@ -10150,8 +10146,8 @@
       }
     },
     "fair_value": 104.32,
-    "valuation_gap": 0.198,
-    "signal": "overvalued",
+    "valuation_gap": 0.2022,
+    "signal": "expensive",
     "gap_series_weekly": [
       {
         "date": "2026-01-02",
@@ -10296,6 +10292,12 @@
         "price": 124.97,
         "fair_value": 104.48,
         "gap": 0.1961
+      },
+      {
+        "date": "2026-06-15",
+        "price": 125.42,
+        "fair_value": 104.48,
+        "gap": 0.2004
       }
     ],
     "qualitative": {
