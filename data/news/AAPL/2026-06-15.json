@@ -1,0 +1,57 @@
+{
+  "ticker": "AAPL",
+  "date": "2026-06-15",
+  "as_of_utc": "2026-06-15T22:00:00Z",
+  "news": [
+    {
+      "title": "Apple stock slides 8% after WWDC 2026 despite AI progress — Morgan Stanley raises PT to $360",
+      "source": "ForeignPolicyJournal / Morgan Stanley",
+      "url": "https://www.foreignpolicyjournal.com/2026/06/12/apple-nasdaq-aapl-stock-price-slides-8-after-wwdc-2026-despite-ai-progress-and-raised-price-target/",
+      "published": "2026-06-12T10:00:00Z",
+      "summary": "WWDC 후 주가 8% 급락 지속, 모건스탠리는 AI 로드맵 진전 인정하며 목표가 $330→$360 상향",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Why Apple's WWDC and Siri AI hype left investors disappointed",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/sectors/technology/article/why-apples-wwdc-and-siri-ai-hype-left-investors-sad-113633979.html",
+      "published": "2026-06-12T14:00:00Z",
+      "summary": "시리 AI 베타가 미국에만 한정, 유럽·중국 초기 출시 제외로 투자자 실망 — sell-the-news 지속",
+      "impact": "-",
+      "category": "product"
+    },
+    {
+      "title": "Apple Q2 2026 earnings: Revenue guidance +14~17% exceeds analyst expectations",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/30/apple-aapl-q2-2026-earnings-report.html",
+      "published": "2026-04-30T21:00:00Z",
+      "summary": "Q3 매출 가이던스 +14~17% YoY (컨센서스 +9.5% 대폭 상회), 아이폰17 수요 견고",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft Azure grew 40% in Q3 FY26, AI business surpassed $37B annual run rate",
+      "implication_for_target": "MSFT AI 인프라 리더십 확대 — Apple Intelligence 상대적 뒤처짐 부각"
+    },
+    {
+      "ticker": "GOOGL",
+      "headline": "Alphabet announces new AI agents on June 12 and stock opens up 3.19% on June 15",
+      "implication_for_target": "구글 AI 에이전트 출시 가속 — 소비자 AI 생태계 경쟁 심화, AAPL 시리 AI 열세 우려"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.20,
+    "competitive_position": -0.20,
+    "regulatory_risk": -0.10,
+    "macro_sensitivity": 0.10
+  },
+  "narrative_score": 0.03,
+  "summary_kr": "WWDC 후 주가 8% 급락이 지속되는 가운데, 모건스탠리가 목표가를 $360으로 상향하며 AI 로드맵 진전을 인정. 그러나 시리 AI 베타가 미국 한정 출시로 EU·중국 제외되어 경쟁사 대비 출시 범위 열세 부각.",
+  "key_events": ["WWDC 사후 주가 8% 하락 지속", "모건스탠리 PT $330→$360 상향", "시리 AI 베타 미국 한정 (EU·중국 제외)"],
+  "risks": ["EU·중국 시장 AI 기능 출시 지연 시 매출 둔화", "MSFT·Google AI 인프라 확장 압박", "CEO 전환기 전략 연속성 불확실성"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AAPL%20-%20Apple%20Inc.md"
+}
