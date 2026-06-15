@@ -1,0 +1,57 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-06-15",
+  "as_of_utc": "2026-06-15T22:00:00Z",
+  "news": [
+    {
+      "title": "Microsoft Q3 FY2026 earnings: Azure +40%, AI business surpasses $37B annual run rate",
+      "source": "Yahoo Finance / CNBC",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-stock-trailing-market-2026-154000583.html",
+      "published": "2026-04-29T21:00:00Z",
+      "summary": "Q3 FY26 EPS $4.27(컨센서스 $4.07 상회), 매출 $82.9B (+18.3% YoY), Azure +40%, AI 연간 런레이트 $370억",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Microsoft Xbox announces significant layoffs and budget cuts",
+      "source": "Bloomberg",
+      "url": "https://www.cnbc.com/quotes/MSFT",
+      "published": "2026-06-11T16:00:00Z",
+      "summary": "Xbox 부문 대규모 감원 + 마케팅 예산 삭감 예고 — 게임 사업 구조조정 진행",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Microsoft declares quarterly dividend of $0.91 per share",
+      "source": "Microsoft IR",
+      "url": "https://stockanalysis.com/stocks/msft/",
+      "published": "2026-06-10T13:00:00Z",
+      "summary": "이사회 분기 배당 $0.91/주 선언 — 배당 안정성 재확인",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "Alphabet Q1 net income +81% YoY to $62.6B, new AI agents launched June 12",
+      "implication_for_target": "구글 AI 모멘텀 강화 — Azure vs GCP 클라우드 경쟁 심화 가능"
+    },
+    {
+      "ticker": "ORCL",
+      "headline": "Oracle Q4 cloud revenues +47%, IaaS +93% — but stock fell 8-10% on $40B capital raise",
+      "implication_for_target": "오라클 OCI AI 확장 — MSFT Azure AI 점유율 경쟁 심화 가능성"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.30,
+    "competitive_position": 0.20,
+    "regulatory_risk": -0.10,
+    "macro_sensitivity": 0.00
+  },
+  "narrative_score": 0.15,
+  "summary_kr": "Azure +40%, AI 런레이트 $370억(+123%)으로 클라우드·AI 양축 모두 견조한 Q3 실적을 달성했으나, Xbox 대규모 감원과 Claude 사용 제한 등 내부 비용 통제 기조 병행. YTD -17% 시장 대비 부진으로 저평가 매수 논거 강화.",
+  "key_events": ["Azure +40% YoY", "AI 연간 런레이트 $37B (+123%)", "Xbox 부문 대규모 감원"],
+  "risks": ["YTD -17% 주가 부진 지속 시 기관 이탈", "Xbox 감원에 따른 게임 사업 경쟁력 약화", "Claude 사용 제한으로 AI 협업 생태계 마찰"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MSFT%20-%20Microsoft%20Corporation.md"
+}
