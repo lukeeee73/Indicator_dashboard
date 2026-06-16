@@ -10271,25 +10271,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-10",
-      "narrative_score": -0.02,
-      "summary_kr": "AI 매출 2배 달성이라는 사상 최고 실적에도 연간 가이던스 미상향으로 -15% 급락 후 여진 지속(-1.75%). 6 핵심 AI 고객 공개와 $350억 AI XPV 플랫폼은 장기 성장 구조 확인. '좋은 실적 + 기대 미달 = 급락' 공식 재확인.",
+      "as_of": "2026-06-16",
+      "narrative_score": -0.11,
+      "summary_kr": "Q2 AI 매출 $108억(2배) 달성에도 연간 AI $1,000억 목표 미상향으로 주가 -15% 급락. AI XPV 플랫폼($350억)으로 인프라 대형 딜 확보했으나 구글 TPU 공급사 다변화 리스크 재부각. 실적 쇼크 후 $388-396 박스권 회복 중.",
       "key_events": [
-        "Q2 AI 매출 $108억 (2배), 총매출 $222억 — 사상 최대",
-        "FY AI $100B 목표 미상향 → -15%",
-        "$350억 AI XPV 플랫폼 론칭"
+        "Q2 AI $108억(2배)·주가 -15%",
+        "AI XPV 플랫폼 $350억 딜",
+        "구글 TPU 공급사 다변화"
       ],
       "risks": [
-        "가이던스 미상향에 따른 기대 리셋 부재",
-        "SOX 셀오프 촉발 책임감 — 섹터 신뢰도 일시 훼손",
-        "Q3 AI 가이던스도 미달 시 추가 조정"
+        "연간 AI 가이던스 미상향 신뢰도 하락",
+        "구글 TPU 공급 다변화 → 고객 집중도 리스크",
+        "NVDA/AMD 커스텀 ASIC 경쟁 심화"
       ],
       "news_count": 4,
       "competitor_context": [
         {
           "ticker": "NVDA",
-          "headline": "NVIDIA ecosystem dominance: Apple + Google cloud AI partnerships confirmed",
-          "implication_for_target": "NVDA의 전방위 AI 생태계 장악은 AVGO 맞춤칩(ASIC) 사업에 간접 도전 — 그러나 하이퍼스케일러 맞춤칩 시장은 구분됨"
+          "headline": "NVIDIA AI GPU demand continues unabated — Broadcom custom ASIC faces comparison pressure",
+          "implication_for_target": "NVDA 범용 GPU 대비 AVGO 커스텀 ASIC 차별화 전략의 지속 가능성 의문"
+        },
+        {
+          "ticker": "AMD",
+          "headline": "AMD Instinct MI350 gaining enterprise customers",
+          "implication_for_target": "AMD GPU 생태계 확장이 AVGO 커스텀 칩 우위 잠식 가능성"
         }
       ],
       "history": [
@@ -10316,6 +10321,10 @@
         {
           "date": "2026-06-10",
           "narrative_score": -0.02
+        },
+        {
+          "date": "2026-06-16",
+          "narrative_score": -0.11
         }
       ]
     }
