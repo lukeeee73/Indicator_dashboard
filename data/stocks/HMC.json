@@ -10126,25 +10126,31 @@
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-06-03",
-      "narrative_score": 0.02,
-      "summary_kr": "5월 미국 판매 +9.9%로 자동차 섹터 내 판매 강세 유지. Q4 FY2026 대규모 손실은 구조조정 비용 추정되며 장기 우려 포인트.",
+      "as_of": "2026-06-17",
+      "narrative_score": -0.19,
+      "summary_kr": "70년 만의 연간 적자로 강한 부정 모멘텀. 5월 미국 판매 +9.9%는 긍정이나 EV 구조조정 $9B+ 비용과 관세 충격이 이를 압도.",
       "key_events": [
+        "70년 만의 연간 적자(미국 관세 + EV 구조조정 $9B+)",
         "5월 미국 판매 +9.9%",
-        "Q4 FY2026 대규모 순손실",
-        "102회 주총 6월 26일"
+        "주가 +3.7% 반등(6/11)",
+        "52주 범위: $23.25~$34.89"
       ],
       "risks": [
-        "Q4 손실 원인 추가 공개 여부",
-        "EV 전환 투자 속도",
-        "엔화 환율 민감도"
+        "EV 전환 비용 추가 확대 가능성",
+        "미국 관세 장기화 시 수익성 악화",
+        "모멘텀 지표 10점 중 1점으로 기술적 약세"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "TM",
-          "headline": "Toyota May U.S. sales -0.6%; certification scandal halts 3 models",
-          "implication_for_target": "도요타 인증 스캔들로 일본 내 판매 중단 — 혼다에 일본·미국 시장 반사이익 가능"
+          "headline": "Toyota FY2026 net profit -19.24%; Lexus EV development halted",
+          "implication_for_target": "일본 완성차 1위도 EV 전환 비용 부담 — 혼다 적자와 함께 일본 자동차 섹터 전반의 구조적 도전"
+        },
+        {
+          "ticker": "GM",
+          "headline": "GM LFP-to-LMR pivot; 2027 Silverado unveiled",
+          "implication_for_target": "GM의 배터리 전략 전환 vs 혼다의 EV 구조조정 비교 — 완성차 배터리 전략 분기"
         }
       ],
       "history": [
@@ -10159,6 +10165,10 @@
         {
           "date": "2026-06-03",
           "narrative_score": 0.02
+        },
+        {
+          "date": "2026-06-17",
+          "narrative_score": -0.19
         }
       ]
     }
