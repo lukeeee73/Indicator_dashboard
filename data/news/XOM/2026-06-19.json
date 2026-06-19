@@ -1,0 +1,20 @@
+{
+  "ticker": "XOM",
+  "date": "2026-06-19",
+  "as_of_utc": "2026-06-19T22:00:00Z",
+  "news": [
+    {"title": "Exxon Mobil (XOM) Stock Could Be 18.9% Undervalued Despite Recent Pullback", "source": "Yahoo Finance", "url": "https://finance.yahoo.com/markets/stocks/articles/exxon-mobil-xom-stock-could-232053833.html", "published": "2026-06-18T08:00:00Z", "summary": "최근 한 달 -15% 조정에도 18.9% 저평가 분석 — 12개월 목표가 $169.91", "impact": "+", "category": "other"},
+    {"title": "Exxon Mobil (XOM) Faces Bearish Sentiment as Shares Drop", "source": "GuruFocus", "url": "https://www.gurufocus.com/news/8923040/exxon-mobil-xom-faces-bearish-sentiment-as-shares-drop", "published": "2026-06-18T14:00:00Z", "summary": "6/18 주가 -$3.92(약 $136.82)로 옵션 시장 비관 심리 확대", "impact": "-", "category": "macro"},
+    {"title": "The Number That Could Test Exxon Mobil Stock", "source": "Trefis", "url": "https://www.trefis.com/stock/xom/articles/603113/the-number-that-could-test-exxon-mobil-stock/2026-06-16", "published": "2026-06-16T09:00:00Z", "summary": "가이아나·퍼미안 기록 생산이 유가 하락 충격을 일부 상쇄한다는 분석", "impact": "neutral", "category": "earnings"}
+  ],
+  "competitor_context": [
+    {"ticker": "CVX", "headline": "미·이란 평화협정 임박 보도로 CVX 6/15 -3.6%, 호르무즈 재개 기대로 유가 급락", "implication_for_target": "동일 매크로 충격 — XOM도 유가 하락에 직접 노출"},
+    {"ticker": "COP", "headline": "COP 2026 생산 가이던스 추가 하향 (2.295-2.325 MMBOED)", "implication_for_target": "상류 섹터 센티먼트 부담 — XOM 가이아나·퍼미안 볼륨 강점이 상대 우위"}
+  ],
+  "scores": {"earnings_outlook": 0.1, "competitive_position": 0.2, "regulatory_risk": 0.0, "macro_sensitivity": -0.5},
+  "narrative_score": 0.02,
+  "summary_kr": "미·이란 평화협정 임박과 호르무즈 해협 재개 기대로 유가가 급락하며 XOM도 한 달 -15% 조정. 다만 가이아나·퍼미안 기록 생산과 저평가 매력이 하방을 일부 방어한다는 분석이 병존한다.",
+  "key_events": ["미·이란 평화협정 임박 보도로 유가 급락", "한 달 -15% 조정 후 6/18 $136.82", "가이아나·퍼미안 기록 생산으로 충격 일부 상쇄"],
+  "risks": ["호르무즈 재개 시 원유 공급 정상화 → 유가 추가 하락", "유가 하락 시 상류 FCF 압박"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/XOM%20-%20Exxon%20Mobil%20Corporation.md"
+}
