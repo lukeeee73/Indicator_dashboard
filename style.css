@@ -1493,7 +1493,7 @@ body.co-open { overflow: hidden; }   /* 모달 열리면 뒤 배경 스크롤 �
 .co-main { display: flex; flex-direction: row; gap: 3rem; align-items: flex-start; }
 .co-col { display: flex; flex-direction: column; gap: 0.7rem; }
 .co-col--supply, .co-col--demand { flex: 0 0 224px; }
-.co-col--company { flex: 1 1 360px; min-width: 320px; max-width: 460px; }
+.co-col--company { flex: 0 0 auto; min-width: 320px; }
 .co-col-title { font-size: 0.74rem; font-weight: 700; color: var(--text-dim); letter-spacing: 0.02em; }
 .co-group { display: flex; flex-direction: column; gap: 0.4rem; }
 .co-group-title { font-size: 0.66rem; color: var(--text-dim); }
@@ -1504,30 +1504,71 @@ body.co-open { overflow: hidden; }   /* 모달 열리면 뒤 배경 스크롤 �
 .co-firm--link { cursor: pointer; }
 .co-firm-tk, .co-company-tk { font-size: 0.62rem; color: var(--text-dim); font-weight: 600; }
 
-/* 자사 중앙 노드 */
-.co-company { --mc-accent: var(--red); cursor: default; padding: 0.7rem 0.8rem; gap: 0.5rem; }
-.co-company:hover { transform: none; }
+/* 자사 패널 — 기술·제품 분해 (다이어그램의 중심) */
+.co-company {
+  --mc-accent: var(--red);
+  background: color-mix(in srgb, var(--bg-elev) 92%, var(--mc-accent) 8%);
+  border: 1px solid var(--border-mid); border-left: 3px solid var(--mc-accent);
+  border-radius: 9px; padding: 0.8rem 0.9rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
 .co-company-head { display: flex; align-items: baseline; gap: 0.5rem; }
-.co-company-name { font-size: 1rem; font-weight: 700; color: var(--text); }
-.co-company-line { font-size: 0.76rem; color: var(--text-dim); line-height: 1.45; margin: 0; }
+.co-company-name { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.co-company-line { font-size: 0.76rem; color: var(--text-dim); line-height: 1.45; margin: 0; max-width: 660px; }
 .co-company .valuation-badge-row { margin: 0; }
 
-.co-segs { margin-top: 0.25rem; display: flex; flex-direction: column; gap: 0.55rem; }
-.co-segs-title { font-size: 0.7rem; color: var(--text-dim); font-weight: 700; }
-.co-seg { border: 1px solid var(--border); border-radius: 7px; padding: 0.45rem 0.55rem; background: var(--bg-elev); }
+.co-segs { display: flex; flex-direction: column; gap: 0.5rem; }
+.co-segs-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem 0.85rem; }
+.co-segs-title { font-size: 0.76rem; font-weight: 700; color: var(--text); }
+/* 제품/기술 유형 범례 */
+.co-kind-legend { display: inline-flex; flex-wrap: wrap; gap: 0.55rem; }
+.co-kind-leg { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.64rem; color: var(--text-dim); }
+.co-kind-leg i { width: 9px; height: 9px; border-radius: 2px; background: var(--k-c, #888); display: inline-block; font-style: normal; }
+.co-kind-leg--growth i { width: auto; height: auto; background: none; color: var(--up); font-weight: 700; }
+
+/* 세그먼트 카드 — 색으로 구분 (반도체 vs SW) */
+.co-segs-grid { display: flex; flex-direction: row; gap: 0.9rem; align-items: flex-start; }
+.co-seg {
+  --seg-c: var(--red);
+  flex: 0 0 322px; width: 322px;
+  border: 1px solid var(--border); border-top: 3px solid var(--seg-c);
+  border-radius: 8px; padding: 0.55rem 0.6rem; background: var(--bg-card);
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
 .co-seg-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
-.co-seg-name { font-size: 0.82rem; font-weight: 600; color: var(--text); }
-.co-seg-share { font-size: 0.78rem; font-weight: 700; color: var(--text); }
-.co-seg-bar { display: block; height: 5px; background: #1f1f1f; border-radius: 3px; overflow: hidden; margin: 0.28rem 0; }
-.co-seg-bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--red-bright)); }
-.co-seg-desc { font-size: 0.7rem; color: var(--text-dim); line-height: 1.4; margin: 0.2rem 0 0; }
-.co-seg-lines { list-style: none; margin: 0.4rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
-.co-seg-line-name { color: var(--text); font-weight: 600; font-size: 0.74rem; }
-.co-seg-line--growth .co-seg-line-name::after { content: " ▲성장"; color: var(--up); font-size: 0.62rem; font-weight: 700; }
-.co-seg-line-note { display: block; color: var(--text-dim); font-size: 0.68rem; line-height: 1.35; margin-top: 0.05rem; }
-.co-seg-mks { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.25rem; }
+.co-seg-name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+.co-seg-name::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--seg-c); margin-right: 0.35rem; }
+.co-seg-share { font-size: 0.84rem; font-weight: 700; color: var(--text); }
+.co-seg-bar { display: block; height: 5px; background: #1f1f1f; border-radius: 3px; overflow: hidden; }
+.co-seg-bar > span { display: block; height: 100%; background: var(--seg-c); }
+.co-seg-desc { font-size: 0.69rem; color: var(--text-dim); line-height: 1.4; margin: 0; }
+
+/* 제품군 (family) */
+.co-fams { display: flex; flex-direction: column; gap: 0.55rem; }
+.co-fam { border-left: 2px solid color-mix(in srgb, var(--seg-c) 55%, var(--border-mid)); padding-left: 0.5rem; }
+.co-fam-head { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+.co-fam-name { font-size: 0.78rem; font-weight: 700; color: var(--text); }
+.co-fam-tag { font-size: 0.58rem; font-weight: 700; color: var(--up); border: 1px solid color-mix(in srgb, var(--up) 45%, var(--border-mid)); border-radius: 4px; padding: 0.02rem 0.32rem; }
+
+/* 개별 제품/기술 카드 — 유형별 색(--k-c)으로 좌측 보더 + 라벨 */
+.co-prods { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+.co-prod {
+  --k-c: var(--border-mid);
+  border: 1px solid var(--border); border-left: 3px solid var(--k-c);
+  border-radius: 6px; padding: 0.35rem 0.45rem; background: var(--bg-elev);
+  display: flex; flex-direction: column; gap: 0.18rem;
+}
+.co-prod--growth { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--up) 32%, transparent); }
+.co-prod-top { display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap; }
+.co-prod-kind { font-size: 0.55rem; font-weight: 700; color: #fff; background: var(--k-c); border-radius: 3px; padding: 0.04rem 0.3rem; letter-spacing: 0.02em; }
+.co-prod-name { font-size: 0.73rem; font-weight: 600; color: var(--text); }
+.co-prod-growth { color: var(--up); font-size: 0.66rem; font-weight: 700; margin-left: auto; }
+.co-prod-tech { font-size: 0.65rem; color: var(--text-dim); line-height: 1.35; }
+
+.co-seg-mks { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.1rem; }
 .co-seg-mk {
-  font-size: 0.64rem; cursor: pointer; background: var(--red-dim); color: var(--text);
+  font-size: 0.62rem; cursor: pointer; background: var(--red-dim); color: var(--text);
   border: 1px solid var(--border-mid); border-radius: 4px; padding: 0.05rem 0.36rem;
 }
 .co-seg-mk:hover { border-color: var(--red); }
@@ -1600,8 +1641,11 @@ body.co-open { overflow: hidden; }   /* 모달 열리면 뒤 배경 스크롤 �
 
   .co-main { flex-direction: column; gap: 0; }
   .co-col { flex: 1 1 auto; min-width: 0; max-width: none; width: 100%; }
-  .co-col--company { max-width: none; }
+  .co-col--company { max-width: none; min-width: 0; }
   .co-company { min-width: 0; }
+  /* 세그먼트(반도체·SW)를 세로로 스택, 카드 풀폭 */
+  .co-segs-grid { flex-direction: column; gap: 0.6rem; }
+  .co-seg { flex-basis: auto; width: auto; }
   /* 섹션 사이 흐름 화살표: 공급 ▼ 자사 ▼ 수요 */
   .co-col--supply::after, .co-col--company::after {
     content: "▼"; display: block; text-align: center; font-size: 0.95rem;
@@ -1623,9 +1667,10 @@ body.co-open { overflow: hidden; }   /* 모달 열리면 뒤 배경 스크롤 �
   .co-detail { max-height: none; overflow: visible; border-top: 1px solid var(--border); padding: 0.85rem; }
 }
 
-/* 아주 좁은 화면(≤380px): 노드 1열로 */
+/* 아주 좁은 화면(≤380px): 노드·제품 카드 1열로 */
 @media (max-width: 380px) {
   .co-col--supply .co-col-nodes,
   .co-col--demand .co-col-nodes { grid-template-columns: 1fr; }
+  .co-prods { grid-template-columns: 1fr; }
   .co-comp-chip { flex-basis: 100%; }
 }

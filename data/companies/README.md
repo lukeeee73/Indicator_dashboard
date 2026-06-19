@@ -12,7 +12,8 @@
    - 그 시장들의 **상류(공급) 시장 / 하류(수요) 시장**
    - 같은 시장의 **경쟁사**(co-players)
 2. **큐레이션(이 폴더 · 선택)** — 파생으로는 알 수 없는 기업 내부 구조를 더한다.
-   - **사업 부문**(매출 구성) 및 각 부문이 경쟁하는 시장
+   - **사업 구조의 기술적 분해**: 세그먼트 → 제품군 → 개별 제품/기술
+     (유형 product·tech·platform 으로 시각 구분, 각 제품이 경쟁하는 시장 연결)
    - 이름이 붙은 **핵심 공급사 / 핵심 고객**
    - **투자 논지 / 한 줄 포지셔닝 / 경쟁사 코멘트**
 
@@ -36,24 +37,36 @@
   "one_liner": "한 줄 포지셔닝 (자사 노드에 표시)",
   "thesis": "투자 논지 · 구조 설명 (우측 상세 패널)",
 
-  "segments": [                       // 사업 부문 = 매출 구성 (자사 노드 중앙)
+  // 사업 구조 — 세그먼트 → 제품군(family) → 개별 제품/기술 의 3단 분해.
+  // 자사 패널 중앙에 색으로 구분되어 그려진다.
+  "segments": [
     {
       "id": "semi",
       "name_kr": "반도체 솔루션",
       "name_en": "Semiconductor Solutions",
-      "share": 56,                    // 매출 비중(%) — 막대로 표시
-      "desc": "부문 한 줄 설명",
-      "lines": [                      // 부문 내 세부 사업 라인
+      "share": 56,                    // 매출 비중(%) — 세그먼트 막대
+      "color": "#e60024",             // 세그먼트 구분 색 (상단 보더·막대)
+      "desc": "세그먼트 한 줄 설명",
+      "families": [                   // 제품군
         {
-          "name": "AI 네트워킹 · 커스텀 ASIC",
-          "note": "보조 설명",
-          "growth": true,             // true 면 '▲성장' 뱃지
-          "markets": ["custom-asic", "dc-networking", "optical"]
-                                      // 이 라인이 경쟁하는 시장 id (클릭 → 시장 지도)
+          "name_kr": "AI 네트워킹 · 인터커넥트",
+          "tag": "성장 핵심",          // 선택 — 제품군 옆 작은 뱃지
+          "growth": true,
+          "products": [               // 개별 제품/기술 (시각적으로 구분되는 잎)
+            {
+              "name": "Tomahawk 5/6",
+              "kind": "product",      // product=제품 · tech=기술 · platform=플랫폼 (유형별 색)
+              "tech": "이더넷 스케일아웃 스위치 ASIC (51.2T→102.4T)",
+              "growth": true,         // true 면 ▲ 성장 표시 + 강조 테두리
+              "markets": ["dc-networking"]   // 이 제품이 경쟁하는 시장 id (클릭 → 시장 지도)
+            }
+          ]
         }
       ]
     }
   ],
+  // (간단 버전) families 대신 lines 도 지원 — { name, note, growth, markets } 배열.
+  //   이 경우 제품군 없이 제품 카드만 그려진다 (kind 미지정).
 
   "suppliers": [                      // 핵심 공급사 (좌측 상류). market 은 선택
     { "name": "TSMC", "ticker": "TSM", "market": "foundry", "role": "≤3nm 위탁생산" }

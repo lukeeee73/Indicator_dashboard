@@ -2703,38 +2703,79 @@ function coGroup(title, items, kind) {
     <div class="co-col-nodes">${nodes}</div></div>`;
 }
 
-// 자사 중앙 노드 — 헤더 + 한 줄 포지셔닝 + valuation 뱃지 + 사업 부문(매출 구성)
+// 제품/기술 유형 → 시각 구분(라벨·색). data 의 kind 값과 매칭.
+const CO_KIND = {
+  product:  { label: "제품",   color: "#4f8fd0" },  // 양산 칩/장비
+  tech:     { label: "기술",   color: "#2bb0a0" },  // 공정·IP·아키텍처
+  platform: { label: "플랫폼", color: "#c79028" },  // 고객 코디자인 / SW 스택
+};
+
+// 제품/기술이 경쟁하는 시장 → 클릭하면 시장 지도로 점프하는 칩
+function coMarketChips(markets, fp) {
+  return (markets || []).map((mid) => {
+    const pp = fp.participations.find((p) => p.market.id === mid);
+    const mapId = pp ? pp.mapId : MC_STATE.mapId;
+    const nm = pp ? pp.market.name_kr : mid;
+    return `<button class="co-seg-mk" data-map="${escapeHtml(mapId)}" data-mid="${escapeHtml(mid)}" title="${escapeHtml(nm)} — 시장 지도에서 보기">${escapeHtml(nm)}</button>`;
+  }).join("");
+}
+
+// 개별 제품/기술 카드 — 유형 라벨(색) + 이름 + 기술 설명 + 성장 표시 + 시장 연결
+function coProductHtml(p, fp) {
+  const k = CO_KIND[p.kind] || null;
+  const chips = coMarketChips(p.markets, fp);
+  return `<div class="co-prod${p.growth ? " co-prod--growth" : ""}"${k ? ` style="--k-c:${k.color}"` : ""}>
+      <div class="co-prod-top">
+        ${k ? `<span class="co-prod-kind">${escapeHtml(k.label)}</span>` : ""}
+        <span class="co-prod-name">${escapeHtml(p.name)}</span>
+        ${p.growth ? `<span class="co-prod-growth" title="AI 성장 노출">▲</span>` : ""}
+      </div>
+      ${p.tech ? `<span class="co-prod-tech">${escapeHtml(p.tech)}</span>` : ""}
+      ${chips ? `<span class="co-seg-mks">${chips}</span>` : ""}
+    </div>`;
+}
+
+// 제품군(family) — 헤더 + 제품 그리드
+function coFamilyHtml(fam, fp) {
+  const prods = (fam.products || []).map((p) => coProductHtml(p, fp)).join("");
+  const name = fam.name_kr || fam.name || "";
+  return `<div class="co-fam${fam.growth ? " co-fam--growth" : ""}">
+      ${name ? `<div class="co-fam-head">
+        <span class="co-fam-name">${escapeHtml(name)}</span>
+        ${fam.tag ? `<span class="co-fam-tag">${escapeHtml(fam.tag)}</span>` : ""}
+      </div>` : ""}
+      <div class="co-prods">${prods}</div>
+    </div>`;
+}
+
+// 세그먼트 카드 — 매출 비중 + 제품군들. families 없으면 lines(레거시)를 단일 군으로.
+function coSegmentHtml(s, fp) {
+  const families = s.families
+    || (s.lines ? [{ products: s.lines.map((ln) => ({ name: ln.name, tech: ln.note, markets: ln.markets, growth: ln.growth })) }] : []);
+  const famHtml = families.map((f) => coFamilyHtml(f, fp)).join("");
+  const share = (typeof s.share === "number") ? s.share : null;
+  return `<div class="co-seg" style="--seg-c:${s.color || "var(--red)"}">
+      <div class="co-seg-head">
+        <span class="co-seg-name">${escapeHtml(s.name_kr || s.name || "")}</span>
+        ${share != null ? `<span class="co-seg-share">${share}%</span>` : ""}
+      </div>
+      ${share != null ? `<span class="co-seg-bar"><span style="width:${Math.max(0, Math.min(100, share))}%"></span></span>` : ""}
+      ${s.desc ? `<p class="co-seg-desc">${escapeHtml(s.desc)}</p>` : ""}
+      <div class="co-fams">${famHtml}</div>
+    </div>`;
+}
+
+// 자사 패널 — 헤더 + 포지셔닝 + valuation + 사업 구조(기술·제품 분해)
 function coCompanyCenterHtml(ticker, meta, file, fp, stock) {
   const val = stock && stock.valuation;
   const badge = val ? renderValuationBadgeHtml(val, meta) : "";
   const segs = (file && file.segments) || [];
-  const segHtml = segs.map((s) => {
-    const lines = (s.lines || []).map((ln) => {
-      const chips = (ln.markets || []).map((mid) => {
-        const pp = fp.participations.find((p) => p.market.id === mid);
-        const mapId = pp ? pp.mapId : MC_STATE.mapId;
-        const nm = pp ? pp.market.name_kr : mid;
-        return `<button class="co-seg-mk" data-map="${escapeHtml(mapId)}" data-mid="${escapeHtml(mid)}">${escapeHtml(nm)}</button>`;
-      }).join("");
-      return `<li class="co-seg-line${ln.growth ? " co-seg-line--growth" : ""}">
-          <span class="co-seg-line-name">${escapeHtml(ln.name)}</span>
-          ${ln.note ? `<span class="co-seg-line-note">${escapeHtml(ln.note)}</span>` : ""}
-          ${chips ? `<span class="co-seg-mks">${chips}</span>` : ""}
-        </li>`;
-    }).join("");
-    const share = (typeof s.share === "number") ? s.share : null;
-    return `<div class="co-seg">
-        <div class="co-seg-head">
-          <span class="co-seg-name">${escapeHtml(s.name_kr || s.name || "")}</span>
-          ${share != null ? `<span class="co-seg-share">${share}%</span>` : ""}
-        </div>
-        ${share != null ? `<span class="co-seg-bar"><span style="width:${Math.max(0, Math.min(100, share))}%"></span></span>` : ""}
-        ${s.desc ? `<p class="co-seg-desc">${escapeHtml(s.desc)}</p>` : ""}
-        ${lines ? `<ul class="co-seg-lines">${lines}</ul>` : ""}
-      </div>`;
-  }).join("");
+  const segHtml = segs.map((s) => coSegmentHtml(s, fp)).join("");
   const oneLiner = (file && (file.one_liner || file.positioning)) || meta.business || "";
-  return `<div class="co-company mc-node" id="co-company-node" style="--mc-accent:${meta.color || "#e60024"}">
+  const legend = `<div class="co-kind-legend">${Object.values(CO_KIND).map((v) =>
+    `<span class="co-kind-leg" style="--k-c:${v.color}"><i></i>${escapeHtml(v.label)}</span>`).join("")}
+    <span class="co-kind-leg co-kind-leg--growth"><i>▲</i>성장 노출</span></div>`;
+  return `<div class="co-company" id="co-company-node" style="--mc-accent:${meta.color || "#e60024"}">
       <div class="co-company-head">
         <span class="co-company-name">${escapeHtml(meta.displayName)}</span>
         <span class="co-company-tk">${escapeHtml(ticker)}</span>
@@ -2742,8 +2783,11 @@ function coCompanyCenterHtml(ticker, meta, file, fp, stock) {
       ${oneLiner ? `<p class="co-company-line">${escapeHtml(oneLiner)}</p>` : ""}
       ${badge}
       ${segHtml
-        ? `<div class="co-segs"><div class="co-segs-title">사업 구조 · 매출 구성</div>${segHtml}</div>`
-        : `<p class="co-nostruct">사업 부문 데이터 미수록 — <code>data/companies/${escapeHtml(ticker)}.json</code> 로 추가하면 매출 구성이 그려집니다.</p>`}
+        ? `<div class="co-segs">
+             <div class="co-segs-bar"><span class="co-segs-title">사업 구조 — 기술·제품 분해</span>${legend}</div>
+             <div class="co-segs-grid">${segHtml}</div>
+           </div>`
+        : `<p class="co-nostruct">사업 부문 데이터 미수록 — <code>data/companies/${escapeHtml(ticker)}.json</code> 로 추가하면 기술·제품 분해가 그려집니다.</p>`}
     </div>`;
 }
 
