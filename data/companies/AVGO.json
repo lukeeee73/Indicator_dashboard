@@ -1,0 +1,75 @@
+{
+  "ticker": "AVGO",
+  "name_kr": "브로드컴",
+  "name_en": "Broadcom Inc.",
+  "as_of": "2026-06",
+  "one_liner": "AI 데이터센터의 '연결'을 쥔 팹리스 — 커스텀 XPU·스위치·광 인터커넥트. 제조는 TSMC에 전량 위탁하고, 고객(하이퍼스케일러)과 칩을 코디자인해 락인한다.",
+  "thesis": "팹리스 모델 — 제조 설비 없이 설계만 하고 TSMC 파운드리에 전량 위탁한다. 강점은 하이퍼스케일러(Google·Meta·OpenAI)와 칩을 '코디자인'해 묶어두는 락인. AI 네트워킹·커스텀 ASIC(XPU)이 성장을 견인하고, VMware 인수로 들어온 인프라 SW가 안정적 구독 현금흐름을 더하는 이중 엔진 구조다. 핵심 리스크는 소수 대형 고객(특히 Google)에 대한 매출 집중도와, NVIDIA·AMD 범용 GPU와의 경쟁.",
+  "segments": [
+    {
+      "id": "semi",
+      "name_kr": "반도체 솔루션",
+      "name_en": "Semiconductor Solutions",
+      "share": 56,
+      "desc": "통신·네트워크용 칩. AI 데이터센터향 커스텀 ASIC(XPU)·스위치 실리콘이 성장을 견인한다.",
+      "lines": [
+        {
+          "name": "AI 네트워킹 · 커스텀 ASIC(XPU)",
+          "note": "Google·Meta·OpenAI 코디자인 XPU + Tomahawk/Jericho 스위치 + 실리콘 포토닉스 — 회사 성장의 핵심 축",
+          "growth": true,
+          "markets": ["custom-asic", "dc-networking", "optical"]
+        },
+        {
+          "name": "무선 (Apple RF · 커넥티비티)",
+          "note": "아이폰용 RF·Wi-Fi·블루투스 칩 — 단일 대형 고객(Apple) 의존",
+          "markets": ["edge-smartphone"]
+        },
+        {
+          "name": "브로드밴드 · 서버 스토리지",
+          "note": "셋톱·게이트웨이·스토리지 커넥티비티 — 성숙·안정 매출",
+          "markets": []
+        }
+      ]
+    },
+    {
+      "id": "software",
+      "name_kr": "인프라 소프트웨어",
+      "name_en": "Infrastructure Software",
+      "share": 44,
+      "desc": "VMware 인수로 확장한 인프라 SW. 프라이빗 클라우드(VCF) 구독 전환으로 현금흐름 안정화.",
+      "lines": [
+        {
+          "name": "VMware (VCF 프라이빗 클라우드)",
+          "note": "가상화·프라이빗 클라우드 플랫폼 — 라이선스에서 구독으로 전환 중",
+          "markets": []
+        },
+        {
+          "name": "메인프레임 · 보안 (CA · Symantec)",
+          "note": "대기업 장기 라이선스 — 안정적 현금흐름",
+          "markets": []
+        }
+      ]
+    }
+  ],
+  "suppliers": [
+    { "name": "TSMC", "ticker": "TSM", "market": "foundry", "role": "≤3nm 위탁생산 — 칩 전량을 외주(팹리스의 생명줄)" },
+    { "name": "SK하이닉스·삼성·Micron", "ticker": "MU", "market": "hbm", "role": "XPU에 결합되는 HBM 고대역폭 메모리 공급" },
+    { "name": "ASE · Amkor (OSAT)", "ticker": null, "market": "advanced-packaging", "role": "CoWoS급 첨단 패키징 외주" },
+    { "name": "Cadence · Synopsys", "ticker": null, "market": "semi-ip", "role": "설계 EDA 툴 · 반도체 IP" }
+  ],
+  "customers": [
+    { "name": "Google", "ticker": "GOOGL", "market": "hyperscaler-capex", "role": "TPU 코디자인 최대 고객 — 매출 집중도 리스크의 핵심" },
+    { "name": "Meta", "ticker": "META", "market": "hyperscaler-capex", "role": "MTIA 커스텀 가속기 코디자인" },
+    { "name": "OpenAI", "ticker": null, "market": "ai-models", "role": "차세대 추론 칩 코디자인 (신규 대형 딜)" },
+    { "name": "Apple", "ticker": "AAPL", "market": "edge-smartphone", "role": "아이폰 RF·커넥티비티 단일 대형 고객" }
+  ],
+  "competitors": [
+    { "ticker": "NVDA", "name": "NVIDIA", "role": "범용 AI GPU + NVLink/Spectrum-X 네트워킹 — 최대 경쟁 압력" },
+    { "ticker": "AMD", "name": "AMD", "role": "Instinct GPU 생태계 확장으로 커스텀 칩 우위 잠식 시도" },
+    { "ticker": "MRVL", "name": "Marvell", "role": "커스텀 ASIC ~25% (Amazon·Microsoft) — 직접 경쟁사" }
+  ],
+  "sources": [
+    "Broadcom FY2024-2025 10-K / earnings (segment revenue mix)",
+    "data/markets/ai-semiconductor.json (시장 매핑 SSOT)"
+  ]
+}

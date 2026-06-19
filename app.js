@@ -2439,8 +2439,13 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     }
     const tk = p.ticker ? `<span class="mc-player-tk">${escapeHtml(p.ticker)}</span>` : "";
     const share = typeof p.share === "number" ? `<span class="mc-player-share">${p.share}%</span>` : "";
+    // watchlist 종목이면 이름을 버튼으로 → 그 기업 구조도 오픈 (역방향 엮음)
+    const canOpen = p.ticker && p.in_watchlist && STOCK_META[p.ticker];
+    const nameHtml = canOpen
+      ? `<button class="mc-player-open" data-coticker="${escapeHtml(p.ticker)}" title="${escapeHtml(p.name)} 구조도 보기">${escapeHtml(p.name)} ${tk}</button>`
+      : `${escapeHtml(p.name)} ${tk}`;
     return `<li class="${cls}">
-        <span class="mc-player-name">${escapeHtml(p.name)} ${tk}</span>
+        <span class="mc-player-name">${nameHtml}</span>
         <span class="mc-player-role">${escapeHtml(p.role || "")}</span>
         ${share}${chip}
       </li>`;
@@ -2485,6 +2490,8 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
 
   host.querySelectorAll(".mc-rel-link[data-goto]").forEach((b) =>
     b.addEventListener("click", () => selectMarketNode(b.dataset.goto, stocks)));
+  host.querySelectorAll(".mc-player-open[data-coticker]").forEach((b) =>
+    b.addEventListener("click", () => openCompanyDiagram(b.dataset.coticker)));
 }
 
 // 서브탭이 보일 때 / 리사이즈 시 전체 엣지 다시 그리기
@@ -2493,6 +2500,431 @@ window.addEventListener("resize", () => {
   if (!MC_STATE.map) return;
   drawAllMarketLinks();
   if (MC_STATE.activeNode) highlightMarketLinks(MC_STATE.activeNode);
+});
+
+// ════════════════════════════════════════════════════════════════════════
+//  기업 구조도 (company structure diagram) — 개별 종목을 시장 지도와 엮는 뷰
+// ════════════════════════════════════════════════════════════════════════
+//
+// 개별 종목을 클릭하면 그 기업의 '구조'를 시장 지도와 같은 시각 언어(노드·
+// 베지어 엣지·좌→우 공급→수요 흐름)로 모달에 보여준다. 데이터를 두 겹 합친다:
+//   1) 파생(모든 종목 자동) — 시장 지도(data/markets/*.json)의 players[] 를
+//      ticker 로 뒤져, 이 기업이 들어간 시장과 그 시장의 상류(공급)·하류(수요)
+//      시장, 같은 시장의 경쟁사를 끌어온다. 새 데이터 없이 즉시 작동한다.
+//   2) 큐레이션(선택) — data/companies/<ticker>.json 의 사업 부문(매출 구성)·
+//      핵심 공급사·핵심 고객·투자 논지. 파일이 없으면 파생 정보만으로 그린다.
+//
+// 엮음(양방향): 구조도의 시장 노드 클릭 → 모달 닫고 '시장 지도' 서브탭으로
+// 이동해 그 시장 선택. 시장 지도 상세의 watchlist 플레이어 클릭 → 그 기업의
+// 구조도 오픈(renderMarketDetail 에서 연결).
+
+const CO_STATE = { ticker: null, fileCache: {}, allMapsLoaded: false };
+
+// 모든 시장 지도를 캐시에 적재 (구조도는 전 지도를 가로질러 검색하므로)
+async function mcEnsureAllMaps() {
+  if (CO_STATE.allMapsLoaded) return;
+  await Promise.all(MARKET_MAPS.map(async ({ id }) => {
+    if (MC_STATE.cache[id]) return;
+    try {
+      const [mapRes, newsRes] = await Promise.all([
+        fetch(`data/markets/${id}.json`, { cache: "no-cache" }),
+        fetch(`data/markets/news/${id}.json`, { cache: "no-cache" }).catch(() => null),
+      ]);
+      if (mapRes.ok) MC_STATE.cache[id] = {
+        map: await mapRes.json(),
+        news: newsRes && newsRes.ok ? await newsRes.json() : null,
+      };
+    } catch (e) { /* 한 지도 실패해도 나머지로 진행 */ }
+  }));
+  CO_STATE.allMapsLoaded = true;
+}
+
+// 큐레이션 파일(있으면) 로드. 없으면 null 을 캐시.
+async function loadCompanyFile(ticker) {
+  if (ticker in CO_STATE.fileCache) return CO_STATE.fileCache[ticker];
+  let data = null;
+  try {
+    const res = await fetch(`data/companies/${ticker}.json`, { cache: "no-cache" });
+    if (res.ok) data = await res.json();
+  } catch (e) { /* 없으면 파생만 */ }
+  CO_STATE.fileCache[ticker] = data;
+  return data;
+}
+
+// 시장 지도 전반에서 이 기업의 발자국(참여 시장·상하류·경쟁사)을 모은다.
+function findCompanyFootprint(ticker) {
+  const participations = [];
+  const supplier = new Map();   // key "mapId:mid" → {mapId, market}
+  const customer = new Map();
+  const coPlayers = new Map();  // ticker → player (같은 시장 경쟁사)
+  MARKET_MAPS.forEach(({ id, label }) => {
+    const entry = MC_STATE.cache[id];
+    if (!entry) return;
+    const map = entry.map;
+    map.markets.forEach((m) => {
+      const p = (m.players || []).find((pl) => pl.ticker === ticker);
+      if (!p) return;
+      participations.push({ mapId: id, mapLabel: label, market: m, role: p.role, share: p.share });
+      map.links.filter((l) => l.from === m.id).forEach((l) => {   // 상류(이 시장이 의존하는 공급)
+        const mk = map.markets.find((x) => x.id === l.to);
+        if (mk) supplier.set(id + ":" + mk.id, { mapId: id, market: mk });
+      });
+      map.links.filter((l) => l.to === m.id).forEach((l) => {     // 하류(이 시장을 끌어당기는 수요)
+        const mk = map.markets.find((x) => x.id === l.from);
+        if (mk) customer.set(id + ":" + mk.id, { mapId: id, market: mk });
+      });
+      (m.players || []).forEach((pl) => {
+        if (pl.ticker && pl.ticker !== ticker && !coPlayers.has(pl.ticker)) coPlayers.set(pl.ticker, pl);
+      });
+    });
+  });
+  // 자기가 직접 참여하는 시장은 공급/수요 집합에서 제외 (중복 방지)
+  participations.forEach((pp) => {
+    const k = pp.mapId + ":" + pp.market.id;
+    supplier.delete(k); customer.delete(k);
+  });
+  return { participations, supplier: [...supplier.values()], customer: [...customer.values()], coPlayers };
+}
+
+// 경쟁사 목록: 큐레이션 > PEER_COMPETITORS > 같은 시장 co-players 순으로 합쳐 중복 제거.
+function coCompetitors(ticker, file, fp) {
+  const out = [];
+  const seen = new Set([ticker]);
+  const push = (tk, name, role) => {
+    if (!tk || seen.has(tk)) return;
+    seen.add(tk);
+    const meta = STOCK_META[tk];
+    out.push({ ticker: tk, name: name || (meta ? meta.displayName : tk), role: role || (meta ? meta.sector : ""), link: !!meta });
+  };
+  if (file && Array.isArray(file.competitors)) file.competitors.forEach((c) => push(c.ticker, c.name, c.role));
+  (PEER_COMPETITORS[ticker] || []).forEach((tk) => push(tk, null, null));
+  fp.coPlayers.forEach((p, tk) => push(tk, p.name, p.role));
+  return out.slice(0, 8);
+}
+
+// ── 모달 ──────────────────────────────────────────────────────────────────
+function ensureCompanyModal() {
+  let modal = document.getElementById("co-modal");
+  if (modal) return modal;
+  modal = document.createElement("div");
+  modal.id = "co-modal";
+  modal.className = "co-modal";
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="co-backdrop" data-close="1"></div>
+    <div class="co-dialog" role="dialog" aria-modal="true" aria-label="기업 구조도">
+      <header class="co-head">
+        <div class="co-head-main" id="co-head-main"></div>
+        <button type="button" class="co-close" data-close="1" aria-label="닫기">✕</button>
+      </header>
+      <div class="co-body">
+        <div class="co-board-wrap">
+          <svg class="co-links" id="co-links" aria-hidden="true"></svg>
+          <div class="co-board" id="co-board"></div>
+        </div>
+        <aside class="co-detail" id="co-detail"></aside>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+  modal.addEventListener("click", (e) => { if (e.target.dataset && e.target.dataset.close) closeCompanyDiagram(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) closeCompanyDiagram();
+  });
+  return modal;
+}
+
+function closeCompanyDiagram() {
+  const modal = document.getElementById("co-modal");
+  if (modal) modal.hidden = true;
+  document.body.classList.remove("co-open");
+}
+
+// 진입점 — 종목 카드 / 시장 지도 플레이어에서 호출
+async function openCompanyDiagram(ticker) {
+  const modal = ensureCompanyModal();
+  modal.hidden = false;
+  document.body.classList.add("co-open");
+  CO_STATE.ticker = ticker;
+  const board = document.getElementById("co-board");
+  const detail = document.getElementById("co-detail");
+  const headMain = document.getElementById("co-head-main");
+  const meta = STOCK_META[ticker] || { displayName: ticker, fullName: ticker, sector: "", color: "#e60024" };
+  headMain.innerHTML = `<span class="co-title">${escapeHtml(meta.displayName)} · 기업 구조도</span>
+     <span class="co-sub">${escapeHtml(meta.fullName)} · ${escapeHtml(ticker)} — 노드를 누르면 시장 지도와 연결됩니다</span>`;
+  board.innerHTML = emptyMessage("구조도를 불러오는 중…");
+  detail.innerHTML = "";
+  await mcEnsureAllMaps();
+  const file = await loadCompanyFile(ticker);
+  if (CO_STATE.ticker !== ticker) return; // 그새 다른 종목이 열렸으면 중단
+  const fp = findCompanyFootprint(ticker);
+  const stock = (MC_STATE.stocks && MC_STATE.stocks[ticker]) || null;
+  renderCompanyBoard(ticker, meta, file, fp, stock);
+  renderCompanyDetail(ticker, meta, file, fp, stock);
+  requestAnimationFrame(() => { drawCompanyEdges(); setTimeout(drawCompanyEdges, 130); });
+}
+
+// ── 노드 HTML ───────────────────────────────────────────────────────────
+// 시장 노드 (상하류) — 클릭 시 시장 지도로 점프. mc-node 스타일 재사용.
+function coMarketNodeHtml(mapId, m) {
+  const sev = m.bottleneck && m.bottleneck.severity;
+  const accent = (sev && MC_SEVERITY_COLOR[sev]) || "var(--border-mid)";
+  const tag = sev ? (MC_SEV_SHORT[sev] || "") : "";
+  return `<button class="co-node co-mk mc-node${sev && MC_SEVERITY_COLOR[sev] ? " mc-node--hi mc-node--" + sev : ""}"
+      data-map="${escapeHtml(mapId)}" data-mid="${escapeHtml(m.id)}" style="--mc-accent:${accent}"
+      title="${escapeHtml(m.definition || "")} — 클릭하면 시장 지도에서 봅니다">
+      ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}</span>` : ""}
+      <span class="mc-node-name">${escapeHtml(m.name_kr)}</span>
+      <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
+    </button>`;
+}
+
+// 이름 붙은 공급사/고객 노드 — watchlist 면 그 기업 구조도로, 아니면 매핑된 시장으로.
+function coFirmHtml(n) {
+  const link = n.ticker && STOCK_META[n.ticker];
+  const accent = link ? (STOCK_META[n.ticker].color || "var(--border-mid)") : "var(--border-mid)";
+  const attrs = [
+    link ? `data-coticker="${escapeHtml(n.ticker)}"` : "",
+    n.market ? `data-map="${escapeHtml(n.mapId || MC_STATE.mapId)}" data-mid="${escapeHtml(n.market)}"` : "",
+  ].filter(Boolean).join(" ");
+  return `<button class="co-node co-firm mc-node${link ? " co-firm--link" : ""}" ${attrs}
+      style="--mc-accent:${accent}" title="${escapeHtml(n.role || "")}">
+      <span class="mc-node-name">${escapeHtml(n.name)}${n.ticker ? ` <span class="co-firm-tk">${escapeHtml(n.ticker)}</span>` : ""}</span>
+      ${n.role ? `<span class="mc-node-size">${escapeHtml(n.role)}</span>` : ""}
+    </button>`;
+}
+
+// 공급/수요 컬럼의 하위 그룹 (핵심 공급사 / 공급 시장 …)
+function coGroup(title, items, kind) {
+  if (!items || !items.length) return "";
+  const nodes = kind === "firm"
+    ? items.map((n) => coFirmHtml(n)).join("")
+    : items.map((it) => coMarketNodeHtml(it.mapId, it.market)).join("");
+  return `<div class="co-group"><div class="co-group-title">${escapeHtml(title)}</div>
+    <div class="co-col-nodes">${nodes}</div></div>`;
+}
+
+// 자사 중앙 노드 — 헤더 + 한 줄 포지셔닝 + valuation 뱃지 + 사업 부문(매출 구성)
+function coCompanyCenterHtml(ticker, meta, file, fp, stock) {
+  const val = stock && stock.valuation;
+  const badge = val ? renderValuationBadgeHtml(val, meta) : "";
+  const segs = (file && file.segments) || [];
+  const segHtml = segs.map((s) => {
+    const lines = (s.lines || []).map((ln) => {
+      const chips = (ln.markets || []).map((mid) => {
+        const pp = fp.participations.find((p) => p.market.id === mid);
+        const mapId = pp ? pp.mapId : MC_STATE.mapId;
+        const nm = pp ? pp.market.name_kr : mid;
+        return `<button class="co-seg-mk" data-map="${escapeHtml(mapId)}" data-mid="${escapeHtml(mid)}">${escapeHtml(nm)}</button>`;
+      }).join("");
+      return `<li class="co-seg-line${ln.growth ? " co-seg-line--growth" : ""}">
+          <span class="co-seg-line-name">${escapeHtml(ln.name)}</span>
+          ${ln.note ? `<span class="co-seg-line-note">${escapeHtml(ln.note)}</span>` : ""}
+          ${chips ? `<span class="co-seg-mks">${chips}</span>` : ""}
+        </li>`;
+    }).join("");
+    const share = (typeof s.share === "number") ? s.share : null;
+    return `<div class="co-seg">
+        <div class="co-seg-head">
+          <span class="co-seg-name">${escapeHtml(s.name_kr || s.name || "")}</span>
+          ${share != null ? `<span class="co-seg-share">${share}%</span>` : ""}
+        </div>
+        ${share != null ? `<span class="co-seg-bar"><span style="width:${Math.max(0, Math.min(100, share))}%"></span></span>` : ""}
+        ${s.desc ? `<p class="co-seg-desc">${escapeHtml(s.desc)}</p>` : ""}
+        ${lines ? `<ul class="co-seg-lines">${lines}</ul>` : ""}
+      </div>`;
+  }).join("");
+  const oneLiner = (file && (file.one_liner || file.positioning)) || meta.business || "";
+  return `<div class="co-company mc-node" id="co-company-node" style="--mc-accent:${meta.color || "#e60024"}">
+      <div class="co-company-head">
+        <span class="co-company-name">${escapeHtml(meta.displayName)}</span>
+        <span class="co-company-tk">${escapeHtml(ticker)}</span>
+      </div>
+      ${oneLiner ? `<p class="co-company-line">${escapeHtml(oneLiner)}</p>` : ""}
+      ${badge}
+      ${segHtml
+        ? `<div class="co-segs"><div class="co-segs-title">사업 구조 · 매출 구성</div>${segHtml}</div>`
+        : `<p class="co-nostruct">사업 부문 데이터 미수록 — <code>data/companies/${escapeHtml(ticker)}.json</code> 로 추가하면 매출 구성이 그려집니다.</p>`}
+    </div>`;
+}
+
+// ── 보드 렌더 ───────────────────────────────────────────────────────────
+function renderCompanyBoard(ticker, meta, file, fp, stock) {
+  const board = document.getElementById("co-board");
+  if (!board) return;
+  board.innerHTML = "";
+
+  const axis = document.createElement("div");
+  axis.className = "co-axis";
+  axis.innerHTML = `<span>◀ 공급 (상류) — 만들어 주는 곳</span>
+    <span class="co-axis-mid">${escapeHtml(meta.displayName)} — 자사</span>
+    <span>수요 (하류) — 돈을 내는 곳 ▶</span>`;
+  board.appendChild(axis);
+
+  const main = document.createElement("div");
+  main.className = "co-main";
+
+  const supply = document.createElement("div");
+  supply.className = "co-col co-col--supply";
+  supply.innerHTML = `<div class="co-col-title">공급 — 상류</div>`
+    + coGroup("핵심 공급사", (file && file.suppliers) || [], "firm")
+    + coGroup("공급 시장 (상류)", fp.supplier, "market");
+  main.appendChild(supply);
+
+  const center = document.createElement("div");
+  center.className = "co-col co-col--company";
+  center.innerHTML = `<div class="co-col-title">자사 — 사업 구조</div>`
+    + coCompanyCenterHtml(ticker, meta, file, fp, stock);
+  main.appendChild(center);
+
+  const demand = document.createElement("div");
+  demand.className = "co-col co-col--demand";
+  demand.innerHTML = `<div class="co-col-title">수요 — 하류</div>`
+    + coGroup("핵심 고객", (file && file.customers) || [], "firm")
+    + coGroup("수요 시장 (하류)", fp.customer, "market");
+  main.appendChild(demand);
+
+  board.appendChild(main);
+
+  const comps = coCompetitors(ticker, file, fp);
+  if (comps.length) {
+    const band = document.createElement("div");
+    band.className = "co-comp";
+    band.innerHTML = `<div class="co-comp-title">경쟁 구도 — 같은 시장의 플레이어</div>
+      <div class="co-comp-row">${comps.map((c) => {
+        const accent = c.link && STOCK_META[c.ticker] ? (STOCK_META[c.ticker].color || "var(--border-mid)") : "var(--border-mid)";
+        return `<button class="co-comp-chip${c.link ? " co-comp-chip--link" : ""}" ${c.link ? `data-coticker="${escapeHtml(c.ticker)}"` : ""} style="--mc-accent:${accent}">
+          <span class="co-comp-name">${escapeHtml(c.name)}${c.ticker ? ` <span class="co-firm-tk">${escapeHtml(c.ticker)}</span>` : ""}</span>
+          ${c.role ? `<span class="co-comp-role">${escapeHtml(c.role)}</span>` : ""}
+        </button>`;
+      }).join("")}</div>`;
+    board.appendChild(band);
+  }
+
+  // 클릭 와이어링 — 기업 노드(구조도 이동)가 시장 노드(시장 지도 이동)보다 우선
+  board.querySelectorAll("[data-coticker]").forEach((el) =>
+    el.addEventListener("click", (e) => { e.stopPropagation(); openCompanyDiagram(el.dataset.coticker); }));
+  board.querySelectorAll(".co-mk[data-mid], .co-seg-mk[data-mid], .co-firm[data-mid]:not([data-coticker])").forEach((el) =>
+    el.addEventListener("click", () => jumpToMarket(el.dataset.map, el.dataset.mid)));
+}
+
+// ── SVG 엣지 (공급 → 자사 → 수요) ─────────────────────────────────────────
+// 보드 콘텐츠 기준 좌표 (스크롤 보정). 줌은 없으므로 scale 보정 불필요.
+function coRectOf(el, wrap, wrapRect) {
+  if (!el) return null;
+  const r = el.getBoundingClientRect();
+  return {
+    x: r.left - wrapRect.left + wrap.scrollLeft,
+    y: r.top - wrapRect.top + wrap.scrollTop,
+    w: r.width, h: r.height,
+  };
+}
+
+function drawCompanyEdges() {
+  const svg = document.getElementById("co-links");
+  const wrap = svg && svg.parentElement;
+  const board = document.getElementById("co-board");
+  if (!svg || !wrap || !board) return;
+  const wrapRect = wrap.getBoundingClientRect();
+  if (!wrapRect.width) return;
+  svg.innerHTML = "";
+  svg.setAttribute("width", board.scrollWidth);
+  svg.setAttribute("height", board.scrollHeight);
+  const defs = document.createElementNS(MC_SVGNS, "defs");
+  defs.innerHTML = `<marker id="co-arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#5a6270"></path></marker>`;
+  svg.appendChild(defs);
+  const company = document.getElementById("co-company-node");
+  if (!company) return;
+  const cRect = coRectOf(company, wrap, wrapRect);
+  const add = (a, b) => {
+    if (!a || !b) return;
+    const g = mcEdgeGeo(a, b);   // 시장 지도와 동일한 베지어 지오메트리 재사용
+    const p = document.createElementNS(MC_SVGNS, "path");
+    p.setAttribute("d", g.d);
+    p.setAttribute("class", "co-edge");
+    p.setAttribute("marker-end", "url(#co-arr)");
+    svg.appendChild(p);
+  };
+  board.querySelectorAll(".co-col--supply .co-node").forEach((el) => add(coRectOf(el, wrap, wrapRect), cRect));
+  board.querySelectorAll(".co-col--demand .co-node").forEach((el) => add(cRect, coRectOf(el, wrap, wrapRect)));
+}
+
+// ── 상세 패널 (우측) ──────────────────────────────────────────────────────
+function renderCompanyDetail(ticker, meta, file, fp, stock) {
+  const host = document.getElementById("co-detail");
+  if (!host) return;
+  const val = stock && stock.valuation;
+  const q = val && val.qualitative;
+  const badge = val ? renderValuationBadgeHtml(val, meta) : "";
+  const thesis = (file && file.thesis) || "";
+
+  const partList = fp.participations.map((pp) => {
+    const m = pp.market;
+    const sev = m.bottleneck && m.bottleneck.severity;
+    const accent = (sev && MC_SEVERITY_COLOR[sev]) || "var(--border-mid)";
+    return `<li class="co-part" data-map="${escapeHtml(pp.mapId)}" data-mid="${escapeHtml(m.id)}" style="--mc-accent:${accent}">
+        <span class="co-part-name">${escapeHtml(m.name_kr)}${typeof pp.share === "number" ? ` <span class="co-part-share">${pp.share}%</span>` : ""}</span>
+        ${pp.role ? `<span class="co-part-role">${escapeHtml(pp.role)}</span>` : ""}
+      </li>`;
+  }).join("");
+
+  const evHtml = q && Array.isArray(q.key_events) && q.key_events.length
+    ? `<ul class="co-evlist">${q.key_events.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>` : "";
+  const riskHtml = q && Array.isArray(q.risks) && q.risks.length
+    ? `<ul class="co-evlist co-evlist--risk">${q.risks.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>` : "";
+
+  host.innerHTML = `
+    <h4>${escapeHtml(meta.displayName)}</h4>
+    <p class="co-detail-sector">${escapeHtml(meta.sector || "")}</p>
+    ${badge}
+    ${thesis ? `<div class="co-detail-sec"><h5>투자 논지 · 구조</h5><p class="co-thesis">${escapeHtml(thesis)}</p></div>` : ""}
+    ${fp.participations.length
+      ? `<div class="co-detail-sec"><h5>참여 시장 (시장 지도 연결)</h5>
+           <ul class="co-part-list">${partList}</ul>
+           <p class="co-hint">시장을 클릭하면 시장 지도에서 그 시장이 열립니다.</p></div>`
+      : `<div class="co-detail-sec"><p class="co-hint">이 기업은 아직 시장 지도에 매핑되어 있지 않습니다. 시장 지도의 <code>players[]</code> 에 ticker 를 추가하면 자동 연결됩니다.</p></div>`}
+    ${q && q.summary_kr ? `<div class="co-detail-sec"><h5>최근 흐름</h5><p class="co-thesis">${escapeHtml(q.summary_kr)}</p></div>` : ""}
+    ${evHtml ? `<div class="co-detail-sec"><h5>핵심 이벤트</h5>${evHtml}</div>` : ""}
+    ${riskHtml ? `<div class="co-detail-sec"><h5>리스크</h5>${riskHtml}</div>` : ""}`;
+
+  host.querySelectorAll(".co-part[data-mid]").forEach((el) =>
+    el.addEventListener("click", () => jumpToMarket(el.dataset.map, el.dataset.mid)));
+}
+
+// ── 시장 지도로 점프 (구조도 → 시장 지도) ─────────────────────────────────
+function jumpToMarket(mapId, mid) {
+  if (!mid) return;
+  closeCompanyDiagram();
+  // STOCKS 탭의 '시장 지도' 서브탭으로 전환
+  const nav = document.querySelector('#panel-STOCKS .sector-nav');
+  const btn = nav && nav.querySelector('.sector-btn[data-sector="valuechain"]');
+  if (btn) btn.click();
+
+  const selectAndScroll = () => {
+    if (!MC_STATE.map || !MC_STATE.map.markets.some((m) => m.id === mid)) return;
+    selectMarketNode(mid, MC_STATE.stocks || {});
+    const node = document.querySelector(`.mc-node[data-id="${CSS.escape(mid)}"]`);
+    if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+  const go = () => {
+    if (mapId && mapId !== MC_STATE.mapId) {
+      mcSwitchMap(mapId);                 // 비동기 재렌더 → 잠시 후 선택
+      setTimeout(selectAndScroll, 280);
+    } else {
+      setTimeout(selectAndScroll, 60);
+    }
+  };
+  if (!MC_STATE.map) {
+    renderMarketCascade(MC_STATE.stocks || {}).then(() => setTimeout(go, 160));
+  } else {
+    go();
+  }
+}
+
+// 모달 열린 채 리사이즈되면 엣지 다시 그림
+window.addEventListener("resize", () => {
+  const modal = document.getElementById("co-modal");
+  if (modal && !modal.hidden) drawCompanyEdges();
 });
 
 // 개별 종목을 STOCK_GROUPS 순서대로 묶어서 섹터 헤더 + 그 안에 카드들 배치.
@@ -2583,6 +3015,9 @@ function renderStockCard(ticker, payload, allStocks = null) {
     <p class="card-desc">${escapeHtml(meta.fullName)} · ${escapeHtml(meta.sector)}</p>
     ${meta.business ? `<p class="card-business">${escapeHtml(meta.business)}</p>` : ""}
     ${valuationBadge}
+    <button type="button" class="co-open-btn" aria-label="${escapeHtml(meta.displayName)} 기업 구조도 열기">
+      <span aria-hidden="true">🗺</span> 기업 구조도 · 시장 지도와 연결
+    </button>
 
     <div class="tf-selector" role="group" aria-label="차트 기간 선택">${tfButtonsHtml}</div>
     <div class="card-chart main-chart"><canvas></canvas></div>
@@ -2635,6 +3070,10 @@ function renderStockCard(ticker, payload, allStocks = null) {
   });
 
   redraw();
+
+  // 기업 구조도 모달 — 시장 지도와 엮인 개별 기업 구조 뷰
+  const coBtn = card.querySelector(".co-open-btn");
+  if (coBtn) coBtn.addEventListener("click", () => openCompanyDiagram(ticker));
 
   // 상세 분석 토글 — 차트는 펼쳐질 때 lazy 렌더 (hidden 상태에선 캔버스 크기 측정 불가)
   const toggleBtn   = card.querySelector(".details-toggle");
