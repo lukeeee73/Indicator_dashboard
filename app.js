@@ -2824,6 +2824,8 @@ function drawCompanyEdges() {
   const wrap = svg && svg.parentElement;
   const board = document.getElementById("co-board");
   if (!svg || !wrap || !board) return;
+  // 모바일(세로 스택)에선 SVG 엣지를 숨기고 섹션 흐름(▼)으로 대체 → 그리기 생략
+  if (typeof getComputedStyle === "function" && getComputedStyle(svg).display === "none") return;
   const wrapRect = wrap.getBoundingClientRect();
   if (!wrapRect.width) return;
   svg.innerHTML = "";
