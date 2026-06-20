@@ -1,0 +1,153 @@
+{
+  "ticker": "NVDA",
+  "name_kr": "엔비디아",
+  "name_en": "NVIDIA Corporation",
+  "as_of": "2026-06",
+  "one_liner": "AI 시대의 '무기상' — GPU·네트워킹·시스템·CUDA를 묶은 풀스택 AI 플랫폼. 가속기 ~85% 독점, 진짜 해자는 칩이 아니라 CUDA 개발 생태계.",
+  "thesis": "엔비디아는 칩(GPU)만 파는 게 아니라 GPU + 네트워킹 + 랙 시스템 + 소프트웨어(CUDA)를 통째로 묶은 '풀스택 AI 플랫폼'을 판다. 진짜 해자는 칩 성능이 아니라 15년+ 쌓아 올린 CUDA 개발 생태계 락인 — 경쟁사가 칩을 만들어도 소프트웨어를 못 따라온다. AI 가속기 ~85% 점유로, GPU·네트워킹·로봇·자율주행·소버린·바이오까지 여러 시장에 '무기상'으로 들어가 있다. 핵심 리스크는 ① 대형 고객(구글·메타·아마존)이 브로드컴과 자체 ASIC을 만들어 이탈, ② AMD 추격, ③ TSMC 가격 인상·CoWoS 패키징 병목.",
+  "kind_legend": {
+    "product": "제품 — 양산되는 칩/장비",
+    "tech": "기술 — 공정·IP·아키텍처",
+    "platform": "플랫폼 — 시스템/SW 스택"
+  },
+  "segments": [
+    {
+      "id": "datacenter",
+      "name_kr": "데이터센터",
+      "name_en": "Data Center",
+      "share": 88,
+      "color": "#76b900",
+      "desc": "AI 학습·추론 가속기 + 네트워킹 + 랙 시스템 + 소프트웨어의 풀스택. 회사 매출의 대부분.",
+      "families": [
+        {
+          "name_kr": "AI 가속기 (GPU)",
+          "tag": "성장 핵심",
+          "growth": true,
+          "plain": "AI 계산을 수천 개 코어로 동시에 처리하는 '두뇌' 칩.",
+          "problem": "AI 학습·추론은 거대한 병렬 행렬 연산인데, 일반 CPU(한 번에 하나씩 직렬 처리)로는 수백 배 느리다.",
+          "solution": "수천~수만 개 코어와 AI 전용 Tensor 코어로 행렬 연산을 한꺼번에 처리한다. 최신 Blackwell은 추론을 이전 세대 대비 수십 배 빠르게.",
+          "image": "data/companies/images/NVDA/gpu.webp",
+          "products": [
+            { "name": "Blackwell B200/GB200", "kind": "product", "tech": "최신 학습·추론 GPU (현 주력)", "growth": true, "markets": ["ai-gpu"] },
+            { "name": "Hopper H100/H200", "kind": "product", "tech": "직전 세대 주력 GPU — 여전히 대량 가동", "markets": ["ai-gpu"] },
+            { "name": "Rubin (차세대)", "kind": "tech", "tech": "다음 세대 아키텍처 — 로드맵 선점", "growth": true, "markets": ["ai-gpu"] },
+            { "name": "Tensor 코어 · Transformer 엔진", "kind": "tech", "tech": "AI 전용 연산 유닛 (저정밀 행렬 가속)", "growth": true, "markets": ["ai-gpu"] }
+          ]
+        },
+        {
+          "name_kr": "데이터센터 네트워킹",
+          "tag": "성장 핵심",
+          "growth": true,
+          "plain": "수만 개 GPU를 '한 덩어리'처럼 묶는 초고속 연결 — 엔비디아의 통합형.",
+          "problem": "GPU 한 개로는 거대 모델을 못 돌려 수만 개를 잇는데, 연결이 느리면 비싼 GPU가 서로 기다리며 논다.",
+          "solution": "NVLink/NVSwitch로 칩을 직결(스케일업)하고, InfiniBand·Spectrum-X 이더넷으로 수만 대를 묶는다(스케일아웃). 브로드컴의 '개방형 이더넷'과 정면으로 맞붙는 엔비디아의 '통합형'.",
+          "image": "data/companies/images/NVDA/nvlink.webp",
+          "products": [
+            { "name": "NVLink · NVSwitch", "kind": "tech", "tech": "GPU 직결 스케일업 — 준독점", "growth": true, "markets": ["dc-networking"] },
+            { "name": "Quantum InfiniBand", "kind": "product", "tech": "저지연 스케일아웃 (Mellanox 인수)", "markets": ["dc-networking"] },
+            { "name": "Spectrum-X 이더넷", "kind": "product", "tech": "AI용 이더넷 — 브로드컴 대항", "growth": true, "markets": ["dc-networking"] },
+            { "name": "BlueField DPU · ConnectX NIC", "kind": "product", "tech": "네트워크·보안 오프로드", "markets": ["dc-networking"] }
+          ]
+        },
+        {
+          "name_kr": "AI 시스템 · 'AI 공장'",
+          "plain": "GPU·네트워킹·소프트웨어를 통째로 묶어 랙 단위로 파는 'AI 공장'.",
+          "problem": "칩·네트워킹·전력·냉각·소프트웨어를 따로 사서 통합하긴 너무 어렵고 느리다.",
+          "solution": "GB200 NVL72(72개 GPU를 하나처럼) 같은 랙 시스템을 통째로 공급한다. 클라우드·국가가 'AI 공장'을 통째로 산다.",
+          "image": "data/companies/images/NVDA/rack.webp",
+          "products": [
+            { "name": "GB200 NVL72", "kind": "platform", "tech": "72-GPU 랙 시스템 — 한 대가 하나의 거대 GPU", "growth": true, "markets": ["neocloud"] },
+            { "name": "DGX · HGX", "kind": "product", "tech": "표준 AI 서버 플랫폼" },
+            { "name": "국가 AI 팩토리", "kind": "platform", "tech": "소버린 AI — 국가 단위 GPU 인프라 공급", "growth": true, "markets": ["sovereign-ai"] }
+          ]
+        },
+        {
+          "name_kr": "AI 소프트웨어 · CUDA",
+          "tag": "진짜 해자",
+          "plain": "칩을 쓰게 해 주는 개발 생태계 — 엔비디아의 진짜 '해자'.",
+          "problem": "칩이 빨라도 개발자가 쓰기 어려우면 소용없고, 경쟁사가 칩을 만들어도 소프트웨어 생태계가 없으면 못 따라온다.",
+          "solution": "15년 넘게 쌓은 CUDA 개발 생태계·라이브러리에 AI 연구자 대부분이 락인됐다. NIM·AI Enterprise·Omniverse로 확장 — 칩보다 무서운 진짜 해자.",
+          "image": "data/companies/images/NVDA/cuda.webp",
+          "products": [
+            { "name": "CUDA", "kind": "platform", "tech": "병렬 컴퓨팅 생태계 — 핵심 락인 해자" },
+            { "name": "AI Enterprise · NIM", "kind": "platform", "tech": "추론 마이크로서비스 — SW 구독화" },
+            { "name": "Omniverse", "kind": "platform", "tech": "디지털 트윈·로봇 시뮬레이션", "markets": ["robotics"] },
+            { "name": "BioNeMo", "kind": "platform", "tech": "신약 개발 AI — 바이오 진출 (Lilly 코이노베이션)", "markets": ["ai-pharma-infra"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gaming",
+      "name_kr": "게이밍",
+      "name_en": "Gaming",
+      "share": 8,
+      "color": "#4f7a16",
+      "desc": "GeForce RTX 그래픽카드 — 회사의 뿌리이자 GPU 기술의 원천.",
+      "families": [
+        {
+          "name_kr": "GeForce RTX",
+          "plain": "게임용 그래픽카드 — 엔비디아의 시작이자 GPU 기술의 원천.",
+          "products": [
+            { "name": "GeForce RTX 50 시리즈", "kind": "product", "tech": "소비자용 게이밍 GPU" },
+            { "name": "DLSS", "kind": "tech", "tech": "AI 프레임 생성·업스케일링" },
+            { "name": "RTX 레이트레이싱", "kind": "tech", "tech": "실시간 광선추적 렌더링" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "auto-pro",
+      "name_kr": "자동차·로보틱스 · 프로비주얼",
+      "name_en": "Automotive / Robotics / ProViz",
+      "share": 4,
+      "color": "#3f6f00",
+      "desc": "자율주행·휴머노이드·워크스테이션 — 작지만 미래 성장 옵션.",
+      "families": [
+        {
+          "name_kr": "자율주행 · 로보틱스",
+          "tag": "미래 옵션",
+          "plain": "자동차·로봇에 들어가는 'AI 두뇌' SoC와 시뮬레이션.",
+          "problem": "자율주행차·휴머노이드는 카메라·라이다를 실시간으로 해석하고 판단할 강력한 차량용 AI 칩이 필요하다.",
+          "solution": "DRIVE Thor(자율주행 SoC)·Jetson Thor(로봇)·Isaac GR00T(휴머노이드 파운데이션 모델)로 '로보틱스의 안드로이드'를 노린다.",
+          "products": [
+            { "name": "DRIVE Thor", "kind": "product", "tech": "자율주행 중앙 컴퓨팅 SoC", "markets": ["edge-auto"] },
+            { "name": "Jetson Thor", "kind": "product", "tech": "로봇 엣지 컴퓨팅 모듈", "markets": ["robotics"] },
+            { "name": "Isaac GR00T", "kind": "platform", "tech": "휴머노이드 파운데이션 모델·SDK", "markets": ["robotics"] }
+          ]
+        },
+        {
+          "name_kr": "프로페셔널 비주얼라이제이션",
+          "plain": "디자인·영상·과학 연구용 워크스테이션 GPU.",
+          "products": [
+            { "name": "RTX 워크스테이션 GPU", "kind": "product", "tech": "전문가용 그래픽·시뮬레이션" }
+          ]
+        }
+      ]
+    }
+  ],
+  "suppliers": [
+    { "name": "TSMC", "ticker": "TSM", "market": "foundry", "role": "≤3nm 위탁생산 — GPU 전량 외주(팹리스)" },
+    { "name": "SK하이닉스·삼성·Micron", "ticker": "MU", "market": "hbm", "role": "HBM3E/HBM4 — GPU에서 가장 비싼 부품" },
+    { "name": "TSMC CoWoS (OSAT)", "ticker": null, "market": "advanced-packaging", "role": "CoWoS 첨단 패키징 — 공급 병목" },
+    { "name": "Cadence · Synopsys", "ticker": null, "market": "semi-ip", "role": "설계 EDA 툴 · 반도체 IP" }
+  ],
+  "customers": [
+    { "name": "Microsoft", "ticker": "MSFT", "market": "hyperscaler-capex", "role": "최대 클라우드 고객 (Azure)" },
+    { "name": "Meta", "ticker": "META", "market": "hyperscaler-capex", "role": "자체 클러스터 대량 구매" },
+    { "name": "Amazon", "ticker": "AMZN", "market": "hyperscaler-capex", "role": "AWS — 단, Trainium 자체칩 병행" },
+    { "name": "Google", "ticker": "GOOGL", "market": "hyperscaler-capex", "role": "GCP — 단, TPU 자체칩 병행(이탈 리스크)" },
+    { "name": "CoreWeave 등 네오클라우드", "ticker": null, "market": "neocloud", "role": "GPU 클라우드 — 엔비디아가 앵커 투자까지" }
+  ],
+  "competitors": [
+    { "ticker": "AMD", "name": "AMD", "role": "Instinct MI 시리즈 GPU — 유일한 정면 GPU 경쟁자" },
+    { "ticker": "AVGO", "name": "Broadcom", "role": "고객 자체 ASIC(XPU) 코디자인 — GPU 수요를 갉아먹는 위협" },
+    { "ticker": "GOOGL", "name": "Google TPU", "role": "최대 내부 XPU — 고객이자 경쟁자" },
+    { "ticker": "INTC", "name": "Intel", "role": "Gaudi 가속기 — 점유율 미미" }
+  ],
+  "sources": [
+    "NVIDIA FY2026 10-K / earnings (segment revenue mix)",
+    "NVIDIA product briefs (Blackwell/NVLink/CUDA/GB200 NVL72)",
+    "data/markets/ai-semiconductor.json · pharma-bio.json (시장 매핑 SSOT)"
+  ]
+}
