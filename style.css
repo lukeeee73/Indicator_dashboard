@@ -1576,6 +1576,21 @@ body.co-open { overflow: hidden; }   /* 모달 열리면 뒤 배경 스크롤 �
 .co-prod-growth { color: var(--up); font-size: 0.66rem; font-weight: 700; margin-left: auto; }
 .co-prod-tech { font-size: 0.65rem; color: var(--text-dim); line-height: 1.35; }
 
+/* 제품군 — 개념도 이미지 + 쉬운 설명 + 문제→해결 */
+.co-fam-img { margin: 0 0 0.4rem; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: #0d0f12; }
+.co-fam-img img { display: block; width: 100%; height: auto; max-height: 168px; object-fit: cover; }
+.co-fam-plain { font-size: 0.74rem; line-height: 1.5; color: var(--text); margin: 0 0 0.35rem; }
+.co-fam-ps { font-size: 0.7rem; margin: 0 0 0.45rem; border-left: 2px solid color-mix(in srgb, var(--seg-c) 50%, var(--border-mid)); padding-left: 0.5rem; }
+.co-fam-ps > summary { cursor: pointer; color: var(--text-dim); font-weight: 700; font-size: 0.66rem; list-style: none; }
+.co-fam-ps > summary::-webkit-details-marker { display: none; }
+.co-fam-ps > summary::before { content: "▸ "; }
+.co-fam-ps[open] > summary::before { content: "▾ "; }
+.co-fam-prob, .co-fam-sol { margin: 0.3rem 0 0; line-height: 1.45; color: var(--text-dim); }
+.co-fam-prob b, .co-fam-sol b { display: inline-block; font-size: 0.6rem; font-weight: 700; border-radius: 3px; padding: 0.02rem 0.3rem; margin-right: 0.3rem; }
+.co-fam-prob b { background: color-mix(in srgb, var(--down) 22%, transparent); color: var(--down); }
+.co-fam-sol b { background: color-mix(in srgb, var(--up) 20%, transparent); color: var(--up); }
+.co-fam-sol { color: var(--text); }
+
 .co-seg-mks { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.1rem; }
 .co-seg-mk {
   font-size: 0.62rem; cursor: pointer; background: var(--red-dim); color: var(--text);
@@ -1625,6 +1640,36 @@ body.co-open { overflow: hidden; }   /* 모달 열리면 뒤 배경 스크롤 �
 .co-evlist { margin: 0.1rem 0 0; padding-left: 1.1rem; font-size: 0.76rem; color: var(--text); line-height: 1.45; }
 .co-evlist li { margin-bottom: 0.15rem; }
 .co-evlist--risk li { color: var(--text-dim); }
+
+/* 뉴스 · 경쟁 동향 */
+.co-newsec h5 { color: var(--text); font-size: 0.82rem; }
+.co-news-block { margin-bottom: 0.7rem; }
+.co-news-block h6 { margin: 0 0 0.35rem; font-size: 0.72rem; color: var(--text-dim); font-weight: 700; }
+.co-news-count { font-weight: 400; color: var(--text-dim); }
+.co-threats, .co-news-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+/* 경쟁 위협 — down 톤 강조 */
+.co-threat { border-left: 2px solid var(--down); padding-left: 0.5rem; }
+.co-threat-head { font-size: 0.74rem; line-height: 1.4; color: var(--text); }
+.co-threat-tk { font-size: 0.62rem; font-weight: 700; color: var(--text); background: var(--bg-elev); border: 1px solid var(--border-mid); border-radius: 4px; padding: 0.02rem 0.3rem; margin-right: 0.3rem; }
+.co-threat-tk--link { cursor: pointer; }
+.co-threat-tk--link:hover { border-color: var(--down); color: var(--down); }
+.co-threat-imp { font-size: 0.68rem; color: var(--text-dim); line-height: 1.35; margin-top: 0.12rem; }
+/* 뉴스 타임라인 — impact 색 보더 */
+.co-news-item { border-left: 2px solid var(--border-mid); padding-left: 0.5rem; }
+.co-news-item[data-tone="pos"] { border-left-color: var(--up); }
+.co-news-item[data-tone="neg"] { border-left-color: var(--down); }
+.co-news-line { display: flex; gap: 0.35rem; align-items: baseline; }
+.co-news-cat { flex: 0 0 auto; font-size: 0.58rem; font-weight: 700; color: var(--text-dim); background: var(--bg-elev); border: 1px solid var(--border); border-radius: 3px; padding: 0.02rem 0.3rem; }
+.co-news-cat[data-cat="product"] { color: #7fb0e6; }
+.co-news-cat[data-cat="earnings"] { color: #c79028; }
+.co-news-title { font-size: 0.74rem; line-height: 1.35; color: var(--text); }
+.co-news-title a { color: var(--text); }
+.co-news-title a:hover { text-decoration: underline; }
+.co-news-sum { font-size: 0.68rem; color: var(--text-dim); line-height: 1.4; margin-top: 0.1rem; }
+.co-news-meta { font-size: 0.62rem; color: var(--text-dim); margin-top: 0.1rem; }
+.co-news-more { margin-top: 0.4rem; }
+.co-news-more summary { cursor: pointer; font-size: 0.7rem; color: var(--text-dim); }
+.co-news-more ul { margin-top: 0.45rem; }
 
 /* ── 태블릿: 모달 전체화면 + 보드/상세 세로 분할 (컬럼은 가로 스크롤 유지) ── */
 @media (max-width: 820px) {

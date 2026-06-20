@@ -2551,6 +2551,16 @@ async function loadCompanyFile(ticker) {
   return data;
 }
 
+// 집계된 기업 뉴스(있으면) 로드 — scripts/build_company_news.py 산출물.
+function loadCompanyNews(ticker) {
+  if (!CO_STATE.newsCache) CO_STATE.newsCache = {};
+  if (ticker in CO_STATE.newsCache) return Promise.resolve(CO_STATE.newsCache[ticker]);
+  return fetch(`data/companies/news/${ticker}.json`, { cache: "no-cache" })
+    .then((res) => (res.ok ? res.json() : null))
+    .catch(() => null)
+    .then((data) => { CO_STATE.newsCache[ticker] = data; return data; });
+}
+
 // 시장 지도 전반에서 이 기업의 발자국(참여 시장·상하류·경쟁사)을 모은다.
 function findCompanyFootprint(ticker) {
   const participations = [];
@@ -2678,12 +2688,12 @@ async function openCompanyDiagram(ticker) {
   board.innerHTML = emptyMessage("구조도를 불러오는 중…");
   detail.innerHTML = "";
   await mcEnsureAllMaps();
-  const file = await loadCompanyFile(ticker);
+  const [file, news] = await Promise.all([loadCompanyFile(ticker), loadCompanyNews(ticker)]);
   if (CO_STATE.ticker !== ticker) return; // 그새 다른 종목이 열렸으면 중단
   const fp = findCompanyFootprint(ticker);
   const stock = (MC_STATE.stocks && MC_STATE.stocks[ticker]) || null;
   renderCompanyBoard(ticker, meta, file, fp, stock);
-  renderCompanyDetail(ticker, meta, file, fp, stock);
+  renderCompanyDetail(ticker, meta, file, fp, stock, news);
   requestAnimationFrame(() => { drawCompanyEdges(); setTimeout(drawCompanyEdges, 130); });
 }
 
@@ -2759,15 +2769,32 @@ function coProductHtml(p, fp) {
     </div>`;
 }
 
-// 제품군(family) — 헤더 + 제품 그리드
+// 제품군(family) — 헤더 + (개념도 이미지) + 쉬운 설명 + 문제→해결 + 제품 그리드
 function coFamilyHtml(fam, fp) {
   const prods = (fam.products || []).map((p) => coProductHtml(p, fp)).join("");
   const name = fam.name_kr || fam.name || "";
+  // 기능 개념도 (AI 생성). 파일이 없으면 onerror 로 조용히 제거.
+  const img = fam.image
+    ? `<figure class="co-fam-img"><img src="${escapeHtml(fam.image)}" alt="${escapeHtml(name)} 개념도" loading="lazy"
+         onerror="this.closest('.co-fam-img').remove()"></figure>`
+    : "";
+  const plain = fam.plain ? `<p class="co-fam-plain">${escapeHtml(fam.plain)}</p>` : "";
+  // 문제 → 해결 (있으면 펼침). '이게 푸는 문제'를 쉬운 말로.
+  const ps = (fam.problem || fam.solution)
+    ? `<details class="co-fam-ps" open>
+         <summary>이게 푸는 문제 →</summary>
+         ${fam.problem ? `<p class="co-fam-prob"><b>문제</b> ${escapeHtml(fam.problem)}</p>` : ""}
+         ${fam.solution ? `<p class="co-fam-sol"><b>해결</b> ${escapeHtml(fam.solution)}</p>` : ""}
+       </details>`
+    : "";
   return `<div class="co-fam${fam.growth ? " co-fam--growth" : ""}">
       ${name ? `<div class="co-fam-head">
         <span class="co-fam-name">${escapeHtml(name)}</span>
         ${fam.tag ? `<span class="co-fam-tag">${escapeHtml(fam.tag)}</span>` : ""}
       </div>` : ""}
+      ${img}
+      ${plain}
+      ${ps}
       <div class="co-prods">${prods}</div>
     </div>`;
 }
@@ -2919,8 +2946,63 @@ function drawCompanyEdges() {
   board.querySelectorAll(".co-col--demand .co-node").forEach((el) => add(cRect, coRectOf(el, wrap, wrapRect)));
 }
 
+// ── 뉴스 · 경쟁 동향 ───────────────────────────────────────────────────────
+// data/news 의 category → 한글 라벨
+const CO_NEWS_CAT = {
+  product: "딜·제품", earnings: "실적", regulation: "규제",
+  macro: "시장", guidance: "가이던스", other: "기타",
+};
+
+function coNewsItemHtml(n) {
+  const tone = n.impact === "+" ? "pos" : n.impact === "-" ? "neg" : "neutral";
+  const cat = CO_NEWS_CAT[n.category] || CO_NEWS_CAT.other;
+  const title = n.url
+    ? `<a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title || "")}</a>`
+    : escapeHtml(n.title || "");
+  const meta = [n.date, n.source].filter(Boolean).map(escapeHtml).join(" · ");
+  return `<li class="co-news-item" data-tone="${tone}">
+      <div class="co-news-line"><span class="co-news-cat" data-cat="${escapeHtml(n.category || "other")}">${escapeHtml(cat)}</span>
+        <span class="co-news-title">${title}</span></div>
+      ${n.summary ? `<div class="co-news-sum">${escapeHtml(n.summary)}</div>` : ""}
+      ${meta ? `<div class="co-news-meta">${meta}</div>` : ""}
+    </li>`;
+}
+
+// 경쟁 위협 (stock JSON 의 competitor_context). watchlist ticker 면 클릭 → 그 기업 구조도(엮음).
+function coThreatHtml(c) {
+  const tk = c.ticker || "";
+  const open = tk && STOCK_META[tk];
+  const head = open
+    ? `<button class="co-threat-tk co-threat-tk--link" data-coticker="${escapeHtml(tk)}">${escapeHtml(tk)}</button>`
+    : (tk ? `<span class="co-threat-tk">${escapeHtml(tk)}</span>` : "");
+  return `<li class="co-threat">
+      <div class="co-threat-head">${head}<span>${escapeHtml(c.headline || "")}</span></div>
+      ${c.implication_for_target ? `<div class="co-threat-imp">→ ${escapeHtml(c.implication_for_target)}</div>` : ""}
+    </li>`;
+}
+
+function coNewsSectionHtml(news, q) {
+  const items = (news && news.news) || [];
+  const threats = (q && Array.isArray(q.competitor_context)) ? q.competitor_context : [];
+  if (!items.length && !threats.length) return "";
+  const VISIBLE = 6;
+  const threatBlock = threats.length
+    ? `<div class="co-news-block"><h6>⚔ 경쟁 위협 · 라이벌 동향</h6>
+         <ul class="co-threats">${threats.map(coThreatHtml).join("")}</ul></div>`
+    : "";
+  const newsBlock = items.length
+    ? `<div class="co-news-block"><h6>📰 최신 뉴스 <span class="co-news-count">${news.count || items.length}건</span></h6>
+         <ul class="co-news-list">${items.slice(0, VISIBLE).map(coNewsItemHtml).join("")}</ul>
+         ${items.length > VISIBLE
+           ? `<details class="co-news-more"><summary>지난 뉴스 ${items.length - VISIBLE}건 더 보기</summary>
+                <ul class="co-news-list">${items.slice(VISIBLE).map(coNewsItemHtml).join("")}</ul></details>`
+           : ""}</div>`
+    : "";
+  return `<div class="co-detail-sec co-newsec"><h5>뉴스 · 경쟁 동향</h5>${threatBlock}${newsBlock}</div>`;
+}
+
 // ── 상세 패널 (우측) ──────────────────────────────────────────────────────
-function renderCompanyDetail(ticker, meta, file, fp, stock) {
+function renderCompanyDetail(ticker, meta, file, fp, stock, news) {
   const host = document.getElementById("co-detail");
   if (!host) return;
   const val = stock && stock.valuation;
@@ -2938,8 +3020,6 @@ function renderCompanyDetail(ticker, meta, file, fp, stock) {
       </li>`;
   }).join("");
 
-  const evHtml = q && Array.isArray(q.key_events) && q.key_events.length
-    ? `<ul class="co-evlist">${q.key_events.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>` : "";
   const riskHtml = q && Array.isArray(q.risks) && q.risks.length
     ? `<ul class="co-evlist co-evlist--risk">${q.risks.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>` : "";
 
@@ -2954,11 +3034,13 @@ function renderCompanyDetail(ticker, meta, file, fp, stock) {
            <p class="co-hint">시장을 클릭하면 시장 지도에서 그 시장이 열립니다.</p></div>`
       : `<div class="co-detail-sec"><p class="co-hint">이 기업은 아직 시장 지도에 매핑되어 있지 않습니다. 시장 지도의 <code>players[]</code> 에 ticker 를 추가하면 자동 연결됩니다.</p></div>`}
     ${q && q.summary_kr ? `<div class="co-detail-sec"><h5>최근 흐름</h5><p class="co-thesis">${escapeHtml(q.summary_kr)}</p></div>` : ""}
-    ${evHtml ? `<div class="co-detail-sec"><h5>핵심 이벤트</h5>${evHtml}</div>` : ""}
+    ${coNewsSectionHtml(news, q)}
     ${riskHtml ? `<div class="co-detail-sec"><h5>리스크</h5>${riskHtml}</div>` : ""}`;
 
   host.querySelectorAll(".co-part[data-mid]").forEach((el) =>
     el.addEventListener("click", () => jumpToMarket(el.dataset.map, el.dataset.mid)));
+  host.querySelectorAll(".co-threat-tk--link[data-coticker]").forEach((el) =>
+    el.addEventListener("click", () => openCompanyDiagram(el.dataset.coticker)));
 }
 
 // ── 시장 지도로 점프 (구조도 → 시장 지도) ─────────────────────────────────

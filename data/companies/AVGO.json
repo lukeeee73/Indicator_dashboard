@@ -20,22 +20,41 @@
       "desc": "통신·네트워크용 칩. AI 데이터센터향 커스텀 ASIC(XPU)·스위치 실리콘이 성장을 견인.",
       "families": [
         {
-          "name_kr": "AI 네트워킹 · 인터커넥트",
+          "name_kr": "AI 네트워킹 (스위치)",
           "tag": "성장 핵심",
           "growth": true,
+          "plain": "수만 개의 AI 칩을 '한 덩어리'처럼 묶어주는 초고속 교환기(스위치) 칩.",
+          "problem": "거대 AI 모델은 칩 한 개로 못 돌려서 수천~수만 개가 나눠 계산하는데, 칩끼리 데이터를 주고받는 통신이 느리면 비싼 칩들이 서로 기다리며 논다.",
+          "solution": "한 스위치 칩이 초당 102조 비트(102.4Tb)를 흘려 수만 개를 한 덩어리로 묶는다. NVIDIA의 폐쇄형 NVLink에 맞서는 '개방형 이더넷' 진영의 대표.",
+          "image": "data/companies/images/AVGO/switch.png",
           "products": [
             { "name": "Tomahawk 5/6", "kind": "product", "tech": "이더넷 스케일아웃 스위치 ASIC (51.2T→102.4T)", "growth": true, "markets": ["dc-networking"] },
             { "name": "Tomahawk Ultra", "kind": "product", "tech": "스케일업 이더넷 — NVLink 대항", "growth": true, "markets": ["dc-networking"] },
             { "name": "Jericho3-AI · Ramon", "kind": "product", "tech": "AI 라우팅 패브릭 (대규모 스케일아웃)", "growth": true, "markets": ["dc-networking"] },
-            { "name": "PAM4 DSP · 224G SerDes", "kind": "tech", "tech": "초고속 시리얼 IO — 광/구리 링크의 핵심", "growth": true, "markets": ["optical"] },
-            { "name": "실리콘 포토닉스 · CPO", "kind": "tech", "tech": "광 패키징 일체화 (co-packaged optics)", "growth": true, "markets": ["optical"] },
             { "name": "Thor NIC · PCIe Retimer", "kind": "product", "tech": "DC 네트워크 인터페이스·신호 복원", "markets": ["dc-networking"] }
+          ]
+        },
+        {
+          "name_kr": "광 인터커넥트",
+          "tag": "성장 핵심",
+          "growth": true,
+          "plain": "전기 신호를 '빛'으로 바꿔 멀리·적은 전력으로 데이터를 보내는 기술.",
+          "problem": "데이터센터가 커질수록 구리 전선은 거리가 멀어지면 신호가 약해지고 전력도 많이 먹어 한계에 부딪힌다.",
+          "solution": "전기를 빛으로 바꿔 광섬유로 전송하고(실리콘 포토닉스), 약해진 신호는 DSP로 복원한다. 광부품을 스위치 칩에 바로 붙이는 CPO로 전력을 더 아낀다.",
+          "image": "data/companies/images/AVGO/optical.png",
+          "products": [
+            { "name": "PAM4 DSP · 224G SerDes", "kind": "tech", "tech": "초고속 시리얼 IO — 광/구리 링크의 핵심", "growth": true, "markets": ["optical"] },
+            { "name": "실리콘 포토닉스 · CPO", "kind": "tech", "tech": "광 패키징 일체화 (co-packaged optics)", "growth": true, "markets": ["optical"] }
           ]
         },
         {
           "name_kr": "맞춤형 AI 가속기 (XPU)",
           "tag": "성장 핵심",
           "growth": true,
+          "plain": "구글·메타·오픈AI를 위해 그들 전용 AI 칩을 '대신 설계'해 주는 사업.",
+          "problem": "빅테크는 범용 GPU(NVIDIA)가 비싸고 자기 작업엔 과한데, 자체 칩을 만들 설계·생산 역량은 없다.",
+          "solution": "브로드컴이 고객의 알고리즘에 딱 맞는 추론·학습 칩(XPU)을 함께 설계하고, HBM 결합 패키징·네트워킹까지 통째로 공급해 묶어둔다. ('AI 모델 추론용 ASIC'이 바로 이것)",
+          "image": "data/companies/images/AVGO/xpu.png",
           "products": [
             { "name": "Google TPU 코디자인", "kind": "platform", "tech": "v6/v7 추론·학습 가속기 공동설계 (최대 고객)", "growth": true, "markets": ["custom-asic"] },
             { "name": "Meta MTIA 코디자인", "kind": "platform", "tech": "추천·추론 가속기 공동설계", "growth": true, "markets": ["custom-asic"] },
@@ -45,6 +64,7 @@
         },
         {
           "name_kr": "무선 (모바일)",
+          "plain": "스마트폰(특히 아이폰)에 들어가는 통신·무선 부품.",
           "products": [
             { "name": "FBAR RF 필터", "kind": "product", "tech": "고주파 음향 필터 — 아이폰 RF 프런트엔드" },
             { "name": "Wi-Fi/BT 콤보 · 터치 IC", "kind": "product", "tech": "무선 커넥티비티·터치 컨트롤러", "markets": ["edge-smartphone"] }
@@ -52,6 +72,7 @@
         },
         {
           "name_kr": "브로드밴드 · 액세스",
+          "plain": "집·기업으로 들어오는 인터넷(케이블·광)을 처리하는 칩.",
           "products": [
             { "name": "DOCSIS · PON SoC", "kind": "product", "tech": "케이블·광가입자망 모뎀 SoC" },
             { "name": "셋톱박스 SoC", "kind": "product", "tech": "방송·게이트웨이 칩" }
@@ -59,6 +80,7 @@
         },
         {
           "name_kr": "서버 스토리지 · 산업",
+          "plain": "기업 서버의 저장장치(스토리지)를 연결·관리하는 칩.",
           "products": [
             { "name": "SAS/RAID · NVMe", "kind": "product", "tech": "엔터프라이즈 스토리지 커넥티비티" },
             { "name": "Fibre Channel HBA (Emulex)", "kind": "product", "tech": "SAN 호스트 버스 어댑터" }
@@ -77,6 +99,10 @@
         {
           "name_kr": "VMware (프라이빗 클라우드)",
           "tag": "구독 전환",
+          "plain": "기업이 가진 수천 대의 서버를 묶어 자기만의 '사설 클라우드'로 만들어 주는 소프트웨어.",
+          "problem": "기업이 물리 서버 수천 대를 직접 굴리면 비효율적이고, 그렇다고 외부 클라우드는 비용·보안이 걱정이다.",
+          "solution": "서버를 가상화해 하나의 클라우드처럼 운영하게 해 주고(VMware Cloud Foundation), 라이선스를 구독으로 바꿔 안정적 매출을 만든다.",
+          "image": "data/companies/images/AVGO/vmware.png",
           "products": [
             { "name": "Cloud Foundation (VCF)", "kind": "platform", "tech": "통합 프라이빗 클라우드 스택 — 구독 번들의 핵심" },
             { "name": "vSphere · ESXi", "kind": "product", "tech": "서버 가상화 하이퍼바이저" },
@@ -86,6 +112,7 @@
         },
         {
           "name_kr": "메인프레임 · 보안",
+          "plain": "대기업·은행이 쓰는 대형 컴퓨터(메인프레임) 운영 SW와 보안 제품.",
           "products": [
             { "name": "CA 메인프레임 SW", "kind": "product", "tech": "대기업 메인프레임 운영·관리" },
             { "name": "Symantec", "kind": "product", "tech": "엔터프라이즈 보안 (엔드포인트·DLP)" },

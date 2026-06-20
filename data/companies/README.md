@@ -49,9 +49,13 @@
       "desc": "세그먼트 한 줄 설명",
       "families": [                   // 제품군
         {
-          "name_kr": "AI 네트워킹 · 인터커넥트",
+          "name_kr": "AI 네트워킹 (스위치)",
           "tag": "성장 핵심",          // 선택 — 제품군 옆 작은 뱃지
           "growth": true,
+          "plain": "수만 개 AI 칩을 한 덩어리로 묶는 초고속 스위치 칩.",  // 쉬운 한 줄
+          "problem": "칩끼리 통신이 느리면 비싼 칩이 논다.",            // 이게 푸는 문제
+          "solution": "한 칩이 초당 102조 비트를 흘려 묶는다.",          // 기술로 어떻게 해결
+          "image": "data/companies/images/AVGO/switch.png",          // 기능 개념도(AI 생성, 없으면 생략)
           "products": [               // 개별 제품/기술 (시각적으로 구분되는 잎)
             {
               "name": "Tomahawk 5/6",
@@ -90,3 +94,14 @@
 - `market` / `markets` 의 값은 시장 지도의 노드 id. 여러 지도(AI·반도체,
   제약·바이오 …)에 걸쳐 자동 탐색하므로 지도 id 는 적지 않아도 된다.
 - 모든 필드는 선택. 최소한 `segments` 만 있어도 자사 사업 구조가 그려진다.
+
+## 뉴스 · 이미지 (별도 산출물)
+
+- **뉴스**: `scripts/build_company_news.py` 가 `data/news/<TICKER>/*.json` 을
+  종목별 단일 파일 `data/companies/news/<TICKER>.json` 으로 집계한다(전 종목
+  자동). 웹은 이걸 fetch 해 구조도 상세의 '뉴스 · 경쟁 동향'에 타임라인으로
+  표시하고, **경쟁 위협**은 stock JSON 의 `valuation.qualitative.competitor_context`
+  를 그대로 쓴다. 새 뉴스가 쌓이면 스크립트를 다시 돌리면 된다.
+- **이미지**: `data/companies/images/<TICKER>/<name>.png` (AI 생성 기능 개념도).
+  family 의 `image` 가 가리키며, 파일이 없으면 조용히 생략된다. 사양은
+  `data/companies/images/AVGO/README.md` 참고.
