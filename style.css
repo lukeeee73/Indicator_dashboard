@@ -1455,6 +1455,16 @@ a.mc-feed-title:hover { text-decoration: underline; }
 }
 .co-open-btn:hover { border-color: var(--red); background: var(--red-dim); }
 
+/* 시장 지도 → 기업 구조도 복귀 플로팅 버튼 (왕복 동선 보장) */
+.co-return-fab {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: 1.1rem; z-index: 1090;
+  cursor: pointer; background: var(--red); color: #fff; font-weight: 700; font-size: 0.82rem;
+  border: 1px solid var(--red-bright); border-radius: 999px; padding: 0.55rem 1.1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+.co-return-fab[hidden] { display: none; }
+.co-return-fab:hover { background: var(--red-bright); }
+
 /* 모달 셸 */
 body.co-open { overflow: hidden; }   /* 모달 열리면 뒤 배경 스크롤 잠금 (모바일 필수) */
 .co-modal { position: fixed; inset: 0; z-index: 1100; }

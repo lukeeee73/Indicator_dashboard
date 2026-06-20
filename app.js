@@ -2639,11 +2639,35 @@ function closeCompanyDiagram() {
   document.body.classList.remove("co-open");
 }
 
+// 시장 지도로 점프한 뒤 다시 기업 구조도로 '돌아오는' 플로팅 버튼.
+// jumpToMarket 가 모달을 닫고 시장 지도로 보낼 때 띄우고, 구조도가 다시
+// 열리면(openCompanyDiagram) 숨긴다 — 왕복 동선을 보장.
+function showCompanyReturnFab(ticker) {
+  if (!ticker) return;
+  let fab = document.getElementById("co-return-fab");
+  if (!fab) {
+    fab = document.createElement("button");
+    fab.id = "co-return-fab";
+    fab.className = "co-return-fab";
+    fab.addEventListener("click", () => openCompanyDiagram(fab.dataset.ticker));
+    document.body.appendChild(fab);
+  }
+  const meta = STOCK_META[ticker];
+  fab.dataset.ticker = ticker;
+  fab.innerHTML = `<span aria-hidden="true">←</span> ${escapeHtml(meta ? meta.displayName : ticker)} 구조도로 돌아가기`;
+  fab.hidden = false;
+}
+function hideCompanyReturnFab() {
+  const fab = document.getElementById("co-return-fab");
+  if (fab) fab.hidden = true;
+}
+
 // 진입점 — 종목 카드 / 시장 지도 플레이어에서 호출
 async function openCompanyDiagram(ticker) {
   const modal = ensureCompanyModal();
   modal.hidden = false;
   document.body.classList.add("co-open");
+  hideCompanyReturnFab();      // 구조도로 돌아왔으니 복귀 버튼 숨김
   CO_STATE.ticker = ticker;
   const board = document.getElementById("co-board");
   const detail = document.getElementById("co-detail");
@@ -2940,7 +2964,9 @@ function renderCompanyDetail(ticker, meta, file, fp, stock) {
 // ── 시장 지도로 점프 (구조도 → 시장 지도) ─────────────────────────────────
 function jumpToMarket(mapId, mid) {
   if (!mid) return;
+  const from = CO_STATE.ticker;     // 돌아올 기업 기억
   closeCompanyDiagram();
+  if (from) showCompanyReturnFab(from);   // 시장 지도에서 구조도로 복귀하는 버튼
   // STOCKS 탭의 '시장 지도' 서브탭으로 전환
   const nav = document.querySelector('#panel-STOCKS .sector-nav');
   const btn = nav && nav.querySelector('.sector-btn[data-sector="valuechain"]');
@@ -2950,7 +2976,7 @@ function jumpToMarket(mapId, mid) {
     if (!MC_STATE.map || !MC_STATE.map.markets.some((m) => m.id === mid)) return;
     selectMarketNode(mid, MC_STATE.stocks || {});
     const node = document.querySelector(`.mc-node[data-id="${CSS.escape(mid)}"]`);
-    if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (node && node.scrollIntoView) node.scrollIntoView({ behavior: "smooth", block: "center" });
   };
   const go = () => {
     if (mapId && mapId !== MC_STATE.mapId) {
