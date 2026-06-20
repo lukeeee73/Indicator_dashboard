@@ -27,6 +27,7 @@
           "problem": "AI 학습·추론은 거대한 병렬 행렬 연산인데, 일반 CPU(한 번에 하나씩 직렬 처리)로는 수백 배 느리다.",
           "solution": "수천~수만 개 코어와 AI 전용 Tensor 코어로 행렬 연산을 한꺼번에 처리한다. 최신 Blackwell은 추론을 이전 세대 대비 수십 배 빠르게.",
           "image": "data/companies/images/NVDA/gpu.webp",
+          "image_prompt": "A single large GPU processor chip viewed from above, its surface filled with thousands of tiny glowing compute cores all lighting up at once in parallel, conveying massive simultaneous computation. NVIDIA green accents.",
           "products": [
             { "name": "Blackwell B200/GB200", "kind": "product", "tech": "최신 학습·추론 GPU (현 주력)", "growth": true, "markets": ["ai-gpu"] },
             { "name": "Hopper H100/H200", "kind": "product", "tech": "직전 세대 주력 GPU — 여전히 대량 가동", "markets": ["ai-gpu"] },
@@ -42,6 +43,7 @@
           "problem": "GPU 한 개로는 거대 모델을 못 돌려 수만 개를 잇는데, 연결이 느리면 비싼 GPU가 서로 기다리며 논다.",
           "solution": "NVLink/NVSwitch로 칩을 직결(스케일업)하고, InfiniBand·Spectrum-X 이더넷으로 수만 대를 묶는다(스케일아웃). 브로드컴의 '개방형 이더넷'과 정면으로 맞붙는 엔비디아의 '통합형'.",
           "image": "data/companies/images/NVDA/nvlink.webp",
+          "image_prompt": "Eight GPU modules arranged in a tight grid, densely wired directly to each other by glowing high-speed links forming a mesh lattice where every GPU connects to every other, merging into one giant unified GPU. Emphasize direct chip-to-chip mesh, not a central hub. Green-cyan glow.",
           "products": [
             { "name": "NVLink · NVSwitch", "kind": "tech", "tech": "GPU 직결 스케일업 — 준독점", "growth": true, "markets": ["dc-networking"] },
             { "name": "Quantum InfiniBand", "kind": "product", "tech": "저지연 스케일아웃 (Mellanox 인수)", "markets": ["dc-networking"] },
@@ -55,6 +57,7 @@
           "problem": "칩·네트워킹·전력·냉각·소프트웨어를 따로 사서 통합하긴 너무 어렵고 느리다.",
           "solution": "GB200 NVL72(72개 GPU를 하나처럼) 같은 랙 시스템을 통째로 공급한다. 클라우드·국가가 'AI 공장'을 통째로 산다.",
           "image": "data/companies/images/NVDA/rack.webp",
+          "image_prompt": "One single massive server rack cabinet as an AI factory, packed with dozens of GPU trays, networking, and liquid cooling integrated into one powerful glowing unit, a self-contained AI supercomputer in a box. Green-cyan glow.",
           "products": [
             { "name": "GB200 NVL72", "kind": "platform", "tech": "72-GPU 랙 시스템 — 한 대가 하나의 거대 GPU", "growth": true, "markets": ["neocloud"] },
             { "name": "DGX · HGX", "kind": "product", "tech": "표준 AI 서버 플랫폼" },
@@ -68,6 +71,7 @@
           "problem": "칩이 빨라도 개발자가 쓰기 어려우면 소용없고, 경쟁사가 칩을 만들어도 소프트웨어 생태계가 없으면 못 따라온다.",
           "solution": "15년 넘게 쌓은 CUDA 개발 생태계·라이브러리에 AI 연구자 대부분이 락인됐다. NIM·AI Enterprise·Omniverse로 확장 — 칩보다 무서운 진짜 해자.",
           "image": "data/companies/images/NVDA/cuda.webp",
+          "image_prompt": "A GPU chip at the base with translucent glowing software layers stacked on top wrapping around it like a protective moat or shield, representing a software ecosystem that locks in the hardware; other plain chips outside cannot enter the moat. Green glow.",
           "products": [
             { "name": "CUDA", "kind": "platform", "tech": "병렬 컴퓨팅 생태계 — 핵심 락인 해자" },
             { "name": "AI Enterprise · NIM", "kind": "platform", "tech": "추론 마이크로서비스 — SW 구독화" },
