@@ -55,7 +55,7 @@
           "plain": "수만 개 AI 칩을 한 덩어리로 묶는 초고속 스위치 칩.",  // 쉬운 한 줄
           "problem": "칩끼리 통신이 느리면 비싼 칩이 논다.",            // 이게 푸는 문제
           "solution": "한 칩이 초당 102조 비트를 흘려 묶는다.",          // 기술로 어떻게 해결
-          "image": "data/companies/images/AVGO/switch.png",          // 기능 개념도(AI 생성, 없으면 생략)
+          "image": "data/companies/images/AVGO/switch.webp",          // 기능 개념도(AI 생성, 없으면 생략)
           "products": [               // 개별 제품/기술 (시각적으로 구분되는 잎)
             {
               "name": "Tomahawk 5/6",
@@ -102,6 +102,6 @@
   자동). 웹은 이걸 fetch 해 구조도 상세의 '뉴스 · 경쟁 동향'에 타임라인으로
   표시하고, **경쟁 위협**은 stock JSON 의 `valuation.qualitative.competitor_context`
   를 그대로 쓴다. 새 뉴스가 쌓이면 스크립트를 다시 돌리면 된다.
-- **이미지**: `data/companies/images/<TICKER>/<name>.png` (AI 생성 기능 개념도).
+- **이미지**: `data/companies/images/<TICKER>/<name>.webp` (AI 생성 기능 개념도).
   family 의 `image` 가 가리키며, 파일이 없으면 조용히 생략된다. 사양은
   `data/companies/images/AVGO/README.md` 참고.

@@ -2773,10 +2773,11 @@ function coProductHtml(p, fp) {
 function coFamilyHtml(fam, fp) {
   const prods = (fam.products || []).map((p) => coProductHtml(p, fp)).join("");
   const name = fam.name_kr || fam.name || "";
-  // 기능 개념도 (AI 생성). 파일이 없으면 onerror 로 조용히 제거.
+  // 기능 개념도 (AI 생성). 클릭하면 원본 크게 보기. 파일 없으면 onerror 로 조용히 제거.
   const img = fam.image
-    ? `<figure class="co-fam-img"><img src="${escapeHtml(fam.image)}" alt="${escapeHtml(name)} 개념도" loading="lazy"
-         onerror="this.closest('.co-fam-img').remove()"></figure>`
+    ? `<figure class="co-fam-img"><a href="${escapeHtml(fam.image)}" target="_blank" rel="noopener" title="크게 보기">
+         <img src="${escapeHtml(fam.image)}" alt="${escapeHtml(name)} 개념도" loading="lazy"
+           onerror="this.closest('.co-fam-img').remove()"></a></figure>`
     : "";
   const plain = fam.plain ? `<p class="co-fam-plain">${escapeHtml(fam.plain)}</p>` : "";
   // 문제 → 해결 (있으면 펼침). '이게 푸는 문제'를 쉬운 말로.
