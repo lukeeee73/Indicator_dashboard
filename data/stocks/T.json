@@ -10365,29 +10365,31 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-07",
-      "narrative_score": -0.09,
-      "summary_kr": "대법원 FCC 판결로 AT&T 주가 -4%. 광케이블 확장은 장기 긍정 요인이나 단기 규제 리스크 우세. T-Mobile 대비 성장 모멘텀 열위.",
+      "as_of": "2026-06-21",
+      "narrative_score": 0.01,
+      "summary_kr": "파이버 단순화·번들 공세와 Opensignal 107개 수상으로 경쟁력 입증했으나, 오펜하이머가 위성 위협·파이버 침투율 우려로 강등.",
       "key_events": [
-        "대법원 FCC 과징금 판결 → 주가 -4%",
-        "광케이블 전국 확장 진행"
+        "오펜하이머 강등(위성·파이버 우려)",
+        "파이버 요금제 단순화 $35 번들",
+        "Opensignal 107개 수상"
       ],
       "risks": [
-        "FCC 규제 강화",
-        "T-Mobile 무선 점유율 잠식",
-        "광케이블 투자 ROI 지연"
+        "LEO 위성 구조적 위협",
+        "파이버 빌드아웃 비용·침투율 미달",
+        "CFO 교체로 비용 논쟁 재점화",
+        "높은 부채"
       ],
-      "news_count": 2,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "VZ",
-          "headline": "Verizon also fell 4% on FCC ruling; CEO pivoting to AI customer service",
-          "implication_for_target": "VZ와 동반 하락 — 두 회사 모두 FCC 규제 및 T-Mobile 경쟁에 공동 노출"
+          "headline": "Verizon eliminates activation and upgrade fees",
+          "implication_for_target": "VZ의 수수료 폐지 공세 — T의 번들 가격 경쟁과 직접 충돌"
         },
         {
           "ticker": "TMUS",
-          "headline": "T-Mobile Q1 2026 solid; analysts project 30%+ upside",
-          "implication_for_target": "T-Mobile의 상대적 강세와 광대역 확장이 T의 무선·인터넷 양방향 압박"
+          "headline": "T-Mobile fined $80M after Supreme Court upholds FCC fine authority",
+          "implication_for_target": "통신 3사 공통 규제 리스크 — 위치정보 보호 의무 강화 시 비용 증가"
         }
       ],
       "history": [
@@ -10398,6 +10400,10 @@
         {
           "date": "2026-06-07",
           "narrative_score": -0.09
+        },
+        {
+          "date": "2026-06-21",
+          "narrative_score": 0.01
         }
       ]
     }

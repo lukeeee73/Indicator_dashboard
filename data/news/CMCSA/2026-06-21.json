@@ -1,0 +1,48 @@
+{
+  "ticker": "CMCSA",
+  "date": "2026-06-21",
+  "as_of_utc": "2026-06-21T22:00:00Z",
+  "news": [
+    {
+      "title": "Comcast rolls out same-day WiFi equipment delivery to improve customer experience",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/CMCSA/",
+      "published": "2026-06-16T11:00:00Z",
+      "summary": "당일 WiFi 장비 배송 도입 — 브로드밴드 가입자 이탈 방어 시도",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Comcast Xfinity lost 65,000 broadband subscribers in latest quarter",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/23/comcast-cmcsa-earnings-q1-2026.html",
+      "published": "2026-04-23T12:00:00Z",
+      "summary": "Xfinity 브로드밴드 6.5만 순감 — 경쟁 심화로 핵심사업 압박 지속",
+      "impact": "-",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CHTR",
+      "headline": "Charter commits ~$7B to fiber expansion (1.7M underserved locations)",
+      "implication_for_target": "케이블 동종업체 파이버 공세 — CMCSA 브로드밴드 점유율 추가 압박"
+    },
+    {
+      "ticker": "T",
+      "headline": "AT&T fiber bundles from $35/month",
+      "implication_for_target": "통신사 파이버·번들 저가 공세가 케이블 인터넷 이탈 가속"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": -0.2,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": -0.1,
+  "summary_kr": "브로드밴드 6.5만 순감 등 핵심 인터넷 사업 이탈 지속. 당일 장비 배송·무선·테마파크로 방어하나 파이버·통신사 공세에 점유율 압박.",
+  "key_events": ["당일 WiFi 장비 배송 도입", "Xfinity 브로드밴드 6.5만 순감", "2025년 브로드밴드 71.1만 순감"],
+  "risks": ["브로드밴드 경쟁 심화·가입자 이탈", "파이버/통신사 저가 번들", "주가 1년 약 30% 하락"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/CMCSA%20-%20Comcast%20Corporation.md"
+}

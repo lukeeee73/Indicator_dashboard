@@ -1,0 +1,57 @@
+{
+  "ticker": "TMUS",
+  "date": "2026-06-21",
+  "as_of_utc": "2026-06-21T22:00:00Z",
+  "news": [
+    {
+      "title": "Supreme Court upholds FCC fine authority; $80M penalty against T-Mobile stands",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/TMUS/press-releases/",
+      "published": "2026-06-04T14:00:00Z",
+      "summary": "대법원, FCC 벌금권한 인정 — 위치정보 보호 미흡으로 $80M 벌금 확정",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "T-Mobile rolls out Dynamic CX AI-powered real-time network optimization",
+      "source": "T-Mobile Newsroom",
+      "url": "https://www.t-mobile.com/news/press",
+      "published": "2026-06-15T10:00:00Z",
+      "summary": "Dynamic CX 출시 — AI 실시간 망 최적화로 수요변동 자동 대응",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "T-Mobile declares $1.02 quarterly dividend, ~2.2% yield, payable September 2026",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/TMUS/",
+      "published": "2026-06-10T13:00:00Z",
+      "summary": "분기배당 $1.02(수익률 2.2%) 선언 — 9월 지급, 주주환원 지속",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "VZ",
+      "headline": "Verizon eliminates activation and upgrade fees",
+      "implication_for_target": "VZ 가격 공세 — TMUS 후불 순증 둔화(2026 ~2.5M) 국면서 churn 압박"
+    },
+    {
+      "ticker": "T",
+      "headline": "AT&T downgraded on LEO satellite threat",
+      "implication_for_target": "위성 위협은 TMUS Starlink 제휴(direct-to-cell)로 일부 상쇄 가능"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.01,
+  "summary_kr": "대법원이 FCC의 $80M 벌금을 확정해 규제 부담 부각. Dynamic CX AI 망 최적화·배당으로 경쟁력·환원은 유지하나 후불 순증 둔화 우려.",
+  "key_events": ["대법원 FCC $80M 벌금 확정", "Dynamic CX AI 망 최적화 출시", "분기배당 $1.02 선언"],
+  "risks": ["FCC 위치정보 규제·벌금", "후불폰 순증 둔화·churn 소폭 상승", "업계 가격 경쟁 심화"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/TMUS%20-%20T-Mobile%20US.md"
+}
