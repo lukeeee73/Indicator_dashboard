@@ -4,26 +4,6 @@
   "group": "반도체",
   "series": [
     {
-      "date": "2016-06-15",
-      "value": 85.89
-    },
-    {
-      "date": "2016-06-16",
-      "value": 87.15
-    },
-    {
-      "date": "2016-06-17",
-      "value": 86.31
-    },
-    {
-      "date": "2016-06-20",
-      "value": 88.32
-    },
-    {
-      "date": "2016-06-21",
-      "value": 89.82
-    },
-    {
       "date": "2016-06-22",
       "value": 90.05
     },
@@ -2097,7 +2077,7 @@
     },
     {
       "date": "2018-07-13",
-      "value": 185.08
+      "value": 185.07
     },
     {
       "date": "2018-07-16",
@@ -3045,7 +3025,7 @@
     },
     {
       "date": "2019-06-24",
-      "value": 190.64
+      "value": 190.63
     },
     {
       "date": "2019-06-25",
@@ -4865,7 +4845,7 @@
     },
     {
       "date": "2021-04-14",
-      "value": 601.06
+      "value": 601.05
     },
     {
       "date": "2021-04-15",
@@ -4945,7 +4925,7 @@
     },
     {
       "date": "2021-05-12",
-      "value": 574.99
+      "value": 574.98
     },
     {
       "date": "2021-05-13",
@@ -4977,7 +4957,7 @@
     },
     {
       "date": "2021-05-24",
-      "value": 629.51
+      "value": 629.5
     },
     {
       "date": "2021-05-25",
@@ -5797,7 +5777,7 @@
     },
     {
       "date": "2022-03-16",
-      "value": 623.16
+      "value": 623.17
     },
     {
       "date": "2022-03-17",
@@ -6013,7 +5993,7 @@
     },
     {
       "date": "2022-06-02",
-      "value": 559.86
+      "value": 559.85
     },
     {
       "date": "2022-06-03",
@@ -6541,7 +6521,7 @@
     },
     {
       "date": "2022-12-09",
-      "value": 579.53
+      "value": 579.52
     },
     {
       "date": "2022-12-12",
@@ -7565,7 +7545,7 @@
     },
     {
       "date": "2023-12-18",
-      "value": 726.64
+      "value": 726.63
     },
     {
       "date": "2023-12-19",
@@ -10057,19 +10037,35 @@
     },
     {
       "date": "2026-06-15",
-      "value": 1878.63
+      "value": 1892.66
+    },
+    {
+      "date": "2026-06-16",
+      "value": 1803.89
+    },
+    {
+      "date": "2026-06-17",
+      "value": 1867.83
+    },
+    {
+      "date": "2026-06-18",
+      "value": 1929.68
+    },
+    {
+      "date": "2026-06-22",
+      "value": 1919.82
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 724057194496.0,
-      "pe_ratio": 62.998993,
-      "forward_pe": 39.14717,
-      "eps_ttm": 29.82,
-      "dividend_yield": 0.47,
+      "market_cap": 739932504064.0,
+      "pe_ratio": 63.78139,
+      "forward_pe": 40.017002,
+      "eps_ttm": 30.1,
+      "dividend_yield": 0.46,
       "profit_margin": 0.29713,
       "operating_margin": 0.36020002,
-      "price_to_book": 1669.3481,
+      "price_to_book": 1705.9495,
       "return_on_equity": 0.52236
     },
     "quarterly": [
@@ -10118,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-15",
-    "current_price": 1878.63,
+    "as_of": "2026-06-22",
+    "current_price": 1919.82,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 834.96,
+        "fair_value": 842.8,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 1055.76,
+        "fair_value": 1055.45,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 27.48,
+        "fair_value": 27.61,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 739.7,
-    "valuation_gap": 1.5397,
+    "fair_value": 743.56,
+    "valuation_gap": 1.5819,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10287,10 +10283,16 @@
         "gap": 1.5628
       },
       {
-        "date": "2026-06-15",
-        "price": 1878.63,
+        "date": "2026-06-18",
+        "price": 1929.68,
         "fair_value": 727.16,
-        "gap": 1.5835
+        "gap": 1.6537
+      },
+      {
+        "date": "2026-06-22",
+        "price": 1919.82,
+        "fair_value": 727.16,
+        "gap": 1.6402
       }
     ],
     "qualitative": {

@@ -8249,19 +8249,35 @@
     },
     {
       "date": "2026-06-15",
-      "value": 481.39
+      "value": 479.85
+    },
+    {
+      "date": "2026-06-16",
+      "value": 469.81
+    },
+    {
+      "date": "2026-06-17",
+      "value": 455.6
+    },
+    {
+      "date": "2026-06-18",
+      "value": 468.08
+    },
+    {
+      "date": "2026-06-22",
+      "value": 449.85
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 98984452096.0,
-      "pe_ratio": 32.417164,
-      "forward_pe": 26.2524,
-      "eps_ttm": 14.85,
+      "market_cap": 92497895424.0,
+      "pe_ratio": 30.029947,
+      "forward_pe": 24.691133,
+      "eps_ttm": 14.98,
       "dividend_yield": null,
       "profit_margin": 0.15449001,
       "operating_margin": 0.15773,
-      "price_to_book": 10.083467,
+      "price_to_book": 9.422687,
       "return_on_equity": 0.37987998
     },
     "quarterly": [
@@ -8303,28 +8319,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-15",
-    "current_price": 481.39,
+    "as_of": "2026-06-22",
+    "current_price": 449.85,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 297.0,
+        "fair_value": 299.6,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 311.73,
+        "fair_value": 309.72,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 126.3,
+        "fair_value": 126.85,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 267.28,
-    "valuation_gap": 0.8011,
+    "fair_value": 268.09,
+    "valuation_gap": 0.678,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8472,10 +8488,16 @@
         "gap": 1.2439
       },
       {
-        "date": "2026-06-15",
-        "price": 481.39,
+        "date": "2026-06-18",
+        "price": 468.08,
         "fair_value": 214.8,
-        "gap": 1.2411
+        "gap": 1.1791
+      },
+      {
+        "date": "2026-06-22",
+        "price": 449.85,
+        "fair_value": 214.8,
+        "gap": 1.0943
       }
     ],
     "qualitative": {

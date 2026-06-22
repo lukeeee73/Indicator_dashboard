@@ -9745,19 +9745,35 @@
     },
     {
       "date": "2026-06-15",
-      "value": 152.38
+      "value": 153.52
+    },
+    {
+      "date": "2026-06-16",
+      "value": 158.61
+    },
+    {
+      "date": "2026-06-17",
+      "value": 158.83
+    },
+    {
+      "date": "2026-06-18",
+      "value": 163.75
+    },
+    {
+      "date": "2026-06-22",
+      "value": 166.08
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 51378176000.0,
-      "pe_ratio": 25.480768,
-      "forward_pe": 13.906319,
+      "market_cap": 55999262720.0,
+      "pe_ratio": 27.772575,
+      "forward_pe": 15.122584,
       "eps_ttm": 5.98,
-      "dividend_yield": 0.62,
+      "dividend_yield": 0.56,
       "profit_margin": 0.11525,
       "operating_margin": 0.26578,
-      "price_to_book": 19.653683,
+      "price_to_book": 21.421387,
       "return_on_equity": 0.42898
     },
     "quarterly": [
@@ -9813,8 +9829,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-15",
-    "current_price": 152.38,
+    "as_of": "2026-06-22",
+    "current_price": 166.08,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -9823,7 +9839,7 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 164.36,
+        "fair_value": 164.73,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
@@ -9833,8 +9849,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 103.61,
-    "valuation_gap": 0.4707,
+    "fair_value": 103.72,
+    "valuation_gap": 0.6012,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10060,10 +10076,16 @@
         "gap": 1.0219
       },
       {
-        "date": "2026-06-15",
-        "price": 152.38,
+        "date": "2026-06-18",
+        "price": 163.75,
         "fair_value": 73.21,
-        "gap": 1.0814
+        "gap": 1.2367
+      },
+      {
+        "date": "2026-06-22",
+        "price": 166.08,
+        "fair_value": 73.21,
+        "gap": 1.2686
       }
     ],
     "qualitative": {
