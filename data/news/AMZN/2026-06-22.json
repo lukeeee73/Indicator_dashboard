@@ -1,0 +1,85 @@
+{
+  "ticker": "AMZN",
+  "date": "2026-06-22",
+  "as_of_utc": "2026-06-22T22:00:00Z",
+  "news": [
+    {
+      "title": "FTC drafts potential complaint against Amazon",
+      "source": "Bloomberg (via Yahoo Finance)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/ftc-drafts-complaint-against-amazon-213325433.html",
+      "published": "2026-06-17T00:00:00Z",
+      "summary": "FTC, 아마존 광고사업 대상 소송 초안 작성 — 대규모 벌금 위험",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Amazon (AMZN) Plans to Sell AI Chip Trainium, Challenging Nvidia's Dominance",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/8923102/amazon-amzn-plans-to-sell-ai-chip-trainium-challenging-nvidias-dominance",
+      "published": "2026-06-18T00:00:00Z",
+      "summary": "아마존, 트레이니움 AI 칩 외부 판매 협의 — 엔비디아에 직접 도전",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Top announcements of the AWS Summit in New York, 2026",
+      "source": "AWS News Blog",
+      "url": "https://aws.amazon.com/blogs/aws/top-announcements-of-the-aws-summit-in-new-york-2026/",
+      "published": "2026-06-17T00:00:00Z",
+      "summary": "AWS 뉴욕 서밋, Bedrock AgentCore 정식출시 등 에이전트 AI 대거 발표",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "AWS Weekly Roundup: NY Summit recap, Grok 4.3 in Bedrock, price reductions, and more",
+      "source": "AWS News Blog",
+      "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-ny-summit-recap-local-zone-in-hanoi-grok-4-3-in-bedrock-price-reductions-and-more-june-22-2026/",
+      "published": "2026-06-22T00:00:00Z",
+      "summary": "AWS, Grok 4.3 베드록 탑재·하노이 로컬존·가격 인하 등 주간 업데이트",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "When is Amazon Prime Day 2026? Prime members get four days of savings June 23-26",
+      "source": "About Amazon",
+      "url": "https://www.aboutamazon.com/news/retail/amazon-prime-day-2026-date",
+      "published": "2026-06-18T00:00:00Z",
+      "summary": "아마존 프라임데이 2026, 6월 23~26일 4일간 진행 확정",
+      "impact": "+",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Azure AI run-rate far ahead of Google Cloud this quarter",
+      "implication_for_target": "애저 AI 빠른 성장으로 AWS 클라우드 점유율 방어 압박"
+    },
+    {
+      "ticker": "GOOGL",
+      "headline": "Google Cloud secures large GPU compute deals",
+      "implication_for_target": "구글 클라우드의 대형 GPU 컴퓨트 계약으로 AWS 신규 AI 워크로드 유치 경쟁 심화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.3,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.06,
+  "summary_kr": "FTC 광고사업 소송 초안이 규제 리스크를 키웠으나, Trainium 외부 판매와 AWS 뉴욕 서밋의 에이전트 AI 발표로 AI 인프라 경쟁력은 강화됐다. 6/23~26 프라임데이가 리테일 모멘텀을 더한다.",
+  "key_events": [
+    "FTC 광고사업 소송 초안 작성",
+    "Trainium AI 칩 외부 판매 협의",
+    "AWS NY 서밋 (Bedrock AgentCore)",
+    "프라임데이 6/23~26 확정"
+  ],
+  "risks": [
+    "FTC 광고 반독점 소송 (대규모 벌금)",
+    "EU DMA 클라우드 압박",
+    "Azure·Google Cloud 경쟁 심화",
+    "AI capex 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMZN%20-%20Amazon.com%20Inc.md"
+}

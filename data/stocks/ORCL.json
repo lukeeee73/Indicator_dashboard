@@ -10242,30 +10242,32 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-15",
-      "narrative_score": 0.07,
-      "summary_kr": "Q4 FY26 IaaS +93%, 클라우드 총매출 +47%로 클라우드 성장 가속 확인. 가이던스도 FY27 $90B로 상향. 그러나 $20B 유상증자 희석 우려와 FY27 capex $70B에 시장이 예상보다 강하게 반응해 주가 8~10% 급락 — 단기 부정 시그널.",
+      "as_of": "2026-06-22",
+      "narrative_score": 0.17,
+      "summary_kr": "오라클은 RPO $638B(+363%)라는 기록적 AI 수주잔고로 펀더멘털을 입증했으나, 마진 압박·급증한 capex·$40B 자금조달·마이너스 FCF 우려로 실적 발표 후 주가가 11%+ 급락했다. MS 클라우드 계약 결렬 보도도 부담이다.",
       "key_events": [
-        "Q4 FY26 매출 $19.2B (+21%), IaaS +93%",
-        "FY27 가이던스 $90B 상향",
-        "$20B 유상증자 발표로 주가 8~10% 급락"
+        "Q4/FY2026 실적·RPO $638B(6/10)",
+        "주가 11%+ 급락(6/11)",
+        "MS 계약 결렬 보도(6/18)",
+        "약 $40B 자금조달 추진"
       ],
       "risks": [
-        "$20B 유상증자 희석 — EPS 성장 잠식",
-        "FY27 $70B capex 부담으로 FCF 약화",
-        "주가 과매도 후 회복 속도 불확실"
+        "막대한 capex와 마이너스 FCF",
+        "주식 발행 희석",
+        "FedRAMP 등 공공부문 인증 공백",
+        "AI 수요 둔화 시 RPO 실현 리스크"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Azure grew 40% in Q3 FY26, Microsoft AI at $37B run rate",
-          "implication_for_target": "Azure AI 성장 — OCI AI와 직접 경쟁 심화, ORCL OCI 점유율 확보 과제"
+          "headline": "Microsoft reportedly walks away from $3B Oracle cloud deal over FedRAMP",
+          "implication_for_target": "오라클의 공공부문 인증 미비가 대형 계약 손실 리스크로 노출"
         },
         {
-          "ticker": "CRM",
-          "headline": "Salesforce Q1 FY27 EPS +50%, Agentforce ARR $1.2B (+205%)",
-          "implication_for_target": "세일즈포스 SaaS·AI 강세 — ORCL 엔터프라이즈 SaaS 영역 경쟁 심화"
+          "ticker": "SAP",
+          "headline": "SAP unveils Autonomous Enterprise & AI agents, wins JPMorgan",
+          "implication_for_target": "SaaS·ERP 영역 AI 경쟁 격화 — 오라클 Cloud Apps 성장 압박"
         }
       ],
       "history": [
@@ -10296,6 +10298,10 @@
         {
           "date": "2026-06-15",
           "narrative_score": 0.07
+        },
+        {
+          "date": "2026-06-22",
+          "narrative_score": 0.17
         }
       ]
     }

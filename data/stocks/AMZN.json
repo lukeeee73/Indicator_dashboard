@@ -10289,30 +10289,32 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-15",
-      "narrative_score": 0.1,
-      "summary_kr": "6/15 +3.70% 반등과 프라임데이(6/23~26) 기대감으로 단기 모멘텀 회복. C$140억 채권 발행으로 AI·물류 투자 재원 확보. 그러나 EU 클라우드 심사·FTC 반독점 소송 이중 규제 리스크는 중기 불확실성 요인.",
+      "as_of": "2026-06-22",
+      "narrative_score": 0.06,
+      "summary_kr": "FTC 광고사업 소송 초안이 규제 리스크를 키웠으나, Trainium 외부 판매와 AWS 뉴욕 서밋의 에이전트 AI 발표로 AI 인프라 경쟁력은 강화됐다. 6/23~26 프라임데이가 리테일 모멘텀을 더한다.",
       "key_events": [
-        "AMZN +3.70% 급등(6/15)",
-        "프라임데이 2026 (6/23~26) 예정",
-        "C$140억 채권 발행 완료"
+        "FTC 광고사업 소송 초안 작성",
+        "Trainium AI 칩 외부 판매 협의",
+        "AWS NY 서밋 (Bedrock AgentCore)",
+        "프라임데이 6/23~26 확정"
       ],
       "risks": [
-        "EU 클라우드 조달 심사 부정적 결론 시 AWS 유럽 매출 압박",
-        "FTC 반독점 소송 장기화",
-        "AI 인프라 capex 증가에 따른 FCF 압박"
+        "FTC 광고 반독점 소송 (대규모 벌금)",
+        "EU DMA 클라우드 압박",
+        "Azure·Google Cloud 경쟁 심화",
+        "AI capex 부담"
       ],
-      "news_count": 4,
+      "news_count": 5,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Azure grew 40% in Q3 FY26, Microsoft AI business at $37B run rate",
-          "implication_for_target": "Azure 고성장 — AWS 점유율 방어 과제, AI 클라우드 경쟁 심화"
+          "headline": "Azure AI run-rate far ahead of Google Cloud this quarter",
+          "implication_for_target": "애저 AI 빠른 성장으로 AWS 클라우드 점유율 방어 압박"
         },
         {
-          "ticker": "WMT",
-          "headline": "Walmart expanding e-commerce and ad business, narrowing gap with Amazon",
-          "implication_for_target": "월마트 e-commerce 추격 — Prime Day 전후 소매 점유율 방어 중요성"
+          "ticker": "GOOGL",
+          "headline": "Google Cloud secures large GPU compute deals",
+          "implication_for_target": "구글 클라우드의 대형 GPU 컴퓨트 계약으로 AWS 신규 AI 워크로드 유치 경쟁 심화"
         }
       ],
       "history": [
@@ -10343,6 +10345,10 @@
         {
           "date": "2026-06-15",
           "narrative_score": 0.1
+        },
+        {
+          "date": "2026-06-22",
+          "narrative_score": 0.06
         }
       ]
     }
