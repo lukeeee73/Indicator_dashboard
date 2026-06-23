@@ -1,0 +1,74 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-06-23",
+  "as_of_utc": "2026-06-23T21:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia falls 3.2% to $201.97 as AI/semiconductor selloff grips global markets",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-23-2026",
+      "published": "2026-06-23T14:00:00Z",
+      "summary": "SK하이닉스 HBM4 증설 둔화·DRAM 전환 보도發 반도체 매도세에 NVDA -3.2% ($201.97).",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Broadcom-linked AI selloff hits Samsung, SK Hynix; HBM demand-mix fears spread",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-linked-ai-selloff-hits-064441875.html",
+      "published": "2026-06-23T06:44:00Z",
+      "summary": "SK하이닉스가 HBM4 증설 속도 줄이고 일반 DRAM으로 전환 — Rubin 수요 둔화 우려로 번짐.",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "NVIDIA B200 cloud rental prices drop ~31% in three weeks, signaling AI capacity easing",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/8927174/nvidia-nvda-faces-declining-ai-chip-prices-amid-stock-underperformance",
+      "published": "2026-06-21T00:00:00Z",
+      "summary": "B200 GPU 클라우드 렌탈료 3주간 $6.11→$4.22(-31%) — AI 수급 완화 신호.",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Jamendo sues NVIDIA over alleged unlicensed AI training on copyrighted songs",
+      "source": "Music Business Worldwide",
+      "url": "https://www.musicbusinessworldwide.com/nvidia-hit-with-us-copyright-suit-claiming-it-trained-ai-models-on-winamp-subsidiary-jamendos-music-without-permission/",
+      "published": "2026-06-22T00:00:00Z",
+      "summary": "Jamendo, 저작권 침해로 NVIDIA 제소(최대 $20.3M 청구) — 규제·소송 잡음.",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MU",
+      "headline": "Micron sinks 11.4% to $1,074.60 as HBM demand-mix worry hits memory complex",
+      "implication_for_target": "HBM 수요 둔화 우려가 NVDA 가속기 BOM·공급망 심리에도 부담"
+    },
+    {
+      "ticker": "AVGO",
+      "headline": "Broadcom's cautious AI outlook cited as a trigger of the June 23 AI selloff",
+      "implication_for_target": "커스텀 ASIC 강자 AVGO發 AI 투자 둔화 신호 — NVDA 포함 AI 칩 전반 압박"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": -0.5
+  },
+  "narrative_score": -0.12,
+  "summary_kr": "SK하이닉스 HBM4 증설 둔화 보도가 촉발한 글로벌 반도체 매도세에 NVDA -3.2%($201.97). 펀더멘털(Q1 FY27 매출 +85%)은 견조하나 B200 렌탈료 -31%·HBM 수요 우려·저작권 소송이 단기 심리 압박.",
+  "key_events": [
+    "6/23 반도체 셀오프 NVDA -3.2%",
+    "B200 클라우드 렌탈료 3주 -31%",
+    "Jamendo 저작권 소송"
+  ],
+  "risks": [
+    "SK하이닉스 HBM4 전환發 AI 수요 둔화 우려",
+    "GPU 렌탈가 하락 = 공급 완화 신호",
+    "저작권 소송 등 규제 잡음"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}
