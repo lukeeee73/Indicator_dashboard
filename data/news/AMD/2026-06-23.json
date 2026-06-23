@@ -1,0 +1,74 @@
+{
+  "ticker": "AMD",
+  "date": "2026-06-23",
+  "as_of_utc": "2026-06-23T21:00:00Z",
+  "news": [
+    {
+      "title": "AMD hits record high near $563 (June 22), up ~133% YTD on data-center momentum",
+      "source": "TradingKey",
+      "url": "https://www.tradingkey.com/news/market-movers/261982108-market-movers-amd-20260622",
+      "published": "2026-06-22T00:00:00Z",
+      "summary": "AMD 6/22 사상최고가 ~$563(YTD +133%) — 데이터센터 모멘텀 지속.",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "AMD and Apollo-backed Rackspace sign 30 MW AI compute deployment agreement",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-06-16/apollo-backed-rackspace-loan-jumps-on-amd-data-center-deal",
+      "published": "2026-06-16T00:00:00Z",
+      "summary": "AMD-Rackspace 30MW AI 컴퓨트 배포 협약 — 데이터센터 수주 확대.",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "AMD falls ~7% on June 17 after M Science flags 'materially worsened' Q2 GPU deployment",
+      "source": "TradingKey",
+      "url": "https://www.tradingkey.com/news/market-movers/261979611-market-movers-amd-20260621",
+      "published": "2026-06-17T00:00:00Z",
+      "summary": "M Science 리포트, AMD 2Q GPU 배치량 '급격히 악화' 지적 — 주가 ~7% 하락.",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "AMD CFO Jean Hu warns of unprecedented HBM price inflation pressuring gross margins",
+      "source": "TechRadar",
+      "url": "https://www.techradar.com/computing/computing-components/amds-ceo-predicts-higher-memory-and-component-costs-later-this-year-so-brace-yourself-for-radeon-gpu-price-hikes",
+      "published": "2026-06-15T00:00:00Z",
+      "summary": "AMD CFO, '사상 최고' HBM 가격 인플레 경고 — 하반기 마진 압박 가능성.",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NVDA",
+      "headline": "Nvidia -3.2% in June 23 semiconductor selloff",
+      "implication_for_target": "AI 칩 1위 NVDA 동반 약세 — 섹터 전반 위험회피, AMD도 동조 하락 위험"
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel surges on reported Trump-brokered Apple chip partnership",
+      "implication_for_target": "인텔 파운드리 모멘텀 부각 — AMD의 x86·AI 경쟁 구도 재점화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": 0.3,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.45
+  },
+  "narrative_score": 0.03,
+  "summary_kr": "AMD는 6/22 사상최고가($563)·Rackspace 30MW 협약 등 데이터센터 강세를 보였으나, M Science의 2Q GPU 배치 '악화' 경고와 HBM 가격 인플레, 6/23 섹터 셀오프로 변동성 확대.",
+  "key_events": [
+    "6/22 사상최고가 ~$563 (YTD +133%)",
+    "Rackspace 30MW AI 컴퓨트 협약",
+    "M Science 2Q GPU 배치 악화 경고"
+  ],
+  "risks": [
+    "2Q GPU 배치 부진 우려",
+    "HBM 가격 인플레發 마진 압박",
+    "반도체 섹터 셀오프 동조"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/AMD%20-%20Advanced%20Micro%20Devices.md"
+}
