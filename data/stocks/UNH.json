@@ -10296,22 +10296,34 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-18",
-      "narrative_score": 0.05,
-      "summary_kr": "Q1 실적 호조와 FY 가이던스 상향(긍정)이지만 DOJ 독점금지 조사와 CMS 2027 동결 우려로 주가 고점 대비 후퇴. 규제 불확실성이 핵심 오버행.",
+      "as_of": "2026-06-25",
+      "narrative_score": 0.3,
+      "summary_kr": "UNH는 CMS의 2027년 MA 요율 +2.48% 확정과 의료비 추세 완화로 강한 반등세를 보이며 다수 기관이 목표가를 $450~492로 상향했다. Optum Rx의 투명 정액 PBM 모델 도입은 구조적 호재로 평가된다. 다만 DOJ의 메디케어 청구 조사 등 규제·법적 리스크가 밸류에이션 상단을 제약한다.",
       "key_events": [
-        "Q1 2026 EPS $7.23 (+10%), MCR 83.9%",
-        "FY 가이던스 >$18.25 EPS 상향",
-        "분기 배당 $2.32 선언",
-        "DOJ 독점금지 조사 지속"
+        "CMS 2027 MA 요율 +2.48% 확정",
+        "Optum Rx 투명 정액 PBM 모델 출시",
+        "2주간 애널리스트 목표가 6회 상향(최고 $492)",
+        "DOJ 메디케어 청구 형사·민사 조사 지속"
       ],
       "risks": [
-        "DOJ 독점금지 조사 결과 불확실",
-        "CMS 2027 Medicare Advantage 수가 동결 가능성",
-        "MCR 상승 구조적 압박"
+        "DOJ 메디케어 어드밴티지 청구 형사 조사 확대(Optum Rx 포함)",
+        "매사추세츠 메디케이드 과청구 소송(약 $1억)",
+        "오피오이드 관련 법적 노출",
+        "MA 요율 정상화에도 의료비 인플레이션 상회 위험"
       ],
       "news_count": 4,
-      "competitor_context": [],
+      "competitor_context": [
+        {
+          "ticker": "HUM",
+          "headline": "Humana jumps 6%, Cigna rises 4% as analysts cheer softer medical cost trends",
+          "implication_for_target": "섹터 전반 의료비 추세 완화 신호로 UNH MCR 안정·마진 회복 기대를 강화"
+        },
+        {
+          "ticker": "CI",
+          "headline": "Cigna Q1 2026 MCR improved to 80%, FY26 EPS guide raised to >$30.35",
+          "implication_for_target": "동종 managed care 마진 개선 확인, UNH 회복 내러티브에 우호적"
+        }
+      ],
       "history": [
         {
           "date": "2026-05-28",
@@ -10328,6 +10340,10 @@
         {
           "date": "2026-06-18",
           "narrative_score": 0.05
+        },
+        {
+          "date": "2026-06-25",
+          "narrative_score": 0.3
         }
       ]
     }
