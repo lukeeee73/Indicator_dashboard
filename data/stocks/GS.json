@@ -10303,24 +10303,31 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-13",
-      "narrative_score": 0.32,
-      "summary_kr": "GS가 미국 역사상 최대 IPO인 스페이스X 주관사를 맡고 앤트로픽 IPO까지 공동 주관하면서 IB 수수료 수입이 사상 최대 수준에 근접했다. 69% 연간 상승 후에도 목표주가 상향이 이어지는 강한 강세 사이클.",
+      "as_of": "2026-06-27",
+      "narrative_score": 0.27,
+      "summary_kr": "Fed 스트레스테스트를 통과해 배당을 11% 인상했고 강세장 전망을 유지하나, 신규 자사주매입을 발표하지 않아 JPM·MS 대비 자본환원이 보수적으로 평가됐다. 사상최고가 후 26일 차익실현성 조정이 나왔다.",
       "key_events": [
-        "스페이스X 미국 최대 IPO 주관 (+2.9%)",
-        "앤트로픽 IPO 공동 주관사 선정",
-        "JP모건 목표주가 $900 상향"
+        "CCAR 2026 통과 후 분기 배당 $4.50→$5.00(11%) 인상",
+        "JPM·MS와 달리 신규 자사주매입 미발표",
+        "S&P500 목표 8,000, 2026 EPS 24% 성장 강세 전망 재확인",
+        "6월 22일 사상최고가 후 26일 3.36% 하락"
       ],
       "risks": [
-        "AI 시장 과열 버블 붕괴 시 IPO 파이프라인 급감",
-        "솔로몬 CEO 경고 — '탐욕 모드' 과열 경계"
+        "동종 IB 대비 자본환원 강도가 약해 보일 수 있음",
+        "고밸류·고점 부담에 따른 변동성 확대",
+        "딜·트레이딩 의존도로 매크로 충격 민감"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
+          "ticker": "JPM",
+          "headline": "JPMorgan pairs 10% dividend hike with new $50B buyback after clearing Fed stress test",
+          "implication_for_target": "JPM은 대규모 자사주매입까지 발표한 반면 GS는 배당만 올려 자본환원 적극성에서 상대적으로 보수적으로 비침"
+        },
+        {
           "ticker": "MS",
-          "headline": "Morgan Stanley co-leads Anthropic IPO alongside Goldman Sachs",
-          "implication_for_target": "GS·MS 동반 IPO 수혜 — IB 섹터 유례없는 대형 딜 집중"
+          "headline": "Morgan Stanley raises dividend 15% to $1.15, reauthorizes $20B buyback",
+          "implication_for_target": "MS의 15% 배당 인상이 GS의 11% 인상을 앞서 자산관리 기반 자본환원 매력에서 경쟁 심화"
         }
       ],
       "history": [
@@ -10343,6 +10350,10 @@
         {
           "date": "2026-06-13",
           "narrative_score": 0.32
+        },
+        {
+          "date": "2026-06-27",
+          "narrative_score": 0.27
         }
       ]
     }

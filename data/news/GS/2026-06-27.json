@@ -1,0 +1,66 @@
+{
+  "ticker": "GS",
+  "date": "2026-06-27",
+  "as_of_utc": "2026-06-27T21:00:00Z",
+  "news": [
+    {
+      "title": "JPMorgan unveils $50 billion buyback, Goldman Sachs raises dividend after Fed stress test",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/24/jpmorgan-goldman-sachs-fed-stress-test.html",
+      "published": "2026-06-24T20:00:00Z",
+      "summary": "Fed CCAR 통과 후 분기 배당 11% 인상($4.50→$5.00), 신규 자사주매입은 미발표",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Goldman Sachs Group Inc Stock (GS) Moved Down by 3.36% on Jun 26",
+      "source": "TradingKey",
+      "url": "https://www.tradingkey.com/news/market-movers/261994779-market-movers-gs-20260626",
+      "published": "2026-06-26T21:00:00Z",
+      "summary": "26일 GS 주가 3.36% 하락, 사상최고가 대비 차익실현성 조정",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Goldman Sachs doubles down on stock market outlook for 2026",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/investing/stocks/goldman-sachs-doubles-down-on-stock-market-outlook-for-2026",
+      "published": "2026-06-15T13:00:00Z",
+      "summary": "S&P500 목표 8,000 상향, 2026년 EPS 24% 성장 강세 전망",
+      "impact": "+",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JPM",
+      "headline": "JPMorgan pairs 10% dividend hike with new $50B buyback after clearing Fed stress test",
+      "implication_for_target": "JPM은 대규모 자사주매입까지 발표한 반면 GS는 배당만 올려 자본환원 적극성에서 상대적으로 보수적으로 비침"
+    },
+    {
+      "ticker": "MS",
+      "headline": "Morgan Stanley raises dividend 15% to $1.15, reauthorizes $20B buyback",
+      "implication_for_target": "MS의 15% 배당 인상이 GS의 11% 인상을 앞서 자산관리 기반 자본환원 매력에서 경쟁 심화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.4,
+    "competitive_position": 0.2,
+    "regulatory_risk": 0.2,
+    "macro_sensitivity": 0.1
+  },
+  "narrative_score": 0.27,
+  "summary_kr": "Fed 스트레스테스트를 통과해 배당을 11% 인상했고 강세장 전망을 유지하나, 신규 자사주매입을 발표하지 않아 JPM·MS 대비 자본환원이 보수적으로 평가됐다. 사상최고가 후 26일 차익실현성 조정이 나왔다.",
+  "key_events": [
+    "CCAR 2026 통과 후 분기 배당 $4.50→$5.00(11%) 인상",
+    "JPM·MS와 달리 신규 자사주매입 미발표",
+    "S&P500 목표 8,000, 2026 EPS 24% 성장 강세 전망 재확인",
+    "6월 22일 사상최고가 후 26일 3.36% 하락"
+  ],
+  "risks": [
+    "동종 IB 대비 자본환원 강도가 약해 보일 수 있음",
+    "고밸류·고점 부담에 따른 변동성 확대",
+    "딜·트레이딩 의존도로 매크로 충격 민감"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GS%20-%20The%20Goldman%20Sachs%20Group.md"
+}
