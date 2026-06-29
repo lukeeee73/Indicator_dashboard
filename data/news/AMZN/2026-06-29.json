@@ -1,0 +1,84 @@
+{
+  "ticker": "AMZN",
+  "date": "2026-06-29",
+  "as_of_utc": "2026-06-29T22:00:00Z",
+  "news": [
+    {
+      "title": "AWS raising GPU instance prices ~20% on July 1, third hike this year",
+      "source": "Converge Digest",
+      "url": "https://convergedigest.com/aws-raises-ec2-prices-by-about-20-for-ai-gpu-reservations/",
+      "published": "2026-06-26T00:00:00Z",
+      "summary": "AWS, EC2 GPU 예약 용량 가격 20% 인상 — AI 수요로 가격 결정력 입증",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Amazon Prime Day 2026 (June 23-26) drives US online sales up 9.3% to $26.4B",
+      "source": "Retail Dive",
+      "url": "https://www.retaildive.com/news/amazon-prime-day-online-us-sales-numbers-grow-2026/823973/",
+      "published": "2026-06-27T00:00:00Z",
+      "summary": "프라임데이 4일간 美 온라인 매출 9.3% 증가, 첫날 기록 경신",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Amazon shares rise as investors weigh AWS AI momentum and Prime Day read-through",
+      "source": "Quiver Quantitative",
+      "url": "https://www.quiverquant.com/news/Amazon+Shares+Rise+as+Investors+Weigh+AWS+AI+Momentum+and+Prime+Day+Read-Through",
+      "published": "2026-06-29T00:00:00Z",
+      "summary": "AWS AI 모멘텀·프라임데이 호조로 주가 약 4% 상승",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Amazon's $8.3B Prime Day day-one sends a cautious-consumer warning",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/investing/amazon-8-billion-prime-day-reveals-cautious-consumer",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "첫날 8.3B 기록이나 저가품 비중 높아 소비자 신중함 신호",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "Amazon eyes $3 trillion valuation as AI and AWS drive 2026 growth",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/amazon-eyes-3-trillion-valuation-164040926.html",
+      "published": "2026-06-25T00:00:00Z",
+      "summary": "AWS·AI 성장 동력으로 시총 3조 달러 기대감 부각",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Azure H100 GPU on-demand pricing remains high (~$12/hr) vs AWS/GCP",
+      "implication_for_target": "AWS의 GPU 가격 인상에도 Azure 대비 가격 경쟁력 유지 시 AMZN 클라우드 점유 방어에 우호적"
+    },
+    {
+      "ticker": "WMT",
+      "headline": "Walmart confronts Amazon with record rival sales and AI tools (Sparky) during Prime Day week",
+      "implication_for_target": "월마트의 경쟁 세일·AI 강화로 소매 경쟁 심화, AMZN 마진 압박 요인"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.55,
+    "competitive_position": 0.45,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": 0.1
+  },
+  "narrative_score": 0.31,
+  "summary_kr": "AWS의 세 번째 GPU 가격 인상과 프라임데이 호조(미 온라인 9.3% 증가)가 실적 기대를 끌어올려 주가가 약 4% 상승했다. 다만 저가품 위주 소비 패턴은 소비자 신중함을, 잔존 FTC 합의는 규제 리스크를 시사한다.",
+  "key_events": [
+    "AWS EC2 GPU 예약 가격 7월 1일부 약 20% 인상 (연내 세 번째)",
+    "프라임데이 2026 (6/23-26) 미 온라인 매출 9.3% 증가, 26.4B 달러",
+    "AWS AI 모멘텀으로 시총 3조 달러 기대, 주가 약 4% 상승"
+  ],
+  "risks": [
+    "GPU 가격 인상이 고객 이탈·경쟁사(Azure/GCP) 이동을 부를 가능성",
+    "프라임데이 저가품 비중 상승 — 소비 둔화 신호",
+    "FTC 프라임 합의(2.5B) 환불 잔여 및 지속적 규제 감시",
+    "대규모 AI 인프라 capex 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMZN%20-%20Amazon.com%20Inc.md"
+}

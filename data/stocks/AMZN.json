@@ -10293,32 +10293,31 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-22",
-      "narrative_score": 0.06,
-      "summary_kr": "FTC 광고사업 소송 초안이 규제 리스크를 키웠으나, Trainium 외부 판매와 AWS 뉴욕 서밋의 에이전트 AI 발표로 AI 인프라 경쟁력은 강화됐다. 6/23~26 프라임데이가 리테일 모멘텀을 더한다.",
+      "as_of": "2026-06-29",
+      "narrative_score": 0.31,
+      "summary_kr": "AWS의 세 번째 GPU 가격 인상과 프라임데이 호조(미 온라인 9.3% 증가)가 실적 기대를 끌어올려 주가가 약 4% 상승했다. 다만 저가품 위주 소비 패턴은 소비자 신중함을, 잔존 FTC 합의는 규제 리스크를 시사한다.",
       "key_events": [
-        "FTC 광고사업 소송 초안 작성",
-        "Trainium AI 칩 외부 판매 협의",
-        "AWS NY 서밋 (Bedrock AgentCore)",
-        "프라임데이 6/23~26 확정"
+        "AWS EC2 GPU 예약 가격 7월 1일부 약 20% 인상 (연내 세 번째)",
+        "프라임데이 2026 (6/23-26) 미 온라인 매출 9.3% 증가, 26.4B 달러",
+        "AWS AI 모멘텀으로 시총 3조 달러 기대, 주가 약 4% 상승"
       ],
       "risks": [
-        "FTC 광고 반독점 소송 (대규모 벌금)",
-        "EU DMA 클라우드 압박",
-        "Azure·Google Cloud 경쟁 심화",
-        "AI capex 부담"
+        "GPU 가격 인상이 고객 이탈·경쟁사(Azure/GCP) 이동을 부를 가능성",
+        "프라임데이 저가품 비중 상승 — 소비 둔화 신호",
+        "FTC 프라임 합의(2.5B) 환불 잔여 및 지속적 규제 감시",
+        "대규모 AI 인프라 capex 부담"
       ],
       "news_count": 5,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Azure AI run-rate far ahead of Google Cloud this quarter",
-          "implication_for_target": "애저 AI 빠른 성장으로 AWS 클라우드 점유율 방어 압박"
+          "headline": "Azure H100 GPU on-demand pricing remains high (~$12/hr) vs AWS/GCP",
+          "implication_for_target": "AWS의 GPU 가격 인상에도 Azure 대비 가격 경쟁력 유지 시 AMZN 클라우드 점유 방어에 우호적"
         },
         {
-          "ticker": "GOOGL",
-          "headline": "Google Cloud secures large GPU compute deals",
-          "implication_for_target": "구글 클라우드의 대형 GPU 컴퓨트 계약으로 AWS 신규 AI 워크로드 유치 경쟁 심화"
+          "ticker": "WMT",
+          "headline": "Walmart confronts Amazon with record rival sales and AI tools (Sparky) during Prime Day week",
+          "implication_for_target": "월마트의 경쟁 세일·AI 강화로 소매 경쟁 심화, AMZN 마진 압박 요인"
         }
       ],
       "history": [
@@ -10353,6 +10352,10 @@
         {
           "date": "2026-06-22",
           "narrative_score": 0.06
+        },
+        {
+          "date": "2026-06-29",
+          "narrative_score": 0.31
         }
       ]
     }

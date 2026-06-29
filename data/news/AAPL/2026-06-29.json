@@ -1,0 +1,86 @@
+{
+  "ticker": "AAPL",
+  "date": "2026-06-29",
+  "as_of_utc": "2026-06-29T22:00:00Z",
+  "news": [
+    {
+      "title": "Apple posts worst day in over a year after MacBook and iPad price hikes",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/25/apple-macbook-ipad-price-hike-memory.html",
+      "published": "2026-06-25T00:00:00Z",
+      "summary": "메모리칩 부족으로 맥·아이패드 가격 인상, 주가 6% 급락",
+      "impact": "-",
+      "category": "product"
+    },
+    {
+      "title": "Apple Hikes Mac, iPad Prices on Memory Shortage; Shares Fall",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-06-25/apple-raises-mac-and-ipad-prices-to-counter-memory-shortages",
+      "published": "2026-06-25T00:00:00Z",
+      "summary": "AI 데이터센터발 메모리 수요 급증으로 비용 전가, 마진 우려",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "iPhone 'sell-in' to China declines 19% year over year: UBS",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/news/4607340-iphone-sell-in-to-china-declines-19-percent-year-over-year-ubs",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "5월 중국 아이폰 출하 19% 급감, 화웨이에 점유율 잠식",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Apple to hit record market share in smartphones, laptops, tablets in 2026: Counterpoint",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/news/4607852-apple-to-hit-record-market-share-in-smartphones-laptops-tablets-in-2026-counterpoint",
+      "published": "2026-06-26T00:00:00Z",
+      "summary": "카운터포인트, 2026년 스마트폰·노트북·태블릿 점유율 사상최고 전망",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Is Apple Intelligence the Catalyst Apple Stock Needs?",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/06/27/is-apple-intelligence-the-catalyst-apple-stock-nee/",
+      "published": "2026-06-27T00:00:00Z",
+      "summary": "Gemini 기반 새 Siri·AI가 교체주기 자극할지 주목",
+      "impact": "neutral",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "Apple licenses 1.2T-param Gemini to power new Siri (~$1B/yr)",
+      "implication_for_target": "애플이 자체 AI 대신 구글 모델 의존 — 단기 제품 경쟁력 보완이나 AI 자립도 약점 노출"
+    },
+    {
+      "ticker": "AMZN",
+      "headline": "Big Tech 2026 AI capex swells to ~$725B (AMZN $200B, GOOGL/MSFT 대규모)",
+      "implication_for_target": "경쟁사 AI 인프라 투자 폭증이 메모리 부족·원가 상승 유발해 애플 비용 압박"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.4,
+    "competitive_position": -0.1,
+    "regulatory_risk": 0.1,
+    "macro_sensitivity": -0.4
+  },
+  "narrative_score": -0.23,
+  "summary_kr": "메모리칩 부족發 맥·아이패드 가격 인상으로 주가가 1년여 만에 최악의 하락을 기록했고, 중국 아이폰 출하 19% 급감으로 단기 실적 우려가 커졌다. 다만 Counterpoint의 사상최고 점유율 전망과 새 Apple Intelligence가 잠재적 상쇄 요인이다.",
+  "key_events": [
+    "6/25 맥·아이패드·비전프로 가격 인상, 주가 6% 급락",
+    "메모리칩 부족 — AI 데이터센터 수요 급증이 원인",
+    "5월 중국 아이폰 sell-in 19% YoY 감소(UBS)",
+    "Counterpoint 2026 점유율 사상최고 전망(스마트폰 25%)",
+    "Gemini 기반 새 Siri 등 Apple Intelligence 본격화"
+  ],
+  "risks": [
+    "메모리 원가 상승에 따른 마진 압박 및 추가 가격 인상 가능성",
+    "중국 수요 부진과 화웨이의 프리미엄 점유율 잠식",
+    "AI 핵심 역량을 구글 Gemini에 의존하는 자립도 리스크",
+    "가격 인상이 하반기 판매량 둔화로 이어질 위험"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AAPL%20-%20Apple%20Inc.md"
+}
