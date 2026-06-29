@@ -1,0 +1,76 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-06-29",
+  "as_of_utc": "2026-06-29T22:00:00Z",
+  "news": [
+    {
+      "title": "Chevron, Microsoft sign 20-year power deal for West Texas AI data center (Project Kilby, ~2.67GW)",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/22/chevron-cvx-microsoft-msft-natural-gas-data-center.html",
+      "published": "2026-06-22T00:00:00Z",
+      "summary": "MS, 셰브론과 20년 전력계약…텍사스 2.67GW AI 데이터센터 확보",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Microsoft jumps 5.7% after Michael Burry discloses long-dated 2028 LEAP call options",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/investing/stocks/michael-burry-rare-bullish-bet-microsoft-big-tech",
+      "published": "2026-06-26T00:00:00Z",
+      "summary": "마이클 버리 2028 콜옵션 매수 공개로 MSFT 하루 5.7% 급등",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "\"Big Short\" legend Michael Burry makes bullish bet on Microsoft amid AI software rotation",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/29/big-short-legend-michael-burry-just-bet-big-on-microsoft/",
+      "published": "2026-06-29T00:00:00Z",
+      "summary": "AI 칩서 소프트웨어로 자금 이동…버리 베팅에 MSFT 매수론 부상",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "FTC antitrust probe scrutinizes Azure, Copilot bundling and OpenAI exclusivity",
+      "source": "Windows News",
+      "url": "https://windowsnews.ai/article/ftc-antitrust-probe-2026-azure-copilot-licensing-openai-under-fire.421223",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "FTC, Azure·Copilot 끼워팔기·OpenAI 독점 조사…규제 압력 지속",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "ORCL",
+      "headline": "OpenAI spreads $600B+ cloud spend across Oracle ($300B), AWS ($38B), Microsoft ($250B)",
+      "implication_for_target": "OpenAI 멀티클라우드 분산으로 Azure 독점 지위 약화, MSFT 성장 일부 잠식 위험"
+    },
+    {
+      "ticker": "AMZN",
+      "headline": "AWS becomes exclusive third-party cloud for OpenAI's enterprise 'Frontier' platform",
+      "implication_for_target": "AWS의 OpenAI 협력 확대는 MSFT 클라우드 독점성에 직접적 경쟁 위협"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.45,
+    "competitive_position": 0.2,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.14,
+  "summary_kr": "Azure 40% 성장과 셰브론 전력계약·버리의 강세 베팅이 펀더멘털 긍정론을 뒷받침하지만, FTC 반독점 조사와 OpenAI의 멀티클라우드 분산은 하방 위험으로 작용한다. 단기 주가는 AI 소프트웨어 순환매로 반등했다.",
+  "key_events": [
+    "셰브론과 20년 텍사스 AI 데이터센터 전력계약 체결 (2.67GW, 2028년 가동, 6/22)",
+    "마이클 버리 2028 LEAP 콜옵션 공개 후 MSFT 6/26 하루 5.7% 급등",
+    "FTC, Azure·Copilot 끼워팔기 및 OpenAI 독점 라이선스 반독점 조사 진행",
+    "OpenAI 클라우드 지출을 오라클·AWS로 분산하며 Azure 독점성 완화"
+  ],
+  "risks": [
+    "FTC 반독점 조사 결과 끼워팔기 분리·라이선스 변경 강제 가능성",
+    "OpenAI의 멀티클라우드 전환으로 Azure AI 매출 성장 둔화 위험",
+    "AI 인프라 capex(연 $190B 규모) 부담과 금리 상승에 따른 밸류에이션 압박",
+    "연초 대비 큰 폭 하락 등 AI 관련주 변동성 확대"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MSFT%20-%20Microsoft%20Corporation.md"
+}

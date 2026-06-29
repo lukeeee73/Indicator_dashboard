@@ -1,0 +1,76 @@
+{
+  "ticker": "ORCL",
+  "date": "2026-06-29",
+  "as_of_utc": "2026-06-29T22:00:00Z",
+  "news": [
+    {
+      "title": "Oracle stock has worst week since 2001 dot-com bust as AI financing concerns escalate",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/26/oracle-stock-ends-worst-week-since-2001-as-investors-dwell-on-finances.html",
+      "published": "2026-06-26T00:00:00Z",
+      "summary": "AI 투자 부채·현금소진 우려로 주가 주간 19% 급락, 2001년 이후 최악의 한 주",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Oracle sheds 21,000 roles over the past year amid wave of AI layoffs",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/23/oracle-ai-job-cuts-layoffs-21000.html",
+      "published": "2026-06-23T00:00:00Z",
+      "summary": "AI 도입으로 1년간 인력 13%(2.1만명) 감축, SEC 공시로 확인",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "Oracle shares slide as debt, cash burn cloud AI infrastructure push",
+      "source": "Traders Union",
+      "url": "https://tradersunion.com/news/financial-news/show/2501125-oracle-shares-slide-ai-debt/",
+      "published": "2026-06-25T00:00:00Z",
+      "summary": "부채 1300억 달러·FY27 400억 달러 추가 조달 계획에 투자심리 악화",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Why Is Oracle's Stock Dropping Amid Record-Breaking AI Growth?",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/stock/orcl/articles/604717/why-is-oracles-stock-dropping-amid-record-breaking-ai-growth/2026-06-26",
+      "published": "2026-06-26T00:00:00Z",
+      "summary": "$638B RPO·OCI 93% 성장에도 자금조달 부담으로 주가는 고점比 53% 하락",
+      "impact": "neutral",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft Build 2026서 자체 AI 모델(MAI-Code-1-Flash) 공개, OpenAI 의존도 축소",
+      "implication_for_target": "MS의 자체 모델·멀티클라우드 전략은 클라우드 AI 인프라 경쟁 심화로 ORCL OCI 수요에 잠재적 부담"
+    },
+    {
+      "ticker": "MSFT",
+      "headline": "MS 클라우드 수주잔고 $625B로 두 배, 45%가 OpenAI Azure 약정",
+      "implication_for_target": "초대형 AI 클라우드 수주에서 MS와 직접 경쟁하나 ORCL도 OpenAI Stargate로 동반 수혜 구조"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.35,
+    "competitive_position": 0.3,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.55
+  },
+  "narrative_score": 0.13,
+  "summary_kr": "오라클은 $638B RPO와 OCI 93% 성장 등 기록적 AI 수요를 보였으나, 1300억 달러 부채·마이너스 현금흐름·대규모 추가 조달 우려로 주가가 2001년 닷컴버블 이후 최악의 한 주를 기록했다. 펀더멘털은 강하나 자금조달 리스크가 단기 투자심리를 지배한다.",
+  "key_events": [
+    "주가 주간 약 19% 급락, 2001년 이후 최악 (6/26)",
+    "1년간 인력 13%(2.1만명) AI 기반 감축 SEC 공시 (6/22~23)",
+    "FY26 RPO $638B(전년비 +363%), OCI 매출 93% 성장",
+    "FY27 부채·주식 통한 400억 달러 추가 조달 계획"
+  ],
+  "risks": [
+    "1300억 달러 부채와 마이너스 FCF(-240억 달러) 등 자금조달·레버리지 리스크",
+    "대규모 capex(FY26 +162%)가 현금흐름 압박 지속",
+    "AI 모델이 소프트웨어 제품을 대체할 수 있다는 우려로 SW주 동반 약세",
+    "MSFT 등 경쟁사의 자체 모델·멀티클라우드 확장에 따른 OCI 경쟁 심화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ORCL%20-%20Oracle%20Corporation.md"
+}

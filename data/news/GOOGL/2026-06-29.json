@@ -1,0 +1,86 @@
+{
+  "ticker": "GOOGL",
+  "date": "2026-06-29",
+  "as_of_utc": "2026-06-29T22:00:00Z",
+  "news": [
+    {
+      "title": "Alphabet joins Dow Jones Industrial Average, shares rise ~3.7%",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-joins-dow-jones-industrial-165026757.html",
+      "published": "2026-06-29T00:00:00Z",
+      "summary": "알파벳, 버라이즌 대체해 다우 편입 첫날 약 3.7% 상승",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "FTSE Russell reclassifies Alphabet as 100% pure growth stock (June 2026 reconstitution)",
+      "source": "LSEG",
+      "url": "https://www.lseg.com/en/insights/ftse-russell/growth-value-or-both-key-style-shifts-in-the-june-2026-russell-reconstitution",
+      "published": "2026-06-29T00:00:00Z",
+      "summary": "러셀 리밸런싱서 가치주→100% 성장주 분류, 기관 매수세 유입",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Google loses two top AI researchers (Shazeer, Jumper) to OpenAI & Anthropic",
+      "source": "Fortune",
+      "url": "https://fortune.com/2026/06/23/google-deepmind-ai-researcher-departures-raise-doubts-about-ability-to-win-the-ai-race-shazeer-jumper-eye-on-ai/",
+      "published": "2026-06-23T00:00:00Z",
+      "summary": "제미나이·알파폴드 핵심 연구자 이탈, 인재 유출 우려",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "EU tells Google to open Gemini, Android features to AI rivals under DMA",
+      "source": "RTTNews",
+      "url": "https://www.rttnews.com/3643148/eu-tells-google-to-open-gemini-android-features-to-ai-rivals-under-dma.aspx",
+      "published": "2026-06-25T00:00:00Z",
+      "summary": "EU, DMA 근거로 제미나이·안드로이드 기능을 경쟁사에 개방 요구",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Alphabet announces ~$80B equity offering to fund AI compute infrastructure",
+      "source": "Alphabet IR",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_news/2026/Jun/01/attachments/2026-June-Alphabet-Equity-Capital-Raise-Press-Release-PDF.pdf",
+      "published": "2026-06-23T00:00:00Z",
+      "summary": "AI 인프라 투자 위해 약 800억 달러 규모 주식 발행 추진",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "META",
+      "headline": "Meta weighs tens-of-billions equity offering, triggering Big Tech stock-sale chain reaction",
+      "implication_for_target": "대규모 AI 자본조달 경쟁 심화 — 알파벳의 800억 증자도 같은 맥락, 캐펙스 부담 공통"
+    },
+    {
+      "ticker": "MSFT",
+      "headline": "Big Tech 2026 capex swells to ~$725B; Microsoft ~$190B, Amazon ~$200B, Alphabet ~$175-185B",
+      "implication_for_target": "전방위 AI 투자 경쟁으로 단기 현금흐름 압박은 공통이나 클라우드·광고 수익화 입증이 차별화 관건"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.25,
+    "competitive_position": 0.05,
+    "regulatory_risk": -0.35,
+    "macro_sensitivity": 0.15
+  },
+  "narrative_score": 0.07,
+  "summary_kr": "알파벳은 다우 편입과 100% 성장주 재분류로 기관 매수세가 유입되며 6/29 강세를 보였으나, 직전 주 핵심 AI 연구자 이탈과 EU의 제미나이·안드로이드 개방 명령으로 경쟁·규제 리스크가 부각됐다. 인덱스 호재는 단기 수급 요인, 펀더멘털 변수는 AI 인재·규제·막대한 캐펙스의 수익화 입증 여부다.",
+  "key_events": [
+    "6/29 다우존스 산업평균지수 편입 첫날 약 3.7% 상승",
+    "6/29(장후) FTSE 러셀 100% 성장주 재분류",
+    "6/23경 Shazeer·Jumper 등 핵심 AI 연구자 OpenAI·Anthropic 이탈",
+    "6월 말 EU DMA 기반 제미나이·안드로이드 경쟁사 개방 명령",
+    "AI 컴퓨트 인프라 위한 약 800억 달러 주식 발행 발표"
+  ],
+  "risks": [
+    "EU(DMA)·UK 등 규제 강화로 제미나이·검색 사업 모델 제약 가능성",
+    "핵심 AI 인재 이탈에 따른 제미나이 경쟁력·로드맵 차질 우려",
+    "연 1750~1850억 달러 캐펙스의 단기 현금흐름·수익성 부담",
+    "인덱스 편입 발 상승은 수급성 일회성 요인일 수 있음"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GOOGL%20-%20Alphabet%20Inc.md"
+}

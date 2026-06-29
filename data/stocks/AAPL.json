@@ -10293,31 +10293,33 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-22",
-      "narrative_score": -0.14,
-      "summary_kr": "메모리 칩 부족發 기기 가격 인상 불가피론이 마진 우려를 키웠고, 트럼프發 애플-인텔 미국 생산 협력은 공급망 다변화 측면에서 긍정적이나 초기 단계다. WWDC 이후 Siri AI 일정 부재로 AI 실행력 격차 우려가 남아 있다.",
+      "as_of": "2026-06-29",
+      "narrative_score": -0.23,
+      "summary_kr": "메모리칩 부족發 맥·아이패드 가격 인상으로 주가가 1년여 만에 최악의 하락을 기록했고, 중국 아이폰 출하 19% 급감으로 단기 실적 우려가 커졌다. 다만 Counterpoint의 사상최고 점유율 전망과 새 Apple Intelligence가 잠재적 상쇄 요인이다.",
       "key_events": [
-        "쿡, 메모리 비용發 가격 인상 불가피 발언",
-        "애플-인텔 미국 칩 생산 협력 발표",
-        "WWDC 후 애널리스트 목표가 상향"
+        "6/25 맥·아이패드·비전프로 가격 인상, 주가 6% 급락",
+        "메모리칩 부족 — AI 데이터센터 수요 급증이 원인",
+        "5월 중국 아이폰 sell-in 19% YoY 감소(UBS)",
+        "Counterpoint 2026 점유율 사상최고 전망(스마트폰 25%)",
+        "Gemini 기반 새 Siri 등 Apple Intelligence 본격화"
       ],
       "risks": [
-        "DRAM 가격 급등 원가 역풍",
-        "Siri AI 출시 지연·지역 제한",
-        "높은 P/E 밸류에이션 부담",
-        "EU·중국 AI 출시 제약"
+        "메모리 원가 상승에 따른 마진 압박 및 추가 가격 인상 가능성",
+        "중국 수요 부진과 화웨이의 프리미엄 점유율 잠식",
+        "AI 핵심 역량을 구글 Gemini에 의존하는 자립도 리스크",
+        "가격 인상이 하반기 판매량 둔화로 이어질 위험"
       ],
-      "news_count": 4,
+      "news_count": 5,
       "competitor_context": [
         {
-          "ticker": "MSFT",
-          "headline": "Microsoft attributes part of record AI budget to memory/chip costs",
-          "implication_for_target": "메모리 칩 부족이 빅테크 전반 비용 위기임을 확인 — 애플 가격 인상 명분은 되나 마진 리스크 지속"
+          "ticker": "GOOGL",
+          "headline": "Apple licenses 1.2T-param Gemini to power new Siri (~$1B/yr)",
+          "implication_for_target": "애플이 자체 AI 대신 구글 모델 의존 — 단기 제품 경쟁력 보완이나 AI 자립도 약점 노출"
         },
         {
-          "ticker": "GOOGL",
-          "headline": "Alphabet raises capex toward ~$190B; Big Tech AI spend to surge in 2026",
-          "implication_for_target": "경쟁사 공격적 AI 인프라 투자 대비 애플은 Siri AI 일정조차 제시 못해 실행력 격차 우려"
+          "ticker": "AMZN",
+          "headline": "Big Tech 2026 AI capex swells to ~$725B (AMZN $200B, GOOGL/MSFT 대규모)",
+          "implication_for_target": "경쟁사 AI 인프라 투자 폭증이 메모리 부족·원가 상승 유발해 애플 비용 압박"
         }
       ],
       "history": [
@@ -10356,6 +10358,10 @@
         {
           "date": "2026-06-22",
           "narrative_score": -0.14
+        },
+        {
+          "date": "2026-06-29",
+          "narrative_score": -0.23
         }
       ]
     }
