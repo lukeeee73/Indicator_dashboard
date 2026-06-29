@@ -4,18 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-06-22",
-      "value": 63.62
-    },
-    {
-      "date": "2016-06-23",
-      "value": 64.11
-    },
-    {
-      "date": "2016-06-24",
-      "value": 62.62
-    },
-    {
       "date": "2016-06-27",
       "value": 61.84
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-06-22",
-      "value": 150.48
+      "value": 147.68
+    },
+    {
+      "date": "2026-06-23",
+      "value": 150.86
+    },
+    {
+      "date": "2026-06-24",
+      "value": 152.04
+    },
+    {
+      "date": "2026-06-25",
+      "value": 148.5
+    },
+    {
+      "date": "2026-06-26",
+      "value": 149.02
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 350407589888.0,
-      "pe_ratio": 21.999998,
-      "forward_pe": 21.234562,
+      "market_cap": 347007844352.0,
+      "pe_ratio": 21.78655,
+      "forward_pe": 21.027294,
       "eps_ttm": 6.84,
-      "dividend_yield": 2.83,
+      "dividend_yield": 2.86,
       "profit_margin": 0.19162,
       "operating_margin": 0.23047,
-      "price_to_book": 6.519648,
+      "price_to_book": 6.4563932,
       "return_on_equity": 0.31112
     },
     "quarterly": [
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 150.48,
+    "as_of": "2026-06-26",
+    "current_price": 149.02,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10124,7 +10128,7 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 127.56,
+        "fair_value": 127.57,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
@@ -10135,7 +10139,7 @@
       }
     },
     "fair_value": 125.43,
-    "valuation_gap": 0.1997,
+    "valuation_gap": 0.1881,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10289,10 +10293,10 @@
         "gap": -0.0007
       },
       {
-        "date": "2026-06-22",
-        "price": 150.48,
+        "date": "2026-06-26",
+        "price": 149.02,
         "fair_value": 150.48,
-        "gap": 0.0
+        "gap": -0.0097
       }
     ],
     "qualitative": {

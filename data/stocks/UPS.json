@@ -4,18 +4,6 @@
   "group": "산업재 / 방산",
   "series": [
     {
-      "date": "2016-06-22",
-      "value": 72.4
-    },
-    {
-      "date": "2016-06-23",
-      "value": 73.27
-    },
-    {
-      "date": "2016-06-24",
-      "value": 71.35
-    },
-    {
       "date": "2016-06-27",
       "value": 70.91
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-06-22",
-      "value": 108.26
+      "value": 107.24
+    },
+    {
+      "date": "2026-06-23",
+      "value": 105.83
+    },
+    {
+      "date": "2026-06-24",
+      "value": 106.14
+    },
+    {
+      "date": "2026-06-25",
+      "value": 109.31
+    },
+    {
+      "date": "2026-06-26",
+      "value": 108.14
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 92021678080.0,
-      "pe_ratio": 17.5178,
-      "forward_pe": 13.528509,
-      "eps_ttm": 6.18,
-      "dividend_yield": 6.26,
+      "market_cap": 91919679488.0,
+      "pe_ratio": 17.526743,
+      "forward_pe": 13.513513,
+      "eps_ttm": 6.17,
+      "dividend_yield": 6.07,
       "profit_margin": 0.05943,
       "operating_margin": 0.0633,
-      "price_to_book": 5.6642075,
+      "price_to_book": 5.657929,
       "return_on_equity": 0.33353
     },
     "quarterly": [
@@ -10107,12 +10111,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 108.26,
+    "as_of": "2026-06-26",
+    "current_price": 108.14,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 123.6,
+        "fair_value": 123.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10122,13 +10126,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 51.55,
+        "fair_value": 51.51,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 112.92,
-    "valuation_gap": -0.0413,
+    "fair_value": 112.81,
+    "valuation_gap": -0.0414,
     "signal": "fair",
     "gap_series_weekly": [
       {
@@ -10282,10 +10286,10 @@
         "gap": -0.1516
       },
       {
-        "date": "2026-06-22",
-        "price": 108.26,
+        "date": "2026-06-26",
+        "price": 108.14,
         "fair_value": 123.6,
-        "gap": -0.1241
+        "gap": -0.1251
       }
     ],
     "qualitative": {

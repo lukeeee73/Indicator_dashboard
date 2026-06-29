@@ -4,18 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-06-22",
-      "value": 24.08
-    },
-    {
-      "date": "2016-06-23",
-      "value": 24.49
-    },
-    {
-      "date": "2016-06-24",
-      "value": 23.28
-    },
-    {
       "date": "2016-06-27",
       "value": 22.59
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-06-22",
-      "value": 82.56
+      "value": 80.43
+    },
+    {
+      "date": "2026-06-23",
+      "value": 78.95
+    },
+    {
+      "date": "2026-06-24",
+      "value": 78.95
+    },
+    {
+      "date": "2026-06-25",
+      "value": 78.53
+    },
+    {
+      "date": "2026-06-26",
+      "value": 78.1
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 74436968448.0,
-      "pe_ratio": 30.129562,
-      "forward_pe": 5.865018,
+      "market_cap": 70420054016.0,
+      "pe_ratio": 28.503649,
+      "forward_pe": 5.5453663,
       "eps_ttm": 2.74,
-      "dividend_yield": 0.91,
+      "dividend_yield": 0.92,
       "profit_margin": 0.0137600005,
       "operating_margin": 0.0936,
-      "price_to_book": 1.188406,
+      "price_to_book": 1.1242747,
       "return_on_equity": 0.040149998
     },
     "quarterly": [
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 82.56,
+    "as_of": "2026-06-26",
+    "current_price": 78.1,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10124,7 +10128,7 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 281.53,
+        "fair_value": 281.68,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
@@ -10134,8 +10138,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 131.8,
-    "valuation_gap": -0.3736,
+    "fair_value": 131.84,
+    "valuation_gap": -0.4076,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10367,10 +10371,10 @@
         "gap": -0.6637
       },
       {
-        "date": "2026-06-22",
-        "price": 82.56,
+        "date": "2026-06-26",
+        "price": 78.1,
         "fair_value": 235.75,
-        "gap": -0.6498
+        "gap": -0.6687
       }
     ],
     "qualitative": {

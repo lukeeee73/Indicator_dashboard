@@ -4,26 +4,6 @@
   "group": "조선 (한국)",
   "series": [
     {
-      "date": "2016-06-22",
-      "value": 6944.42
-    },
-    {
-      "date": "2016-06-23",
-      "value": 6981.32
-    },
-    {
-      "date": "2016-06-24",
-      "value": 6560.67
-    },
-    {
-      "date": "2016-06-27",
-      "value": 6568.05
-    },
-    {
-      "date": "2016-06-28",
-      "value": 6841.11
-    },
-    {
       "date": "2016-06-29",
       "value": 6752.55
     },
@@ -9790,13 +9770,33 @@
     {
       "date": "2026-06-22",
       "value": 26200.0
+    },
+    {
+      "date": "2026-06-23",
+      "value": 24300.0
+    },
+    {
+      "date": "2026-06-24",
+      "value": 24600.0
+    },
+    {
+      "date": "2026-06-25",
+      "value": 23800.0
+    },
+    {
+      "date": "2026-06-26",
+      "value": 23000.0
+    },
+    {
+      "date": "2026-06-29",
+      "value": 24450.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 22378740449280.0,
+      "market_cap": 20883976486912.0,
       "pe_ratio": null,
-      "forward_pe": 15.17787,
+      "forward_pe": 13.910056,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.05019,
@@ -9850,18 +9850,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 26200.0,
+    "as_of": "2026-06-29",
+    "current_price": 24450.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 29345.36,
+        "fair_value": 29881.26,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 29345.36,
-    "valuation_gap": -0.1072,
+    "fair_value": 29881.26,
+    "valuation_gap": -0.1818,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10093,10 +10093,16 @@
         "gap": 1.139
       },
       {
-        "date": "2026-06-22",
-        "price": 26200.0,
+        "date": "2026-06-26",
+        "price": 23000.0,
         "fair_value": 12880.0,
-        "gap": 1.0342
+        "gap": 0.7857
+      },
+      {
+        "date": "2026-06-29",
+        "price": 24450.0,
+        "fair_value": 12880.0,
+        "gap": 0.8983
       }
     ],
     "qualitative": {

@@ -4,18 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-06-22",
-      "value": 7.78
-    },
-    {
-      "date": "2016-06-23",
-      "value": 7.91
-    },
-    {
-      "date": "2016-06-24",
-      "value": 7.39
-    },
-    {
       "date": "2016-06-27",
       "value": 7.17
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-06-22",
-      "value": 14.45
+      "value": 14.11
+    },
+    {
+      "date": "2026-06-23",
+      "value": 14.0
+    },
+    {
+      "date": "2026-06-24",
+      "value": 13.84
+    },
+    {
+      "date": "2026-06-25",
+      "value": 14.11
+    },
+    {
+      "date": "2026-06-26",
+      "value": 14.13
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 57598734336.0,
+      "market_cap": 56303710208.0,
       "pe_ratio": null,
-      "forward_pe": 7.87644,
+      "forward_pe": 7.7184434,
       "eps_ttm": -1.55,
-      "dividend_yield": 4.27,
+      "dividend_yield": 4.25,
       "profit_margin": -0.03216,
       "operating_margin": 0.05743,
-      "price_to_book": 1.5379295,
+      "price_to_book": 1.5033514,
       "return_on_equity": -0.14813
     },
     "quarterly": [
@@ -10114,18 +10118,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 14.45,
+    "as_of": "2026-06-26",
+    "current_price": 14.13,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 36.69,
+        "fair_value": 36.61,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 36.69,
-    "valuation_gap": -0.6062,
+    "fair_value": 36.61,
+    "valuation_gap": -0.614,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10357,10 +10361,10 @@
         "gap": -0.5803
       },
       {
-        "date": "2026-06-22",
-        "price": 14.45,
+        "date": "2026-06-26",
+        "price": 14.13,
         "fair_value": 33.5,
-        "gap": -0.5687
+        "gap": -0.5782
       }
     ],
     "qualitative": {

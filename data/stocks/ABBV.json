@@ -4,18 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-06-22",
-      "value": 39.99
-    },
-    {
-      "date": "2016-06-23",
-      "value": 40.6
-    },
-    {
-      "date": "2016-06-24",
-      "value": 39.64
-    },
-    {
       "date": "2016-06-27",
       "value": 38.86
     },
@@ -1813,7 +1801,7 @@
     },
     {
       "date": "2018-04-10",
-      "value": 65.9
+      "value": 65.89
     },
     {
       "date": "2018-04-11",
@@ -4257,7 +4245,7 @@
     },
     {
       "date": "2020-09-11",
-      "value": 71.65
+      "value": 71.64
     },
     {
       "date": "2020-09-14",
@@ -6297,7 +6285,7 @@
     },
     {
       "date": "2022-09-21",
-      "value": 122.44
+      "value": 122.43
     },
     {
       "date": "2022-09-22",
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-06-22",
-      "value": 226.79
+      "value": 230.01
+    },
+    {
+      "date": "2026-06-23",
+      "value": 234.76
+    },
+    {
+      "date": "2026-06-24",
+      "value": 234.89
+    },
+    {
+      "date": "2026-06-25",
+      "value": 243.14
+    },
+    {
+      "date": "2026-06-26",
+      "value": 253.35
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 400690937856.0,
-      "pe_ratio": 111.17157,
-      "forward_pe": 13.958866,
-      "eps_ttm": 2.04,
-      "dividend_yield": 3.2,
+      "market_cap": 447616974848.0,
+      "pe_ratio": 123.58537,
+      "forward_pe": 15.550607,
+      "eps_ttm": 2.05,
+      "dividend_yield": 2.73,
       "profit_margin": 0.05786,
       "operating_margin": 0.32156,
-      "price_to_book": -60.204407,
+      "price_to_book": -67.25511,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10114,23 +10118,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 226.79,
+    "as_of": "2026-06-26",
+    "current_price": 253.35,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 36.72,
+        "fair_value": 36.9,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 259.95,
+        "fair_value": 260.67,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       }
     },
-    "fair_value": 120.43,
-    "valuation_gap": 0.8831,
+    "fair_value": 120.81,
+    "valuation_gap": 1.097,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10284,10 +10288,10 @@
         "gap": 4.9247
       },
       {
-        "date": "2026-06-22",
-        "price": 226.79,
+        "date": "2026-06-26",
+        "price": 253.35,
         "fair_value": 36.54,
-        "gap": 5.2066
+        "gap": 5.9335
       }
     ],
     "qualitative": {

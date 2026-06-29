@@ -8265,19 +8265,35 @@
     },
     {
       "date": "2026-06-22",
-      "value": 449.85
+      "value": 459.34
+    },
+    {
+      "date": "2026-06-23",
+      "value": 455.5
+    },
+    {
+      "date": "2026-06-24",
+      "value": 455.01
+    },
+    {
+      "date": "2026-06-25",
+      "value": 441.21
+    },
+    {
+      "date": "2026-06-26",
+      "value": 460.02
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 92497895424.0,
-      "pe_ratio": 30.029947,
-      "forward_pe": 24.691133,
-      "eps_ttm": 14.98,
+      "market_cap": 94589337600.0,
+      "pe_ratio": 31.443607,
+      "forward_pe": 25.433445,
+      "eps_ttm": 14.63,
       "dividend_yield": null,
       "profit_margin": 0.15449001,
       "operating_margin": 0.15773,
-      "price_to_book": 9.422687,
+      "price_to_book": 9.63574,
       "return_on_equity": 0.37987998
     },
     "quarterly": [
@@ -8319,28 +8335,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 449.85,
+    "as_of": "2026-06-26",
+    "current_price": 460.02,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 299.6,
+        "fair_value": 292.6,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 309.72,
+        "fair_value": 307.48,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 126.85,
+        "fair_value": 125.36,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 268.09,
-    "valuation_gap": 0.678,
+    "fair_value": 263.62,
+    "valuation_gap": 0.745,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8494,10 +8510,10 @@
         "gap": 1.1791
       },
       {
-        "date": "2026-06-22",
-        "price": 449.85,
+        "date": "2026-06-26",
+        "price": 460.02,
         "fair_value": 214.8,
-        "gap": 1.0943
+        "gap": 1.1416
       }
     ],
     "qualitative": {

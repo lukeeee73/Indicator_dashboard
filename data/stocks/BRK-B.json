@@ -4,18 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-06-22",
-      "value": 143.94
-    },
-    {
-      "date": "2016-06-23",
-      "value": 145.98
-    },
-    {
-      "date": "2016-06-24",
-      "value": 139.71
-    },
-    {
       "date": "2016-06-27",
       "value": 138.5
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-06-22",
-      "value": 491.85
+      "value": 488.69
+    },
+    {
+      "date": "2026-06-23",
+      "value": 492.81
+    },
+    {
+      "date": "2026-06-24",
+      "value": 494.81
+    },
+    {
+      "date": "2026-06-25",
+      "value": 487.81
+    },
+    {
+      "date": "2026-06-26",
+      "value": 498.66
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1060840800256.0,
-      "pe_ratio": 14.647003,
-      "forward_pe": 22.904648,
-      "eps_ttm": 33.58,
+      "market_cap": 1075536723968.0,
+      "pe_ratio": 14.836656,
+      "forward_pe": 23.221949,
+      "eps_ttm": 33.61,
       "dividend_yield": null,
       "profit_margin": 0.19305,
       "operating_margin": 0.14352,
-      "price_to_book": 0.0009728755,
+      "price_to_book": 0.0009863529,
       "return_on_equity": 0.10499
     },
     "quarterly": [
@@ -10121,28 +10125,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-22",
-    "current_price": 491.85,
+    "as_of": "2026-06-26",
+    "current_price": 498.66,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 470.12,
+        "fair_value": 470.54,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 257.69,
+        "fair_value": 257.68,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 19544.26,
+        "fair_value": 19552.92,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 4221.22,
-    "valuation_gap": -0.8835,
+    "fair_value": 4223.16,
+    "valuation_gap": -0.8819,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10218,10 +10222,10 @@
         "gap": 0.4135
       },
       {
-        "date": "2026-06-22",
-        "price": 491.85,
+        "date": "2026-06-26",
+        "price": 498.66,
         "fair_value": 346.27,
-        "gap": 0.4204
+        "gap": 0.4401
       }
     ],
     "qualitative": {
