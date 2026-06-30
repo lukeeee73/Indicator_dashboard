@@ -10126,30 +10126,31 @@
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-06-23",
-      "narrative_score": 0.15,
-      "summary_kr": "인텔은 트럼프發 애플 파트너십(미확인)·이석희 파운드리 부회장 영입·Mizuho 목표가 상향 등 강한 고유 촉매를 보였으나, 6/23 반도체 셀오프에 5~9% 하락. CHIPS Act 지원은 중기 지지선.",
+      "as_of": "2026-06-30",
+      "narrative_score": 0.43,
+      "summary_kr": "Cantor 목표가 67% 상향과 18A-P 리스크 생산 진입으로 파운드리 로드맵 가시화, 주가 +7.2%. TSMC 가격 인상이 자체 파운드리 경쟁력을 부각하고 GPU→CPU 추론 시프트가 x86 강점을 강화.",
       "key_events": [
-        "트럼프發 인텔-애플 파트너십 보도 (+10.6%, 미확인)",
-        "이석희 파운드리 부회장 영입",
-        "Mizuho 목표가 $135 상향"
+        "Cantor 목표가 $150(+67%)",
+        "18A-P 리스크 생산 진입",
+        "TSMC 인상 반사이익",
+        "Q1 호실적·강한 Q2 가이던스"
       ],
       "risks": [
-        "애플 파트너십 양사 미확인·실현 불확실",
-        "18A 수율·마진 회복 지연",
-        "반도체 셀오프 동조"
+        "18A-P 양산 불확실성",
+        "TSMC 기술 선도 지속",
+        "AMD 서버 점유율 잠식"
       ],
-      "news_count": 4,
+      "news_count": 5,
       "competitor_context": [
         {
           "ticker": "AMD",
-          "headline": "AMD at record high before the selloff on data-center momentum",
-          "implication_for_target": "데이터센터 경쟁 심화 — 인텔의 Xeon·파운드리 반등 필요"
+          "headline": "AMD 목표가 상향, 웰스파고 CPU AI 시프트 긍정",
+          "implication_for_target": "GPU→CPU 전환은 인텔 x86 직접 수혜, TSMC 인상은 AMD 원가 압박"
         },
         {
           "ticker": "TSM",
-          "headline": "TSMC -5.2%; faces ITC patent probe",
-          "implication_for_target": "파운드리 1위 TSMC 약세는 인텔 18A 외부 수주 기회 측면에선 상대적 호재 가능"
+          "headline": "TSMC H2 가격 5~10% 인상(3nm 최대 15%)",
+          "implication_for_target": "인텔 18A-P 자체 파운드리 상대 경쟁력 개선"
         }
       ],
       "history": [
@@ -10184,6 +10185,10 @@
         {
           "date": "2026-06-23",
           "narrative_score": 0.15
+        },
+        {
+          "date": "2026-06-30",
+          "narrative_score": 0.43
         }
       ]
     }

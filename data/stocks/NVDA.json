@@ -10263,30 +10263,35 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-06-23",
-      "narrative_score": -0.12,
-      "summary_kr": "SK하이닉스 HBM4 증설 둔화 보도가 촉발한 글로벌 반도체 매도세에 NVDA -3.2%($201.97). 펀더멘털(Q1 FY27 매출 +85%)은 견조하나 B200 렌탈료 -31%·HBM 수요 우려·저작권 소송이 단기 심리 압박.",
+      "as_of": "2026-06-30",
+      "narrative_score": 0.38,
+      "summary_kr": "Palantir 정부 AI 협력·RTX Spark 양산·Vera Rubin 풀 생산으로 전방위 확장 중이나, 5월 고점 대비 23% 조정과 TSMC 가격 인상 마진 압박이 단기 부담.",
       "key_events": [
-        "6/23 반도체 셀오프 NVDA -3.2%",
-        "B200 클라우드 렌탈료 3주 -31%",
-        "Jamendo 저작권 소송"
+        "Palantir 정부 소버린 AI 협력",
+        "RTX Spark PC CPU 진입",
+        "Vera Rubin 풀 프로덕션"
       ],
       "risks": [
-        "SK하이닉스 HBM4 전환發 AI 수요 둔화 우려",
-        "GPU 렌탈가 하락 = 공급 완화 신호",
-        "저작권 소송 등 규제 잡음"
+        "TSMC 가격 인상 → 하반기 마진 압박",
+        "AI 규제 강화 압박",
+        "섹터 셀오프 여진"
       ],
       "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "MU",
-          "headline": "Micron sinks 11.4% to $1,074.60 as HBM demand-mix worry hits memory complex",
-          "implication_for_target": "HBM 수요 둔화 우려가 NVDA 가속기 BOM·공급망 심리에도 부담"
+          "ticker": "AVGO",
+          "headline": "Broadcom FY26 AI 매출 가이던스 $56B로 상향했으나 기대 미달로 셀오프",
+          "implication_for_target": "AI 칩 수요 신뢰 일부 회복, 단 가이던스 실망이 섹터 변동성 키움"
         },
         {
-          "ticker": "AVGO",
-          "headline": "Broadcom's cautious AI outlook cited as a trigger of the June 23 AI selloff",
-          "implication_for_target": "커스텀 ASIC 강자 AVGO發 AI 투자 둔화 신호 — NVDA 포함 AI 칩 전반 압박"
+          "ticker": "INTC",
+          "headline": "Intel 18A-P 리스크 생산 진입, 파운드리 로드맵 진전",
+          "implication_for_target": "NVDA의 대체 파운드리 옵션 다양화 — TSM 의존도 분산 잠재"
+        },
+        {
+          "ticker": "TSM",
+          "headline": "TSMC 첨단 노드 5~10% 가격 인상 통지",
+          "implication_for_target": "Blackwell 원가 구조 직접 영향 — 하반기 마진 압박 요인"
         }
       ],
       "history": [
@@ -10333,6 +10338,10 @@
         {
           "date": "2026-06-23",
           "narrative_score": -0.12
+        },
+        {
+          "date": "2026-06-30",
+          "narrative_score": 0.38
         }
       ]
     }

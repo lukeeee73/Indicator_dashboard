@@ -1,0 +1,84 @@
+{
+  "ticker": "INTC",
+  "date": "2026-06-30",
+  "as_of_utc": "2026-06-30T21:00:00Z",
+  "news": [
+    {
+      "title": "Cantor Fitzgerald raises Intel PT to $150 on strong AI compute demand",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/analyst-ratings/cantor-fitzgerald-raises-intel-stock-price-target-to-150-on-compute-strength-93CH-4765155",
+      "published": "2026-06-29T00:00:00Z",
+      "summary": "Cantor, 인텔 목표가 $90→$150 상향, 주가 +7.2% 견인",
+      "impact": "+",
+      "category": "macro"
+    },
+    {
+      "title": "Intel 18A-P process enters risk production with ~9% performance gain",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/16/intel-begins-production-of-18a-p-inches-closer-to-possible-apple-deal.html",
+      "published": "2026-06-16T00:00:00Z",
+      "summary": "18A-P 리스크 생산 진입(성능 +9%/전력 -18%), 파운드리 재개",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Wells Fargo: AI inference shifting from GPU to CPU benefits Intel",
+      "source": "StockStory",
+      "url": "https://markets.financialcontent.com/stocks/article/stockstory-2026-6-30-why-intel-intc-stock-is-up-today",
+      "published": "2026-06-28T00:00:00Z",
+      "summary": "AI 추론의 GPU→CPU 이동 추세로 x86 강점 부각",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Intel exceeds Q1 2026 guidance; Q2 revenue outlook $13.8-14.8B",
+      "source": "Intel Newsroom",
+      "url": "https://newsroom.intel.com/corporate/intel-reports-first-quarter-2026-financial-results",
+      "published": "2026-04-23T00:00:00Z",
+      "summary": "Q1 EPS $0.29 컨센 상회, Q2 가이던스 $13.8~14.8B",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "TSMC announces 5-10% price hikes across advanced nodes for H2 2026",
+      "source": "Tom's Hardware",
+      "url": "https://www.tomshardware.com/tech-industry/semiconductors/tsmc-is-reportedly-hiking-prices-for-all-advanced-nodes-accounting-for-74-percent-of-the-companys-wafer-business-nvidia-amd-apple-qualcomm-and-others-will-face-higher-wafer-costs",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "TSMC 전 노드 5~10% 인상 — 인텔 자체 파운드리 상대적 경쟁력",
+      "impact": "+",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "AMD 목표가 상향, 웰스파고 CPU AI 시프트 긍정",
+      "implication_for_target": "GPU→CPU 전환은 인텔 x86 직접 수혜, TSMC 인상은 AMD 원가 압박"
+    },
+    {
+      "ticker": "TSM",
+      "headline": "TSMC H2 가격 5~10% 인상(3nm 최대 15%)",
+      "implication_for_target": "인텔 18A-P 자체 파운드리 상대 경쟁력 개선"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.65,
+    "competitive_position": 0.55,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": 0.35
+  },
+  "narrative_score": 0.43,
+  "summary_kr": "Cantor 목표가 67% 상향과 18A-P 리스크 생산 진입으로 파운드리 로드맵 가시화, 주가 +7.2%. TSMC 가격 인상이 자체 파운드리 경쟁력을 부각하고 GPU→CPU 추론 시프트가 x86 강점을 강화.",
+  "key_events": [
+    "Cantor 목표가 $150(+67%)",
+    "18A-P 리스크 생산 진입",
+    "TSMC 인상 반사이익",
+    "Q1 호실적·강한 Q2 가이던스"
+  ],
+  "risks": [
+    "18A-P 양산 불확실성",
+    "TSMC 기술 선도 지속",
+    "AMD 서버 점유율 잠식"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/INTC%20-%20Intel%20Corporation.md"
+}

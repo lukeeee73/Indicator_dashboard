@@ -1,0 +1,75 @@
+{
+  "ticker": "QCOM",
+  "date": "2026-06-30",
+  "as_of_utc": "2026-06-30T21:00:00Z",
+  "news": [
+    {
+      "title": "Qualcomm nearly doubles 2029 non-handset revenue target to $40B at Investor Day",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/24/qualcomm-data-center-cpu-meta.html",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "2029 비핸드셋 매출 목표 $22B→$40B 상향(데이터센터 $15B)",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Qualcomm acquires AI software startup Modular for $3.92B",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/06/24/qualcomm-ai-chip-modular-software.html",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "AI 소프트웨어 기업 Modular $3.92B 인수 — CUDA 대항",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "Qualcomm unveils Dragonfly C1000 data center CPU, Meta as first customer",
+      "source": "Data Center Dynamics",
+      "url": "https://www.datacenterdynamics.com/en/news/qualcomm-unveils-three-new-data-center-solutions-including-qualcomm-dragonfly-c1000-cpu-set-to-be-deployed-by-meta/",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "250코어 Dragonfly C1000 CPU 공개, Meta 2028 배포",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Qualcomm raises automotive revenue target to $10B by FY2029",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/qualcomm-raises-fiscal-2029-revenue-targets-enters-data-center-93CH-4743192",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "자동차 매출 목표 $8B→$10B, $65B 파이프라인",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AVGO",
+      "headline": "Broadcom Q2 AI 매출 $10.8B이나 Q3 가이던스 기대 미달",
+      "implication_for_target": "QCOM 데이터센터 접근법 상대 부각, AI 수요 포화 신호 주의"
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel 18A-P 리스크 생산, 데이터센터 CPU 경쟁",
+      "implication_for_target": "QCOM Dragonfly 진입으로 INTC와 직접 경쟁 심화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.65,
+    "competitive_position": 0.55,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": 0.2
+  },
+  "narrative_score": 0.41,
+  "summary_kr": "Investor Day에서 2029 목표를 대폭 상향($40B 비핸드셋)하고 Dragonfly C1000 CPU·Modular 인수로 데이터센터 진출 가속, Meta 앵커 고객 확보. 단 모바일 수요 부진과 애플 자체 모뎀 위협은 지속.",
+  "key_events": [
+    "비핸드셋 목표 $40B로 상향",
+    "Dragonfly C1000 CPU·Meta 고객",
+    "Modular $3.92B 인수",
+    "자동차 목표 $10B"
+  ],
+  "risks": [
+    "모바일 핸드셋 수요 침체",
+    "애플 자체 모뎀 개발",
+    "데이터센터 INTC·AMD 경쟁"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/QCOM%20-%20QUALCOMM%20Incorporated.md"
+}
