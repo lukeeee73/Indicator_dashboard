@@ -1,0 +1,89 @@
+{
+  "ticker": "AMD",
+  "date": "2026-06-30",
+  "as_of_utc": "2026-06-30T21:00:00Z",
+  "news": [
+    {
+      "title": "AMD down 3.3% on the week despite Buy consensus from 36 analysts ($700 PT)",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/AMD/",
+      "published": "2026-06-30T00:00:00Z",
+      "summary": "AMD 주간 -3.3%이나 분석가 36명 매수 합의, 목표가 $700",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "Gartner names AMD company to beat for enterprise AI server CPUs",
+      "source": "AMD Blog / Gartner",
+      "url": "https://www.amd.com/en/blogs/2026/amd-named-current-company-to-beat-in-gartner-ai-vendor.html",
+      "published": "2026-06-10T00:00:00Z",
+      "summary": "Gartner, AMD를 엔터프라이즈 AI 서버 CPU 최강자로 평가",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "AMD acquires MEXT for AI memory optimization technology",
+      "source": "HPCWire / Yahoo Finance",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/amd-acquires-mext-tackle-data-201825648.html",
+      "published": "2026-06-15T00:00:00Z",
+      "summary": "NAND를 DRAM처럼 쓰는 메모리 최적화 스타트업 MEXT 인수, 주가 +6%",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "AMD and Rackspace sign 30 MW AI compute deployment agreement",
+      "source": "AMD Newsroom",
+      "url": "https://www.amd.com/en/newsroom/press-releases/2026-6-16-amd-and-rackspace-technology-sign-definitive.html",
+      "published": "2026-06-16T00:00:00Z",
+      "summary": "Rackspace와 30MW 규모 EPYC/Instinct 데이터센터 배포 계약",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "AMD Q1 2026: $10.3B revenue, data center +57% YoY to $5.8B",
+      "source": "DataCenterDynamics",
+      "url": "https://www.datacenterdynamics.com/en/news/amd-posts-q1-2026-data-center-revenue-of-58bn-forecasts-120bn-server-cpu-income-by-2030/",
+      "published": "2026-05-05T00:00:00Z",
+      "summary": "Q1 매출 $10.3B, 데이터센터 +57% $5.8B, Q2 가이던스 $11.2B",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NVDA",
+      "headline": "NVIDIA RTX Spark 슈퍼칩으로 Windows PC CPU 시장 진입",
+      "implication_for_target": "AMD/Intel PC CPU 시장에 NVDA 침투 — 경쟁 압박"
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel Q2 가이던스 $13.8~14.8B, 파운드리 여전히 적자",
+      "implication_for_target": "AMD 서버 CPU 우위 유지되나 Intel 회복 시 경쟁 심화"
+    },
+    {
+      "ticker": "TSM",
+      "headline": "TSMC AI 칩 공급 부족 지속, 2026 capex $52~56B 상단",
+      "implication_for_target": "AMD 주요 제조 파트너 — 공급 제약 리스크"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.85,
+    "competitive_position": 0.7,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": 0.45
+  },
+  "narrative_score": 0.52,
+  "summary_kr": "데이터센터 +57% 성장과 Gartner 최강자 평가, Rackspace 30MW 계약으로 AI 서버 우위 공고화. 단 중국 수출 규제(매출 ~20%)와 NVDA의 PC 진입이 리스크.",
+  "key_events": [
+    "데이터센터 매출 +57% YoY",
+    "Gartner AI 서버 CPU 최강자 선정",
+    "MEXT 인수",
+    "Rackspace 30MW 계약"
+  ],
+  "risks": [
+    "중국 수출 규제(매출 ~20%)",
+    "NVDA RTX Spark PC 진입",
+    "TSMC 공급 차질"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/AMD%20-%20Advanced%20Micro%20Devices.md"
+}
