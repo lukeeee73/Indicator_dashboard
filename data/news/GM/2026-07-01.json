@@ -1,0 +1,65 @@
+{
+  "ticker": "GM",
+  "date": "2026-07-01",
+  "as_of_utc": "2026-07-01T22:00:00Z",
+  "news": [
+    {
+      "title": "General Motors shares rise after securing long-term Micron chip supply",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/technology/articles/general-motors-shares-rise-securing-133524326.html",
+      "published": "2026-07-01T13:35:00Z",
+      "summary": "마이크론과 장기 메모리 공급 계약(LPDRAM·NOR·UFS NAND) — SDV·ADAS 대비",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "GM reports 4.2% decline in Q2 U.S. sales as EV demand falls",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/01/q2-auto-sales-gm-stellantis-toyota-hyundai.html",
+      "published": "2026-07-01T14:00:00Z",
+      "summary": "Q2 미국 판매 -4.2%(약 71.5만대), EV 물량 감소·트럭/SUV 방어",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "GM sales slip 4.2% in Q2 on lower EV demand, consumer economic sentiment",
+      "source": "Automotive News",
+      "url": "https://www.autonews.com/general-motors/an-gm-q2-2026-sales-0701/",
+      "published": "2026-07-01T14:30:00Z",
+      "summary": "Q2 미국 EV 2.74만대(-40.7%), EV 점유율 약 3.8%로 하락",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "TM",
+      "headline": "Toyota June US sales +10.1%, narrows gap with GM to under 100k in H1",
+      "implication_for_target": "토요타가 하반기 미국 1위 자리 위협 — GM 점유율 방어 부담"
+    },
+    {
+      "ticker": "STLA",
+      "headline": "Stellantis posts Q2 US gain, first market-share gain since 2019",
+      "implication_for_target": "스텔란티스·토요타 점유율 확대로 GM 상대적 후퇴"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": 0.05,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.06,
+  "summary_kr": "마이크론 장기 메모리 공급 계약으로 SDV·ADAS 공급망을 선제 확보하며 주가 강세. 다만 Q2 미국 판매 -4.2%·EV -40.7%로 수요 둔화가 뚜렷하고 토요타의 미국 1위 추격이 부담.",
+  "key_events": [
+    "마이크론 장기 메모리 공급 계약",
+    "Q2 미국 판매 -4.2%",
+    "미국 EV -40.7%(점유율 3.8%)"
+  ],
+  "risks": [
+    "EV 수요 둔화 지속",
+    "토요타에 미국 1위 추월 가능성",
+    "소비 심리 약화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GM%20-%20General%20Motors%20Company.md"
+}

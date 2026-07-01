@@ -1,0 +1,65 @@
+{
+  "ticker": "F",
+  "date": "2026-07-01",
+  "as_of_utc": "2026-07-01T22:00:00Z",
+  "news": [
+    {
+      "title": "Ford to recall more than 741,000 U.S. vehicles due to park system issue",
+      "source": "NBC News",
+      "url": "https://www.nbcnews.com/business/recall/ford-recall-741000-us-vehicles-due-park-system-issue-nhtsa-says-rcna352383",
+      "published": "2026-06-30T18:00:00Z",
+      "summary": "변속 SW 결함으로 74.1만대 리콜(익스페디션·내비게이터·익스플로러·F-150) — 롤어웨이 위험",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "NHTSA logs Ford Bronco recall over improperly secured fender flares",
+      "source": "Yahoo Autos",
+      "url": "https://autos.yahoo.com/safety-and-recalls/articles/nhtsa-logged-300-recalls-2026-050900126.html",
+      "published": "2026-06-30T17:00:00Z",
+      "summary": "브롱코 3.6만대 별도 리콜 — 펜더 플레어 이탈 도로 위험",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Cox: GM, Ford, Tesla lose share as Toyota, Hyundai gain in Q2",
+      "source": "Automotive News",
+      "url": "https://www.autonews.com/retail/sales/an-retail-q2-us-sales-preview-0626/",
+      "published": "2026-06-26T13:00:00Z",
+      "summary": "콕스, 포드 Q2 미국 판매 약 -12%·점유율 12.6%로 하락 전망",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GM",
+      "headline": "GM Q2 US sales -4.2% (shallower than Ford's projected -12%)",
+      "implication_for_target": "GM 대비 포드 하락폭이 커 디트로이트 내 상대적 점유율 열위"
+    },
+    {
+      "ticker": "TSLA",
+      "headline": "Q2 US auto sales: Tesla slides 13% on weak EV demand",
+      "implication_for_target": "업계 EV 부진이 포드 Model e 부문에도 압박"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.25,
+    "competitive_position": -0.3,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.29,
+  "summary_kr": "74.1만대 대형 리콜(롤어웨이 위험)과 브롱코 3.6만대 리콜이 겹치며 규제·품질 리스크가 집중. 콕스는 Q2 미국 판매 -12%·점유율 12.6% 하락을 전망해 디트로이트 3사 중 상대적 열위.",
+  "key_events": [
+    "74.1만대 파크시스템 리콜",
+    "브롱코 3.6만대 리콜",
+    "Q2 미국 판매 -12% 전망"
+  ],
+  "risks": [
+    "대형 리콜 비용·브랜드 신뢰 훼손",
+    "EV(Model e) 수요 둔화",
+    "관세·가격 부담에 점유율 하락"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/F%20-%20Ford%20Motor%20Company.md"
+}
