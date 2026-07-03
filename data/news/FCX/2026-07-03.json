@@ -1,0 +1,60 @@
+{
+  "ticker": "FCX",
+  "date": "2026-07-03",
+  "as_of_utc": "2026-07-03T21:00:00Z",
+  "news": [
+    {
+      "title": "Morgan Stanley Downgrades Freeport to Equal Weight, Cuts PT to $66",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/commodities/articles/morgan-stanley-downgrades-freeport-mcmoran-154838148.html",
+      "published": "2026-07-02T15:00:00Z",
+      "summary": "MS Overweight→Equal Weight 강등, 목표가 $70→$66. 그라스버그 램프업 지연 지목.",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "FCX Pulls Back to ~$60 from June 17 All-Time High of $72.28",
+      "source": "Robinhood",
+      "url": "https://robinhood.com/us/en/stocks/FCX/",
+      "published": "2026-07-02T14:00:00Z",
+      "summary": "6/17 사상최고 $72.28서 $60.70로 조정. 구리 가격 되돌림.",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Freeport Remains Central to Copper Supply Story Despite Grasberg Delays",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/why-freeport-mcmoran-fcx-remains-095756885.html",
+      "published": "2026-07-01T12:00:00Z",
+      "summary": "그라스버그 완전 회복 2028초로 지연·2026 판매 3.1B lbs로 하향에도 구리 공급 핵심.",
+      "impact": "neutral",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NEM",
+      "headline": "Newmont 금값 8개월 최저서 $4,000 회복·Q2 EPS +54% 전망",
+      "implication_for_target": "금은 반등, 구리는 되돌림 — FCX는 그라스버그 지연 특수 요인이 추가 부담"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": 0.0,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": -0.06,
+  "summary_kr": "MS 강등(PT $66)·사상최고 $72서 $60 조정으로 단기 약세. 그라스버그 완전회복 2028초 지연·2026 가이던스 하향이 겹쳤으나 구리 공급 핵심 지위는 유지.",
+  "key_events": [
+    "MS Equal Weight 강등·PT $66",
+    "6/17 ATH $72.28서 -16% 조정",
+    "2026 판매 3.1B lbs로 하향"
+  ],
+  "risks": [
+    "그라스버그 램프업 2028초까지 지연",
+    "구리 가격 되돌림",
+    "MS 등 애널 센티먼트 악화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/FCX%20-%20Freeport-McMoRan.md"
+}
