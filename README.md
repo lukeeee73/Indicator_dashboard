@@ -217,6 +217,16 @@ Vercel 이 GitHub 의 default branch 를 감시하므로,
   이번 주 흐름·기술적 한계·플레이어 점유율·뉴스 시그널**을 표시한다. 데이터는
   `data/markets/ai-semiconductor.json` 하나에 모이며, 티커별 `narrative_score` 가
   시장별로 자동 집계된다. 조사·갱신은 `.claude/routines/market-research/` 루틴 담당.
+- [x] **6단계 — 뉴스 기반 자동 병목 신호 (market pulse)** (현재)
+  시장 지도가 "한번 만들면 안 바뀌는" 문제를 해결. 루틴이 누적하는 시장 뉴스에
+  **방향성 신호 태그**(`signals`: 공급 긴축/완화·수요 확대/축소, 강도 1~3)를 달고,
+  `scripts/market_pulse.py` 가 **시장별 병목 판정 기준**
+  (`data/markets/criteria/`)에 따라 시간 감쇠·다중 소스 hysteresis 로 집계해
+  시장별 **병목 압력·수요 모멘텀·severity 전이 제안·병목 이동 경보**
+  (`data/markets/analysis/`)를 산출한다 (예: 2024 CoWoS → 2026 HBM·전력 이동 패턴).
+  스크립트는 지도를 직접 고치지 않는다 — **탐지(스크립트)와 판단(루틴) 분리**:
+  주간 market-research 루틴이 제안을 교차 검증한 뒤 지도에 반영한다. 웹 시장
+  지도에는 노드 ▲▼ 압력 화살표·보드 상단 자동 신호 스트립·상세 패널 게이지로 표시.
 
 ---
 

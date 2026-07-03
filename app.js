@@ -1654,7 +1654,7 @@ const MARKET_MAPS = [
   { id: "ai-semiconductor", label: "AI · 반도체" },
   { id: "pharma-bio",       label: "제약 · 바이오" },
 ];
-const MC_STATE = { mapId: MARKET_MAPS[0].id, cache: {}, map: null, news: null, activeNode: null, bottleneckOnly: false, loading: false, zoom: 1 };
+const MC_STATE = { mapId: MARKET_MAPS[0].id, cache: {}, map: null, news: null, pulse: null, activeNode: null, bottleneckOnly: false, loading: false, zoom: 1 };
 
 // 강조 색 — 독점/병목만. demand_limited·비병목은 null(중립 톤).
 const MC_SEVERITY_COLOR = {
@@ -1678,15 +1678,18 @@ async function renderMarketCascade(stocks) {
     MC_STATE.loading = true;
     board.innerHTML = emptyMessage("시장 지도를 불러오는 중…");
     try {
-      const [mapRes, newsRes] = await Promise.all([
+      const [mapRes, newsRes, pulseRes] = await Promise.all([
         fetch(`data/markets/${mapId}.json`, { cache: "no-cache" }),
         fetch(`data/markets/news/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
+        // 자동 병목 신호 (scripts/market_pulse.py 산출) — 없어도 지도는 그린다
+        fetch(`data/markets/analysis/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
       ]);
       if (!mapRes.ok) throw new Error(`HTTP ${mapRes.status}`);
       MC_STATE.cache[mapId] = {
         map: await mapRes.json(),
         // 뉴스 스토어는 없어도 지도는 그린다 (recent_news 폴백)
         news: newsRes && newsRes.ok ? await newsRes.json() : null,
+        pulse: pulseRes && pulseRes.ok ? await pulseRes.json() : null,
       };
     } catch (err) {
       board.innerHTML = emptyMessage(`시장 지도를 불러오지 못했습니다 (${err.message}).`);
@@ -1699,6 +1702,7 @@ async function renderMarketCascade(stocks) {
   if (!entry) return;
   MC_STATE.map = entry.map;
   MC_STATE.news = entry.news;
+  MC_STATE.pulse = entry.pulse;
   renderMarketChrome();
   renderMarketBoard(stocks);
   renderMarketNewsFeed(stocks);
@@ -1800,6 +1804,26 @@ function mcShareBar(players) {
     `<span class="mc-sb-seg" style="width:${p.share}%;background:${MC_SHARE_RAMP[Math.min(i, MC_SHARE_RAMP.length - 1)]}" title="${escapeHtml(p.name)} ${p.share}%"></span>`).join("");
   if (sum < 99) html += `<span class="mc-sb-seg mc-sb-etc" style="width:${100 - sum}%" title="기타 ${Math.round(100 - sum)}%"></span>`;
   return `<span class="mc-sb">${html}</span>`;
+}
+
+// ── 자동 병목 신호 (market pulse) 헬퍼 ──────────────────────────────────
+// data/markets/analysis/<id>.json — scripts/market_pulse.py 가 뉴스 스토어의
+// signals 를 집계해 산출한 병목 압력·수요 모멘텀·전이 제안. 지도(severity)는
+// 루틴이 검증 후 반영하므로, 웹에서는 '자동 신호'로만 표시한다.
+function mcPulseFor(mid) {
+  const p = MC_STATE.pulse;
+  const r = p && p.markets && p.markets[mid];
+  return r && r.status === "ok" ? r : null;
+}
+
+// 노드용 압력 화살표: 조여옴(▲)/풀림(▼). |압력| 이 임계 미만이면 null.
+function mcPulseArrow(mid) {
+  const r = mcPulseFor(mid);
+  if (!r) return null;
+  const th = (MC_STATE.pulse.params && MC_STATE.pulse.params.node_arrow_threshold) || 0.35;
+  if (r.bottleneck_pressure >= th) return { dir: "up", label: "▲", tone: "neg", v: r.bottleneck_pressure };
+  if (r.bottleneck_pressure <= -th) return { dir: "down", label: "▼", tone: "pos", v: r.bottleneck_pressure };
+  return null;
 }
 
 // ── 시장 단위 뉴스 헬퍼 ──────────────────────────────────────────────────
@@ -1906,6 +1930,9 @@ function renderMarketBoard(stocks) {
                     <span>${escapeHtml(ax.right || "최종 수요 — 돈을 내는 곳")}</span>`;
   board.appendChild(axis);
 
+  const strip = mcPulseStrip();
+  if (strip) board.appendChild(strip);
+
   const main = document.createElement("div");
   main.className = "mcd-main";
   dia.flow.forEach((cl) => main.appendChild(mcClusterEl(cl, stocks, false)));
@@ -1928,6 +1955,47 @@ function renderMarketBoard(stocks) {
   });
 }
 
+// 자동 신호 스트립: 전이 제안·병목 이동 경보·주목 시장 (pulse 파일이 있을 때만)
+function mcPulseStrip() {
+  const p = MC_STATE.pulse;
+  if (!p) return null;
+  const alerts = p.alerts || [];
+  const focus = p.top_focus || [];
+  if (!alerts.length && !focus.length) return null;
+
+  const chips = [];
+  alerts.forEach((a) => {
+    if (a.type === "severity_change_proposed") {
+      const up = a.action === "escalate";
+      chips.push(`<button class="mc-pulse-chip" data-goto="${escapeHtml(a.market)}" data-kind="${up ? "esc" : "de"}"
+        title="뉴스 신호 기반 자동 제안 (압력 ${a.pressure >= 0 ? "+" : ""}${a.pressure}) — 루틴 검증 후 지도에 반영">
+        ${up ? "⚠" : "▽"} ${escapeHtml(a.name_kr)} <em>${escapeHtml(a.from)} → ${escapeHtml(a.to)} 제안</em></button>`);
+    } else if (a.type === "bottleneck_migration") {
+      chips.push(`<button class="mc-pulse-chip" data-goto="${escapeHtml(a.to[0] || a.market)}" data-kind="mig"
+        title="완화 중인 시장의 인접 시장이 조여옵니다">
+        ⇢ 병목 이동? ${escapeHtml(a.name_kr)} → ${escapeHtml((a.to_names || []).join(" · "))}</button>`);
+    }
+  });
+  const focusHtml = focus.length
+    ? `<span class="mc-pulse-focus">주목: ${focus.slice(0, 3).map((f) =>
+        `<button class="mc-pulse-mkt" data-goto="${escapeHtml(f.market)}"
+           title="병목 압력·성장 전망 복합 점수 ${f.score >= 0 ? "+" : ""}${f.score}">${escapeHtml(f.name_kr)}</button>`).join(" · ")}</span>`
+    : "";
+
+  const el = document.createElement("div");
+  el.className = "mc-pulse-strip";
+  el.innerHTML = `<span class="mc-pulse-label" title="뉴스 스토어의 방향성 신호를 scripts/market_pulse.py 가 집계한 자동 신호 — 지도 반영은 주간 루틴이 검증 후 수행">
+      📡 자동 신호 <em>${escapeHtml((p.generated || "").slice(0, 10))}</em></span>
+    ${chips.join("")}${focusHtml}`;
+  el.querySelectorAll("[data-goto]").forEach((b) =>
+    b.addEventListener("click", () => {
+      selectMarketNode(b.dataset.goto, MC_STATE.stocks || {});
+      const node = document.querySelector(`.mc-node[data-id="${CSS.escape(b.dataset.goto)}"]`);
+      if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+    }));
+  return el;
+}
+
 // 단일 시장 노드 — 콤팩트 (구조가 한눈에 읽히게 최소 정보만; 상세는 클릭 패널)
 function mcNodeHtml(m, stocks) {
   const sev = m.bottleneck && m.bottleneck.severity;
@@ -1943,9 +2011,14 @@ function mcNodeHtml(m, stocks) {
     ? `<span class="mc-node-news${mcNewsFresh(news) ? " mc-node-news--fresh" : ""}"
          title="${escapeHtml(news[0].title || "")}">📰 ${news.length}</span>`
     : "";
+  const arrow = mcPulseArrow(m.id);
+  const arrowChip = arrow
+    ? `<span class="mc-node-pulse" data-dir="${arrow.dir}"
+         title="자동 병목 신호 — 압력 ${arrow.v >= 0 ? "+" : ""}${arrow.v.toFixed(2)} (${arrow.dir === "up" ? "조여옴" : "풀림"})">${arrow.label}</span>`
+    : "";
   return `<button class="mc-node${hi ? " mc-node--hi mc-node--" + sev : ""}" data-id="${escapeHtml(m.id)}"
             style="--mc-accent:${accent}" title="${escapeHtml(m.definition || "")}">
-      ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}</span>` : ""}
+      ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}${arrowChip}</span>` : arrowChip ? `<span class="mc-node-tag mc-node-tag--pulse">${arrowChip}</span>` : ""}
       <span class="mc-node-name">${escapeHtml(m.name_kr)}${moodDot}</span>
       <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
       ${newsChip}
@@ -2393,6 +2466,44 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ? `<p class="mc-mood" data-tone="${mood.tone}"><span>시장 분위기</span> <strong>${escapeHtml(mood.t)}</strong> · 뉴스 시그널 ${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)} (watchlist ${agg.count}곳)</p>`
     : `<p class="mc-mood mc-mood--none"><span>시장 분위기</span> watchlist 뉴스 데이터 연결 전</p>`;
 
+  // 자동 병목 신호 (market pulse) — 압력·수요 모멘텀 게이지 + 전이 제안 + 근거
+  let pulseHtml = "";
+  const pr = mcPulseFor(id);
+  if (pr) {
+    const gauge = (v, label) => {
+      const pct = Math.round(Math.abs(v) * 50);
+      const side = v >= 0 ? "right" : "left";
+      const tone = v >= 0.2 ? "neg" : v <= -0.2 ? "pos" : "neutral";
+      return `<div class="mc-pulse-gauge" title="${escapeHtml(label)} ${v >= 0 ? "+" : ""}${v.toFixed(2)}">
+          <span class="mc-pulse-gname">${escapeHtml(label)}</span>
+          <span class="mc-pulse-bar"><i data-side="${side}" data-tone="${tone}" style="width:${pct}%"></i></span>
+          <span class="mc-pulse-gval">${v >= 0 ? "+" : ""}${v.toFixed(2)}</span>
+        </div>`;
+    };
+    const prop = pr.proposal
+      ? `<p class="mc-pulse-prop" data-kind="${pr.proposal.action === "escalate" ? "esc" : "de"}">
+           ${pr.proposal.action === "escalate" ? "⚠ 승급 제안" : "▽ 완화 제안"}:
+           <strong>${escapeHtml(pr.proposal.from)} → ${escapeHtml(pr.proposal.to)}</strong>
+           (신뢰도 ${escapeHtml(pr.proposal.confidence)}) — 루틴 검증 후 지도 반영</p>`
+      : "";
+    const noteHtml = pr.note ? `<p class="mc-pulse-note">${escapeHtml(pr.note)}</p>` : "";
+    const bene = (pr.beneficiaries || []).length
+      ? `<p class="mc-pulse-bene">가격결정력 신호 — ${pr.beneficiaries.map((b) =>
+          `${escapeHtml(b.name)}${typeof b.share === "number" ? ` ${b.share}%` : ""}`).join(" · ")}</p>`
+      : "";
+    const evid = (pr.evidence || []).slice(0, 3).map((e) =>
+      `<li><span class="mc-pulse-etype" data-t="${escapeHtml(e.type)}">${
+          e.type === "supply_tightening" ? "긴축" : e.type === "supply_easing" ? "완화" :
+          e.type === "demand_up" ? "수요↑" : "수요↓"}</span> ${escapeHtml(e.title)} <em>${escapeHtml(e.date || "")}</em></li>`).join("");
+    pulseHtml = `<div class="mc-pulse-box">
+        <h5>자동 병목 신호 <span class="mc-pulse-meta">뉴스 ${pr.signal_count}건 · 출처 ${pr.source_count}곳 (감쇠 가중)</span></h5>
+        ${gauge(pr.bottleneck_pressure, "병목 압력")}
+        ${gauge(pr.demand_momentum, "수요 모멘텀")}
+        ${prop}${noteHtml}${bene}
+        ${evid ? `<ul class="mc-pulse-evid">${evid}</ul>` : ""}
+      </div>`;
+  }
+
   const weeklyHtml = m.weekly_note
     ? `<div class="mc-weekly"><h5>이번 주 시장 흐름</h5><p>${escapeHtml(m.weekly_note)}</p></div>`
     : "";
@@ -2471,6 +2582,7 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ${sizeMeta ? `<p class="mc-detail-size">${sizeMeta}</p>` : ""}
     ${m.demand_driver ? `<p class="mc-detail-driver"><span>수요 동인</span>${escapeHtml(m.demand_driver)}</p>` : ""}
     ${btlHtml}
+    ${pulseHtml}
     ${moodHtml}
     ${weeklyHtml}
     ${newsHtml}

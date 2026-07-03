@@ -1434,3 +1434,62 @@ a.mc-feed-title:hover { text-decoration: underline; }
   .mcd-cluster--band .mcd-cluster-nodes { gap: 1.2rem; }
   .mc-feed-item { flex-wrap: wrap; }
 }
+
+/* ── 자동 병목 신호 (market pulse) ─────────────────────────────────────── */
+/* 노드 위 압력 화살표 — ▲ 조여옴(레드) / ▼ 풀림(그린) */
+.mc-node-pulse { margin-left: 0.25rem; font-size: 0.6rem; font-weight: 700; }
+.mc-node-pulse[data-dir="up"]   { color: var(--down); }
+.mc-node-pulse[data-dir="down"] { color: var(--up); }
+.mc-node-tag--pulse .mc-node-pulse { margin-left: 0; }
+
+/* 보드 상단 자동 신호 스트립 — 전이 제안·병목 이동·주목 시장 */
+.mc-pulse-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+  margin: 0.35rem 0 0.55rem; padding: 0.35rem 0.55rem;
+  border: 1px dashed var(--border-mid); border-radius: 8px; background: var(--bg-elev); }
+.mc-pulse-label { font-size: 0.7rem; color: var(--text-dim); white-space: nowrap; }
+.mc-pulse-label em { font-style: normal; opacity: 0.75; margin-left: 0.15rem; }
+.mc-pulse-chip { font: inherit; font-size: 0.7rem; color: var(--text); cursor: pointer;
+  background: var(--bg-card); border: 1px solid var(--border-mid); border-radius: 999px;
+  padding: 0.12rem 0.55rem; }
+.mc-pulse-chip em { font-style: normal; color: var(--text-dim); margin-left: 0.2rem; }
+.mc-pulse-chip[data-kind="esc"] { border-color: var(--down); }
+.mc-pulse-chip[data-kind="de"]  { border-color: var(--up); }
+.mc-pulse-chip[data-kind="mig"] { border-color: #b07d2b; }
+.mc-pulse-chip:hover { background: var(--bg); }
+.mc-pulse-focus { font-size: 0.7rem; color: var(--text-dim); }
+.mc-pulse-mkt { font: inherit; font-size: 0.7rem; color: var(--text); cursor: pointer;
+  background: none; border: none; padding: 0; text-decoration: underline dotted; }
+
+/* 상세 패널 자동 신호 박스 — 게이지 + 제안 + 근거 */
+.mc-pulse-box { border: 1px dashed var(--border-mid); border-radius: 6px;
+  padding: 0.45rem 0.6rem; margin: 0 0 0.6rem; }
+.mc-pulse-box h5 { margin: 0 0 0.4rem; font-size: 0.76rem; color: var(--text-dim); }
+.mc-pulse-meta { font-weight: 400; font-size: 0.66rem; opacity: 0.85; }
+.mc-pulse-gauge { display: flex; align-items: center; gap: 0.45rem; margin: 0.2rem 0; }
+.mc-pulse-gname { flex: 0 0 4.6rem; font-size: 0.7rem; color: var(--text-dim); }
+.mc-pulse-gval  { flex: 0 0 2.6rem; font-size: 0.7rem; text-align: right; color: var(--text); }
+.mc-pulse-bar { position: relative; flex: 1; height: 6px; border-radius: 3px;
+  background: var(--bg-elev); overflow: hidden; }
+.mc-pulse-bar::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: var(--border-mid); }
+.mc-pulse-bar i { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+.mc-pulse-bar i[data-side="right"] { left: 50%; }
+.mc-pulse-bar i[data-side="left"]  { right: 50%; }
+.mc-pulse-bar i[data-tone="neg"] { background: var(--down); }
+.mc-pulse-bar i[data-tone="pos"] { background: var(--up); }
+.mc-pulse-bar i[data-tone="neutral"] { background: var(--text-dim); }
+.mc-pulse-prop { font-size: 0.76rem; margin: 0.35rem 0 0; color: var(--text); }
+.mc-pulse-prop[data-kind="esc"] strong { color: var(--down); }
+.mc-pulse-prop[data-kind="de"]  strong { color: var(--up); }
+.mc-pulse-note { font-size: 0.7rem; margin: 0.3rem 0 0; color: #b07d2b; }
+.mc-pulse-bene { font-size: 0.72rem; margin: 0.3rem 0 0; color: var(--text-dim); }
+.mc-pulse-evid { list-style: none; margin: 0.35rem 0 0; padding: 0; }
+.mc-pulse-evid li { font-size: 0.7rem; line-height: 1.5; color: var(--text-dim); }
+.mc-pulse-evid li em { font-style: normal; opacity: 0.7; }
+.mc-pulse-etype { display: inline-block; min-width: 2.4rem; text-align: center;
+  font-size: 0.62rem; border: 1px solid var(--border-mid); border-radius: 4px;
+  padding: 0 0.2rem; margin-right: 0.25rem; }
+.mc-pulse-etype[data-t="supply_tightening"] { color: var(--down); border-color: var(--down); }
+.mc-pulse-etype[data-t="supply_easing"]    { color: var(--up); border-color: var(--up); }
+.mc-pulse-etype[data-t="demand_up"]        { color: var(--text); }
+.mc-pulse-etype[data-t="demand_down"]      { color: var(--text-dim); }
