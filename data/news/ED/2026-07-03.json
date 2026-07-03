@@ -1,0 +1,60 @@
+{
+  "ticker": "ED",
+  "date": "2026-07-03",
+  "as_of_utc": "2026-07-03T21:00:00Z",
+  "news": [
+    {
+      "title": "Con Edison Steam Rate Case: NY DPS Backs $18M Increase, 9.3% ROE",
+      "source": "SEC 8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001047862/000104786226000092/a1q2026earningsreleasepr.htm",
+      "published": "2026-07-01T11:00:00Z",
+      "summary": "NY DPS 스팀 요금 $18M 인상·9.3% ROE 지지 증언. 전기·가스 요금제 2028까지.",
+      "impact": "+",
+      "category": "regulation"
+    },
+    {
+      "title": "Mizuho Downgrades Con Edison to Neutral, Cites Constrained Growth",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/quotes/ED",
+      "published": "2026-07-02T13:00:00Z",
+      "summary": "Mizuho Outperform→Neutral 강등($105), 성장 궤적·밸류 우려. Argus $112로 하향(Buy).",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Con Edison Trades at $111 Near ATH; Low Data Center Exposure Limits Growth",
+      "source": "stockanalysis",
+      "url": "https://stockanalysis.com/stocks/ed/",
+      "published": "2026-07-01T14:00:00Z",
+      "summary": "$110.95(ATH $114.50 근접) 방어주이나 데이터센터 노출 낮아 성장 제한.",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "EXC",
+      "headline": "엑셀론 19GW 데이터센터 파이프라인·자본계획 상향",
+      "implication_for_target": "동일 T&D 유틸리티 중 콘에드는 데이터센터 부하 노출이 낮아 성장 상대 열위"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": -0.1,
+    "regulatory_risk": 0.1,
+    "macro_sensitivity": 0.05
+  },
+  "narrative_score": 0.02,
+  "summary_kr": "스팀 요금 인상 지지 증언은 긍정이나 Mizuho 강등(성장 제한)·데이터센터 노출 부족으로 방어주 특성만 부각. 성장 스토리 부재.",
+  "key_events": [
+    "스팀 요금 $18M 인상 지지($9.3% ROE)",
+    "Mizuho Neutral 강등($105)",
+    "전기·가스 요금제 2028까지 확정"
+  ],
+  "risks": [
+    "데이터센터 노출 낮아 성장 제한",
+    "애널 강등·밸류 우려",
+    "금리 대비 배당 매력 변동"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/ED%20-%20Consolidated%20Edison.md"
+}
