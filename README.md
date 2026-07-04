@@ -227,10 +227,20 @@ Vercel 이 GitHub 의 default branch 를 감시하므로,
   스크립트는 지도를 직접 고치지 않는다 — **탐지(스크립트)와 판단(루틴) 분리**:
   주간 market-research 루틴이 제안을 교차 검증한 뒤 지도에 반영한다. 웹 시장
   지도에는 노드 ▲▼ 압력 화살표·보드 상단 자동 신호 스트립·상세 패널 게이지로 표시.
+- [x] **7단계 — 전력 · AI 인프라 시장 지도** (현재)
+  AI 데이터센터발 전력 수요를 **조달 경로 중심**으로 그린 두 번째 시장 지도
+  (`data/markets/power-ai.json`, 14개 시장). 핵심 질문은 "**BTM(구내 전용 발전)에
+  얼마나 몰리는가 vs 그리드(계통 접속·PPA)에 얼마나 몰리는가**" — 전기가 만들어지는
+  구조([연료 → 발전(터빈·원자로·PV) → 승압 → 송전 → 부하])를 따라
+  연료(가스·우라늄) → 장비(가스터빈·변압기·ESS) → 발전원(가스·기존 원전·SMR·
+  재생+ESS·연료전지) → 조달 경로(BTM vs FTM·송전망) → AI DC 수요의 5단 캐스케이드로
+  배치했다. 어떤 경로든 **터빈·변압기라는 공통 장비 관문**을 지나는 것이 구조의 핵심.
+  watchlist 에 "전력 인프라 (AI)" 그룹 10종(GEV·ETN·VRT·PWR·BE·OKLO + K-전력기기
+  4종) 신설, market pulse 자동 신호·criteria·주간 루틴(`power-ai.md`) 동일 적용.
 
 ---
 
-## 개별 종목 watchlist (12 섹터 그룹 · 114 종목)
+## 개별 종목 watchlist (14 섹터 그룹 · 131 종목)
 
 대시보드의 **주식 탭 → 개별 종목** 에서 섹터별로 묶인 모든 종목 카드를 확인할 수 있다.
 종목 정의는 `scripts/watchlist_data.py` 한 파일에 모여 있으며, 변경 후
@@ -252,6 +262,7 @@ Vercel 이 GitHub 의 default branch 를 감시하므로,
 | 부동산 (REITs)                | 10 | AMT · CCI · PLD · EQIX · DLR · O · SPG · WELL · PSA · VICI |
 | 통신 / 미디어                 | 10 | VZ · T · TMUS · CMCSA · CHTR · NFLX · DIS · SPOT · EA · TTWO |
 | 유틸리티 / 전력               | 10 | NEE · SO · DUK · AEP · EXC · CEG · VST · SRE · ED · D |
+| 전력 인프라 (AI)              | 10 | GEV · ETN · VRT · PWR · BE · OKLO · 두산에너빌리티 · HD현대일렉트릭 · 효성중공업 · LS일렉트릭 |
 | 조선 (한국, KRW)              |  4 | HD현대중공업 · 한화오션 · 삼성중공업 · HD현대미포 |
 
 각 카드에는 사업 모델 한 줄 설명, 1년 가격 추이, 4가지 핵심 재무 지표
@@ -261,7 +272,7 @@ valuation gap, watchlist 내 경쟁사 비교, daily-market-analysis 루틴이 �
 
 ### 요일별 라운드로빈 (daily routine)
 
-watchlist 가 114 종목으로 늘어 하루에 다 처리하면 부담이 크므로, daily routine 은
+watchlist 가 131 종목으로 늘어 하루에 다 처리하면 부담이 크므로, daily routine 은
 요일별로 섹터를 나눠서 처리한다. 매핑은 `scripts/watchlist_data.py` 의
 `DAY_OF_WEEK_SECTORS` 에 정의되어 있다:
 
@@ -271,7 +282,7 @@ watchlist 가 114 종목으로 늘어 하루에 다 처리하면 부담이 크�
 | 화요일 | 반도체 | 10 |
 | 수요일 | 자동차 / 모빌리티 + 조선 (한국) | 14 |
 | 목요일 | 바이오 / 제약 / 헬스케어 | 10 |
-| 금요일 | 에너지 / 원자재 + 유틸리티 / 전력 | 20 |
+| 금요일 | 에너지 / 원자재 + 유틸리티 / 전력 + 전력 인프라 (AI) | 30 |
 | 토요일 | 금융 + 부동산 (REITs) | 20 |
 | 일요일 | 소비재 + 산업재 / 방산 + 통신 / 미디어 | 30 |
 

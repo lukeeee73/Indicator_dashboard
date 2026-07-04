@@ -166,6 +166,7 @@
 | 파일 | 산업 | 시장 수 |
 |---|---|---|
 | `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` (+ `data/markets/news/ai-semiconductor.json`) | AI · 반도체 · 피지컬 AI | 30 |
+| `power-ai.md` → `data/markets/power-ai.json` (+ `news/` · `criteria/` · `analysis/`) | 전력 · AI 인프라 (BTM vs 그리드) | 14 |
 | `pharma-bio.md` → `data/markets/pharma-bio.json` (+ `data/markets/news/pharma-bio.json`) | 제약 · 바이오 | 18 |
 
 웹의 '시장 지도' 탭은 `app.js` 의 `MARKET_MAPS` 레지스트리(`{ id, label }`)로
