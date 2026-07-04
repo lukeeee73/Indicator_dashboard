@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-06-27",
-      "value": 32.04
-    },
-    {
-      "date": "2016-06-28",
-      "value": 32.33
-    },
-    {
-      "date": "2016-06-29",
-      "value": 32.52
-    },
-    {
-      "date": "2016-06-30",
-      "value": 33.17
-    },
-    {
-      "date": "2016-07-01",
-      "value": 33.02
-    },
-    {
       "date": "2016-07-05",
       "value": 33.25
     },
@@ -3581,7 +3561,7 @@
     },
     {
       "date": "2020-01-15",
-      "value": 46.55
+      "value": 46.54
     },
     {
       "date": "2020-01-16",
@@ -4925,7 +4905,7 @@
     },
     {
       "date": "2021-05-17",
-      "value": 46.78
+      "value": 46.77
     },
     {
       "date": "2021-05-18",
@@ -10058,28 +10038,37 @@
     {
       "date": "2026-06-26",
       "value": 82.63
+    },
+    {
+      "date": "2026-06-29",
+      "value": 82.65
+    },
+    {
+      "date": "2026-06-30",
+      "value": 81.27
+    },
+    {
+      "date": "2026-07-01",
+      "value": 81.29
+    },
+    {
+      "date": "2026-07-02",
+      "value": 84.14
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 355514122240.0,
-      "pe_ratio": 25.984276,
-      "forward_pe": 23.720531,
+      "market_cap": 362010869760.0,
+      "pe_ratio": 26.459118,
+      "forward_pe": 24.154007,
       "eps_ttm": 3.18,
-      "dividend_yield": 2.57,
+      "dividend_yield": 2.52,
       "profit_margin": 0.278,
       "operating_margin": 0.35055,
-      "price_to_book": 10.571903,
+      "price_to_book": 10.765098,
       "return_on_equity": 0.43372002
     },
     "quarterly": [
-      {
-        "date": "2024-09-30",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2024-12-31",
         "revenue": null,
@@ -10125,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-26",
-    "current_price": 82.63,
+    "as_of": "2026-07-02",
+    "current_price": 84.14,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10146,7 +10135,7 @@
       }
     },
     "fair_value": 58.52,
-    "valuation_gap": 0.412,
+    "valuation_gap": 0.4378,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10304,6 +10293,12 @@
         "price": 82.63,
         "fair_value": 69.96,
         "gap": 0.1811
+      },
+      {
+        "date": "2026-07-02",
+        "price": 84.14,
+        "fair_value": 69.96,
+        "gap": 0.2027
       }
     ],
     "qualitative": {

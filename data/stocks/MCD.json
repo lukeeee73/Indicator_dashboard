@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-06-27",
-      "value": 91.4
-    },
-    {
-      "date": "2016-06-28",
-      "value": 93.13
-    },
-    {
-      "date": "2016-06-29",
-      "value": 93.91
-    },
-    {
-      "date": "2016-06-30",
-      "value": 94.57
-    },
-    {
-      "date": "2016-07-01",
-      "value": 94.62
-    },
-    {
       "date": "2016-07-05",
       "value": 94.9
     },
@@ -2073,7 +2053,7 @@
     },
     {
       "date": "2018-07-17",
-      "value": 132.45
+      "value": 132.46
     },
     {
       "date": "2018-07-18",
@@ -4769,7 +4749,7 @@
     },
     {
       "date": "2021-03-22",
-      "value": 199.54
+      "value": 199.55
     },
     {
       "date": "2021-03-23",
@@ -6093,7 +6073,7 @@
     },
     {
       "date": "2022-07-14",
-      "value": 230.22
+      "value": 230.21
     },
     {
       "date": "2022-07-15",
@@ -8609,7 +8589,7 @@
     },
     {
       "date": "2025-01-15",
-      "value": 272.49
+      "value": 272.48
     },
     {
       "date": "2025-01-16",
@@ -9425,7 +9405,7 @@
     },
     {
       "date": "2025-11-06",
-      "value": 292.99
+      "value": 293.0
     },
     {
       "date": "2025-11-07",
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-06-26",
       "value": 269.76
+    },
+    {
+      "date": "2026-06-29",
+      "value": 267.18
+    },
+    {
+      "date": "2026-06-30",
+      "value": 270.31
+    },
+    {
+      "date": "2026-07-01",
+      "value": 269.43
+    },
+    {
+      "date": "2026-07-02",
+      "value": 280.63
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 191666061312.0,
-      "pe_ratio": 22.220758,
-      "forward_pe": 18.974749,
-      "eps_ttm": 12.14,
-      "dividend_yield": 2.76,
+      "market_cap": 199389265920.0,
+      "pe_ratio": 23.154291,
+      "forward_pe": 19.734339,
+      "eps_ttm": 12.12,
+      "dividend_yield": 2.65,
       "profit_margin": 0.31618,
       "operating_margin": 0.44252998,
-      "price_to_book": -149.03868,
+      "price_to_book": -155.0442,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10111,23 +10107,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-26",
-    "current_price": 269.76,
+    "as_of": "2026-07-02",
+    "current_price": 280.63,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 303.5,
+        "fair_value": 303.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 284.34,
+        "fair_value": 284.41,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 296.31,
-    "valuation_gap": -0.0896,
+    "fair_value": 296.03,
+    "valuation_gap": -0.052,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10285,6 +10281,12 @@
         "price": 269.76,
         "fair_value": 303.25,
         "gap": -0.1104
+      },
+      {
+        "date": "2026-07-02",
+        "price": 280.63,
+        "fair_value": 303.25,
+        "gap": -0.0746
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-06-27",
-      "value": 8.53
-    },
-    {
-      "date": "2016-06-28",
-      "value": 8.8
-    },
-    {
-      "date": "2016-06-29",
-      "value": 9.11
-    },
-    {
-      "date": "2016-06-30",
-      "value": 9.15
-    },
-    {
-      "date": "2016-07-01",
-      "value": 9.67
-    },
-    {
       "date": "2016-07-05",
       "value": 9.79
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-06-26",
       "value": 73.81
+    },
+    {
+      "date": "2026-06-29",
+      "value": 73.78
+    },
+    {
+      "date": "2026-06-30",
+      "value": 71.4
+    },
+    {
+      "date": "2026-07-01",
+      "value": 74.19
+    },
+    {
+      "date": "2026-07-02",
+      "value": 77.65
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 310799040512.0,
-      "pe_ratio": 23.809677,
-      "forward_pe": 19.211548,
+      "market_cap": 326968508416.0,
+      "pe_ratio": 25.048388,
+      "forward_pe": 20.196478,
       "eps_ttm": 3.1,
       "dividend_yield": null,
       "profit_margin": 0.28521,
       "operating_margin": 0.32303002,
-      "price_to_book": 9.989173,
+      "price_to_book": 10.508864,
       "return_on_equity": 0.48494998
     },
     "quarterly": [
@@ -10111,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-26",
-    "current_price": 73.81,
+    "as_of": "2026-07-02",
+    "current_price": 77.65,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10121,7 +10117,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 65.31,
+        "fair_value": 65.36,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -10131,8 +10127,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 55.13,
-    "valuation_gap": 0.3388,
+    "fair_value": 55.15,
+    "valuation_gap": 0.408,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10290,6 +10286,12 @@
         "price": 73.81,
         "fair_value": 61.92,
         "gap": 0.192
+      },
+      {
+        "date": "2026-07-02",
+        "price": 77.65,
+        "fair_value": 61.92,
+        "gap": 0.254
       }
     ],
     "qualitative": {

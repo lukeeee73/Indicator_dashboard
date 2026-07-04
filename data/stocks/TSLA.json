@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-06-27",
-      "value": 13.24
-    },
-    {
-      "date": "2016-06-28",
-      "value": 13.45
-    },
-    {
-      "date": "2016-06-29",
-      "value": 14.01
-    },
-    {
-      "date": "2016-06-30",
-      "value": 14.15
-    },
-    {
-      "date": "2016-07-01",
-      "value": 14.43
-    },
-    {
       "date": "2016-07-05",
       "value": 14.27
     },
@@ -10058,28 +10038,37 @@
     {
       "date": "2026-06-26",
       "value": 379.71
+    },
+    {
+      "date": "2026-06-29",
+      "value": 411.84
+    },
+    {
+      "date": "2026-06-30",
+      "value": 420.6
+    },
+    {
+      "date": "2026-07-01",
+      "value": 425.3
+    },
+    {
+      "date": "2026-07-02",
+      "value": 393.45
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1426085904384.0,
-      "pe_ratio": 345.1909,
-      "forward_pe": 151.75896,
+      "market_cap": 1477689606144.0,
+      "pe_ratio": 357.68182,
+      "forward_pe": 154.47221,
       "eps_ttm": 1.1,
       "dividend_yield": null,
       "profit_margin": 0.03946,
       "operating_margin": 0.04203,
-      "price_to_book": 17.340733,
+      "price_to_book": 17.968216,
       "return_on_equity": 0.04901
     },
     "quarterly": [
-      {
-        "date": "2024-09-30",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2024-12-31",
         "revenue": null,
@@ -10125,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-26",
-    "current_price": 379.71,
+    "as_of": "2026-07-02",
+    "current_price": 393.45,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10135,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 50.04,
+        "fair_value": 50.94,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
@@ -10145,8 +10134,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 33.42,
-    "valuation_gap": 10.3624,
+    "fair_value": 33.69,
+    "valuation_gap": 10.6792,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10304,6 +10293,12 @@
         "price": 379.71,
         "fair_value": 27.25,
         "gap": 12.9343
+      },
+      {
+        "date": "2026-07-02",
+        "price": 393.45,
+        "fair_value": 27.25,
+        "gap": 13.4385
       }
     ],
     "qualitative": {

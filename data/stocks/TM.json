@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-06-27",
-      "value": 77.97
-    },
-    {
-      "date": "2016-06-28",
-      "value": 77.65
-    },
-    {
-      "date": "2016-06-29",
-      "value": 78.95
-    },
-    {
-      "date": "2016-06-30",
-      "value": 77.76
-    },
-    {
-      "date": "2016-07-01",
-      "value": 77.49
-    },
-    {
       "date": "2016-07-05",
       "value": 77.13
     },
@@ -10058,28 +10038,37 @@
     {
       "date": "2026-06-26",
       "value": 171.48
+    },
+    {
+      "date": "2026-06-29",
+      "value": 171.36
+    },
+    {
+      "date": "2026-06-30",
+      "value": 168.42
+    },
+    {
+      "date": "2026-07-01",
+      "value": 169.66
+    },
+    {
+      "date": "2026-07-02",
+      "value": 174.59
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 203050352640.0,
-      "pe_ratio": 9.396164,
-      "forward_pe": 10.86692,
-      "eps_ttm": 18.25,
-      "dividend_yield": 3.65,
+      "market_cap": 206732918784.0,
+      "pe_ratio": 9.57182,
+      "forward_pe": 11.064005,
+      "eps_ttm": 18.24,
+      "dividend_yield": 3.59,
       "profit_margin": 0.07592,
       "operating_margin": 0.04566,
-      "price_to_book": 14.495195,
+      "price_to_book": 14.770033,
       "return_on_equity": 0.10233
     },
     "quarterly": [
-      {
-        "date": "2024-09-30",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": 431.6
-      },
       {
         "date": "2024-12-31",
         "revenue": null,
@@ -10125,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-06-26",
-    "current_price": 171.48,
+    "as_of": "2026-07-02",
+    "current_price": 174.59,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 456.25,
+        "fair_value": 456.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
@@ -10140,93 +10129,15 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
       "graham_number": {
-        "fair_value": 69.7,
+        "fair_value": 69.65,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 336.75,
-    "valuation_gap": -0.4908,
+    "fair_value": 336.61,
+    "valuation_gap": -0.4813,
     "signal": "deep_value",
     "gap_series_weekly": [
-      {
-        "date": "2025-07-03",
-        "price": 174.89,
-        "fair_value": 81282.5,
-        "gap": -0.9978
-      },
-      {
-        "date": "2025-07-11",
-        "price": 170.26,
-        "fair_value": 81282.5,
-        "gap": -0.9979
-      },
-      {
-        "date": "2025-07-18",
-        "price": 168.65,
-        "fair_value": 81282.5,
-        "gap": -0.9979
-      },
-      {
-        "date": "2025-07-25",
-        "price": 188.49,
-        "fair_value": 81282.5,
-        "gap": -0.9977
-      },
-      {
-        "date": "2025-08-01",
-        "price": 179.69,
-        "fair_value": 81282.5,
-        "gap": -0.9978
-      },
-      {
-        "date": "2025-08-08",
-        "price": 188.64,
-        "fair_value": 81282.5,
-        "gap": -0.9977
-      },
-      {
-        "date": "2025-08-15",
-        "price": 193.66,
-        "fair_value": 81282.5,
-        "gap": -0.9976
-      },
-      {
-        "date": "2025-08-22",
-        "price": 201.37,
-        "fair_value": 81282.5,
-        "gap": -0.9975
-      },
-      {
-        "date": "2025-08-29",
-        "price": 194.57,
-        "fair_value": 81282.5,
-        "gap": -0.9976
-      },
-      {
-        "date": "2025-09-05",
-        "price": 199.62,
-        "fair_value": 81282.5,
-        "gap": -0.9975
-      },
-      {
-        "date": "2025-09-12",
-        "price": 196.13,
-        "fair_value": 81282.5,
-        "gap": -0.9976
-      },
-      {
-        "date": "2025-09-19",
-        "price": 198.95,
-        "fair_value": 81282.5,
-        "gap": -0.9976
-      },
-      {
-        "date": "2025-09-26",
-        "price": 198.1,
-        "fair_value": 81282.5,
-        "gap": -0.9976
-      },
       {
         "date": "2025-10-03",
         "price": 194.59,
@@ -10460,6 +10371,12 @@
         "price": 171.48,
         "fair_value": 88370.0,
         "gap": -0.9981
+      },
+      {
+        "date": "2026-07-02",
+        "price": 174.59,
+        "fair_value": 88370.0,
+        "gap": -0.998
       }
     ],
     "qualitative": {
