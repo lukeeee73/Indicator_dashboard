@@ -1,0 +1,358 @@
+{
+  "id": "hbm",
+  "map_id": "ai-semiconductor",
+  "market_id": "hbm",
+  "name_kr": "HBM (고대역폭 메모리)",
+  "name_en": "High Bandwidth Memory — Player Map",
+  "subtitle": "장비·소재(왼쪽)가 적층 공정을 가능케 하고, 중앙 3사가 스택을 만들며, CoWoS 통합을 거쳐 GPU·ASIC 고객(오른쪽)으로 흐른다",
+  "as_of": "2026-06",
+  "intro": "HBM은 DRAM 코어 다이에 TSV(관통 전극)를 뚫어 8~16단으로 쌓는 '적층 산업'이다. 병목의 본질은 적층 수율 — 단수가 올라갈수록 워피지·열 문제가 비선형으로 커진다. 그래서 다이를 붙이는 본더(한미반도체·ASMPT), 갭을 채우는 소재(나믹스·레조낙), 스택을 걸러내는 테스트(어드반테스트·테크윙)가 3사 못지않은 전략적 지위를 갖는다. HBM4부터는 베이스 다이가 로직 공정으로 넘어가며 TSMC가 메모리 밸류체인 안으로 들어왔다.",
+  "axis": {
+    "left": "장비 · 소재 — 공정을 가능케 하는 곳",
+    "mid": "HBM 스택이 만들어져 흐르는 방향 ▶",
+    "right": "최종 고객 — HBM 을 사는 곳"
+  },
+  "groups": [
+    {
+      "id": "wfe",
+      "title": "전공정 · TSV 장비",
+      "desc": "코어 다이 노광과 TSV 형성 — 3사 공통의 전공정 입력",
+      "color": "#c2913a"
+    },
+    {
+      "id": "bonding",
+      "title": "적층 · 본딩 장비",
+      "desc": "다이를 쌓고 붙이는 장비 — 적층 수율(=병목)의 심장",
+      "color": "#b07d2b"
+    },
+    {
+      "id": "mat-test",
+      "title": "소재 · 테스트",
+      "desc": "적층 갭을 채우는 소재와 스택 전수 검증",
+      "color": "#7da453"
+    },
+    {
+      "id": "makers",
+      "title": "HBM 제조 3사",
+      "desc": "웨이퍼 → TSV → 적층 → 스택까지 · ’26 물량 전량 매진",
+      "color": "#cc2424",
+      "center": true
+    },
+    {
+      "id": "packaging",
+      "title": "패키징 · 통합",
+      "desc": "HBM 스택과 GPU 다이를 한 패키지로 — 통합의 관문",
+      "color": "#38a18c"
+    },
+    {
+      "id": "customers",
+      "title": "최종 고객",
+      "desc": "가속기 1개당 HBM 6~12스택 — 수요의 근원",
+      "color": "#5b8fc9"
+    }
+  ],
+  "players": [
+    {
+      "id": "skhynix",
+      "group": "makers",
+      "name": "SK하이닉스",
+      "name_en": "SK Hynix",
+      "ticker": "000660.KS",
+      "country": "KR",
+      "share": 62,
+      "role": "점유 ~62% · HBM4 최초 인증 · MR-MUF 공정",
+      "note": "MR-MUF 적층 공정으로 수율 우위를 확보한 HBM 1위. HBM4를 NVIDIA에 최초 인증·양산하며 Rubin 세대 초기 물량을 주도한다. HBM4부터 베이스 다이를 TSMC 로직 공정에 위탁 — 메모리·파운드리 협업의 첫 사례."
+    },
+    {
+      "id": "micron",
+      "group": "makers",
+      "name": "마이크론",
+      "name_en": "Micron",
+      "ticker": "MU",
+      "in_watchlist": true,
+      "country": "US",
+      "share": 21,
+      "role": "점유 ~21% · ’26 물량 완판 · TC-NCF 공정",
+      "note": "TC-NCF 계열 공정으로 HBM3E에서 단숨에 2위권에 진입. ’26 생산분까지 완판됐고 미국·싱가포르·대만에서 증설 중. 차세대 코어 다이(1γ)에 EUV를 처음 적용한다."
+    },
+    {
+      "id": "samsung",
+      "group": "makers",
+      "name": "삼성전자",
+      "name_en": "Samsung Electronics",
+      "ticker": "005930.KS",
+      "country": "KR",
+      "share": 17,
+      "role": "점유 ~17% · HBM4 Rubin 인증 — 컴백 중",
+      "note": "1c 코어 다이 기반 HBM4로 NVIDIA Rubin 인증을 통과하며 재진입. 유일하게 코어 다이(메모리) – 베이스 다이(자체 파운드리) – 어드밴스드 패키징까지 수직통합. 관건은 1c 양산 수율 램프(샘플 ~50% → 양산 ≥70% 필요)."
+    },
+    {
+      "id": "asml",
+      "group": "wfe",
+      "name": "ASML",
+      "name_en": "ASML",
+      "ticker": "ASML",
+      "in_watchlist": true,
+      "country": "NL",
+      "role": "코어 다이 EUV 노광 — 대체 공급원 없음",
+      "note": "1b/1c 세대 DRAM 코어 다이가 EUV 노광을 요구한다 — HBM 증설은 곧 EUV 수요. 전 밸류체인에서 대체 공급원이 없는 구조적 관문."
+    },
+    {
+      "id": "amat",
+      "group": "wfe",
+      "name": "Applied Materials",
+      "name_en": "Applied Materials",
+      "ticker": "AMAT",
+      "in_watchlist": true,
+      "country": "US",
+      "role": "TSV 식각·증착·CMP 종합 1위",
+      "note": "TSV(실리콘 관통 전극) 형성에 필요한 식각·증착·CMP 장비 종합 1위. BESI와 하이브리드 본딩 셀을 공동 개발해 차세대 적층에도 발을 걸쳤다."
+    },
+    {
+      "id": "lam",
+      "group": "wfe",
+      "name": "Lam Research",
+      "name_en": "Lam Research",
+      "ticker": "LRCX",
+      "in_watchlist": true,
+      "country": "US",
+      "role": "TSV 딥에치 · 구리 도금",
+      "note": "TSV 딥 실리콘 에칭과 구리 전기도금 장비 강자. 메모리 3사 공통 공급사로, HBM·DRAM 증설 capex의 직접 수혜."
+    },
+    {
+      "id": "kla",
+      "group": "wfe",
+      "name": "KLA",
+      "name_en": "KLA",
+      "ticker": "KLAC",
+      "country": "US",
+      "role": "적층 계측 · 결함 검사 준독점",
+      "note": "적층 오버레이·범프·결함 검사의 준독점 사업자. 단수가 올라갈수록 검사 스텝과 장비 대수가 함께 늘어나는 구조라 고적층 전환의 조용한 수혜자."
+    },
+    {
+      "id": "psk",
+      "group": "wfe",
+      "name": "피에스케이홀딩스",
+      "name_en": "PSK Holdings",
+      "ticker": "031980.KQ",
+      "country": "KR",
+      "role": "리플로우 · 디스컴 (범프 공정)",
+      "note": "범프 리플로우·디스컴 장비의 강자. HBM 범프 공정의 필수 장비로 국내 양사(SK하이닉스·삼성) 증설의 수혜를 받는 한국 중소형 장비사."
+    },
+    {
+      "id": "hanmi",
+      "group": "bonding",
+      "name": "한미반도체",
+      "name_en": "Hanmi Semiconductor",
+      "ticker": "042700.KS",
+      "country": "KR",
+      "role": "듀얼 TC 본더 — HBM 본딩 장비 1위",
+      "note": "HBM 적층의 핵심 장비 TC 본더의 압도적 선두. SK하이닉스 주력 공급사이며 마이크론으로 고객을 넓혔다. 16단 고적층 전환(워피지 제어)이 장비 세대교체 수요를 계속 만든다. 한화세미텍의 진입으로 독점 구도가 2원화되며 특허 분쟁 중."
+    },
+    {
+      "id": "hanwha-semitech",
+      "group": "bonding",
+      "name": "한화세미텍",
+      "name_en": "Hanwha Semitech",
+      "ticker": null,
+      "country": "KR",
+      "role": "TC 본더 후발 — SK하이닉스 2원화",
+      "note": "한화그룹의 반도체 장비사(비상장, 구 한화정밀기계). ’25년 SK하이닉스에 TC 본더를 처음 공급하며 한미반도체 독점 구도를 2원화했다. 한미와의 특허 분쟁은 본더 시장 경쟁 심화의 신호."
+    },
+    {
+      "id": "asmpt",
+      "group": "bonding",
+      "name": "ASMPT",
+      "name_en": "ASMPT",
+      "ticker": "0522.HK",
+      "country": "HK",
+      "role": "TC-NCF 본더 — 삼성 주력",
+      "note": "글로벌 후공정(어셈블리) 장비 1위권. 삼성전자 TC-NCF 공정용 본더의 주력 공급사로, 삼성 HBM4 램프가 곧 실적 레버리지."
+    },
+    {
+      "id": "besi",
+      "group": "bonding",
+      "name": "BESI",
+      "name_en": "BE Semiconductor",
+      "ticker": "BESI.AS",
+      "country": "NL",
+      "role": "하이브리드 본딩 선두 — 차세대 카드",
+      "note": "범프 없이 구리-구리로 직접 붙이는 하이브리드 본딩 장비의 표준(AMAT 협력). 20단+ 초고적층·HBM4E 이후 세대의 핵심 — 채택 시점이 최대 변수이며, 채택되면 기존 TC 본더 구도를 흔든다."
+    },
+    {
+      "id": "disco",
+      "group": "bonding",
+      "name": "DISCO",
+      "name_en": "DISCO",
+      "ticker": "6146.T",
+      "country": "JP",
+      "role": "그라인더 · 다이서 — 박막화 사실상 독점",
+      "note": "HBM 코어 다이를 30µm급으로 갈아내는 그라인딩·다이싱 장비의 사실상 독점 공급사. 적층 단수가 올라갈수록 다이는 얇아지고 DISCO 의존도는 커진다."
+    },
+    {
+      "id": "resonac",
+      "group": "mat-test",
+      "name": "레조낙",
+      "name_en": "Resonac",
+      "ticker": "4004.T",
+      "country": "JP",
+      "role": "NCF 필름 세계 1위",
+      "note": "TC-NCF 공정(삼성·마이크론)의 갭필 소재인 NCF 필름 세계 1위(구 쇼와덴코). 고단화로 필름 두께·보이드 제어 난도가 올라가며 소재 부가가치도 함께 상승."
+    },
+    {
+      "id": "namics",
+      "group": "mat-test",
+      "name": "나믹스",
+      "name_en": "Namics",
+      "ticker": null,
+      "country": "JP",
+      "role": "MR-MUF 언더필 — SK하이닉스 축",
+      "note": "SK하이닉스 MR-MUF 공정의 몰디드 언더필(EMC) 소재를 사실상 단독 공급하는 일본 비상장 소재사. SK하이닉스 수율 우위를 받치는 숨은 축."
+    },
+    {
+      "id": "advantest",
+      "group": "mat-test",
+      "name": "어드반테스트",
+      "name_en": "Advantest",
+      "ticker": "6857.T",
+      "country": "JP",
+      "role": "메모리 테스터 1위",
+      "note": "HBM은 스택 불량 하나가 GPU 패키지 전체를 버리게 만들므로 테스트 강도가 일반 DRAM의 몇 배. HBM 테스트 수요 폭증의 최대 수혜."
+    },
+    {
+      "id": "techwing",
+      "group": "mat-test",
+      "name": "테크윙",
+      "name_en": "TechWing",
+      "ticker": "089030.KQ",
+      "country": "KR",
+      "role": "큐브 프로버 — 스택 전수 검사",
+      "note": "메모리 테스트 핸들러 1위. HBM 스택 전수 검사용 '큐브 프로버'를 SK하이닉스에 공급 — 적층 수율 문제를 테스트로 걸러내려는 수요가 성장 동력."
+    },
+    {
+      "id": "tsmc",
+      "group": "packaging",
+      "name": "TSMC",
+      "name_en": "TSMC",
+      "ticker": "TSM",
+      "in_watchlist": true,
+      "country": "TW",
+      "role": "CoWoS 통합 + HBM4 베이스 다이",
+      "note": "HBM 스택은 TSMC CoWoS에서 GPU와 합쳐져야 비로소 제품이 된다 — 통합의 관문(NVIDIA가 용량 60%+ 선점). HBM4부터 SK하이닉스 베이스 다이를 로직 공정으로 수탁하며 메모리 밸류체인 안으로 들어왔다."
+    },
+    {
+      "id": "amkor",
+      "group": "packaging",
+      "name": "Amkor",
+      "name_en": "Amkor Technology",
+      "ticker": "AMKR",
+      "country": "US",
+      "role": "2차 CoWoS — 오버플로 물량",
+      "note": "TSMC 용량을 넘어서는 물량의 2차 패키징 파트너. 미국 애리조나 증설로 '미국 내 첨단 패키징' 축을 맡는다."
+    },
+    {
+      "id": "ase",
+      "group": "packaging",
+      "name": "ASE",
+      "name_en": "ASE Technology",
+      "ticker": "ASX",
+      "country": "TW",
+      "role": "OSAT 1위 — CoWoS 보조·대안",
+      "note": "세계 최대 OSAT(외주 패키징·테스트). CoWoS 보조 물량과 대안 패키징(CoWoP 계열)을 개발하며 통합 단계의 제2 공급원 역할."
+    },
+    {
+      "id": "nvidia",
+      "group": "customers",
+      "name": "NVIDIA",
+      "name_en": "NVIDIA",
+      "ticker": "NVDA",
+      "in_watchlist": true,
+      "country": "US",
+      "role": "최대 고객 — Rubin은 HBM4 16단",
+      "note": "HBM 수요의 과반. Rubin 세대는 GPU 1개당 HBM4를 더 높이(16단), 더 많이 요구해 수요 곡선을 계속 가파르게 만든다. 3사 모두의 최우선 인증 대상."
+    },
+    {
+      "id": "amd",
+      "group": "customers",
+      "name": "AMD",
+      "name_en": "AMD",
+      "ticker": "AMD",
+      "in_watchlist": true,
+      "country": "US",
+      "role": "MI 시리즈 — HBM 탑재량으로 차별화",
+      "note": "MI400 시리즈로 NVIDIA를 추격. 세대마다 HBM 탑재 용량을 차별화 포인트로 삼아 3사 모두에게 의미 있는 제2 고객."
+    },
+    {
+      "id": "broadcom",
+      "group": "customers",
+      "name": "Broadcom",
+      "name_en": "Broadcom",
+      "ticker": "AVGO",
+      "in_watchlist": true,
+      "country": "US",
+      "role": "커스텀 ASIC — HBM 동봉",
+      "note": "Google TPU 등 하이퍼스케일러 코디자인 ASIC에 HBM을 동봉. ASIC 물량 급증이 GPU 밖의 '제2 HBM 수요축'으로 부상."
+    },
+    {
+      "id": "hyperscalers",
+      "group": "customers",
+      "name": "Google · Amazon · Meta · MS",
+      "name_en": "Hyperscaler Custom ASICs",
+      "ticker": null,
+      "country": "US",
+      "role": "자체 ASIC — TPU·Trainium·MTIA·Maia",
+      "note": "자체 가속기(TPU·Trainium·MTIA·Maia)가 모두 HBM을 대량 탑재. ASIC 비중 확대는 HBM 수요의 구조적 상방 요인이며, 조달 협상력 확보를 위해 3사와 직접 장기계약(LTA)을 맺는다."
+    }
+  ],
+  "links": [
+    { "from": "asml", "to": "skhynix", "label": "1b/1c 코어 다이 EUV" },
+    { "from": "asml", "to": "samsung", "label": "1c 코어 다이 EUV" },
+    { "from": "asml", "to": "micron", "label": "1γ 코어 다이 EUV 도입" },
+    { "from": "amat", "to": "skhynix", "label": "TSV 식각·증착·CMP" },
+    { "from": "amat", "to": "samsung", "label": "TSV 식각·증착·CMP" },
+    { "from": "amat", "to": "micron", "label": "TSV 식각·증착·CMP" },
+    { "from": "lam", "to": "skhynix", "label": "TSV 딥에치·구리 도금" },
+    { "from": "lam", "to": "samsung", "label": "TSV 딥에치·구리 도금" },
+    { "from": "lam", "to": "micron", "label": "TSV 딥에치·구리 도금" },
+    { "from": "kla", "to": "skhynix", "label": "적층 계측·검사" },
+    { "from": "kla", "to": "samsung", "label": "적층 계측·검사" },
+    { "from": "kla", "to": "micron", "label": "적층 계측·검사" },
+    { "from": "psk", "to": "skhynix", "label": "리플로우·디스컴" },
+    { "from": "psk", "to": "samsung", "label": "리플로우·디스컴" },
+    { "from": "hanmi", "to": "skhynix", "label": "듀얼 TC 본더 — 주력 공급" },
+    { "from": "hanmi", "to": "micron", "label": "TC 본더 공급 확대" },
+    { "from": "hanwha-semitech", "to": "skhynix", "label": "TC 본더 2원화 진입 (’25~)" },
+    { "from": "asmpt", "to": "samsung", "label": "TC-NCF 본더 주력" },
+    { "from": "besi", "to": "samsung", "label": "하이브리드 본딩 (AMAT 협력)" },
+    { "from": "besi", "to": "skhynix", "label": "하이브리드 본딩 차세대 평가" },
+    { "from": "disco", "to": "skhynix", "label": "웨이퍼 박막화·다이싱" },
+    { "from": "disco", "to": "samsung", "label": "웨이퍼 박막화·다이싱" },
+    { "from": "disco", "to": "micron", "label": "웨이퍼 박막화·다이싱" },
+    { "from": "resonac", "to": "samsung", "label": "NCF 필름" },
+    { "from": "resonac", "to": "micron", "label": "NCF 필름" },
+    { "from": "namics", "to": "skhynix", "label": "MR-MUF 언더필 소재" },
+    { "from": "advantest", "to": "skhynix", "label": "HBM 스택·번인 테스트" },
+    { "from": "advantest", "to": "samsung", "label": "HBM 스택·번인 테스트" },
+    { "from": "advantest", "to": "micron", "label": "HBM 스택·번인 테스트" },
+    { "from": "techwing", "to": "skhynix", "label": "큐브 프로버 (전수 검사)" },
+    { "from": "skhynix", "to": "tsmc", "label": "HBM 스택 → CoWoS 통합" },
+    { "from": "samsung", "to": "tsmc", "label": "HBM 스택 → CoWoS (경쟁사이자 공급처)" },
+    { "from": "micron", "to": "tsmc", "label": "HBM 스택 → CoWoS 통합" },
+    { "from": "tsmc", "to": "skhynix", "label": "HBM4 베이스 다이 파운드리 (역방향 공급)" },
+    { "from": "skhynix", "to": "nvidia", "label": "HBM4 최대 공급 — 최초 인증" },
+    { "from": "samsung", "to": "nvidia", "label": "HBM4 Rubin 인증 — 재진입" },
+    { "from": "micron", "to": "nvidia", "label": "HBM3E/4 공급 — ’26 완판" },
+    { "from": "skhynix", "to": "amd", "label": "MI400 HBM4" },
+    { "from": "samsung", "to": "amd", "label": "MI 시리즈 HBM3E 주공급 이력" },
+    { "from": "skhynix", "to": "broadcom", "label": "커스텀 ASIC용 HBM" },
+    { "from": "broadcom", "to": "hyperscalers", "label": "코디자인 ASIC (TPU·MTIA) 납품" },
+    { "from": "tsmc", "to": "nvidia", "label": "CoWoS-L 통합 출하 (용량 60%+ 선점)" },
+    { "from": "amkor", "to": "nvidia", "label": "2차 CoWoS 물량" }
+  ],
+  "sources": [
+    "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
+    "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/",
+    "https://www.trendforce.com/presscenter/news/20260312-12965.html",
+    "https://newsletter.semianalysis.com/p/the-memory-wall"
+  ]
+}

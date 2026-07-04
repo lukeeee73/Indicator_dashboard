@@ -1493,3 +1493,129 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .mc-pulse-etype[data-t="supply_easing"]    { color: var(--up); border-color: var(--up); }
 .mc-pulse-etype[data-t="demand_up"]        { color: var(--text); }
 .mc-pulse-etype[data-t="demand_down"]      { color: var(--text-dim); }
+
+/* ════════════════════════════════════════════════════════════════
+   플레이어 지도 (player map) — 세부 시장 하나를 기업 단위로 펼친
+   전용 화면(오버레이). 시장 지도의 시각 문법(컬럼·집계 흐름선·
+   선택 강조)을 그대로 따르되, 노드가 시장이 아니라 기업이다.
+   ════════════════════════════════════════════════════════════════ */
+.pm-overlay {
+  position: fixed; inset: 0; z-index: 1200;
+  background: var(--bg); overflow: auto;
+  padding: 0.7rem 1rem 1rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.pm-overlay[hidden] { display: none; }
+
+.pm-head { display: flex; align-items: flex-start; gap: 0.8rem; }
+.pm-back, .pm-close {
+  background: var(--bg-elev); color: var(--text);
+  border: 1px solid var(--border-mid); border-radius: 6px;
+  cursor: pointer; font-size: 0.8rem; padding: 0.3rem 0.7rem; white-space: nowrap;
+}
+.pm-back:hover, .pm-close:hover { border-color: var(--text-dim); }
+.pm-close { margin-left: auto; }
+.pm-title h3 { margin: 0; font-size: 1.05rem; }
+.pm-title-sub { font-size: 0.72rem; color: var(--text-dim); font-weight: 600; margin-left: 0.3rem; }
+.pm-sev {
+  font-size: 0.62rem; font-weight: 700; color: var(--mc-c, var(--text-dim));
+  border: 1px solid var(--mc-c, var(--border-mid)); border-radius: 4px;
+  padding: 0.05rem 0.35rem; margin-left: 0.45rem; vertical-align: 2px; white-space: nowrap;
+}
+.pm-title p { margin: 0.15rem 0 0; font-size: 0.72rem; color: var(--text-dim); line-height: 1.4; }
+.pm-asof { opacity: 0.8; white-space: nowrap; }
+
+.pm-layout { display: grid; grid-template-columns: 1fr 320px; gap: 1rem; align-items: stretch; flex: 1; min-height: 0; }
+
+/* 캔버스 — 시장 지도와 같은 점 그리드 배경 + 드래그 패닝 */
+.pm-board-wrap {
+  position: relative; overflow: auto; cursor: grab; touch-action: pan-x pan-y;
+  background-color: var(--bg-card);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1.4px);
+  background-size: 17px 17px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.65rem; height: calc(100vh - 6rem); box-sizing: border-box;
+}
+.pm-board-wrap.mc-grabbing { cursor: grabbing; user-select: none; }
+.pm-links { position: absolute; top: 0; left: 0; z-index: 0; pointer-events: none; overflow: visible; }
+.pm-board { position: relative; z-index: 1; width: max-content; min-width: 100%; display: flex; flex-direction: column; gap: 0.9rem; }
+.pm-cols { display: flex; flex-direction: row; gap: 2.4rem; align-items: flex-start; }
+
+/* 그룹 컬럼 — 시장 지도 클러스터 패널과 동일한 톤 */
+.pm-col {
+  --cl-c: #7f8a99;
+  flex: 1 1 0; min-width: 180px; max-width: 244px;
+  background: color-mix(in srgb, var(--cl-c) 7%, rgba(20, 22, 26, 0.5));
+  border: 1px solid color-mix(in srgb, var(--border) 55%, var(--cl-c) 45%);
+  border-radius: 10px; padding: 0.6rem 0.6rem 0.7rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.pm-col--center {
+  min-width: 216px;
+  border-width: 2px;
+  box-shadow: 0 0 16px -5px var(--cl-c);
+}
+.pm-col-head { display: flex; flex-direction: column; gap: 0.1rem; margin-bottom: 0.5rem; }
+.pm-col-head h4 { margin: 0; font-size: 0.8rem; font-weight: 700; color: var(--text); }
+.pm-col-head h4::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--cl-c); margin-right: 0.35rem; }
+.pm-col-head span { font-size: 0.64rem; color: var(--text-dim); line-height: 1.3; }
+.pm-col-nodes { display: flex; flex-direction: column; gap: 0.6rem; }
+
+/* 기업 노드 */
+.pm-player {
+  width: 100%; box-sizing: border-box; text-align: left; cursor: pointer;
+  background: color-mix(in srgb, var(--bg-elev) 90%, var(--cl-c) 10%);
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--border-mid) 70%, var(--cl-c) 30%);
+  border-left: 3px solid var(--cl-c);
+  border-radius: 7px; padding: 0.4rem 0.5rem;
+  display: flex; flex-direction: column; gap: 0.14rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: transform .12s, box-shadow .12s, border-color .12s, opacity .15s;
+}
+.pm-player:hover { transform: translateY(-2px); border-color: var(--cl-c); box-shadow: 0 3px 10px rgba(0,0,0,.4); }
+.pm-player--active { border-color: var(--text); box-shadow: 0 0 0 1px var(--text); transform: translateY(-2px); }
+.pm-player--linked { border-color: var(--cl-c); }
+.pm-player--dim { opacity: 0.3; }
+.pm-player-name { font-weight: 600; font-size: 0.76rem; line-height: 1.25; display: flex; align-items: center; gap: 0.3rem; min-width: 0; }
+.pm-flag { font-size: 0.72rem; flex: none; }
+.pm-share { margin-left: auto; font-size: 0.68rem; font-weight: 700; color: var(--text); flex: none; }
+.pm-player-role { font-size: 0.62rem; color: var(--text-dim); line-height: 1.3; }
+.pm-tk { font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.02em; }
+.pm-tk--private { font-style: italic; }
+
+/* 중앙(제조사) 컬럼은 노드를 크게 */
+.pm-col--center .pm-player { padding: 0.55rem 0.6rem; gap: 0.2rem; }
+.pm-col--center .pm-player-name { font-size: 0.86rem; }
+.pm-col--center .pm-player-role { font-size: 0.66rem; }
+
+/* 우측 패널 — 시장 요약 ↔ 기업 상세 */
+.pm-detail {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem;
+  overflow-y: auto; height: calc(100vh - 6rem); box-sizing: border-box;
+}
+.pm-detail-back {
+  background: none; border: none; color: #7fb0e6; cursor: pointer;
+  font-size: 0.72rem; padding: 0; margin: 0 0 0.5rem; text-align: left;
+}
+.pm-detail-back:hover { text-decoration: underline; }
+
+/* 시장 지도 쪽 진입점 — 노드 배지 + 상세 패널 CTA */
+.mc-node-pmap { align-self: flex-start; font-size: 0.6rem; font-weight: 600; color: #7fb0e6; white-space: nowrap; }
+.pm-open-btn {
+  width: 100%; box-sizing: border-box; margin: 0 0 0.6rem;
+  background: var(--bg-elev); color: #7fb0e6;
+  border: 1px dashed color-mix(in srgb, #7fb0e6 60%, var(--border-mid) 40%);
+  border-radius: 6px; padding: 0.4rem 0.6rem; cursor: pointer;
+  font-size: 0.78rem; text-align: left;
+}
+.pm-open-btn:hover { background: var(--bg); border-style: solid; }
+
+/* 좁은 화면: 보드 위 / 상세 아래로 스택 */
+@media (max-width: 900px) {
+  .pm-layout { grid-template-columns: 1fr; }
+  .pm-board-wrap { height: 56vh; }
+  .pm-detail { height: auto; max-height: 38vh; }
+  .pm-title p { display: none; }
+}
