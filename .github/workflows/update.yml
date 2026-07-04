@@ -40,6 +40,9 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/fetch_fred.py
 
+      - name: Rebuild principles timeline
+        run: python scripts/build_principles.py
+
       - name: Commit & push if data/ changed
         run: |
           git config user.name  "github-actions[bot]"
