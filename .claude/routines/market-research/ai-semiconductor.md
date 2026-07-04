@@ -5,7 +5,9 @@
 | 파일 | 내용 |
 |---|---|
 | `data/markets/ai-semiconductor.json` | 시장 구조 — 노드·층·링크·병목·플레이어·weekly_note |
-| `data/markets/news/ai-semiconductor.json` | **시장 단위 뉴스 스토어** — 시장 id 별 뉴스 배열(최신순, 시장당 최대 20개 보관) |
+| `data/markets/news/ai-semiconductor.json` | **시장 단위 뉴스 스토어** — 시장 id 별 뉴스 배열(최신순, 시장당 최대 20개 보관) + **signals 방향성 태그** |
+| `data/markets/criteria/ai-semiconductor.json` | **시장별 병목 판정 기준** — 핵심 지표·승급/완화 조건·키워드 (병목 기준은 시장마다 다르다) |
+| `data/markets/analysis/ai-semiconductor.json` | `scripts/market_pulse.py` 산출물 — 병목 압력·수요 모멘텀·전이 **제안**·병목 이동 경보 (직접 편집 금지, 스크립트가 생성) |
 
 웹 대시보드 **주식 탭 → '시장 지도'** 가 두 파일을 읽어, 뉴스를 세 곳에 꽂아 보여준다:
 노드 배지(건수·최신일) · 노드 클릭 상세(최신 6개+더보기) · 보드 하단 통합 뉴스 피드(클릭 → 해당 시장 선택).
@@ -44,10 +46,20 @@
 
 ## 2. 작업 순서
 
-### 2.1 현재 맵 로드
+### 2.1 현재 맵 로드 + 자동 신호 확인
 `data/markets/ai-semiconductor.json` 과 `data/markets/news/ai-semiconductor.json` 을
 읽어 각 시장의 현재 `size_label / growth / bottleneck / players / weekly_note / as_of`
-와 누적 뉴스를 파악한다.
+와 누적 뉴스를 파악한다. 그리고 **자동 병목 신호를 먼저 돌려 리서치 우선순위를 잡는다**:
+
+```bash
+python scripts/market_pulse.py --industry ai-semiconductor
+```
+
+`data/markets/analysis/ai-semiconductor.json` 의 다음 항목이 이번 주 점검 우선순위다:
+- `alerts[]` 의 `severity_change_proposed` — 뉴스 신호가 임계를 넘은 시장. **이번 리서치에서 반드시 교차 검증한다.**
+- `alerts[]` 의 `bottleneck_migration` — 완화 중 시장의 인접 시장이 조여옴 (병목 이동 후보. 예: 2024 CoWoS → 2026 HBM·전력).
+- `top_focus[]` — 병목 압력 + 성장 전망 복합 상위 시장.
+- `markets.<id>.status == "no_signals"` 가 오래 지속되는 시장 — 뉴스 스토어가 굶고 있다는 뜻. 이번 주 리서치 대상에 포함.
 
 ### 2.2 시장별 리서치 (web)
 각 시장(또는 이번에 점검할 부분집합)에 대해 **최근 1~4주** 변화를 조사한다.
@@ -71,6 +83,15 @@
 - 병목: `bottleneck.severity` 는 `severity_legend` 키 중 하나
   (`structural|acute|easing|emerging|demand_limited`). `limit` 은 *왜* 병목인지
   기술적/물리적 근거를 한 문장으로.
+  - **severity 변경 절차 (탐지↔판단 분리)**: market_pulse 의
+    `severity_change_proposed` 제안은 **웹 리서치로 교차 검증된 경우에만** 지도에
+    반영한다 (제안의 evidence + 독립 소스 1개 이상). 제안 없이 직접 바꾸는 것도
+    가능하지만, 그 경우 근거 뉴스를 뉴스 스토어에 signals 와 함께 먼저 넣는다 —
+    지도와 신호가 따로 놀지 않게.
+  - `structural`(구조적 독점) 승급/해제는 자동 제안 대상이 아니다 — 대체 공급원
+    등장 같은 구조 변화를 직접 판단한다 (analysis 의 `structural_watch` 노트 참고).
+  - 반영/기각 여부와 무관하게 제안이 있었던 시장은 `weekly_note` 에 판단 근거를
+    한 줄 남긴다 (예: "펄스 승급 제안 기각 — 단일 벤더 발 소스, 교차 확인 실패").
 - 규모: 출처가 갈리면 범위로 적고 `size_confidence` 를 낮춘다. 추측 금지.
 - 점유율: `players[].share` (%) 는 출처 기준으로. 한 시장 안에서 합이 100 이하가
   되게(나머지는 웹이 '기타'로 표시). 점유율이 무의미한 시장은 생략.
@@ -81,8 +102,16 @@
   ```json
   { "date": "2026-06-08", "title": "한국어 헤드라인",
     "source": "Reuters", "url": "https://...",
-    "impact": "+ | - | neutral", "summary": "한 줄 한국어 요약 (50자 내외)" }
+    "impact": "+ | - | neutral", "summary": "한 줄 한국어 요약 (50자 내외)",
+    "signals": [ { "type": "supply_tightening", "strength": 3 } ] }
   ```
+  - **`signals[]` 는 필수 태깅** — market_pulse 가 병목 압력을 계산하는 원료다.
+    `type` 은 `supply_tightening`(공급 긴축) | `supply_easing`(공급 완화) |
+    `demand_up`(수요 확대) | `demand_down`(수요 축소), `strength` 는 1(약)~3(강).
+    한 뉴스에 복수 신호 가능(예: "매진인데 증설 발표" = 긴축+완화). 방향성이
+    없는 뉴스(지배구조·M&A 등)는 빈 배열 `[]`. 태깅 기준은
+    `data/markets/criteria/ai-semiconductor.json` 의 시장별 `key_metrics` /
+    `escalate_when` / `deescalate_when` 을 따른다.
   - `date` 는 가능하면 `YYYY-MM-DD`(일자 불명이면 `YYYY-MM`). **배열은 최신순 유지.**
   - **특정 티커에 직접 붙는 단일 기업 뉴스는 넣지 않는다** (그건 daily 루틴 몫).
     여기엔 *업황·수급·병목·정책* 같은 **시장 전체** 헤드라인만.
@@ -97,31 +126,22 @@
   자동 배치되지만, 이야기 흐름에 맞는 위치는 사람이 정하는 게 낫다.
 - 맵 전체의 최상위 `as_of` 와, 손댄 시장은 의미가 있으면 갱신 날짜를 반영한다.
 
-### 2.4 검증 (커밋 전 필수)
+### 2.4 펄스 재실행 + 검증 (커밋 전 필수)
+뉴스·지도를 고친 뒤 **market_pulse 를 다시 돌려** 분석 파일을 갱신하고 검증한다
+(맵/뉴스/criteria 교차 참조·signals 스키마 검증이 내장되어 있다):
+
 ```bash
-python - <<'PY'
-import json
-d=json.load(open("data/markets/ai-semiconductor.json"))
-ns=json.load(open("data/markets/news/ai-semiconductor.json"))
-mids={m["id"] for m in d["markets"]}; lids={l["id"] for l in d["layers"]}
-sev=set(d["severity_legend"])
-assert all(m["layer"] in lids for m in d["markets"]), "bad layer ref"
-assert all(l["from"] in mids and l["to"] in mids for l in d["links"]), "bad link ref"
-for m in d["markets"]:
-    b=m.get("bottleneck")
-    assert b is None or b["severity"] in sev, f"bad severity in {m['id']}"
-    assert not m.get("recent_news"), f"deprecated recent_news in {m['id']} - use news store"
-for mid, items in ns["markets"].items():
-    assert mid in mids, f"news for unknown market {mid}"
-    assert len(items) <= 20, f"too many news in {mid}"
-    assert items == sorted(items, key=lambda n: n.get("date",""), reverse=True), f"{mid} not newest-first"
-    for n in items:
-        assert n.get("url","").startswith("http"), f"bad news url in {mid}"
-        assert n.get("impact") in ("+","-","neutral"), f"bad impact in {mid}"
-print("OK", len(d["markets"]), "markets /", sum(len(v) for v in ns["markets"].values()), "news")
-PY
+python scripts/market_pulse.py --industry ai-semiconductor   # 검증 + analysis 재생성
 ```
-실패하면 커밋하지 말고 원인을 고친다.
+
+실패하면 커밋하지 말고 원인을 고친다. 갱신된
+`data/markets/analysis/ai-semiconductor.json` 도 **함께 커밋**한다 — 웹이 이
+파일로 자동 신호(노드 ▲▼·상단 스트립·상세 게이지)를 그린다.
+
+새 시장 노드를 추가했으면 `data/markets/criteria/ai-semiconductor.json` 에도
+그 시장의 판정 기준(`bottleneck_type`·`key_metrics`·`escalate_when`·
+`deescalate_when`·`keywords`)을 함께 추가한다 — 기준 없는 시장은 글로벌
+키워드 폴백으로만 분류돼 신호 품질이 떨어진다.
 
 ### 2.5 (선택) 렌더 스모크 테스트
 가능하면 `python -m http.server` 로 띄워 '시장 지도' 탭이 정상 렌더되는지 본다.
@@ -135,7 +155,7 @@ PY
 
 ```bash
 SESSION_BRANCH=$(git branch --show-current)
-git add data/markets/ai-semiconductor.json data/markets/news/ .claude/routines/market-research/
+git add data/markets/ai-semiconductor.json data/markets/news/ data/markets/criteria/ data/markets/analysis/ .claude/routines/market-research/
 git commit -m "chore(markets): AI·반도체 시장 지도 갱신 ($(date -u +%Y-%m-%d))"
 git push -u origin "$SESSION_BRANCH"
 ```

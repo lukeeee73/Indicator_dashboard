@@ -1,0 +1,246 @@
+{
+  "industry": "ai-semiconductor",
+  "version": 1,
+  "updated": "2026-07-03",
+  "schema_note": "시장별 병목 판정 기준의 SSOT. scripts/market_pulse.py 가 이 기준 + 뉴스 스토어의 signals 로 병목 압력을 산출해 data/markets/analysis/<industry>.json 에 '제안'을 쓴다. escalate_when/deescalate_when 은 루틴(LLM)이 제안을 검증할 때 쓰는 판단 기준이고, keywords 는 signals 미태깅 뉴스의 폴백 분류용이다. 지도(severity) 는 스크립트가 직접 고치지 않는다 — 루틴이 검증 후 반영한다.",
+  "defaults": {
+    "window_days": 150,
+    "half_life_days": 60,
+    "escalate_threshold": 0.45,
+    "deescalate_threshold": -0.35,
+    "min_signals": 2,
+    "min_sources": 2,
+    "node_arrow_threshold": 0.35,
+    "migration_easing_threshold": -0.2,
+    "migration_tightening_threshold": 0.35
+  },
+  "signal_types": {
+    "supply_tightening": "공급 제약 심화 — 매진·리드타임 연장·수율 한계·할당·가격 급등·수출통제 강화",
+    "supply_easing": "공급 제약 완화 — 증설·양산 개시·신규 공급사 인증·가격 하락·규제 유예/해제",
+    "demand_up": "수요 확대 — 수주·출하 급증·capex/예산 증액·침투율 상승·대형 계약",
+    "demand_down": "수요 축소 — 주문 둔화·지연/취소·교체주기 장기화·ROI 미검증·거품 축소"
+  },
+  "severity_transitions": {
+    "note": "자동 제안이 허용하는 severity 이동. structural(구조적 독점)은 뉴스로 승급/완화하지 않는다 — 대체 공급원 등장 같은 구조 변화는 루틴이 수동 판단.",
+    "escalate": { "none": "emerging", "demand_limited": "emerging", "emerging": "acute", "easing": "acute" },
+    "deescalate": { "acute": "easing", "easing": "emerging", "emerging": "none" }
+  },
+  "global_keywords": {
+    "tightening": ["매진", "완판", "품귀", "부족", "리드타임", "수율", "급등", "할당", "타이트", "수출통제", "규제 강화", "대기", "지연", "취소", "상한", "제약"],
+    "easing": ["증설", "완화", "양산", "가동", "인증", "확충", "과잉", "해소", "정상화", "하락", "유예", "개선"],
+    "demand_up": ["수주", "사상 최대", "급증", "폭증", "확대", "상향", "계약", "예산", "돌파", "침투", "채택"],
+    "demand_down": ["둔화", "축소", "감소", "부진", "하향", "거품", "미검증", "장기화", "정체"]
+  },
+  "markets": {
+    "ai-models": {
+      "bottleneck_type": "demand",
+      "key_metrics": ["토큰/추론 소비 성장률", "API 가격 추이", "기업 도입률", "모델 효율 개선 속도(증류·양자화)"],
+      "escalate_when": "컴퓨트 확보 실패로 모델사가 출시·서비스를 지연하거나 추론 대기열/쿼터가 상시화될 때 (공급이 수요를 막는 국면).",
+      "deescalate_when": "토큰 소비 성장 둔화·기업 도입 정체·모델 효율화가 칩 수요를 상쇄하기 시작할 때.",
+      "keywords": { "tightening": ["쿼터", "컴퓨트 부족", "용량 부족"], "easing": ["효율화", "증류", "가격 인하"] }
+    },
+    "edge-smartphone": {
+      "bottleneck_type": "demand",
+      "key_metrics": ["GenAI폰 출하·침투율", "프리미엄 교체주기", "AP 재고 주수", "킬러앱 등장 여부"],
+      "escalate_when": "선단 파운드리 할당·메모리 가격 급등이 AP/단말 BOM 을 밀어올려 출하를 실제로 제약할 때.",
+      "deescalate_when": "교체수요 회복 또는 온디바이스 킬러앱 확산으로 수요 한계가 풀릴 때 (수요 한계형에서 탈출).",
+      "keywords": { "tightening": ["BOM", "AP 부족"], "easing": ["교체수요 회복", "킬러앱"] }
+    },
+    "edge-pc": {
+      "bottleneck_type": "demand",
+      "key_metrics": ["AI PC 출하 비중", "Win10 종료 교체 사이클 잔여", "NPU 활용률(킬러앱)", "DRAM 가격의 BOM 전이"],
+      "escalate_when": "메모리 가격 급등이 PC BOM 으로 전이돼 출하·마진을 제약하거나, 교체 사이클 종료 후 수요 절벽이 확인될 때.",
+      "deescalate_when": "로컬 AI 킬러앱 확산·기업 교체 지속으로 수요가 자생적으로 성장할 때.",
+      "keywords": { "tightening": ["BOM 전이", "수요 절벽"], "easing": ["Copilot", "교체 사이클"] }
+    },
+    "edge-auto": {
+      "bottleneck_type": "demand",
+      "key_metrics": ["완성차 생산대수", "ADAS 침투율", "L3/L4 규제 승인", "로보택시 상용 도시 수"],
+      "escalate_when": "차량용 선단 칩(AD SoC) 공급 할당·중국 SoC 수출규제가 실제 양산을 제약할 때.",
+      "deescalate_when": "L4 규제 완화·로보택시 확산으로 수요가 규제 병목에서 풀려날 때.",
+      "keywords": { "tightening": ["차량용 반도체 부족"], "easing": ["로보택시 승인", "규제 완화"] }
+    },
+    "industrial-robotics": {
+      "bottleneck_type": "demand",
+      "key_metrics": ["설치대수·수주(IFR)", "중국 로컬 점유율·가격 경쟁", "자동차 설비투자 사이클", "AI 코봇 채택"],
+      "escalate_when": "핵심 부품(감속기·서보) 수급이 로봇 양산을 제약하거나 수주가 공급능력을 초과할 때.",
+      "deescalate_when": "가격경쟁 심화·수주 부진 등 공급과잉이 확인될 때 (현 상태 유지·강화).",
+      "keywords": { "tightening": ["부품 부족"], "easing": ["가격경쟁", "공급과잉"] }
+    },
+    "robotics": {
+      "bottleneck_type": "demand",
+      "key_metrics": ["출하 대수·YoY", "실사용 ROI 검증(구매자 만족)", "VLA 모델 일반화 수준", "부품(액추에이터·자석) 수급"],
+      "escalate_when": "수요 검증 후 부품·양산능력이 출하를 제약하는 국면으로 전환될 때 (수요 한계 → 공급 한계).",
+      "deescalate_when": "ROI 미검증·구매자 이탈로 수요 자체가 꺾일 때 (수요 한계 지속).",
+      "keywords": { "tightening": ["양산 지연", "부품 수급"], "easing": ["만족도", "ROI"] }
+    },
+    "military-drones": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["서방 연간 양산대수 vs 조달 목표", "모터·배터리·자석 중국 의존도", "신규 메가팩토리 가동", "국방 예산(드론 배정)"],
+      "escalate_when": "조달 목표 대비 양산능력 격차가 벌어지거나 중국산 부품 통제가 생산을 직접 제약할 때.",
+      "deescalate_when": "Arsenal-1 급 신규 공장 가동·부품 탈중국화로 양산 격차가 좁혀질 때.",
+      "keywords": { "tightening": ["생산 부족", "부품 의존"], "easing": ["공장 가동", "양산 개시"] }
+    },
+    "defense-ai": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["자율전 예산(DAWG 등)", "실전 배치 대수 vs 목표", "군집 오케스트레이션 SW 공백", "Maven 사용자·계약한도"],
+      "escalate_when": "예산 대비 실전 배치 격차 확대·오케스트레이션 SW 공백이 지속될 때.",
+      "deescalate_when": "배치 목표 달성·표준 SW 등장으로 공백이 메워질 때.",
+      "keywords": { "tightening": ["배치 부족", "공백"], "easing": ["배치 확대", "표준"] }
+    },
+    "sovereign-ai": {
+      "bottleneck_type": "policy",
+      "key_metrics": ["국가 AI 팩토리 약정 규모·실현율", "수출통제(GPU 할당) 변화", "현지 전력 가용성"],
+      "escalate_when": "수출통제 강화·GPU 할당 축소·전력 부족이 국가 프로젝트 실현을 막을 때.",
+      "deescalate_when": "수출통제 완화·공급 확대로 약정이 실제 구축으로 이어질 때.",
+      "keywords": { "tightening": ["수출통제", "할당 축소"], "easing": ["수출 허가", "구축 개시"] }
+    },
+    "hyperscaler-capex": {
+      "bottleneck_type": "finance",
+      "key_metrics": ["빅4 capex 가이던스 합계", "FCF 대비 capex 비율", "약정 실현율(Stargate 등)", "감가상각·수익화 논쟁"],
+      "escalate_when": "전력·부지·장비 제약으로 capex 집행이 계획 대비 지연되거나, 자금 부담으로 약정이 축소될 때.",
+      "deescalate_when": "가이던스 상향이 실집행으로 확인되고 수익화 지표가 따라올 때.",
+      "keywords": { "tightening": ["축소", "재검토", "거품"], "easing": ["가이던스 상향", "증액"] }
+    },
+    "neocloud": {
+      "bottleneck_type": "finance",
+      "key_metrics": ["계약 잔고 vs 인도 능력", "GPU 담보부채 금리·만기 구조", "확보 전력(GW)·인도 속도", "GPU 잔존가치 하락률"],
+      "escalate_when": "전력·부지 확보 실패로 잔고 인도가 지연되거나, 신용경색으로 부채 조달이 막힐 때.",
+      "deescalate_when": "전력 확보·자금조달이 원활해 잔고가 매출로 순조롭게 전환될 때.",
+      "keywords": { "tightening": ["신용", "금리", "전력 전쟁", "담보"], "easing": ["계약 체결", "조달 성공"] }
+    },
+    "ai-gpu": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["리드타임·할당 상황", "세대 전환(Blackwell→Rubin) 램프", "ASP 추이", "ASIC 점유 잠식률"],
+      "escalate_when": "신세대 램프 초기 수율·상류(HBM·CoWoS) 제약으로 리드타임이 재연장될 때.",
+      "deescalate_when": "공급이 수요를 따라잡아 리드타임 단축·할당 해제가 확인될 때.",
+      "keywords": { "tightening": ["리드타임", "할당"], "easing": ["공급 확대", "리드타임 단축"] }
+    },
+    "custom-asic": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["코디자인 수주 잔고", "CoWoS·HBM 할당 확보", "추론/학습 워크로드 비중 이동"],
+      "escalate_when": "CoWoS·HBM 할당 경쟁에서 밀려 양산이 지연될 때.",
+      "deescalate_when": "상류 할당 확보·설계 사이클 단축으로 공급이 원활할 때.",
+      "keywords": { "tightening": ["할당 경쟁"], "easing": ["수주", "양산"] }
+    },
+    "dc-networking": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["백엔드 스위치 리드타임", "표준 전쟁(NVLink/UALink/Ethernet) 향방", "구리→광 전환점"],
+      "escalate_when": "스위치 실리콘·광 모듈 수급이 클러스터 증설을 제약하거나 표준 분열이 조달을 지연시킬 때.",
+      "deescalate_when": "표준 수렴·공급 다변화로 마찰이 줄 때.",
+      "keywords": { "tightening": ["표준 전쟁", "스위치 부족"], "easing": ["표준 수렴"] }
+    },
+    "hbm": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["매진 시한(LTA 커버리지 연도)", "12/16단 적층 수율(%)", "3사 증설 계획(wpm)", "HBM4 인증 공급사 수"],
+      "escalate_when": "매진 시한이 연장되거나(’26→’27), 차세대 적층 수율 문제·증설 지연이 확인될 때.",
+      "deescalate_when": "3사 인증 경쟁 정착 + 증설로 매진 시한이 짧아지고 가격 프리미엄이 꺾일 때.",
+      "keywords": { "tightening": ["매진", "적층", "워피지"], "easing": ["인증", "증설", "3강"] }
+    },
+    "advanced-packaging": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["CoWoS 용량(wpm) vs 예약", "신규 OSAT(Amkor·ASE) 램프", "멀티레티클·인터포저 기술 한계"],
+      "escalate_when": "증설에도 예약이 다시 용량을 초과하거나 차세대(CoWoS-L 초대형) 수율 문제가 불거질 때.",
+      "deescalate_when": "증설분 가동으로 예약 여유가 생기고 OSAT 대안이 검증될 때 (현 easing 유지·강화).",
+      "keywords": { "tightening": ["완판", "예약"], "easing": ["증설", "CoWoP", "OSAT"] }
+    },
+    "dram-nand": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["DDR5/NAND 현물가 QoQ(%)", "재고 주수", "신규 팹 착공(’27–28 공백)", "HBM 웨이퍼 잠식률"],
+      "escalate_when": "현물가 급등 지속(+20%/분기 이상)·재고 고갈·팹 공백이 확인될 때.",
+      "deescalate_when": "가격 정점 통과·신규 팹 착공·HBM 잠식 완화가 확인될 때.",
+      "keywords": { "tightening": ["현물가", "재고 부족", "잠식"], "easing": ["팹 착공", "가격 안정"] }
+    },
+    "optical": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["800G/1.6T 리드타임", "모듈 전력(W)·GPU당 개수", "CPO 양산 시점·InP 레이저 공급", "DSP 수급"],
+      "escalate_when": "1.6T 수급이 클러스터 증설을 실제 제약하거나 CPO 전환이 레이저·수율에 막힐 때.",
+      "deescalate_when": "모듈 증산·CPO 상용화로 전력·수급 압박이 풀릴 때.",
+      "keywords": { "tightening": ["레이저", "DSP 부족"], "easing": ["CPO 양산", "증산"] }
+    },
+    "power-cooling": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["변압기·스위치기어 리드타임(년)", "GOES 강·동박 수급", "액침냉각/800VDC 채택률", "DC 지연·취소 규모(GW)"],
+      "escalate_when": "변압기 리드타임이 더 연장되거나 장비 부족발 DC 지연이 확대될 때.",
+      "deescalate_when": "장비 증산·리드타임 단축이 확인될 때.",
+      "keywords": { "tightening": ["변압기", "스위치기어", "리드타임"], "easing": ["증산", "단축"] }
+    },
+    "robot-components": {
+      "bottleneck_type": "policy",
+      "key_metrics": ["희토류·자석 수출통제 상태(유예 시한 ’26.11)", "NdPr 가격", "감속기·액추에이터 캐파 증설", "탈중국 공급망(MP 등) 진척"],
+      "escalate_when": "수출통제 유예 종료·재발동, NdPr 급등, 액추에이터 공급 부족이 로봇 양산을 제약할 때.",
+      "deescalate_when": "비중국 자석 공급 본격화·감속기 캐파 확충으로 대체 공급원이 생길 때 (structural 해제는 수동 판단).",
+      "keywords": { "tightening": ["희토류", "자석", "통제"], "easing": ["국산화", "탈중국", "증산"] }
+    },
+    "robot-sensors": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["힘토크·촉각 센서 양산 수율", "로봇 라이다 출하·가격", "검증된 손가락용 센서 공급사 수"],
+      "escalate_when": "촉각·힘토크 센서 부족이 휴머노이드 양산을 실제 제약할 때.",
+      "deescalate_when": "센서 대량생산 체계가 검증돼 공급 여유가 생길 때.",
+      "keywords": { "tightening": ["촉각", "힘토크", "캘리브레이션"], "easing": ["양산 검증"] }
+    },
+    "foundry": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["선단(≤3nm) 예약 시한(년)", "N2/18A 수율 램프", "웨이퍼 ASP", "미·일 신규 팹 가동"],
+      "escalate_when": "선단 예약 시한이 연장(’28→’29+)되거나 GAA 수율 문제로 유효 공급이 줄 때.",
+      "deescalate_when": "신규 팹 가동·경쟁사(삼성·인텔) 수율 정착으로 선단 공급이 다변화될 때.",
+      "keywords": { "tightening": ["예약", "수율", "ASP"], "easing": ["팹 가동", "다변화"] }
+    },
+    "abf-substrate": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["고급 ABF 수급 전환 시점", "T-glass 클로스·동박 수급", "최고급 공급사 수(현 2사)"],
+      "escalate_when": "고급 ABF 부족이 실제 감산·리드타임으로 나타나거나 T-glass 상류 부족이 심화될 때.",
+      "deescalate_when": "기판 증설·소재 공급 확충이 확인될 때.",
+      "keywords": { "tightening": ["T-glass", "기판 부족"], "easing": ["기판 증설"] }
+    },
+    "euv-litho": {
+      "bottleneck_type": "monopoly",
+      "key_metrics": ["ASML 백로그·출하 대수", "High-NA 채택 속도", "수출통제 범위 변화"],
+      "escalate_when": "구조적 독점(structural)은 자동 승급 없음 — 출하 지연·통제 확대는 뉴스로 기록만.",
+      "deescalate_when": "대체 노광 기술(예: 국산 EUV) 상용화 같은 구조 변화 — 루틴 수동 판단 사안.",
+      "keywords": { "tightening": ["백로그", "출하 지연"], "easing": ["출하 확대"] }
+    },
+    "etch-deposition": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["WFE 지출 추이", "장비 리드타임", "GAA/3D 공정수 증가"],
+      "escalate_when": "특정 카테고리(HAR 식각·ALD) 리드타임 연장이 팹 램프를 제약할 때.",
+      "deescalate_when": "장비 공급 원활·WFE 지출 둔화가 확인될 때.",
+      "keywords": { "tightening": ["장비 리드타임"], "easing": ["공급 원활"] }
+    },
+    "metrology": {
+      "bottleneck_type": "monopoly",
+      "key_metrics": ["KLA 점유율·리드타임", "GAA 수율 관리 수요"],
+      "escalate_when": "구조적 독점 — 자동 승급 없음. 검사 장비 리드타임이 수율 램프를 막으면 기록.",
+      "deescalate_when": "경쟁 계측 기술 부상 — 루틴 수동 판단.",
+      "keywords": { "tightening": ["검사 병목"], "easing": [] }
+    },
+    "materials": {
+      "bottleneck_type": "policy",
+      "key_metrics": ["포토레지스트 수출규제(일→중)", "웨이퍼(Shin-Etsu·SUMCO) 수급", "특수가스 가격"],
+      "escalate_when": "레지스트 수출규제 발동·웨이퍼 장기계약 소진 등 소재가 팹 가동을 제약할 때.",
+      "deescalate_when": "규제 해제·증산·국산화로 수급이 정상화될 때.",
+      "keywords": { "tightening": ["레지스트", "웨이퍼 부족"], "easing": ["국산화", "증산"] }
+    },
+    "power-grid": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["계통접속 대기(년)", "가스터빈 리드타임(예약 시한)", "DC 전력수요 전망(TWh)", "PPA 가격·원전 재가동/SMR 일정"],
+      "escalate_when": "접속 대기·터빈 예약이 더 길어지거나 전력 부족발 DC 취소가 확대될 때.",
+      "deescalate_when": "발전 증설·계통 개혁·SMR 상용화로 접속 대기가 짧아질 때.",
+      "keywords": { "tightening": ["계통", "접속", "터빈", "전력 부족"], "easing": ["재가동", "증설", "접속 개선"] }
+    },
+    "semi-ip": {
+      "bottleneck_type": "monopoly",
+      "key_metrics": ["EDA 수출통제 범위", "ARM 라이선스 분쟁", "AI 설계 자동화 침투"],
+      "escalate_when": "구조적 독점 — 자동 승급 없음. 통제 확대·분쟁은 기록.",
+      "deescalate_when": "오픈소스 EDA·RISC-V 가 실질 대체가 될 때 — 루틴 수동 판단.",
+      "keywords": { "tightening": ["라이선스", "분쟁"], "easing": ["RISC-V"] }
+    },
+    "dc-infra": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["공실률(%)·프리리스율(%)", "착공률(예정 대비)", "임대료 YoY", "파이프라인(GW) vs 전력 인입"],
+      "escalate_when": "공실률 사상최저 지속 + 착공률 하락(전력·장비발)이 함께 확인될 때.",
+      "deescalate_when": "공실률 반등·프리리스 완화·착공 정상화가 확인될 때.",
+      "keywords": { "tightening": ["공실률", "프리리스", "착공"], "easing": ["공급 확대", "공실 반등"] }
+    }
+  }
+}

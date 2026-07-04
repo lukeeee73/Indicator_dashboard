@@ -340,6 +340,17 @@ const STOCK_META = {
   SRE: { displayName: "Sempra", fullName: "Sempra", group: "유틸리티 / 전력", sector: "남부캘리포니아 + LNG 수출", color: "#dd0c2f", decimals: 2, currency: "USD", business: "남부 캘리포니아 가스·전력 (SoCalGas·SDG&E) + 멕시코 / 미국 LNG 수출 터미널. 에너지·유틸리티 하이브리드." },
   ED: { displayName: "Con Edison", fullName: "Consolidated Edison", group: "유틸리티 / 전력", sector: "뉴욕시 전력·가스 독점", color: "#0033a0", decimals: 2, currency: "USD", business: "뉴욕시 전력·가스 독점 공급 (1823년 창업). 49년 연속 배당 증가. 가장 안정적인 인컴주 중 하나." },
   D: { displayName: "Dominion", fullName: "Dominion Energy, Inc.", group: "유틸리티 / 전력", sector: "버지니아 전력 (데이터센터 메카)", color: "#0066cc", decimals: 2, currency: "USD", business: "버지니아·캐롤라이나 전력. 버지니아 북부는 미국 최대 데이터센터 클러스터(~70% 인터넷 트래픽). AI 전력 수혜." },
+  // ── 전력 인프라 (AI) ─────────────────────────────────────
+  GEV: { displayName: "GE Vernova", fullName: "GE Vernova Inc.", group: "전력 인프라 (AI)", sector: "가스터빈·그리드 장비 1위", color: "#00b5e2", decimals: 2, currency: "USD", business: "GE 에서 분사한 발전·그리드 장비사. 대형 가스터빈 글로벌 1위 — 백로그 110GW+ 로 2029년까지 매진. AI 전력 붐의 최상류 공급 관문." },
+  ETN: { displayName: "Eaton", fullName: "Eaton Corporation plc", group: "전력 인프라 (AI)", sector: "북미 전력기기 종합 강자", color: "#0033a0", decimals: 2, currency: "USD", business: "변압기·스위치기어·UPS 등 전력관리 종합. 데이터센터 인입에서 랙 배전까지 폭넓게 공급 — 변압기 리드타임 4~5년 병목의 핵심 수혜." },
+  VRT: { displayName: "Vertiv", fullName: "Vertiv Holdings Co", group: "전력 인프라 (AI)", sector: "DC 전력·냉각 인프라 1위", color: "#f7403a", decimals: 2, currency: "USD", business: "데이터센터 내부 전력체인(UPS·PDU·부스웨이)과 액체냉각 1위권. NVIDIA GB200/GB300 레퍼런스 파트너 — 랙 전력밀도 급증의 직접 수혜." },
+  PWR: { displayName: "Quanta Services", fullName: "Quanta Services, Inc.", group: "전력 인프라 (AI)", sector: "송전망 건설 (T&D EPC) 1위", color: "#0072ce", decimals: 2, currency: "USD", business: "미국 송전·변전 건설(T&D EPC) 1위. 백로그 $48.5B 사상최대 — 유틸리티 grid capex 슈퍼사이클과 DC 대형부하 접속 공사의 최대 수혜." },
+  BE: { displayName: "Bloom Energy", fullName: "Bloom Energy Corporation", group: "전력 인프라 (AI)", sector: "고체산화물 연료전지 (SOFC) 1위", color: "#76b900", decimals: 2, currency: "USD", business: "천연가스 개질 SOFC 연료전지 1위. 터빈 없이 수개월 내 배치되는 BTM 전원 — Oracle 2.8GW·AEP 1GW·Brookfield $25B 파트너십." },
+  OKLO: { displayName: "Oklo", fullName: "Oklo Inc.", group: "전력 인프라 (AI)", sector: "SMR (소형모듈원자로) 선두주", color: "#a3238e", decimals: 2, currency: "USD", business: "Aurora 소형 고속로 개발사 (샘 올트먼 초기 지원). INL 첫 호기 건설 중, Meta 등과 계약 — 데이터센터 전용 24/7 무탄소 전원의 차기 본명." },
+  "034020.KS": { displayName: "두산에너빌리티", fullName: "Doosan Enerbility", group: "전력 인프라 (AI)", sector: "가스터빈·원전 주기기 (한국)", color: "#1a5cff", decimals: 0, currency: "KRW", business: "국산 가스터빈 + 원전·SMR 주기기 제작. 글로벌 터빈 3사 매진의 반사수혜로 미국향 누적 12기 — 체코 원전 5.6조 수주, SMR 파운드리 전략." },
+  "267260.KS": { displayName: "HD현대일렉트릭", fullName: "HD Hyundai Electric", group: "전력 인프라 (AI)", sector: "대형 변압기 (북미 수출)", color: "#00787d", decimals: 0, currency: "KRW", business: "K-전력기기 대장주. 북미 대형 변압기 수출 — ’25 영업이익 1조 돌파, 수년치 수주잔고. 미국 변압기 리드타임 4~5년 병목의 직접 수혜." },
+  "298040.KS": { displayName: "효성중공업", fullName: "Hyosung Heavy Industries", group: "전력 인프라 (AI)", sector: "초고압 변압기 (미국 증설)", color: "#e60027", decimals: 0, currency: "KRW", business: "초고압 변압기·차단기. 미국 현지 공장 증설로 북미 수요 대응 — ’25 영업이익 7,470억 사상최대, 1분기에 연간 수주 목표 절반 달성." },
+  "010120.KS": { displayName: "LS일렉트릭", fullName: "LS ELECTRIC", group: "전력 인프라 (AI)", sector: "배전기기·DC 전력 패키지", color: "#c9252c", decimals: 0, currency: "KRW", business: "배전기기·전력 시스템. 데이터센터 내부 배전과 Bloom Energy 향 전력 패키지 공급 — 초고압부터 배전반까지 국내 최강 라인업." },
   // ── 조선 (한국) ─────────────────────────────────────
   "329180.KS": { displayName: "HD현대중공업", fullName: "HD Hyundai Heavy Industries", group: "조선 (한국)", sector: "한국 1위 조선사", color: "#22c55e", decimals: 0, currency: "KRW", business: "한국 1위 조선사. 친환경(LNG·암모니아 추진) 선박 분야 글로벌 1위. K-조선 르네상스의 대장주." },
   "042660.KS": { displayName: "한화오션", fullName: "Hanwha Ocean Co., Ltd.", group: "조선 (한국)", sector: "방산(잠수함) + 친환경 선박", color: "#ec6608", decimals: 0, currency: "KRW", business: "구 대우조선해양. 한화그룹 인수 후 방산(잠수함)·친환경 선박으로 사업 확장." },
@@ -361,6 +372,7 @@ const STOCK_GROUPS = [
   { key: "부동산 (REITs)", desc: "통신탑·물류창고·데이터센터·쇼핑몰·시니어 등 다양한 자산군의 REIT." },
   { key: "통신 / 미디어", desc: "통신사·케이블·스트리밍·종합 미디어·게임. 콘텐츠·구독 경제의 중심." },
   { key: "유틸리티 / 전력", desc: "전력·가스 유틸리티. 신재생·원자력 비중 확대 + AI 데이터센터 전력수요의 수혜." },
+  { key: "전력 인프라 (AI)", desc: "가스터빈·변압기·T&D·연료전지·SMR — AI 데이터센터 전력 공급망(BTM vs 그리드)의 장비·건설·차세대 발전. K-전력기기 포함." },
   { key: "조선 (한국)", desc: "K-조선 르네상스. LNG·암모니아 친환경 선박 글로벌 1위 한국 조선사들." },
 ];
 // 시장 지수 UI 메타데이터. summary 는 부제, description 은 한 줄 설명.
@@ -1652,9 +1664,10 @@ function renderStocksTab(data) {
 // 시장 지도 레지스트리 — data/markets/<id>.json (+ news/<id>.json) 쌍을 추가하면 탭이 생긴다.
 const MARKET_MAPS = [
   { id: "ai-semiconductor", label: "AI · 반도체" },
+  { id: "power-ai",         label: "전력 · AI 인프라" },
   { id: "pharma-bio",       label: "제약 · 바이오" },
 ];
-const MC_STATE = { mapId: MARKET_MAPS[0].id, cache: {}, map: null, news: null, activeNode: null, bottleneckOnly: false, loading: false, zoom: 1 };
+const MC_STATE = { mapId: MARKET_MAPS[0].id, cache: {}, map: null, news: null, pulse: null, activeNode: null, bottleneckOnly: false, loading: false, zoom: 1 };
 
 // 강조 색 — 독점/병목만. demand_limited·비병목은 null(중립 톤).
 const MC_SEVERITY_COLOR = {
@@ -1678,15 +1691,18 @@ async function renderMarketCascade(stocks) {
     MC_STATE.loading = true;
     board.innerHTML = emptyMessage("시장 지도를 불러오는 중…");
     try {
-      const [mapRes, newsRes] = await Promise.all([
+      const [mapRes, newsRes, pulseRes] = await Promise.all([
         fetch(`data/markets/${mapId}.json`, { cache: "no-cache" }),
         fetch(`data/markets/news/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
+        // 자동 병목 신호 (scripts/market_pulse.py 산출) — 없어도 지도는 그린다
+        fetch(`data/markets/analysis/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
       ]);
       if (!mapRes.ok) throw new Error(`HTTP ${mapRes.status}`);
       MC_STATE.cache[mapId] = {
         map: await mapRes.json(),
         // 뉴스 스토어는 없어도 지도는 그린다 (recent_news 폴백)
         news: newsRes && newsRes.ok ? await newsRes.json() : null,
+        pulse: pulseRes && pulseRes.ok ? await pulseRes.json() : null,
       };
     } catch (err) {
       board.innerHTML = emptyMessage(`시장 지도를 불러오지 못했습니다 (${err.message}).`);
@@ -1699,6 +1715,7 @@ async function renderMarketCascade(stocks) {
   if (!entry) return;
   MC_STATE.map = entry.map;
   MC_STATE.news = entry.news;
+  MC_STATE.pulse = entry.pulse;
   renderMarketChrome();
   renderMarketBoard(stocks);
   renderMarketNewsFeed(stocks);
@@ -1800,6 +1817,26 @@ function mcShareBar(players) {
     `<span class="mc-sb-seg" style="width:${p.share}%;background:${MC_SHARE_RAMP[Math.min(i, MC_SHARE_RAMP.length - 1)]}" title="${escapeHtml(p.name)} ${p.share}%"></span>`).join("");
   if (sum < 99) html += `<span class="mc-sb-seg mc-sb-etc" style="width:${100 - sum}%" title="기타 ${Math.round(100 - sum)}%"></span>`;
   return `<span class="mc-sb">${html}</span>`;
+}
+
+// ── 자동 병목 신호 (market pulse) 헬퍼 ──────────────────────────────────
+// data/markets/analysis/<id>.json — scripts/market_pulse.py 가 뉴스 스토어의
+// signals 를 집계해 산출한 병목 압력·수요 모멘텀·전이 제안. 지도(severity)는
+// 루틴이 검증 후 반영하므로, 웹에서는 '자동 신호'로만 표시한다.
+function mcPulseFor(mid) {
+  const p = MC_STATE.pulse;
+  const r = p && p.markets && p.markets[mid];
+  return r && r.status === "ok" ? r : null;
+}
+
+// 노드용 압력 화살표: 조여옴(▲)/풀림(▼). |압력| 이 임계 미만이면 null.
+function mcPulseArrow(mid) {
+  const r = mcPulseFor(mid);
+  if (!r) return null;
+  const th = (MC_STATE.pulse.params && MC_STATE.pulse.params.node_arrow_threshold) || 0.35;
+  if (r.bottleneck_pressure >= th) return { dir: "up", label: "▲", tone: "neg", v: r.bottleneck_pressure };
+  if (r.bottleneck_pressure <= -th) return { dir: "down", label: "▼", tone: "pos", v: r.bottleneck_pressure };
+  return null;
 }
 
 // ── 시장 단위 뉴스 헬퍼 ──────────────────────────────────────────────────
@@ -1906,6 +1943,9 @@ function renderMarketBoard(stocks) {
                     <span>${escapeHtml(ax.right || "최종 수요 — 돈을 내는 곳")}</span>`;
   board.appendChild(axis);
 
+  const strip = mcPulseStrip();
+  if (strip) board.appendChild(strip);
+
   const main = document.createElement("div");
   main.className = "mcd-main";
   dia.flow.forEach((cl) => main.appendChild(mcClusterEl(cl, stocks, false)));
@@ -1928,6 +1968,47 @@ function renderMarketBoard(stocks) {
   });
 }
 
+// 자동 신호 스트립: 전이 제안·병목 이동 경보·주목 시장 (pulse 파일이 있을 때만)
+function mcPulseStrip() {
+  const p = MC_STATE.pulse;
+  if (!p) return null;
+  const alerts = p.alerts || [];
+  const focus = p.top_focus || [];
+  if (!alerts.length && !focus.length) return null;
+
+  const chips = [];
+  alerts.forEach((a) => {
+    if (a.type === "severity_change_proposed") {
+      const up = a.action === "escalate";
+      chips.push(`<button class="mc-pulse-chip" data-goto="${escapeHtml(a.market)}" data-kind="${up ? "esc" : "de"}"
+        title="뉴스 신호 기반 자동 제안 (압력 ${a.pressure >= 0 ? "+" : ""}${a.pressure}) — 루틴 검증 후 지도에 반영">
+        ${up ? "⚠" : "▽"} ${escapeHtml(a.name_kr)} <em>${escapeHtml(a.from)} → ${escapeHtml(a.to)} 제안</em></button>`);
+    } else if (a.type === "bottleneck_migration") {
+      chips.push(`<button class="mc-pulse-chip" data-goto="${escapeHtml(a.to[0] || a.market)}" data-kind="mig"
+        title="완화 중인 시장의 인접 시장이 조여옵니다">
+        ⇢ 병목 이동? ${escapeHtml(a.name_kr)} → ${escapeHtml((a.to_names || []).join(" · "))}</button>`);
+    }
+  });
+  const focusHtml = focus.length
+    ? `<span class="mc-pulse-focus">주목: ${focus.slice(0, 3).map((f) =>
+        `<button class="mc-pulse-mkt" data-goto="${escapeHtml(f.market)}"
+           title="병목 압력·성장 전망 복합 점수 ${f.score >= 0 ? "+" : ""}${f.score}">${escapeHtml(f.name_kr)}</button>`).join(" · ")}</span>`
+    : "";
+
+  const el = document.createElement("div");
+  el.className = "mc-pulse-strip";
+  el.innerHTML = `<span class="mc-pulse-label" title="뉴스 스토어의 방향성 신호를 scripts/market_pulse.py 가 집계한 자동 신호 — 지도 반영은 주간 루틴이 검증 후 수행">
+      📡 자동 신호 <em>${escapeHtml((p.generated || "").slice(0, 10))}</em></span>
+    ${chips.join("")}${focusHtml}`;
+  el.querySelectorAll("[data-goto]").forEach((b) =>
+    b.addEventListener("click", () => {
+      selectMarketNode(b.dataset.goto, MC_STATE.stocks || {});
+      const node = document.querySelector(`.mc-node[data-id="${CSS.escape(b.dataset.goto)}"]`);
+      if (node) node.scrollIntoView({ behavior: "smooth", block: "center" });
+    }));
+  return el;
+}
+
 // 단일 시장 노드 — 콤팩트 (구조가 한눈에 읽히게 최소 정보만; 상세는 클릭 패널)
 function mcNodeHtml(m, stocks) {
   const sev = m.bottleneck && m.bottleneck.severity;
@@ -1943,9 +2024,14 @@ function mcNodeHtml(m, stocks) {
     ? `<span class="mc-node-news${mcNewsFresh(news) ? " mc-node-news--fresh" : ""}"
          title="${escapeHtml(news[0].title || "")}">📰 ${news.length}</span>`
     : "";
+  const arrow = mcPulseArrow(m.id);
+  const arrowChip = arrow
+    ? `<span class="mc-node-pulse" data-dir="${arrow.dir}"
+         title="자동 병목 신호 — 압력 ${arrow.v >= 0 ? "+" : ""}${arrow.v.toFixed(2)} (${arrow.dir === "up" ? "조여옴" : "풀림"})">${arrow.label}</span>`
+    : "";
   return `<button class="mc-node${hi ? " mc-node--hi mc-node--" + sev : ""}" data-id="${escapeHtml(m.id)}"
             style="--mc-accent:${accent}" title="${escapeHtml(m.definition || "")}">
-      ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}</span>` : ""}
+      ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}${arrowChip}</span>` : arrowChip ? `<span class="mc-node-tag mc-node-tag--pulse">${arrowChip}</span>` : ""}
       <span class="mc-node-name">${escapeHtml(m.name_kr)}${moodDot}</span>
       <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
       ${newsChip}
@@ -2393,6 +2479,44 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ? `<p class="mc-mood" data-tone="${mood.tone}"><span>시장 분위기</span> <strong>${escapeHtml(mood.t)}</strong> · 뉴스 시그널 ${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)} (watchlist ${agg.count}곳)</p>`
     : `<p class="mc-mood mc-mood--none"><span>시장 분위기</span> watchlist 뉴스 데이터 연결 전</p>`;
 
+  // 자동 병목 신호 (market pulse) — 압력·수요 모멘텀 게이지 + 전이 제안 + 근거
+  let pulseHtml = "";
+  const pr = mcPulseFor(id);
+  if (pr) {
+    const gauge = (v, label) => {
+      const pct = Math.round(Math.abs(v) * 50);
+      const side = v >= 0 ? "right" : "left";
+      const tone = v >= 0.2 ? "neg" : v <= -0.2 ? "pos" : "neutral";
+      return `<div class="mc-pulse-gauge" title="${escapeHtml(label)} ${v >= 0 ? "+" : ""}${v.toFixed(2)}">
+          <span class="mc-pulse-gname">${escapeHtml(label)}</span>
+          <span class="mc-pulse-bar"><i data-side="${side}" data-tone="${tone}" style="width:${pct}%"></i></span>
+          <span class="mc-pulse-gval">${v >= 0 ? "+" : ""}${v.toFixed(2)}</span>
+        </div>`;
+    };
+    const prop = pr.proposal
+      ? `<p class="mc-pulse-prop" data-kind="${pr.proposal.action === "escalate" ? "esc" : "de"}">
+           ${pr.proposal.action === "escalate" ? "⚠ 승급 제안" : "▽ 완화 제안"}:
+           <strong>${escapeHtml(pr.proposal.from)} → ${escapeHtml(pr.proposal.to)}</strong>
+           (신뢰도 ${escapeHtml(pr.proposal.confidence)}) — 루틴 검증 후 지도 반영</p>`
+      : "";
+    const noteHtml = pr.note ? `<p class="mc-pulse-note">${escapeHtml(pr.note)}</p>` : "";
+    const bene = (pr.beneficiaries || []).length
+      ? `<p class="mc-pulse-bene">가격결정력 신호 — ${pr.beneficiaries.map((b) =>
+          `${escapeHtml(b.name)}${typeof b.share === "number" ? ` ${b.share}%` : ""}`).join(" · ")}</p>`
+      : "";
+    const evid = (pr.evidence || []).slice(0, 3).map((e) =>
+      `<li><span class="mc-pulse-etype" data-t="${escapeHtml(e.type)}">${
+          e.type === "supply_tightening" ? "긴축" : e.type === "supply_easing" ? "완화" :
+          e.type === "demand_up" ? "수요↑" : "수요↓"}</span> ${escapeHtml(e.title)} <em>${escapeHtml(e.date || "")}</em></li>`).join("");
+    pulseHtml = `<div class="mc-pulse-box">
+        <h5>자동 병목 신호 <span class="mc-pulse-meta">뉴스 ${pr.signal_count}건 · 출처 ${pr.source_count}곳 (감쇠 가중)</span></h5>
+        ${gauge(pr.bottleneck_pressure, "병목 압력")}
+        ${gauge(pr.demand_momentum, "수요 모멘텀")}
+        ${prop}${noteHtml}${bene}
+        ${evid ? `<ul class="mc-pulse-evid">${evid}</ul>` : ""}
+      </div>`;
+  }
+
   const weeklyHtml = m.weekly_note
     ? `<div class="mc-weekly"><h5>이번 주 시장 흐름</h5><p>${escapeHtml(m.weekly_note)}</p></div>`
     : "";
@@ -2471,6 +2595,7 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ${sizeMeta ? `<p class="mc-detail-size">${sizeMeta}</p>` : ""}
     ${m.demand_driver ? `<p class="mc-detail-driver"><span>수요 동인</span>${escapeHtml(m.demand_driver)}</p>` : ""}
     ${btlHtml}
+    ${pulseHtml}
     ${moodHtml}
     ${weeklyHtml}
     ${newsHtml}
@@ -2938,6 +3063,17 @@ const PEER_COMPETITORS = {
   SRE: ["AEP", "DUK", "NEE"],
   ED: ["EXC", "AEP", "DUK"],
   D: ["DUK", "NEE", "SO", "AEP"],
+  // ── 전력 인프라 (AI) ─────────────────────────────────────
+  GEV: ["ETN", "034020.KS", "PWR"],
+  ETN: ["GEV", "VRT", "267260.KS", "298040.KS"],
+  VRT: ["ETN", "GEV", "010120.KS"],
+  PWR: ["GEV", "ETN"],
+  BE: ["GEV"],
+  OKLO: ["CEG", "034020.KS"],
+  "034020.KS": ["GEV", "OKLO", "298040.KS"],
+  "267260.KS": ["298040.KS", "010120.KS", "ETN"],
+  "298040.KS": ["267260.KS", "010120.KS", "ETN"],
+  "010120.KS": ["267260.KS", "298040.KS", "VRT"],
   // ── 조선 (한국) ─────────────────────────────────────
   "329180.KS": ["042660.KS", "010140.KS", "010620.KS"],
   "042660.KS": ["329180.KS", "010140.KS", "010620.KS"],

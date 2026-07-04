@@ -1,0 +1,937 @@
+{
+  "industry": "ai-semiconductor",
+  "generated": "2026-07-04T04:19:37Z",
+  "params": {
+    "window_days": 150,
+    "half_life_days": 60,
+    "escalate_threshold": 0.45,
+    "deescalate_threshold": -0.35,
+    "min_signals": 2,
+    "min_sources": 2,
+    "node_arrow_threshold": 0.35
+  },
+  "disclaimer": "뉴스 신호의 결정적 집계로 산출된 자동 '제안'이다. 지도 반영은 market-research 루틴이 근거를 검증한 뒤 수행한다. 투자 조언이 아니다.",
+  "top_focus": [
+    {
+      "market": "dc-infra",
+      "name_kr": "AI 데이터센터 인프라 · 코로케이션",
+      "score": 0.571
+    },
+    {
+      "market": "power-grid",
+      "name_kr": "전력 생산·전력망",
+      "score": 0.507
+    },
+    {
+      "market": "neocloud",
+      "name_kr": "네오클라우드 · GPU 클라우드",
+      "score": 0.182
+    },
+    {
+      "market": "defense-ai",
+      "name_kr": "국방 AI · 지휘통제 (C2)",
+      "score": 0.164
+    },
+    {
+      "market": "robot-sensors",
+      "name_kr": "로봇 인지 센서 (라이다·비전·촉각)",
+      "score": 0.144
+    }
+  ],
+  "alerts": [],
+  "markets": {
+    "ai-models": {
+      "name_kr": "AI 소프트웨어·모델",
+      "current_severity": "none",
+      "bottleneck_type": "demand",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.025,
+      "narrative_momentum": 0.084,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.108,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "edge-smartphone": {
+      "name_kr": "온디바이스 AI 스마트폰",
+      "current_severity": "demand_limited",
+      "bottleneck_type": "demand",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.006,
+      "narrative_momentum": 0.019,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.004,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "edge-pc": {
+      "name_kr": "AI PC",
+      "current_severity": "demand_limited",
+      "bottleneck_type": "demand",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.03,
+      "narrative_momentum": 0.101,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.018,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "edge-auto": {
+      "name_kr": "차량용·자율주행 반도체",
+      "current_severity": "emerging",
+      "bottleneck_type": "demand",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.034,
+      "narrative_momentum": 0.112,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.144,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "industrial-robotics": {
+      "name_kr": "산업용 · 협동 로봇",
+      "current_severity": "demand_limited",
+      "bottleneck_type": "demand",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.301,
+      "narrative_momentum": 0.294,
+      "signal_count": 1,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-04-30",
+          "title": "테라다인 로보틱스 1분기 매출 $91M, +32% 회복",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.471
+        }
+      ],
+      "growth_outlook": 0.181,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "robotics": {
+      "name_kr": "휴머노이드 로봇 · 피지컬 AI",
+      "current_severity": "demand_limited",
+      "bottleneck_type": "demand",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": -0.282,
+      "narrative_momentum": 0.123,
+      "signal_count": 1,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-06-08",
+          "title": "중국 휴머노이드 붐, '누가 사느냐'가 문제",
+          "type": "demand_down",
+          "strength": 2,
+          "weight": 0.739
+        }
+      ],
+      "growth_outlook": 0.104,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "military-drones": {
+      "name_kr": "군용 드론 · 자율 무기체계",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": -0.197,
+      "demand_momentum": 0.309,
+      "narrative_momentum": 0.095,
+      "signal_count": 2,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-04-21",
+          "title": "美 국방부, FY27 드론·대드론에 $75B 사상 최대 투자 — DAWG $54.6B",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.6367
+        },
+        {
+          "date": "2026-03-22",
+          "title": "Anduril, 오하이오 Arsenal-1 가동 — Fury CCA 양산 4개월 조기 개시",
+          "type": "supply_easing",
+          "strength": 2,
+          "weight": 0.3001
+        }
+      ],
+      "growth_outlook": 0.458,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "defense-ai": {
+      "name_kr": "국방 AI · 지휘통제 (C2)",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.682,
+      "narrative_momentum": 0.176,
+      "signal_count": 4,
+      "source_count": 4,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05-21",
+          "title": "펜타곤, Replicator 해체 후 자율전 조직 DAWG에 $54.6B 베팅",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.9004
+        },
+        {
+          "date": "2026-05-13",
+          "title": "안두릴 $5B 시리즈H — 기업가치 $61B로 1년새 2배",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.5473
+        },
+        {
+          "date": "2026-04-27",
+          "title": "SIPRI: 2025 세계 군비 $2.89조 사상 최대, 유럽 +14%",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.4549
+        },
+        {
+          "date": "2026-03-22",
+          "title": "펜타곤, Maven AI 공식 프로그램 지정 추진·전군 확대",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.3001
+        }
+      ],
+      "growth_outlook": 0.409,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "sovereign-ai": {
+      "name_kr": "소버린·엔터프라이즈 AI",
+      "current_severity": "acute",
+      "bottleneck_type": "policy",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.076,
+      "narrative_momentum": 0.253,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.046,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "hyperscaler-capex": {
+      "name_kr": "하이퍼스케일러·프런티어 CAPEX",
+      "current_severity": "acute",
+      "bottleneck_type": "finance",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.033,
+      "narrative_momentum": 0.111,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.04,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "Amazon",
+          "ticker": "AMZN",
+          "share": 28,
+          "in_watchlist": true
+        },
+        {
+          "name": "Microsoft",
+          "ticker": "MSFT",
+          "share": 26,
+          "in_watchlist": true
+        },
+        {
+          "name": "Alphabet",
+          "ticker": "GOOGL",
+          "share": 26,
+          "in_watchlist": true
+        },
+        {
+          "name": "Meta",
+          "ticker": "META",
+          "share": 19,
+          "in_watchlist": true
+        }
+      ],
+      "cost_pressure_to": [
+        "ai-models",
+        "sovereign-ai"
+      ]
+    },
+    "neocloud": {
+      "name_kr": "네오클라우드 · GPU 클라우드",
+      "current_severity": "emerging",
+      "bottleneck_type": "finance",
+      "bottleneck_pressure": 0.269,
+      "demand_momentum": 0.065,
+      "narrative_momentum": 0.215,
+      "signal_count": 2,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05-15",
+          "title": "네오클라우드 실적 총괄: 'GPU 확보전'에서 '전력 전쟁'으로",
+          "type": "supply_tightening",
+          "strength": 2,
+          "weight": 0.5601
+        },
+        {
+          "date": "2026-03-20",
+          "title": "네비우스 $4.3B 전환사채 발행 — 네오클라우드 공모 부채조달 본격화",
+          "type": "supply_easing",
+          "strength": 1,
+          "weight": 0.1466
+        }
+      ],
+      "growth_outlook": 0.051,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "ai-gpu": {
+      "name_kr": "AI 가속기 (GPU)",
+      "current_severity": "easing",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.062,
+      "narrative_momentum": 0.208,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.077,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "custom-asic": {
+      "name_kr": "맞춤형 AI ASIC·XPU",
+      "current_severity": "easing",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.031,
+      "narrative_momentum": 0.102,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.031,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "dc-networking": {
+      "name_kr": "데이터센터 네트워킹",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.058,
+      "narrative_momentum": 0.193,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.054,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "hbm": {
+      "name_kr": "HBM (고대역폭 메모리)",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.087,
+      "narrative_momentum": 0.291,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.071,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "SK Hynix",
+          "ticker": "000660.KS",
+          "share": 62,
+          "in_watchlist": false
+        },
+        {
+          "name": "Micron",
+          "ticker": "MU",
+          "share": 21,
+          "in_watchlist": true
+        },
+        {
+          "name": "Samsung",
+          "ticker": "005930.KS",
+          "share": 17,
+          "in_watchlist": false
+        }
+      ],
+      "cost_pressure_to": [
+        "ai-gpu",
+        "custom-asic"
+      ]
+    },
+    "advanced-packaging": {
+      "name_kr": "첨단 패키징 (CoWoS·SoIC)",
+      "current_severity": "easing",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.054,
+      "narrative_momentum": 0.182,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.056,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "dram-nand": {
+      "name_kr": "범용 DRAM·NAND",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.087,
+      "narrative_momentum": 0.291,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.087,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "Samsung",
+          "ticker": "005930.KS",
+          "share": 40,
+          "in_watchlist": false
+        },
+        {
+          "name": "SK Hynix",
+          "ticker": "000660.KS",
+          "share": 34,
+          "in_watchlist": false
+        },
+        {
+          "name": "Micron",
+          "ticker": "MU",
+          "share": 22,
+          "in_watchlist": true
+        }
+      ],
+      "cost_pressure_to": [
+        "hbm"
+      ]
+    },
+    "optical": {
+      "name_kr": "광 인터커넥트",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.038,
+      "narrative_momentum": 0.127,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.046,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "power-cooling": {
+      "name_kr": "전력공급·냉각 장비",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.0,
+      "narrative_momentum": null,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.092,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "Vertiv",
+          "ticker": "VRT",
+          "share": 22,
+          "in_watchlist": false
+        },
+        {
+          "name": "Eaton",
+          "ticker": "ETN",
+          "share": 12,
+          "in_watchlist": false
+        },
+        {
+          "name": "Schneider Electric",
+          "ticker": null,
+          "share": 12,
+          "in_watchlist": false
+        }
+      ],
+      "cost_pressure_to": [
+        "hyperscaler-capex",
+        "dc-infra"
+      ]
+    },
+    "robot-components": {
+      "name_kr": "로봇 구동부품 (감속기·액추에이터·자석)",
+      "current_severity": "structural",
+      "bottleneck_type": "policy",
+      "bottleneck_pressure": -0.185,
+      "demand_momentum": 0.59,
+      "narrative_momentum": 0.171,
+      "signal_count": 3,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05-27",
+          "title": "로봇용 라이다 출하 Q1 +1,459% 급증, 차량용 첫 추월",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.965
+        },
+        {
+          "date": "2026-05",
+          "title": "중국 Leaderdrive, 휴머노이드 수요에 하모닉 감속기 급부상",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.5601
+        },
+        {
+          "date": "2026-05",
+          "title": "중국 Leaderdrive, 휴머노이드 수요에 하모닉 감속기 급부상",
+          "type": "supply_easing",
+          "strength": 1,
+          "weight": 0.28
+        }
+      ],
+      "growth_outlook": 0.398,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "robot-sensors": {
+      "name_kr": "로봇 인지 센서 (라이다·비전·촉각)",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.542,
+      "narrative_momentum": 0.179,
+      "signal_count": 3,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05-19",
+          "title": "Hesai 1분기 라이다 출하 47만대(+141%) — 흑자 지속",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.5866
+        },
+        {
+          "date": "2026-04-09",
+          "title": "RoboSense 로보틱스 라이다 1분기 +1,459% 폭증",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.5543
+        },
+        {
+          "date": "2026-03-25",
+          "title": "RoboSense 사상 첫 분기 흑자 달성",
+          "type": "demand_up",
+          "strength": 1,
+          "weight": 0.1554
+        }
+      ],
+      "growth_outlook": 0.361,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "foundry": {
+      "name_kr": "첨단 파운드리 (≤3nm)",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.054,
+      "narrative_momentum": 0.182,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.048,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "TSMC",
+          "ticker": "TSM",
+          "share": 70,
+          "in_watchlist": true
+        },
+        {
+          "name": "Samsung Foundry",
+          "ticker": "005930.KS",
+          "share": 7,
+          "in_watchlist": false
+        },
+        {
+          "name": "Intel Foundry",
+          "ticker": "INTC",
+          "share": 6,
+          "in_watchlist": true
+        }
+      ],
+      "cost_pressure_to": [
+        "edge-smartphone",
+        "edge-pc",
+        "edge-auto",
+        "ai-gpu",
+        "custom-asic",
+        "dc-networking",
+        "advanced-packaging",
+        "optical"
+      ]
+    },
+    "abf-substrate": {
+      "name_kr": "ABF 기판·패키징 소재",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.0,
+      "narrative_momentum": null,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.022,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "euv-litho": {
+      "name_kr": "EUV 노광",
+      "current_severity": "structural",
+      "bottleneck_type": "monopoly",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.08,
+      "narrative_momentum": 0.267,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.07,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "ASML",
+          "ticker": "ASML",
+          "share": 100,
+          "in_watchlist": true
+        }
+      ],
+      "cost_pressure_to": [
+        "foundry"
+      ]
+    },
+    "etch-deposition": {
+      "name_kr": "식각·증착 장비",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.076,
+      "narrative_momentum": 0.253,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.076,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "metrology": {
+      "name_kr": "계측·검사 장비",
+      "current_severity": "structural",
+      "bottleneck_type": "monopoly",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.08,
+      "narrative_momentum": 0.268,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.07,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "KLA",
+          "ticker": "KLAC",
+          "share": 74,
+          "in_watchlist": false
+        },
+        {
+          "name": "Applied Materials",
+          "ticker": "AMAT",
+          "share": 10,
+          "in_watchlist": true
+        }
+      ],
+      "cost_pressure_to": [
+        "foundry"
+      ]
+    },
+    "materials": {
+      "name_kr": "핵심 소재",
+      "current_severity": "emerging",
+      "bottleneck_type": "policy",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.0,
+      "narrative_momentum": null,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.068,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "power-grid": {
+      "name_kr": "전력 생산·전력망",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.677,
+      "demand_momentum": 0.332,
+      "narrative_momentum": 0.226,
+      "signal_count": 3,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05",
+          "title": "변압기 리드타임 4–5년으로 — 미국 신규 DC 50%+ 지연",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 0.8401
+        },
+        {
+          "date": "2026-04",
+          "title": "IEA: AI 데이터센터 전력수요 2030년까지 3배",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.594
+        },
+        {
+          "date": "2026-04",
+          "title": "IEA: AI 데이터센터 전력수요 2030년까지 3배",
+          "type": "supply_tightening",
+          "strength": 2,
+          "weight": 0.396
+        }
+      ],
+      "growth_outlook": 0.252,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": [
+        "hyperscaler-capex",
+        "power-cooling",
+        "neocloud",
+        "dc-infra"
+      ]
+    },
+    "semi-ip": {
+      "name_kr": "반도체 IP · EDA",
+      "current_severity": "structural",
+      "bottleneck_type": "monopoly",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.0,
+      "narrative_momentum": null,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.02,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "Synopsys",
+          "ticker": "SNPS",
+          "share": 30,
+          "in_watchlist": false
+        },
+        {
+          "name": "Cadence",
+          "ticker": "CDNS",
+          "share": 28,
+          "in_watchlist": false
+        },
+        {
+          "name": "Siemens EDA",
+          "ticker": null,
+          "share": 12,
+          "in_watchlist": false
+        }
+      ],
+      "cost_pressure_to": [
+        "ai-gpu",
+        "custom-asic",
+        "foundry"
+      ]
+    },
+    "dc-infra": {
+      "name_kr": "AI 데이터센터 인프라 · 코로케이션",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.768,
+      "demand_momentum": 0.426,
+      "narrative_momentum": 0.181,
+      "signal_count": 5,
+      "source_count": 4,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05-11",
+          "title": "美 변압기 리드타임 최대 4년으로 확대",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 0.8022
+        },
+        {
+          "date": "2026-06-01",
+          "title": "美 데이터센터 건설지출 연율 $50B 첫 돌파",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.6816
+        },
+        {
+          "date": "2026-04-03",
+          "title": "올해 예정 美 DC 신축 절반이 지연·취소",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 0.5171
+        },
+        {
+          "date": "2026-02-17",
+          "title": "JLL: 북미 공실률 1% 사상최저, 텍사스가 버지니아 추월 전망",
+          "type": "supply_tightening",
+          "strength": 2,
+          "weight": 0.205
+        },
+        {
+          "date": "2026-02-17",
+          "title": "JLL: 북미 공실률 1% 사상최저, 텍사스가 버지니아 추월 전망",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.205
+        }
+      ],
+      "growth_outlook": 0.275,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": [
+        "neocloud",
+        "hyperscaler-capex"
+      ]
+    }
+  }
+}

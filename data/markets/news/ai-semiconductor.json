@@ -1,7 +1,7 @@
 {
   "industry": "ai-semiconductor",
-  "updated": "2026-06-11",
-  "schema_note": "markets.<market-id> = 시장 단위 뉴스 배열(최신순). 파일당 시장별 최대 20개 보관, 웹은 최신 6개+더보기 표시. 단일 기업 뉴스는 data/news/<TICKER>/ (daily 루틴) 몫.",
+  "updated": "2026-07-03",
+  "schema_note": "markets.<market-id> = 시장 단위 뉴스 배열(최신순). 파일당 시장별 최대 20개 보관, 웹은 최신 6개+더보기 표시. 단일 기업 뉴스는 data/news/<TICKER>/ (daily 루틴) 몫. 각 뉴스의 signals[] 는 방향성 신호 태그 — {type: supply_tightening|supply_easing|demand_up|demand_down, strength: 1~3}. scripts/market_pulse.py 가 이를 집계해 병목 압력을 산출한다. 새 뉴스를 넣을 때 반드시 태깅한다(방향성이 없으면 빈 배열).",
   "markets": {
     "hbm": [
       {
@@ -10,7 +10,8 @@
         "source": "SemiEngineering",
         "impact": "+",
         "summary": "삼성이 HBM4 Rubin 인증을 통과하며 SK하이닉스·마이크론과 3강 경쟁 재점화.",
-        "url": "https://semiengineering.com/hbm4-sticks-with-microbumps-postponing-hybrid-bonding/"
+        "url": "https://semiengineering.com/hbm4-sticks-with-microbumps-postponing-hybrid-bonding/",
+        "signals": [ { "type": "supply_easing", "strength": 2 } ]
       },
       {
         "date": "2025-12",
@@ -18,7 +19,8 @@
         "source": "The Next Platform",
         "impact": "-",
         "summary": "전 3사 2026까지 HBM 매진, 12/16단 적층 수율이 증설 속도를 제약.",
-        "url": "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
+        "url": "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/",
+        "signals": [ { "type": "supply_tightening", "strength": 3 }, { "type": "demand_up", "strength": 2 } ]
       }
     ],
     "advanced-packaging": [
@@ -28,7 +30,8 @@
         "source": "TrendForce",
         "impact": "neutral",
         "summary": "~4배 증설로 급성 CoWoS 병목은 완화 중, 제약이 HBM·전력으로 이동.",
-        "url": "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
+        "url": "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/",
+        "signals": [ { "type": "supply_easing", "strength": 2 }, { "type": "demand_up", "strength": 1 } ]
       }
     ],
     "power-grid": [
@@ -38,7 +41,8 @@
         "source": "pv-magazine",
         "impact": "-",
         "summary": "전기장비는 원가 <10%인데 병목의 ~100%. GOES 강·동박 공급이 관건.",
-        "url": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
+        "url": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/",
+        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
       },
       {
         "date": "2026-04",
@@ -46,7 +50,8 @@
         "source": "IEA",
         "impact": "-",
         "summary": "DC 전력 485→950 TWh 전망. 전력망·공급망 제약이 더 공격적 시나리오를 가로막음.",
-        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+        "signals": [ { "type": "demand_up", "strength": 3 }, { "type": "supply_tightening", "strength": 2 } ]
       }
     ],
     "robotics": [
@@ -56,7 +61,8 @@
         "source": "CNBC",
         "url": "https://www.cnbc.com/2026/06/08/cnbcs-the-china-connection-newsletter-who-will-buy-the-humanoids.html",
         "impact": "-",
-        "summary": "150개사 난립·구매자 만족 23%, 실수요 검증이 과제"
+        "summary": "150개사 난립·구매자 만족 23%, 실수요 검증이 과제",
+        "signals": [ { "type": "demand_down", "strength": 2 } ]
       },
       {
         "date": "2026-01-05",
@@ -64,7 +70,8 @@
         "source": "TechCrunch",
         "url": "https://techcrunch.com/2026/01/05/nvidia-wants-to-be-the-android-of-generalist-robotics/",
         "impact": "+",
-        "summary": "Jetson Thor·GR00T로 휴머노이드 풀스택 플랫폼 개방"
+        "summary": "Jetson Thor·GR00T로 휴머노이드 풀스택 플랫폼 개방",
+        "signals": [ { "type": "demand_up", "strength": 1 } ]
       },
       {
         "date": "2025-12-30",
@@ -72,7 +79,8 @@
         "source": "CNBC",
         "url": "https://www.cnbc.com/2025/12/30/elon-musk-wants-robots-everywhere-china-is-making-that-a-reality.html",
         "impact": "+",
-        "summary": "중국, 정부 지원·공급망 우위로 대수 기준 양산 선도"
+        "summary": "중국, 정부 지원·공급망 우위로 대수 기준 양산 선도",
+        "signals": [ { "type": "supply_easing", "strength": 1 }, { "type": "demand_up", "strength": 1 } ]
       },
       {
         "date": "2025-12-09",
@@ -80,7 +88,8 @@
         "source": "TrendForce",
         "url": "https://www.trendforce.com/presscenter/news/20251209-12825.html",
         "impact": "+",
-        "summary": "2026년이 상용화 원년 — 일본은 부품·미중은 시스템 양산"
+        "summary": "2026년이 상용화 원년 — 일본은 부품·미중은 시스템 양산",
+        "signals": [ { "type": "demand_up", "strength": 3 } ]
       }
     ],
     "robot-components": [
@@ -90,7 +99,8 @@
         "source": "PR Newswire (RoboSense)",
         "url": "https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html",
         "impact": "+",
-        "summary": "로봇향 라이다가 ADAS 추월 — 부품 수요 변곡점"
+        "summary": "로봇향 라이다가 ADAS 추월 — 부품 수요 변곡점",
+        "signals": [ { "type": "demand_up", "strength": 3 } ]
       },
       {
         "date": "2026-05",
@@ -98,7 +108,8 @@
         "source": "Humanoid.guide / J.P.Morgan",
         "url": "https://humanoid.guide/leaderdrive-harmonic-reducers-surge-as-humanoid-demand-lifts-shares/",
         "impact": "+",
-        "summary": "中 감속기 30–40% 점유 — 일본 독점 구도 잠식"
+        "summary": "中 감속기 30–40% 점유 — 일본 독점 구도 잠식",
+        "signals": [ { "type": "demand_up", "strength": 2 }, { "type": "supply_easing", "strength": 1 } ]
       },
       {
         "date": "2025-11",
@@ -106,7 +117,8 @@
         "source": "Clark Hill",
         "url": "https://www.clarkhill.com/news-events/news/china-hits-pause-on-rare-earth-export-controls-and-what-it-means-for-supply-chains/",
         "impact": "neutral",
-        "summary": "1년 유예로 단기 숨통, 역외통제 리스크는 잔존"
+        "summary": "1년 유예로 단기 숨통, 역외통제 리스크는 잔존",
+        "signals": [ { "type": "supply_easing", "strength": 1 } ]
       },
       {
         "date": "2025-10",
@@ -114,7 +126,8 @@
         "source": "CSIS",
         "url": "https://www.csis.org/analysis/chinas-new-rare-earth-and-magnet-restrictions-threaten-us-defense-supply-chains",
         "impact": "-",
-        "summary": "소결 자석 94% 中 장악 — 모터·액추에이터 구조적 병목"
+        "summary": "소결 자석 94% 中 장악 — 모터·액추에이터 구조적 병목",
+        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
       }
     ],
     "defense-ai": [
@@ -124,7 +137,8 @@
         "source": "Defense Security Monitor",
         "url": "https://dsm.forecastinternational.com/2026/05/21/a-new-dawg-in-the-fight-the-pentagons-54-billion-bet-on-autonomous-warfare/",
         "impact": "+",
-        "summary": "역대 최대 자율전 예산 요구 — 하드웨어→SW 중심 전환"
+        "summary": "역대 최대 자율전 예산 요구 — 하드웨어→SW 중심 전환",
+        "signals": [ { "type": "demand_up", "strength": 3 } ]
       },
       {
         "date": "2026-05-13",
@@ -132,7 +146,8 @@
         "source": "TechCrunch",
         "url": "https://techcrunch.com/2026/05/13/anduril-raises-5b-doubles-valuation-to-61b/",
         "impact": "+",
-        "summary": "방산테크 밸류 급등, Arsenal-1 양산설비 확장 자금"
+        "summary": "방산테크 밸류 급등, Arsenal-1 양산설비 확장 자금",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       },
       {
         "date": "2026-04-27",
@@ -140,7 +155,8 @@
         "source": "SIPRI",
         "url": "https://www.sipri.org/media/press-release/2026/global-military-spending-rise-continues-european-and-asian-expenditures-surge",
         "impact": "+",
-        "summary": "11년 연속 증가 — 유럽 재무장 주도, 독일 +24%"
+        "summary": "11년 연속 증가 — 유럽 재무장 주도, 독일 +24%",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       },
       {
         "date": "2026-03-22",
@@ -148,7 +164,8 @@
         "source": "Military.com",
         "url": "https://www.military.com/feature/2026/03/22/pentagon-expands-palantirs-role-ai-contract.html",
         "impact": "+",
-        "summary": "’26.9 공식 편성 — 계약한도 $1.3B·사용자 2만+ 확대"
+        "summary": "’26.9 공식 편성 — 계약한도 $1.3B·사용자 2만+ 확대",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       }
     ],
     "neocloud": [
@@ -158,7 +175,8 @@
         "source": "Data Center Knowledge",
         "url": "https://www.datacenterknowledge.com/cloud/earnings-roundup-neoclouds-shift-from-gpu-race-to-power-wars",
         "impact": "neutral",
-        "summary": "경쟁축이 칩에서 전력·부지·자금조달로 이동"
+        "summary": "경쟁축이 칩에서 전력·부지·자금조달로 이동",
+        "signals": [ { "type": "supply_tightening", "strength": 2 } ]
       },
       {
         "date": "2026-03-20",
@@ -166,7 +184,8 @@
         "source": "Nebius",
         "url": "https://nebius.com/newsroom/nebius-group-announces-closing-of-private-offering-of-convertible-senior-notes-with-aggregate-gross-proceeds-of-approximately-4-3-billion",
         "impact": "neutral",
-        "summary": "증설 자금이 VC에서 채권시장으로 — GPU 담보 레버리지 확대"
+        "summary": "증설 자금이 VC에서 채권시장으로 — GPU 담보 레버리지 확대",
+        "signals": [ { "type": "supply_easing", "strength": 1 } ]
       },
       {
         "date": "2025-11-03",
@@ -174,7 +193,8 @@
         "source": "GlobeNewswire (IREN)",
         "url": "https://www.globenewswire.com/news-release/2025/11/03/3178993/0/en/IREN-Secures-9-7bn-AI-Cloud-Contract-with-Microsoft.html",
         "impact": "+",
-        "summary": "GB300 5년 계약 — 비트코인 채굴사 전력자산 재평가 촉발"
+        "summary": "GB300 5년 계약 — 비트코인 채굴사 전력자산 재평가 촉발",
+        "signals": [ { "type": "demand_up", "strength": 3 } ]
       },
       {
         "date": "2025-10-13",
@@ -182,7 +202,8 @@
         "source": "Synergy Research",
         "url": "https://www.srgresearch.com/articles/neoclouds-currently-growing-by-over-200-per-year-will-reach-180-billion-in-revenues-by-2030",
         "impact": "+",
-        "summary": "분기 매출 $5B 돌파 — 독립 클라우드 계층으로 격상"
+        "summary": "분기 매출 $5B 돌파 — 독립 클라우드 계층으로 격상",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       }
     ],
     "dc-infra": [
@@ -192,7 +213,8 @@
         "source": "Bloomberg",
         "url": "https://www.bloomberg.com/news/articles/2026-06-01/us-construction-spending-on-data-centers-eclipses-50-billion",
         "impact": "+",
-        "summary": "4월 SAAR $50.7B, +28% YoY — 일반 오피스 건설 추월"
+        "summary": "4월 SAAR $50.7B, +28% YoY — 일반 오피스 건설 추월",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       },
       {
         "date": "2026-05-11",
@@ -200,7 +222,8 @@
         "source": "PV Magazine USA",
         "url": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/",
         "impact": "-",
-        "summary": "전력기기 공급난이 DC 준공 일정의 핵심 제약으로"
+        "summary": "전력기기 공급난이 DC 준공 일정의 핵심 제약으로",
+        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
       },
       {
         "date": "2026-04-03",
@@ -208,7 +231,8 @@
         "source": "Tom's Hardware",
         "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/half-of-planned-us-data-center-builds-have-been-delayed-or-canceled-growth-limited-by-shortages-of-power-infrastructure-and-parts-from-china-the-ai-build-out-flips-the-breakers",
         "impact": "-",
-        "summary": "12GW 중 ~5GW만 착공 — 전력·中부품 부족이 원인"
+        "summary": "12GW 중 ~5GW만 착공 — 전력·中부품 부족이 원인",
+        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
       },
       {
         "date": "2026-02-17",
@@ -216,7 +240,8 @@
         "source": "JLL",
         "url": "https://www.jll.com/en-us/newsroom/jll-north-america-data-center-report-year-end-2025",
         "impact": "+",
-        "summary": "35GW 파이프라인 — 신규 92% 프리리스, 임대료 +9%"
+        "summary": "35GW 파이프라인 — 신규 92% 프리리스, 임대료 +9%",
+        "signals": [ { "type": "supply_tightening", "strength": 2 }, { "type": "demand_up", "strength": 2 } ]
       }
     ],
     "military-drones": [
@@ -226,7 +251,8 @@
         "source": "DefenseScoop",
         "url": "https://defensescoop.com/2026/04/21/dod-plans-largest-ever-investment-drones-anti-drone-weapons/",
         "impact": "+",
-        "summary": "Replicator 후속 DAWG 예산 폭증 — 자율무기 조달 구조 전환"
+        "summary": "Replicator 후속 DAWG 예산 폭증 — 자율무기 조달 구조 전환",
+        "signals": [ { "type": "demand_up", "strength": 3 } ]
       },
       {
         "date": "2026-03-22",
@@ -234,7 +260,8 @@
         "source": "DroneXL / Breaking Defense",
         "url": "https://dronexl.co/2026/03/22/anduril-fury-production-ohio-arsenal-1/",
         "impact": "+",
-        "summary": "연 150대 메가팩토리 가동 — 서방 양산 병목 완화 신호"
+        "summary": "연 150대 메가팩토리 가동 — 서방 양산 병목 완화 신호",
+        "signals": [ { "type": "supply_easing", "strength": 2 } ]
       },
       {
         "date": "2026-01-08",
@@ -242,7 +269,8 @@
         "source": "DefenseScoop",
         "url": "https://defensescoop.com/2026/01/08/marine-corps-cca-drones-northrop-grumman-kratos-team-contract/",
         "impact": "+",
-        "summary": "Valkyrie 기반 무인 윙맨 — CCA가 공군 넘어 전군 확산"
+        "summary": "Valkyrie 기반 무인 윙맨 — CCA가 공군 넘어 전군 확산",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       }
     ],
     "robot-sensors": [
@@ -252,7 +280,8 @@
         "source": "Hesai IR",
         "url": "https://www.stocktitan.net/news/HSAI/hesai-group-reports-first-quarter-2026-unaudited-financial-wgvrptc5slt8.html",
         "impact": "+",
-        "summary": "로보틱스 라이다 11.8만대 +138%, 매출 +29.6%"
+        "summary": "로보틱스 라이다 11.8만대 +138%, 매출 +29.6%",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       },
       {
         "date": "2026-04-09",
@@ -260,7 +289,8 @@
         "source": "PR Newswire",
         "url": "https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html",
         "impact": "+",
-        "summary": "로봇용 18.5만개 출하 — 로보틱스 라이다 1위 굳히기"
+        "summary": "로봇용 18.5만개 출하 — 로보틱스 라이다 1위 굳히기",
+        "signals": [ { "type": "demand_up", "strength": 3 } ]
       },
       {
         "date": "2026-03-25",
@@ -268,7 +298,8 @@
         "source": "PR Newswire",
         "url": "https://www.prnewswire.com/news-releases/robosense-beat-expectations-achieved-first-ever-quarterly-profit-on-strong-robotics-growth-302724994.html",
         "impact": "+",
-        "summary": "Q4’25 순익 1.04억위안 — 연 출하 91.2만개 +68%"
+        "summary": "Q4’25 순익 1.04억위안 — 연 출하 91.2만개 +68%",
+        "signals": [ { "type": "demand_up", "strength": 1 } ]
       }
     ],
     "industrial-robotics": [
@@ -278,7 +309,8 @@
         "source": "The Robot Report",
         "url": "https://www.therobotreport.com/teradyne-robotics-revenue-rises-start-2026/",
         "impact": "+",
-        "summary": "UR 코봇 회복 + NVIDIA AI 통합 '코그니티브 코봇' 출시"
+        "summary": "UR 코봇 회복 + NVIDIA AI 통합 '코그니티브 코봇' 출시",
+        "signals": [ { "type": "demand_up", "strength": 2 } ]
       },
       {
         "date": "2025-10-08",
@@ -286,7 +318,8 @@
         "source": "SoftBank",
         "url": "https://group.softbank/en/news/press/20251008",
         "impact": "neutral",
-        "summary": "IPO 대신 매각 선회 — 피지컬 AI발 산업 재편 신호"
+        "summary": "IPO 대신 매각 선회 — 피지컬 AI발 산업 재편 신호",
+        "signals": []
       },
       {
         "date": "2025-09-25",
@@ -294,7 +327,8 @@
         "source": "IFR World Robotics",
         "url": "https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years",
         "impact": "-",
-        "summary": "’24 설치 54.2만대, 중국 54% — 일본·구미 4강 압박"
+        "summary": "’24 설치 54.2만대, 중국 54% — 일본·구미 4강 압박",
+        "signals": [ { "type": "supply_easing", "strength": 2 } ]
       }
     ]
   }

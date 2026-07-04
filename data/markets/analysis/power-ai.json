@@ -1,0 +1,606 @@
+{
+  "industry": "power-ai",
+  "generated": "2026-07-04T04:19:37Z",
+  "params": {
+    "window_days": 150,
+    "half_life_days": 60,
+    "escalate_threshold": 0.45,
+    "deescalate_threshold": -0.35,
+    "min_signals": 2,
+    "min_sources": 2,
+    "node_arrow_threshold": 0.35
+  },
+  "disclaimer": "뉴스 신호의 결정적 집계로 산출된 자동 '제안'이다. 지도 반영은 market-research 루틴이 근거를 검증한 뒤 수행한다. 투자 조언이 아니다.",
+  "top_focus": [
+    {
+      "market": "gas-power",
+      "name_kr": "가스 발전 (신설 CCGT·온사이트)",
+      "score": 0.521
+    },
+    {
+      "market": "transformers",
+      "name_kr": "변압기 · 스위치기어 · HVDC",
+      "score": 0.506
+    },
+    {
+      "market": "turbines",
+      "name_kr": "가스터빈 제조",
+      "score": 0.504
+    },
+    {
+      "market": "uranium",
+      "name_kr": "우라늄 · 농축 (HALEU)",
+      "score": 0.449
+    },
+    {
+      "market": "grid-ftm",
+      "name_kr": "그리드 접속 · 유틸리티 조달 (FTM)",
+      "score": 0.432
+    }
+  ],
+  "alerts": [
+    {
+      "type": "bottleneck_migration",
+      "market": "btm",
+      "name_kr": "BTM 구내·전용 발전 조달",
+      "to": [
+        "transformers",
+        "gas-power"
+      ],
+      "to_names": [
+        "변압기 · 스위치기어 · HVDC",
+        "가스 발전 (신설 CCGT·온사이트)"
+      ]
+    },
+    {
+      "type": "bottleneck_migration",
+      "market": "renewables-storage",
+      "name_kr": "재생에너지 + ESS",
+      "to": [
+        "grid-ftm"
+      ],
+      "to_names": [
+        "그리드 접속 · 유틸리티 조달 (FTM)"
+      ]
+    }
+  ],
+  "markets": {
+    "ai-dc-demand": {
+      "name_kr": "AI 데이터센터 전력 수요",
+      "current_severity": "none",
+      "bottleneck_type": "demand",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.499,
+      "narrative_momentum": 0.111,
+      "signal_count": 1,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-06",
+          "title": "골드만삭스: 美 DC 전력 31GW(’25)→41GW(’26)→66GW(’27) 전망",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 1.2019
+        }
+      ],
+      "growth_outlook": 0.299,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "btm": {
+      "name_kr": "BTM 구내·전용 발전 조달",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": -0.258,
+      "demand_momentum": 0.876,
+      "narrative_momentum": null,
+      "signal_count": 4,
+      "source_count": 3,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05",
+          "title": "'속도-전력 문제, 천연가스로 풀었다' — BTM 이 기본 옵션으로",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.8401
+        },
+        {
+          "date": "2026-06",
+          "title": "BTM 가스발전, 소비자 요금 인상 논쟁으로 — 그래도 확산 지속",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.8013
+        },
+        {
+          "date": "2026-04",
+          "title": "미드스트림, DC 온사이트 발전 사업 직접 진출 가속",
+          "type": "supply_easing",
+          "strength": 2,
+          "weight": 0.396
+        },
+        {
+          "date": "2026-04",
+          "title": "미드스트림, DC 온사이트 발전 사업 직접 진출 가속",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.396
+        }
+      ],
+      "growth_outlook": 0.725,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "grid-ftm": {
+      "name_kr": "그리드 접속 · 유틸리티 조달 (FTM)",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.465,
+      "demand_momentum": 0.306,
+      "narrative_momentum": 0.139,
+      "signal_count": 4,
+      "source_count": 3,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-04",
+          "title": "ERCOT 대형부하 큐 410GW — 1년새 4배, 87%가 데이터센터",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 0.594
+        },
+        {
+          "date": "2026-04",
+          "title": "ERCOT 대형부하 큐 410GW — 1년새 4배, 87%가 데이터센터",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.594
+        },
+        {
+          "date": "2026-02",
+          "title": "PJM 핫스팟 접속 대기 36~48개월 — 용량부족 ’30까지 15GW",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 0.3005
+        },
+        {
+          "date": "2026-03",
+          "title": "FERC, PJM 에 데이터센터 공동입지(colocation) 규칙 제정 명령",
+          "type": "supply_easing",
+          "strength": 1,
+          "weight": 0.1384
+        }
+      ],
+      "growth_outlook": 0.383,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": [
+        "ai-dc-demand"
+      ]
+    },
+    "gas-power": {
+      "name_kr": "가스 발전 (신설 CCGT·온사이트)",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.489,
+      "demand_momentum": 0.554,
+      "narrative_momentum": 0.294,
+      "signal_count": 2,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-06",
+          "title": "'전력 부족 = 가스 붐' — 신설 CCGT·BTM 가스 발주 사상 최대",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 1.2019
+        },
+        {
+          "date": "2026-06",
+          "title": "'전력 부족 = 가스 붐' — 신설 CCGT·BTM 가스 발주 사상 최대",
+          "type": "supply_tightening",
+          "strength": 2,
+          "weight": 0.8013
+        }
+      ],
+      "growth_outlook": 0.569,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": [
+        "btm",
+        "grid-ftm"
+      ]
+    },
+    "nuclear-existing": {
+      "name_kr": "기존 원전 (재가동·업레이트·PPA)",
+      "current_severity": "structural",
+      "bottleneck_type": "monopoly",
+      "bottleneck_pressure": 0.357,
+      "demand_momentum": 0.444,
+      "narrative_momentum": 0.294,
+      "signal_count": 2,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05",
+          "title": "하이퍼스케일러 원자력 계약 13건 ~9.8GW — 4사 전원 참전",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.8401
+        },
+        {
+          "date": "2026-05",
+          "title": "하이퍼스케일러 원자력 계약 13건 ~9.8GW — 4사 전원 참전",
+          "type": "supply_tightening",
+          "strength": 2,
+          "weight": 0.5601
+        }
+      ],
+      "growth_outlook": 0.389,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "Constellation",
+          "ticker": "CEG",
+          "share": 22,
+          "in_watchlist": true
+        },
+        {
+          "name": "Vistra",
+          "ticker": "VST",
+          "share": 7,
+          "in_watchlist": true
+        },
+        {
+          "name": "Talen Energy",
+          "ticker": "TLN",
+          "share": 3,
+          "in_watchlist": false
+        }
+      ],
+      "cost_pressure_to": [
+        "grid-ftm"
+      ]
+    },
+    "smr": {
+      "name_kr": "SMR · 차세대 원자로",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.092,
+      "demand_momentum": 0.182,
+      "narrative_momentum": null,
+      "signal_count": 3,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-03",
+          "title": "X-energy, 나스닥 IPO 추진 (S-1 제출) — Amazon $700M 투자 업고",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.2768
+        },
+        {
+          "date": "2026-03",
+          "title": "Centrus-Oklo, HALEU 공급 LOI — Aurora 5기분, ’29 인도 개시",
+          "type": "supply_tightening",
+          "strength": 2,
+          "weight": 0.2768
+        },
+        {
+          "date": "2026-03",
+          "title": "Centrus-Oklo, HALEU 공급 LOI — Aurora 5기분, ’29 인도 개시",
+          "type": "supply_easing",
+          "strength": 1,
+          "weight": 0.1384
+        }
+      ],
+      "growth_outlook": 0.46,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "renewables-storage": {
+      "name_kr": "재생에너지 + ESS",
+      "current_severity": "demand_limited",
+      "bottleneck_type": "policy",
+      "bottleneck_pressure": -0.357,
+      "demand_momentum": 0.177,
+      "narrative_momentum": 0.038,
+      "signal_count": 3,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05",
+          "title": "1Q26 美 신규 발전용량의 91%가 태양광+ESS",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.5601
+        },
+        {
+          "date": "2026-05",
+          "title": "1Q26 美 신규 발전용량의 91%가 태양광+ESS",
+          "type": "supply_easing",
+          "strength": 2,
+          "weight": 0.5601
+        },
+        {
+          "date": "2026-04",
+          "title": "OBBBA 이후: 풍력·태양광 크레딧 조기 축소, ESS 는 ’34까지 유지",
+          "type": "demand_down",
+          "strength": 1,
+          "weight": 0.198
+        }
+      ],
+      "growth_outlook": 0.343,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "fuel-cells": {
+      "name_kr": "연료전지 온사이트 발전",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.741,
+      "narrative_momentum": null,
+      "signal_count": 1,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-06-30",
+          "title": "Brookfield-Bloom 파트너십 $5B→$25B 확대 — AI DC 연료전지",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 1.4293
+        }
+      ],
+      "growth_outlook": 0.795,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "transmission": {
+      "name_kr": "송전망 · 계통 인프라 건설",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.156,
+      "demand_momentum": 0.356,
+      "narrative_momentum": 0.163,
+      "signal_count": 2,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-04-30",
+          "title": "Quanta 1Q26 백로그 $48.5B 사상최대 — 가이던스 상향",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.7064
+        },
+        {
+          "date": "2026-04-30",
+          "title": "Quanta 1Q26 백로그 $48.5B 사상최대 — 가이던스 상향",
+          "type": "supply_tightening",
+          "strength": 1,
+          "weight": 0.2355
+        }
+      ],
+      "growth_outlook": 0.336,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": [
+        "grid-ftm"
+      ]
+    },
+    "turbines": {
+      "name_kr": "가스터빈 제조",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.404,
+      "demand_momentum": 0.72,
+      "narrative_momentum": null,
+      "signal_count": 4,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-06",
+          "title": "GE Vernova 가스터빈 ’29까지 매진 — ’26말 ’30 매진 전망",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 1.2019
+        },
+        {
+          "date": "2026-06",
+          "title": "GE Vernova 가스터빈 ’29까지 매진 — ’26말 ’30 매진 전망",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.8013
+        },
+        {
+          "date": "2026-05",
+          "title": "두산에너빌리티, 美 빅테크 380MW 터빈 7기 등 수주 릴레이",
+          "type": "supply_easing",
+          "strength": 2,
+          "weight": 0.5601
+        },
+        {
+          "date": "2026-05",
+          "title": "두산에너빌리티, 美 빅테크 380MW 터빈 7기 등 수주 릴레이",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.5601
+        }
+      ],
+      "growth_outlook": 0.654,
+      "pricing_power": true,
+      "beneficiaries": [
+        {
+          "name": "GE Vernova",
+          "ticker": "GEV",
+          "share": 40,
+          "in_watchlist": true
+        },
+        {
+          "name": "Siemens Energy",
+          "ticker": "ENR.DE",
+          "share": 28,
+          "in_watchlist": false
+        },
+        {
+          "name": "Mitsubishi Heavy",
+          "ticker": "7011.T",
+          "share": 25,
+          "in_watchlist": false
+        }
+      ],
+      "cost_pressure_to": [
+        "gas-power"
+      ]
+    },
+    "transformers": {
+      "name_kr": "변압기 · 스위치기어 · HVDC",
+      "current_severity": "acute",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.6,
+      "demand_momentum": 0.198,
+      "narrative_momentum": null,
+      "signal_count": 3,
+      "source_count": 2,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05",
+          "title": "美 변압기 리드타임 4~5년으로 — 신규 DC 지연 최대 원인",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 0.8401
+        },
+        {
+          "date": "2026-02",
+          "title": "K-전력기기 빅3, ’25 사상최대 실적 — 합산 매출 15조·영업익 2.2조",
+          "type": "demand_up",
+          "strength": 3,
+          "weight": 0.3005
+        },
+        {
+          "date": "2026-02",
+          "title": "K-전력기기 빅3, ’25 사상최대 실적 — 합산 매출 15조·영업익 2.2조",
+          "type": "supply_tightening",
+          "strength": 2,
+          "weight": 0.2003
+        }
+      ],
+      "growth_outlook": 0.365,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": [
+        "transmission",
+        "btm"
+      ]
+    },
+    "bess": {
+      "name_kr": "배터리 ESS (그리드·DC)",
+      "current_severity": "emerging",
+      "bottleneck_type": "policy",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.246,
+      "narrative_momentum": -0.012,
+      "signal_count": 1,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-05",
+          "title": "美 1Q26 ESS 설치 분기 사상최대 — 전망도 상향",
+          "type": "demand_up",
+          "strength": 2,
+          "weight": 0.5601
+        }
+      ],
+      "growth_outlook": 0.218,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "natgas": {
+      "name_kr": "천연가스 공급 · 미드스트림",
+      "current_severity": "emerging",
+      "bottleneck_type": "capacity",
+      "bottleneck_pressure": 0.0,
+      "demand_momentum": 0.0,
+      "narrative_momentum": null,
+      "signal_count": 0,
+      "source_count": 0,
+      "status": "no_signals",
+      "proposal": null,
+      "note": null,
+      "evidence": [],
+      "growth_outlook": 0.259,
+      "pricing_power": false,
+      "beneficiaries": [],
+      "cost_pressure_to": []
+    },
+    "uranium": {
+      "name_kr": "우라늄 · 농축 (HALEU)",
+      "current_severity": "structural",
+      "bottleneck_type": "monopoly",
+      "bottleneck_pressure": 0.665,
+      "demand_momentum": 0.0,
+      "narrative_momentum": null,
+      "signal_count": 1,
+      "source_count": 1,
+      "status": "ok",
+      "proposal": null,
+      "note": null,
+      "evidence": [
+        {
+          "date": "2026-06",
+          "title": "Cameco: 우라늄 구조적 공급부족 — SWU $40→$200, U3O8 ~$120/lb",
+          "type": "supply_tightening",
+          "strength": 3,
+          "weight": 1.2019
+        }
+      ],
+      "growth_outlook": 0.125,
+      "pricing_power": true,
+      "beneficiaries": [],
+      "cost_pressure_to": [
+        "nuclear-existing",
+        "smr"
+      ]
+    }
+  }
+}

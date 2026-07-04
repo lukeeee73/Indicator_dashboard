@@ -437,6 +437,17 @@ STOCKS: dict[str, dict] = {
     "SRE":  {"name": "Sempra",                  "sector": "Utilities", "group": "유틸리티 / 전력"},
     "ED":   {"name": "Consolidated Edison",     "sector": "Utilities", "group": "유틸리티 / 전력"},
     "D":    {"name": "Dominion Energy, Inc.",   "sector": "Utilities", "group": "유틸리티 / 전력"},
+    # ── 전력 인프라 (AI) ─────────────────────────────────────
+    "GEV":        {"name": "GE Vernova Inc.",          "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "ETN":        {"name": "Eaton Corporation plc",    "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "VRT":        {"name": "Vertiv Holdings Co",       "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "PWR":        {"name": "Quanta Services, Inc.",    "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "BE":         {"name": "Bloom Energy Corporation", "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "OKLO":       {"name": "Oklo Inc.",                "sector": "Utilities",   "group": "전력 인프라 (AI)"},
+    "034020.KS":  {"name": "Doosan Enerbility",        "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "267260.KS":  {"name": "HD Hyundai Electric",      "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "298040.KS":  {"name": "Hyosung Heavy Industries", "sector": "Industrials", "group": "전력 인프라 (AI)"},
+    "010120.KS":  {"name": "LS ELECTRIC",              "sector": "Industrials", "group": "전력 인프라 (AI)"},
     # ── 조선 (한국) ─────────────────────────────────────
     "329180.KS":  {"name": "HD Hyundai Heavy Industries", "sector": "Industrials", "group": "조선 (한국)"},
     "042660.KS":  {"name": "Hanwha Ocean Co., Ltd.",      "sector": "Industrials", "group": "조선 (한국)"},

@@ -18,13 +18,21 @@
                                         │  ← 웹이 시장 노드별로 "자동 집계"
                                         ▼
 [시장 리서치 루틴]  ───────►  data/markets/{industry}.json          (시장 구조)
-   (이 디렉토리)              data/markets/news/{industry}.json     (시장 뉴스 스토어)
+   (이 디렉토리)              data/markets/news/{industry}.json     (시장 뉴스 스토어 + signals 태그)
                                     · 시장 규모/성장/병목 상태 갱신 (구조 파일)
                                     · 시장 단위 헤드라인 누적 (뉴스 스토어, 시장당 ≤20)
+                                        │
+                                        │  scripts/market_pulse.py  ← criteria/{industry}.json (시장별 병목 기준)
+                                        ▼
+                              data/markets/analysis/{industry}.json (자동 병목 신호)
+                                    · 병목 압력·수요 모멘텀 (신호 감쇠 집계)
+                                    · severity 전이 '제안' + 병목 이동 경보
+                                    · 루틴이 다음 주기에 검증 후 구조 파일에 반영 (자동 반영 아님)
                                         │
                                         ▼
               웹 대시보드  주식 탭 → '시장 지도' (app.js renderMarketCascade)
               뉴스는 ① 노드 배지 ② 클릭 상세 ③ 하단 통합 피드 세 곳에 표시
+              자동 신호는 ① 노드 ▲▼ ② 보드 상단 스트립 ③ 상세 게이지에 표시
 ```
 
 - **티커 뉴스**는 daily 루틴이 채우고, 시장 노드는 소속 watchlist 기업의
@@ -117,6 +125,40 @@
 웹은 이 파일로 노드 뉴스 배지(건수·최신일·14일 내 신규 강조), 클릭 상세(최신 6개
 + 더보기), 보드 하단 통합 뉴스 피드(시장 칩 클릭 → 지도에서 해당 노드 선택)를 그린다.
 
+각 뉴스에는 **`signals[]` 방향성 태그가 필수**다 (없으면 키워드 폴백으로만 분류됨):
+
+```jsonc
+"signals": [ { "type": "supply_tightening", "strength": 3 } ]
+// type: supply_tightening(공급 긴축) | supply_easing(공급 완화)
+//     | demand_up(수요 확대) | demand_down(수요 축소)
+// strength: 1(약) ~ 3(강) · 복수 신호 가능 · 방향성 없으면 []
+```
+
+---
+
+## 데이터 모델 — 자동 병목 신호 (market pulse)
+
+"뉴스가 쌓이기만 하고 지도는 손대야만 바뀐다"를 해결하는 층. 병목의 기준은
+시장마다 다르므로(HBM=적층 수율·매진 시한, 전력망=계통접속 대기·터빈 리드타임,
+로봇부품=희토류 통제…) 기준을 시장별로 명시하고, 스크립트가 뉴스 신호를
+결정적으로 집계한다. **탐지(스크립트)와 판단(루틴)은 분리** — 스크립트는 지도를
+직접 고치지 않고 '제안'만 쓴다.
+
+| 파일 | 역할 | 편집 주체 |
+|---|---|---|
+| `data/markets/criteria/{industry}.json` | 시장별 병목 판정 기준 — `bottleneck_type`(capacity/monopoly/demand/policy/finance), `key_metrics`, `escalate_when`/`deescalate_when`, 폴백 `keywords`, 임계값(`defaults`) | 루틴/사람 |
+| `data/markets/analysis/{industry}.json` | `scripts/market_pulse.py` 산출물 — 시장별 병목 압력(-1~+1)·수요 모멘텀·성장 전망·`severity_change_proposed` 제안·`bottleneck_migration` 경보·근거 뉴스 | 스크립트 전용 |
+
+집계 규칙 (criteria `defaults` 로 조정):
+- **시간 감쇠**: 반감기 60일 — 오래된 헤드라인은 저절로 힘이 빠진다 (윈도 150일).
+- **Hysteresis**: 승급 제안은 압력 ≥ +0.45 **이면서** 긴축 신호 ≥2건·독립 소스 ≥2곳일 때만.
+  완화는 ≤ −0.35 + 완화 신호 2건/2소스. 단발 헤드라인 하나로 지도가 안 바뀌게.
+- **structural(구조적 독점)은 자동 전이 금지** — 대체 공급원 등장은 사람이 판단.
+- **병목 이동 감지**: 완화 중인 시장의 `links` 인접 시장이 조여오면 경보
+  (예: CoWoS 완화 → HBM·전력 긴축 = 2024→2026 병목 이동 패턴).
+- **수혜 경로**: 압력 높음 + 수요 양(+) 시장은 점유율 상위 공급사에 가격결정력
+  신호를 표시 (투자 조언 아님 — 구조 기술만).
+
 ---
 
 ## 현재 산업 맵
@@ -124,6 +166,7 @@
 | 파일 | 산업 | 시장 수 |
 |---|---|---|
 | `ai-semiconductor.md` → `data/markets/ai-semiconductor.json` (+ `data/markets/news/ai-semiconductor.json`) | AI · 반도체 · 피지컬 AI | 30 |
+| `power-ai.md` → `data/markets/power-ai.json` (+ `news/` · `criteria/` · `analysis/`) | 전력 · AI 인프라 (BTM vs 그리드) | 14 |
 | `pharma-bio.md` → `data/markets/pharma-bio.json` (+ `data/markets/news/pharma-bio.json`) | 제약 · 바이오 | 18 |
 
 웹의 '시장 지도' 탭은 `app.js` 의 `MARKET_MAPS` 레지스트리(`{ id, label }`)로

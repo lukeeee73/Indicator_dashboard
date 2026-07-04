@@ -1,0 +1,134 @@
+{
+  "industry": "power-ai",
+  "version": 1,
+  "updated": "2026-07-04",
+  "schema_note": "전력·AI 지도의 시장별 병목 판정 기준 SSOT. scripts/market_pulse.py 가 이 기준 + 뉴스 스토어의 signals 로 병목 압력을 산출한다. 전력 시장의 특성상 리드타임(터빈·변압기)·대기열(계통접속)·정책(세액공제·금수)이 3대 신호축이다.",
+  "defaults": {
+    "window_days": 150,
+    "half_life_days": 60,
+    "escalate_threshold": 0.45,
+    "deescalate_threshold": -0.35,
+    "min_signals": 2,
+    "min_sources": 2,
+    "node_arrow_threshold": 0.35,
+    "migration_easing_threshold": -0.2,
+    "migration_tightening_threshold": 0.35
+  },
+  "signal_types": {
+    "supply_tightening": "공급 제약 심화 — 매진·리드타임 연장·대기열 증가·가격 급등·금수/규제 강화",
+    "supply_easing": "공급 제약 완화 — 증설·신규 공급사 진입·리드타임 단축·규칙 정비·규제 완화",
+    "demand_up": "수요 확대 — 신규 계약·PPA·백로그 증가·수요 전망 상향",
+    "demand_down": "수요 축소 — 계약 취소·전망 하향·세제 축소·요금 저항"
+  },
+  "severity_transitions": {
+    "note": "structural(기존 원전·농축 과점)은 자동 전이 금지 — 신규 공급원 등장은 루틴이 수동 판단.",
+    "escalate": { "none": "emerging", "demand_limited": "emerging", "emerging": "acute", "easing": "acute" },
+    "deescalate": { "acute": "easing", "easing": "emerging", "emerging": "none" }
+  },
+  "global_keywords": {
+    "tightening": ["매진", "리드타임", "대기", "부족", "급등", "지연", "취소", "금수", "규제 강화", "품귀", "포화", "제약"],
+    "easing": ["증설", "완화", "가동", "단축", "확충", "진입", "국산화", "해소", "규칙 정비"],
+    "demand_up": ["계약", "PPA", "수주", "백로그", "사상 최대", "급증", "상향", "확대", "투자"],
+    "demand_down": ["취소", "축소", "하향", "둔화", "저항", "폐지"]
+  },
+  "markets": {
+    "ai-dc-demand": {
+      "bottleneck_type": "demand",
+      "key_metrics": ["美 DC 전력 수요(GW) 전망 개정", "하이퍼스케일러 capex 가이던스", "GW급 캠퍼스 착공 수"],
+      "escalate_when": "전력 확보 실패로 DC 착공·가동이 실제 지연되는 사례가 누적될 때.",
+      "deescalate_when": "AI capex 축소·수요 전망 하향이 잇따를 때.",
+      "keywords": { "tightening": ["전력 부족", "지연"], "easing": [], "demand_up": ["수요 전망"], "demand_down": ["거품"] }
+    },
+    "btm": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["BTM 신규 GW·신규 DC 중 비중(%)", "온사이트 발전 배치 기간(개월)", "대기오염 인허가 거부/소송 사례", "미드스트림 발전 진출 딜"],
+      "escalate_when": "터빈·엔진 수급이나 인허가 리스크로 BTM 배치 기간이 늘어나거나, 요금 전가 규제가 BTM 을 직접 제약할 때.",
+      "deescalate_when": "장비 공급 다변화(연료전지·2군 터빈)로 배치 속도가 유지·단축될 때.",
+      "keywords": { "tightening": ["인허가", "소송", "요금"], "easing": ["연료전지", "모듈러"], "demand_up": ["오프그리드", "온사이트"], "demand_down": [] }
+    },
+    "grid-ftm": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["계통접속 대기(개월) — 전국/PJM/ERCOT", "대형부하 큐 규모(GW)", "용량경매 가격", "large-load tariff·colocation 규칙 진행"],
+      "escalate_when": "접속 대기·용량 가격이 더 길어지거나/올라가거나, 유틸리티가 신규 대형부하 수용을 중단할 때.",
+      "deescalate_when": "접속 절차 개혁(FERC 명령)·용량 확충으로 대기·가격이 꺾일 때.",
+      "keywords": { "tightening": ["큐", "용량경매", "수용 중단"], "easing": ["개혁", "패스트트랙"], "demand_up": ["대형부하"], "demand_down": [] }
+    },
+    "gas-power": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["신설 CCGT 발주(GW)", "건설단가($/kW)", "IPP 전력 마진(스파크 스프레드)"],
+      "escalate_when": "터빈·EPC 제약으로 신설 착공이 지연되거나 건설단가 급등이 지속될 때.",
+      "deescalate_when": "터빈 공급 개선·수요 둔화로 신설 파이프라인이 소화될 때.",
+      "keywords": { "tightening": ["건설단가", "EPC"], "easing": [], "demand_up": ["신설", "스파크"], "demand_down": [] }
+    },
+    "nuclear-existing": {
+      "bottleneck_type": "monopoly",
+      "key_metrics": ["잔여 재가동 후보 수", "신규 PPA 체결(GW·가격 프리미엄)", "업레이트 발표"],
+      "escalate_when": "구조적(유한 자산) — 자동 승급 없음. 남은 물량 소진 뉴스는 기록.",
+      "deescalate_when": "대형 신설 원전 재개 같은 구조 변화 — 루틴 수동 판단.",
+      "keywords": { "tightening": ["완판", "소진"], "easing": ["신설"], "demand_up": ["PPA", "재가동", "업레이트"], "demand_down": [] }
+    },
+    "smr": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["NRC 인허가 마일스톤", "착공·첫 임계 일정", "HALEU 공급 계약", "하이퍼스케일러 약정(GW)"],
+      "escalate_when": "인허가 지연·FOAK 비용 초과·HALEU 공백이 일정 지연으로 확인될 때.",
+      "deescalate_when": "인허가 통과·착공·연료 공급 계약 등 마일스톤이 예정대로 진행될 때.",
+      "keywords": { "tightening": ["인허가 지연", "비용 초과", "HALEU"], "easing": ["인허가 통과", "착공", "임계"], "demand_up": ["약정", "IPO"], "demand_down": [] }
+    },
+    "renewables-storage": {
+      "bottleneck_type": "policy",
+      "key_metrics": ["분기 신규 설치(GW)·신규 용량 중 비중", "세액공제(ITC/PTC) 정책 변화", "FEOC 적용 범위", "24/7 매칭 PPA 사례"],
+      "escalate_when": "정책 축소·관세가 실제 프로젝트 취소로 이어지거나, 계통접속이 재생 배치를 막을 때.",
+      "deescalate_when": "정책 안정화·설치량 사상최대 지속으로 공급 여유가 확인될 때.",
+      "keywords": { "tightening": ["세액공제 축소", "관세", "취소"], "easing": ["설치 최대"], "demand_up": ["24/7", "PPA"], "demand_down": ["크레딧"] }
+    },
+    "fuel-cells": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["신규 계약(GW·$)", "제조 캐파 램프", "LCOE vs 가스터빈 격차"],
+      "escalate_when": "수주가 제조 캐파를 초과해 인도가 지연될 때.",
+      "deescalate_when": "캐파 증설이 수주를 따라잡을 때.",
+      "keywords": { "tightening": ["인도 지연"], "easing": ["공장 증설"], "demand_up": ["오프테이크", "파트너십"], "demand_down": [] }
+    },
+    "transmission": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["T&D EPC 백로그($)", "신규 송전선 인허가 기간", "라인맨 인력 수급", "유틸리티 grid capex"],
+      "escalate_when": "인허가·인력·장비 제약으로 접속 공사 리드타임이 더 늘 때.",
+      "deescalate_when": "인허가 개혁·인력 확충으로 공사 처리량이 늘 때.",
+      "keywords": { "tightening": ["인허가", "인력"], "easing": ["개혁"], "demand_up": ["백로그", "capex"], "demand_down": [] }
+    },
+    "turbines": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["3사 매진 시한(년)", "백로그(GW·$)", "증산 계획", "2군 OEM(두산 등) 수주"],
+      "escalate_when": "매진 시한이 연장(’29→’30+)되거나 가격 인상이 이어질 때.",
+      "deescalate_when": "증산 가동·2군 진입으로 슬롯 여유가 생기고 리드타임이 단축될 때.",
+      "keywords": { "tightening": ["매진", "슬롯", "배급"], "easing": ["증산", "신규 진입"], "demand_up": ["백로그"], "demand_down": [] }
+    },
+    "transformers": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["대형 변압기 리드타임(년)", "GOES 강판 수급", "K-빅3 수주잔고·증설", "미국 현지 공장 가동"],
+      "escalate_when": "리드타임이 더 연장되거나 소재(GOES) 부족이 심화될 때.",
+      "deescalate_when": "신규 공장 가동(효성 미국·Quanta 내재화)으로 리드타임이 단축될 때.",
+      "keywords": { "tightening": ["GOES", "리드타임"], "easing": ["공장 가동", "내재화"], "demand_up": ["수주잔고"], "demand_down": [] }
+    },
+    "bess": {
+      "bottleneck_type": "policy",
+      "key_metrics": ["분기 설치량(GW)", "FEOC·관세 적용", "비중국 셀 캐파", "ESS 세액공제 유지 여부"],
+      "escalate_when": "FEOC·관세로 셀 조달이 실제 프로젝트를 막거나 비중국 셀 부족이 심화될 때.",
+      "deescalate_when": "비중국 캐파 확충·정책 명확화로 조달이 원활해질 때.",
+      "keywords": { "tightening": ["FEOC", "관세"], "easing": ["현지 생산"], "demand_up": ["설치 최대"], "demand_down": ["크레딧 축소"] }
+    },
+    "natgas": {
+      "bottleneck_type": "capacity",
+      "key_metrics": ["DC 밀집지 파이프라인 용량·신설", "가스 가격·변동성", "미드스트림 DC 딜"],
+      "escalate_when": "지역 파이프 부족·가격 급등이 BTM·CCGT 경제성을 훼손할 때.",
+      "deescalate_when": "신규 파이프 가동·생산 확대로 공급이 원활할 때.",
+      "keywords": { "tightening": ["파이프라인 부족", "가격 급등"], "easing": ["파이프 가동", "증산"], "demand_up": ["직공급", "발전 수요"], "demand_down": [] }
+    },
+    "uranium": {
+      "bottleneck_type": "monopoly",
+      "key_metrics": ["U3O8·SWU 가격", "서방 농축 캐파 증설", "HALEU 생산 개시", "러 금수 이행"],
+      "escalate_when": "구조적 과점 — 자동 승급 없음. 가격 급등·공급 차질은 기록.",
+      "deescalate_when": "Centrus 캐스케이드 가동 등 서방 캐파의 실질 증설 — 루틴 수동 판단.",
+      "keywords": { "tightening": ["SWU", "금수", "부족"], "easing": ["캐스케이드", "증설"], "demand_up": ["재고 확보"], "demand_down": [] }
+    }
+  }
+}
