@@ -116,7 +116,33 @@
         "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/",
         "https://epoch.ai/trends"
       ],
-      "weekly_note": "추론·에이전트 토큰 수요 폭증, 모델 효율 개선(증류·양자화)이 칩 수요를 일부 상쇄. 거품 논쟁에도 토큰 소비는 우상향."
+      "weekly_note": "추론·에이전트 토큰 수요 폭증, 모델 효율 개선(증류·양자화)이 칩 수요를 일부 상쇄. 거품 논쟁에도 토큰 소비는 우상향.",
+      "wiki": [
+        {
+          "path": "wiki/concepts/llm-serving-stack.md",
+          "label": "LLM 서빙 스택 — 추론 비용의 구조"
+        },
+        {
+          "path": "wiki/concepts/speculative-decoding.md",
+          "label": "Speculative Decoding — 추론 가속"
+        },
+        {
+          "path": "wiki/entities/openai.md",
+          "label": "OpenAI"
+        },
+        {
+          "path": "wiki/entities/anthropic.md",
+          "label": "Anthropic"
+        },
+        {
+          "path": "wiki/entities/deepseek.md",
+          "label": "DeepSeek"
+        },
+        {
+          "path": "wiki/entities/google-deepmind.md",
+          "label": "Google DeepMind"
+        }
+      ]
     },
     {
       "id": "edge-smartphone",
@@ -386,7 +412,13 @@
         "https://www.trendforce.com/presscenter/news/20251209-12825.html",
         "https://www.idtechex.com/en/research-report/humanoid-robots/1149"
       ],
-      "weekly_note": "’26 출하 5만대(+700%) 전망으로 상용화 원년 진입. 중국이 대수 기준 양산을 선도하나 구매자 만족 23% — 실수요 검증이 다음 관문."
+      "weekly_note": "’26 출하 5만대(+700%) 전망으로 상용화 원년 진입. 중국이 대수 기준 양산을 선도하나 구매자 만족 23% — 실수요 검증이 다음 관문.",
+      "wiki": [
+        {
+          "path": "wiki/entities/world-labs.md",
+          "label": "World Labs — 공간지능"
+        }
+      ]
     },
     {
       "id": "military-drones",
@@ -525,7 +557,17 @@
       "sources": [
         "https://www.nvidia.com/en-us/industries/global-public-sector/"
       ],
-      "weekly_note": "각국 'AI 팩토리' 약정이 NVIDIA 수요의 증분 축. 수출통제·전력이 실현 속도를 좌우."
+      "weekly_note": "각국 'AI 팩토리' 약정이 NVIDIA 수요의 증분 축. 수출통제·전력이 실현 속도를 좌우.",
+      "wiki": [
+        {
+          "path": "wiki/topics/china-chip-gap-deepseek-v4.md",
+          "label": "중국 반도체 격차 — SMIC·화웨이·DeepSeek V4"
+        },
+        {
+          "path": "wiki/entities/deepseek.md",
+          "label": "DeepSeek"
+        }
+      ]
     },
     {
       "id": "hyperscaler-capex",
@@ -587,7 +629,13 @@
         "https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion",
         "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html"
       ],
-      "weekly_note": "’26 빅4 capex $700B+로 재확대되나 현금 부담·Stargate 축소가 지속성 의문을 키움."
+      "weekly_note": "’26 빅4 capex $700B+로 재확대되나 현금 부담·Stargate 축소가 지속성 의문을 키움.",
+      "wiki": [
+        {
+          "path": "wiki/syntheses/semiconductor-ai-chip-value-chain.md",
+          "label": "반도체·AI 칩 가치사슬 종합 — 내 판단"
+        }
+      ]
     },
     {
       "id": "neocloud",
@@ -686,7 +734,21 @@
       "sources": [
         "https://www.bloomberg.com/company/press/ai-accelerator-market-looks-set-to-exceed-600-billion-by-2033-driven-by-hyperscale-spending-and-asic-adoption-according-to-bloomberg-intelligence/"
       ],
-      "weekly_note": "Blackwell→Rubin 전환기, 수요는 공급 초과 지속. 커스텀 ASIC이 점유율을 80%대로 잠식 중."
+      "weekly_note": "Blackwell→Rubin 전환기, 수요는 공급 초과 지속. 커스텀 ASIC이 점유율을 80%대로 잠식 중.",
+      "wiki": [
+        {
+          "path": "wiki/entities/nvidia.md",
+          "label": "NVIDIA"
+        },
+        {
+          "path": "wiki/concepts/cuda.md",
+          "label": "CUDA — 소프트웨어 해자"
+        },
+        {
+          "path": "wiki/syntheses/semiconductor-ai-chip-value-chain.md",
+          "label": "반도체·AI 칩 가치사슬 종합 — 내 판단"
+        }
+      ]
     },
     {
       "id": "custom-asic",
@@ -745,7 +807,21 @@
       "sources": [
         "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia"
       ],
-      "weekly_note": "OpenAI·Anthropic 대형 약정으로 Broadcom AI 매출 +106% YoY. 추론 이동이 ASIC에 유리."
+      "weekly_note": "OpenAI·Anthropic 대형 약정으로 Broadcom AI 매출 +106% YoY. 추론 이동이 ASIC에 유리.",
+      "wiki": [
+        {
+          "path": "wiki/entities/broadcom.md",
+          "label": "Broadcom"
+        },
+        {
+          "path": "wiki/entities/marvell.md",
+          "label": "Marvell"
+        },
+        {
+          "path": "wiki/concepts/serdes.md",
+          "label": "SerDes — ASIC 경쟁력의 핵심 IP"
+        }
+      ]
     },
     {
       "id": "dc-networking",
@@ -797,7 +873,17 @@
       "sources": [
         "https://www.delloro.com/news/data-center-switch-sales-in-ai-back-end-networks-to-exceed-100-b-over-the-next-five-years/"
       ],
-      "weekly_note": "스케일업 표준 전쟁(NVLink vs UALink vs Ethernet) 격화. 이더넷이 InfiniBand를 추월."
+      "weekly_note": "스케일업 표준 전쟁(NVLink vs UALink vs Ethernet) 격화. 이더넷이 InfiniBand를 추월.",
+      "wiki": [
+        {
+          "path": "wiki/concepts/serdes.md",
+          "label": "SerDes"
+        },
+        {
+          "path": "wiki/entities/broadcom.md",
+          "label": "Broadcom"
+        }
+      ]
     },
     {
       "id": "hbm",
@@ -840,7 +926,17 @@
         "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
         "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
       ],
-      "weekly_note": "전 3사 ’26까지 매진, 삼성 HBM4 Rubin 인증으로 3강 경쟁 재점화. 적층 수율이 증설을 제약."
+      "weekly_note": "전 3사 ’26까지 매진, 삼성 HBM4 Rubin 인증으로 3강 경쟁 재점화. 적층 수율이 증설을 제약.",
+      "wiki": [
+        {
+          "path": "wiki/concepts/hbm.md",
+          "label": "HBM — 구조·공정·병목"
+        },
+        {
+          "path": "wiki/syntheses/semiconductor-ai-chip-value-chain.md",
+          "label": "반도체·AI 칩 가치사슬 종합 — 내 판단"
+        }
+      ]
     },
     {
       "id": "advanced-packaging",
@@ -888,7 +984,17 @@
       "sources": [
         "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
       ],
-      "weekly_note": "CoWoS 4배 증설로 ’23–24 급성 병목은 완화, 병목이 HBM·전력으로 이동."
+      "weekly_note": "CoWoS 4배 증설로 ’23–24 급성 병목은 완화, 병목이 HBM·전력으로 이동.",
+      "wiki": [
+        {
+          "path": "wiki/concepts/cowos.md",
+          "label": "CoWoS — 첨단 패키징"
+        },
+        {
+          "path": "wiki/entities/tsmc.md",
+          "label": "TSMC"
+        }
+      ]
     },
     {
       "id": "dram-nand",
@@ -939,7 +1045,13 @@
       "sources": [
         "https://www.idc.com/resource-center/blog/global-memory-shortage-crisis-market-analysis-and-the-potential-impact-on-the-smartphone-and-pc-markets-in-2026/"
       ],
-      "weekly_note": "HBM 잠식으로 범용 메모리 급등(DDR5 +60% QoQ). ’27–28까지 증설 없어 PC·폰 BOM 전이 위험."
+      "weekly_note": "HBM 잠식으로 범용 메모리 급등(DDR5 +60% QoQ). ’27–28까지 증설 없어 PC·폰 BOM 전이 위험.",
+      "wiki": [
+        {
+          "path": "wiki/concepts/hbm.md",
+          "label": "HBM — DRAM 캐파 전환의 축"
+        }
+      ]
     },
     {
       "id": "optical",
@@ -1042,7 +1154,13 @@
       "sources": [
         "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
       ],
-      "weekly_note": "변압기 리드타임 4–5년으로 미국 DC 50%+ 지연. 800VDC·액침냉각 전환 가속."
+      "weekly_note": "변압기 리드타임 4–5년으로 미국 DC 50%+ 지연. 800VDC·액침냉각 전환 가속.",
+      "wiki": [
+        {
+          "path": "wiki/syntheses/ai-datacenter-power-infrastructure.md",
+          "label": "AI 데이터센터 전력 인프라 — 내 판단"
+        }
+      ]
     },
     {
       "id": "robot-components",
@@ -1200,7 +1318,21 @@
       "sources": [
         "https://www.trendforce.com/presscenter/news/20260312-12965.html"
       ],
-      "weekly_note": "N2 양산 개시, 선단 용량 ’28까지 예약. 대만 집중 리스크에 미·일 증설 진행."
+      "weekly_note": "N2 양산 개시, 선단 용량 ’28까지 예약. 대만 집중 리스크에 미·일 증설 진행.",
+      "wiki": [
+        {
+          "path": "wiki/entities/tsmc.md",
+          "label": "TSMC"
+        },
+        {
+          "path": "wiki/topics/china-chip-gap-deepseek-v4.md",
+          "label": "중국 반도체 격차 — SMIC 의 한계"
+        },
+        {
+          "path": "wiki/syntheses/semiconductor-ai-chip-value-chain.md",
+          "label": "반도체·AI 칩 가치사슬 종합 — 내 판단"
+        }
+      ]
     },
     {
       "id": "abf-substrate",
@@ -1291,7 +1423,17 @@
       "sources": [
         "https://counterpointresearch.com/en/insights/asml-2025-revenue-up-16-yoy-as-strong-euv-shipments-boost-systems-and-service-performance"
       ],
-      "weekly_note": "ASML 백로그 견조, High-NA 채택 초기. 대중 EUV 금지가 지정학 지렛대."
+      "weekly_note": "ASML 백로그 견조, High-NA 채택 초기. 대중 EUV 금지가 지정학 지렛대.",
+      "wiki": [
+        {
+          "path": "wiki/concepts/euv-lithography.md",
+          "label": "EUV 리소그래피 — ASML 독점의 물리학"
+        },
+        {
+          "path": "wiki/topics/china-chip-gap-deepseek-v4.md",
+          "label": "중국 반도체 격차 — EUV 금수의 효과"
+        }
+      ]
     },
     {
       "id": "etch-deposition",
@@ -1400,7 +1542,13 @@
       "sources": [
         "https://www.trendforce.com/news/2025/12/03/news-japan-rumored-to-curb-photoresist-exports-as-china-targets-40-self-sufficiency-by-2026/"
       ],
-      "weekly_note": "포토레지스트 일본 집중이 잠재 지정학 리스크. 네온은 국산화로 해소."
+      "weekly_note": "포토레지스트 일본 집중이 잠재 지정학 리스크. 네온은 국산화로 해소.",
+      "wiki": [
+        {
+          "path": "wiki/topics/polysilicon.md",
+          "label": "폴리실리콘 — 태양광 vs 반도체 시장 분기"
+        }
+      ]
     },
     {
       "id": "power-grid",
@@ -1450,7 +1598,29 @@
       "sources": [
         "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
       ],
-      "weekly_note": "DC 전력 ’30까지 2~3배, 전력망 접속 대기·가스터빈 리드타임이 최대 단기 병목."
+      "weekly_note": "DC 전력 ’30까지 2~3배, 전력망 접속 대기·가스터빈 리드타임이 최대 단기 병목.",
+      "wiki": [
+        {
+          "path": "wiki/syntheses/ai-datacenter-power-infrastructure.md",
+          "label": "AI 데이터센터 전력 인프라 — 내 판단"
+        },
+        {
+          "path": "wiki/entities/ge-vernova.md",
+          "label": "GE Vernova"
+        },
+        {
+          "path": "wiki/entities/bloom-energy.md",
+          "label": "Bloom Energy"
+        },
+        {
+          "path": "wiki/entities/ls-electric.md",
+          "label": "LS일렉트릭"
+        },
+        {
+          "path": "wiki/entities/doosan-enerbility.md",
+          "label": "두산에너빌리티"
+        }
+      ]
     },
     {
       "id": "semi-ip",
@@ -1542,7 +1712,13 @@
         "https://www.jll.com/en-us/newsroom/jll-north-america-data-center-report-year-end-2025",
         "https://www.bloomberg.com/news/articles/2026-06-01/us-construction-spending-on-data-centers-eclipses-50-billion"
       ],
-      "weekly_note": "美 DC 건설지출 첫 $50B 돌파에도 공실률 1% 사상최저 — 수요가 공급을 압도. 변압기·계통접속이 착공의 절반을 막는 중."
+      "weekly_note": "美 DC 건설지출 첫 $50B 돌파에도 공실률 1% 사상최저 — 수요가 공급을 압도. 변압기·계통접속이 착공의 절반을 막는 중.",
+      "wiki": [
+        {
+          "path": "wiki/syntheses/ai-datacenter-power-infrastructure.md",
+          "label": "AI 데이터센터 전력 인프라 — 내 판단"
+        }
+      ]
     }
   ],
   "links": [

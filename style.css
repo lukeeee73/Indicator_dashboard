@@ -1474,6 +1474,28 @@ body.mc-noscroll { overflow: hidden; }
 .mc-node-news { align-self: flex-start; font-size: 0.6rem; color: var(--text-dim); white-space: nowrap; }
 .mc-node-news--fresh { color: var(--text); font-weight: 600; }
 
+/* 노드 위키 배지 — 옵시디언 노트가 연결된 시장 표시 */
+.mc-node-wiki { align-self: flex-start; font-size: 0.6rem; color: #9085e9; white-space: nowrap; }
+
+/* ── 옵시디언 위키 노트 섹션 (시장/기업 상세 패널) ─────────────────────── */
+.mc-wiki { margin: 0 0 0.7rem; }
+.mc-wiki h5 { margin: 0.2rem 0 0.15rem; font-size: 0.76rem; color: var(--text-dim); }
+.mc-wiki-hint { margin: 0 0 0.4rem; font-size: 0.66rem; color: var(--text-dim); font-style: italic; }
+.mc-wiki ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.mc-wiki-btn {
+  display: flex; align-items: baseline; gap: 0.45rem; width: 100%;
+  background: none; border: 1px solid var(--border); border-left: 2px solid #9085e9;
+  border-radius: 5px; padding: 0.32rem 0.5rem; cursor: pointer; text-align: left;
+}
+.mc-wiki-btn:hover { border-color: var(--border-mid); border-left-color: #9085e9; background: rgba(144, 133, 233, 0.06); }
+.mc-wiki-kind {
+  flex: none; font-size: 0.6rem; color: #9085e9; border: 1px solid rgba(144, 133, 233, 0.45);
+  border-radius: 4px; padding: 0.02rem 0.3rem; white-space: nowrap;
+}
+.mc-wiki-kind--auto { color: var(--text-dim); border-color: var(--border-mid); }
+.mc-wiki-title { font-size: 0.78rem; color: var(--text); line-height: 1.35; }
+.mc-wiki-mtime { margin-left: auto; flex: none; font-size: 0.62rem; color: var(--text-dim); }
+
 /* ── 시장 뉴스 피드 (보드 하단, 전 시장 최신순) ───────────────────────── */
 .mc-feed { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.7rem; }
 .mc-feed-head { display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; align-items: baseline; margin-bottom: 0.55rem; }
@@ -2362,7 +2384,7 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .wn-overlay {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 1300; /* 플레이어 지도(1200)·전체화면 지도(1000) 위에서도 노트가 읽혀야 한다 */
   background: rgba(0, 0, 0, 0.72);
   display: flex;
   align-items: center;
