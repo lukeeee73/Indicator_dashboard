@@ -1921,6 +1921,230 @@ a.mc-feed-title:hover { text-decoration: underline; }
 }
 .pr-journal-item-del:hover { color: var(--red-bright); }
 
+/* ── 시장 지표 칩 (진입 스냅샷 / 과거 국면 카드 공용) ───────────────── */
+.pr-snapshot-market {
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+.pr-mkt-title {
+  display: block;
+  font-size: 0.66rem;
+  color: var(--text-dim);
+  margin-bottom: 0.35rem;
+}
+.pr-mkt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.pr-mkt-chip {
+  background: var(--bg);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.pr-mkt-chip b { color: var(--text); font-variant-numeric: tabular-nums; }
+.pr-mkt-chip small { color: var(--text-dim); font-size: 0.62rem; }
+.pr-mkt-missing {
+  margin-top: 0.5rem;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.pr-similar-jump {
+  margin-top: 0.6rem;
+  background: none;
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.74rem;
+  padding: 0.4rem 0.7rem;
+  font-family: inherit;
+}
+.pr-similar-jump:hover { color: var(--text); border-color: var(--red); }
+
+/* ── 진입 vs 청산 시장 지표 비교표 ─────────────────────────────────── */
+.pr-indicator-compare { margin-bottom: 1.5rem; }
+.pr-indicator-compare h3 { margin: 0 0 0.5rem; font-size: 0.85rem; color: var(--text); }
+.pr-ic-table {
+  width: 100%;
+  max-width: 560px;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+}
+.pr-ic-table th,
+.pr-ic-table td {
+  padding: 0.45rem 0.7rem;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.pr-ic-table thead th { color: var(--text-dim); font-weight: 400; font-size: 0.7rem; }
+.pr-ic-table tbody th { text-align: left; color: var(--text-dim); font-weight: 400; }
+.pr-ic-table tbody tr:last-child th,
+.pr-ic-table tbody tr:last-child td { border-bottom: none; }
+.pr-ic-delta[data-sign="pos"] { color: var(--up); }
+.pr-ic-delta[data-sign="neg"] { color: var(--down); }
+
+/* ── 비슷한 과거 국면 찾기 (4분면 필터) ────────────────────────────── */
+.principles-similar { margin-top: 2.5rem; }
+
+.pr-quad-filter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.pr-quad-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  position: relative;
+  text-align: left;
+}
+.pr-quad-btn b { font-size: 0.95rem; color: var(--text); }
+.pr-quad-btn span { font-size: 0.68rem; }
+.pr-quad-btn:hover { border-color: var(--red); color: var(--text); }
+.pr-quad-btn.active { border-color: var(--red-bright); background: var(--bg); }
+.pr-quad-btn.active::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.pr-quad-btn.active[data-quadrant="Q1"]::before { background: #7a2020; }
+.pr-quad-btn.active[data-quadrant="Q2"]::before { background: #234a6b; }
+.pr-quad-btn.active[data-quadrant="Q3"]::before { background: #cc2424; }
+.pr-quad-btn.active[data-quadrant="Q4"]::before { background: #3a6ea5; }
+.pr-quad-now {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.55rem;
+  font-size: 0.62rem;
+  font-style: normal;
+  color: #f5c842;
+  border: 1px solid #f5c84255;
+  border-radius: 999px;
+  padding: 0.05rem 0.4rem;
+}
+.pr-quad-now-inline { color: #f5c842; font-style: normal; }
+
+.pr-quad-summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--red-dim);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.pr-quad-summary-card p { margin: 0; }
+.pr-quad-summary-card b[data-sign="pos"] { color: var(--up); }
+.pr-quad-summary-card b[data-sign="neg"] { color: var(--down); }
+
+.pr-episode-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.7rem;
+}
+.pr-episode-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.85rem;
+  position: relative;
+}
+.pr-episode-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.pr-episode-card[data-quadrant="Q1"]::before { background: #7a2020; }
+.pr-episode-card[data-quadrant="Q2"]::before { background: #234a6b; }
+.pr-episode-card[data-quadrant="Q3"]::before { background: #cc2424; }
+.pr-episode-card[data-quadrant="Q4"]::before { background: #3a6ea5; }
+.pr-ep-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.pr-ep-head b { color: var(--text); }
+.pr-ep-head > span { color: var(--text-dim); font-size: 0.72rem; }
+.pr-ep-badge {
+  font-size: 0.62rem;
+  font-style: normal;
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+}
+.pr-ep-ongoing { color: #f5c842; border: 1px solid #f5c84255; }
+.pr-ep-recession { color: var(--text-dim); border: 1px solid var(--border-mid); }
+.pr-ep-ind { margin-bottom: 0.5rem; }
+.pr-ep-ind-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  padding: 0.14rem 0;
+}
+.pr-ep-ind-label { color: var(--text-dim); }
+.pr-ep-ind-vals { color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pr-ep-assets,
+.pr-ep-after {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  padding-top: 0.45rem;
+  line-height: 1.6;
+}
+.pr-ep-after { border-top: none; padding-top: 0.2rem; }
+.pr-ep-assets b,
+.pr-ep-after b { font-variant-numeric: tabular-nums; color: var(--text); }
+.pr-ep-assets b[data-sign="pos"],
+.pr-ep-after b[data-sign="pos"] { color: var(--up); }
+.pr-ep-assets b[data-sign="neg"],
+.pr-ep-after b[data-sign="neg"] { color: var(--down); }
+.pr-ep-nodata { font-style: italic; }
+.pr-ep-more {
+  grid-column: 1 / -1;
+  background: var(--bg-card);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.76rem;
+  padding: 0.55rem;
+  font-family: inherit;
+}
+.pr-ep-more:hover { color: var(--text); border-color: var(--red); }
+.pr-episode-list .pr-mkt-missing,
+.pr-episode-list .pr-journal-empty { grid-column: 1 / -1; }
+
 @media (max-width: 700px) {
   .ps-row { flex-direction: column; gap: 0.75rem; }
 }
