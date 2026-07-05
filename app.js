@@ -1973,6 +1973,8 @@ function renderMarketBoard(stocks) {
       // player_map 이 있는 세부 시장은 전용 화면(플레이어 지도)으로 확대
       const mm = map.markets.find((x) => x.id === el.dataset.id);
       if (mm && mm.player_map) pmOpen(mm.id);
+      // 상세 패널이 지도 아래에 있으므로, 화면 밖이면 읽을 위치로 데려간다
+      else mcScrollDetailIntoView();
     }));
 
   mcApplyZoom(false);
@@ -2061,6 +2063,16 @@ function mcNodeHtml(m, stocks) {
       <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
       ${newsChip}${wikiChip}${pmapChip}
     </button>`;
+}
+
+// 상세 패널(지도 아래)로 스크롤 — 이미 충분히 보이면 그대로 둔다.
+// scroll-margin-top(CSS) 덕에 지도 하단이 문맥으로 함께 남는다.
+function mcScrollDetailIntoView() {
+  const host = document.getElementById("vc-detail");
+  if (!host) return;
+  const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+  if (host.getBoundingClientRect().top < vh * 0.65) return;
+  host.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 // 노드 선택: 강조 + 관계선 + 상세
