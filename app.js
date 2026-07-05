@@ -5041,7 +5041,8 @@ function wikiInitGraph(graph) {
   edges.forEach(([a, b]) => { adj[a].add(b); adj[b].add(a); });
   nodes.forEach((n, i) => {
     n.deg = adj[i].size;
-    n.r = Math.min(4 + Math.sqrt(n.deg) * 2.4, 18);
+    // 연결 수에 비례(√)하되 전체적으로 작게 — 제목 라벨이 노드에 가려지지 않도록
+    n.r = Math.min(2.5 + Math.sqrt(n.deg) * 1.4, 11);
   });
 
   // 폴더 → 색: 노드 수 상위 폴더에 팔레트 순서대로 배정, 나머지는 회색 '기타'
@@ -5099,8 +5100,8 @@ function wikiInitGraph(graph) {
   const MAX_SPEED  = 2.2;   // px/frame — 노드가 화면에서 튀지 않는 상한
 
   function tick(live) {
-    const K = 42;                    // 반발 상수
-    const REST = 62, SPRING = 0.025; // 스프링 길이/강도
+    const K = 46;                    // 반발 상수
+    const REST = 76, SPRING = 0.025; // 스프링 길이/강도 — 노드 간격을 넓혀 제목이 겹치지 않게
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
       for (let j = i + 1; j < nodes.length; j++) {
@@ -5230,7 +5231,7 @@ function wikiInitGraph(graph) {
         i === hoverIdx || i === selectedIdx ||
         (focusSet && focusSet.has(i)) ||
         (query && matchesQuery(n)) ||
-        (!query && focus < 0 && n.deg >= 5 && view.scale > 0.55);
+        (!query && focus < 0 && n.deg >= 5 && view.scale > 0.42);
       if (!show) return;
       const y = n.y - n.r - 5 / view.scale;
       ctx.lineWidth = 3 / view.scale;
