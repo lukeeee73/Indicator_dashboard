@@ -8,25 +8,52 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <h1>Luke Dashboard</h1>
-    <p class="subtitle">성장 × 인플레이션 4분면 모니터링</p>
-    <p class="last-updated" id="last-updated">Loading…</p>
-    <div class="header-controls">
-      <label class="switch">
-        <input type="checkbox" id="toggle-events" checked>
-        <span>주요 이벤트 표시</span>
-      </label>
-    </div>
-  </header>
+  <!-- 사이드바가 닫혀 있을 때 다시 여는 플로팅 버튼 -->
+  <button class="sidebar-open-btn" id="sidebar-open" aria-label="사이드바 열기" title="사이드바 열기" hidden>☰</button>
+  <!-- 모바일 드로어 뒤 배경 (클릭 시 닫힘) -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
 
-  <!-- 국가 탭 내비게이션 -->
-  <nav class="tab-nav">
-    <button class="tab-btn active" data-tab="US">🇺🇸 미국</button>
-    <button class="tab-btn" data-tab="KR">🇰🇷 한국</button>
-    <button class="tab-btn" data-tab="STOCKS">📈 주식</button>
-    <button class="tab-btn" data-tab="PRINCIPLES">🧭 원칙</button>
-  </nav>
+  <div class="app-layout">
+
+    <!-- ══════════ 왼쪽 사이드바 — 섹션 내비게이션 ══════════ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-brand">
+          <span class="sidebar-title">Luke Dashboard</span>
+          <span class="sidebar-sub">성장 × 인플레이션 4분면</span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebar-close" aria-label="사이드바 닫기" title="사이드바 닫기">✕</button>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="대시보드 섹션">
+        <button class="tab-btn active" data-tab="US">
+          <span class="tab-icon">🇺🇸</span><span class="tab-label">미국</span>
+        </button>
+        <button class="tab-btn" data-tab="KR">
+          <span class="tab-icon">🇰🇷</span><span class="tab-label">한국</span>
+        </button>
+        <button class="tab-btn" data-tab="STOCKS">
+          <span class="tab-icon">📈</span><span class="tab-label">주식</span>
+        </button>
+        <button class="tab-btn" data-tab="PRINCIPLES">
+          <span class="tab-icon">🧭</span><span class="tab-label">원칙</span>
+        </button>
+        <button class="tab-btn" data-tab="WIKI">
+          <span class="tab-icon">🕸️</span><span class="tab-label">위키</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <p class="last-updated" id="last-updated">Loading…</p>
+        <label class="switch">
+          <input type="checkbox" id="toggle-events" checked>
+          <span>주요 이벤트 표시</span>
+        </label>
+      </div>
+    </aside>
+
+    <!-- ══════════ 오른쪽 컨텐츠 ══════════ -->
+    <div class="content">
 
   <main>
 
@@ -347,6 +374,36 @@
       </section>
     </div><!-- /panel-PRINCIPLES -->
 
+
+    <!-- ══════════════════════════════════════════════════════
+         위키 패널 — luke_wiki (Obsidian vault) 지식 그래프
+    ══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-WIKI" hidden>
+      <section class="category">
+        <h2>루크 위키 — 지식 그래프</h2>
+        <p class="category-desc">
+          Obsidian vault(<code>luke_wiki</code>)의 노트와 <code>[[링크]]</code> 구조를
+          그래프로 시각화한다. <strong>노드 크기 = 연결 수, 색 = 폴더</strong>.
+          노드를 클릭하면 오른쪽 패널에 노트 정보가 뜨고, GitHub에서 원문을 열 수 있다.
+          마우스 휠로 확대/축소, 빈 곳을 끌면 이동, 노드를 끌면 위치를 옮길 수 있다.
+        </p>
+
+        <div class="wiki-toolbar" id="wiki-toolbar" hidden>
+          <input type="search" id="wiki-search" placeholder="노트 검색…" aria-label="노트 검색">
+          <div class="wiki-legend" id="wiki-legend" aria-label="폴더 범례"></div>
+        </div>
+
+        <div class="wiki-layout" id="wiki-layout" hidden>
+          <div class="wiki-graph-wrap"><canvas id="wiki-canvas"></canvas></div>
+          <aside class="wiki-detail" id="wiki-detail">
+            <p class="vc-detail-hint">노드를 클릭하면 노트 정보가 표시됩니다.</p>
+          </aside>
+        </div>
+
+        <div class="wiki-empty" id="wiki-empty" hidden></div>
+      </section>
+    </div><!-- /panel-WIKI -->
+
   </main>
 
   <!-- 플레이어 지도 오버레이 — 세부 시장(예: HBM)을 기업 단위로 펼친 전용 화면 (app.js pmOpen) -->
@@ -358,9 +415,14 @@
     <p class="note">주간 판단 노트는 별도 Obsidian vault(<code>luke-wiki</code>)에서 관리합니다.</p>
   </footer>
 
+    </div><!-- /content -->
+  </div><!-- /app-layout -->
+
   <!-- Chart.js + annotation 플러그인 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+  <!-- marked — 위키 노트 뷰어의 마크다운 렌더링 (로드 실패 시 일반 텍스트 폴백) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

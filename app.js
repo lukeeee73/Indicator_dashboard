@@ -576,7 +576,13 @@ const _renderedTabs = new Set();
 
 function switchToTab(tab) {
   // 첫 방문 시 해당 탭 컨텐츠를 지연 렌더링
-  if (!_renderedTabs.has(tab) && _cachedData) {
+  // (WIKI 탭은 지표 데이터와 무관하게 자체 JSON 을 가져온다)
+  if (tab === "WIKI") {
+    if (!_renderedTabs.has(tab)) {
+      renderWikiTab();
+      _renderedTabs.add(tab);
+    }
+  } else if (!_renderedTabs.has(tab) && _cachedData) {
     if (tab === "STOCKS") {
       renderStocksTab(_cachedData);
     } else if (tab === "PRINCIPLES") {
@@ -606,6 +612,12 @@ function switchToTab(tab) {
 // 각 파일이 독립 파일이라 수동 편집·가공이 쉬워진다.
 // 페이지 로드 시 index + 모든 파일을 병렬로 가져와 단일 dict 로 합친다.
 document.addEventListener("DOMContentLoaded", async () => {
+  // 탭 버튼 이벤트 연결 — 데이터 로드 실패와 무관하게 탭 전환은 항상 동작
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => switchToTab(btn.dataset.tab));
+  });
+  initSidebar();
+
   try {
     const idxRes = await fetch("data/index.json", { cache: "no-cache" });
     if (!idxRes.ok) throw new Error(`HTTP ${idxRes.status}`);
@@ -652,10 +664,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // US 탭 먼저 렌더링
     renderTabContent("US", data);
     _renderedTabs.add("US");
-    // 탭 버튼 이벤트 연결
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.addEventListener("click", () => switchToTab(btn.dataset.tab));
-    });
     wireEventsToggle();
   } catch (err) {
     renderError(err);
@@ -4899,4 +4907,573 @@ function prClearJournal() {
   if (!confirm("저장된 모든 시나리오를 삭제할까요? 이 작업은 되돌릴 수 없습니다.")) return;
   prSaveJournalList([]);
   prRenderJournal();
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// 사이드바 — 열기/닫기
+//   데스크톱: 접힌 상태를 localStorage 에 저장, ☰ 플로팅 버튼으로 복원
+//   모바일(≤900px): 드로어 방식 — ☰ 로 열고, 배경/탭 선택/✕ 로 닫기
+// ════════════════════════════════════════════════════════════════
+const SIDEBAR_LS_KEY = "lukeDashSidebarCollapsed";
+
+function sbGetCollapsed() {
+  try { return localStorage.getItem(SIDEBAR_LS_KEY) === "1"; } catch { return false; }
+}
+function sbSetCollapsed(v) {
+  try { localStorage.setItem(SIDEBAR_LS_KEY, v ? "1" : "0"); } catch { /* private mode 등 */ }
+}
+
+function initSidebar() {
+  const openBtn  = document.getElementById("sidebar-open");
+  const closeBtn = document.getElementById("sidebar-close");
+  const backdrop = document.getElementById("sidebar-backdrop");
+  const nav      = document.querySelector(".sidebar-nav");
+  if (!openBtn || !closeBtn || !backdrop) return;
+
+  const mq = window.matchMedia("(max-width: 900px)");
+
+  function apply() {
+    if (mq.matches) {
+      // 모바일: transform 드로어 — 닫혀 있을 때만 ☰ 버튼 표시
+      const open = document.body.classList.contains("sb-mobile-open");
+      openBtn.hidden = open;
+      backdrop.hidden = !open;
+    } else {
+      document.body.classList.remove("sb-mobile-open");
+      backdrop.hidden = true;
+      const collapsed = sbGetCollapsed();
+      document.body.classList.toggle("sb-collapsed", collapsed);
+      openBtn.hidden = !collapsed;
+    }
+  }
+
+  openBtn.addEventListener("click", () => {
+    if (mq.matches) document.body.classList.add("sb-mobile-open");
+    else sbSetCollapsed(false);
+    apply();
+  });
+  closeBtn.addEventListener("click", () => {
+    if (mq.matches) document.body.classList.remove("sb-mobile-open");
+    else sbSetCollapsed(true);
+    apply();
+  });
+  backdrop.addEventListener("click", () => {
+    document.body.classList.remove("sb-mobile-open");
+    apply();
+  });
+  // 모바일 드로어에서 탭을 고르면 자동으로 닫는다
+  if (nav) {
+    nav.addEventListener("click", (e) => {
+      if (mq.matches && e.target.closest(".tab-btn")) {
+        document.body.classList.remove("sb-mobile-open");
+        apply();
+      }
+    });
+  }
+  mq.addEventListener("change", apply);
+  apply();
+}
+
+
+// ════════════════════════════════════════════════════════════════
+// 위키 지식 그래프 — luke_wiki (Obsidian vault) 시각화
+//
+// data/wiki/graph.json (scripts/build_wiki_graph.py 가 생성) 을 읽어
+// 노트=노드, [[위키링크]]=엣지인 force-directed 그래프를 캔버스에 그린다.
+// 노드 크기 = 연결 수, 색 = 폴더. 휠 줌 / 배경 팬 / 노드 드래그 지원.
+// ════════════════════════════════════════════════════════════════
+
+// 폴더별 카테고리 색 — 다크 배경(#121212) 기준 CVD 검증 통과 팔레트, 순서 고정
+const WIKI_FOLDER_COLORS = ["#3987e5", "#199e70", "#c98500", "#9085e9", "#e66767", "#d55181"];
+const WIKI_OTHER_COLOR   = "#8a8a8a";
+const WIKI_OTHER_LABEL   = "기타";
+
+async function renderWikiTab() {
+  const layout  = document.getElementById("wiki-layout");
+  const toolbar = document.getElementById("wiki-toolbar");
+  const empty   = document.getElementById("wiki-empty");
+  try {
+    const res = await fetch("data/wiki/graph.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const graph = await res.json();
+    if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) throw new Error("빈 그래프");
+    toolbar.hidden = false;
+    layout.hidden  = false;
+    empty.hidden   = true;
+    wikiInitGraph(graph);
+  } catch (err) {
+    toolbar.hidden = true;
+    layout.hidden  = true;
+    empty.hidden   = false;
+    empty.innerHTML = `
+      <h3>아직 위키 그래프 데이터가 없습니다</h3>
+      <p>이 화면은 <code>data/wiki/graph.json</code> 을 읽어 Obsidian vault
+        (<code>lukeeee73/luke_wiki</code>)의 노트 연결망을 그립니다. 데이터를 만드는 방법:</p>
+      <ol>
+        <li>luke_wiki 가 <strong>공개 저장소면 추가 설정 없이</strong> 다음 단계로.
+          비공개면 이 저장소 <strong>Settings → Secrets and variables → Actions</strong> 에
+          <code>WIKI_REPO_TOKEN</code> 시크릿을 추가한다 — luke_wiki 저장소
+          <em>Contents: Read</em> 권한이 있는 fine-grained Personal Access Token.</li>
+        <li>Actions 탭에서 <strong>Sync Wiki Graph</strong> 워크플로를 수동 실행(Run workflow)하면
+          1분 내에 만들어진다. 이후엔 매시간 자동 동기화되고, luke_wiki 쪽에
+          notify 워크플로를 추가하면 푸시 즉시 반영된다 (README 참고).</li>
+        <li>로컬에서 직접 만들 수도 있다:<br>
+          <code>python scripts/build_wiki_graph.py --vault ../luke_wiki --out data/wiki/graph.json</code></li>
+      </ol>`;
+  }
+}
+
+function wikiInitGraph(graph) {
+  const canvas = document.getElementById("wiki-canvas");
+  const wrap   = canvas.parentElement;
+  const detail = document.getElementById("wiki-detail");
+  const legend = document.getElementById("wiki-legend");
+  const search = document.getElementById("wiki-search");
+  const ctx    = canvas.getContext("2d");
+
+  // ---------- 데이터 준비 ----------
+  const nodes = graph.nodes.map((n) => ({ ...n, x: 0, y: 0, vx: 0, vy: 0 }));
+  const edges = (graph.edges || []).filter(([a, b]) =>
+    a !== b && a >= 0 && b >= 0 && a < nodes.length && b < nodes.length);
+
+  const adj = nodes.map(() => new Set());
+  edges.forEach(([a, b]) => { adj[a].add(b); adj[b].add(a); });
+  nodes.forEach((n, i) => {
+    n.deg = adj[i].size;
+    n.r = Math.min(4 + Math.sqrt(n.deg) * 2.4, 18);
+  });
+
+  // 폴더 → 색: 노드 수 상위 폴더에 팔레트 순서대로 배정, 나머지는 회색 '기타'
+  const folderCount = {};
+  nodes.forEach((n) => { folderCount[n.folder] = (folderCount[n.folder] || 0) + 1; });
+  const topFolders = Object.keys(folderCount)
+    .sort((a, b) => folderCount[b] - folderCount[a])
+    .slice(0, WIKI_FOLDER_COLORS.length);
+  const folderColor = {};
+  topFolders.forEach((f, i) => { folderColor[f] = WIKI_FOLDER_COLORS[i]; });
+  nodes.forEach((n) => { n.color = folderColor[n.folder] || WIKI_OTHER_COLOR; });
+
+  // 범례 (직접 라벨 — 색만으로 구분하지 않기 위한 이중 인코딩)
+  const hasOther = nodes.some((n) => !(n.folder in folderColor));
+  legend.innerHTML = topFolders.map((f, i) =>
+    `<span class="wiki-legend-item"><span class="wiki-legend-dot"
+       style="background:${WIKI_FOLDER_COLORS[i]}"></span>${escapeHtml(f)}
+       <span style="opacity:.6">(${folderCount[f]})</span></span>`).join("") +
+    (hasOther ? `<span class="wiki-legend-item"><span class="wiki-legend-dot"
+       style="background:${WIKI_OTHER_COLOR}"></span>${WIKI_OTHER_LABEL}</span>` : "");
+
+  // ---------- 초기 배치: 폴더별 클러스터 원형 배치 ----------
+  const W = () => wrap.clientWidth, H = () => wrap.clientHeight;
+  const cx = W() / 2, cy = H() / 2;
+  const folders = [...new Set(nodes.map((n) => n.folder))];
+  folders.forEach((f, fi) => {
+    const angle = (fi / folders.length) * Math.PI * 2;
+    const fx = cx + Math.cos(angle) * Math.min(cx, cy) * 0.45;
+    const fy = cy + Math.sin(angle) * Math.min(cx, cy) * 0.45;
+    nodes.filter((n) => n.folder === f).forEach((n) => {
+      n.x = fx + (Math.random() - 0.5) * 120;
+      n.y = fy + (Math.random() - 0.5) * 120;
+    });
+  });
+
+  // ---------- 뷰 상태 ----------
+  const view = { scale: 1, ox: 0, oy: 0 };
+  let hoverIdx = -1, selectedIdx = -1, query = "";
+  let alpha = 1;            // 시뮬레이션 온도 — 식으면 멈춘다
+  let rafId = null;
+  let userAdjusted = false; // 사용자가 줌/팬/드래그 후엔 뷰를 멋대로 재조정하지 않는다
+
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = W() * dpr;
+    canvas.height = H() * dpr;
+    draw();
+  }
+
+  // ---------- force 시뮬레이션 (O(n²) — 수백 노드까지 충분) ----------
+  // 초기 배치의 거친 움직임은 화면에 보여주지 않는다: 먼저 warm-up 을
+  // 그리지 않고 돌려 레이아웃을 잡은 뒤, 낮은 온도 + 속도 상한 상태로
+  // 천천히 정착하는 모습만 보여준다 (Obsidian 그래프 뷰와 같은 느낌).
+  const LIVE_ALPHA = 0.18;  // 화면에 보이는 단계의 시작 온도
+  const MAX_SPEED  = 2.2;   // px/frame — 노드가 화면에서 튀지 않는 상한
+
+  function tick(live) {
+    const K = 42;                    // 반발 상수
+    const REST = 62, SPRING = 0.025; // 스프링 길이/강도
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j];
+        let dx = a.x - b.x, dy = a.y - b.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 0.01) { dx = Math.random() - 0.5; dy = Math.random() - 0.5; d2 = 1; }
+        if (d2 > 90000) continue;    // 300px 밖 반발 무시 (성능)
+        const d = Math.sqrt(d2);
+        const f = (K * K) / d2 * alpha;
+        const fx = dx / d * f, fy = dy / d * f;
+        a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+      }
+    }
+    edges.forEach(([i, j]) => {
+      const a = nodes[i], b = nodes[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.sqrt(dx * dx + dy * dy) || 1;
+      const f = (d - REST) * SPRING * alpha;
+      const fx = dx / d * f, fy = dy / d * f;
+      a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+    });
+    nodes.forEach((n) => {
+      // 중심으로 약한 중력 — 그래프가 흩어지지 않게
+      n.vx += (cx - n.x) * 0.004 * alpha;
+      n.vy += (cy - n.y) * 0.004 * alpha;
+      if (n === dragNode) { n.vx = 0; n.vy = 0; return; }
+      // 보이는 단계는 감쇠를 세게 + 속도 상한 → 느릿한 정착
+      const damp = live ? 0.72 : 0.82;
+      n.vx *= damp; n.vy *= damp;
+      if (live) {
+        const sp = Math.hypot(n.vx, n.vy);
+        if (sp > MAX_SPEED) { n.vx *= MAX_SPEED / sp; n.vy *= MAX_SPEED / sp; }
+      }
+      n.x += n.vx; n.y += n.vy;
+    });
+    alpha *= live ? 0.975 : 0.99;
+  }
+
+  // 화면에 그리기 전 레이아웃을 미리 잡는다 (거친 초기 움직임 숨김)
+  function warmup() {
+    alpha = 1;
+    for (let i = 0; i < 220 && alpha > 0.05; i++) tick(false);
+    nodes.forEach((n) => { n.vx = 0; n.vy = 0; });
+    alpha = LIVE_ALPHA;
+  }
+
+  function loop() {
+    if (alpha > 0.015) { tick(true); draw(); rafId = requestAnimationFrame(loop); }
+    else { alpha = 0; if (!userAdjusted) fitView(); rafId = null; }
+  }
+  function wake(a) {
+    alpha = Math.max(alpha, a);
+    if (!rafId) rafId = requestAnimationFrame(loop);
+  }
+
+  // 전체 그래프가 보이도록 스케일/오프셋 맞추기
+  function fitView() {
+    if (!nodes.length) return;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    nodes.forEach((n) => {
+      minX = Math.min(minX, n.x); maxX = Math.max(maxX, n.x);
+      minY = Math.min(minY, n.y); maxY = Math.max(maxY, n.y);
+    });
+    const pad = 50;
+    const gw = Math.max(maxX - minX, 1), gh = Math.max(maxY - minY, 1);
+    view.scale = Math.min((W() - pad * 2) / gw, (H() - pad * 2) / gh, 1.6);
+    view.ox = (W() - gw * view.scale) / 2 - minX * view.scale;
+    view.oy = (H() - gh * view.scale) / 2 - minY * view.scale;
+    draw();
+  }
+
+  // ---------- 그리기 ----------
+  function matchesQuery(n) {
+    return query && (n.title.toLowerCase().includes(query) ||
+                     (n.tags || []).some((t) => t.toLowerCase().includes(query)));
+  }
+
+  function draw() {
+    const dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.setTransform(dpr * view.scale, 0, 0, dpr * view.scale,
+                     dpr * view.ox, dpr * view.oy);
+
+    const focus = selectedIdx >= 0 ? selectedIdx : hoverIdx;
+    const focusSet = focus >= 0 ? adj[focus] : null;
+
+    // 엣지
+    edges.forEach(([i, j]) => {
+      const onFocus = focus >= 0 && (i === focus || j === focus);
+      ctx.strokeStyle = onFocus ? "rgba(230,48,48,0.75)" : "rgba(255,255,255,0.09)";
+      ctx.lineWidth = (onFocus ? 1.6 : 1) / view.scale;
+      ctx.beginPath();
+      ctx.moveTo(nodes[i].x, nodes[i].y);
+      ctx.lineTo(nodes[j].x, nodes[j].y);
+      ctx.stroke();
+    });
+
+    // 노드
+    nodes.forEach((n, i) => {
+      let dim = false;
+      if (query) dim = !matchesQuery(n);
+      else if (focus >= 0) dim = i !== focus && !focusSet.has(i);
+      ctx.globalAlpha = dim ? 0.15 : 1;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+      // 배경과의 2px 분리 링
+      ctx.lineWidth = 2 / view.scale;
+      ctx.strokeStyle = "#121212";
+      ctx.stroke();
+      if (i === selectedIdx) {
+        ctx.lineWidth = 2.5 / view.scale;
+        ctx.strokeStyle = "#e63030";
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    });
+
+    // 라벨 — 선택/호버/이웃/검색 일치 + 허브 노드만 (전부 붙이면 겹쳐서 못 읽는다)
+    ctx.font = `${11 / view.scale}px -apple-system, "Apple SD Gothic Neo", sans-serif`;
+    ctx.textAlign = "center";
+    nodes.forEach((n, i) => {
+      const show =
+        i === hoverIdx || i === selectedIdx ||
+        (focusSet && focusSet.has(i)) ||
+        (query && matchesQuery(n)) ||
+        (!query && focus < 0 && n.deg >= 5 && view.scale > 0.55);
+      if (!show) return;
+      const y = n.y - n.r - 5 / view.scale;
+      ctx.lineWidth = 3 / view.scale;
+      ctx.strokeStyle = "rgba(8,8,8,0.85)";
+      ctx.strokeText(n.title, n.x, y);
+      ctx.fillStyle = "#f2f2f2";
+      ctx.fillText(n.title, n.x, y);
+    });
+  }
+
+  // ---------- 상호작용 ----------
+  function toWorld(mx, my) {
+    return [(mx - view.ox) / view.scale, (my - view.oy) / view.scale];
+  }
+  function pick(mx, my) {
+    const [wx, wy] = toWorld(mx, my);
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const n = nodes[i];
+      const dx = wx - n.x, dy = wy - n.y;
+      const hit = n.r + 4 / view.scale;
+      if (dx * dx + dy * dy <= hit * hit) return i;
+    }
+    return -1;
+  }
+
+  let dragNode = null, panning = false, lastX = 0, lastY = 0, moved = false;
+
+  canvas.addEventListener("mousedown", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    const i = pick(mx, my);
+    moved = false;
+    if (i >= 0) { dragNode = nodes[i]; }
+    else { panning = true; canvas.classList.add("dragging"); }
+    lastX = mx; lastY = my;
+  });
+  canvas.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    if (dragNode) {
+      const [wx, wy] = toWorld(mx, my);
+      dragNode.x = wx; dragNode.y = wy;
+      moved = true;
+      userAdjusted = true;
+      wake(0.1);
+      return;
+    }
+    if (panning) {
+      view.ox += mx - lastX; view.oy += my - lastY;
+      lastX = mx; lastY = my;
+      moved = true;
+      userAdjusted = true;
+      draw();
+      return;
+    }
+    const i = pick(mx, my);
+    if (i !== hoverIdx) {
+      hoverIdx = i;
+      canvas.style.cursor = i >= 0 ? "pointer" : "grab";
+      draw();
+    }
+  });
+  window.addEventListener("mouseup", (e) => {
+    if (dragNode && !moved) {
+      // 이동 없는 클릭 = 선택
+      selectedIdx = nodes.indexOf(dragNode);
+      wikiShowDetail(selectedIdx);
+      draw();
+    } else if (panning && !moved) {
+      selectedIdx = -1;
+      wikiShowDetail(-1);
+      draw();
+    }
+    dragNode = null; panning = false;
+    canvas.classList.remove("dragging");
+  });
+  canvas.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    const factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+    const ns = Math.min(Math.max(view.scale * factor, 0.15), 4);
+    // 커서 위치 고정 줌
+    view.ox = mx - (mx - view.ox) * (ns / view.scale);
+    view.oy = my - (my - view.oy) * (ns / view.scale);
+    view.scale = ns;
+    userAdjusted = true;
+    draw();
+  }, { passive: false });
+  canvas.addEventListener("dblclick", () => { userAdjusted = false; fitView(); });
+
+  search.addEventListener("input", () => {
+    query = search.value.trim().toLowerCase();
+    draw();
+  });
+
+  // ---------- 상세 패널 ----------
+  function wikiShowDetail(idx) {
+    if (idx < 0) {
+      detail.innerHTML = `<p class="vc-detail-hint">노드를 클릭하면 노트 정보가 표시됩니다.</p>`;
+      return;
+    }
+    const n = nodes[idx];
+    const neighbors = [...adj[idx]]
+      .sort((a, b) => nodes[b].deg - nodes[a].deg)
+      .slice(0, 30);
+    const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
+    const branch  = graph.branch || "main";
+    const fileUrl = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
+      n.path.split("/").map(encodeURIComponent).join("/");
+    detail.innerHTML = `
+      <h3>${escapeHtml(n.title)}</h3>
+      <p class="wiki-detail-meta">
+        📁 ${escapeHtml(n.folder)} · 연결 ${n.deg}개${n.mtime ? ` · 수정 ${escapeHtml(n.mtime)}` : ""}
+      </p>
+      ${(n.tags && n.tags.length)
+        ? `<div class="wiki-detail-tags">${n.tags.map((t) =>
+             `<span class="wiki-tag">#${escapeHtml(t)}</span>`).join("")}</div>` : ""}
+      ${neighbors.length ? `
+        <div class="wiki-detail-links">
+          <h4>연결된 노트</h4>
+          ${neighbors.map((j) =>
+            `<button type="button" class="wiki-link-item" data-idx="${j}">
+               <span style="color:${nodes[j].color}">●</span> ${escapeHtml(nodes[j].title)}
+             </button>`).join("")}
+        </div>` : ""}
+      ${graph.has_content
+        ? `<button type="button" class="wiki-read-btn" id="wiki-read-btn">📖 이 화면에서 읽기</button>` : ""}
+      <a class="wiki-open-github" href="${fileUrl}" target="_blank" rel="noopener">
+        GitHub 에서 노트 열기 ↗</a>`;
+    detail.querySelectorAll(".wiki-link-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectedIdx = Number(btn.dataset.idx);
+        wikiShowDetail(selectedIdx);
+        draw();
+      });
+    });
+    const readBtn = detail.querySelector("#wiki-read-btn");
+    if (readBtn) readBtn.addEventListener("click", () => wikiOpenNote(idx));
+  }
+
+  // ---------- 노트 뷰어 (모달) — 본문을 대시보드 안에서 읽는다 ----------
+  let noteOverlay = null;
+  function ensureNoteOverlay() {
+    if (noteOverlay) return noteOverlay;
+    noteOverlay = document.createElement("div");
+    noteOverlay.className = "wn-overlay";
+    noteOverlay.hidden = true;
+    noteOverlay.innerHTML = `
+      <div class="wn-card" role="dialog" aria-modal="true" aria-labelledby="wn-title">
+        <div class="wn-head">
+          <h3 class="wn-title" id="wn-title"></h3>
+          <button type="button" class="wn-close" aria-label="닫기">✕</button>
+        </div>
+        <p class="wn-meta" id="wn-meta"></p>
+        <div class="wn-body" id="wn-body"></div>
+        <div class="wn-foot">
+          <a class="wiki-open-github" id="wn-github" target="_blank" rel="noopener">GitHub 에서 열기 ↗</a>
+        </div>
+      </div>`;
+    noteOverlay.addEventListener("click", (e) => {
+      if (e.target === noteOverlay || e.target.closest(".wn-close")) wikiCloseNote();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && noteOverlay && !noteOverlay.hidden) wikiCloseNote();
+    });
+    document.body.appendChild(noteOverlay);
+    return noteOverlay;
+  }
+  function wikiCloseNote() {
+    if (noteOverlay) noteOverlay.hidden = true;
+  }
+
+  function wikiRenderMarkdown(md) {
+    // frontmatter 는 상세 패널에서 이미 태그로 보여주므로 본문에선 감춘다
+    if (md.startsWith("---")) {
+      const end = md.indexOf("\n---", 3);
+      if (end > 0) md = md.slice(end + 4);
+    }
+    // HTML 주석(<!-- ... -->)은 표시하지 않는다 — 노트의 관리용 마커
+    md = md.replace(/<!--[\s\S]*?-->/g, "");
+    // 노트 속 원시 HTML 은 실행하지 않고 텍스트로 취급 (안전).
+    // '>' 는 이스케이프하지 않는다 — 블록 인용(> ...)의 마크다운 문법이라서.
+    const safe = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    let html;
+    if (window.marked && typeof window.marked.parse === "function") {
+      html = window.marked.parse(safe, { breaks: true });
+    } else {
+      html = `<pre class="wn-pre">${safe}</pre>`;  // CDN 로드 실패 시 폴백
+    }
+    // [[위키링크]] → 클릭하면 그 노트로 이동하는 링크
+    return html.replace(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]*))?\]\]/g, (m, target, alias) => {
+      const t = target.trim();
+      return `<a href="#" class="wn-wikilink" data-wiki-target="${t.replace(/"/g, "&quot;")}">${alias || t}</a>`;
+    });
+  }
+
+  async function wikiOpenNote(idx) {
+    const n = nodes[idx];
+    const ov = ensureNoteOverlay();
+    const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
+    const branch  = graph.branch || "main";
+    ov.querySelector("#wn-title").textContent = n.title;
+    ov.querySelector("#wn-meta").textContent =
+      `${n.folder} · 연결 ${n.deg}개${n.mtime ? ` · 수정 ${n.mtime}` : ""}`;
+    ov.querySelector("#wn-github").href = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
+      n.path.split("/").map(encodeURIComponent).join("/");
+    const body = ov.querySelector("#wn-body");
+    body.innerHTML = `<p class="wn-loading">불러오는 중…</p>`;
+    ov.hidden = false;
+    try {
+      const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const note = await res.json();
+      body.innerHTML = wikiRenderMarkdown(note.content || "");
+      body.scrollTop = 0;
+      // 본문 속 위키링크 → 그래프에서 해당 노트 선택 + 바로 열기
+      body.querySelectorAll(".wn-wikilink").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          const t = el.dataset.wikiTarget.toLowerCase();
+          const j = nodes.findIndex((nn) =>
+            nn.title.toLowerCase() === t ||
+            nn.id.toLowerCase() === t ||
+            nn.id.toLowerCase().endsWith("/" + t));
+          if (j >= 0) {
+            selectedIdx = j;
+            wikiShowDetail(j);
+            draw();
+            wikiOpenNote(j);
+          }
+        });
+      });
+    } catch (err) {
+      body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
+        아직 노트 본문이 내보내지지 않았을 수 있어요 — 워크플로를 한 번 실행해 주세요.</p>`;
+    }
+  }
+
+  // ---------- 시작 ----------
+  new ResizeObserver(resize).observe(wrap);
+  resize();
+  warmup();          // 레이아웃을 먼저 잡고
+  fitView();         // 전체가 보이게 맞춘 뒤
+  wake(LIVE_ALPHA);  // 낮은 온도로 천천히 정착하는 모습만 보여준다
 }
