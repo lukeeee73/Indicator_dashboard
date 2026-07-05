@@ -104,11 +104,14 @@ dalio-dashboard/
 │   ├── index.json           # 메타데이터 + assessment (4분면 판정) 요약
 │   ├── indicators/
 │   │   └── <CODE>.json      # 지표별 전체 payload — 개별 편집 가능
-│   └── assets/
-│       └── <CODE>.json      # 비교 자산별 전체 payload
+│   ├── assets/
+│   │   └── <CODE>.json      # 비교 자산별 전체 payload
+│   └── principles/
+│       └── timeline.json    # 원칙 탭 시나리오 데이터 (scripts/build_principles.py)
 ├── scripts/
 │   ├── fetch_fred.py        # FRED API → data/ 분할 저장
 │   ├── analyze.py           # percentile/label/quadrant 재계산 (CLI)
+│   ├── build_principles.py  # 원칙 탭용 국면·자산수익률 타임라인 생성
 │   └── requirements.txt
 └── .github/workflows/
     └── update.yml           # 주 1회 자동 수집 + 커밋
@@ -187,6 +190,46 @@ Vercel 이 GitHub 의 default branch 를 감시하므로,
 ### 캐시 정책 (`vercel.json`)
 
 `data/indicators.json` 은 Vercel Edge CDN 에서 최대 5분만 캐시되도록 설정되어 있어, 주간 갱신이 곧바로 반영됩니다. 나머지 정적 파일은 기본 캐시 정책을 따릅니다.
+
+---
+
+## 원칙 (Principles) 탭 — 레이 달리오식 시나리오 타임머신
+
+대시보드 상단의 **🧭 원칙** 탭은 "과거 특정 시점으로 돌아가 그 때 알 수 있었던
+정보만으로 투자 결정을 내렸다면 수익률이 어땠을까"를 시뮬레이션하는 개인용
+백테스트 실험실이다. 레이 달리오의 성장×인플레이션 4분면 프레임워크에서
+아이디어를 가져왔다.
+
+- **국면 판정**: 진입 시점의 4분면은 `scripts/backtest.py` / `compare_models.py`
+  가 이미 구현한 **발표 지연(release lag) 시뮬레이션 + 모델 H(백테스트 승자)**
+  워크포워드를 그대로 재사용한다 — 그 시점 이후 데이터는 전혀 보지 않는다.
+- **자산 수익률**: 레포에 이미 있는 시계열만 사용해 4개 자산의 수익률 지수를
+  근사한다 (외부 API 재호출 없음).
+  - 미국 10년 국채 — FRED `DGS10` 금리에서 duration 근사로 총수익 지수 역산
+  - 미국 주식 — `data/indices/GSPC.json` (S&P500, 가격지수, 배당 미반영)
+  - 한국 주식 — `data/assets/KOSPI.json` (가격지수, KRW)
+  - 현금 — 단기금리 데이터가 없어 무이자 보유(명목가치 고정)로 근사
+  - 각 근사의 한계는 결과 화면과 `data/principles/timeline.json` 의 `note`
+    필드에 그대로 노출된다.
+- **시뮬레이션**: 진입/청산 시점(월 단위)과 4자산 배분(%)을 정하면 buy & hold
+  기준 총수익률·연환산·물가반영 실질수익률을 계산하고, 보유 기간의 국면 경로
+  (NBER 침체·고인플레 episode 오버레이 포함)와 국면 기반 참고용 배분 대비 비교,
+  자동 생성된 "원칙 초안" 텍스트를 보여준다.
+- **원칙 저널**: 계산 결과를 저장하면 브라우저 `localStorage` 에 쌓이며, 반복해서
+  시나리오를 시험하며 나만의 투자 원칙을 만들어가는 것이 목적이다. JSON 내보내기로
+  백업할 수 있다.
+
+데이터 갱신:
+
+```bash
+python scripts/build_principles.py   # data/principles/timeline.json 재생성
+```
+
+새 지표를 수집하지 않고 기존 `data/` 를 재조합만 하므로 네트워크 호출이 없다.
+국면/지표 데이터가 갱신되면(주간 자동 수집) 다시 실행해 최신 상태로 맞춘다.
+
+> ⚠️ 국면 판정과 자산 수익률 모두 이 레포 데이터로 만든 교육용 근사치이며,
+> 투자 조언이 아니다.
 
 ---
 

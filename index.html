@@ -25,6 +25,7 @@
     <button class="tab-btn active" data-tab="US">🇺🇸 미국</button>
     <button class="tab-btn" data-tab="KR">🇰🇷 한국</button>
     <button class="tab-btn" data-tab="STOCKS">📈 주식</button>
+    <button class="tab-btn" data-tab="PRINCIPLES">🧭 원칙</button>
   </nav>
 
   <main>
@@ -238,6 +239,96 @@
         <section class="mc-feed" id="mc-feed" aria-label="시장 뉴스 피드"></section>
       </section>
     </div><!-- /panel-STOCKS -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         원칙 (Principles) 패널 — 레이 달리오식 시나리오 시뮬레이터
+    ══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-PRINCIPLES" hidden>
+      <section class="principles-intro">
+        <h2>나만의 투자 원칙 실험실</h2>
+        <p class="category-desc">
+          레이 달리오의 <strong>성장 × 인플레이션 4분면</strong> 프레임워크로 만든 타임머신
+          시뮬레이터. 과거의 한 시점으로 돌아가 <strong>그 때 실제로 알 수 있었던 정보만</strong>
+          (발표 지연을 반영한 국면 판정)으로 자산배분을 정하고, 나중에 팔았다면 수익률이
+          어땠을지 확인한다. 결과를 반복해서 쌓아가며 나만의 투자 원칙을 만드는 것이 목표다.
+          <em>주의: 국면 판정과 자산 수익률 모두 레포에 있는 데이터로 만든 근사치이며, 투자
+          조언이 아니다.</em>
+        </p>
+      </section>
+
+      <section class="principles-setup" id="principles-setup" hidden>
+        <div class="ps-row">
+          <div class="ps-field">
+            <label for="pr-entry-date">진입 시점 (그 때로 돌아간다)</label>
+            <input type="month" id="pr-entry-date">
+          </div>
+          <div class="ps-field">
+            <label for="pr-exit-date">청산 시점 (여기서 팔았다면)</label>
+            <input type="month" id="pr-exit-date">
+          </div>
+        </div>
+
+        <div class="pr-snapshot" id="pr-entry-snapshot"></div>
+
+        <div class="pr-allocation">
+          <h3>자산배분 — 진입 시점에 무엇을 샀는가?</h3>
+          <div class="pr-preset-row" id="pr-preset-row"></div>
+          <div class="pr-alloc-grid" id="pr-alloc-grid"></div>
+          <div class="pr-alloc-total">합계 <b id="pr-alloc-total-val">100</b>% (100%이어야 계산 가능)</div>
+        </div>
+
+        <button class="pr-run-btn" id="pr-run-btn">🕰️ 타임머신 시작 → 수익률 계산</button>
+        <p class="pr-error" id="pr-error" hidden></p>
+      </section>
+
+      <section class="principles-result" id="pr-result" hidden>
+        <h2>결과</h2>
+        <div class="pr-result-grid">
+          <div class="pr-metric-card">
+            <span class="pr-metric-label">보유 기간</span>
+            <span class="pr-metric-value" id="pr-metric-months">—</span>
+          </div>
+          <div class="pr-metric-card">
+            <span class="pr-metric-label">총수익률 (내 배분)</span>
+            <span class="pr-metric-value" id="pr-metric-total">—</span>
+          </div>
+          <div class="pr-metric-card">
+            <span class="pr-metric-label">연환산수익률</span>
+            <span class="pr-metric-value" id="pr-metric-cagr">—</span>
+          </div>
+          <div class="pr-metric-card">
+            <span class="pr-metric-label">실질(물가반영) 수익률</span>
+            <span class="pr-metric-value" id="pr-metric-real">—</span>
+          </div>
+        </div>
+
+        <div class="pr-benchmarks" id="pr-benchmarks"></div>
+
+        <div class="pr-quadrant-path">
+          <h3>보유 기간 중 국면 경로</h3>
+          <p class="category-desc">각 칸이 한 달이다. 색은 그 달의 국면(Q1~Q4), 위쪽 붉은 눈금은
+            NBER 침체·아래쪽 눈금은 고인플레 episode 구간을 뜻한다.</p>
+          <div class="pr-path-strip" id="pr-path-strip"></div>
+          <div class="pr-path-chart"><canvas id="pr-path-canvas"></canvas></div>
+        </div>
+
+        <div class="pr-insight" id="pr-insight"></div>
+
+        <button class="pr-save-btn" id="pr-save-btn">💾 이 시나리오를 원칙 저널에 저장</button>
+      </section>
+
+      <section class="principles-journal">
+        <h2>나의 원칙 저널</h2>
+        <p class="category-desc">저장한 시나리오가 쌓여 나만의 투자 원칙이 된다. 이 브라우저에만
+          저장되므로(localStorage), 다른 기기에서 보려면 내보내기로 백업해야 한다.</p>
+        <div class="pr-journal-actions">
+          <button type="button" id="pr-journal-export">JSON 내보내기</button>
+          <button type="button" id="pr-journal-clear">전체 삭제</button>
+        </div>
+        <div class="pr-journal-list" id="pr-journal-list"></div>
+      </section>
+    </div><!-- /panel-PRINCIPLES -->
 
   </main>
 

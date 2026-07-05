@@ -579,6 +579,8 @@ function switchToTab(tab) {
   if (!_renderedTabs.has(tab) && _cachedData) {
     if (tab === "STOCKS") {
       renderStocksTab(_cachedData);
+    } else if (tab === "PRINCIPLES") {
+      renderPrinciplesTab();
     } else {
       renderTabContent(tab, _cachedData);
     }
@@ -3919,4 +3921,606 @@ function formatQuarterLabel(dateStr) {
   const month = d.getMonth() + 1;
   const q = Math.ceil(month / 3);
   return `${year}Q${q}`;
+}
+
+
+// =====================================================================
+// 원칙 (Principles) 탭 — 레이 달리오식 시나리오 타임머신
+//
+// 과거의 한 시점(예: 1999-06)으로 돌아가 "그 때 알 수 있었던 정보만" 으로
+// 국면을 확인하고, 자산배분을 정한 뒤, 나중 시점에 팔았다면 수익률이
+// 어땠을지 계산한다. data/principles/timeline.json (scripts/build_principles.py
+// 가 생성) 을 lazy-fetch 해서 전부 클라이언트에서 계산한다 — 백엔드 없음.
+// =====================================================================
+
+const PR_JOURNAL_KEY = "principles_journal_v1";
+
+const PR_ASSET_META = {
+  bond_us10y:     { short: "미국 10년 국채" },
+  cash:           { short: "현금" },
+  stock_us_sp500: { short: "미국 주식 (S&P500)" },
+  stock_kr_kospi: { short: "한국 주식 (코스피)" },
+};
+const PR_ASSET_ORDER = ["bond_us10y", "cash", "stock_us_sp500", "stock_kr_kospi"];
+
+const PR_PRESETS = {
+  all_bond: { bond_us10y: 100, cash: 0,   stock_us_sp500: 0,   stock_kr_kospi: 0 },
+  all_cash: { bond_us10y: 0,   cash: 100, stock_us_sp500: 0,   stock_kr_kospi: 0 },
+  all_us:   { bond_us10y: 0,   cash: 0,   stock_us_sp500: 100, stock_kr_kospi: 0 },
+  all_kr:   { bond_us10y: 0,   cash: 0,   stock_us_sp500: 0,   stock_kr_kospi: 100 },
+  balanced: { bond_us10y: 25,  cash: 25,  stock_us_sp500: 25,  stock_kr_kospi: 25 },
+};
+
+// 국면별 "참고용 추천 배분" — README 4분면 표(원자재·신흥국 주식·인플레연동채 /
+// 선진국 주식·회사채 / 금·인플레연동채·원자재 / 장기국채·현금)를 이 레포에 있는
+// 4개 자산으로 근사한 예시일 뿐이다. 금·원자재 데이터가 없어 코스피·현금으로
+// 대신 근사했다 — 투자 조언이 아니라 비교용 참고선이다.
+const PR_QUADRANT_ALLOC = {
+  Q1: { bond_us10y: 10, cash: 20, stock_us_sp500: 20, stock_kr_kospi: 50 },
+  Q2: { bond_us10y: 20, cash: 10, stock_us_sp500: 55, stock_kr_kospi: 15 },
+  Q3: { bond_us10y: 20, cash: 45, stock_us_sp500: 15, stock_kr_kospi: 20 },
+  Q4: { bond_us10y: 55, cash: 30, stock_us_sp500: 10, stock_kr_kospi: 5 },
+};
+
+const PR_DRAFT_PRINCIPLE = {
+  Q1: "성장과 인플레가 함께 뜨거워지는 국면에서는 명목 장기채 비중을 줄이고 실물·신흥시장 비중을 늘리는 것을 원칙으로 검토한다.",
+  Q2: "성장은 개선되는데 인플레가 잠잠한 국면(골디락스)에서는 위험자산(주식) 비중을 늘리는 것을 원칙으로 검토한다.",
+  Q3: "성장이 꺾이는데 물가가 오르는 국면(스태그플레이션)에서는 현금·방어자산 비중을 늘리고 위험자산 비중을 줄이는 것을 원칙으로 검토한다 — 주식·채권이 동시에 흔들리기 쉬운 구간이다.",
+  Q4: "성장과 물가가 함께 식는 국면에서는 장기 국채·현금 비중을 늘리는 것을 원칙으로 검토한다 — 금리 하락(채권 가격 상승) 수혜 국면이다.",
+};
+const PR_DRAFT_DEFAULT = "국면이 뚜렷하지 않은 경계·중립 구간에서는 특정 자산에 몰빵하기보다 배분을 분산하는 것을 원칙으로 검토한다.";
+
+const PR_STATE = {
+  data: null,
+  monthsByYm: new Map(),
+  monthsSorted: [],
+  assetByYm: {},
+  allocation: { ...PR_PRESETS.balanced },
+  minYm: null,
+  maxYm: null,
+  lastScenario: null,
+  pathChart: null,
+};
+
+// ---------- 날짜(YYYY-MM) 유틸 ----------
+function prYm(dateStr) { return dateStr.slice(0, 7); }
+function prYmToN(ym) {
+  const [y, m] = ym.split("-").map(Number);
+  return y * 12 + (m - 1);
+}
+function prNToYm(n) {
+  const y = Math.floor(n / 12);
+  const m = (n % 12) + 1;
+  return `${y}-${String(m).padStart(2, "0")}`;
+}
+function prAddMonths(ym, delta) { return prNToYm(prYmToN(ym) + delta); }
+function prMonthsBetween(a, b) { return prYmToN(b) - prYmToN(a); }
+
+function prFmtPct(x, digits = 1) {
+  if (x == null || Number.isNaN(x)) return "—";
+  const sign = x > 0 ? "+" : "";
+  return `${sign}${(x * 100).toFixed(digits)}%`;
+}
+function prSignAttr(x) {
+  if (x == null || Number.isNaN(x)) return "";
+  return x > 0.0001 ? "pos" : (x < -0.0001 ? "neg" : "");
+}
+
+// ---------- 진입점 ----------
+async function renderPrinciplesTab() {
+  const setup = document.getElementById("principles-setup");
+  if (!setup) return;
+  try {
+    const res = await fetch("data/principles/timeline.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    prInit(data);
+  } catch (err) {
+    setup.hidden = false;
+    setup.innerHTML = emptyMessage(
+      `시나리오 데이터를 불러오지 못했습니다 (${err.message}). ` +
+      `scripts/build_principles.py 를 실행해 data/principles/timeline.json 을 생성해 주세요.`,
+    );
+  }
+}
+
+function prInit(data) {
+  PR_STATE.data = data;
+  for (const row of data.months) {
+    PR_STATE.monthsByYm.set(prYm(row.date), row);
+  }
+  PR_STATE.monthsSorted = data.months.map((r) => prYm(r.date));
+  PR_STATE.minYm = PR_STATE.monthsSorted[0];
+  PR_STATE.maxYm = PR_STATE.monthsSorted[PR_STATE.monthsSorted.length - 1];
+
+  for (const [key, asset] of Object.entries(data.assets)) {
+    if (asset.synthetic_flat) continue;
+    const map = new Map();
+    for (const p of asset.index) map.set(prYm(p.date), p.value);
+    PR_STATE.assetByYm[key] = map;
+  }
+
+  const setup = document.getElementById("principles-setup");
+  setup.hidden = false;
+
+  const entryInput = document.getElementById("pr-entry-date");
+  const exitInput  = document.getElementById("pr-exit-date");
+  entryInput.min = PR_STATE.minYm; entryInput.max = PR_STATE.maxYm;
+  exitInput.min  = PR_STATE.minYm; exitInput.max  = PR_STATE.maxYm;
+
+  const wantDefault = "1999-06";
+  const defaultEntry = (prYmToN(wantDefault) >= prYmToN(PR_STATE.minYm) &&
+                        prYmToN(wantDefault) <= prYmToN(PR_STATE.maxYm))
+    ? wantDefault : PR_STATE.minYm;
+  entryInput.value = defaultEntry;
+  exitInput.value  = PR_STATE.maxYm;
+
+  prRenderAllocGrid();
+  prRenderPresetRow();
+  prRenderEntrySnapshot();
+
+  entryInput.addEventListener("change", prRenderEntrySnapshot);
+  document.getElementById("pr-run-btn").addEventListener("click", prRunScenario);
+  document.getElementById("pr-save-btn").addEventListener("click", prSaveScenario);
+  document.getElementById("pr-journal-export").addEventListener("click", prExportJournal);
+  document.getElementById("pr-journal-clear").addEventListener("click", prClearJournal);
+
+  prRenderJournal();
+}
+
+// ---------- 자산배분 UI ----------
+function prRenderAllocGrid() {
+  const host = document.getElementById("pr-alloc-grid");
+  host.innerHTML = PR_ASSET_ORDER.map((key) => {
+    const meta = PR_ASSET_META[key];
+    const asset = PR_STATE.data.assets[key];
+    const w = PR_STATE.allocation[key] ?? 0;
+    const note = asset.synthetic_flat
+      ? asset.note
+      : `데이터 범위: ${asset.start.slice(0, 7)} ~ ${asset.end.slice(0, 7)}`;
+    return `
+      <div class="pr-alloc-item" data-asset="${key}">
+        <div class="pr-alloc-name"><span>${escapeHtml(meta.short)}</span><b data-role="val">${w}%</b></div>
+        <input type="range" class="pr-alloc-range" data-asset="${key}" min="0" max="100" step="1" value="${w}">
+        <div class="pr-alloc-note">${escapeHtml(note)}</div>
+      </div>`;
+  }).join("");
+
+  host.querySelectorAll(".pr-alloc-range").forEach((input) => {
+    input.addEventListener("input", () => {
+      const key = input.dataset.asset;
+      PR_STATE.allocation[key] = Number(input.value);
+      host.querySelector(`.pr-alloc-item[data-asset="${key}"] b[data-role="val"]`).textContent = `${input.value}%`;
+      prUpdateAllocTotal();
+    });
+  });
+  prUpdateAllocTotal();
+}
+
+function prUpdateAllocTotal() {
+  const total = PR_ASSET_ORDER.reduce((s, k) => s + (PR_STATE.allocation[k] || 0), 0);
+  const el = document.getElementById("pr-alloc-total-val");
+  el.textContent = total;
+  el.parentElement.classList.toggle("pr-alloc-bad", total !== 100);
+  return total;
+}
+
+function prRenderPresetRow() {
+  const host = document.getElementById("pr-preset-row");
+  const presets = [
+    { key: "all_bond", label: "100% 국채" },
+    { key: "all_cash", label: "100% 현금" },
+    { key: "all_us",   label: "100% 미국주식" },
+    { key: "all_kr",   label: "100% 코스피" },
+    { key: "balanced", label: "균등분산 (25%씩)" },
+    { key: "quadrant", label: "이 국면 추천 배분" },
+  ];
+  host.innerHTML = presets.map((p) =>
+    `<button type="button" class="pr-preset-btn" data-preset="${p.key}">${escapeHtml(p.label)}</button>`,
+  ).join("");
+  host.querySelectorAll(".pr-preset-btn").forEach((btn) => {
+    btn.addEventListener("click", () => prApplyPreset(btn.dataset.preset));
+  });
+}
+
+// 추천 배분 중 이 기간에 데이터가 없는 자산(예: 2006년 이전 S&P500)은 0으로
+// 낮추고, 남은 자산끼리 비중을 다시 100%로 재분배한다.
+function prFitAllocToRange(alloc, entryYm, exitYm) {
+  const available = {};
+  let availSum = 0;
+  for (const k of PR_ASSET_ORDER) {
+    const w = alloc[k] || 0;
+    if (w > 0 && prAssetRangeOk(k, entryYm, exitYm)) { available[k] = w; availSum += w; }
+  }
+  if (availSum === 0) return { ...PR_PRESETS.all_cash };
+  const out = {};
+  for (const k of PR_ASSET_ORDER) out[k] = 0;
+  for (const [k, w] of Object.entries(available)) out[k] = Math.round((w / availSum) * 100);
+  const diff = 100 - PR_ASSET_ORDER.reduce((s, k) => s + out[k], 0);
+  if (diff !== 0) {
+    const biggest = Object.keys(available).reduce((a, b) => (out[a] >= out[b] ? a : b));
+    out[biggest] += diff;
+  }
+  return out;
+}
+
+function prApplyPreset(key) {
+  let alloc;
+  if (key === "quadrant") {
+    const entryYm = document.getElementById("pr-entry-date").value;
+    const exitYm  = document.getElementById("pr-exit-date").value;
+    const row = PR_STATE.monthsByYm.get(entryYm);
+    const q = row ? row.quadrant : null;
+    const base = PR_QUADRANT_ALLOC[q] || PR_PRESETS.balanced;
+    alloc = prFitAllocToRange(base, entryYm, exitYm);
+  } else {
+    alloc = PR_PRESETS[key] || PR_PRESETS.balanced;
+  }
+  PR_STATE.allocation = { ...alloc };
+  prRenderAllocGrid();
+}
+
+// ---------- 진입 시점 국면 스냅샷 ----------
+function prRenderEntrySnapshot() {
+  const host = document.getElementById("pr-entry-snapshot");
+  const ym = document.getElementById("pr-entry-date").value;
+  const row = PR_STATE.monthsByYm.get(ym);
+  if (!row) {
+    host.innerHTML = `<p class="pr-snapshot-empty">이 시점의 국면 데이터가 없습니다.</p>`;
+    return;
+  }
+  const q = ["Q1", "Q2", "Q3", "Q4"].includes(row.quadrant) ? row.quadrant : "";
+  const playbook = PR_STATE.data.quadrant_playbook[q] || null;
+  host.innerHTML = `
+    <div class="assessment-card assessment-card-primary">
+      <div class="aw-header">
+        <span class="aw-title">${escapeHtml(ym)} 시점의 국면</span>
+        <span class="aw-sub">그 때 알 수 있었던 데이터만 사용 (발표 지연 반영, 모델 H)</span>
+      </div>
+      <div class="aw-quadrant" data-quadrant="${escapeHtml(q)}">${escapeHtml(row.quadrant || "—")}${playbook ? ` · ${escapeHtml(playbook.label)}` : ""}</div>
+      <div class="aw-scores">
+        <span class="aw-score">성장 <b data-label="${row.growth_label || ""}">${row.growth_score ?? "—"}</b></span>
+        <span class="aw-score">인플레 <b data-label="${row.inflation_label || ""}">${row.inflation_score ?? "—"}</b></span>
+      </div>
+    </div>
+    ${playbook ? `<p class="pr-snapshot-hint">${escapeHtml(playbook.hint)} — ${escapeHtml(playbook.principle)}</p>` : ""}
+  `;
+}
+
+// ---------- 시뮬레이션 엔진 ----------
+function prAssetValueAt(key, ym) {
+  if (key === "cash") return 100;
+  const map = PR_STATE.assetByYm[key];
+  return map ? (map.get(ym) ?? null) : null;
+}
+
+function prAssetRangeOk(key, entryYm, exitYm) {
+  if (key === "cash") return true;
+  const asset = PR_STATE.data.assets[key];
+  if (!asset) return false;
+  return entryYm >= asset.start.slice(0, 7) && exitYm <= asset.end.slice(0, 7);
+}
+
+// 진입~청산 사이 인플레이션 누적 배수. entry 로부터 정확히 12개월씩 떨어진
+// 월(연간 YoY)만 체인으로 곱해 오차를 피하고, 마지막 잔여 개월(<12)만
+// 최근 YoY 로 선형(기하) 근사한다.
+function prInflationMultiple(entryYm, exitYm) {
+  const totalMonths = prMonthsBetween(entryYm, exitYm);
+  const fullYears = Math.floor(totalMonths / 12);
+  const remainder = totalMonths - fullYears * 12;
+  let mult = 1;
+  for (let k = 1; k <= fullYears; k++) {
+    const row = PR_STATE.monthsByYm.get(prAddMonths(entryYm, k * 12));
+    if (row && row.cpi_yoy != null) mult *= (1 + row.cpi_yoy / 100);
+  }
+  if (remainder > 0) {
+    const row = PR_STATE.monthsByYm.get(exitYm);
+    if (row && row.cpi_yoy != null) mult *= Math.pow(1 + row.cpi_yoy / 100, remainder / 12);
+  }
+  return mult;
+}
+
+// buy & hold 가정: 자산별 (청산가/진입가) 를 비중으로 가중합.
+function prPortfolioMultiple(alloc, entryYm, exitYm) {
+  let mult = 0;
+  let totalWeight = 0;
+  for (const key of PR_ASSET_ORDER) {
+    const w = alloc[key] || 0;
+    if (w <= 0) continue;
+    totalWeight += w;
+    const v0 = prAssetValueAt(key, entryYm);
+    const v1 = prAssetValueAt(key, exitYm);
+    if (v0 == null || v1 == null) return null;
+    mult += (w / 100) * (v1 / v0);
+  }
+  if (totalWeight === 0) return null;
+  return mult;
+}
+
+function prInRecession(ym) {
+  for (const ep of PR_STATE.data.recession_episodes) {
+    const start = prAddMonths(ep.peak, 1);
+    if (ym >= start && ym <= ep.trough) return true;
+  }
+  return false;
+}
+function prInInflationEpisode(ym) {
+  for (const ep of PR_STATE.data.inflation_episodes) {
+    if (ym >= ep.start && ym <= ep.end) return true;
+  }
+  return false;
+}
+
+function prShowError(msg) {
+  const el = document.getElementById("pr-error");
+  el.hidden = false;
+  el.textContent = msg;
+  document.getElementById("pr-result").hidden = true;
+}
+
+function prRunScenario() {
+  const errEl = document.getElementById("pr-error");
+  errEl.hidden = true;
+
+  const entryYm = document.getElementById("pr-entry-date").value;
+  const exitYm  = document.getElementById("pr-exit-date").value;
+  const total = prUpdateAllocTotal();
+
+  if (!entryYm || !exitYm) return prShowError("진입/청산 시점을 선택하세요.");
+  if (prYmToN(exitYm) <= prYmToN(entryYm)) return prShowError("청산 시점은 진입 시점보다 뒤여야 합니다.");
+  if (total !== 100) return prShowError(`자산배분 합계가 ${total}% 입니다 — 100%로 맞춰주세요.`);
+
+  const missing = PR_ASSET_ORDER.filter(
+    (k) => (PR_STATE.allocation[k] || 0) > 0 && !prAssetRangeOk(k, entryYm, exitYm),
+  );
+  if (missing.length > 0) {
+    const names = missing.map((k) => PR_ASSET_META[k].short).join(", ");
+    return prShowError(`${names} 은(는) 이 기간의 데이터가 없습니다. 기간을 조정하거나 비중을 0으로 낮춰주세요.`);
+  }
+
+  const alloc = { ...PR_STATE.allocation };
+  const portfolioMult = prPortfolioMultiple(alloc, entryYm, exitYm);
+  if (portfolioMult == null) return prShowError("수익률을 계산할 수 없습니다 (데이터 누락).");
+
+  const monthsHeld = prMonthsBetween(entryYm, exitYm);
+  const years = monthsHeld / 12;
+  const cagr = Math.pow(portfolioMult, 1 / years) - 1;
+  const inflMult = prInflationMultiple(entryYm, exitYm);
+  const realMult = portfolioMult / inflMult;
+
+  const benchmarks = PR_ASSET_ORDER.map((key) => {
+    const ok = prAssetRangeOk(key, entryYm, exitYm);
+    const mult = ok ? prPortfolioMultiple({ [key]: 100 }, entryYm, exitYm) : null;
+    return { key, label: PR_ASSET_META[key].short, ret: mult != null ? mult - 1 : null };
+  });
+
+  const entryRow = PR_STATE.monthsByYm.get(entryYm);
+  const q = entryRow && ["Q1", "Q2", "Q3", "Q4"].includes(entryRow.quadrant) ? entryRow.quadrant : null;
+  const recommendedAlloc = q ? PR_QUADRANT_ALLOC[q] : null;
+  let recommendedRet = null;
+  if (recommendedAlloc) {
+    const okAll = PR_ASSET_ORDER.every(
+      (k) => (recommendedAlloc[k] || 0) === 0 || prAssetRangeOk(k, entryYm, exitYm),
+    );
+    if (okAll) {
+      const m = prPortfolioMultiple(recommendedAlloc, entryYm, exitYm);
+      if (m != null) recommendedRet = m - 1;
+    }
+  }
+
+  const pathYms = PR_STATE.monthsSorted.filter((ym) => ym >= entryYm && ym <= exitYm);
+  const pathRows = pathYms.map((ym) => PR_STATE.monthsByYm.get(ym));
+  let transitions = 0, recessionMonths = 0, inflationMonths = 0;
+  for (let i = 0; i < pathRows.length; i++) {
+    if (i > 0 && pathRows[i].quadrant !== pathRows[i - 1].quadrant) transitions++;
+    if (prInRecession(pathYms[i])) recessionMonths++;
+    if (prInInflationEpisode(pathYms[i])) inflationMonths++;
+  }
+
+  const scenario = {
+    entryYm, exitYm, monthsHeld, allocation: alloc,
+    totalReturn: portfolioMult - 1, cagr, realReturn: realMult - 1,
+    benchmarks, recommendedRet, entryQuadrant: q,
+    transitions, recessionMonths, inflationMonths,
+    pathYms, pathRows,
+  };
+  PR_STATE.lastScenario = scenario;
+  prRenderResult(scenario);
+}
+
+// ---------- 결과 렌더링 ----------
+function prRenderResult(sc) {
+  document.getElementById("pr-result").hidden = false;
+
+  document.getElementById("pr-metric-months").textContent = `${sc.monthsHeld}개월`;
+
+  const totalEl = document.getElementById("pr-metric-total");
+  totalEl.textContent = prFmtPct(sc.totalReturn);
+  totalEl.dataset.sign = prSignAttr(sc.totalReturn);
+
+  const cagrEl = document.getElementById("pr-metric-cagr");
+  cagrEl.textContent = prFmtPct(sc.cagr);
+  cagrEl.dataset.sign = prSignAttr(sc.cagr);
+
+  const realEl = document.getElementById("pr-metric-real");
+  realEl.textContent = prFmtPct(sc.realReturn);
+  realEl.dataset.sign = prSignAttr(sc.realReturn);
+
+  const benchHost = document.getElementById("pr-benchmarks");
+  benchHost.innerHTML = sc.benchmarks.map((b) => {
+    const color = b.ret == null ? "var(--text-dim)" : (b.ret >= 0 ? "var(--up)" : "var(--down)");
+    const val = b.ret == null ? "데이터없음" : prFmtPct(b.ret);
+    return `<span>${escapeHtml(b.label)} 100%: <b style="color:${color}">${val}</b></span>`;
+  }).join("");
+
+  prRenderPathStrip(sc);
+  prRenderPathChart(sc);
+  document.getElementById("pr-insight").innerHTML = prBuildInsight(sc);
+}
+
+function prRenderPathStrip(sc) {
+  const host = document.getElementById("pr-path-strip");
+  host.innerHTML = sc.pathRows.map((row, i) => {
+    const ym = sc.pathYms[i];
+    const q = ["Q1", "Q2", "Q3", "Q4"].includes(row.quadrant) ? row.quadrant : "";
+    const rec  = prInRecession(ym) ? "1" : "0";
+    const infl = prInInflationEpisode(ym) ? "1" : "0";
+    return `<div class="pr-path-cell" data-quadrant="${q}" data-recession="${rec}" ` +
+           `data-inflation-episode="${infl}" title="${escapeHtml(ym)} · ${escapeHtml(row.quadrant || "—")}"></div>`;
+  }).join("");
+}
+
+function prRenderPathChart(sc) {
+  const canvas = document.getElementById("pr-path-canvas");
+  if (!canvas) return;
+  if (PR_STATE.pathChart) { PR_STATE.pathChart.destroy(); PR_STATE.pathChart = null; }
+  // eslint-disable-next-line no-undef
+  PR_STATE.pathChart = new Chart(canvas, {
+    type: "line",
+    data: {
+      labels: sc.pathYms,
+      datasets: [
+        {
+          label: "성장 점수", data: sc.pathRows.map((r) => r.growth_score),
+          borderColor: "#c8d8ea", backgroundColor: "transparent",
+          borderWidth: 1.5, pointRadius: 0, tension: 0.15,
+        },
+        {
+          label: "인플레 점수", data: sc.pathRows.map((r) => r.inflation_score),
+          borderColor: "#cc2424", backgroundColor: "transparent",
+          borderWidth: 1.5, pointRadius: 0, tension: 0.15,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { labels: { color: "#787878", font: { size: 10 } } },
+        tooltip: { mode: "index", intersect: false },
+      },
+      scales: {
+        x: { ticks: { color: "#787878", maxTicksLimit: 8, font: { size: 9 } }, grid: { color: "#1c1c1c" } },
+        y: { min: 0, max: 100, ticks: { color: "#787878", font: { size: 9 } }, grid: { color: "#222222" } },
+      },
+    },
+  });
+}
+
+function prBuildInsight(sc) {
+  const q = sc.entryQuadrant;
+  const playbook = q ? PR_STATE.data.quadrant_playbook[q] : null;
+  const draft = q ? (PR_DRAFT_PRINCIPLE[q] || PR_DRAFT_DEFAULT) : PR_DRAFT_DEFAULT;
+  const allocSummary = PR_ASSET_ORDER
+    .filter((k) => (sc.allocation[k] || 0) > 0)
+    .map((k) => `${PR_ASSET_META[k].short} ${sc.allocation[k]}%`)
+    .join(" · ");
+
+  const lines = [];
+  lines.push(
+    `진입 시점(${escapeHtml(sc.entryYm)})의 국면은 <strong>${escapeHtml(q || "경계/중립")}</strong>` +
+    `${playbook ? ` (${escapeHtml(playbook.label)})` : ""}이었다.`,
+  );
+  if (playbook) {
+    lines.push(`역사적으로 이 국면에서 유리했던 자산: ${escapeHtml(playbook.hint)}. ${escapeHtml(playbook.principle)}`);
+  }
+  lines.push(
+    `보유 ${sc.monthsHeld}개월 동안 국면이 ${sc.transitions}번 바뀌었고, ` +
+    `${sc.recessionMonths}개월은 NBER 공식 침체, ${sc.inflationMonths}개월은 고인플레 episode 구간과 겹쳤다.`,
+  );
+  lines.push(
+    `내 배분(${escapeHtml(allocSummary)})의 실현수익률은 <strong>${prFmtPct(sc.totalReturn)}</strong> ` +
+    `(연환산 ${prFmtPct(sc.cagr)}, 물가반영 실질 ${prFmtPct(sc.realReturn)}).`,
+  );
+  if (sc.recommendedRet != null) {
+    lines.push(
+      `같은 기간 이 국면의 '참고용 추천 배분'을 따랐다면 <strong>${prFmtPct(sc.recommendedRet)}</strong> 였다 ` +
+      `(원자재·금 데이터가 없어 코스피·현금으로 근사한 예시 배분 — 투자 조언 아님).`,
+    );
+  }
+  lines.push(`원칙 초안: ${escapeHtml(draft)}`);
+  return lines.join("\n\n");
+}
+
+// ---------- 원칙 저널 (localStorage) ----------
+function prLoadJournal() {
+  try {
+    return JSON.parse(localStorage.getItem(PR_JOURNAL_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+function prSaveJournalList(list) {
+  localStorage.setItem(PR_JOURNAL_KEY, JSON.stringify(list));
+}
+
+function prSaveScenario() {
+  const sc = PR_STATE.lastScenario;
+  if (!sc) return;
+  const list = prLoadJournal();
+  list.unshift({
+    savedAt: new Date().toISOString(),
+    entryYm: sc.entryYm, exitYm: sc.exitYm, monthsHeld: sc.monthsHeld,
+    allocation: sc.allocation, totalReturn: sc.totalReturn, cagr: sc.cagr,
+    realReturn: sc.realReturn, entryQuadrant: sc.entryQuadrant,
+    insight: prBuildInsight(sc).replace(/<[^>]+>/g, ""),
+  });
+  prSaveJournalList(list);
+  prRenderJournal();
+}
+
+function prRenderJournal() {
+  const host = document.getElementById("pr-journal-list");
+  const list = prLoadJournal();
+  if (list.length === 0) {
+    host.innerHTML = `<p class="pr-journal-empty">아직 저장된 시나리오가 없습니다. 위에서 계산 후 "원칙 저널에 저장"을 눌러보세요.</p>`;
+    return;
+  }
+  host.innerHTML = list.map((item, i) => {
+    const allocSummary = PR_ASSET_ORDER
+      .filter((k) => (item.allocation[k] || 0) > 0)
+      .map((k) => `${PR_ASSET_META[k].short} ${item.allocation[k]}%`)
+      .join(" · ");
+    return `
+      <div class="pr-journal-item">
+        <div class="pr-journal-item-head">
+          <b>${escapeHtml(item.entryYm)} → ${escapeHtml(item.exitYm)}</b>
+          <span>(${item.monthsHeld}개월, 진입국면 ${escapeHtml(item.entryQuadrant || "—")})</span>
+          <span class="pr-journal-item-return" data-sign="${prSignAttr(item.totalReturn)}">${prFmtPct(item.totalReturn)}</span>
+        </div>
+        <div class="pr-journal-item-alloc">${escapeHtml(allocSummary)}</div>
+        <div class="pr-journal-item-note">${escapeHtml(item.insight)}</div>
+        <button type="button" class="pr-journal-item-del" data-idx="${i}">삭제</button>
+      </div>`;
+  }).join("");
+  host.querySelectorAll(".pr-journal-item-del").forEach((btn) => {
+    btn.addEventListener("click", () => prDeleteJournalItem(Number(btn.dataset.idx)));
+  });
+}
+
+function prDeleteJournalItem(idx) {
+  const list = prLoadJournal();
+  list.splice(idx, 1);
+  prSaveJournalList(list);
+  prRenderJournal();
+}
+
+function prExportJournal() {
+  const list = prLoadJournal();
+  const blob = new Blob([JSON.stringify(list, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `principles-journal-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function prClearJournal() {
+  if (!confirm("저장된 모든 시나리오를 삭제할까요? 이 작업은 되돌릴 수 없습니다.")) return;
+  prSaveJournalList([]);
+  prRenderJournal();
 }
