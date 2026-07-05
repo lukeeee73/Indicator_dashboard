@@ -5322,6 +5322,74 @@ function wikiInitGraph(graph) {
   }, { passive: false });
   canvas.addEventListener("dblclick", () => { userAdjusted = false; fitView(); });
 
+  // ---------- 터치 (모바일: 드래그·팬·핀치 줌) ----------
+  let pinch = null;
+  const touchDist = (t) => Math.hypot(
+    t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  canvas.addEventListener("touchstart", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    if (e.touches.length === 2) {
+      // 두 손가락 = 핀치 줌 — 진행 중이던 드래그/팬은 취소
+      dragNode = null; panning = false; canvas.classList.remove("dragging");
+      pinch = { d: touchDist(e.touches), s: view.scale };
+    } else if (e.touches.length === 1) {
+      pinch = null;
+      const mx = e.touches[0].clientX - rect.left;
+      const my = e.touches[0].clientY - rect.top;
+      const i = pick(mx, my);
+      moved = false;
+      if (i >= 0) { dragNode = nodes[i]; }
+      else { panning = true; canvas.classList.add("dragging"); }
+      lastX = mx; lastY = my;
+    }
+  }, { passive: true });
+  canvas.addEventListener("touchmove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    if (pinch && e.touches.length === 2) {
+      e.preventDefault();
+      const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+      const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+      const ns = Math.min(Math.max(pinch.s * touchDist(e.touches) / pinch.d, 0.15), 4);
+      view.ox = mx - (mx - view.ox) * (ns / view.scale);
+      view.oy = my - (my - view.oy) * (ns / view.scale);
+      view.scale = ns;
+      userAdjusted = true;
+      draw();
+      return;
+    }
+    if (e.touches.length !== 1) return;
+    const mx = e.touches[0].clientX - rect.left;
+    const my = e.touches[0].clientY - rect.top;
+    if (dragNode) {
+      e.preventDefault();
+      const [wx, wy] = toWorld(mx, my);
+      dragNode.x = wx; dragNode.y = wy;
+      moved = true; userAdjusted = true;
+      wake(0.1);
+    } else if (panning) {
+      e.preventDefault();
+      view.ox += mx - lastX; view.oy += my - lastY;
+      lastX = mx; lastY = my;
+      moved = true; userAdjusted = true;
+      draw();
+    }
+  }, { passive: false });
+  canvas.addEventListener("touchend", (e) => {
+    if (pinch) { pinch = null; if (e.touches.length > 0) return; }
+    if (dragNode && !moved) {
+      // 이동 없는 탭 = 선택
+      selectedIdx = nodes.indexOf(dragNode);
+      wikiShowDetail(selectedIdx);
+      draw();
+    } else if (panning && !moved) {
+      selectedIdx = -1;
+      wikiShowDetail(-1);
+      draw();
+    }
+    dragNode = null; panning = false;
+    canvas.classList.remove("dragging");
+  }, { passive: true });
+
   search.addEventListener("input", () => {
     query = search.value.trim().toLowerCase();
     draw();
