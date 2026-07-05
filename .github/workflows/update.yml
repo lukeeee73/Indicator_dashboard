@@ -21,6 +21,10 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      # luke_wiki 그래프 생성은 WIKI_REPO_TOKEN 시크릿이 있을 때만 실행
+      # (fine-grained PAT — lukeeee73/luke_wiki 의 Contents: Read 권한)
+      HAS_WIKI_TOKEN: ${{ secrets.WIKI_REPO_TOKEN != '' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,13 +47,27 @@ jobs:
       - name: Rebuild principles timeline
         run: python scripts/build_principles.py
 
+      # ── 위키 지식 그래프 (대시보드 '위키' 탭) ──────────────────
+      - name: Checkout luke_wiki
+        if: env.HAS_WIKI_TOKEN == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: lukeeee73/luke_wiki
+          token: ${{ secrets.WIKI_REPO_TOKEN }}
+          path: .luke_wiki_src
+          fetch-depth: 0   # 노트별 마지막 수정일을 git log 에서 뽑기 위해 전체 이력
+
+      - name: Build wiki knowledge graph
+        if: env.HAS_WIKI_TOKEN == 'true'
+        run: python scripts/build_wiki_graph.py --vault .luke_wiki_src --out data/wiki/graph.json --repo lukeeee73/luke_wiki
+
       - name: Commit & push if data/ changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # data/ 디렉토리 전체의 변경 유무를 exit code 로 판단
-          if git diff --quiet -- data/; then
+          # data/ 디렉토리 전체의 변경 유무 판단 (신규 파일 포함 — git diff 는 untracked 를 못 본다)
+          if [ -z "$(git status --porcelain -- data/)" ]; then
             echo "No changes under data/ — skipping commit."
           else
             git add data/

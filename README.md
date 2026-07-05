@@ -253,6 +253,25 @@ python scripts/build_principles.py   # data/principles/timeline.json 재생성
 
 ---
 
+## 위키 탭 — luke_wiki 지식 그래프
+
+대시보드 왼쪽 사이드바의 **위키** 탭은 Obsidian vault(`lukeeee73/luke_wiki`)의
+노트와 `[[위키링크]]` 구조를 force-directed 그래프로 시각화한다
+(노드 크기 = 연결 수, 색 = 폴더, 노드 클릭 → 상세 패널 + GitHub 원문 링크).
+
+데이터(`data/wiki/graph.json`)는 `scripts/build_wiki_graph.py` 가 생성한다:
+
+1. 이 저장소 **Settings → Secrets and variables → Actions** 에
+   `WIKI_REPO_TOKEN` 시크릿 추가 — luke_wiki 저장소 *Contents: Read* 권한의
+   fine-grained Personal Access Token.
+2. 주간 갱신 워크플로(`update.yml`)가 luke_wiki 를 체크아웃해 그래프를 자동 재생성한다.
+   Actions 에서 **Update FRED Indicators** 를 수동 실행하면 즉시 만들어진다.
+3. 로컬 생성: `python scripts/build_wiki_graph.py --vault ../luke_wiki --out data/wiki/graph.json`
+
+토큰이 없으면 워크플로는 이 단계를 건너뛰고, 위키 탭에는 설정 안내가 표시된다.
+
+---
+
 ## 로드맵
 
 - [x] **1단계 — 데이터 파이프라인**

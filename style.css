@@ -33,85 +33,139 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- 헤더 ---------- */
-.site-header {
-  padding: 2.25rem 1.5rem 1.5rem;
-  text-align: center;
-  border-bottom: 2px solid var(--red);
-  background: var(--bg);
+/* ---------- 앱 레이아웃 (사이드바 + 컨텐츠) ---------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
 }
-.site-header h1 {
-  margin: 0 0 0.35rem;
-  font-size: 2rem;
+.content {
+  flex: 1 1 auto;
+  min-width: 0;   /* 캔버스/테이블이 사이드바를 밀어내지 않게 */
+}
+
+/* ---------- 사이드바 ---------- */
+.sidebar {
+  width: 230px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elev);
+  border-right: 1px solid var(--border);
+  z-index: 40;
+}
+body.sb-collapsed .sidebar { display: none; }
+
+.sidebar-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1.1rem 0.9rem 0.9rem 1rem;
+  border-bottom: 2px solid var(--red);
+}
+.sidebar-brand { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.sidebar-title {
+  font-size: 1.02rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text);
 }
-/* 제목 밑 레드 언더라인 장식 */
-.site-header h1::after {
-  content: "";
-  display: block;
-  width: 2.5rem;
-  height: 2px;
-  background: var(--red);
-  margin: 0.45rem auto 0;
-}
-.subtitle     { margin: 0; color: var(--text-dim); font-size: 0.9rem; letter-spacing: 0.04em; }
-.last-updated {
-  margin: 0.55rem 0 0;
+.sidebar-sub { font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.03em; }
+
+.sidebar-close-btn,
+.sidebar-open-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
   color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0.35rem 0.5rem;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.sidebar-close-btn:hover,
+.sidebar-open-btn:hover { color: var(--text); border-color: var(--border-mid); background: var(--bg-card); }
+
+/* 사이드바가 닫혔을 때 좌상단에 떠 있는 열기 버튼 */
+.sidebar-open-btn {
+  position: fixed;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 60;
+  background: var(--bg-elev);
+  border-color: var(--border-mid);
+  font-size: 1.05rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.sidebar-nav {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.8rem 0.6rem;
+  overflow-y: auto;
+}
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 0.8rem;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.tab-btn:hover { color: var(--text); background: var(--bg-card); }
+.tab-btn.active {
+  color: var(--text);
+  background: var(--bg-card);
+  border-left-color: var(--red);
+}
+.tab-icon { width: 1.3rem; text-align: center; flex-shrink: 0; }
+
+.sidebar-foot {
+  padding: 0.9rem 1rem 1.1rem;
+  border-top: 1px solid var(--border);
   font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.last-updated {
+  margin: 0 0 0.55rem;
+  color: var(--text-dim);
+  font-size: 0.72rem;
   font-variant-numeric: tabular-nums;
 }
-.header-controls {
-  margin-top: 0.85rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 0.8rem;
-  color: var(--text-dim);
-}
-.header-controls .switch {
+.sidebar-foot .switch {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   cursor: pointer;
   user-select: none;
 }
-.header-controls .switch input {
-  accent-color: var(--red);
-}
+.sidebar-foot .switch input { accent-color: var(--red); }
 
-/* ---------- 탭 내비게이션 ---------- */
-.tab-nav {
-  display: flex;
-  gap: 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 0 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.tab-btn {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: -1px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  letter-spacing: 0.04em;
-}
-.tab-btn:hover { color: var(--text); }
-.tab-btn.active {
-  color: var(--text);
-  border-bottom-color: var(--red);
+/* 모바일 드로어 배경 */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 50;
 }
 
 /* ---------- 메인 레이아웃 ---------- */
@@ -1091,12 +1145,29 @@ section h2 {
   border-radius: var(--radius);
 }
 
+/* ---------- 모바일/태블릿 — 사이드바를 드로어로 전환 ---------- */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100dvh;
+    width: min(260px, 82vw);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  }
+  body.sb-collapsed .sidebar { display: flex; } /* 모바일은 transform 으로만 제어 */
+  body.sb-mobile-open .sidebar { transform: none; }
+  main { padding-top: 3.4rem; } /* 플로팅 ☰ 버튼 자리 확보 */
+}
+
 /* ---------- 모바일 ---------- */
 @media (max-width: 600px) {
   .quadrant-grid { grid-template-columns: 1fr; }
   .cards         { grid-template-columns: 1fr; }
-  .site-header h1 { font-size: 1.6rem; }
-  .card-value     { font-size: 1.5rem; }
+  .card-value    { font-size: 1.5rem; }
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -2147,4 +2218,126 @@ a.mc-feed-title:hover { text-decoration: underline; }
 
 @media (max-width: 700px) {
   .ps-row { flex-direction: column; gap: 0.75rem; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   위키 지식 그래프 (luke_wiki)
+   ════════════════════════════════════════════════════════════════ */
+/* display 규칙이 hidden 속성을 덮어쓰지 않도록 */
+.wiki-toolbar[hidden], .wiki-layout[hidden], .wiki-empty[hidden] { display: none; }
+
+.wiki-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+#wiki-search {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  padding: 0.45rem 0.75rem;
+  width: 220px;
+}
+#wiki-search:focus { outline: none; border-color: var(--red); }
+
+.wiki-legend { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.75rem; color: var(--text-dim); }
+.wiki-legend-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+.wiki-legend-dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; display: inline-block; }
+
+.wiki-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1rem;
+  align-items: stretch;
+}
+.wiki-graph-wrap {
+  position: relative;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  height: 620px;
+  overflow: hidden;
+}
+#wiki-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+#wiki-canvas.dragging { cursor: grabbing; }
+
+.wiki-detail {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-size: 0.82rem;
+  overflow-y: auto;
+  max-height: 620px;
+}
+.wiki-detail h3 { margin: 0 0 0.4rem; font-size: 0.95rem; color: var(--text); word-break: break-all; }
+.wiki-detail-meta { color: var(--text-dim); font-size: 0.74rem; margin: 0 0 0.7rem; }
+.wiki-detail-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+.wiki-tag {
+  background: var(--bg-elev);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  padding: 0.1rem 0.45rem;
+}
+.wiki-detail-links h4 { margin: 0.8rem 0 0.4rem; font-size: 0.72rem; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.08em; }
+.wiki-link-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  padding: 0.28rem 0.4rem;
+  word-break: break-all;
+}
+.wiki-link-item:hover { background: var(--bg-elev); }
+.wiki-open-github {
+  display: inline-block;
+  margin-top: 0.9rem;
+  background: var(--red-dim);
+  border: 1px solid var(--red);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+}
+.wiki-open-github:hover { background: var(--red); }
+
+.wiki-empty {
+  background: var(--bg-elev);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  padding: 1.5rem;
+}
+.wiki-empty code {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.05rem 0.35rem;
+  font-size: 0.78rem;
+}
+.wiki-empty h3 { margin: 0 0 0.6rem; color: var(--text); font-size: 0.95rem; }
+.wiki-empty ol { margin: 0.4rem 0 0; padding-left: 1.3rem; }
+
+@media (max-width: 900px) {
+  .wiki-layout { grid-template-columns: 1fr; }
+  .wiki-graph-wrap { height: 420px; }
+  .wiki-detail { max-height: none; }
 }
