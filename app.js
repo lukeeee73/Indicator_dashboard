@@ -5410,6 +5410,8 @@ function wikiInitGraph(graph) {
       const end = md.indexOf("\n---", 3);
       if (end > 0) md = md.slice(end + 4);
     }
+    // HTML 주석(<!-- ... -->)은 표시하지 않는다 — 노트의 관리용 마커
+    md = md.replace(/<!--[\s\S]*?-->/g, "");
     // 노트 속 원시 HTML 은 실행하지 않고 텍스트로 취급 (안전).
     // '>' 는 이스케이프하지 않는다 — 블록 인용(> ...)의 마크다운 문법이라서.
     const safe = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
