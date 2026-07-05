@@ -14,9 +14,14 @@
    - 채권: FRED DGS10(10년물 금리)에서 duration 근사로 총수익 지수를 역산.
    - 미국 주식: data/indices/GSPC.json (Yahoo ^GSPC, 가격지수).
    - 한국 주식: data/assets/KOSPI.json (가격지수, KRW).
+   - 금: data/assets/GOLD.json (XAU/USD 현물, fetch_fred.py 가 수집) — 있을 때만.
    - 현금: 데이터 없음 → 무이자 보유(명목가치 고정)로 명시적으로 근사.
    각 근사의 한계는 output JSON의 "note" 필드에 그대로 남긴다 — 나중에
    실제 데이터를 구하면 이 스크립트만 교체하면 된다.
+3. 각 월에 그 시점의 시장 지표 스냅샷(기준금리 FEDFUNDS, 미국 10년물 DGS10,
+   금 시세, CPI YoY)을 함께 실어 프론트엔드가 "진입/청산 시점의 시장 상황" 과
+   "비슷한 과거 국면의 시장 상황" 을 보여줄 수 있게 한다. FEDFUNDS/GOLD 는
+   아직 수집 전이면 null 로 남는다 (다음 주간 갱신 때 채워짐).
 
 이 스크립트는 새 지표를 수집하지 않는다. 기존 data/ 를 읽어 재조합할 뿐이다.
 """
@@ -105,6 +110,27 @@ def load_series(path: Path) -> pd.Series:
     return df.set_index("date")["value"].astype(float).sort_index()
 
 
+def load_series_optional(path: Path) -> pd.Series | None:
+    """아직 수집되지 않았을 수 있는 시계열(FEDFUNDS, GOLD 등)은 없으면 None."""
+    if not path.exists():
+        return None
+    try:
+        s = load_series(path)
+    except (json.JSONDecodeError, KeyError, ValueError):
+        return None
+    return s if not s.empty else None
+
+
+def asof_value(s: pd.Series | None, d: pd.Timestamp, digits: int = 2) -> float | None:
+    """d 이전(포함) 마지막 관측값 — 시계열이 없거나 아직 시작 전이면 None."""
+    if s is None:
+        return None
+    sub = s[s.index <= d]
+    if sub.empty:
+        return None
+    return round(float(sub.iloc[-1]), digits)
+
+
 def monthly_last(s: pd.Series) -> pd.Series:
     return s.resample("ME").last().dropna()
 
@@ -143,11 +169,23 @@ def main() -> int:
 
     cpi_yoy_monthly = monthly_last(load_series(DATA_DIR / "indicators" / "CPIAUCSL.json"))
 
+    # 시장 지표 스냅샷용 시계열 — 진입/청산 시점과 과거 국면 비교에 사용.
+    # FEDFUNDS(기준금리)·GOLD(금 현물)는 fetch_fred.py 가 다음 갱신 때 수집한다.
+    dgs10_monthly = monthly_last(load_series(DATA_DIR / "assets" / "DGS10.json"))
+    fedfunds_monthly = load_series_optional(DATA_DIR / "assets" / "FEDFUNDS.json")
+    if fedfunds_monthly is not None:
+        fedfunds_monthly = monthly_last(fedfunds_monthly)
+    gold_monthly = load_series_optional(DATA_DIR / "assets" / "GOLD.json")
+    if gold_monthly is not None:
+        gold_monthly = monthly_last(gold_monthly)
+    gold_yoy_monthly = (
+        (gold_monthly.pct_change(periods=12) * 100.0).dropna()
+        if gold_monthly is not None else None
+    )
+
     months: list[dict] = []
     for period, row in qdf.iterrows():
         d = period.to_timestamp("M")
-        sub = cpi_yoy_monthly[cpi_yoy_monthly.index <= d]
-        cpi_val = round(float(sub.iloc[-1]), 3) if not sub.empty else None
         months.append({
             "date": d.strftime("%Y-%m-%d"),
             "growth_score": None if pd.isna(row["growth_full"]) else round(float(row["growth_full"]), 1),
@@ -155,11 +193,15 @@ def main() -> int:
             "growth_label": row["g_lab_full"] if pd.notna(row["g_lab_full"]) else None,
             "inflation_label": row["i_lab_full"] if pd.notna(row["i_lab_full"]) else None,
             "quadrant": row["quadrant"],
-            "cpi_yoy": cpi_val,
+            "cpi_yoy": asof_value(cpi_yoy_monthly, d, digits=3),
+            # 그 달의 시장 지표 스냅샷 (없으면 null)
+            "fed_funds": asof_value(fedfunds_monthly, d),
+            "us10y": asof_value(dgs10_monthly, d),
+            "gold": asof_value(gold_monthly, d),
+            "gold_yoy": asof_value(gold_yoy_monthly, d, digits=1),
         })
 
-    print("자산 수익률 지수 구성 중 (채권 근사 / 미국 주식 / 코스피)...")
-    dgs10_monthly = monthly_last(load_series(DATA_DIR / "assets" / "DGS10.json"))
+    print("자산 수익률 지수 구성 중 (채권 근사 / 미국 주식 / 코스피 / 금)...")
     bond_index = build_bond_total_return_index(dgs10_monthly)
 
     gspc_monthly = monthly_last(load_series(DATA_DIR / "indices" / "GSPC.json"))
@@ -210,6 +252,20 @@ def main() -> int:
         },
     }
 
+    # 금 — GOLD.json 이 수집된 뒤에만 투자 가능 자산으로 추가된다.
+    if gold_monthly is not None:
+        gold_index = build_price_index(gold_monthly)
+        assets["gold_xau"] = {
+            "label": "금 (XAU/USD 현물)",
+            "note": (
+                "금 현물(XAU/USD) 월말 가격 기준 가격지수입니다. 보관 비용·ETF 수수료는 "
+                "반영하지 않으며 달러 표시 그대로 사용합니다."
+            ),
+            "start": gold_index.index[0].strftime("%Y-%m-%d"),
+            "end": gold_index.index[-1].strftime("%Y-%m-%d"),
+            "index": series_to_index_list(gold_index),
+        }
+
     with (DATA_DIR / "labels" / "us_recessions.json").open(encoding="utf-8") as f:
         recessions = [
             {"peak": ep["peak"], "trough": ep["trough"]}
@@ -234,6 +290,14 @@ def main() -> int:
         },
         "months": months,
         "assets": assets,
+        # 프론트엔드가 지표별 가용 여부를 알 수 있도록 노출 — false 인 지표는
+        # fetch_fred.py 의 다음 주간 갱신 때 수집되어 채워진다.
+        "market_indicators": {
+            "fed_funds": {"label": "미국 기준금리", "unit": "%", "available": fedfunds_monthly is not None},
+            "us10y": {"label": "미국 10년물 금리", "unit": "%", "available": True},
+            "gold": {"label": "금 (XAU/USD)", "unit": "$/oz", "available": gold_monthly is not None},
+            "cpi_yoy": {"label": "CPI YoY", "unit": "%", "available": True},
+        },
         "recession_episodes": recessions,
         "inflation_episodes": inflation_eps,
         "quadrant_playbook": QUADRANT_PLAYBOOK,

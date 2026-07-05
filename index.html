@@ -305,6 +305,9 @@
 
         <div class="pr-benchmarks" id="pr-benchmarks"></div>
 
+        <!-- 진입/청산 시점의 시장 지표(기준금리·미 10년물·금·CPI) 비교 — app.js 가 채움 -->
+        <div class="pr-indicator-compare" id="pr-indicator-compare"></div>
+
         <div class="pr-quadrant-path">
           <h3>보유 기간 중 국면 경로</h3>
           <p class="category-desc">각 칸이 한 달이다. 색은 그 달의 국면(Q1~Q4), 위쪽 붉은 눈금은
@@ -316,6 +319,20 @@
         <div class="pr-insight" id="pr-insight"></div>
 
         <button class="pr-save-btn" id="pr-save-btn">💾 이 시나리오를 원칙 저널에 저장</button>
+      </section>
+
+      <!-- 4분면 필터 — 내 상황과 같은 분면이었던 과거 구간을 찾아 비교 -->
+      <section class="principles-similar" id="pr-similar" hidden>
+        <h2>비슷한 과거 국면 찾기</h2>
+        <p class="category-desc">
+          내가 지금 <strong>Q1</strong>에 있다면 과거의 Q1들은 어떻게 흘러갔을까?
+          4분면 필터로 같은 국면이었던 과거 구간을 모두 찾아, 각 구간의
+          <strong>기준금리·채권(10년물) 수익률·금 시세·CPI</strong> 변화와 자산 성과,
+          그리고 <strong>국면이 끝난 뒤 12개월</strong>에 무슨 일이 있었는지 비교한다.
+        </p>
+        <div class="pr-quad-filter" id="pr-quad-filter" role="tablist" aria-label="4분면 필터"></div>
+        <div class="pr-quad-summary" id="pr-quad-summary"></div>
+        <div class="pr-episode-list" id="pr-episode-list"></div>
       </section>
 
       <section class="principles-journal">

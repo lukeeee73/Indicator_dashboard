@@ -247,9 +247,13 @@ INDICATORS: dict[str, dict] = {
 #   - 각 시계열은 일간(daily) 기준이지만 휴장/주말에는 결측이라 날짜가 안 맞을 수 있다.
 #     프론트엔드에서 "가장 최근 과거값으로 align" 해서 겹쳐 그린다.
 ASSETS: dict[str, dict] = {
-    "GOLDAMGBD228NLBM": {
-        "name": "Gold (London PM Fix)",
-        "unit": "usd_per_oz",
+    # 금(Gold)은 FRED 의 LBMA 시세(GOLDAMGBD228NLBM 등)가 라이선스 문제로 제공
+    # 중단되어 여기 없다 — main() 에서 stooq/Yahoo 경유로 "GOLD" 자산을 수집한다.
+    "FEDFUNDS": {
+        # 미국 기준금리(실효 연방기금금리, 1954년~). 원칙 탭의 진입/청산 시점
+        # 시장 지표와 과거 국면 비교에 쓰인다.
+        "name": "US Federal Funds Effective Rate",
+        "unit": "percent",
         "transform": None,
     },
     "DTWEXBGS": {
@@ -611,6 +615,31 @@ def fetch_yahoo_monthly(symbol: str) -> list[dict]:
         if pd.isna(val):
             continue
         series.append({"date": date_str, "value": round(val, 2)})
+    return sorted(series, key=lambda x: x["date"])
+
+
+# --------------------------------------------------------------------------
+# stooq.com 수집 (무료 CSV, API 키 불필요)
+# --------------------------------------------------------------------------
+def fetch_stooq_monthly(symbol: str) -> list[dict]:
+    """stooq.com 에서 월간 종가 시계열을 [{date, value}, ...] 로 반환.
+
+    금 현물(xauusd)처럼 FRED 가 더 이상 제공하지 않는 시세의 장기(1970년대~)
+    히스토리를 받을 때 사용한다. CSV 헤더: Date,Open,High,Low,Close(,Volume).
+    """
+    url = f"https://stooq.com/q/d/l/?s={symbol}&i=m"
+    resp = requests.get(url, timeout=REQUEST_TIMEOUT)
+    resp.raise_for_status()
+    series: list[dict] = []
+    for line in resp.text.strip().splitlines()[1:]:
+        parts = line.split(",")
+        if len(parts) < 5:
+            continue
+        try:
+            value = float(parts[4])
+        except ValueError:
+            continue
+        series.append({"date": parts[0], "value": round(value, 2)})
     return sorted(series, key=lambda x: x["date"])
 
 
@@ -1044,6 +1073,36 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         print(f"FAILED (unexpected: {e})")
 
+    # 금 현물 (XAU/USD) — FRED 의 LBMA 금 시세는 라이선스 문제로 제공 중단.
+    # 1차: stooq (1970년대~ 장기 히스토리), 2차 폴백: Yahoo GC=F (2000년~).
+    print("Fetching asset GOLD (stooq xauusd)...", end=" ", flush=True)
+    gold_series: list[dict] = []
+    try:
+        gold_series = fetch_stooq_monthly("xauusd")
+        if gold_series:
+            print(f"OK ({len(gold_series)} points)")
+        else:
+            print("FAILED (empty series)")
+    except Exception as e:  # noqa: BLE001
+        print(f"FAILED (unexpected: {e})")
+    if not gold_series:
+        print("Fetching asset GOLD fallback (Yahoo Finance GC=F)...", end=" ", flush=True)
+        try:
+            gold_series = fetch_yahoo_monthly("GC=F")
+            if gold_series:
+                print(f"OK ({len(gold_series)} points)")
+            else:
+                print("FAILED (empty series)")
+        except Exception as e:  # noqa: BLE001
+            print(f"FAILED (unexpected: {e})")
+    if gold_series:
+        new_assets["GOLD"] = {
+            "name": "Gold (XAU/USD)",
+            "unit": "usd_per_oz",
+            "series": gold_series,
+        }
+        ok_ast += 1
+
     # 개별 종목 — Yahoo Finance 경유 (가격 + 재무/실적)
     new_stocks: dict[str, dict] = {}
     ok_stk = 0
@@ -1103,7 +1162,7 @@ def main() -> int:
     merged_indices.update(new_indices)
 
     success_count = ok_ind + ok_ast + ok_stk + ok_idx
-    total_count   = len(INDICATORS) + len(ASSETS) + 2 + len(STOCKS) + len(INDICES)  # +2: KOSPI_YOY, KOSPI asset
+    total_count   = len(INDICATORS) + len(ASSETS) + 3 + len(STOCKS) + len(INDICES)  # +3: KOSPI_YOY, KOSPI, GOLD
 
     if success_count == 0:
         # 전부 실패하면 기존 파일을 건드리지 않는다 (데이터 보존)

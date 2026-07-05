@@ -398,7 +398,7 @@ const METRIC_GLOSSARY = {
 // 비교 자산(Assets) UI 메타데이터.
 // fetch_fred.py 의 ASSETS 와 대응.
 const ASSET_META = {
-  GOLDAMGBD228NLBM: { displayName: "금 (Gold)",              unit: "$", decimals: 0, color: "#d4af37" },
+  GOLD: { displayName: "금 (Gold)",              unit: "$", decimals: 0, color: "#d4af37" },
   DTWEXBGS:         { displayName: "달러 지수",              unit: "",  decimals: 2, color: "#7dd3fc" },
   SP500:            { displayName: "S&P 500",                unit: "",  decimals: 2, color: "#c084fc" },
   DGS10:            { displayName: "10년 국채금리",          unit: "%", decimals: 2, color: "#fb923c" },
@@ -414,16 +414,16 @@ const ASSET_META = {
 const COMPARE_RECOMMENDATIONS = {
   T10Y2Y: {
     primary:   ["SP500", "BAMLH0A0HYM2", "VIXCLS"],
-    secondary: ["GOLDAMGBD228NLBM", "DGS10"],
+    secondary: ["GOLD", "DGS10"],
     note: "장단기 금리 역전은 침체 선행 신호. 주식·신용스프레드·VIX 가 어떻게 반응했는지 비교.",
   },
   T10YIE: {
-    primary:   ["GOLDAMGBD228NLBM", "DGS10"],
+    primary:   ["GOLD", "DGS10"],
     secondary: ["DTWEXBGS", "SP500"],
     note: "기대 인플레이션이 오를 때 금·명목금리는 동행, 달러는 역행하는 경향.",
   },
   CPIAUCSL: {
-    primary:   ["GOLDAMGBD228NLBM", "DTWEXBGS", "DGS10"],
+    primary:   ["GOLD", "DTWEXBGS", "DGS10"],
     secondary: ["DEXKOUS", "SP500"],
     note: "실제 인플레이션 상승기 → 금·원자재 강세, 달러·장기채 약세 경향.",
   },
@@ -443,17 +443,17 @@ const COMPARE_RECOMMENDATIONS = {
     note: "Philly Fed 선행지수가 꺾일 때 주식/크레딧이 선반영했는지 체크.",
   },
   CPILFESL: {
-    primary:   ["GOLDAMGBD228NLBM", "DGS10"],
+    primary:   ["GOLD", "DGS10"],
     secondary: ["DTWEXBGS", "SP500"],
     note: "Core CPI 가속기엔 명목금리·금 동행, 달러 약세 경향.",
   },
   PCEPI: {
-    primary:   ["DGS10", "GOLDAMGBD228NLBM"],
+    primary:   ["DGS10", "GOLD"],
     secondary: ["DTWEXBGS", "SP500"],
     note: "Fed 기준 지표. 목표(2%) 대비 이탈 국면에서 채권/달러 반응 확인.",
   },
   DCOILWTICO: {
-    primary:   ["DTWEXBGS", "GOLDAMGBD228NLBM"],
+    primary:   ["DTWEXBGS", "GOLD"],
     secondary: ["SP500", "DEXKOUS"],
     note: "유가 YoY 는 달러와 역상관, 인플레와 동행. 1·2차 오일쇼크·2008·COVID 전후가 관전 포인트.",
   },
@@ -461,39 +461,39 @@ const COMPARE_RECOMMENDATIONS = {
   // ── 달러 가치 분석 지표 비교 추천 ────────────────────────────────────
   DGS10: {
     primary:   ["DEXKOUS", "IRLTLT01KRM156N", "DTWEXBGS"],
-    secondary: ["GOLDAMGBD228NLBM", "SP500"],
+    secondary: ["GOLD", "SP500"],
     note: "미국 10Y 금리가 오를수록 달러 강세 압력. 한국 국채와의 스프레드, 원/달러 환율과 동시 비교.",
   },
   M2SL: {
-    primary:   ["DEXKOUS", "DTWEXBGS", "GOLDAMGBD228NLBM"],
+    primary:   ["DEXKOUS", "DTWEXBGS", "GOLD"],
     secondary: ["SP500", "VIXCLS"],
     note: "M2 급증 구간(2020 등)에서 달러 지수 약세·금 강세 경향. 환율과의 시차 동행 확인.",
   },
   GFDEGDQ188S: {
     primary:   ["DGS10", "BAMLH0A0HYM2", "DEXKOUS"],
-    secondary: ["GOLDAMGBD228NLBM", "DTWEXBGS"],
+    secondary: ["GOLD", "DTWEXBGS"],
     note: "부채/GDP 급등 구간에서 장기금리·크레딧 스프레드 반응을 체크. 금·달러 약세와의 연관성.",
   },
   IRLTLT01KRM156N: {
     primary:   ["DEXKOUS", "DGS10", "KOSPI"],
-    secondary: ["GOLDAMGBD228NLBM", "BAMLH0A0HYM2"],
+    secondary: ["GOLD", "BAMLH0A0HYM2"],
     note: "한미 금리차 확대 시 원화 약세 경향. 원/달러 환율, 미국 10Y 국채와 동시에 비교.",
   },
   MYAGM2KRM189S: {
     primary:   ["DEXKOUS", "IRLTLT01KRM156N", "KOSPI"],
-    secondary: ["GOLDAMGBD228NLBM", "SP500"],
+    secondary: ["GOLD", "SP500"],
     note: "한국 M2 팽창 속도를 미국 M2와 비교해 상대 통화 공급 과잉을 파악. 원/달러와 동행 확인.",
   },
   DEBTTLKRQ052N: {
     primary:   ["IRLTLT01KRM156N", "DEXKOUS", "KOSPI"],
-    secondary: ["BAMLH0A0HYM2", "GOLDAMGBD228NLBM"],
+    secondary: ["BAMLH0A0HYM2", "GOLD"],
     note: "한국 재정 건전성 추이. 부채 확대 시 장기금리·원화 방향성과의 관계를 확인.",
   },
 
   // ── 한국 지표 비교 추천 ────────────────────────────────────────────────
   KORCPIALLMINMEI: {
     primary:   ["DEXKOUS", "DCOILWTICO"],
-    secondary: ["IRLTLT01KRM156N", "GOLDAMGBD228NLBM"],
+    secondary: ["IRLTLT01KRM156N", "GOLD"],
     note: "수입 의존도가 높은 한국은 원/달러 약세·유가 상승이 CPI 선행 지표. 환율과의 동행성 확인.",
   },
   KORPROINDMISMEI: {
@@ -508,7 +508,7 @@ const COMPARE_RECOMMENDATIONS = {
   },
   KOSPI_YOY: {
     primary:   ["SP500", "DEXKOUS"],
-    secondary: ["GOLDAMGBD228NLBM", "BAMLH0A0HYM2"],
+    secondary: ["GOLD", "BAMLH0A0HYM2"],
     note: "코스피 YoY 상승기엔 원화 강세·글로벌 위험 선호. S&P 500 과의 동조화/디커플링 비교.",
   },
 };
@@ -3940,27 +3940,31 @@ const PR_ASSET_META = {
   cash:           { short: "현금" },
   stock_us_sp500: { short: "미국 주식 (S&P500)" },
   stock_kr_kospi: { short: "한국 주식 (코스피)" },
+  gold_xau:       { short: "금 (XAU/USD)" },
 };
-const PR_ASSET_ORDER = ["bond_us10y", "cash", "stock_us_sp500", "stock_kr_kospi"];
-
-const PR_PRESETS = {
-  all_bond: { bond_us10y: 100, cash: 0,   stock_us_sp500: 0,   stock_kr_kospi: 0 },
-  all_cash: { bond_us10y: 0,   cash: 100, stock_us_sp500: 0,   stock_kr_kospi: 0 },
-  all_us:   { bond_us10y: 0,   cash: 0,   stock_us_sp500: 100, stock_kr_kospi: 0 },
-  all_kr:   { bond_us10y: 0,   cash: 0,   stock_us_sp500: 0,   stock_kr_kospi: 100 },
-  balanced: { bond_us10y: 25,  cash: 25,  stock_us_sp500: 25,  stock_kr_kospi: 25 },
-};
+// 정식 순서 — 실제 사용 가능한 자산은 timeline.json 에 든 것만 (prAssets()).
+// gold_xau 는 GOLD 시세가 수집된 뒤부터 나타난다.
+const PR_ASSET_ORDER = ["bond_us10y", "cash", "stock_us_sp500", "stock_kr_kospi", "gold_xau"];
 
 // 국면별 "참고용 추천 배분" — README 4분면 표(원자재·신흥국 주식·인플레연동채 /
 // 선진국 주식·회사채 / 금·인플레연동채·원자재 / 장기국채·현금)를 이 레포에 있는
-// 4개 자산으로 근사한 예시일 뿐이다. 금·원자재 데이터가 없어 코스피·현금으로
-// 대신 근사했다 — 투자 조언이 아니라 비교용 참고선이다.
+// 자산으로 근사한 예시일 뿐이다. 금 데이터가 없는 기간에는 prFitAllocToRange 가
+// 금 비중을 나머지 자산으로 재분배한다 — 투자 조언이 아니라 비교용 참고선이다.
 const PR_QUADRANT_ALLOC = {
-  Q1: { bond_us10y: 10, cash: 20, stock_us_sp500: 20, stock_kr_kospi: 50 },
-  Q2: { bond_us10y: 20, cash: 10, stock_us_sp500: 55, stock_kr_kospi: 15 },
-  Q3: { bond_us10y: 20, cash: 45, stock_us_sp500: 15, stock_kr_kospi: 20 },
-  Q4: { bond_us10y: 55, cash: 30, stock_us_sp500: 10, stock_kr_kospi: 5 },
+  Q1: { bond_us10y: 10, cash: 10, stock_us_sp500: 20, stock_kr_kospi: 40, gold_xau: 20 },
+  Q2: { bond_us10y: 20, cash: 10, stock_us_sp500: 55, stock_kr_kospi: 15, gold_xau: 0 },
+  Q3: { bond_us10y: 10, cash: 30, stock_us_sp500: 10, stock_kr_kospi: 15, gold_xau: 35 },
+  Q4: { bond_us10y: 55, cash: 25, stock_us_sp500: 10, stock_kr_kospi: 5,  gold_xau: 5 },
 };
+
+// 진입/청산 시점과 과거 국면 카드에 보여줄 시장 지표 정의.
+// timeline.json 의 months[i] 에 같은 key 로 값이 실려 온다 (없으면 null).
+const PR_MKT_DEFS = [
+  { key: "fed_funds", label: "기준금리",  kind: "pct" },
+  { key: "us10y",     label: "미 10년물", kind: "pct" },
+  { key: "gold",      label: "금",       kind: "usd" },
+  { key: "cpi_yoy",   label: "CPI YoY",  kind: "pct" },
+];
 
 const PR_DRAFT_PRINCIPLE = {
   Q1: "성장과 인플레가 함께 뜨거워지는 국면에서는 명목 장기채 비중을 줄이고 실물·신흥시장 비중을 늘리는 것을 원칙으로 검토한다.",
@@ -3975,12 +3979,38 @@ const PR_STATE = {
   monthsByYm: new Map(),
   monthsSorted: [],
   assetByYm: {},
-  allocation: { ...PR_PRESETS.balanced },
+  assetOrder: PR_ASSET_ORDER.slice(0, 4), // prInit 에서 실제 데이터 기준으로 갱신
+  allocation: {},
   minYm: null,
   maxYm: null,
   lastScenario: null,
   pathChart: null,
+  episodesByQuadrant: null, // {Q1: [{startYm, endYm, months, ongoing}], ...}
+  selectedQuadrant: null,
 };
+
+// timeline.json 에 실제로 존재하는 자산만, 정식 순서대로.
+function prAssets() { return PR_STATE.assetOrder; }
+
+// 프리셋을 사용 가능한 자산 기준으로 동적 생성 — 금 자산이 생기면 자동 반영.
+function prPresetAlloc(key) {
+  const order = prAssets();
+  const alloc = {};
+  for (const k of order) alloc[k] = 0;
+  const single = {
+    all_bond: "bond_us10y", all_cash: "cash", all_us: "stock_us_sp500",
+    all_kr: "stock_kr_kospi", all_gold: "gold_xau",
+  }[key];
+  if (single && order.includes(single)) {
+    alloc[single] = 100;
+    return alloc;
+  }
+  // balanced (기본): 균등분산 + 반올림 잔여분은 첫 자산에
+  const w = Math.floor(100 / order.length);
+  for (const k of order) alloc[k] = w;
+  alloc[order[0]] += 100 - w * order.length;
+  return alloc;
+}
 
 // ---------- 날짜(YYYY-MM) 유틸 ----------
 function prYm(dateStr) { return dateStr.slice(0, 7); }
@@ -4004,6 +4034,48 @@ function prFmtPct(x, digits = 1) {
 function prSignAttr(x) {
   if (x == null || Number.isNaN(x)) return "";
   return x > 0.0001 ? "pos" : (x < -0.0001 ? "neg" : "");
+}
+
+// ---------- 시장 지표(기준금리/10년물/금/CPI) 표시 유틸 ----------
+function prFmtMktValue(def, value) {
+  if (value == null || Number.isNaN(value)) return "—";
+  if (def.kind === "usd") return `$${Math.round(value).toLocaleString("en-US")}`;
+  return `${value.toFixed(2)}%`;
+}
+
+// 두 시점 사이 지표 변화: 금리·CPI 는 %p 차이, 금은 % 변화율.
+function prFmtMktDelta(def, v0, v1) {
+  if (v0 == null || v1 == null) return null;
+  if (def.kind === "usd") {
+    const pct = v1 / v0 - 1;
+    return { text: prFmtPct(pct), sign: prSignAttr(pct) };
+  }
+  const diff = v1 - v0;
+  const sign = prSignAttr(diff);
+  const arrow = diff > 0.001 ? "▲" : (diff < -0.001 ? "▼" : "");
+  return { text: `${arrow}${Math.abs(diff).toFixed(2)}%p`, sign };
+}
+
+// 한 시점의 시장 지표 칩 목록 (진입 스냅샷·과거 국면 카드 공용).
+function prMarketChips(row) {
+  if (!row) return "";
+  const chips = PR_MKT_DEFS.map((def) => {
+    const val = prFmtMktValue(def, row[def.key]);
+    const yoy = def.key === "gold" && row.gold_yoy != null
+      ? ` <small>(YoY ${row.gold_yoy > 0 ? "+" : ""}${row.gold_yoy.toFixed(1)}%)</small>` : "";
+    return `<span class="pr-mkt-chip">${escapeHtml(def.label)} <b>${escapeHtml(val)}</b>${yoy}</span>`;
+  });
+  return `<div class="pr-mkt-chips">${chips.join("")}</div>`;
+}
+
+// 아직 수집 전(available=false)인 지표 안내 문구.
+function prMissingIndicatorNote() {
+  const mi = PR_STATE.data.market_indicators || {};
+  const missing = PR_MKT_DEFS
+    .filter((d) => mi[d.key] && mi[d.key].available === false)
+    .map((d) => d.label);
+  if (missing.length === 0) return "";
+  return `<p class="pr-mkt-missing">${escapeHtml(missing.join(", "))} 데이터는 다음 주간 데이터 갱신 때 채워집니다.</p>`;
 }
 
 // ---------- 진입점 ----------
@@ -4040,6 +4112,10 @@ function prInit(data) {
     PR_STATE.assetByYm[key] = map;
   }
 
+  PR_STATE.assetOrder = PR_ASSET_ORDER.filter((k) => k === "cash" || data.assets[k]);
+  PR_STATE.allocation = prPresetAlloc("balanced");
+  PR_STATE.episodesByQuadrant = prBuildEpisodes(data.months);
+
   const setup = document.getElementById("principles-setup");
   setup.hidden = false;
 
@@ -4065,13 +4141,14 @@ function prInit(data) {
   document.getElementById("pr-journal-export").addEventListener("click", prExportJournal);
   document.getElementById("pr-journal-clear").addEventListener("click", prClearJournal);
 
+  prInitSimilar();
   prRenderJournal();
 }
 
 // ---------- 자산배분 UI ----------
 function prRenderAllocGrid() {
   const host = document.getElementById("pr-alloc-grid");
-  host.innerHTML = PR_ASSET_ORDER.map((key) => {
+  host.innerHTML = prAssets().map((key) => {
     const meta = PR_ASSET_META[key];
     const asset = PR_STATE.data.assets[key];
     const w = PR_STATE.allocation[key] ?? 0;
@@ -4098,7 +4175,7 @@ function prRenderAllocGrid() {
 }
 
 function prUpdateAllocTotal() {
-  const total = PR_ASSET_ORDER.reduce((s, k) => s + (PR_STATE.allocation[k] || 0), 0);
+  const total = prAssets().reduce((s, k) => s + (PR_STATE.allocation[k] || 0), 0);
   const el = document.getElementById("pr-alloc-total-val");
   el.textContent = total;
   el.parentElement.classList.toggle("pr-alloc-bad", total !== 100);
@@ -4107,12 +4184,14 @@ function prUpdateAllocTotal() {
 
 function prRenderPresetRow() {
   const host = document.getElementById("pr-preset-row");
+  const hasGold = prAssets().includes("gold_xau");
   const presets = [
     { key: "all_bond", label: "100% 국채" },
     { key: "all_cash", label: "100% 현금" },
     { key: "all_us",   label: "100% 미국주식" },
     { key: "all_kr",   label: "100% 코스피" },
-    { key: "balanced", label: "균등분산 (25%씩)" },
+    ...(hasGold ? [{ key: "all_gold", label: "100% 금" }] : []),
+    { key: "balanced", label: "균등분산" },
     { key: "quadrant", label: "이 국면 추천 배분" },
   ];
   host.innerHTML = presets.map((p) =>
@@ -4128,15 +4207,15 @@ function prRenderPresetRow() {
 function prFitAllocToRange(alloc, entryYm, exitYm) {
   const available = {};
   let availSum = 0;
-  for (const k of PR_ASSET_ORDER) {
+  for (const k of prAssets()) {
     const w = alloc[k] || 0;
     if (w > 0 && prAssetRangeOk(k, entryYm, exitYm)) { available[k] = w; availSum += w; }
   }
-  if (availSum === 0) return { ...PR_PRESETS.all_cash };
+  if (availSum === 0) return prPresetAlloc("all_cash");
   const out = {};
-  for (const k of PR_ASSET_ORDER) out[k] = 0;
+  for (const k of prAssets()) out[k] = 0;
   for (const [k, w] of Object.entries(available)) out[k] = Math.round((w / availSum) * 100);
-  const diff = 100 - PR_ASSET_ORDER.reduce((s, k) => s + out[k], 0);
+  const diff = 100 - prAssets().reduce((s, k) => s + out[k], 0);
   if (diff !== 0) {
     const biggest = Object.keys(available).reduce((a, b) => (out[a] >= out[b] ? a : b));
     out[biggest] += diff;
@@ -4151,10 +4230,10 @@ function prApplyPreset(key) {
     const exitYm  = document.getElementById("pr-exit-date").value;
     const row = PR_STATE.monthsByYm.get(entryYm);
     const q = row ? row.quadrant : null;
-    const base = PR_QUADRANT_ALLOC[q] || PR_PRESETS.balanced;
+    const base = PR_QUADRANT_ALLOC[q] || prPresetAlloc("balanced");
     alloc = prFitAllocToRange(base, entryYm, exitYm);
   } else {
-    alloc = PR_PRESETS[key] || PR_PRESETS.balanced;
+    alloc = prPresetAlloc(key);
   }
   PR_STATE.allocation = { ...alloc };
   prRenderAllocGrid();
@@ -4182,9 +4261,22 @@ function prRenderEntrySnapshot() {
         <span class="aw-score">성장 <b data-label="${row.growth_label || ""}">${row.growth_score ?? "—"}</b></span>
         <span class="aw-score">인플레 <b data-label="${row.inflation_label || ""}">${row.inflation_score ?? "—"}</b></span>
       </div>
+      <div class="pr-snapshot-market">
+        <span class="pr-mkt-title">그 때의 시장 지표</span>
+        ${prMarketChips(row)}
+      </div>
     </div>
+    ${prMissingIndicatorNote()}
     ${playbook ? `<p class="pr-snapshot-hint">${escapeHtml(playbook.hint)} — ${escapeHtml(playbook.principle)}</p>` : ""}
+    ${q ? `<button type="button" class="pr-similar-jump" data-quadrant="${q}">🔍 과거의 ${q} 국면들과 비교하기 ↓</button>` : ""}
   `;
+  const jumpBtn = host.querySelector(".pr-similar-jump");
+  if (jumpBtn) {
+    jumpBtn.addEventListener("click", () => {
+      prSelectQuadrant(jumpBtn.dataset.quadrant);
+      document.getElementById("pr-similar").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 }
 
 // ---------- 시뮬레이션 엔진 ----------
@@ -4224,7 +4316,7 @@ function prInflationMultiple(entryYm, exitYm) {
 function prPortfolioMultiple(alloc, entryYm, exitYm) {
   let mult = 0;
   let totalWeight = 0;
-  for (const key of PR_ASSET_ORDER) {
+  for (const key of prAssets()) {
     const w = alloc[key] || 0;
     if (w <= 0) continue;
     totalWeight += w;
@@ -4270,7 +4362,7 @@ function prRunScenario() {
   if (prYmToN(exitYm) <= prYmToN(entryYm)) return prShowError("청산 시점은 진입 시점보다 뒤여야 합니다.");
   if (total !== 100) return prShowError(`자산배분 합계가 ${total}% 입니다 — 100%로 맞춰주세요.`);
 
-  const missing = PR_ASSET_ORDER.filter(
+  const missing = prAssets().filter(
     (k) => (PR_STATE.allocation[k] || 0) > 0 && !prAssetRangeOk(k, entryYm, exitYm),
   );
   if (missing.length > 0) {
@@ -4288,18 +4380,21 @@ function prRunScenario() {
   const inflMult = prInflationMultiple(entryYm, exitYm);
   const realMult = portfolioMult / inflMult;
 
-  const benchmarks = PR_ASSET_ORDER.map((key) => {
+  const benchmarks = prAssets().map((key) => {
     const ok = prAssetRangeOk(key, entryYm, exitYm);
     const mult = ok ? prPortfolioMultiple({ [key]: 100 }, entryYm, exitYm) : null;
     return { key, label: PR_ASSET_META[key].short, ret: mult != null ? mult - 1 : null };
   });
 
   const entryRow = PR_STATE.monthsByYm.get(entryYm);
+  const exitRow  = PR_STATE.monthsByYm.get(exitYm);
   const q = entryRow && ["Q1", "Q2", "Q3", "Q4"].includes(entryRow.quadrant) ? entryRow.quadrant : null;
-  const recommendedAlloc = q ? PR_QUADRANT_ALLOC[q] : null;
+  // 추천 배분에 든 자산 중 이 기간 데이터가 없는 것(예: 초기 금·S&P500)은
+  // 나머지 자산으로 재분배해 비교가 항상 가능하게 한다.
+  const recommendedAlloc = q ? prFitAllocToRange(PR_QUADRANT_ALLOC[q], entryYm, exitYm) : null;
   let recommendedRet = null;
   if (recommendedAlloc) {
-    const okAll = PR_ASSET_ORDER.every(
+    const okAll = prAssets().every(
       (k) => (recommendedAlloc[k] || 0) === 0 || prAssetRangeOk(k, entryYm, exitYm),
     );
     if (okAll) {
@@ -4323,6 +4418,7 @@ function prRunScenario() {
     benchmarks, recommendedRet, entryQuadrant: q,
     transitions, recessionMonths, inflationMonths,
     pathYms, pathRows,
+    entryRow, exitRow,
   };
   PR_STATE.lastScenario = scenario;
   prRenderResult(scenario);
@@ -4353,9 +4449,46 @@ function prRenderResult(sc) {
     return `<span>${escapeHtml(b.label)} 100%: <b style="color:${color}">${val}</b></span>`;
   }).join("");
 
+  prRenderIndicatorCompare(sc);
   prRenderPathStrip(sc);
   prRenderPathChart(sc);
   document.getElementById("pr-insight").innerHTML = prBuildInsight(sc);
+}
+
+// 진입 vs 청산 시점의 시장 지표(기준금리·10년물·금·CPI) 비교표.
+function prRenderIndicatorCompare(sc) {
+  const host = document.getElementById("pr-indicator-compare");
+  if (!host) return;
+  const rows = PR_MKT_DEFS.map((def) => {
+    const v0 = sc.entryRow ? sc.entryRow[def.key] : null;
+    const v1 = sc.exitRow ? sc.exitRow[def.key] : null;
+    const delta = prFmtMktDelta(def, v0, v1);
+    const deltaHtml = delta
+      ? `<span class="pr-ic-delta" data-sign="${delta.sign}">${escapeHtml(delta.text)}</span>`
+      : "—";
+    return `
+      <tr>
+        <th>${escapeHtml(def.label)}</th>
+        <td>${escapeHtml(prFmtMktValue(def, v0))}</td>
+        <td>${escapeHtml(prFmtMktValue(def, v1))}</td>
+        <td>${deltaHtml}</td>
+      </tr>`;
+  }).join("");
+  host.innerHTML = `
+    <h3>진입 vs 청산 시점의 시장 지표</h3>
+    <table class="pr-ic-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>진입 (${escapeHtml(sc.entryYm)})</th>
+          <th>청산 (${escapeHtml(sc.exitYm)})</th>
+          <th>변화</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+    ${prMissingIndicatorNote()}
+  `;
 }
 
 function prRenderPathStrip(sc) {
@@ -4429,6 +4562,17 @@ function prBuildInsight(sc) {
     `보유 ${sc.monthsHeld}개월 동안 국면이 ${sc.transitions}번 바뀌었고, ` +
     `${sc.recessionMonths}개월은 NBER 공식 침체, ${sc.inflationMonths}개월은 고인플레 episode 구간과 겹쳤다.`,
   );
+  const mktMoves = PR_MKT_DEFS
+    .map((def) => {
+      const v0 = sc.entryRow ? sc.entryRow[def.key] : null;
+      const v1 = sc.exitRow ? sc.exitRow[def.key] : null;
+      if (v0 == null || v1 == null) return null;
+      return `${def.label} ${prFmtMktValue(def, v0)} → ${prFmtMktValue(def, v1)}`;
+    })
+    .filter(Boolean);
+  if (mktMoves.length > 0) {
+    lines.push(`같은 기간 시장 지표는 ${escapeHtml(mktMoves.join(", "))} 로 움직였다.`);
+  }
   lines.push(
     `내 배분(${escapeHtml(allocSummary)})의 실현수익률은 <strong>${prFmtPct(sc.totalReturn)}</strong> ` +
     `(연환산 ${prFmtPct(sc.cagr)}, 물가반영 실질 ${prFmtPct(sc.realReturn)}).`,
@@ -4441,6 +4585,238 @@ function prBuildInsight(sc) {
   }
   lines.push(`원칙 초안: ${escapeHtml(draft)}`);
   return lines.join("\n\n");
+}
+
+// =====================================================================
+// 비슷한 과거 국면 찾기 — 4분면 필터
+//
+// "내가 지금 Q1 에 있다면, 과거의 Q1 들은 어떻게 흘러갔나?" 를 보여준다.
+// 월별 타임라인에서 같은 분면이 연속된 구간(episode)을 묶고, 각 구간의
+// 시장 지표(기준금리·10년물·금·CPI) 변화와 자산 성과를 카드로 나열한다.
+// =====================================================================
+
+const PR_EPISODE_PAGE = 10; // 처음에 보여줄 에피소드 수
+
+// 같은 분면이 연속된 구간들. 경계(edge) 판정 월은 구간을 끊는다.
+function prBuildEpisodes(months) {
+  const out = { Q1: [], Q2: [], Q3: [], Q4: [] };
+  let cur = null;
+  for (const row of months) {
+    const ym = prYm(row.date);
+    const q = ["Q1", "Q2", "Q3", "Q4"].includes(row.quadrant) ? row.quadrant : null;
+    if (cur && q === cur.quadrant) {
+      cur.endYm = ym;
+      cur.months++;
+    } else {
+      if (cur) out[cur.quadrant].push(cur);
+      cur = q ? { quadrant: q, startYm: ym, endYm: ym, months: 1 } : null;
+    }
+  }
+  if (cur) out[cur.quadrant].push(cur);
+  const lastYm = months.length > 0 ? prYm(months[months.length - 1].date) : null;
+  for (const q of Object.keys(out)) {
+    for (const ep of out[q]) ep.ongoing = ep.endYm === lastYm;
+    out[q].reverse(); // 최신순
+  }
+  return out;
+}
+
+function prRangeReturn(assetKey, startYm, endYm) {
+  const map = PR_STATE.assetByYm[assetKey];
+  if (!map) return null;
+  const v0 = map.get(startYm);
+  const v1 = map.get(endYm);
+  if (v0 == null || v1 == null) return null;
+  return v1 / v0 - 1;
+}
+
+// 가장 최근의 뚜렷한(Q1~Q4) 분면. isNow 는 그것이 최신 월인 경우에만 true —
+// 최신 월이 경계/중립 판정이면 "지금 여기" 로 표시하지 않는다.
+function prCurrentQuadrant() {
+  for (let i = PR_STATE.monthsSorted.length - 1; i >= 0; i--) {
+    const ym = PR_STATE.monthsSorted[i];
+    const row = PR_STATE.monthsByYm.get(ym);
+    if (row && ["Q1", "Q2", "Q3", "Q4"].includes(row.quadrant)) {
+      return { quadrant: row.quadrant, ym, isNow: ym === PR_STATE.maxYm };
+    }
+  }
+  return null;
+}
+
+function prInitSimilar() {
+  const section = document.getElementById("pr-similar");
+  if (!section) return;
+  section.hidden = false;
+
+  const current = prCurrentQuadrant();
+  const host = document.getElementById("pr-quad-filter");
+  host.innerHTML = ["Q1", "Q2", "Q3", "Q4"].map((q) => {
+    const pb = PR_STATE.data.quadrant_playbook[q];
+    const nowBadge = current && current.quadrant === q
+      ? `<em class="pr-quad-now">${current.isNow ? "지금 여기" : `최근 (${escapeHtml(current.ym)})`}</em>` : "";
+    return `
+      <button type="button" class="pr-quad-btn" data-quadrant="${q}">
+        <b>${q}</b>
+        <span>${escapeHtml(pb ? pb.label : "")}</span>
+        ${nowBadge}
+      </button>`;
+  }).join("");
+  host.querySelectorAll(".pr-quad-btn").forEach((btn) => {
+    btn.addEventListener("click", () => prSelectQuadrant(btn.dataset.quadrant));
+  });
+
+  prSelectQuadrant(current ? current.quadrant : "Q2");
+}
+
+function prSelectQuadrant(q) {
+  PR_STATE.selectedQuadrant = q;
+  PR_STATE.similarShowAll = false;
+  document.querySelectorAll("#pr-quad-filter .pr-quad-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.quadrant === q);
+  });
+  prRenderEpisodes(q);
+}
+
+// 에피소드 구간에 NBER 침체가 한 달이라도 겹치는가
+function prEpisodeHasRecession(ep) {
+  for (let ym = ep.startYm; ym <= ep.endYm; ym = prAddMonths(ym, 1)) {
+    if (prInRecession(ym)) return true;
+  }
+  return false;
+}
+
+function prEpisodeIndicatorRows(startRow, endRow, singleMonth) {
+  return PR_MKT_DEFS.map((def) => {
+    const v0 = startRow ? startRow[def.key] : null;
+    const v1 = endRow ? endRow[def.key] : null;
+    if (v0 == null && v1 == null) return "";
+    // 1개월짜리 국면은 시작=끝이므로 화살표 없이 그 달의 값만 보여준다.
+    if (singleMonth) {
+      return `
+        <div class="pr-ep-ind-row">
+          <span class="pr-ep-ind-label">${escapeHtml(def.label)}</span>
+          <span class="pr-ep-ind-vals">${escapeHtml(prFmtMktValue(def, v1 ?? v0))}</span>
+        </div>`;
+    }
+    const delta = prFmtMktDelta(def, v0, v1);
+    const deltaHtml = delta
+      ? ` <span class="pr-ic-delta" data-sign="${delta.sign}">${escapeHtml(delta.text)}</span>` : "";
+    return `
+      <div class="pr-ep-ind-row">
+        <span class="pr-ep-ind-label">${escapeHtml(def.label)}</span>
+        <span class="pr-ep-ind-vals">${escapeHtml(prFmtMktValue(def, v0))} → ${escapeHtml(prFmtMktValue(def, v1))}${deltaHtml}</span>
+      </div>`;
+  }).join("");
+}
+
+const PR_EP_ASSETS = [
+  ["stock_us_sp500", "S&P500"],
+  ["stock_kr_kospi", "코스피"],
+  ["gold_xau", "금"],
+  ["bond_us10y", "채권(근사)"],
+];
+
+// 국면 중 자산 수익률의 기준점은 국면 시작 전월 말 — 국면에 들어선 첫 달의
+// 움직임까지 포함한다 (전월 데이터가 없으면 시작월 기준으로 폴백).
+function prEpisodeReturn(assetKey, ep) {
+  const prevYm = prAddMonths(ep.startYm, -1);
+  const r = prRangeReturn(assetKey, prevYm, ep.endYm);
+  return r != null ? r : prRangeReturn(assetKey, ep.startYm, ep.endYm);
+}
+
+function prEpisodeAssetPerf(ep) {
+  const parts = [];
+  for (const [key, label] of PR_EP_ASSETS) {
+    const r = prEpisodeReturn(key, ep);
+    if (r == null) continue;
+    parts.push(`${escapeHtml(label)} <b data-sign="${prSignAttr(r)}">${prFmtPct(r)}</b>`);
+  }
+  return parts.length > 0 ? parts.join(" · ") : `<span class="pr-ep-nodata">이 구간의 자산 가격 데이터 없음</span>`;
+}
+
+// 국면 종료 후 12개월 동안의 자산 성과 — "그 다음에 무슨 일이 있었나".
+function prEpisodeAfterPerf(ep) {
+  if (ep.ongoing) return "";
+  const afterYm = prAddMonths(ep.endYm, 12);
+  if (afterYm > PR_STATE.maxYm) return "";
+  const parts = [];
+  for (const [key, label] of PR_EP_ASSETS) {
+    const r = prRangeReturn(key, ep.endYm, afterYm);
+    if (r == null) continue;
+    parts.push(`${escapeHtml(label)} <b data-sign="${prSignAttr(r)}">${prFmtPct(r)}</b>`);
+  }
+  if (parts.length === 0) return "";
+  return `<div class="pr-ep-after">국면 종료 후 12개월: ${parts.join(" · ")}</div>`;
+}
+
+function prRenderEpisodes(q) {
+  const episodes = (PR_STATE.episodesByQuadrant && PR_STATE.episodesByQuadrant[q]) || [];
+  const summaryHost = document.getElementById("pr-quad-summary");
+  const listHost = document.getElementById("pr-episode-list");
+  const pb = PR_STATE.data.quadrant_playbook[q];
+  const current = prCurrentQuadrant();
+
+  if (episodes.length === 0) {
+    summaryHost.innerHTML = "";
+    listHost.innerHTML = `<p class="pr-journal-empty">${q} 국면으로 판정된 과거 구간이 없습니다.</p>`;
+    return;
+  }
+
+  const avgMonths = episodes.reduce((s, ep) => s + ep.months, 0) / episodes.length;
+  const spReturns = episodes
+    .map((ep) => prEpisodeReturn("stock_us_sp500", ep))
+    .filter((r) => r != null);
+  const avgSp = spReturns.length > 0
+    ? spReturns.reduce((s, r) => s + r, 0) / spReturns.length : null;
+
+  summaryHost.innerHTML = `
+    <div class="pr-quad-summary-card" data-quadrant="${q}">
+      <p>
+        <strong>${q} · ${escapeHtml(pb ? pb.label : "")}</strong> 국면은 1980년 이후
+        <b>${episodes.length}번</b> 있었고, 평균 <b>${avgMonths.toFixed(1)}개월</b> 지속됐다.
+        ${avgSp != null ? `국면 중 S&P500 평균 수익률은 <b data-sign="${prSignAttr(avgSp)}">${prFmtPct(avgSp)}</b> (데이터가 있는 ${spReturns.length}개 구간 기준).` : ""}
+        ${current && current.quadrant === q
+          ? (current.isNow
+              ? `<em class="pr-quad-now-inline">지금(${escapeHtml(current.ym)})이 바로 이 국면이다.</em>`
+              : `<em class="pr-quad-now-inline">가장 최근엔 ${escapeHtml(current.ym)}에 이 국면이었다 (그 이후는 경계/중립 판정).</em>`)
+          : ""}
+      </p>
+      ${pb ? `<p class="pr-snapshot-hint">${escapeHtml(pb.hint)} — ${escapeHtml(pb.principle)}</p>` : ""}
+    </div>`;
+
+  const showAll = PR_STATE.similarShowAll;
+  const visible = showAll ? episodes : episodes.slice(0, PR_EPISODE_PAGE);
+  const cards = visible.map((ep) => {
+    const startRow = PR_STATE.monthsByYm.get(ep.startYm);
+    const endRow = PR_STATE.monthsByYm.get(ep.endYm);
+    const badges = [
+      ep.ongoing ? `<em class="pr-ep-badge pr-ep-ongoing">진행 중</em>` : "",
+      prEpisodeHasRecession(ep) ? `<em class="pr-ep-badge pr-ep-recession">NBER 침체 겹침</em>` : "",
+    ].join("");
+    return `
+      <div class="pr-episode-card" data-quadrant="${q}">
+        <div class="pr-ep-head">
+          <b>${escapeHtml(ep.startYm)} ~ ${escapeHtml(ep.endYm)}</b>
+          <span>${ep.months}개월</span>
+          ${badges}
+        </div>
+        <div class="pr-ep-ind">${prEpisodeIndicatorRows(startRow, endRow, ep.months === 1)}</div>
+        <div class="pr-ep-assets">국면 중 성과: ${prEpisodeAssetPerf(ep)}</div>
+        ${prEpisodeAfterPerf(ep)}
+      </div>`;
+  }).join("");
+
+  const moreBtn = !showAll && episodes.length > PR_EPISODE_PAGE
+    ? `<button type="button" class="pr-ep-more" id="pr-ep-more">전체 ${episodes.length}개 구간 모두 보기</button>` : "";
+  listHost.innerHTML = cards + moreBtn + prMissingIndicatorNote();
+
+  const moreEl = document.getElementById("pr-ep-more");
+  if (moreEl) {
+    moreEl.addEventListener("click", () => {
+      PR_STATE.similarShowAll = true;
+      prRenderEpisodes(q);
+    });
+  }
 }
 
 // ---------- 원칙 저널 (localStorage) ----------
