@@ -261,14 +261,17 @@ python scripts/build_principles.py   # data/principles/timeline.json 재생성
 
 데이터(`data/wiki/graph.json`)는 `scripts/build_wiki_graph.py` 가 생성한다:
 
-1. 이 저장소 **Settings → Secrets and variables → Actions** 에
+1. **luke_wiki 가 공개(public) 저장소면 추가 설정 불필요** — 워크플로가 기본
+   토큰으로 바로 체크아웃한다.
+   비공개면 이 저장소 **Settings → Secrets and variables → Actions** 에
    `WIKI_REPO_TOKEN` 시크릿 추가 — luke_wiki 저장소 *Contents: Read* 권한의
    fine-grained Personal Access Token.
 2. 주간 갱신 워크플로(`update.yml`)가 luke_wiki 를 체크아웃해 그래프를 자동 재생성한다.
    Actions 에서 **Update FRED Indicators** 를 수동 실행하면 즉시 만들어진다.
 3. 로컬 생성: `python scripts/build_wiki_graph.py --vault ../luke_wiki --out data/wiki/graph.json`
 
-토큰이 없으면 워크플로는 이 단계를 건너뛰고, 위키 탭에는 설정 안내가 표시된다.
+체크아웃이 안 되면(비공개 + 토큰 없음) 이 단계만 건너뛰고 지표 갱신은 계속되며,
+위키 탭에는 설정 안내가 표시된다.
 
 ---
 
