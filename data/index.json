@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-04T04:51:40Z",
+  "last_updated": "2026-07-05T02:11:43Z",
   "indicators": [
     {
       "code": "T10Y2Y",
@@ -363,6 +363,16 @@
       "code": "KOSPI",
       "name": "KOSPI",
       "unit": "index"
+    },
+    {
+      "code": "FEDFUNDS",
+      "name": "US Federal Funds Effective Rate",
+      "unit": "percent"
+    },
+    {
+      "code": "GOLD",
+      "name": "Gold (XAU/USD)",
+      "unit": "usd_per_oz"
     }
   ],
   "stocks": [
@@ -1010,8 +1020,8 @@
       "valuation_summary": {
         "as_of": "2026-07-03",
         "current_price": 106900.0,
-        "fair_value": 103462.91,
-        "valuation_gap": 0.0332,
+        "fair_value": 102177.46,
+        "valuation_gap": 0.0462,
         "signal": "fair",
         "narrative_score": 0.06,
         "qualitative_as_of": "2026-07-01"
@@ -1128,8 +1138,8 @@
       "valuation_summary": {
         "as_of": "2026-07-02",
         "current_price": 1769.32,
-        "fair_value": 740.87,
-        "valuation_gap": 1.3882,
+        "fair_value": 742.65,
+        "valuation_gap": 1.3824,
         "signal": "expensive",
         "narrative_score": 0.42,
         "qualitative_as_of": "2026-06-30"
@@ -1975,8 +1985,8 @@
       "valuation_summary": {
         "as_of": "2026-07-02",
         "current_price": 377.52,
-        "fair_value": 135.93,
-        "valuation_gap": 1.7774,
+        "fair_value": 135.8,
+        "valuation_gap": 1.78,
         "signal": "expensive",
         "narrative_score": 0.46,
         "qualitative_as_of": "2026-06-28"
@@ -2286,8 +2296,8 @@
       "valuation_summary": {
         "as_of": "2026-07-02",
         "current_price": 485.97,
-        "fair_value": 263.17,
-        "valuation_gap": 0.8466,
+        "fair_value": 263.53,
+        "valuation_gap": 0.8441,
         "signal": "expensive",
         "narrative_score": 0.18,
         "qualitative_as_of": "2026-06-28"
@@ -2678,8 +2688,8 @@
       "valuation_summary": {
         "as_of": "2026-07-03",
         "current_price": 800000.0,
-        "fair_value": 411220.69,
-        "valuation_gap": 0.9454,
+        "fair_value": 412805.72,
+        "valuation_gap": 0.938,
         "signal": "expensive",
         "narrative_score": 0.18,
         "qualitative_as_of": "2026-06-28"
