@@ -1157,6 +1157,7 @@ section h2 {
     transform: translateX(-100%);
     transition: transform 0.2s ease;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 55; /* 드로어가 배경(z-index 50) 위에 와야 탭 클릭이 먹힌다 */
   }
   body.sb-collapsed .sidebar { display: flex; } /* 모바일은 transform 으로만 제어 */
   body.sb-mobile-open .sidebar { transform: none; }
