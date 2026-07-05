@@ -1,0 +1,66 @@
+name: Sync Wiki Graph
+
+# luke_wiki 의 변경을 대시보드에 빠르게 반영하는 경량 워크플로.
+# 지표 수집 없이 위키 그래프(data/wiki/)만 재생성한다 — 1분 내 완료.
+#
+# 트리거 3가지:
+#   1) repository_dispatch (event_type: wiki-updated)
+#      — luke_wiki 쪽 push 워크플로가 쏘면 푸시 직후 바로 반영 (README 참고)
+#   2) workflow_dispatch — Actions 탭에서 수동 실행
+#   3) schedule — 1시간마다 폴링 (1번을 설정하지 않아도 최대 1시간 내 반영)
+on:
+  repository_dispatch:
+    types: [wiki-updated]
+  workflow_dispatch:
+  schedule:
+    - cron: "15 * * * *"
+
+permissions:
+  contents: write
+
+# 연속 푸시 시 겹쳐 돌지 않게 직렬화
+concurrency:
+  group: wiki-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+        # build_wiki_graph.py 는 표준 라이브러리만 사용 — pip install 불필요
+
+      # luke_wiki 가 공개면 기본 토큰, 비공개면 WIKI_REPO_TOKEN 시크릿 사용
+      - name: Checkout luke_wiki
+        id: wiki_checkout
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: lukeeee73/luke_wiki
+          token: ${{ secrets.WIKI_REPO_TOKEN || github.token }}
+          path: .luke_wiki_src
+          fetch-depth: 0   # 노트별 마지막 수정일을 git log 에서 뽑기 위해 전체 이력
+
+      - name: Build wiki knowledge graph
+        if: steps.wiki_checkout.outcome == 'success'
+        run: python scripts/build_wiki_graph.py --vault .luke_wiki_src --out data/wiki/graph.json --repo lukeeee73/luke_wiki
+
+      - name: Commit & push if data/wiki changed
+        if: steps.wiki_checkout.outcome == 'success'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain -- data/wiki/)" ]; then
+            echo "No changes under data/wiki/ — skipping commit."
+          else
+            git add data/wiki/
+            git commit -m "chore: sync wiki graph ($(date -u +%Y-%m-%dT%H:%M))"
+            git push
+          fi

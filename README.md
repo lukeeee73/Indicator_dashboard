@@ -257,21 +257,62 @@ python scripts/build_principles.py   # data/principles/timeline.json 재생성
 
 대시보드 왼쪽 사이드바의 **위키** 탭은 Obsidian vault(`lukeeee73/luke_wiki`)의
 노트와 `[[위키링크]]` 구조를 force-directed 그래프로 시각화한다
-(노드 크기 = 연결 수, 색 = 폴더, 노드 클릭 → 상세 패널 + GitHub 원문 링크).
+(노드 크기 = 연결 수, 색 = 폴더). 노드를 클릭하면 상세 패널이 뜨고,
+**📖 이 화면에서 읽기** 로 노트 본문을 대시보드 안에서 마크다운으로 읽을 수 있다
+(본문 속 `[[위키링크]]` 를 클릭하면 그 노트로 바로 이동).
 
-데이터(`data/wiki/graph.json`)는 `scripts/build_wiki_graph.py` 가 생성한다:
+### 데이터 생성
 
-1. **luke_wiki 가 공개(public) 저장소면 추가 설정 불필요** — 워크플로가 기본
-   토큰으로 바로 체크아웃한다.
-   비공개면 이 저장소 **Settings → Secrets and variables → Actions** 에
-   `WIKI_REPO_TOKEN` 시크릿 추가 — luke_wiki 저장소 *Contents: Read* 권한의
-   fine-grained Personal Access Token.
-2. 주간 갱신 워크플로(`update.yml`)가 luke_wiki 를 체크아웃해 그래프를 자동 재생성한다.
-   Actions 에서 **Update FRED Indicators** 를 수동 실행하면 즉시 만들어진다.
-3. 로컬 생성: `python scripts/build_wiki_graph.py --vault ../luke_wiki --out data/wiki/graph.json`
+`scripts/build_wiki_graph.py` 가 vault 를 파싱해 두 가지를 만든다:
 
-체크아웃이 안 되면(비공개 + 토큰 없음) 이 단계만 건너뛰고 지표 갱신은 계속되며,
-위키 탭에는 설정 안내가 표시된다.
+- `data/wiki/graph.json` — 노드/엣지 구조 (그래프 뷰)
+- `data/wiki/notes/{i}.json` — 노트 본문 (노트 뷰어; `--no-content` 로 끌 수 있음)
+
+> ⚠️ 본문을 내보내면 대시보드 배포본에 노트 내용이 포함된다.
+> 대시보드가 공개 URL 이면 노트도 공개되는 셈이니, 원치 않으면
+> 워크플로의 빌드 명령에 `--no-content` 를 붙일 것.
+
+접근 설정:
+
+- **luke_wiki 가 공개(public) 저장소면 추가 설정 불필요** — 기본 토큰으로 체크아웃.
+- 비공개면 **Settings → Secrets and variables → Actions** 에 `WIKI_REPO_TOKEN`
+  시크릿 추가 (luke_wiki *Contents: Read* 권한의 fine-grained PAT).
+- 체크아웃이 안 되면 위키 단계만 건너뛰고 나머지는 계속 진행된다.
+
+### 갱신 주기 — 3단계
+
+| 방법 | 지연 | 설정 |
+|------|------|------|
+| `wiki-sync.yml` 시간별 폴링 | 최대 1시간 | 기본 동작, 설정 불필요 |
+| Actions 에서 **Sync Wiki Graph** 수동 실행 | 즉시 | 버튼 클릭 |
+| luke_wiki push → `repository_dispatch` | 푸시 후 ~1분 | 아래 참고 |
+
+**푸시 즉시 반영 설정** — luke_wiki 저장소에 아래 워크플로를 추가한다
+(`.github/workflows/notify-dashboard.yml`). Obsidian 의 git 플러그인으로
+commit-and-sync 하는 순간 대시보드가 자동 갱신된다:
+
+```yaml
+name: Notify dashboard
+on:
+  push:
+    branches: ["**"]   # 또는 사용 중인 기본 브랜치만
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sS -X POST \
+            -H "Authorization: Bearer ${{ secrets.DASHBOARD_DISPATCH_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/lukeeee73/Indicator_dashboard/dispatches \
+            -d '{"event_type":"wiki-updated"}'
+```
+
+`DASHBOARD_DISPATCH_TOKEN` 은 **luke_wiki 저장소의 시크릿**으로,
+Indicator_dashboard 에 *Contents: Read and write* 권한이 있는
+fine-grained PAT 를 넣는다 (repository_dispatch 호출에 필요).
+
+로컬 생성: `python scripts/build_wiki_graph.py --vault ../luke_wiki --out data/wiki/graph.json`
 
 ---
 

@@ -9,9 +9,13 @@
   - 부가정보: 폴더(색 구분용), 태그(frontmatter + 인라인 #태그),
               마지막 수정일(git 커밋 날짜, 없으면 파일 mtime)
 
+노트 본문도 함께 내보낸다 (--no-content 로 끌 수 있음):
+  data/wiki/notes/{노드 인덱스}.json — 대시보드 '이 화면에서 읽기' 뷰어가 사용.
+  주의: 본문을 내보내면 대시보드가 공개일 경우 노트 내용도 공개된다.
+
 사용법:
   python scripts/build_wiki_graph.py --vault ../luke_wiki --out data/wiki/graph.json
-  # CI 에서는 update.yml 이 luke_wiki 체크아웃 후 자동 실행
+  # CI 에서는 update.yml / wiki-sync.yml 이 luke_wiki 체크아웃 후 자동 실행
 """
 from __future__ import annotations
 
@@ -19,13 +23,15 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 SKIP_DIRS = {".git", ".obsidian", ".trash", ".github", "node_modules"}
-MAX_NODES = 3000  # 안전 상한 — 이보다 크면 프론트 force 시뮬레이션이 버겁다
+MAX_NODES = 3000        # 안전 상한 — 이보다 크면 프론트 force 시뮬레이션이 버겁다
+MAX_CONTENT = 120_000   # 노트 1개당 본문 상한 (문자) — 초과분은 잘라낸다
 
 # [[Target]] · [[Target|별칭]] · [[Target#헤딩]] — Target 만 추출
 WIKILINK_RE = re.compile(r"\[\[([^\]\|#]+)(?:#[^\]\|]*)?(?:\|[^\]]*)?\]\]")
@@ -100,6 +106,8 @@ def main() -> int:
     ap.add_argument("--out", default="data/wiki/graph.json")
     ap.add_argument("--repo", default="lukeeee73/luke_wiki", help="GitHub owner/repo (노트 링크용)")
     ap.add_argument("--branch", default=None, help="GitHub 링크 브랜치 (기본: vault 의 현재 브랜치)")
+    ap.add_argument("--no-content", action="store_true",
+                    help="노트 본문(data/wiki/notes/) 내보내기 생략")
     args = ap.parse_args()
 
     vault = Path(args.vault).resolve()
@@ -141,11 +149,14 @@ def main() -> int:
         by_relpath[rel.lower()] = i
 
     edge_set: set[tuple[int, int]] = set()
+    contents: dict[int, str] = {}
     for i, p in enumerate(md_files):
         try:
             text = p.read_text(encoding="utf-8", errors="replace")
         except OSError:
             continue
+        if not args.no_content:
+            contents[i] = text[:MAX_CONTENT]
 
         tags = parse_frontmatter_tags(text)
         body = text[text.find("\n---", 3) + 4:] if text.startswith("---") else text
@@ -184,6 +195,7 @@ def main() -> int:
         "branch": branch,
         "note_count": len(nodes),
         "edge_count": len(edge_set),
+        "has_content": not args.no_content,
         "nodes": nodes,
         "edges": sorted(edge_set),
     }
@@ -191,7 +203,20 @@ def main() -> int:
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"ok: {len(nodes)} notes, {len(edge_set)} links → {out}")
+
+    # 노트 본문 — 노드 인덱스별 개별 파일 (뷰어가 필요할 때만 fetch)
+    notes_dir = out.parent / "notes"
+    if notes_dir.is_dir():
+        shutil.rmtree(notes_dir)  # 삭제된 노트가 남지 않도록 전체 재생성
+    if not args.no_content:
+        notes_dir.mkdir(parents=True)
+        for i, text in contents.items():
+            payload = {"id": nodes[i]["id"], "path": nodes[i]["path"], "content": text}
+            (notes_dir / f"{i}.json").write_text(
+                json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+    note_msg = "" if args.no_content else f", {len(contents)} note bodies → {notes_dir}/"
+    print(f"ok: {len(nodes)} notes, {len(edge_set)} links → {out}{note_msg}")
     return 0
 
 

@@ -5011,13 +5011,13 @@ async function renderWikiTab() {
       <p>이 화면은 <code>data/wiki/graph.json</code> 을 읽어 Obsidian vault
         (<code>lukeeee73/luke_wiki</code>)의 노트 연결망을 그립니다. 데이터를 만드는 방법:</p>
       <ol>
-        <li>이 저장소의 <strong>Settings → Secrets and variables → Actions</strong> 에서
+        <li>luke_wiki 가 <strong>공개 저장소면 추가 설정 없이</strong> 다음 단계로.
+          비공개면 이 저장소 <strong>Settings → Secrets and variables → Actions</strong> 에
           <code>WIKI_REPO_TOKEN</code> 시크릿을 추가한다 — luke_wiki 저장소
           <em>Contents: Read</em> 권한이 있는 fine-grained Personal Access Token.</li>
-        <li>주간 갱신 워크플로가 luke_wiki 를 체크아웃해
-          <code>scripts/build_wiki_graph.py</code> 로 그래프 JSON 을 자동 생성한다.
-          Actions 탭에서 <strong>Update FRED Indicators</strong> 를 수동 실행(Run workflow)하면
-          바로 만들어진다.</li>
+        <li>Actions 탭에서 <strong>Sync Wiki Graph</strong> 워크플로를 수동 실행(Run workflow)하면
+          1분 내에 만들어진다. 이후엔 매시간 자동 동기화되고, luke_wiki 쪽에
+          notify 워크플로를 추가하면 푸시 즉시 반영된다 (README 참고).</li>
         <li>로컬에서 직접 만들 수도 있다:<br>
           <code>python scripts/build_wiki_graph.py --vault ../luke_wiki --out data/wiki/graph.json</code></li>
       </ol>`;
@@ -5080,8 +5080,9 @@ function wikiInitGraph(graph) {
   // ---------- 뷰 상태 ----------
   const view = { scale: 1, ox: 0, oy: 0 };
   let hoverIdx = -1, selectedIdx = -1, query = "";
-  let alpha = 1;           // 시뮬레이션 온도 — 식으면 멈춘다
+  let alpha = 1;            // 시뮬레이션 온도 — 식으면 멈춘다
   let rafId = null;
+  let userAdjusted = false; // 사용자가 줌/팬/드래그 후엔 뷰를 멋대로 재조정하지 않는다
 
   function resize() {
     const dpr = window.devicePixelRatio || 1;
@@ -5091,7 +5092,13 @@ function wikiInitGraph(graph) {
   }
 
   // ---------- force 시뮬레이션 (O(n²) — 수백 노드까지 충분) ----------
-  function tick() {
+  // 초기 배치의 거친 움직임은 화면에 보여주지 않는다: 먼저 warm-up 을
+  // 그리지 않고 돌려 레이아웃을 잡은 뒤, 낮은 온도 + 속도 상한 상태로
+  // 천천히 정착하는 모습만 보여준다 (Obsidian 그래프 뷰와 같은 느낌).
+  const LIVE_ALPHA = 0.18;  // 화면에 보이는 단계의 시작 온도
+  const MAX_SPEED  = 2.2;   // px/frame — 노드가 화면에서 튀지 않는 상한
+
+  function tick(live) {
     const K = 42;                    // 반발 상수
     const REST = 62, SPRING = 0.025; // 스프링 길이/강도
     for (let i = 0; i < nodes.length; i++) {
@@ -5121,15 +5128,29 @@ function wikiInitGraph(graph) {
       n.vx += (cx - n.x) * 0.004 * alpha;
       n.vy += (cy - n.y) * 0.004 * alpha;
       if (n === dragNode) { n.vx = 0; n.vy = 0; return; }
-      n.vx *= 0.82; n.vy *= 0.82;
+      // 보이는 단계는 감쇠를 세게 + 속도 상한 → 느릿한 정착
+      const damp = live ? 0.72 : 0.82;
+      n.vx *= damp; n.vy *= damp;
+      if (live) {
+        const sp = Math.hypot(n.vx, n.vy);
+        if (sp > MAX_SPEED) { n.vx *= MAX_SPEED / sp; n.vy *= MAX_SPEED / sp; }
+      }
       n.x += n.vx; n.y += n.vy;
     });
-    alpha *= 0.99;
+    alpha *= live ? 0.975 : 0.99;
+  }
+
+  // 화면에 그리기 전 레이아웃을 미리 잡는다 (거친 초기 움직임 숨김)
+  function warmup() {
+    alpha = 1;
+    for (let i = 0; i < 220 && alpha > 0.05; i++) tick(false);
+    nodes.forEach((n) => { n.vx = 0; n.vy = 0; });
+    alpha = LIVE_ALPHA;
   }
 
   function loop() {
-    if (alpha > 0.02) { tick(); draw(); rafId = requestAnimationFrame(loop); }
-    else { alpha = 0; fitView(); rafId = null; }
+    if (alpha > 0.015) { tick(true); draw(); rafId = requestAnimationFrame(loop); }
+    else { alpha = 0; if (!userAdjusted) fitView(); rafId = null; }
   }
   function wake(a) {
     alpha = Math.max(alpha, a);
@@ -5253,13 +5274,15 @@ function wikiInitGraph(graph) {
       const [wx, wy] = toWorld(mx, my);
       dragNode.x = wx; dragNode.y = wy;
       moved = true;
-      wake(0.12);
+      userAdjusted = true;
+      wake(0.1);
       return;
     }
     if (panning) {
       view.ox += mx - lastX; view.oy += my - lastY;
       lastX = mx; lastY = my;
       moved = true;
+      userAdjusted = true;
       draw();
       return;
     }
@@ -5294,9 +5317,10 @@ function wikiInitGraph(graph) {
     view.ox = mx - (mx - view.ox) * (ns / view.scale);
     view.oy = my - (my - view.oy) * (ns / view.scale);
     view.scale = ns;
+    userAdjusted = true;
     draw();
   }, { passive: false });
-  canvas.addEventListener("dblclick", fitView);
+  canvas.addEventListener("dblclick", () => { userAdjusted = false; fitView(); });
 
   search.addEventListener("input", () => {
     query = search.value.trim().toLowerCase();
@@ -5333,6 +5357,8 @@ function wikiInitGraph(graph) {
                <span style="color:${nodes[j].color}">●</span> ${escapeHtml(nodes[j].title)}
              </button>`).join("")}
         </div>` : ""}
+      ${graph.has_content
+        ? `<button type="button" class="wiki-read-btn" id="wiki-read-btn">📖 이 화면에서 읽기</button>` : ""}
       <a class="wiki-open-github" href="${fileUrl}" target="_blank" rel="noopener">
         GitHub 에서 노트 열기 ↗</a>`;
     detail.querySelectorAll(".wiki-link-item").forEach((btn) => {
@@ -5342,10 +5368,110 @@ function wikiInitGraph(graph) {
         draw();
       });
     });
+    const readBtn = detail.querySelector("#wiki-read-btn");
+    if (readBtn) readBtn.addEventListener("click", () => wikiOpenNote(idx));
+  }
+
+  // ---------- 노트 뷰어 (모달) — 본문을 대시보드 안에서 읽는다 ----------
+  let noteOverlay = null;
+  function ensureNoteOverlay() {
+    if (noteOverlay) return noteOverlay;
+    noteOverlay = document.createElement("div");
+    noteOverlay.className = "wn-overlay";
+    noteOverlay.hidden = true;
+    noteOverlay.innerHTML = `
+      <div class="wn-card" role="dialog" aria-modal="true" aria-labelledby="wn-title">
+        <div class="wn-head">
+          <h3 class="wn-title" id="wn-title"></h3>
+          <button type="button" class="wn-close" aria-label="닫기">✕</button>
+        </div>
+        <p class="wn-meta" id="wn-meta"></p>
+        <div class="wn-body" id="wn-body"></div>
+        <div class="wn-foot">
+          <a class="wiki-open-github" id="wn-github" target="_blank" rel="noopener">GitHub 에서 열기 ↗</a>
+        </div>
+      </div>`;
+    noteOverlay.addEventListener("click", (e) => {
+      if (e.target === noteOverlay || e.target.closest(".wn-close")) wikiCloseNote();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && noteOverlay && !noteOverlay.hidden) wikiCloseNote();
+    });
+    document.body.appendChild(noteOverlay);
+    return noteOverlay;
+  }
+  function wikiCloseNote() {
+    if (noteOverlay) noteOverlay.hidden = true;
+  }
+
+  function wikiRenderMarkdown(md) {
+    // frontmatter 는 상세 패널에서 이미 태그로 보여주므로 본문에선 감춘다
+    if (md.startsWith("---")) {
+      const end = md.indexOf("\n---", 3);
+      if (end > 0) md = md.slice(end + 4);
+    }
+    // 노트 속 원시 HTML 은 실행하지 않고 텍스트로 취급 (안전).
+    // '>' 는 이스케이프하지 않는다 — 블록 인용(> ...)의 마크다운 문법이라서.
+    const safe = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    let html;
+    if (window.marked && typeof window.marked.parse === "function") {
+      html = window.marked.parse(safe, { breaks: true });
+    } else {
+      html = `<pre class="wn-pre">${safe}</pre>`;  // CDN 로드 실패 시 폴백
+    }
+    // [[위키링크]] → 클릭하면 그 노트로 이동하는 링크
+    return html.replace(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]*))?\]\]/g, (m, target, alias) => {
+      const t = target.trim();
+      return `<a href="#" class="wn-wikilink" data-wiki-target="${t.replace(/"/g, "&quot;")}">${alias || t}</a>`;
+    });
+  }
+
+  async function wikiOpenNote(idx) {
+    const n = nodes[idx];
+    const ov = ensureNoteOverlay();
+    const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
+    const branch  = graph.branch || "main";
+    ov.querySelector("#wn-title").textContent = n.title;
+    ov.querySelector("#wn-meta").textContent =
+      `${n.folder} · 연결 ${n.deg}개${n.mtime ? ` · 수정 ${n.mtime}` : ""}`;
+    ov.querySelector("#wn-github").href = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
+      n.path.split("/").map(encodeURIComponent).join("/");
+    const body = ov.querySelector("#wn-body");
+    body.innerHTML = `<p class="wn-loading">불러오는 중…</p>`;
+    ov.hidden = false;
+    try {
+      const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const note = await res.json();
+      body.innerHTML = wikiRenderMarkdown(note.content || "");
+      body.scrollTop = 0;
+      // 본문 속 위키링크 → 그래프에서 해당 노트 선택 + 바로 열기
+      body.querySelectorAll(".wn-wikilink").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          const t = el.dataset.wikiTarget.toLowerCase();
+          const j = nodes.findIndex((nn) =>
+            nn.title.toLowerCase() === t ||
+            nn.id.toLowerCase() === t ||
+            nn.id.toLowerCase().endsWith("/" + t));
+          if (j >= 0) {
+            selectedIdx = j;
+            wikiShowDetail(j);
+            draw();
+            wikiOpenNote(j);
+          }
+        });
+      });
+    } catch (err) {
+      body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
+        아직 노트 본문이 내보내지지 않았을 수 있어요 — 워크플로를 한 번 실행해 주세요.</p>`;
+    }
   }
 
   // ---------- 시작 ----------
   new ResizeObserver(resize).observe(wrap);
   resize();
-  wake(1);
+  warmup();          // 레이아웃을 먼저 잡고
+  fitView();         // 전체가 보이게 맞춘 뒤
+  wake(LIVE_ALPHA);  // 낮은 온도로 천천히 정착하는 모습만 보여준다
 }
