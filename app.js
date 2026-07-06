@@ -1777,6 +1777,7 @@ function mcSwitchMap(mapId) {
   MC_STATE.fitted = false;
   const detail = document.getElementById("vc-detail");
   if (detail) detail.innerHTML = `<p class="vc-detail-hint">시장 노드를 클릭하면 상세 정보가 표시됩니다.</p>`;
+  mcHideMarketNote();
   renderMarketCascade(MC_STATE.stocks || {});
 }
 
@@ -2693,6 +2694,40 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
   const pb = host.querySelector(".pm-open-btn[data-pm]");
   if (pb) pb.addEventListener("click", () => pmOpen(pb.dataset.pm));
   mcFillWikiSlot(host.querySelector(".mc-wiki"), m.wiki, m.players);
+  mcRenderMarketNote(m);
+}
+
+// ── 시장 노드 종합 노트 (지도 아래 인라인) ─────────────────────────────
+// 루틴이 관리하는 luke_wiki 의 시장 노드별 종합 페이지
+// (wiki/news/markets/{map_id}/{market_id}.md — 시장 정의·병목·기업 동향·뉴스 로그)
+// 를 노드 선택 시 지도 아래에 바로 펼쳐 보여준다. 파일이 없는 지도(전력·바이오)는 숨김.
+
+let MC_NOTE_REQ = 0;
+
+async function mcRenderMarketNote(m) {
+  const host = document.getElementById("mc-note");
+  if (!host) return;
+  const req = ++MC_NOTE_REQ;
+  const graph = await wnLoadGraph();
+  if (req !== MC_NOTE_REQ || !host.isConnected) return;  // 그 사이 다른 노드 선택
+  const idx = graph ? wnNodeByPath(`wiki/news/markets/${MC_STATE.mapId}/${m.id}.md`) : -1;
+  if (idx < 0) { mcHideMarketNote(); return; }
+  await wnFillInlineNote(host, idx, { kind: "시장 종합 노트 (루틴 관리)", title: `${m.name_kr} — 시장 종합` });
+  wnScrollNoteIntoView(host);
+}
+
+// 노트가 화면 밖(아래)이면 읽을 위치로 데려간다 — 이미 보이면 건드리지 않는다
+function wnScrollNoteIntoView(host) {
+  if (!host || host.hidden || !host.isConnected) return;
+  const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+  const top = host.getBoundingClientRect().top;
+  if (top >= 0 && top < vh * 0.7) return;
+  host.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function mcHideMarketNote() {
+  const host = document.getElementById("mc-note");
+  if (host) { host.hidden = true; host.innerHTML = ""; }
 }
 
 // ── 옵시디언 위키 노트 연결 ─────────────────────────────────────────────
@@ -2852,13 +2887,50 @@ function pmRender() {
         </div>
       </div>
       <aside class="pm-detail" id="pm-detail">${pmMarketSummaryHtml()}</aside>
-    </div>`;
+    </div>
+    <section class="pm-note wn-inline" id="pm-note" hidden aria-label="옵시디언 노트"></section>`;
   host.querySelector("#pm-back").addEventListener("click", pmClose);
   host.querySelector("#pm-close").addEventListener("click", pmClose);
   host.querySelectorAll(".pm-player[data-id]").forEach((el) =>
     el.addEventListener("click", () => pmSelect(el.dataset.id)));
   pmWireCanvas();
   requestAnimationFrame(() => { pmFitZoom(); pmDrawLinks(); });
+  pmShowMarketNote();
+}
+
+// ── 플레이어 지도 아래 인라인 옵시디언 노트 ─────────────────────────────
+// 초기·선택해제 상태: 이 시장의 종합 노트. 기업 선택: 그 기업의 뉴스 로그.
+
+async function pmShowMarketNote() {
+  const host = document.getElementById("pm-note");
+  const m = PM_STATE.market;
+  if (!host || !m) return;
+  const graph = await wnLoadGraph();
+  if (!host.isConnected || PM_STATE.active) return;  // 그 사이 기업을 선택했으면 양보
+  const idx = graph ? wnNodeByPath(`wiki/news/markets/${MC_STATE.mapId}/${m.id}.md`) : -1;
+  if (idx < 0) { host.hidden = true; host.innerHTML = ""; return; }
+  wnFillInlineNote(host, idx, { kind: "시장 종합 노트 (루틴 관리)", title: `${m.name_kr} — 시장 종합` });
+}
+
+async function pmShowPlayerNote(p) {
+  const host = document.getElementById("pm-note");
+  if (!host || !p) return;
+  const graph = await wnLoadGraph();
+  if (!host.isConnected || PM_STATE.active !== p.id) return;  // 선택이 바뀌었으면 중단
+  const idx = graph && p.ticker ? wnNodeByTicker(p.ticker) : -1;
+  if (idx < 0) {
+    host.hidden = false;
+    host.innerHTML = `
+      <header class="wn-inline-head">
+        <span class="wn-inline-kind">기업 뉴스 로그</span>
+        <h4>${escapeHtml(p.name)}</h4>
+      </header>
+      <div class="wn-body wn-inline-body"><p class="wn-error">이 기업의 옵시디언 뉴스 로그가 아직 없습니다${p.ticker ? "" : " (비상장)"} — watchlist 편입 후 루틴이 생성합니다.</p></div>`;
+    wnScrollNoteIntoView(host);
+    return;
+  }
+  await wnFillInlineNote(host, idx, { kind: "기업 뉴스 로그 (루틴 관리)", title: `${p.name} — Routine News Log` });
+  if (PM_STATE.active === p.id) wnScrollNoteIntoView(host);
 }
 
 // 그룹 컬럼 (center 그룹은 강조)
@@ -2914,6 +2986,8 @@ function pmSelect(id) {
   });
   pmDrawActiveEdges(id);
   pmRenderDetail(id, suppliers, customers);
+  const p = (d.players || []).find((x) => x.id === id);
+  if (p) pmShowPlayerNote(p);
 }
 
 // 선택 해제 → 시장 요약으로 복귀
@@ -2929,6 +3003,7 @@ function pmClearSelect() {
   }
   const detail = document.getElementById("pm-detail");
   if (detail) detail.innerHTML = pmMarketSummaryHtml();
+  pmShowMarketNote();
 }
 
 // 우측 패널 초기 상태 — 이 세부 시장의 요약 (정의·병목·3사 점유율·읽는 법)
@@ -5205,6 +5280,9 @@ function wnRenderMarkdown(md) {
   }
   // HTML 주석(<!-- ... -->)은 표시하지 않는다 — 노트의 관리용 마커
   md = md.replace(/<!--[\s\S]*?-->/g, "");
+  // vault 내부 상대 링크는 공백을 %20 으로 — CommonMark 는 괄호 안 공백을
+  // 링크 목적지로 인식하지 않으므로 (예: [MU](../tickers/MU - Micron.md))
+  md = md.replace(/\]\(([^)\n]*?\.md)\)/g, (mm, p) => `](${p.replace(/ /g, "%20")})`);
   // 노트 속 원시 HTML 은 실행하지 않고 텍스트로 취급 (안전).
   // '>' 는 이스케이프하지 않는다 — 블록 인용(> ...)의 마크다운 문법이라서.
   const safe = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -5245,25 +5323,92 @@ async function wnOpenByIdx(idx, opts = {}) {
     const note = await res.json();
     body.innerHTML = wnRenderMarkdown(note.content || "");
     body.scrollTop = 0;
-    // 본문 속 위키링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
-    body.querySelectorAll(".wn-wikilink").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        const t = el.dataset.wikiTarget.toLowerCase();
-        const j = graph.nodes.findIndex((nn) =>
-          nn.title.toLowerCase() === t ||
-          nn.id.toLowerCase() === t ||
-          nn.id.toLowerCase().endsWith("/" + t));
-        if (j >= 0) {
-          if (opts.onNavigate) opts.onNavigate(j);
-          wnOpenByIdx(j, { onNavigate: opts.onNavigate });
-        }
-      });
+    // 본문 속 위키링크·상대 .md 링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
+    wnWireNoteLinks(body, n.path, (j) => {
+      if (opts.onNavigate) opts.onNavigate(j);
+      wnOpenByIdx(j, { onNavigate: opts.onNavigate });
     });
   } catch (err) {
     body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
       아직 노트 본문이 내보내지지 않았을 수 있어요 — 워크플로를 한 번 실행해 주세요.</p>`;
   }
+}
+
+// ── 노트 본문 내부 링크 연결 ────────────────────────────────────────────
+// [[위키링크]] 와 vault 상대 .md 링크(예: ../../tickers/MU - Micron.md)를
+// 노트 이동(open 콜백)으로 바꾼다. 외부 http(s) 링크는 그대로 둔다.
+
+function wnResolveRelPath(basePath, href) {
+  const base = basePath.split("/").slice(0, -1);
+  for (const part of decodeURIComponent(href).split("/")) {
+    if (!part || part === ".") continue;
+    if (part === "..") base.pop();
+    else base.push(part);
+  }
+  return base.join("/");
+}
+
+function wnWireNoteLinks(body, notePath, open) {
+  const graph = WN_STATE.graph;
+  if (!graph) return;
+  body.querySelectorAll(".wn-wikilink").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const t = el.dataset.wikiTarget.toLowerCase();
+      const j = graph.nodes.findIndex((nn) =>
+        nn.title.toLowerCase() === t ||
+        nn.id.toLowerCase() === t ||
+        nn.id.toLowerCase().endsWith("/" + t));
+      if (j >= 0) open(j);
+    });
+  });
+  body.querySelectorAll("a[href]").forEach((el) => {
+    const href = el.getAttribute("href") || "";
+    if (/^https?:/i.test(href) || !/\.md(#|$)/i.test(href)) return;
+    const j = wnNodeByPath(wnResolveRelPath(notePath, href.split("#")[0]));
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (j >= 0) open(j);
+    });
+    if (j < 0) el.classList.add("wn-deadlink");
+  });
+}
+
+// ── 인라인 노트 — 오버레이가 아니라 화면 흐름 안에 본문을 펼친다 ────────
+// 시장 지도(시장 노드 종합 노트)와 플레이어 지도(기업 뉴스 로그)가 사용.
+// host 는 .wn-inline 컨테이너. 반환값: 노트를 찾았는지 여부.
+
+async function wnFillInlineNote(host, idx, opts = {}) {
+  const graph = WN_STATE.graph;
+  if (!host || !graph || !graph.nodes[idx]) return false;
+  const n = graph.nodes[idx];
+  const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
+  const branch  = graph.branch || "main";
+  const gh = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
+    n.path.split("/").map(encodeURIComponent).join("/");
+  host.innerHTML = `
+    <header class="wn-inline-head">
+      <span class="wn-inline-kind">${escapeHtml(opts.kind || "옵시디언 노트")}</span>
+      <h4>${escapeHtml(opts.title || n.title)}</h4>
+      <span class="wn-inline-meta">${n.mtime ? `수정 ${escapeHtml(n.mtime)} · ` : ""}<a href="${gh}" target="_blank" rel="noopener">GitHub ↗</a></span>
+    </header>
+    <div class="wn-body wn-inline-body"><p class="wn-loading">불러오는 중…</p></div>`;
+  host.hidden = false;
+  const body = host.querySelector(".wn-inline-body");
+  try {
+    const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const note = await res.json();
+    if (!body.isConnected) return true;
+    body.innerHTML = wnRenderMarkdown(note.content || "");
+    // 인라인 본문 속 노트 링크는 오버레이 뷰어로 이어 읽는다
+    wnWireNoteLinks(body, n.path, (j) => wnOpenByIdx(j));
+  } catch (err) {
+    if (body.isConnected)
+      body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
+        위키 동기화 워크플로 실행 후 다시 시도해 주세요.</p>`;
+  }
+  return true;
 }
 
 async function renderWikiTab() {
