@@ -371,7 +371,7 @@ fine-grained PAT 를 넣는다 (repository_dispatch 호출에 필요).
 
 ---
 
-## 개별 종목 watchlist (14 섹터 그룹 · 131 종목)
+## 개별 종목 watchlist (18 섹터 그룹 · 155 종목)
 
 대시보드의 **주식 탭 → 개별 종목** 에서 섹터별로 묶인 모든 종목 카드를 확인할 수 있다.
 종목 정의는 `scripts/watchlist_data.py` 한 파일에 모여 있으며, 변경 후
@@ -383,13 +383,18 @@ fine-grained PAT 를 넣는다 (repository_dispatch 호출에 필요).
 | 섹터 그룹 | 종목 수 | 대표 종목 |
 |---|---|---|
 | 빅테크 / 소프트웨어         | 10 | AAPL · MSFT · GOOGL · AMZN · META · ORCL · CRM · ADBE · IBM · PLTR |
-| 반도체                        | 10 | NVDA · AMD · INTC · QCOM · TSM · ASML · AMAT · LRCX · AVGO · MU |
+| 반도체 — AI 칩 · 설계        | 11 | NVDA · AMD · INTC · QCOM · AVGO · MRVL · MediaTek · MBLY · SNPS · CDNS · ARM |
+| 반도체 — 메모리 (HBM·DRAM)   |  3 | 삼성전자 · SK하이닉스 · MU |
+| 반도체 — 파운드리 · 패키징 · 기판 | 3 | TSM · AMKR · Ibiden |
+| 반도체 — 장비 · 소재         | 10 | ASML · AMAT · LRCX · TOELY · KLAC · 한미반도체 · Advantest · DISCO · BESI · Shin-Etsu |
+| AI 인프라 — 네트워킹 · 광 · 네오클라우드 | 5 | ANET · COHR · MPWR · CRWV · NBIS |
+| 로보틱스 / 피지컬 AI         |  5 | TER · HSAI · MP · FANUC · Harmonic Drive |
 | 자동차 / 모빌리티            | 10 | TSLA · TM · F · GM · STLA · HMC · RIVN · NIO · 현대차 · 기아 |
 | 바이오 / 제약 / 헬스케어     | 10 | LLY · NVO · JNJ · PFE · MRK · ABBV · AZN · UNH · TMO · ABT |
 | 에너지 / 원자재              | 10 | XOM · CVX · COP · SHEL · OXY · SLB · FCX · NEM · LIN · APD |
 | 금융                          | 10 | JPM · BAC · WFC · C · GS · MS · V · MA · AXP · BRK-B |
 | 소비재                        | 10 | WMT · COST · KO · PEP · PG · MO · MCD · HD · NKE · SBUX |
-| 산업재 / 방산                 | 10 | CAT · DE · BA · LMT · RTX · NOC · HON · GE · UPS · FDX |
+| 산업재 / 방산                 | 14 | CAT · DE · BA · LMT · RTX · NOC · HON · GE · UPS · FDX · AVAV · KTOS · 한화에어로스페이스 · LIG넥스원 |
 | 부동산 (REITs)                | 10 | AMT · CCI · PLD · EQIX · DLR · O · SPG · WELL · PSA · VICI |
 | 통신 / 미디어                 | 10 | VZ · T · TMUS · CMCSA · CHTR · NFLX · DIS · SPOT · EA · TTWO |
 | 유틸리티 / 전력               | 10 | NEE · SO · DUK · AEP · EXC · CEG · VST · SRE · ED · D |
@@ -403,19 +408,19 @@ valuation gap, watchlist 내 경쟁사 비교, daily-market-analysis 루틴이 �
 
 ### 요일별 라운드로빈 (daily routine)
 
-watchlist 가 131 종목으로 늘어 하루에 다 처리하면 부담이 크므로, daily routine 은
+watchlist 가 155 종목으로 늘어 하루에 다 처리하면 부담이 크므로, daily routine 은
 요일별로 섹터를 나눠서 처리한다. 매핑은 `scripts/watchlist_data.py` 의
 `DAY_OF_WEEK_SECTORS` 에 정의되어 있다:
 
 | 요일 | 처리 섹터 | 종목 수 |
 |---|---|---|
-| 월요일 | 빅테크 / 소프트웨어 | 10 |
-| 화요일 | 반도체 | 10 |
-| 수요일 | 자동차 / 모빌리티 + 조선 (한국) | 14 |
+| 월요일 | 빅테크 / 소프트웨어 + AI 인프라 (네트워킹·광·네오클라우드) | 15 |
+| 화요일 | 반도체 4개 그룹 (AI 칩·설계 / 메모리 / 파운드리·패키징 / 장비·소재) | 27 |
+| 수요일 | 로보틱스 / 피지컬 AI + 자동차 / 모빌리티 + 조선 (한국) | 19 |
 | 목요일 | 바이오 / 제약 / 헬스케어 | 10 |
 | 금요일 | 에너지 / 원자재 + 유틸리티 / 전력 + 전력 인프라 (AI) | 30 |
 | 토요일 | 금융 + 부동산 (REITs) | 20 |
-| 일요일 | 소비재 + 산업재 / 방산 + 통신 / 미디어 | 30 |
+| 일요일 | 소비재 + 산업재 / 방산 + 통신 / 미디어 | 34 |
 
 7일에 한 번 모든 종목이 한 바퀴 도는 구조다. 가격·재무 데이터(`update.yml`)
 는 여전히 주 1회 일괄 수집한다 — 가벼우므로.

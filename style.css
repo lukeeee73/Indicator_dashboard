@@ -1651,7 +1651,9 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .pm-title p { margin: 0.15rem 0 0; font-size: 0.72rem; color: var(--text-dim); line-height: 1.4; }
 .pm-asof { opacity: 0.8; white-space: nowrap; }
 
-.pm-layout { display: grid; grid-template-columns: 1fr 320px; gap: 1rem; align-items: stretch; flex: 1; min-height: 0; }
+/* flex-shrink 0 — 아래에 인라인 노트(#pm-note)가 붙어도 보드가 눌리며 노트 위로
+   넘치지 않게 한다 (오버레이 자체가 세로 스크롤을 담당). */
+.pm-layout { display: grid; grid-template-columns: 1fr 320px; gap: 1rem; align-items: stretch; flex: 1 0 auto; min-height: 0; }
 
 /* 캔버스 — 시장 지도와 같은 점 그리드 배경 + 드래그 패닝 */
 .pm-board-wrap {
@@ -2523,3 +2525,43 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .wn-wikilink:hover { background: var(--red-dim); }
 .wn-loading, .wn-error { color: var(--text-dim); font-size: 0.85rem; }
 .wn-error { color: var(--red-bright); }
+
+/* ── 인라인 옵시디언 노트 (지도 아래 바로 펼쳐 읽기) ─────────────────── */
+/* 시장 지도의 시장 종합 노트(#mc-note)와 플레이어 지도의 기업 뉴스 로그
+   (#pm-note)가 공유한다. 본문 타이포그래피는 .wn-body 를 재사용. */
+.wn-inline {
+  border: 1px solid var(--border-mid);
+  border-radius: 10px;
+  background: var(--bg-elev);
+  overflow: hidden;
+}
+.wn-inline[hidden] { display: none; }
+.wn-inline-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 1rem 0.55rem;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-elev) 82%, var(--text) 4%);
+}
+.wn-inline-head h4 { margin: 0; font-size: 0.95rem; }
+.wn-inline-kind {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  border: 1px solid var(--border-mid);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  white-space: nowrap;
+}
+.wn-inline-meta { margin-left: auto; font-size: 0.75rem; color: var(--text-dim); }
+.wn-inline-meta a { color: inherit; }
+.wn-inline-body {
+  max-height: 62vh;
+  overflow-y: auto;
+  padding: 0.3rem 1.1rem 0.9rem;
+}
+.wn-deadlink { opacity: 0.55; cursor: default; text-decoration: line-through; }
+.mc-note { margin-top: 0.2rem; }
+.pm-note { margin-top: 0.1rem; flex: 0 0 auto; }  /* flex 압축 방지 — 본문 높이 유지 */

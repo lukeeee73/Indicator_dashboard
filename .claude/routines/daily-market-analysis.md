@@ -30,26 +30,32 @@
 
 ## 0. 요일별 섹터 라운드로빈
 
-watchlist 가 113 종목(12 섹터)으로 커졌으므로, 한 번에 전부 처리하지 않고
+watchlist 가 155 종목(18 섹터)으로 커졌으므로, 한 번에 전부 처리하지 않고
 **요일별로 배정된 섹터만** 처리한다. 매핑은 `scripts/watchlist_data.py` 의
 `DAY_OF_WEEK_SECTORS` 에 정의되어 있다 (월=0, ..., 일=6):
 
 | 요일 | 처리 섹터 | 종목 수 |
 |---|---|---|
-| 월요일 | 빅테크 / 소프트웨어 | 10 |
-| 화요일 | 반도체, 로보틱스 / 피지컬 AI | 10 + 3 |
-| 수요일 | 자동차 / 모빌리티, 조선 (한국) | 10 + 3 |
+| 월요일 | 빅테크 / 소프트웨어, AI 인프라 — 네트워킹 · 광 · 네오클라우드 | 10 + 5 |
+| 화요일 | 반도체 — AI 칩 · 설계, 메모리 (HBM·DRAM), 파운드리 · 패키징 · 기판, 장비 · 소재 | 11 + 3 + 3 + 10 |
+| 수요일 | 로보틱스 / 피지컬 AI, 자동차 / 모빌리티, 조선 (한국) | 5 + 10 + 4 |
 | 목요일 | 바이오 / 제약 / 헬스케어 | 10 |
-| 금요일 | 에너지 / 원자재, 유틸리티 / 전력 | 10 + 10 |
+| 금요일 | 에너지 / 원자재, 유틸리티 / 전력, 전력 인프라 (AI) | 10 + 10 + 10 |
 | 토요일 | 금융, 부동산 (REITs) | 10 + 10 |
 | 일요일 | 소비재, 산업재 / 방산, 통신 / 미디어 | 10 + 14 + 10 |
 
 > **이 표는 `scripts/watchlist_data.py` 의 `DAY_OF_WEEK_SECTORS` 와 항상
 > 일치해야 한다.** 둘이 어긋나면 코드(watchlist_data.py)를 진실로 본다.
 
-**13개 섹터 그룹** (`GROUPS`): 빅테크 / 소프트웨어, 반도체, 로보틱스 / 피지컬 AI, 자동차 / 모빌리티,
+**18개 섹터 그룹** (`GROUPS`): 빅테크 / 소프트웨어, 반도체 — AI 칩 · 설계,
+반도체 — 메모리 (HBM·DRAM), 반도체 — 파운드리 · 패키징 · 기판, 반도체 — 장비 · 소재,
+AI 인프라 — 네트워킹 · 광 · 네오클라우드, 로보틱스 / 피지컬 AI, 자동차 / 모빌리티,
 바이오 / 제약 / 헬스케어, 에너지 / 원자재, 금융, 소비재, 산업재 / 방산,
-부동산 (REITs), 통신 / 미디어, 유틸리티 / 전력, 조선 (한국).
+부동산 (REITs), 통신 / 미디어, 유틸리티 / 전력, 전력 인프라 (AI), 조선 (한국).
+
+> 반도체 4개 그룹 + AI 인프라 그룹의 종목 구성은 **AI·반도체 시장지도**
+> (`data/markets/ai-semiconductor.json`)의 시장 노드 플레이어와 1:1 로 동기화한다.
+> 시장지도에 새 플레이어가 추가되면 watchlist 에도 추가하고 `in_watchlist` 를 켠다.
 
 **실행 시 흐름:**
 
@@ -270,7 +276,7 @@ risks / news_count / competitor_context / history) 를 최신 뉴스로 갱신�
 
 ### 6. Luke_wiki 갱신
 
-`Luke_wiki/wiki/news/{TICKER} - {Company}.md` 의 다음 섹션을 갱신
+`Luke_wiki/wiki/news/tickers/{TICKER} - {Company}.md` 의 다음 섹션을 갱신
 (파일명은 티커 + 공백·하이픈·공백 + 정식 회사명, 예:
 `XOM - Exxon Mobil Corporation.md`, `000270.KS - Kia Corporation.md`):
 
@@ -293,10 +299,36 @@ frontmatter 의 `updated` 를 오늘 날짜로 갱신한다.
 - watchlist 가 늘었는데 dashboard 에 행이 없다면 해당 섹터 그룹 헤더 아래에
   새 행을 추가.
 
-> 종목 파일이 없으면 (`wiki/news/{TICKER} - {Company}.md` 미생성) 기존
-> 파일(예: `AAPL - Apple Inc..md`) 의 구조를 복사해서 새로 만든다.
+> 종목 파일이 없으면 (`wiki/news/tickers/{TICKER} - {Company}.md` 미생성) 기존
+> 파일(예: `AAPL - Apple Inc.md`) 의 구조를 복사해서 새로 만든다.
 > frontmatter 의 `tags` 에 `[routine-news, watchlist, {TICKER}]`,
 > `type: claim`, `confidence: low` 를 포함한다 (사람-작성 영역과 구분).
+> **같은 티커의 파일을 두 개 만들지 않는다** — 회사명 표기가 달라도 기존
+> 티커 파일 하나를 갱신한다.
+
+### 6.5 시장 노드 종합 파일 갱신 (`wiki/news/markets/`) — 정확성 중심
+
+오늘 처리한 종목이 속한 **시장지도 노드의 종합 페이지**를 갱신한다.
+파일 경로 계약: `Luke_wiki/wiki/news/markets/{map_id}/{market_id}.md`
+(현재 운영: `ai-semiconductor/` — 대시보드에서 시장 노드를 클릭하면 이 파일이 지도 아래에 표시된다).
+
+1. `data/markets/ai-semiconductor.json` 의 `markets[].players[]` 에서
+   **오늘 처리한 티커가 플레이어로 등장하는 시장 노드**를 모두 찾는다
+   (한 종목이 여러 노드에 속할 수 있다 — 예: 삼성전자는 hbm·dram-nand·foundry·edge-smartphone).
+2. 각 해당 파일의 `<!-- PLAYERS_START/END -->` 사이 [소속 기업 동향] 표에서
+   그 티커 행의 **최근 시그널 (score, as_of)** 과 **핵심 한 줄**을 갱신한다.
+   - 값은 방금 갱신한 티커 로그·`_dashboard.md` 와 **정확히 일치**해야 한다
+     (여기서 새로 요약을 창작하지 않는다 — 티커 로그가 원본).
+3. 오늘 뉴스 중 **시장 전체 구조에 관한 사실**이 Tier-1 2곳 이상으로 확정되면
+   `<!-- FACTS_START/END -->` 의 [사실 누적]에 `[!fact]` 로 추가한다 (출처 명시).
+4. frontmatter `updated` 를 오늘 날짜로 갱신한다.
+
+**건드리지 않는 것** (market-research 루틴 몫): [시장 정의], [병목 상태],
+[시장 상황 종합](`SYNTHESIS`), [시장 뉴스 로그](`MARKET_NEWS`).
+
+> **정확성 규칙**: 이 파일은 판단이 아니라 **종합**이다. 출처 URL 없는 문장을
+> 쓰지 않고, 티커 로그·지도 JSON 과 어긋나는 수치를 만들지 않는다. 확신이
+> 없으면 비워두는 쪽을 택한다.
 
 ---
 

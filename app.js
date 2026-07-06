@@ -222,21 +222,49 @@ const STOCK_META = {
   ADBE: { displayName: "Adobe", fullName: "Adobe Inc.", group: "빅테크 / 소프트웨어", sector: "크리에이티브 소프트웨어", color: "#ff0000", decimals: 2, currency: "USD", business: "포토샵·일러스트레이터·PDF(Acrobat) 절대 강자. 디자이너·마케터 표준 도구. 구독 전환 성공 사례." },
   IBM: { displayName: "IBM", fullName: "International Business Machines", group: "빅테크 / 소프트웨어", sector: "전통 엔터프라이즈 IT", color: "#0530ad", decimals: 2, currency: "USD", business: "100년+ 역사의 엔터프라이즈 IT. 메인프레임·컨설팅(IBM Consulting)·하이브리드 클라우드(Red Hat 인수)." },
   PLTR: { displayName: "Palantir", fullName: "Palantir Technologies Inc.", group: "빅테크 / 소프트웨어", sector: "정부·기업 데이터 분석 SW", color: "#cbd5e1", decimals: 2, currency: "USD", business: "정부·기업 데이터 분석 SW. 미국 국방·정보기관 핵심 공급사. AI 플랫폼 AIP 로 민간 확장 중." },
-  // ── 반도체 ─────────────────────────────────────
-  NVDA: { displayName: "NVIDIA", fullName: "NVIDIA Corporation", group: "반도체", sector: "AI 학습용 GPU 사실상 독점", color: "#76b900", decimals: 2, currency: "USD", business: "AI 학습용 GPU 시장 점유율 90%+. 매출 80% 이상이 데이터센터. ChatGPT 이후 AI 인프라 투자 최대 수혜주." },
-  AMD: { displayName: "AMD", fullName: "Advanced Micro Devices", group: "반도체", sector: "CPU + GPU 종합 반도체", color: "#ed1c24", decimals: 2, currency: "USD", business: "CPU·GPU 동시 공급. NVIDIA 의 거의 유일한 AI 칩 경쟁자. 서버 CPU(EPYC)로 Intel 점유율 잠식 중." },
-  INTC: { displayName: "Intel", fullName: "Intel Corporation", group: "반도체", sector: "x86 CPU 전통 강자", color: "#0071c5", decimals: 2, currency: "USD", business: "x86 CPU 전통 절대강자였으나 AMD·ARM 에 밀려 점유율 하락. 미국 정부 CHIPS 보조금 최대 수혜자." },
-  QCOM: { displayName: "Qualcomm", fullName: "QUALCOMM Incorporated", group: "반도체", sector: "스마트폰 모뎀·SoC 1위", color: "#3253dc", decimals: 2, currency: "USD", business: "스마트폰 통신 모뎀·AP(Snapdragon) 글로벌 1위. 안드로이드 진영 핵심. 자동차·IoT 로 확장." },
-  TSM: { displayName: "TSMC", fullName: "Taiwan Semiconductor Mfg.", group: "반도체", sector: "세계 1위 파운드리 (위탁생산)", color: "#d11919", decimals: 2, currency: "USD", business: "세계 1위 반도체 파운드리. 애플·NVIDIA·AMD 핵심 칩을 거의 다 제조. 3nm 이하 첨단공정 사실상 독점." },
-  ASML: { displayName: "ASML", fullName: "ASML Holding N.V.", group: "반도체", sector: "노광장비 (EUV) 글로벌 독점", color: "#0091da", decimals: 2, currency: "USD", business: "반도체 미세공정의 핵심 노광장비 (EUV) 글로벌 독점 (네덜란드). 1대 약 4억 달러. 한국·대만·중국이 큰 고객." },
-  AMAT: { displayName: "Applied Materials", fullName: "Applied Materials, Inc.", group: "반도체", sector: "반도체 장비 종합 1위", color: "#0095da", decimals: 2, currency: "USD", business: "반도체 장비 종합 1위 (식각·증착 등). 메모리·로직 모든 공정에 폭넓게 공급. 반도체 capex 사이클의 거울." },
-  LRCX: { displayName: "Lam Research", fullName: "Lam Research Corp.", group: "반도체", sector: "반도체 장비 (식각·증착)", color: "#10b981", decimals: 2, currency: "USD", business: "반도체 식각·증착 장비 강자. 메모리(DRAM·NAND) 공정에 특히 강세. 한국 삼성·SK 가 큰 고객." },
-  AVGO: { displayName: "Broadcom", fullName: "Broadcom Inc.", group: "반도체", sector: "통신·네트워크 칩 + 인프라 SW", color: "#e60024", decimals: 2, currency: "USD", business: "통신·네트워크용 맞춤형 칩 + VMware 인수로 인프라 SW까지 확장. AI 데이터센터 네트워킹 핵심." },
-  MU: { displayName: "Micron", fullName: "Micron Technology, Inc.", group: "반도체", sector: "메모리 (DRAM·NAND) 3강", color: "#00a85b", decimals: 2, currency: "USD", business: "메모리(DRAM·NAND) 글로벌 3강(삼성·SK·마이크론). AI 가속기에 필수인 HBM(고대역폭 메모리) 시장 진입." },
+  // ── 반도체 — AI 칩 · 설계 ─────────────────────────────────────
+  NVDA: { displayName: "NVIDIA", fullName: "NVIDIA Corporation", group: "반도체 — AI 칩 · 설계", sector: "AI 학습용 GPU 사실상 독점", color: "#76b900", decimals: 2, currency: "USD", business: "AI 학습용 GPU 시장 점유율 90%+. 매출 80% 이상이 데이터센터. ChatGPT 이후 AI 인프라 투자 최대 수혜주." },
+  AMD: { displayName: "AMD", fullName: "Advanced Micro Devices", group: "반도체 — AI 칩 · 설계", sector: "CPU + GPU 종합 반도체", color: "#ed1c24", decimals: 2, currency: "USD", business: "CPU·GPU 동시 공급. NVIDIA 의 거의 유일한 AI 칩 경쟁자. 서버 CPU(EPYC)로 Intel 점유율 잠식 중." },
+  INTC: { displayName: "Intel", fullName: "Intel Corporation", group: "반도체 — AI 칩 · 설계", sector: "x86 CPU 전통 강자 + 파운드리 도전", color: "#0071c5", decimals: 2, currency: "USD", business: "x86 CPU 전통 절대강자였으나 AMD·ARM 에 밀려 점유율 하락. 파운드리(18A)·첨단 패키징으로 재기 시도. 미국 정부 CHIPS 보조금 최대 수혜자." },
+  QCOM: { displayName: "Qualcomm", fullName: "QUALCOMM Incorporated", group: "반도체 — AI 칩 · 설계", sector: "스마트폰 모뎀·SoC 프리미엄 1위", color: "#3253dc", decimals: 2, currency: "USD", business: "스마트폰 통신 모뎀·AP(Snapdragon) 프리미엄 1위. 안드로이드 진영 핵심. AI PC(Snapdragon X)·자동차(Ride)로 확장." },
+  AVGO: { displayName: "Broadcom", fullName: "Broadcom Inc.", group: "반도체 — AI 칩 · 설계", sector: "커스텀 AI ASIC 1위 (~60%)", color: "#e60024", decimals: 2, currency: "USD", business: "하이퍼스케일러 커스텀 AI ASIC 코디자인 1위 (Google·Meta·OpenAI) + 머천트 스위치 칩(Tomahawk) + VMware 인프라 SW. ASIC 시대의 최대 수혜." },
+  MRVL: { displayName: "Marvell", fullName: "Marvell Technology, Inc.", group: "반도체 — AI 칩 · 설계", sector: "커스텀 AI ASIC 2위 (~25%)", color: "#de3163", decimals: 2, currency: "USD", business: "하이퍼스케일러 커스텀 AI ASIC 코디자인 2위 (Amazon Trainium·Microsoft). 광 DSP·DPU·인터커넥트 실리콘 — Broadcom 과 함께 ASIC 양강." },
+  "2454.TW": { displayName: "MediaTek", fullName: "MediaTek Inc.", group: "반도체 — AI 칩 · 설계", sector: "모바일 AP 물량 1위 (~40%)", color: "#f7a600", decimals: 0, currency: "TWD", business: "스마트폰 AP-SoC 물량 세계 1위 (~40%, Dimensity). 온디바이스 AI 폰의 중저가 확산 축 + Google TPU v8 설계 참여설 등 ASIC 확장." },
+  MBLY: { displayName: "Mobileye", fullName: "Mobileye Global Inc.", group: "반도체 — AI 칩 · 설계", sector: "카메라 ADAS 칩 ~65%", color: "#0b67b2", decimals: 2, currency: "USD", business: "카메라 기반 ADAS 칩·SW 점유율 ~65% (Intel 자회사). EyeQ 칩 누적 출하 2억개 — 자율주행 L2+→L4 전환기 차량용 AI 칩의 기준 종목." },
+  SNPS: { displayName: "Synopsys", fullName: "Synopsys, Inc.", group: "반도체 — AI 칩 · 설계", sector: "EDA (설계 자동화 SW) 1위", color: "#5a2d81", decimals: 2, currency: "USD", business: "칩 설계 자동화(EDA) 1위 + 설계 IP 2위. Cadence 와 듀오폴리(합산 ~60%) — AI 칩 설계 복잡도 급증의 구조적 관문. 대중 수출통제 지렛대." },
+  CDNS: { displayName: "Cadence", fullName: "Cadence Design Systems", group: "반도체 — AI 칩 · 설계", sector: "EDA 2위 (Synopsys 와 양강)", color: "#d42e34", decimals: 2, currency: "USD", business: "EDA 양강. AI 기반 설계 자동화(Cerebrus)·검증·시뮬레이션 강자 — 커스텀 ASIC 붐과 칩 설계 스타트업 증가의 직접 수혜." },
+  ARM: { displayName: "Arm", fullName: "Arm Holdings plc", group: "반도체 — AI 칩 · 설계", sector: "CPU IP · ISA 사실상 표준", color: "#0091bd", decimals: 2, currency: "USD", business: "모바일 CPU IP ~99% + 서버·엣지로 확장 중인 ISA 표준. 칩이 팔릴 때마다 로열티를 수취하는 'toll booth' 모델. 소프트뱅크 지배." },
+  // ── 반도체 — 메모리 (HBM·DRAM) ─────────────────────────────────────
+  "005930.KS": { displayName: "삼성전자", fullName: "Samsung Electronics", group: "반도체 — 메모리 (HBM·DRAM)", sector: "메모리 1위 + 파운드리 + AP", color: "#1428a0", decimals: 0, currency: "KRW", business: "DRAM·NAND 세계 1위 종합 반도체. HBM4 Rubin 인증으로 SK 추격 + 파운드리 2nm GAA + 엑시노스 AP — 시장지도의 메모리·파운드리·AP 세 노드에 동시 등장하는 유일 기업." },
+  "000660.KS": { displayName: "SK하이닉스", fullName: "SK Hynix", group: "반도체 — 메모리 (HBM·DRAM)", sector: "HBM 세계 1위 (~62%)", color: "#ec1c24", decimals: 0, currency: "KRW", business: "HBM 점유율 ~62% 세계 1위 — HBM4 를 NVIDIA 에 최초 인증·양산. MR-MUF 적층 공정 수율 우위. AI 메모리 슈퍼사이클의 최대 수혜주. DRAM 2위 + Solidigm NAND." },
+  MU: { displayName: "Micron", fullName: "Micron Technology, Inc.", group: "반도체 — 메모리 (HBM·DRAM)", sector: "메모리 3강 · HBM ~21%", color: "#00a85b", decimals: 2, currency: "USD", business: "메모리(DRAM·NAND) 글로벌 3강. HBM 점유율 ~21%, ’26 물량 완판 — 미국 유일 메모리 제조사로 지정학 수혜." },
+  // ── 반도체 — 파운드리 · 패키징 · 기판 ─────────────────────────────────────
+  TSM: { displayName: "TSMC", fullName: "Taiwan Semiconductor Mfg.", group: "반도체 — 파운드리 · 패키징 · 기판", sector: "세계 1위 파운드리 + CoWoS 지배", color: "#d11919", decimals: 2, currency: "USD", business: "세계 1위 반도체 파운드리 (선단 ≤5nm 90%+). 애플·NVIDIA·AMD 핵심 칩을 거의 다 제조 + CoWoS 첨단 패키징 지배 — AI 칩 밸류체인의 단일 관문." },
+  AMKR: { displayName: "Amkor", fullName: "Amkor Technology, Inc.", group: "반도체 — 파운드리 · 패키징 · 기판", sector: "OSAT 2위 · 美 첨단 패키징 증설", color: "#e87722", decimals: 2, currency: "USD", business: "패키징·테스트 외주(OSAT) 세계 2위. TSMC CoWoS 오버플로 2차 공급 + 애리조나 첨단 패키징 공장 — 미국 내 패키징 리쇼어링의 핵심." },
+  "4062.T": { displayName: "Ibiden", fullName: "Ibiden Co., Ltd.", group: "반도체 — 파운드리 · 패키징 · 기판", sector: "최고급 ABF 기판 (NVIDIA 향)", color: "#1b5faa", decimals: 0, currency: "JPY", business: "AI 서버용 최고급 ABF 기판 양강 (NVIDIA 주공급). ’26 고급 ABF 공급부족 전환의 최대 수혜 — 기판이 패키징 다음의 2차 병목." },
+  // ── 반도체 — 장비 · 소재 ─────────────────────────────────────
+  ASML: { displayName: "ASML", fullName: "ASML Holding N.V.", group: "반도체 — 장비 · 소재", sector: "노광장비 (EUV) 글로벌 독점", color: "#0091da", decimals: 2, currency: "USD", business: "반도체 미세공정의 핵심 노광장비 (EUV/High-NA) 글로벌 100% 독점 (네덜란드). 전 밸류체인에서 구조적으로 가장 단단한 병목. 1대 약 4억 달러." },
+  AMAT: { displayName: "Applied Materials", fullName: "Applied Materials, Inc.", group: "반도체 — 장비 · 소재", sector: "반도체 장비 종합 1위", color: "#0095da", decimals: 2, currency: "USD", business: "반도체 장비 종합 1위 (식각·증착 등). 메모리·로직 모든 공정에 폭넓게 공급. 반도체 capex 사이클의 거울." },
+  LRCX: { displayName: "Lam Research", fullName: "Lam Research Corp.", group: "반도체 — 장비 · 소재", sector: "반도체 장비 (식각·증착)", color: "#10b981", decimals: 2, currency: "USD", business: "반도체 식각·증착 장비 강자. 메모리(DRAM·NAND)·HBM TSV 공정에 특히 강세. 한국 삼성·SK 가 큰 고객." },
+  TOELY: { displayName: "Tokyo Electron", fullName: "Tokyo Electron Limited", group: "반도체 — 장비 · 소재", sector: "일본 1위 장비 (코터 독점)", color: "#9e1b32", decimals: 2, currency: "USD", business: "일본 1위 반도체 장비. EUV 포토레지스트 코터/디벨로퍼 사실상 독점 + 식각·증착. 글로벌 WFE 4강 (ADR)." },
+  KLAC: { displayName: "KLA", fullName: "KLA Corporation", group: "반도체 — 장비 · 소재", sector: "계측·검사 ~74% 준독점", color: "#0067b1", decimals: 2, currency: "USD", business: "계측·검사 장비 ~74% 준독점. AI 칩 복잡도·수율 비용 상승의 구조적 수혜 — GAA·HBM 수율 전쟁의 무기상." },
+  "042700.KS": { displayName: "한미반도체", fullName: "Hanmi Semiconductor", group: "반도체 — 장비 · 소재", sector: "HBM TC 본더 세계 1위", color: "#0aa5c2", decimals: 0, currency: "KRW", business: "HBM 적층용 TC 본더 세계 1위 — SK하이닉스·마이크론 공급. 적층 수율(=HBM 병목)의 심장인 본딩 장비를 쥔 국내 최대 수혜 장비주." },
+  "6857.T": { displayName: "Advantest", fullName: "Advantest Corporation", group: "반도체 — 장비 · 소재", sector: "반도체 테스터 세계 1위", color: "#e8380d", decimals: 0, currency: "JPY", business: "반도체 테스터 세계 1위 (Teradyne 과 양강). HBM 스택 전수 테스트 + AI SoC 테스트 시간 증가가 구조적 순풍." },
+  "6146.T": { displayName: "DISCO", fullName: "DISCO Corporation", group: "반도체 — 장비 · 소재", sector: "그라인더·다이서 독점적 1위", color: "#2f7d32", decimals: 0, currency: "JPY", business: "웨이퍼를 얇게 갈고(그라인더) 자르는(다이서) 장비 70~80% 독점적 1위. HBM 12·16단 적층의 초박형 다이 가공 필수 — 첨단 패키징의 숨은 관문." },
+  "BESI.AS": { displayName: "BESI", fullName: "BE Semiconductor Industries", group: "반도체 — 장비 · 소재", sector: "하이브리드 본딩 장비 선두", color: "#7a3ea8", decimals: 2, currency: "EUR", business: "어드밴스드 패키징용 하이브리드 본딩 장비 선두 (Applied Materials 제휴). HBM4E·SoIC 세대의 칩렛 적층 전환 수혜 — 유럽 소형 강자." },
+  "4063.T": { displayName: "Shin-Etsu", fullName: "Shin-Etsu Chemical", group: "반도체 — 장비 · 소재", sector: "실리콘 웨이퍼 1위 + 레지스트", color: "#b5121b", decimals: 0, currency: "JPY", business: "실리콘 웨이퍼 세계 1위 (SUMCO 와 듀오폴리) + 포토레지스트 강자. 소재 노드의 지정학 리스크(일본 >90% 집중)를 대표하는 종목." },
+  // ── AI 인프라 — 네트워킹 · 광 · 네오클라우드 ─────────────────────────────────────
+  ANET: { displayName: "Arista", fullName: "Arista Networks, Inc.", group: "AI 인프라 — 네트워킹 · 광 · 네오클라우드", sector: "AI 이더넷 스위치 1위", color: "#2a5caa", decimals: 2, currency: "USD", business: "데이터센터 이더넷 스위치 1위권 (~19%). AI 백엔드 네트워크의 이더넷 전환(InfiniBand 대체) 최대 수혜 — 하이퍼스케일러가 주고객." },
+  COHR: { displayName: "Coherent", fullName: "Coherent Corp.", group: "AI 인프라 — 네트워킹 · 광 · 네오클라우드", sector: "광 트랜시버·CPO 수직통합", color: "#00a870", decimals: 2, currency: "USD", business: "800G/1.6T 광 트랜시버 수직통합 강자 + NVIDIA CPO 파트너. GPU 클러스터 확장의 병목이 구리→광으로 이동하는 국면의 수혜." },
+  MPWR: { displayName: "Monolithic Power", fullName: "Monolithic Power Systems", group: "AI 인프라 — 네트워킹 · 광 · 네오클라우드", sector: "GPU 전력전달 'last inch'", color: "#0a66a0", decimals: 2, currency: "USD", business: "고밀도 전원관리 반도체(PMIC) 강자. GPU 랙 전력밀도 급증(랙 100kW→MW급)의 'last inch' 전력전달 — NVIDIA 전력 체인 핵심." },
+  CRWV: { displayName: "CoreWeave", fullName: "CoreWeave, Inc.", group: "AI 인프라 — 네트워킹 · 광 · 네오클라우드", sector: "네오클라우드 1위", color: "#6b46c1", decimals: 2, currency: "USD", business: "최대 독립 GPU 클라우드 — 계약 잔고 $99B+. NVIDIA 앵커 투자 + MS·OpenAI 대형 계약. GPU 담보 부채의 순환금융 구조가 핵심 리스크." },
+  NBIS: { displayName: "Nebius", fullName: "Nebius Group N.V.", group: "AI 인프라 — 네트워킹 · 광 · 네오클라우드", sector: "네오클라우드 2위권", color: "#00a8a8", decimals: 2, currency: "USD", business: "구 Yandex 분할 네오클라우드. Meta $27B·MS 계약으로 잔고 ~$50B, 계약전력 3GW+ — 'GPU 확보전 → 전력 전쟁' 국면의 선두권." },
   // ── 로보틱스 / 피지컬 AI ─────────────────────────────────────
   TER: { displayName: "TER", fullName: "Teradyne, Inc.", group: "로보틱스 / 피지컬 AI", sector: "반도체 테스트 + 협동로봇", color: "#e31837", decimals: 2, currency: "USD", business: "반도체 자동시험장비(ATE) 양강 + 협동로봇(Universal Robots)·자율이동로봇(MiR). AI 칩 테스트 수요와 피지컬 AI 양쪽에 걸친 이중 노출." },
   HSAI: { displayName: "HSAI", fullName: "Hesai Group", group: "로보틱스 / 피지컬 AI", sector: "라이다 출하 세계 1위", color: "#0084ff", decimals: 2, currency: "USD", business: "차량 ADAS·로보틱스용 라이다 출하 세계 1위(연 160만개+, 첫 흑자전환). 로봇향 출하 +400%대 폭증 — 휴머노이드·로보택시의 '눈'." },
   MP: { displayName: "MP", fullName: "MP Materials Corp.", group: "로보틱스 / 피지컬 AI", sector: "비중국 희토류·자석 수직계열화", color: "#b87333", decimals: 2, currency: "USD", business: "미국 유일 희토류 채굴(Mountain Pass)→정제→네오디뮴 자석 수직계열화. 美 국방부 지분 투자. 로봇 모터·액추에이터 핵심 소재 NdPr 자석의 비중국 대안." },
+  "6954.T": { displayName: "FANUC", fullName: "FANUC Corporation", group: "로보틱스 / 피지컬 AI", sector: "산업용 로봇 글로벌 1위권", color: "#e0b400", decimals: 0, currency: "JPY", business: "산업용 로봇·CNC 글로벌 1위권 (4강 합산 55%+). 공장 자동화의 기준 종목 — 중국 로컬 추월 압박 속 AI 코봇·피지컬 AI 통합이 반전 카드." },
+  "6324.T": { displayName: "Harmonic Drive", fullName: "Harmonic Drive Systems", group: "로보틱스 / 피지컬 AI", sector: "하모닉 감속기 세계 1위", color: "#4a7ab5", decimals: 0, currency: "JPY", business: "스트레인 웨이브(하모닉) 감속기 세계 1위. 휴머노이드 1대당 감속기·액추에이터 30~40개 — 로봇 구동부품 구조적 병목의 핵심 수혜." },
   // ── 자동차 / 모빌리티 ─────────────────────────────────────
   TSLA: { displayName: "Tesla", fullName: "Tesla Inc.", group: "자동차 / 모빌리티", sector: "전기차 + 에너지 + 자율주행", color: "#cc0000", decimals: 2, currency: "USD", business: "전기차 매출 위주. 에너지 저장(Megapack)·자율주행(FSD)·로봇(Optimus) 개발 중. CEO 일론 머스크 영향력 큼." },
   TM: { displayName: "Toyota", fullName: "Toyota Motor Corporation", group: "자동차 / 모빌리티", sector: "글로벌 1위 완성차", color: "#eb0a1e", decimals: 2, currency: "USD", business: "글로벌 판매량 1위 완성차 (일본). 하이브리드(프리우스) 강자. EV 전환은 상대적으로 보수적." },
@@ -361,8 +389,12 @@ const STOCK_META = {
 // 새 그룹을 추가하면 여기에도 한 줄 추가하여 카드 묶음 순서를 제어한다.
 const STOCK_GROUPS = [
   { key: "빅테크 / 소프트웨어", desc: "글로벌 시총 상위 빅테크 + 엔터프라이즈 소프트웨어. 광고·SaaS·DB 등 다양한 수익모델." },
-  { key: "반도체", desc: "AI·자동차·서버 등 전 산업의 'OPEC' 격. CPU·GPU·메모리·장비·파운드리 포함." },
-  { key: "로보틱스 / 피지컬 AI", desc: "휴머노이드·산업로봇·자율 시스템과 그 부품(라이다·희토류 자석·로봇 테스트). 피지컬 AI 시대의 곡괭이와 삽." },
+  { key: "반도체 — AI 칩 · 설계", desc: "GPU·커스텀 ASIC·모바일 AP·자율주행 SoC 를 설계하는 팹리스/IDM + 설계의 관문인 EDA·IP. 시장지도 'AI 컴퓨팅'과 '최종 수요(엣지)' 층." },
+  { key: "반도체 — 메모리 (HBM·DRAM)", desc: "HBM·DRAM·NAND 3강. AI 가속기의 1순위 병목인 HBM 적층 경쟁과 범용 메모리 슈퍼사이클." },
+  { key: "반도체 — 파운드리 · 패키징 · 기판", desc: "칩을 실제로 만드는 제조 기반 — 첨단 파운드리(≤3nm)·CoWoS 패키징(OSAT)·ABF 기판. 시장지도 '제조 기반' 층." },
+  { key: "반도체 — 장비 · 소재", desc: "공급의 뿌리(picks & shovels) — EUV 노광·식각/증착·계측 전공정 장비 + HBM 본더·테스터·다이서 후공정 장비 + 웨이퍼/레지스트 소재." },
+  { key: "AI 인프라 — 네트워킹 · 광 · 네오클라우드", desc: "GPU 를 잇는 스위치·광모듈, 칩까지 전력을 전달하는 전력반도체, GPU 컴퓨트를 임대하는 네오클라우드 — 시장지도 '자본 엔진'과 부품 층의 신흥 계층." },
+  { key: "로보틱스 / 피지컬 AI", desc: "휴머노이드·산업로봇·자율 시스템과 그 부품(감속기·라이다·희토류 자석·로봇 테스트). 피지컬 AI 시대의 곡괭이와 삽." },
   { key: "자동차 / 모빌리티", desc: "내연기관·EV·자율주행 전환기. 기존 완성차 + 신규 진입자 + 한국 빅2." },
   { key: "바이오 / 제약 / 헬스케어", desc: "글로벌 시총 상위 제약 + 의료기기/진단 + 의료보험. 인구 고령화 장기 수혜." },
   { key: "에너지 / 원자재", desc: "원유·가스·구리·금·산업용가스 등 실물 자산. 인플레이션·달러 약세 국면 방어주." },
@@ -1745,6 +1777,7 @@ function mcSwitchMap(mapId) {
   MC_STATE.fitted = false;
   const detail = document.getElementById("vc-detail");
   if (detail) detail.innerHTML = `<p class="vc-detail-hint">시장 노드를 클릭하면 상세 정보가 표시됩니다.</p>`;
+  mcHideMarketNote();
   renderMarketCascade(MC_STATE.stocks || {});
 }
 
@@ -2661,6 +2694,40 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
   const pb = host.querySelector(".pm-open-btn[data-pm]");
   if (pb) pb.addEventListener("click", () => pmOpen(pb.dataset.pm));
   mcFillWikiSlot(host.querySelector(".mc-wiki"), m.wiki, m.players);
+  mcRenderMarketNote(m);
+}
+
+// ── 시장 노드 종합 노트 (지도 아래 인라인) ─────────────────────────────
+// 루틴이 관리하는 luke_wiki 의 시장 노드별 종합 페이지
+// (wiki/news/markets/{map_id}/{market_id}.md — 시장 정의·병목·기업 동향·뉴스 로그)
+// 를 노드 선택 시 지도 아래에 바로 펼쳐 보여준다. 파일이 없는 지도(전력·바이오)는 숨김.
+
+let MC_NOTE_REQ = 0;
+
+async function mcRenderMarketNote(m) {
+  const host = document.getElementById("mc-note");
+  if (!host) return;
+  const req = ++MC_NOTE_REQ;
+  const graph = await wnLoadGraph();
+  if (req !== MC_NOTE_REQ || !host.isConnected) return;  // 그 사이 다른 노드 선택
+  const idx = graph ? wnNodeByPath(`wiki/news/markets/${MC_STATE.mapId}/${m.id}.md`) : -1;
+  if (idx < 0) { mcHideMarketNote(); return; }
+  await wnFillInlineNote(host, idx, { kind: "시장 종합 노트 (루틴 관리)", title: `${m.name_kr} — 시장 종합` });
+  wnScrollNoteIntoView(host);
+}
+
+// 노트가 화면 밖(아래)이면 읽을 위치로 데려간다 — 이미 보이면 건드리지 않는다
+function wnScrollNoteIntoView(host) {
+  if (!host || host.hidden || !host.isConnected) return;
+  const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+  const top = host.getBoundingClientRect().top;
+  if (top >= 0 && top < vh * 0.7) return;
+  host.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function mcHideMarketNote() {
+  const host = document.getElementById("mc-note");
+  if (host) { host.hidden = true; host.innerHTML = ""; }
 }
 
 // ── 옵시디언 위키 노트 연결 ─────────────────────────────────────────────
@@ -2820,13 +2887,50 @@ function pmRender() {
         </div>
       </div>
       <aside class="pm-detail" id="pm-detail">${pmMarketSummaryHtml()}</aside>
-    </div>`;
+    </div>
+    <section class="pm-note wn-inline" id="pm-note" hidden aria-label="옵시디언 노트"></section>`;
   host.querySelector("#pm-back").addEventListener("click", pmClose);
   host.querySelector("#pm-close").addEventListener("click", pmClose);
   host.querySelectorAll(".pm-player[data-id]").forEach((el) =>
     el.addEventListener("click", () => pmSelect(el.dataset.id)));
   pmWireCanvas();
   requestAnimationFrame(() => { pmFitZoom(); pmDrawLinks(); });
+  pmShowMarketNote();
+}
+
+// ── 플레이어 지도 아래 인라인 옵시디언 노트 ─────────────────────────────
+// 초기·선택해제 상태: 이 시장의 종합 노트. 기업 선택: 그 기업의 뉴스 로그.
+
+async function pmShowMarketNote() {
+  const host = document.getElementById("pm-note");
+  const m = PM_STATE.market;
+  if (!host || !m) return;
+  const graph = await wnLoadGraph();
+  if (!host.isConnected || PM_STATE.active) return;  // 그 사이 기업을 선택했으면 양보
+  const idx = graph ? wnNodeByPath(`wiki/news/markets/${MC_STATE.mapId}/${m.id}.md`) : -1;
+  if (idx < 0) { host.hidden = true; host.innerHTML = ""; return; }
+  wnFillInlineNote(host, idx, { kind: "시장 종합 노트 (루틴 관리)", title: `${m.name_kr} — 시장 종합` });
+}
+
+async function pmShowPlayerNote(p) {
+  const host = document.getElementById("pm-note");
+  if (!host || !p) return;
+  const graph = await wnLoadGraph();
+  if (!host.isConnected || PM_STATE.active !== p.id) return;  // 선택이 바뀌었으면 중단
+  const idx = graph && p.ticker ? wnNodeByTicker(p.ticker) : -1;
+  if (idx < 0) {
+    host.hidden = false;
+    host.innerHTML = `
+      <header class="wn-inline-head">
+        <span class="wn-inline-kind">기업 뉴스 로그</span>
+        <h4>${escapeHtml(p.name)}</h4>
+      </header>
+      <div class="wn-body wn-inline-body"><p class="wn-error">이 기업의 옵시디언 뉴스 로그가 아직 없습니다${p.ticker ? "" : " (비상장)"} — watchlist 편입 후 루틴이 생성합니다.</p></div>`;
+    wnScrollNoteIntoView(host);
+    return;
+  }
+  await wnFillInlineNote(host, idx, { kind: "기업 뉴스 로그 (루틴 관리)", title: `${p.name} — Routine News Log` });
+  if (PM_STATE.active === p.id) wnScrollNoteIntoView(host);
 }
 
 // 그룹 컬럼 (center 그룹은 강조)
@@ -2882,6 +2986,8 @@ function pmSelect(id) {
   });
   pmDrawActiveEdges(id);
   pmRenderDetail(id, suppliers, customers);
+  const p = (d.players || []).find((x) => x.id === id);
+  if (p) pmShowPlayerNote(p);
 }
 
 // 선택 해제 → 시장 요약으로 복귀
@@ -2897,6 +3003,7 @@ function pmClearSelect() {
   }
   const detail = document.getElementById("pm-detail");
   if (detail) detail.innerHTML = pmMarketSummaryHtml();
+  pmShowMarketNote();
 }
 
 // 우측 패널 초기 상태 — 이 세부 시장의 요약 (정의·병목·3사 점유율·읽는 법)
@@ -3515,21 +3622,49 @@ const PEER_COMPETITORS = {
   ADBE: ["MSFT", "CRM"],
   IBM: ["MSFT", "ORCL"],
   PLTR: ["MSFT", "ORCL", "IBM"],
-  // ── 반도체 ─────────────────────────────────────
+  // ── 반도체 — AI 칩 · 설계 ─────────────────────────────────────
   NVDA: ["AMD", "AVGO", "TSM", "INTC"],
   AMD: ["NVDA", "INTC", "AVGO", "TSM"],
   INTC: ["AMD", "TSM", "QCOM"],
-  QCOM: ["INTC", "AVGO", "TSM", "MU"],
-  TSM: ["NVDA", "INTC", "AVGO", "AMD"],
-  ASML: ["AMAT", "LRCX"],
-  AMAT: ["LRCX", "ASML"],
-  LRCX: ["AMAT", "ASML"],
-  AVGO: ["NVDA", "AMD", "QCOM", "TSM"],
-  MU: ["INTC", "AVGO", "QCOM"],
+  QCOM: ["2454.TW", "INTC", "AVGO", "MU"],
+  AVGO: ["MRVL", "NVDA", "AMD", "QCOM"],
+  MRVL: ["AVGO", "NVDA", "AMD", "ANET"],
+  "2454.TW": ["QCOM", "005930.KS", "AAPL"],
+  MBLY: ["NVDA", "QCOM", "TSLA", "HSAI"],
+  SNPS: ["CDNS", "ARM"],
+  CDNS: ["SNPS", "ARM"],
+  ARM: ["SNPS", "CDNS", "INTC", "AMD"],
+  // ── 반도체 — 메모리 (HBM·DRAM) ─────────────────────────────────────
+  "005930.KS": ["000660.KS", "MU", "TSM", "INTC"],
+  "000660.KS": ["005930.KS", "MU"],
+  MU: ["000660.KS", "005930.KS", "INTC"],
+  // ── 반도체 — 파운드리 · 패키징 · 기판 ─────────────────────────────────────
+  TSM: ["005930.KS", "INTC", "AMKR"],
+  AMKR: ["TSM", "INTC"],
+  "4062.T": ["AMKR"],
+  // ── 반도체 — 장비 · 소재 ─────────────────────────────────────
+  ASML: ["AMAT", "LRCX", "KLAC", "TOELY"],
+  AMAT: ["LRCX", "ASML", "KLAC", "TOELY"],
+  LRCX: ["AMAT", "ASML", "KLAC", "TOELY"],
+  TOELY: ["AMAT", "LRCX", "ASML", "KLAC"],
+  KLAC: ["AMAT", "LRCX", "ASML", "TOELY"],
+  "042700.KS": ["BESI.AS", "6857.T"],
+  "6857.T": ["TER", "042700.KS"],
+  "6146.T": ["042700.KS", "BESI.AS"],
+  "BESI.AS": ["042700.KS", "AMAT"],
+  "4063.T": ["4062.T", "TOELY"],
+  // ── AI 인프라 — 네트워킹 · 광 · 네오클라우드 ─────────────────────────────────────
+  ANET: ["AVGO", "NVDA", "MRVL"],
+  COHR: ["AVGO", "MRVL"],
+  MPWR: [],
+  CRWV: ["NBIS", "ORCL", "AMZN", "MSFT"],
+  NBIS: ["CRWV", "ORCL"],
   // ── 로보틱스 / 피지컬 AI ─────────────────────────────────────
-  TER: ["AMAT", "LRCX"],
-  HSAI: [],
+  TER: ["6857.T", "AMAT", "LRCX"],
+  HSAI: ["MBLY"],
   MP: ["FCX", "NEM"],
+  "6954.T": ["TER"],
+  "6324.T": ["TER"],
   // ── 자동차 / 모빌리티 ─────────────────────────────────────
   TSLA: ["GM", "F", "RIVN", "NIO"],
   TM: ["GM", "F", "HMC", "STLA"],
@@ -5145,6 +5280,9 @@ function wnRenderMarkdown(md) {
   }
   // HTML 주석(<!-- ... -->)은 표시하지 않는다 — 노트의 관리용 마커
   md = md.replace(/<!--[\s\S]*?-->/g, "");
+  // vault 내부 상대 링크는 공백을 %20 으로 — CommonMark 는 괄호 안 공백을
+  // 링크 목적지로 인식하지 않으므로 (예: [MU](../tickers/MU - Micron.md))
+  md = md.replace(/\]\(([^)\n]*?\.md)\)/g, (mm, p) => `](${p.replace(/ /g, "%20")})`);
   // 노트 속 원시 HTML 은 실행하지 않고 텍스트로 취급 (안전).
   // '>' 는 이스케이프하지 않는다 — 블록 인용(> ...)의 마크다운 문법이라서.
   const safe = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -5185,25 +5323,92 @@ async function wnOpenByIdx(idx, opts = {}) {
     const note = await res.json();
     body.innerHTML = wnRenderMarkdown(note.content || "");
     body.scrollTop = 0;
-    // 본문 속 위키링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
-    body.querySelectorAll(".wn-wikilink").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        const t = el.dataset.wikiTarget.toLowerCase();
-        const j = graph.nodes.findIndex((nn) =>
-          nn.title.toLowerCase() === t ||
-          nn.id.toLowerCase() === t ||
-          nn.id.toLowerCase().endsWith("/" + t));
-        if (j >= 0) {
-          if (opts.onNavigate) opts.onNavigate(j);
-          wnOpenByIdx(j, { onNavigate: opts.onNavigate });
-        }
-      });
+    // 본문 속 위키링크·상대 .md 링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
+    wnWireNoteLinks(body, n.path, (j) => {
+      if (opts.onNavigate) opts.onNavigate(j);
+      wnOpenByIdx(j, { onNavigate: opts.onNavigate });
     });
   } catch (err) {
     body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
       아직 노트 본문이 내보내지지 않았을 수 있어요 — 워크플로를 한 번 실행해 주세요.</p>`;
   }
+}
+
+// ── 노트 본문 내부 링크 연결 ────────────────────────────────────────────
+// [[위키링크]] 와 vault 상대 .md 링크(예: ../../tickers/MU - Micron.md)를
+// 노트 이동(open 콜백)으로 바꾼다. 외부 http(s) 링크는 그대로 둔다.
+
+function wnResolveRelPath(basePath, href) {
+  const base = basePath.split("/").slice(0, -1);
+  for (const part of decodeURIComponent(href).split("/")) {
+    if (!part || part === ".") continue;
+    if (part === "..") base.pop();
+    else base.push(part);
+  }
+  return base.join("/");
+}
+
+function wnWireNoteLinks(body, notePath, open) {
+  const graph = WN_STATE.graph;
+  if (!graph) return;
+  body.querySelectorAll(".wn-wikilink").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const t = el.dataset.wikiTarget.toLowerCase();
+      const j = graph.nodes.findIndex((nn) =>
+        nn.title.toLowerCase() === t ||
+        nn.id.toLowerCase() === t ||
+        nn.id.toLowerCase().endsWith("/" + t));
+      if (j >= 0) open(j);
+    });
+  });
+  body.querySelectorAll("a[href]").forEach((el) => {
+    const href = el.getAttribute("href") || "";
+    if (/^https?:/i.test(href) || !/\.md(#|$)/i.test(href)) return;
+    const j = wnNodeByPath(wnResolveRelPath(notePath, href.split("#")[0]));
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (j >= 0) open(j);
+    });
+    if (j < 0) el.classList.add("wn-deadlink");
+  });
+}
+
+// ── 인라인 노트 — 오버레이가 아니라 화면 흐름 안에 본문을 펼친다 ────────
+// 시장 지도(시장 노드 종합 노트)와 플레이어 지도(기업 뉴스 로그)가 사용.
+// host 는 .wn-inline 컨테이너. 반환값: 노트를 찾았는지 여부.
+
+async function wnFillInlineNote(host, idx, opts = {}) {
+  const graph = WN_STATE.graph;
+  if (!host || !graph || !graph.nodes[idx]) return false;
+  const n = graph.nodes[idx];
+  const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
+  const branch  = graph.branch || "main";
+  const gh = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
+    n.path.split("/").map(encodeURIComponent).join("/");
+  host.innerHTML = `
+    <header class="wn-inline-head">
+      <span class="wn-inline-kind">${escapeHtml(opts.kind || "옵시디언 노트")}</span>
+      <h4>${escapeHtml(opts.title || n.title)}</h4>
+      <span class="wn-inline-meta">${n.mtime ? `수정 ${escapeHtml(n.mtime)} · ` : ""}<a href="${gh}" target="_blank" rel="noopener">GitHub ↗</a></span>
+    </header>
+    <div class="wn-body wn-inline-body"><p class="wn-loading">불러오는 중…</p></div>`;
+  host.hidden = false;
+  const body = host.querySelector(".wn-inline-body");
+  try {
+    const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const note = await res.json();
+    if (!body.isConnected) return true;
+    body.innerHTML = wnRenderMarkdown(note.content || "");
+    // 인라인 본문 속 노트 링크는 오버레이 뷰어로 이어 읽는다
+    wnWireNoteLinks(body, n.path, (j) => wnOpenByIdx(j));
+  } catch (err) {
+    if (body.isConnected)
+      body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
+        위키 동기화 워크플로 실행 후 다시 시도해 주세요.</p>`;
+  }
+  return true;
 }
 
 async function renderWikiTab() {
