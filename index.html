@@ -235,6 +235,7 @@
       <nav class="sector-nav" data-country="STOCKS" role="tablist" aria-label="주식 섹션">
         <button class="sector-btn active" data-sector="indices"    role="tab" aria-selected="true">시장 지수</button>
         <button class="sector-btn"        data-sector="individual" role="tab" aria-selected="false">개별 종목</button>
+        <button class="sector-btn"        data-sector="valuepicks" role="tab" aria-selected="false">🎯 가치 발굴</button>
         <button class="sector-btn"        data-sector="valuechain" role="tab" aria-selected="false">시장 지도</button>
       </nav>
 
@@ -246,8 +247,18 @@
 
       <section class="category sector-panel" data-sector="individual" hidden>
         <h2>개별 종목</h2>
-        <p class="category-desc">섹터별로 글로벌 시총·점유율 상위의 대표 종목을 묶어서 본다. 각 회사의 사업 모델·재무 지표·분기 실적·정성(뉴스) 분석을 확인할 수 있다.</p>
+        <p class="category-desc">섹터별로 글로벌 시총·점유율 상위의 대표 종목을 묶어서 본다. 섹터는 기본으로 접혀 있고, <strong>오늘 뉴스 루틴이 갱신한 섹터만 자동으로 열린다</strong> (🗞️ 배지). 종목을 찾을 때는 스크롤 대신 <strong>검색</strong>으로 — 티커·회사명·섹터 무엇으로든 찾을 수 있다. 각 회사의 사업 모델·재무 지표·분기 실적·정성(뉴스) 분석을 카드에서 확인한다.</p>
+        <div class="stock-toolbar">
+          <input type="search" id="stock-search" placeholder="종목 검색 — 티커·회사명·섹터" aria-label="종목 검색">
+          <button type="button" class="stock-toolbar-btn" id="stock-expand-all">전체 펼치기</button>
+        </div>
         <div id="stock-cards"></div>
+      </section>
+
+      <section class="category sector-panel" data-sector="valuepicks" hidden>
+        <h2>🎯 가치 발굴 — 이번 달 기준 통과 기업</h2>
+        <p class="category-desc">워런 버핏·레이 달리오처럼 섣불리 움직이지 않고, <strong>정말 좋은 기업의 주가가 정말 낮을 때</strong>만 들어가기 위한 월간 스크리닝. 매월 1일 루틴이 전 종목의 재무제표를 훑어 깐깐하지만 단순한 4가지 기준 — <strong>사업의 질 3가지 × 가격 1가지</strong> — 를 <strong>모두</strong> 통과한 기업만 여기에 올린다. 통과 기업이 0개인 달이 정상이며, 그것이 '기다림'이다.</p>
+        <div id="value-screen-host"></div>
       </section>
 
       <section class="category sector-panel" data-sector="valuechain" hidden>

@@ -1,0 +1,42 @@
+name: Monthly Value Screen
+
+# 매월 1일 10:00 UTC (= 한국시간 19:00) — 버핏식 가치투자 스크리닝.
+# data/stocks/*.json 의 재무 스냅샷·분기 실적·밸류에이션을 읽어
+# 4가지 기준(ROE·영업이익률·연속 흑자·저평가 갭)을 모두 통과한 기업만
+# data/value_screen.json 에 기록한다 (웹 '주식 → 가치 발굴' 탭이 읽음).
+# 표준 라이브러리만 사용하므로 의존성 설치가 필요 없다.
+on:
+  schedule:
+    - cron: "0 10 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run value screen
+        run: python scripts/value_screen.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain -- data/value_screen.json)" ]; then
+            echo "No changes — skipping commit."
+          else
+            git add data/value_screen.json
+            git commit -m "chore: monthly value screen ($(date -u +%Y-%m))"
+            git push
+          fi
