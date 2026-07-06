@@ -261,6 +261,20 @@ python scripts/build_principles.py   # data/principles/timeline.json 재생성
 **📖 이 화면에서 읽기** 로 노트 본문을 대시보드 안에서 마크다운으로 읽을 수 있다
 (본문 속 `[[위키링크]]` 를 클릭하면 그 노트로 바로 이동).
 
+### 시장 지도 ↔ 위키 연결
+
+노트 뷰어는 위키 탭 전용이 아니다 — **시장 지도의 노드/기업 상세 패널에도
+"옵시디언 위키 노트" 섹션**이 붙어, 지도의 짧은 요약을 vault 의 긴 글로
+확장해서 읽을 수 있다. 노트는 두 경로로 연결된다:
+
+- **큐레이션**: 시장 JSON 의 `markets[].wiki: [{path, label}]` (vault 상대 경로,
+  예: `wiki/concepts/hbm.md`). 연결된 노드에는 지도에서 **📖 n** 배지가 붙는다.
+- **자동**: `players[].ticker` 를 루틴 뉴스 로그(`wiki/news/tickers/{TICKER} - *.md`)와
+  매칭 — `daily-market-analysis` 루틴이 매일 누적하는 종목 뉴스가 그대로 지도에 꽂힌다.
+  플레이어 지도(예: HBM)의 기업 상세에서도 같은 방식으로 열린다.
+
+`data/wiki/graph.json` 이 아직 동기화 전이면 섹션은 조용히 숨겨진다.
+
 ### 데이터 생성
 
 `scripts/build_wiki_graph.py` 가 vault 를 파싱해 두 가지를 만든다:

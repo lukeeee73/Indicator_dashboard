@@ -1973,6 +1973,8 @@ function renderMarketBoard(stocks) {
       // player_map 이 있는 세부 시장은 전용 화면(플레이어 지도)으로 확대
       const mm = map.markets.find((x) => x.id === el.dataset.id);
       if (mm && mm.player_map) pmOpen(mm.id);
+      // 상세 패널이 지도 아래에 있으므로, 화면 밖이면 읽을 위치로 데려간다
+      else mcScrollDetailIntoView();
     }));
 
   mcApplyZoom(false);
@@ -2043,6 +2045,9 @@ function mcNodeHtml(m, stocks) {
     ? `<span class="mc-node-news${mcNewsFresh(news) ? " mc-node-news--fresh" : ""}"
          title="${escapeHtml(news[0].title || "")}">📰 ${news.length}</span>`
     : "";
+  const wikiChip = (m.wiki || []).length
+    ? `<span class="mc-node-wiki" title="옵시디언 위키 노트 ${m.wiki.length}개 연결 — 클릭하면 상세 패널에서 읽을 수 있습니다">📖 ${m.wiki.length}</span>`
+    : "";
   const arrow = mcPulseArrow(m.id);
   const arrowChip = arrow
     ? `<span class="mc-node-pulse" data-dir="${arrow.dir}"
@@ -2056,8 +2061,18 @@ function mcNodeHtml(m, stocks) {
       ${tag ? `<span class="mc-node-tag">${escapeHtml(tag)}${arrowChip}</span>` : arrowChip ? `<span class="mc-node-tag mc-node-tag--pulse">${arrowChip}</span>` : ""}
       <span class="mc-node-name">${escapeHtml(m.name_kr)}${moodDot}</span>
       <span class="mc-node-size">${escapeHtml(m.size_label || "")}</span>
-      ${newsChip}${pmapChip}
+      ${newsChip}${wikiChip}${pmapChip}
     </button>`;
+}
+
+// 상세 패널(지도 아래)로 스크롤 — 이미 충분히 보이면 그대로 둔다.
+// scroll-margin-top(CSS) 덕에 지도 하단이 문맥으로 함께 남는다.
+function mcScrollDetailIntoView() {
+  const host = document.getElementById("vc-detail");
+  if (!host) return;
+  const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+  if (host.getBoundingClientRect().top < vh * 0.65) return;
+  host.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 // 노드 선택: 강조 + 관계선 + 상세
@@ -2631,6 +2646,7 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ${moodHtml}
     ${weeklyHtml}
     ${newsHtml}
+    <div class="mc-wiki" hidden></div>
     <div class="mc-players">
       <h5>시장 점유율 · 핵심 플레이어</h5>
       ${barHtml ? `<div class="mc-share-wrap">${barHtml}</div>` : ""}
@@ -2644,6 +2660,58 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     b.addEventListener("click", () => selectMarketNode(b.dataset.goto, stocks)));
   const pb = host.querySelector(".pm-open-btn[data-pm]");
   if (pb) pb.addEventListener("click", () => pmOpen(pb.dataset.pm));
+  mcFillWikiSlot(host.querySelector(".mc-wiki"), m.wiki, m.players);
+}
+
+// ── 옵시디언 위키 노트 연결 ─────────────────────────────────────────────
+// 시장 지도의 짧은 요약을 luke_wiki 의 긴 글로 확장하는 다리.
+// 두 경로로 노트를 모은다:
+//   1) 큐레이션 — 시장 JSON 의 markets[].wiki: [{path, label}] (vault 상대 경로)
+//   2) 자동     — players[].ticker 와 루틴 뉴스 로그(wiki/news/tickers/) 매칭
+// graph.json 이 아직 동기화 전이면 섹션을 통째로 숨긴다 (위키 탭에 안내 있음).
+
+const MC_WIKI_KIND = {
+  "wiki/principles": "원칙", "wiki/concepts": "개념", "wiki/topics": "주제",
+  "wiki/entities": "기업·조직", "wiki/syntheses": "내 판단", "wiki/comparisons": "비교",
+  "wiki/news": "뉴스 로그", "sources": "원문",
+};
+
+async function mcFillWikiSlot(slot, curated, players) {
+  if (!slot) return;
+  const graph = await wnLoadGraph();
+  // fetch 대기 중 다른 노드를 선택했으면 slot 은 이미 DOM 에서 떨어져 있다
+  if (!graph || !slot.isConnected) return;
+
+  const refs = [], seen = new Set();
+  (curated || []).forEach((w) => {
+    const i = wnNodeByPath(w.path);
+    if (i < 0 || seen.has(i)) return;
+    seen.add(i);
+    const n = graph.nodes[i];
+    refs.push({ idx: i, label: w.label || n.title, kind: MC_WIKI_KIND[n.folder] || n.folder, mtime: n.mtime });
+  });
+  (players || []).forEach((p) => {
+    if (!p.ticker) return;
+    const i = wnNodeByTicker(p.ticker);
+    if (i < 0 || seen.has(i)) return;
+    seen.add(i);
+    refs.push({ idx: i, label: `${p.name} 뉴스 로그`, kind: "뉴스 로그", auto: true, mtime: graph.nodes[i].mtime });
+  });
+  if (!refs.length) return;
+
+  slot.innerHTML = `
+    <h5>옵시디언 위키 노트 <span class="mc-news-count">${refs.length}</span></h5>
+    <p class="mc-wiki-hint">루틴·공부로 쌓인 긴 글 — 클릭하면 이 화면에서 읽습니다.</p>
+    <ul>${refs.map((r, k) => `
+      <li><button type="button" class="mc-wiki-btn" data-ref="${k}">
+        <span class="mc-wiki-kind${r.auto ? " mc-wiki-kind--auto" : ""}">${escapeHtml(r.kind)}</span>
+        <span class="mc-wiki-title">${escapeHtml(r.label)}</span>
+        ${r.mtime ? `<span class="mc-wiki-mtime">${escapeHtml(r.mtime)}</span>` : ""}
+      </button></li>`).join("")}
+    </ul>`;
+  slot.hidden = false;
+  slot.querySelectorAll(".mc-wiki-btn").forEach((b) =>
+    b.addEventListener("click", () => wnOpenByIdx(refs[Number(b.dataset.ref)].idx)));
 }
 
 // 서브탭이 보일 때 / 리사이즈 시 전체 엣지 다시 그리기
@@ -2911,11 +2979,14 @@ function pmRenderDetail(id, suppliers, customers) {
     ${p.role ? `<p class="mc-detail-size"><strong>${escapeHtml(p.role)}</strong></p>` : ""}
     ${p.note ? `<p class="mc-detail-def">${escapeHtml(p.note)}</p>` : ""}
     ${scoreHtml}
+    <div class="mc-wiki" hidden></div>
     ${relHtml(suppliers, "sup", "◀ 이 기업에 공급 (조달처)")}
     ${relHtml(customers, "cust", "이 기업이 공급하는 곳 ▶")}`;
   host.querySelector("#pm-detail-back").addEventListener("click", pmClearSelect);
   host.querySelectorAll(".mc-rel-link[data-goto]").forEach((b) =>
     b.addEventListener("click", () => pmSelect(b.dataset.goto)));
+  // 기업 노트(큐레이션 p.wiki) + 이 기업 티커의 루틴 뉴스 로그
+  mcFillWikiSlot(host.querySelector(".mc-wiki"), p.wiki, [p]);
 }
 
 // ── 플레이어 지도 엣지 (시장 지도와 동일한 문법·좌표계) ────────────────────
@@ -4989,15 +5060,159 @@ const WIKI_FOLDER_COLORS = ["#3987e5", "#199e70", "#c98500", "#9085e9", "#e66767
 const WIKI_OTHER_COLOR   = "#8a8a8a";
 const WIKI_OTHER_LABEL   = "기타";
 
+// ── 공유 노트 뷰어 ──────────────────────────────────────────────
+// graph.json 로드·색인과 노트 본문 모달은 위키 탭 전용이 아니라 전역이다:
+// 시장 지도의 '위키 노트' 버튼도 같은 뷰어로 노트를 연다.
+//  - wnLoadGraph(): graph.json 1회 로드 + (경로→노드, 티커→뉴스 로그) 색인
+//  - wnOpenByIdx(idx): data/wiki/notes/<idx>.json 본문을 모달로 렌더
+const WN_STATE = { promise: null, graph: null, byPath: null, byTicker: null, overlay: null };
+
+function wnLoadGraph() {
+  if (!WN_STATE.promise) {
+    WN_STATE.promise = fetch("data/wiki/graph.json", { cache: "no-cache" })
+      .then((res) => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
+      .then((graph) => {
+        if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) return null;
+        WN_STATE.graph = graph;
+        WN_STATE.byPath = new Map();
+        WN_STATE.byTicker = new Map();
+        graph.nodes.forEach((n, i) => {
+          WN_STATE.byPath.set(String(n.path || "").toLowerCase(), i);
+          // 루틴 뉴스 로그: wiki/news/tickers/<티커> - <회사명>.md → 티커 색인
+          const m = /^wiki\/news\/tickers\/(\S+) - /.exec(n.path || "");
+          if (m && !WN_STATE.byTicker.has(m[1].toUpperCase())) {
+            WN_STATE.byTicker.set(m[1].toUpperCase(), i);
+          }
+        });
+        return graph;
+      })
+      .catch(() => null);
+  }
+  return WN_STATE.promise;
+}
+
+// vault 상대 경로(예: wiki/concepts/hbm.md) → 노드 인덱스. 없으면 -1.
+function wnNodeByPath(path) {
+  if (!WN_STATE.byPath) return -1;
+  const i = WN_STATE.byPath.get(String(path || "").replace(/^\.\//, "").toLowerCase());
+  return i === undefined ? -1 : i;
+}
+
+// watchlist 티커 → 루틴 뉴스 로그 노트(wiki/news/tickers/) 인덱스. 없으면 -1.
+function wnNodeByTicker(ticker) {
+  if (!WN_STATE.byTicker) return -1;
+  const i = WN_STATE.byTicker.get(String(ticker || "").toUpperCase());
+  return i === undefined ? -1 : i;
+}
+
+function wnEnsureOverlay() {
+  if (WN_STATE.overlay) return WN_STATE.overlay;
+  const ov = document.createElement("div");
+  ov.className = "wn-overlay";
+  ov.hidden = true;
+  ov.innerHTML = `
+    <div class="wn-card" role="dialog" aria-modal="true" aria-labelledby="wn-title">
+      <div class="wn-head">
+        <h3 class="wn-title" id="wn-title"></h3>
+        <button type="button" class="wn-close" aria-label="닫기">✕</button>
+      </div>
+      <p class="wn-meta" id="wn-meta"></p>
+      <div class="wn-body" id="wn-body"></div>
+      <div class="wn-foot">
+        <a class="wiki-open-github" id="wn-github" target="_blank" rel="noopener">GitHub 에서 열기 ↗</a>
+      </div>
+    </div>`;
+  ov.addEventListener("click", (e) => {
+    if (e.target === ov || e.target.closest(".wn-close")) wnCloseNote();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !ov.hidden) wnCloseNote();
+  });
+  document.body.appendChild(ov);
+  WN_STATE.overlay = ov;
+  return ov;
+}
+
+function wnCloseNote() {
+  if (WN_STATE.overlay) WN_STATE.overlay.hidden = true;
+}
+
+function wnRenderMarkdown(md) {
+  // frontmatter 는 본문에선 감춘다 (메타는 wn-meta 줄이 담당)
+  if (md.startsWith("---")) {
+    const end = md.indexOf("\n---", 3);
+    if (end > 0) md = md.slice(end + 4);
+  }
+  // HTML 주석(<!-- ... -->)은 표시하지 않는다 — 노트의 관리용 마커
+  md = md.replace(/<!--[\s\S]*?-->/g, "");
+  // 노트 속 원시 HTML 은 실행하지 않고 텍스트로 취급 (안전).
+  // '>' 는 이스케이프하지 않는다 — 블록 인용(> ...)의 마크다운 문법이라서.
+  const safe = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  let html;
+  if (window.marked && typeof window.marked.parse === "function") {
+    html = window.marked.parse(safe, { breaks: true });
+  } else {
+    html = `<pre class="wn-pre">${safe}</pre>`;  // CDN 로드 실패 시 폴백
+  }
+  // [[위키링크]] → 클릭하면 그 노트로 이동하는 링크
+  return html.replace(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]*))?\]\]/g, (m, target, alias) => {
+    const t = target.trim();
+    return `<a href="#" class="wn-wikilink" data-wiki-target="${t.replace(/"/g, "&quot;")}">${alias || t}</a>`;
+  });
+}
+
+// 노트 본문 모달 열기. opts:
+//   deg        — 상세 패널이 아는 연결 수 (메타 줄에 표시, 선택)
+//   onNavigate — 본문 속 [[위키링크]] 로 다른 노트로 이동할 때 알림 (그래프 선택 동기화용)
+async function wnOpenByIdx(idx, opts = {}) {
+  const graph = WN_STATE.graph;
+  if (!graph || !graph.nodes[idx]) return;
+  const n = graph.nodes[idx];
+  const ov = wnEnsureOverlay();
+  const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
+  const branch  = graph.branch || "main";
+  ov.querySelector("#wn-title").textContent = n.title;
+  ov.querySelector("#wn-meta").textContent =
+    `${n.folder}${typeof opts.deg === "number" ? ` · 연결 ${opts.deg}개` : ""}${n.mtime ? ` · 수정 ${n.mtime}` : ""}`;
+  ov.querySelector("#wn-github").href = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
+    n.path.split("/").map(encodeURIComponent).join("/");
+  const body = ov.querySelector("#wn-body");
+  body.innerHTML = `<p class="wn-loading">불러오는 중…</p>`;
+  ov.hidden = false;
+  try {
+    const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const note = await res.json();
+    body.innerHTML = wnRenderMarkdown(note.content || "");
+    body.scrollTop = 0;
+    // 본문 속 위키링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
+    body.querySelectorAll(".wn-wikilink").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        const t = el.dataset.wikiTarget.toLowerCase();
+        const j = graph.nodes.findIndex((nn) =>
+          nn.title.toLowerCase() === t ||
+          nn.id.toLowerCase() === t ||
+          nn.id.toLowerCase().endsWith("/" + t));
+        if (j >= 0) {
+          if (opts.onNavigate) opts.onNavigate(j);
+          wnOpenByIdx(j, { onNavigate: opts.onNavigate });
+        }
+      });
+    });
+  } catch (err) {
+    body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
+      아직 노트 본문이 내보내지지 않았을 수 있어요 — 워크플로를 한 번 실행해 주세요.</p>`;
+  }
+}
+
 async function renderWikiTab() {
   const layout  = document.getElementById("wiki-layout");
   const toolbar = document.getElementById("wiki-toolbar");
   const empty   = document.getElementById("wiki-empty");
   try {
-    const res = await fetch("data/wiki/graph.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const graph = await res.json();
-    if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) throw new Error("빈 그래프");
+    const graph = await wnLoadGraph();
+    if (!graph || !Array.isArray(graph.nodes) || graph.nodes.length === 0) throw new Error("빈 그래프");
     toolbar.hidden = false;
     layout.hidden  = false;
     empty.hidden   = true;
@@ -5441,102 +5656,13 @@ function wikiInitGraph(graph) {
     if (readBtn) readBtn.addEventListener("click", () => wikiOpenNote(idx));
   }
 
-  // ---------- 노트 뷰어 (모달) — 본문을 대시보드 안에서 읽는다 ----------
-  let noteOverlay = null;
-  function ensureNoteOverlay() {
-    if (noteOverlay) return noteOverlay;
-    noteOverlay = document.createElement("div");
-    noteOverlay.className = "wn-overlay";
-    noteOverlay.hidden = true;
-    noteOverlay.innerHTML = `
-      <div class="wn-card" role="dialog" aria-modal="true" aria-labelledby="wn-title">
-        <div class="wn-head">
-          <h3 class="wn-title" id="wn-title"></h3>
-          <button type="button" class="wn-close" aria-label="닫기">✕</button>
-        </div>
-        <p class="wn-meta" id="wn-meta"></p>
-        <div class="wn-body" id="wn-body"></div>
-        <div class="wn-foot">
-          <a class="wiki-open-github" id="wn-github" target="_blank" rel="noopener">GitHub 에서 열기 ↗</a>
-        </div>
-      </div>`;
-    noteOverlay.addEventListener("click", (e) => {
-      if (e.target === noteOverlay || e.target.closest(".wn-close")) wikiCloseNote();
+  // ---------- 노트 뷰어 — 전역 공유 뷰어(wnOpenByIdx)를 그래프 선택과 동기화해 사용 ----------
+  // 클로저의 nodes 는 graph.nodes 를 1:1 매핑한 사본이라 인덱스가 호환된다.
+  function wikiOpenNote(idx) {
+    wnOpenByIdx(idx, {
+      deg: nodes[idx].deg,
+      onNavigate: (j) => { selectedIdx = j; wikiShowDetail(j); draw(); },
     });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && noteOverlay && !noteOverlay.hidden) wikiCloseNote();
-    });
-    document.body.appendChild(noteOverlay);
-    return noteOverlay;
-  }
-  function wikiCloseNote() {
-    if (noteOverlay) noteOverlay.hidden = true;
-  }
-
-  function wikiRenderMarkdown(md) {
-    // frontmatter 는 상세 패널에서 이미 태그로 보여주므로 본문에선 감춘다
-    if (md.startsWith("---")) {
-      const end = md.indexOf("\n---", 3);
-      if (end > 0) md = md.slice(end + 4);
-    }
-    // HTML 주석(<!-- ... -->)은 표시하지 않는다 — 노트의 관리용 마커
-    md = md.replace(/<!--[\s\S]*?-->/g, "");
-    // 노트 속 원시 HTML 은 실행하지 않고 텍스트로 취급 (안전).
-    // '>' 는 이스케이프하지 않는다 — 블록 인용(> ...)의 마크다운 문법이라서.
-    const safe = md.replace(/&/g, "&amp;").replace(/</g, "&lt;");
-    let html;
-    if (window.marked && typeof window.marked.parse === "function") {
-      html = window.marked.parse(safe, { breaks: true });
-    } else {
-      html = `<pre class="wn-pre">${safe}</pre>`;  // CDN 로드 실패 시 폴백
-    }
-    // [[위키링크]] → 클릭하면 그 노트로 이동하는 링크
-    return html.replace(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]*))?\]\]/g, (m, target, alias) => {
-      const t = target.trim();
-      return `<a href="#" class="wn-wikilink" data-wiki-target="${t.replace(/"/g, "&quot;")}">${alias || t}</a>`;
-    });
-  }
-
-  async function wikiOpenNote(idx) {
-    const n = nodes[idx];
-    const ov = ensureNoteOverlay();
-    const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
-    const branch  = graph.branch || "main";
-    ov.querySelector("#wn-title").textContent = n.title;
-    ov.querySelector("#wn-meta").textContent =
-      `${n.folder} · 연결 ${n.deg}개${n.mtime ? ` · 수정 ${n.mtime}` : ""}`;
-    ov.querySelector("#wn-github").href = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
-      n.path.split("/").map(encodeURIComponent).join("/");
-    const body = ov.querySelector("#wn-body");
-    body.innerHTML = `<p class="wn-loading">불러오는 중…</p>`;
-    ov.hidden = false;
-    try {
-      const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const note = await res.json();
-      body.innerHTML = wikiRenderMarkdown(note.content || "");
-      body.scrollTop = 0;
-      // 본문 속 위키링크 → 그래프에서 해당 노트 선택 + 바로 열기
-      body.querySelectorAll(".wn-wikilink").forEach((el) => {
-        el.addEventListener("click", (e) => {
-          e.preventDefault();
-          const t = el.dataset.wikiTarget.toLowerCase();
-          const j = nodes.findIndex((nn) =>
-            nn.title.toLowerCase() === t ||
-            nn.id.toLowerCase() === t ||
-            nn.id.toLowerCase().endsWith("/" + t));
-          if (j >= 0) {
-            selectedIdx = j;
-            wikiShowDetail(j);
-            draw();
-            wikiOpenNote(j);
-          }
-        });
-      });
-    } catch (err) {
-      body.innerHTML = `<p class="wn-error">본문을 불러오지 못했습니다 (${escapeHtml(err.message)}).
-        아직 노트 본문이 내보내지지 않았을 수 있어요 — 워크플로를 한 번 실행해 주세요.</p>`;
-    }
   }
 
   // ---------- 시작 ----------
