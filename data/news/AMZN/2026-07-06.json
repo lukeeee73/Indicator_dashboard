@@ -1,0 +1,75 @@
+{
+  "ticker": "AMZN",
+  "date": "2026-07-06",
+  "as_of_utc": "2026-07-06T12:00:00Z",
+  "news": [
+    {
+      "title": "Amazon Prime Day total online spending surpasses Adobe estimate",
+      "source": "Fortune",
+      "url": "https://fortune.com/2026/07/06/amazon-prime-day-total-online-spending-adobe-estimate/",
+      "published": "2026-06-27T00:00:00Z",
+      "summary": "6/23~26 프라임데이 미국 이커머스 매출 264억달러, 전년比 9.3% 증가",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "FTC Requires Amazon to Pay $2.25 Million to Resolve Charges It Knowingly Violated the Fair Credit Reporting Act",
+      "source": "Federal Trade Commission",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2026/06/ftc-requires-amazon-pay-225-million-resolve-charges-it-knowingly-violated-fair-credit-reporting-act",
+      "published": "2026-06-30T00:00:00Z",
+      "summary": "아마존, 신원도용 피해자 기록 미제공 관련 FCRA 위반으로 225만달러 벌금 합의",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "AWS Secret Cloud for Industry gives defense contractors a faster, more secure path to classified innovation",
+      "source": "About Amazon (AWS)",
+      "url": "https://www.aboutamazon.com/news/aws/aws-secret-cloud-for-industry-defense-contractors",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "AWS, 노스롭그루먼 등 방산업체 대상 기밀 등급 클라우드 신규 서비스 출시, 최대 2천만달러 지원",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "US FTC-Amazon antitrust trial pushed back to March 2027",
+      "source": "MLex",
+      "url": "https://www.mlex.com/mlex/articles/2422758/us-ftc-amazon-antitrust-trial-pushed-back-to-march-2027",
+      "published": "2026-07-02T00:00:00Z",
+      "summary": "FTC 반독점 소송 재판일이 2027년 3월로 추가 연기, 정부 셧다운 여파",
+      "impact": "neutral",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft 365 Business Standard/Premium with Copilot이 2026년 7월 1일부터 정식 SKU로 전환",
+      "implication_for_target": "MS가 Copilot을 정규 유료 상품화하며 기업용 AI 생산성 시장에서 AWS의 엔터프라이즈 AI 입지에 압박 요인"
+    },
+    {
+      "ticker": "WMT",
+      "headline": "월마트, 재고·결제 시스템을 구글 Gemini AI와 통합하고 광고 매출이 Snap·Pinterest를 추월 (7/6)",
+      "implication_for_target": "소매 AI 에이전트 경쟁에서 월마트가 구글과 밀착, 아마존의 리테일 미디어·AI 쇼핑 주도권에 견제 요인"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.5,
+    "competitive_position": 0.3,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.24,
+  "summary_kr": "프라임데이 최대 매출 경신과 AWS의 정부·국방 클라우드 확장이 긍정적이나, FTC의 소비자보호 벌금과 반독점 재판 지연이 규제 리스크로 남아있음.",
+  "key_events": [
+    "프라임데이 2026 미국 온라인 매출 264억달러(+9.3%) 기록",
+    "AWS 기밀등급 클라우드(ASCI) 출시, 노스롭그루먼 첫 파트너",
+    "FTC와 FCRA 위반 관련 225만달러 벌금 합의",
+    "FTC 반독점 재판 2027년 3월로 재연기"
+  ],
+  "risks": [
+    "FTC 반독점 소송이 장기화되며 사업 관행에 대한 불확실성 지속",
+    "월마트 등 경쟁사의 구글 AI 제휴로 리테일 AI 경쟁 심화",
+    "AI 인프라 투자 확대에 따른 자본지출 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMZN%20-%20Amazon.com%20Inc..md"
+}
