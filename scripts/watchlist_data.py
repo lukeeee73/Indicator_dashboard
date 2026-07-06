@@ -12,10 +12,17 @@ Each entry:
 """
 
 # Group display order (must match across all files).
+# 반도체는 AI·반도체 시장지도(data/markets/ai-semiconductor.json)의 밸류체인 층과
+# 1:1 로 대응하도록 4개 그룹으로 분리했다 — 시장지도 노드에서 봐야 하는 기업은
+# 전부 이 watchlist 에 포함되는 것이 원칙 (지도 ↔ 개별 종목 탭 정합).
 GROUPS = [
     ("빅테크 / 소프트웨어",       "글로벌 시총 상위 빅테크 + 엔터프라이즈 소프트웨어. 광고·SaaS·DB 등 다양한 수익모델."),
-    ("반도체",                     "AI·자동차·서버 등 전 산업의 'OPEC' 격. CPU·GPU·메모리·장비·파운드리 포함."),
-    ("로보틱스 / 피지컬 AI",       "휴머노이드·산업로봇·자율 시스템과 그 부품(라이다·희토류 자석·로봇 테스트). 피지컬 AI 시대의 곡괭이와 삽."),
+    ("반도체 — AI 칩 · 설계",      "GPU·커스텀 ASIC·모바일 AP·자율주행 SoC 를 설계하는 팹리스/IDM + 설계의 관문인 EDA·IP. 시장지도 'AI 컴퓨팅'과 '최종 수요(엣지)' 층."),
+    ("반도체 — 메모리 (HBM·DRAM)", "HBM·DRAM·NAND 3강. AI 가속기의 1순위 병목인 HBM 적층 경쟁과 범용 메모리 슈퍼사이클."),
+    ("반도체 — 파운드리 · 패키징 · 기판", "칩을 실제로 만드는 제조 기반 — 첨단 파운드리(≤3nm)·CoWoS 패키징(OSAT)·ABF 기판. 시장지도 '제조 기반' 층."),
+    ("반도체 — 장비 · 소재",       "공급의 뿌리(picks & shovels) — EUV 노광·식각/증착·계측 전공정 장비 + HBM 본더·테스터·다이서 후공정 장비 + 웨이퍼/레지스트 소재."),
+    ("AI 인프라 — 네트워킹 · 광 · 네오클라우드", "GPU 를 잇는 스위치·광모듈, 칩까지 전력을 전달하는 전력반도체, GPU 컴퓨트를 임대하는 네오클라우드 — 시장지도 '자본 엔진'과 부품 층의 신흥 계층."),
+    ("로보틱스 / 피지컬 AI",       "휴머노이드·산업로봇·자율 시스템과 그 부품(감속기·라이다·희토류 자석·로봇 테스트). 피지컬 AI 시대의 곡괭이와 삽."),
     ("자동차 / 모빌리티",         "내연기관·EV·자율주행 전환기. 기존 완성차 + 신규 진입자 + 한국 빅2."),
     ("바이오 / 제약 / 헬스케어",  "글로벌 시총 상위 제약 + 의료기기/진단 + 의료보험. 인구 고령화 장기 수혜."),
     ("에너지 / 원자재",            "원유·가스·구리·금·산업용가스 등 실물 자산. 인플레이션·달러 약세 국면 방어주."),
@@ -55,27 +62,79 @@ STOCKS = [
     ("PLTR",  "Palantir Technologies Inc.", "Technology",            "빅테크 / 소프트웨어",      "정부·기업 데이터 분석 SW",        "#cbd5e1", 2, "USD",
         "정부·기업 데이터 분석 SW. 미국 국방·정보기관 핵심 공급사. AI 플랫폼 AIP 로 민간 확장 중."),
 
-    # ── 반도체 ────────────────────────────────────────────────────────
-    ("NVDA",  "NVIDIA Corporation",        "Technology",             "반도체",                   "AI 학습용 GPU 사실상 독점",       "#76b900", 2, "USD",
+    # ── 반도체 — AI 칩 · 설계 ────────────────────────────────────────
+    ("NVDA",  "NVIDIA Corporation",        "Technology",             "반도체 — AI 칩 · 설계",    "AI 학습용 GPU 사실상 독점",       "#76b900", 2, "USD",
         "AI 학습용 GPU 시장 점유율 90%+. 매출 80% 이상이 데이터센터. ChatGPT 이후 AI 인프라 투자 최대 수혜주."),
-    ("AMD",   "Advanced Micro Devices",    "Technology",             "반도체",                   "CPU + GPU 종합 반도체",            "#ed1c24", 2, "USD",
+    ("AMD",   "Advanced Micro Devices",    "Technology",             "반도체 — AI 칩 · 설계",    "CPU + GPU 종합 반도체",            "#ed1c24", 2, "USD",
         "CPU·GPU 동시 공급. NVIDIA 의 거의 유일한 AI 칩 경쟁자. 서버 CPU(EPYC)로 Intel 점유율 잠식 중."),
-    ("INTC",  "Intel Corporation",         "Technology",             "반도체",                   "x86 CPU 전통 강자",                "#0071c5", 2, "USD",
-        "x86 CPU 전통 절대강자였으나 AMD·ARM 에 밀려 점유율 하락. 미국 정부 CHIPS 보조금 최대 수혜자."),
-    ("QCOM",  "QUALCOMM Incorporated",     "Technology",             "반도체",                   "스마트폰 모뎀·SoC 1위",           "#3253dc", 2, "USD",
-        "스마트폰 통신 모뎀·AP(Snapdragon) 글로벌 1위. 안드로이드 진영 핵심. 자동차·IoT 로 확장."),
-    ("TSM",   "Taiwan Semiconductor Mfg.", "Technology",             "반도체",                   "세계 1위 파운드리 (위탁생산)",    "#d11919", 2, "USD",
-        "세계 1위 반도체 파운드리. 애플·NVIDIA·AMD 핵심 칩을 거의 다 제조. 3nm 이하 첨단공정 사실상 독점."),
-    ("ASML",  "ASML Holding N.V.",         "Technology",             "반도체",                   "노광장비 (EUV) 글로벌 독점",      "#0091da", 2, "USD",
-        "반도체 미세공정의 핵심 노광장비 (EUV) 글로벌 독점 (네덜란드). 1대 약 4억 달러. 한국·대만·중국이 큰 고객."),
-    ("AMAT",  "Applied Materials, Inc.",   "Technology",             "반도체",                   "반도체 장비 종합 1위",             "#0095da", 2, "USD",
+    ("INTC",  "Intel Corporation",         "Technology",             "반도체 — AI 칩 · 설계",    "x86 CPU 전통 강자 + 파운드리 도전", "#0071c5", 2, "USD",
+        "x86 CPU 전통 절대강자였으나 AMD·ARM 에 밀려 점유율 하락. 파운드리(18A)·첨단 패키징으로 재기 시도. 미국 정부 CHIPS 보조금 최대 수혜자."),
+    ("QCOM",  "QUALCOMM Incorporated",     "Technology",             "반도체 — AI 칩 · 설계",    "스마트폰 모뎀·SoC 프리미엄 1위",  "#3253dc", 2, "USD",
+        "스마트폰 통신 모뎀·AP(Snapdragon) 프리미엄 1위. 안드로이드 진영 핵심. AI PC(Snapdragon X)·자동차(Ride)로 확장."),
+    ("AVGO",  "Broadcom Inc.",             "Technology",             "반도체 — AI 칩 · 설계",    "커스텀 AI ASIC 1위 (~60%)",       "#e60024", 2, "USD",
+        "하이퍼스케일러 커스텀 AI ASIC 코디자인 1위 (Google·Meta·OpenAI) + 머천트 스위치 칩(Tomahawk) + VMware 인프라 SW. ASIC 시대의 최대 수혜."),
+    ("MRVL",  "Marvell Technology, Inc.",  "Technology",             "반도체 — AI 칩 · 설계",    "커스텀 AI ASIC 2위 (~25%)",       "#de3163", 2, "USD",
+        "하이퍼스케일러 커스텀 AI ASIC 코디자인 2위 (Amazon Trainium·Microsoft). 광 DSP·DPU·인터커넥트 실리콘 — Broadcom 과 함께 ASIC 양강."),
+    ("2454.TW", "MediaTek Inc.",           "Technology",             "반도체 — AI 칩 · 설계",    "모바일 AP 물량 1위 (~40%)",       "#f7a600", 0, "TWD",
+        "스마트폰 AP-SoC 물량 세계 1위 (~40%, Dimensity). 온디바이스 AI 폰의 중저가 확산 축 + Google TPU v8 설계 참여설 등 ASIC 확장."),
+    ("MBLY",  "Mobileye Global Inc.",      "Technology",             "반도체 — AI 칩 · 설계",    "카메라 ADAS 칩 ~65%",             "#0b67b2", 2, "USD",
+        "카메라 기반 ADAS 칩·SW 점유율 ~65% (Intel 자회사). EyeQ 칩 누적 출하 2억개 — 자율주행 L2+→L4 전환기 차량용 AI 칩의 기준 종목."),
+    ("SNPS",  "Synopsys, Inc.",            "Technology",             "반도체 — AI 칩 · 설계",    "EDA (설계 자동화 SW) 1위",        "#5a2d81", 2, "USD",
+        "칩 설계 자동화(EDA) 1위 + 설계 IP 2위. Cadence 와 듀오폴리(합산 ~60%) — AI 칩 설계 복잡도 급증의 구조적 관문. 대중 수출통제 지렛대."),
+    ("CDNS",  "Cadence Design Systems",    "Technology",             "반도체 — AI 칩 · 설계",    "EDA 2위 (Synopsys 와 양강)",      "#d42e34", 2, "USD",
+        "EDA 양강. AI 기반 설계 자동화(Cerebrus)·검증·시뮬레이션 강자 — 커스텀 ASIC 붐과 칩 설계 스타트업 증가의 직접 수혜."),
+    ("ARM",   "Arm Holdings plc",          "Technology",             "반도체 — AI 칩 · 설계",    "CPU IP · ISA 사실상 표준",        "#0091bd", 2, "USD",
+        "모바일 CPU IP ~99% + 서버·엣지로 확장 중인 ISA 표준. 칩이 팔릴 때마다 로열티를 수취하는 'toll booth' 모델. 소프트뱅크 지배."),
+
+    # ── 반도체 — 메모리 (HBM·DRAM) ───────────────────────────────────
+    ("005930.KS", "Samsung Electronics",   "Technology",             "반도체 — 메모리 (HBM·DRAM)", "메모리 1위 + 파운드리 + AP",     "#1428a0", 0, "KRW",
+        "DRAM·NAND 세계 1위 종합 반도체. HBM4 Rubin 인증으로 SK 추격 + 파운드리 2nm GAA + 엑시노스 AP — 시장지도의 메모리·파운드리·AP 세 노드에 동시 등장하는 유일 기업."),
+    ("000660.KS", "SK Hynix",              "Technology",             "반도체 — 메모리 (HBM·DRAM)", "HBM 세계 1위 (~62%)",            "#ec1c24", 0, "KRW",
+        "HBM 점유율 ~62% 세계 1위 — HBM4 를 NVIDIA 에 최초 인증·양산. MR-MUF 적층 공정 수율 우위. AI 메모리 슈퍼사이클의 최대 수혜주. DRAM 2위 + Solidigm NAND."),
+    ("MU",    "Micron Technology, Inc.",   "Technology",             "반도체 — 메모리 (HBM·DRAM)", "메모리 3강 · HBM ~21%",          "#00a85b", 2, "USD",
+        "메모리(DRAM·NAND) 글로벌 3강. HBM 점유율 ~21%, ’26 물량 완판 — 미국 유일 메모리 제조사로 지정학 수혜."),
+
+    # ── 반도체 — 파운드리 · 패키징 · 기판 ────────────────────────────
+    ("TSM",   "Taiwan Semiconductor Mfg.", "Technology",             "반도체 — 파운드리 · 패키징 · 기판", "세계 1위 파운드리 + CoWoS 지배", "#d11919", 2, "USD",
+        "세계 1위 반도체 파운드리 (선단 ≤5nm 90%+). 애플·NVIDIA·AMD 핵심 칩을 거의 다 제조 + CoWoS 첨단 패키징 지배 — AI 칩 밸류체인의 단일 관문."),
+    ("AMKR",  "Amkor Technology, Inc.",    "Technology",             "반도체 — 파운드리 · 패키징 · 기판", "OSAT 2위 · 美 첨단 패키징 증설", "#e87722", 2, "USD",
+        "패키징·테스트 외주(OSAT) 세계 2위. TSMC CoWoS 오버플로 2차 공급 + 애리조나 첨단 패키징 공장 — 미국 내 패키징 리쇼어링의 핵심."),
+    ("4062.T", "Ibiden Co., Ltd.",         "Technology",             "반도체 — 파운드리 · 패키징 · 기판", "최고급 ABF 기판 (NVIDIA 향)",    "#1b5faa", 0, "JPY",
+        "AI 서버용 최고급 ABF 기판 양강 (NVIDIA 주공급). ’26 고급 ABF 공급부족 전환의 최대 수혜 — 기판이 패키징 다음의 2차 병목."),
+
+    # ── 반도체 — 장비 · 소재 ─────────────────────────────────────────
+    ("ASML",  "ASML Holding N.V.",         "Technology",             "반도체 — 장비 · 소재",     "노광장비 (EUV) 글로벌 독점",      "#0091da", 2, "USD",
+        "반도체 미세공정의 핵심 노광장비 (EUV/High-NA) 글로벌 100% 독점 (네덜란드). 전 밸류체인에서 구조적으로 가장 단단한 병목. 1대 약 4억 달러."),
+    ("AMAT",  "Applied Materials, Inc.",   "Technology",             "반도체 — 장비 · 소재",     "반도체 장비 종합 1위",             "#0095da", 2, "USD",
         "반도체 장비 종합 1위 (식각·증착 등). 메모리·로직 모든 공정에 폭넓게 공급. 반도체 capex 사이클의 거울."),
-    ("LRCX",  "Lam Research Corp.",        "Technology",             "반도체",                   "반도체 장비 (식각·증착)",          "#10b981", 2, "USD",
-        "반도체 식각·증착 장비 강자. 메모리(DRAM·NAND) 공정에 특히 강세. 한국 삼성·SK 가 큰 고객."),
-    ("AVGO",  "Broadcom Inc.",             "Technology",             "반도체",                   "통신·네트워크 칩 + 인프라 SW",    "#e60024", 2, "USD",
-        "통신·네트워크용 맞춤형 칩 + VMware 인수로 인프라 SW까지 확장. AI 데이터센터 네트워킹 핵심."),
-    ("MU",    "Micron Technology, Inc.",   "Technology",             "반도체",                   "메모리 (DRAM·NAND) 3강",          "#00a85b", 2, "USD",
-        "메모리(DRAM·NAND) 글로벌 3강(삼성·SK·마이크론). AI 가속기에 필수인 HBM(고대역폭 메모리) 시장 진입."),
+    ("LRCX",  "Lam Research Corp.",        "Technology",             "반도체 — 장비 · 소재",     "반도체 장비 (식각·증착)",          "#10b981", 2, "USD",
+        "반도체 식각·증착 장비 강자. 메모리(DRAM·NAND)·HBM TSV 공정에 특히 강세. 한국 삼성·SK 가 큰 고객."),
+    ("TOELY", "Tokyo Electron Limited",    "Technology",             "반도체 — 장비 · 소재",     "일본 1위 장비 (코터 독점)",       "#9e1b32", 2, "USD",
+        "일본 1위 반도체 장비. EUV 포토레지스트 코터/디벨로퍼 사실상 독점 + 식각·증착. 글로벌 WFE 4강 (ADR)."),
+    ("KLAC",  "KLA Corporation",           "Technology",             "반도체 — 장비 · 소재",     "계측·검사 ~74% 준독점",           "#0067b1", 2, "USD",
+        "계측·검사 장비 ~74% 준독점. AI 칩 복잡도·수율 비용 상승의 구조적 수혜 — GAA·HBM 수율 전쟁의 무기상."),
+    ("042700.KS", "Hanmi Semiconductor",   "Technology",             "반도체 — 장비 · 소재",     "HBM TC 본더 세계 1위",            "#0aa5c2", 0, "KRW",
+        "HBM 적층용 TC 본더 세계 1위 — SK하이닉스·마이크론 공급. 적층 수율(=HBM 병목)의 심장인 본딩 장비를 쥔 국내 최대 수혜 장비주."),
+    ("6857.T", "Advantest Corporation",    "Technology",             "반도체 — 장비 · 소재",     "반도체 테스터 세계 1위",          "#e8380d", 0, "JPY",
+        "반도체 테스터 세계 1위 (Teradyne 과 양강). HBM 스택 전수 테스트 + AI SoC 테스트 시간 증가가 구조적 순풍."),
+    ("6146.T", "DISCO Corporation",        "Technology",             "반도체 — 장비 · 소재",     "그라인더·다이서 독점적 1위",      "#2f7d32", 0, "JPY",
+        "웨이퍼를 얇게 갈고(그라인더) 자르는(다이서) 장비 70~80% 독점적 1위. HBM 12·16단 적층의 초박형 다이 가공 필수 — 첨단 패키징의 숨은 관문."),
+    ("BESI.AS", "BE Semiconductor Industries", "Technology",         "반도체 — 장비 · 소재",     "하이브리드 본딩 장비 선두",       "#7a3ea8", 2, "EUR",
+        "어드밴스드 패키징용 하이브리드 본딩 장비 선두 (Applied Materials 제휴). HBM4E·SoIC 세대의 칩렛 적층 전환 수혜 — 유럽 소형 강자."),
+    ("4063.T", "Shin-Etsu Chemical",       "Materials",              "반도체 — 장비 · 소재",     "실리콘 웨이퍼 1위 + 레지스트",    "#b5121b", 0, "JPY",
+        "실리콘 웨이퍼 세계 1위 (SUMCO 와 듀오폴리) + 포토레지스트 강자. 소재 노드의 지정학 리스크(일본 >90% 집중)를 대표하는 종목."),
+
+    # ── AI 인프라 — 네트워킹 · 광 · 네오클라우드 ─────────────────────
+    ("ANET",  "Arista Networks, Inc.",     "Technology",             "AI 인프라 — 네트워킹 · 광 · 네오클라우드", "AI 이더넷 스위치 1위", "#2a5caa", 2, "USD",
+        "데이터센터 이더넷 스위치 1위권 (~19%). AI 백엔드 네트워크의 이더넷 전환(InfiniBand 대체) 최대 수혜 — 하이퍼스케일러가 주고객."),
+    ("COHR",  "Coherent Corp.",            "Technology",             "AI 인프라 — 네트워킹 · 광 · 네오클라우드", "광 트랜시버·CPO 수직통합", "#00a870", 2, "USD",
+        "800G/1.6T 광 트랜시버 수직통합 강자 + NVIDIA CPO 파트너. GPU 클러스터 확장의 병목이 구리→광으로 이동하는 국면의 수혜."),
+    ("MPWR",  "Monolithic Power Systems",  "Technology",             "AI 인프라 — 네트워킹 · 광 · 네오클라우드", "GPU 전력전달 'last inch'", "#0a66a0", 2, "USD",
+        "고밀도 전원관리 반도체(PMIC) 강자. GPU 랙 전력밀도 급증(랙 100kW→MW급)의 'last inch' 전력전달 — NVIDIA 전력 체인 핵심."),
+    ("CRWV",  "CoreWeave, Inc.",           "Technology",             "AI 인프라 — 네트워킹 · 광 · 네오클라우드", "네오클라우드 1위",       "#6b46c1", 2, "USD",
+        "최대 독립 GPU 클라우드 — 계약 잔고 $99B+. NVIDIA 앵커 투자 + MS·OpenAI 대형 계약. GPU 담보 부채의 순환금융 구조가 핵심 리스크."),
+    ("NBIS",  "Nebius Group N.V.",         "Technology",             "AI 인프라 — 네트워킹 · 광 · 네오클라우드", "네오클라우드 2위권",     "#00a8a8", 2, "USD",
+        "구 Yandex 분할 네오클라우드. Meta $27B·MS 계약으로 잔고 ~$50B, 계약전력 3GW+ — 'GPU 확보전 → 전력 전쟁' 국면의 선두권."),
 
     # ── 로보틱스 / 피지컬 AI ──────────────────────────────────────────
     ("TER",   "Teradyne, Inc.",            "Technology",             "로보틱스 / 피지컬 AI",     "반도체 테스트 + 협동로봇",        "#e31837", 2, "USD",
@@ -84,6 +143,10 @@ STOCKS = [
         "차량 ADAS·로보틱스용 라이다 출하 세계 1위(연 160만개+, 첫 흑자전환). 로봇향 출하 +400%대 폭증 — 휴머노이드·로보택시의 '눈'."),
     ("MP",    "MP Materials Corp.",        "Materials",              "로보틱스 / 피지컬 AI",     "비중국 희토류·자석 수직계열화",   "#b87333", 2, "USD",
         "미국 유일 희토류 채굴(Mountain Pass)→정제→네오디뮴 자석 수직계열화. 美 국방부 지분 투자. 로봇 모터·액추에이터 핵심 소재 NdPr 자석의 비중국 대안."),
+    ("6954.T", "FANUC Corporation",        "Industrials",            "로보틱스 / 피지컬 AI",     "산업용 로봇 글로벌 1위권",        "#e0b400", 0, "JPY",
+        "산업용 로봇·CNC 글로벌 1위권 (4강 합산 55%+). 공장 자동화의 기준 종목 — 중국 로컬 추월 압박 속 AI 코봇·피지컬 AI 통합이 반전 카드."),
+    ("6324.T", "Harmonic Drive Systems",   "Industrials",            "로보틱스 / 피지컬 AI",     "하모닉 감속기 세계 1위",          "#4a7ab5", 0, "JPY",
+        "스트레인 웨이브(하모닉) 감속기 세계 1위. 휴머노이드 1대당 감속기·액추에이터 30~40개 — 로봇 구동부품 구조적 병목의 핵심 수혜."),
 
     # ── 자동차 / 모빌리티 ─────────────────────────────────────────────
     ("TSLA",  "Tesla Inc.",                "Consumer Discretionary", "자동차 / 모빌리티",        "전기차 + 에너지 + 자율주행",      "#cc0000", 2, "USD",
@@ -344,17 +407,45 @@ COMPETITORS = {
     "TER":   ["6857.T", "AMAT", "LRCX"],
     "HSAI":  ["2498.HK", "OUST", "MBLY"],
     "MP":    ["LYC.AX", "FCX", "NEM"],
-    # 반도체
+    "6954.T": ["6506.T", "ABBNY", "TER"],
+    "6324.T": ["6268.T", "688017.SS", "TER"],
+    # 반도체 — AI 칩 · 설계
     "NVDA":  ["AMD", "AVGO", "TSM", "INTC"],
     "AMD":   ["NVDA", "INTC", "AVGO", "TSM"],
     "INTC":  ["AMD", "TSM", "QCOM"],
-    "QCOM":  ["INTC", "AVGO", "TSM", "MU"],
-    "TSM":   ["NVDA", "INTC", "AVGO", "AMD"],
-    "ASML":  ["AMAT", "LRCX", "KLAC"],
-    "AMAT":  ["LRCX", "ASML", "KLAC"],
-    "LRCX":  ["AMAT", "ASML", "KLAC"],
-    "AVGO":  ["NVDA", "AMD", "QCOM", "TSM"],
-    "MU":    ["INTC", "AVGO", "QCOM"],
+    "QCOM":  ["2454.TW", "INTC", "AVGO", "MU"],
+    "AVGO":  ["MRVL", "NVDA", "AMD", "QCOM"],
+    "MRVL":  ["AVGO", "NVDA", "AMD", "ANET"],
+    "2454.TW": ["QCOM", "005930.KS", "AAPL"],
+    "MBLY":  ["NVDA", "QCOM", "TSLA", "HSAI"],
+    "SNPS":  ["CDNS", "ARM"],
+    "CDNS":  ["SNPS", "ARM"],
+    "ARM":   ["SNPS", "CDNS", "INTC", "AMD"],
+    # 반도체 — 메모리 (HBM·DRAM)
+    "005930.KS": ["000660.KS", "MU", "TSM", "INTC"],
+    "000660.KS": ["005930.KS", "MU"],
+    "MU":    ["000660.KS", "005930.KS", "INTC"],
+    # 반도체 — 파운드리 · 패키징 · 기판
+    "TSM":   ["005930.KS", "INTC", "GFS", "AMKR"],
+    "AMKR":  ["ASX", "TSM", "INTC"],
+    "4062.T": ["3037.TW", "8046.TW", "AMKR"],
+    # 반도체 — 장비 · 소재
+    "ASML":  ["AMAT", "LRCX", "KLAC", "TOELY"],
+    "AMAT":  ["LRCX", "ASML", "KLAC", "TOELY"],
+    "LRCX":  ["AMAT", "ASML", "KLAC", "TOELY"],
+    "TOELY": ["AMAT", "LRCX", "ASML", "KLAC"],
+    "KLAC":  ["AMAT", "LRCX", "ASML", "TOELY"],
+    "042700.KS": ["0522.HK", "BESI.AS", "6857.T"],
+    "6857.T": ["TER", "042700.KS"],
+    "6146.T": ["0522.HK", "042700.KS", "BESI.AS"],
+    "BESI.AS": ["042700.KS", "0522.HK", "AMAT"],
+    "4063.T": ["3436.T", "4062.T", "TOELY"],
+    # AI 인프라 — 네트워킹 · 광 · 네오클라우드
+    "ANET":  ["CSCO", "AVGO", "NVDA", "MRVL"],
+    "COHR":  ["LITE", "AVGO", "MRVL"],
+    "MPWR":  ["TXN", "ADI", "NVTS"],
+    "CRWV":  ["NBIS", "ORCL", "AMZN", "MSFT"],
+    "NBIS":  ["CRWV", "ORCL", "IREN"],
     # 자동차 / 모빌리티
     "TSLA":  ["BYDDY", "GM", "F", "RIVN", "NIO"],
     "TM":    ["GM", "F", "HMC", "STLA"],
@@ -481,9 +572,13 @@ COMPETITORS = {
 # (월=Monday=0, ..., 일=Sunday=6)
 # ============================================================================
 DAY_OF_WEEK_SECTORS = {
-    0: ["빅테크 / 소프트웨어"],                                       # 월: 빅테크
-    1: ["반도체", "로보틱스 / 피지컬 AI"],                             # 화: 반도체 + 피지컬 AI
-    2: ["자동차 / 모빌리티", "조선 (한국)"],                          # 수: 모빌리티 + 조선
+    0: ["빅테크 / 소프트웨어",
+        "AI 인프라 — 네트워킹 · 광 · 네오클라우드"],                  # 월: 빅테크 + AI 인프라 (하이퍼스케일러·네오클라우드 자본 엔진)
+    1: ["반도체 — AI 칩 · 설계",
+        "반도체 — 메모리 (HBM·DRAM)",
+        "반도체 — 파운드리 · 패키징 · 기판",
+        "반도체 — 장비 · 소재"],                                       # 화: 반도체 밸류체인 전체 (시장지도와 동기화)
+    2: ["로보틱스 / 피지컬 AI", "자동차 / 모빌리티", "조선 (한국)"],  # 수: 피지컬 AI + 모빌리티 + 조선
     3: ["바이오 / 제약 / 헬스케어"],                                   # 목: 바이오
     4: ["에너지 / 원자재", "유틸리티 / 전력", "전력 인프라 (AI)"],    # 금: 실물자산 + 유틸리티 + 전력 인프라
     5: ["금융", "부동산 (REITs)"],                                     # 토: 자본시장
