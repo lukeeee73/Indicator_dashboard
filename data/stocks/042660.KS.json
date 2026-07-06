@@ -4,14 +4,6 @@
   "group": "조선 (한국)",
   "series": [
     {
-      "date": "2016-07-04",
-      "value": 37241.19
-    },
-    {
-      "date": "2016-07-05",
-      "value": 37197.73
-    },
-    {
       "date": "2016-07-06",
       "value": 36806.64
     },
@@ -9794,13 +9786,17 @@
     {
       "date": "2026-07-03",
       "value": 106900.0
+    },
+    {
+      "date": "2026-07-06",
+      "value": 116100.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 32749647822848.0,
+      "market_cap": 35568138321920.0,
       "pe_ratio": null,
-      "forward_pe": 17.785723,
+      "forward_pe": 19.316393,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.11906999,
@@ -9854,8 +9850,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-03",
-    "current_price": 106900.0,
+    "as_of": "2026-07-06",
+    "current_price": 116100.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
@@ -9865,8 +9861,8 @@
       }
     },
     "fair_value": 102177.46,
-    "valuation_gap": 0.0462,
-    "signal": "fair",
+    "valuation_gap": 0.1363,
+    "signal": "overvalued",
     "gap_series_weekly": [
       {
         "date": "2026-04-03",
@@ -9951,6 +9947,12 @@
         "price": 106900.0,
         "fair_value": 62020.0,
         "gap": 0.7236
+      },
+      {
+        "date": "2026-07-06",
+        "price": 116100.0,
+        "fair_value": 62020.0,
+        "gap": 0.872
       }
     ],
     "qualitative": {

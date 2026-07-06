@@ -4,14 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-07-04",
-      "value": 17226.85
-    },
-    {
-      "date": "2016-07-05",
-      "value": 16955.25
-    },
-    {
       "date": "2016-07-06",
       "value": 16606.06
     },
@@ -9794,13 +9786,17 @@
     {
       "date": "2026-07-03",
       "value": 86200.0
+    },
+    {
+      "date": "2026-07-06",
+      "value": 85500.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 55093248393216.0,
+      "market_cap": 54645854568448.0,
       "pe_ratio": null,
-      "forward_pe": 87.87044,
+      "forward_pe": 87.15687,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.00879,
@@ -9854,8 +9850,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-03",
-    "current_price": 86200.0,
+    "as_of": "2026-07-06",
+    "current_price": 85500.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
@@ -9865,7 +9861,7 @@
       }
     },
     "fair_value": 16676.83,
-    "valuation_gap": 4.1688,
+    "valuation_gap": 4.1269,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -9951,6 +9947,12 @@
         "price": 86200.0,
         "fair_value": 380.0,
         "gap": 225.8421
+      },
+      {
+        "date": "2026-07-06",
+        "price": 85500.0,
+        "fair_value": 380.0,
+        "gap": 224.0
       }
     ]
   }
