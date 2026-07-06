@@ -120,11 +120,45 @@ python scripts/market_pulse.py --industry ai-semiconductor
   - 새 시장 노드를 만들면 같은 id 키를 뉴스 스토어에도 만든다.
   - 파일 최상위 `updated` 를 갱신 날짜로 바꾼다.
 - 새 플레이어/시장/링크가 생기면 추가하되, `links.from/to` 는 존재하는 `id` 만.
+  - **새 플레이어를 추가할 때 그 시장에서 '봐야 하는' 상장사라면 watchlist 에도
+    편입한다** (`scripts/watchlist_data.py` 수정 → `gen_watchlist.py` 실행 →
+    `in_watchlist: true`). 시장지도 노드 플레이어 ↔ 개별 종목 탭은 1:1 이 원칙.
+- **`links` 는 고정된 그림이 아니다 — 시장 상황을 반영해 갱신한다.** 대형
+  공급계약·오프테이크·수직통합이 확인되면 링크를 추가/수정하고 `label` 에
+  계약 내용을 반영한다 (예: "MS→IREN $9.7B 오프테이크", "SK하이닉스 HBM4
+  베이스다이 TSMC 위탁"). 계약이 종료/축소되면 label 을 되돌리거나 링크를
+  제거한다. 근거 뉴스를 뉴스 스토어에 먼저 넣는 것은 severity 변경과 동일.
 - **새 시장을 추가하면 맵 JSON 의 `diagram` 블록에도 배치한다** — `flow`(좌 공급의
   뿌리 → 우 최종 수요 메인 체인) 또는 `bands`(하단 가로 밴드: 피지컬 AI·전력/DC)의
   적절한 클러스터 `markets` 에 id 를 넣는다. 빠뜨리면 `layer_default` 기준으로
   자동 배치되지만, 이야기 흐름에 맞는 위치는 사람이 정하는 게 낫다.
 - 맵 전체의 최상위 `as_of` 와, 손댄 시장은 의미가 있으면 갱신 날짜를 반영한다.
+
+### 2.35 옵시디언 시장 종합 파일 동기화 (`Luke_wiki/wiki/news/markets/ai-semiconductor/`)
+
+2.3 에서 갱신한 내용을 **시장 노드별 옵시디언 종합 페이지**에 반영한다.
+경로 계약: `Luke_wiki/wiki/news/markets/ai-semiconductor/{market_id}.md`
+(대시보드가 시장 노드 클릭 시 이 파일을 지도 아래에 표시한다. 섹션 앵커 규칙은
+`Luke_wiki/wiki/news/markets/README.md`).
+
+이번에 변화가 있었던 시장만 갱신한다:
+
+- **[시장 정의] / [병목 상태]**: 지도 JSON 의 `definition`·`demand_driver`·
+  `bottleneck` 과 동기화. severity 를 바꿨으면 여기도 반영.
+- **[시장 상황 종합]** (`SYNTHESIS_START/END`): `weekly_note` 를 기반으로
+  1~3문장. 이번 주 수급·가격·병목·정책 변화의 **출처 있는 종합**만 —
+  weekly_note 보다 자세히 쓸 수 있지만 새 주장을 창작하지 않는다.
+- **[시장 뉴스 로그]** (`MARKET_NEWS_START/END`): 뉴스 스토어에 추가한 항목을
+  같은 형식(`- **날짜** ± **제목** — 요약 (출처) [↗](url)`)으로 prepend (최신순).
+- **[사실 누적]**: Tier-1 2곳 이상으로 확정된 시장 구조 사실만 `[!fact]` 추가.
+- frontmatter `updated` 갱신. [소속 기업 동향] 표는 daily 루틴 몫 — 건드리지 않는다.
+- **새 시장 노드를 만들었으면 같은 id 의 옵시디언 파일도 생성한다**
+  (기존 파일 구조 복사, frontmatter 에 `map: ai-semiconductor`, `market_id: {id}`,
+  `tags: [routine-news, market-summary, ai-semiconductor, {id}]`).
+
+> 정확성 규칙: 이 파일은 지도 JSON·뉴스 스토어의 **거울**이다. 두 SSOT 와
+> 어긋나는 수치·주장을 쓰지 않는다. 갱신 후 `Luke_wiki` 에서
+> `python scripts/validate_vault.py` 로 격리 규칙을 확인한다.
 
 ### 2.4 펄스 재실행 + 검증 (커밋 전 필수)
 뉴스·지도를 고친 뒤 **market_pulse 를 다시 돌려** 분석 파일을 갱신하고 검증한다
@@ -157,6 +191,12 @@ python scripts/market_pulse.py --industry ai-semiconductor   # 검증 + analysis
 SESSION_BRANCH=$(git branch --show-current)
 git add data/markets/ai-semiconductor.json data/markets/news/ data/markets/criteria/ data/markets/analysis/ .claude/routines/market-research/
 git commit -m "chore(markets): AI·반도체 시장 지도 갱신 ($(date -u +%Y-%m-%d))"
+git push -u origin "$SESSION_BRANCH"
+
+# Luke_wiki (시장 종합 파일을 갱신했으면 — 해당 레포 디렉토리에서)
+SESSION_BRANCH=$(git branch --show-current)
+git add wiki/news/markets/
+git commit -m "[routine-news] market summary sync $(date -u +%Y-%m-%d) (ai-semiconductor)"
 git push -u origin "$SESSION_BRANCH"
 ```
 그 뒤 `mcp__github__create_pull_request` (head=세션 브랜치, base=레포 기본 브랜치)
