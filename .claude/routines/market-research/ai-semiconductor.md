@@ -141,15 +141,25 @@ python scripts/market_pulse.py --industry ai-semiconductor
 (대시보드가 시장 노드 클릭 시 이 파일을 지도 아래에 표시한다. 섹션 앵커 규칙은
 `Luke_wiki/wiki/news/markets/README.md`).
 
-이번에 변화가 있었던 시장만 갱신한다:
+이번에 변화가 있었던 시장만 갱신한다.
+**문체는 `Luke_wiki/wiki/news/FORMAT.md` (투자 브리핑 v2, 2026-07-07~) 를 따른다** —
+쉬운 한국어, 전문용어는 첫 등장에 괄호 풀이(새 용어는
+`Luke_wiki/wiki/news/glossary.md` 에도 추가), 기존 내용 재작성 금지:
 
 - **[시장 정의] / [병목 상태]**: 지도 JSON 의 `definition`·`demand_driver`·
   `bottleneck` 과 동기화. severity 를 바꿨으면 여기도 반영.
 - **[시장 상황 종합]** (`SYNTHESIS_START/END`): `weekly_note` 를 기반으로
-  1~3문장. 이번 주 수급·가격·병목·정책 변화의 **출처 있는 종합**만 —
-  weekly_note 보다 자세히 쓸 수 있지만 새 주장을 창작하지 않는다.
+  **3문장 고정 구조**로 쓴다 — 이번 주 수급·가격·병목·정책 변화의 **출처 있는
+  종합**만, 새 주장 창작 금지:
+  ```markdown
+  > [!claim] (as_of YYYY-MM · market-research 루틴)
+  > **지금 상황**: (사실 — 쉬운 말로, 용어는 괄호 풀이)
+  > **왜 중요**: (그 사실이 이 시장의 수급·가격 결정력에 갖는 의미)
+  > **투자자 관점**: (어떤 위치의 기업이 유리/불리해지는 구조인지 — 종목 추천·매수/매도 표현 금지)
+  ```
 - **[시장 뉴스 로그]** (`MARKET_NEWS_START/END`): 뉴스 스토어에 추가한 항목을
   같은 형식(`- **날짜** ± **제목** — 요약 (출처) [↗](url)`)으로 prepend (최신순).
+  제목·요약은 영문 헤드라인을 번역한 쉬운 한국어로.
 - **[사실 누적]**: Tier-1 2곳 이상으로 확정된 시장 구조 사실만 `[!fact]` 추가.
 - frontmatter `updated` 갱신. [소속 기업 동향] 표는 daily 루틴 몫 — 건드리지 않는다.
 - **새 시장 노드를 만들었으면 같은 id 의 옵시디언 파일도 생성한다**
