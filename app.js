@@ -1867,6 +1867,62 @@ function mcMood(agg) {
   return { t: "강한 부정 모멘텀", tone: "neg" };
 }
 
+// ── 시장 평균 대비 편차 차트 ────────────────────────────────────────────
+// narrative_score 절대값은 기준선이 없어 그 자체로는 해석이 어렵다.
+// 같은 시장 watchlist 기업들의 평균을 기준선(0)으로 삼고, 각 기업이
+// 평균에서 얼마나 벗어났는지(Δ)를 다이버징 바로 보여준다 — 시장 안에서의
+// 상대 위상을 읽는 그래프. 시장 상세 패널과 플레이어 지도가 함께 쓴다.
+
+const mcFmtScore = (v) => `${v >= 0 ? "+" : ""}${v.toFixed(2)}`;
+
+// players[] 에서 watchlist 기업의 뉴스 시그널을 모아 시장 평균·편차·순위 계산
+function mcScoreRows(players, stocks) {
+  const rows = [];
+  (players || []).forEach((p) => {
+    if (!p.ticker || !p.in_watchlist) return;
+    const q = stocks && stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
+    if (q && typeof q.narrative_score === "number")
+      rows.push({ name: p.name, ticker: p.ticker, score: q.narrative_score });
+  });
+  if (!rows.length) return null;
+  const avg = rows.reduce((a, r) => a + r.score, 0) / rows.length;
+  rows.forEach((r) => { r.dev = r.score - avg; });
+  rows.sort((a, b) => b.score - a.score);
+  return { avg, rows };
+}
+
+// 편차 차트 블록 HTML. opts.highlight = 강조할 티커(플레이어 지도 기업 상세용)
+function mcDevChartHtml(players, stocks, opts = {}) {
+  const rel = mcScoreRows(players, stocks);
+  if (!rel) return "";
+  const { avg, rows } = rel;
+  const title = opts.title || "시장 평균 대비 뉴스 시그널";
+  if (rows.length < 2) {
+    return `<div class="mc-dev mc-dev--single">
+        <h5>${escapeHtml(title)}</h5>
+        <p>시그널 데이터가 있는 watchlist 기업이 ${rows.length}곳뿐이라 시장 평균 비교가 아직 어렵습니다 — 2곳 이상부터 표시됩니다.</p>
+      </div>`;
+  }
+  const maxDev = Math.max(0.1, ...rows.map((r) => Math.abs(r.dev)));
+  const rowHtml = rows.map((r, i) => {
+    const pct = Math.round((Math.abs(r.dev) / maxDev) * 50);
+    const side = r.dev >= 0 ? "right" : "left";
+    const tone = r.dev > 0.05 ? "pos" : r.dev < -0.05 ? "neg" : "neutral";
+    const hl = opts.highlight && r.ticker === opts.highlight ? " mc-dev-row--hl" : "";
+    return `<div class="mc-dev-row${hl}" data-tone="${tone}"
+        title="${escapeHtml(r.name)} — 시그널 ${mcFmtScore(r.score)} · 시장 평균 ${mcFmtScore(avg)} 대비 ${mcFmtScore(r.dev)} · 시장 내 ${i + 1}/${rows.length}위">
+        <span class="mc-dev-name">${escapeHtml(r.name)}</span>
+        <span class="mc-dev-bar"><i data-side="${side}" data-tone="${tone}" style="width:${pct}%"></i></span>
+        <span class="mc-dev-val">${mcFmtScore(r.dev)}</span>
+      </div>`;
+  }).join("");
+  return `<div class="mc-dev">
+      <h5>${escapeHtml(title)} <span class="mc-dev-meta">watchlist ${rows.length}곳 평균이 기준선</span></h5>
+      <div class="mc-dev-rows">${rowHtml}</div>
+      <p class="mc-dev-axis"><span>◀ 평균 미달</span><span class="mc-dev-avg">시장 평균 ${mcFmtScore(avg)}</span><span>평균 상회 ▶</span></p>
+    </div>`;
+}
+
 // 점유율 스택 바 (단색 회색 램프). 합이 100 미만이면 '기타' 세그먼트.
 function mcShareBar(players) {
   const segs = (players || []).filter((p) => typeof p.share === "number" && p.share > 0)
@@ -2565,6 +2621,7 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
   const moodHtml = mood
     ? `<p class="mc-mood" data-tone="${mood.tone}"><span>시장 분위기</span> <strong>${escapeHtml(mood.t)}</strong> · 뉴스 시그널 ${agg.score >= 0 ? "+" : ""}${agg.score.toFixed(2)} (watchlist ${agg.count}곳)</p>`
     : `<p class="mc-mood mc-mood--none"><span>시장 분위기</span> watchlist 뉴스 데이터 연결 전</p>`;
+  const devHtml = mcDevChartHtml(m.players, stocks);
 
   // 자동 병목 신호 (market pulse) — 압력·수요 모멘텀 게이지 + 전이 제안 + 근거
   let pulseHtml = "";
@@ -2690,6 +2747,7 @@ function renderMarketDetail(id, needs, pulledBy, stocks) {
     ${btlHtml}
     ${pulseHtml}
     ${moodHtml}
+    ${devHtml}
     ${weeklyHtml}
     ${newsHtml}
     <div class="mc-wiki" hidden></div>
@@ -3053,6 +3111,7 @@ function pmMarketSummaryHtml() {
     ${btlHtml}
     ${d.intro ? `<div class="mc-weekly"><h5>지도 읽는 법</h5><p>${escapeHtml(d.intro)}</p></div>` : ""}
     ${bar ? `<div class="mc-players"><h5>제조사 점유율</h5><div class="mc-share-wrap">${bar}</div></div>` : ""}
+    ${mcDevChartHtml(d.players, MC_STATE.stocks || {})}
     <p class="vc-detail-hint">기업 노드를 클릭하면 상세와 거래 관계가 표시됩니다.</p>
     ${srcHtml}`;
 }
@@ -3082,10 +3141,17 @@ function pmRenderDetail(id, suppliers, customers) {
   let scoreHtml = "";
   const stocks = MC_STATE.stocks || {};
   if (p.ticker && p.in_watchlist) {
-    const q = stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
-    if (q && typeof q.narrative_score === "number") {
-      const tone = q.narrative_score > 0.05 ? "pos" : q.narrative_score < -0.05 ? "neg" : "neutral";
-      scoreHtml = `<p class="mc-mood" data-tone="${tone}"><span>뉴스 시그널</span> <strong>${q.narrative_score >= 0 ? "+" : ""}${q.narrative_score.toFixed(2)}</strong> · watchlist 추적 중</p>`;
+    const rel = mcScoreRows(d.players, stocks);
+    const mine = rel && rel.rows.find((r) => r.ticker === p.ticker);
+    if (mine) {
+      // 절대값 대신 시장 평균 대비 상대 위치로 읽는다 — 톤도 편차 기준
+      const rank = rel.rows.indexOf(mine) + 1;
+      const tone = mine.dev > 0.05 ? "pos" : mine.dev < -0.05 ? "neg" : "neutral";
+      const relTxt = rel.rows.length >= 2
+        ? ` · 시장 평균 ${mcFmtScore(rel.avg)} 대비 <strong>${mcFmtScore(mine.dev)}</strong> (시장 내 ${rank}/${rel.rows.length}위)`
+        : " · watchlist 추적 중";
+      scoreHtml = `<p class="mc-mood" data-tone="${tone}"><span>뉴스 시그널</span> <strong>${mcFmtScore(mine.score)}</strong>${relTxt}</p>
+        ${rel.rows.length >= 2 ? mcDevChartHtml(d.players, stocks, { highlight: p.ticker, title: "시장 내 상대 위치" }) : ""}`;
     }
   }
   const share = typeof p.share === "number" ? ` · 점유 ${p.share}%` : "";

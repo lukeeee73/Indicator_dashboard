@@ -1810,6 +1810,35 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .mc-pulse-etype[data-t="demand_up"]        { color: var(--text); }
 .mc-pulse-etype[data-t="demand_down"]      { color: var(--text-dim); }
 
+/* 시장 평균 대비 편차 차트 — 기준선(중앙) = 이 시장 watchlist 평균,
+   막대 = 각 기업이 평균에서 벗어난 정도(Δ). 절대값이 아니라 상대 위상을 읽는다. */
+.mc-dev { border: 1px dashed var(--border-mid); border-radius: 6px;
+  padding: 0.45rem 0.6rem; margin: 0 0 0.6rem; }
+.mc-dev h5 { margin: 0 0 0.4rem; font-size: 0.76rem; color: var(--text-dim); word-break: keep-all; }
+.mc-dev-meta { font-weight: 400; font-size: 0.66rem; opacity: 0.85; }
+.mc-dev-row { display: flex; align-items: center; gap: 0.45rem; margin: 0.22rem 0;
+  border-radius: 4px; }
+.mc-dev-row--hl { background: var(--bg-elev); outline: 1px solid var(--border-mid); }
+.mc-dev-row--hl .mc-dev-name { color: var(--text); font-weight: 700; }
+.mc-dev-name { flex: 0 0 6.2rem; font-size: 0.7rem; color: var(--text-dim);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mc-dev-val { flex: 0 0 2.6rem; font-size: 0.7rem; text-align: right; color: var(--text); }
+.mc-dev-row[data-tone="neutral"] .mc-dev-val { color: var(--text-dim); }
+.mc-dev-bar { position: relative; flex: 1; height: 6px; border-radius: 3px;
+  background: var(--bg-elev); overflow: hidden; }
+.mc-dev-bar::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: var(--border-mid); }
+.mc-dev-bar i { position: absolute; top: 0; bottom: 0; border-radius: 3px; min-width: 2px; }
+.mc-dev-bar i[data-side="right"] { left: 50%; }
+.mc-dev-bar i[data-side="left"]  { right: 50%; }
+.mc-dev-bar i[data-tone="pos"] { background: var(--up); }
+.mc-dev-bar i[data-tone="neg"] { background: var(--down); }
+.mc-dev-bar i[data-tone="neutral"] { background: var(--text-dim); }
+.mc-dev-axis { display: flex; justify-content: space-between; align-items: baseline;
+  margin: 0.3rem 0 0; font-size: 0.62rem; color: var(--text-dim); }
+.mc-dev-avg { color: var(--text); font-size: 0.66rem; }
+.mc-dev--single p { margin: 0; font-size: 0.7rem; color: var(--text-dim); font-style: italic; }
+
 /* ════════════════════════════════════════════════════════════════
    플레이어 지도 (player map) — 세부 시장 하나를 기업 단위로 펼친
    전용 화면(오버레이). 시장 지도의 시각 문법(컬럼·집계 흐름선·
