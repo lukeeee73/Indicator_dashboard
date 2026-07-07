@@ -1,0 +1,3789 @@
+{
+ "as_of": "2026-07-06",
+ "month": "2026-07",
+ "generated_utc": "2026-07-06T14:56:00Z",
+ "criteria": [
+  {
+   "key": "roe",
+   "label": "ROE ≥ 15%",
+   "desc": "주주 자본을 얼마나 효율적으로 굴리는가 — 버핏이 사업의 질을 재는 1순위 척도."
+  },
+  {
+   "key": "margin",
+   "label": "영업이익률 ≥ 15%",
+   "desc": "본업의 수익성 = 해자(moat)의 강도. 경쟁이 심하면 이 숫자가 버티지 못한다."
+  },
+  {
+   "key": "profit",
+   "label": "4개 분기 연속 흑자",
+   "desc": "일회성이 아니라 꾸준히 돈을 버는 기업인가. 최근 분기 실적으로 확인."
+  },
+  {
+   "key": "discount",
+   "label": "적정가치 대비 20%+ 할인",
+   "desc": "좋은 기업이라도 비싸면 사지 않는다 — 밸류에이션 갭이 −20% 이하(deep value 존)일 때만."
+  }
+ ],
+ "passed": [
+  "000660.KS",
+  "005930.KS",
+  "ADBE",
+  "CHTR",
+  "CRM",
+  "MU",
+  "NEM",
+  "T",
+  "VZ"
+ ],
+ "near_miss": [
+  "042700.KS",
+  "2454.TW",
+  "267260.KS",
+  "329180.KS",
+  "AAPL",
+  "AMAT",
+  "AMT",
+  "ANET",
+  "ASML",
+  "AVGO",
+  "AXP",
+  "AZN",
+  "BESI.AS",
+  "CAT",
+  "CDNS",
+  "CEG",
+  "CMCSA",
+  "DE",
+  "ETN",
+  "FCX",
+  "GE",
+  "GOOGL",
+  "JNJ",
+  "JPM",
+  "KLAC",
+  "KO",
+  "LIN",
+  "LLY",
+  "LRCX",
+  "MA",
+  "META",
+  "MO",
+  "MPWR",
+  "MS",
+  "MSFT",
+  "NFLX",
+  "NVDA",
+  "NVO",
+  "ORCL",
+  "PEP",
+  "PG",
+  "PLTR",
+  "PSA",
+  "SPG",
+  "TER",
+  "TMUS",
+  "TSM",
+  "V",
+  "VICI",
+  "VRT",
+  "VST"
+ ],
+ "results": {
+  "000270.KS": {
+   "name": "Kia Corporation",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1188
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0747
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.6597
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "000660.KS": {
+   "name": "SK Hynix",
+   "group": "반도체 — 메모리 (HBM·DRAM)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.6117
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.7154
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.7589
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "005380.KS": {
+   "name": "Hyundai Motor Company",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0754
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0547
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.4914
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "005930.KS": {
+   "name": "Samsung Electronics",
+   "group": "반도체 — 메모리 (HBM·DRAM)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1885
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4275
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.7728
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "010120.KS": {
+   "name": "LS ELECTRIC",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1667
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0919
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.8607
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "010140.KS": {
+   "name": "Samsung Heavy Industries",
+   "group": "조선 (한국)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1321
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0941
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.2067
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "012450.KS": {
+   "name": "Hanwha Aerospace",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1846
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1111
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2013
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "034020.KS": {
+   "name": "Doosan Enerbility",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0237
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0546
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": false,
+     "value": 4.1269
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "042660.KS": {
+   "name": "Hanwha Ocean Co., Ltd.",
+   "group": "조선 (한국)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2569
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1374
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.1363
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "042700.KS": {
+   "name": "Hanmi Semiconductor",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.308
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1661
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.8769
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "079550.KS": {
+   "name": "LIG Nex1",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2073
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1465
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.9743
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "2454.TW": {
+   "name": "MediaTek Inc.",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2542
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1535
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.2079
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "267260.KS": {
+   "name": "HD Hyundai Electric",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.4376
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2492
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.59
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "298040.KS": {
+   "name": "Hyosung Heavy Industries",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2108
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0987
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4884
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "329180.KS": {
+   "name": "HD Hyundai Heavy Industries",
+   "group": "조선 (한국)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2455
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.153
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.0093
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "4062.T": {
+   "name": "Ibiden Co., Ltd.",
+   "group": "반도체 — 파운드리 · 패키징 · 기판",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1217
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1406
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.7772
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "4063.T": {
+   "name": "Shin-Etsu Chemical",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1068
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2144
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.789
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "6146.T": {
+   "name": "DISCO Corporation",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2509
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4399
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.6964
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "6324.T": {
+   "name": "Harmonic Drive Systems",
+   "group": "로보틱스 / 피지컬 AI",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0202
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0792
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": false,
+     "value": 12.3217
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "6857.T": {
+   "name": "Advantest Corporation",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.5765
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4591
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.1077
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "6954.T": {
+   "name": "FANUC Corporation",
+   "group": "로보틱스 / 피지컬 AI",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0935
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.239
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.3113
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "AAPL": {
+   "name": "Apple Inc.",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 1.4147
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3227
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.6544
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "ABBV": {
+   "name": "AbbVie Inc.",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": null
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3216
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.166
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "ABT": {
+   "name": "Abbott Laboratories",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1233
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1347
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.3435
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "ADBE": {
+   "name": "Adobe Inc.",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.6295
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3533
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.5094
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "AEP": {
+   "name": "American Electric Power",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1258
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2374
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.3343
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "AMAT": {
+   "name": "Applied Materials, Inc.",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3969
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.319
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.2028
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "AMD": {
+   "name": "Advanced Micro Devices",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0806
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.144
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.7173
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "AMKR": {
+   "name": "Amkor Technology, Inc.",
+   "group": "반도체 — 파운드리 · 패키징 · 기판",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1001
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0595
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5176
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "AMT": {
+   "name": "American Tower Corporation",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2995
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4591
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.7441
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "AMZN": {
+   "name": "Amazon.com Inc.",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2429
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1314
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4098
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "ANET": {
+   "name": "Arista Networks, Inc.",
+   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3152
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4274
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.1209
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "APD": {
+   "name": "Air Products & Chemicals",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1235
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2359
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.9617
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "ARM": {
+   "name": "Arm Holdings plc",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1195
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2953
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 8.0927
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "ASML": {
+   "name": "ASML Holding N.V.",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.5224
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3602
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.3817
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "AVAV": {
+   "name": "AeroVironment, Inc.",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.1003
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0281
+    },
+    "profit": {
+     "ok": false,
+     "value": 0
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.4289
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "AVGO": {
+   "name": "Broadcom Inc.",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3728
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4899
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.6216
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "AXP": {
+   "name": "American Express Company",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3442
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2125
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.6643
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "AZN": {
+   "name": "AstraZeneca PLC",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2348
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2794
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.6948
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "BA": {
+   "name": "The Boeing Company",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 1.6995
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0171
+    },
+    "profit": {
+     "ok": false,
+     "value": 1
+    },
+    "discount": {
+     "ok": false,
+     "value": 3.4495
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "BAC": {
+   "name": "Bank of America Corp.",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1064
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3596
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.0061
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "BE": {
+   "name": "Bloom Energy Corporation",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0129
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0961
+    },
+    "profit": {
+     "ok": false,
+     "value": 2
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.6206
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "BESI.AS": {
+   "name": "BE Semiconductor Industries",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3127
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3458
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.5624
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "BRK-B": {
+   "name": "Berkshire Hathaway Inc. (Class B)",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.105
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1435
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.8798
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "C": {
+   "name": "Citigroup Inc.",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0765
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3408
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.0725
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "CAT": {
+   "name": "Caterpillar Inc.",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.5133
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1818
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.5253
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "CCI": {
+   "name": "Crown Castle Inc.",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": null
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4772
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.7241
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "CDNS": {
+   "name": "Cadence Design Systems",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2066
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.297
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.8336
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "CEG": {
+   "name": "Constellation Energy",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.161
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2186
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2993
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "CHTR": {
+   "name": "Charter Communications",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.275
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2388
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.7934
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "CMCSA": {
+   "name": "Comcast Corporation",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2092
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1315
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.7054
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "COHR": {
+   "name": "Coherent Corp.",
+   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0472
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1357
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.5554
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "COP": {
+   "name": "ConocoPhillips",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1128
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2205
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2688
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "COST": {
+   "name": "Costco Wholesale",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2915
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0367
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.5954
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "CRM": {
+   "name": "Salesforce, Inc.",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1691
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.218
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.3118
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "CRWV": {
+   "name": "CoreWeave, Inc.",
+   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.4067
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.0693
+    },
+    "profit": {
+     "ok": false,
+     "value": 0
+    },
+    "discount": {
+     "ok": false,
+     "value": null
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "CVX": {
+   "name": "Chevron Corporation",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0664
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0731
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.7255
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "D": {
+   "name": "Dominion Energy, Inc.",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0979
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2875
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2876
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "DE": {
+   "name": "Deere & Company",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1835
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1748
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.866
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "DIS": {
+   "name": "The Walt Disney Company",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1101
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1551
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.1667
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "DLR": {
+   "name": "Digital Realty Trust",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0569
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1719
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.7673
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "DUK": {
+   "name": "Duke Energy Corporation",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0966
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2551
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2413
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "EA": {
+   "name": "Electronic Arts Inc.",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1349
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2401
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.1926
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "ED": {
+   "name": "Consolidated Edison",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0873
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2561
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.1886
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "EQIX": {
+   "name": "Equinix, Inc.",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1006
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2434
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.7736
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "ETN": {
+   "name": "Eaton Corporation plc",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2084
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.161
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.9535
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "EXC": {
+   "name": "Exelon Corporation",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0976
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.223
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.0906
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "F": {
+   "name": "Ford Motor Company",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.1481
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0574
+    },
+    "profit": {
+     "ok": false,
+     "value": 2
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.6351
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "FCX": {
+   "name": "Freeport-McMoRan Inc.",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1563
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3107
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.6698
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "FDX": {
+   "name": "FedEx Corporation",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1485
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1113
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.0782
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "GE": {
+   "name": "GE Aerospace",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.4543
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2021
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.78
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "GEV": {
+   "name": "GE Vernova Inc.",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.7571
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0546
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.1964
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "GM": {
+   "name": "General Motors Company",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0401
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0936
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.4236
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "GOOGL": {
+   "name": "Alphabet Inc.",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3888
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3612
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5867
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "GS": {
+   "name": "The Goldman Sachs Group",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1455
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.386
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.3533
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "HD": {
+   "name": "The Home Depot, Inc.",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 1.2838
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1193
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2527
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "HMC": {
+   "name": "Honda Motor Co., Ltd.",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.0285
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.1728
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.7175
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "HON": {
+   "name": "Honeywell International",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2426
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.21
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.1751
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "HSAI": {
+   "name": "Hesai Group",
+   "group": "로보틱스 / 피지컬 AI",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0715
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.0126
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.1905
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "IBM": {
+   "name": "International Business Machines",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3577
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1381
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.0894
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "INTC": {
+   "name": "Intel Corporation",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.0291
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0688
+    },
+    "profit": {
+     "ok": false,
+     "value": 1
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.5026
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "JNJ": {
+   "name": "Johnson & Johnson",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2642
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2741
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.6972
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "JPM": {
+   "name": "JPMorgan Chase & Co.",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1647
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4374
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.1902
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "KLAC": {
+   "name": "KLA Corporation",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.9498
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4122
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.7184
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "KO": {
+   "name": "The Coca-Cola Company",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.4337
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3505
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4378
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "KTOS": {
+   "name": "Kratos Defense & Security",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0123
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0178
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 5.2444
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "LIN": {
+   "name": "Linde plc",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1823
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2847
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.305
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "LLY": {
+   "name": "Eli Lilly and Company",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 1.0746
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4939
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.444
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "LMT": {
+   "name": "Lockheed Martin Corp.",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.6764
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.11
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.3833
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "LRCX": {
+   "name": "Lam Research Corp.",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.6676
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3504
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.6284
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "MA": {
+   "name": "Mastercard Incorporated",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 2.3208
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.6084
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.5241
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "MBLY": {
+   "name": "Mobileye Global Inc.",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.4065
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.1935
+    },
+    "profit": {
+     "ok": false,
+     "value": 0
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2222
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "MCD": {
+   "name": "McDonald's Corporation",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": null
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4425
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.052
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "META": {
+   "name": "Meta Platforms Inc.",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3293
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4062
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.1392
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "MO": {
+   "name": "Altria Group, Inc.",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": null
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.6229
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.311
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "MP": {
+   "name": "MP Materials Corp.",
+   "group": "로보틱스 / 피지컬 AI",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.0417
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.0788
+    },
+    "profit": {
+     "ok": false,
+     "value": 1
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.674
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "MPWR": {
+   "name": "Monolithic Power Systems",
+   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1957
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2999
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.027
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "MRK": {
+   "name": "Merck & Co., Inc.",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1894
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.386
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5074
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "MRVL": {
+   "name": "Marvell Technology, Inc.",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1603
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1448
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.7546
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "MS": {
+   "name": "Morgan Stanley",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1639
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4062
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4338
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "MSFT": {
+   "name": "Microsoft Corporation",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3401
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4633
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.0035
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "MU": {
+   "name": "Micron Technology, Inc.",
+   "group": "반도체 — 메모리 (HBM·DRAM)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.6664
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.8037
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.4112
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "NBIS": {
+   "name": "Nebius Group N.V.",
+   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1414
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.3208
+    },
+    "profit": {
+     "ok": false,
+     "value": 2
+    },
+    "discount": {
+     "ok": false,
+     "value": 3.6109
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "NEE": {
+   "name": "NextEra Energy, Inc.",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1032
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3018
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4479
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "NEM": {
+   "name": "Newmont Corporation",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2583
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.6138
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.2165
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "NFLX": {
+   "name": "Netflix, Inc.",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.4849
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.323
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.408
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "NIO": {
+   "name": "NIO Inc.",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.8396
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.0121
+    },
+    "profit": {
+     "ok": false,
+     "value": 1
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.3924
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "NKE": {
+   "name": "NIKE, Inc.",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2214
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1195
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.0172
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "NOC": {
+   "name": "Northrop Grumman Corp.",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2851
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1169
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.0327
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "NVDA": {
+   "name": "NVIDIA Corporation",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 1.1429
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.656
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.0673
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "NVO": {
+   "name": "Novo Nordisk A/S",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.714
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.6157
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.1336
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "O": {
+   "name": "Realty Income Corporation",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0283
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4553
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.4634
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "OKLO": {
+   "name": "Oklo Inc.",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.0887
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0
+    },
+    "profit": {
+     "ok": false,
+     "value": 0
+    },
+    "discount": {
+     "ok": false,
+     "value": null
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "ORCL": {
+   "name": "Oracle Corporation",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.5338
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.362
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.1348
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "OXY": {
+   "name": "Occidental Petroleum",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0405
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1772
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.2089
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "PEP": {
+   "name": "PepsiCo, Inc.",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.4388
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1696
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.1215
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "PFE": {
+   "name": "Pfizer Inc.",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0831
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3162
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.1808
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "PG": {
+   "name": "Procter & Gamble Co.",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3111
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2305
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2081
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "PLD": {
+   "name": "Prologis, Inc.",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0684
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3849
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.1026
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "PLTR": {
+   "name": "Palantir Technologies Inc.",
+   "group": "빅테크 / 소프트웨어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3259
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4618
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 3.6238
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "PSA": {
+   "name": "Public Storage",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2018
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4625
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.1535
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "PWR": {
+   "name": "Quanta Services, Inc.",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1353
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0424
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.7839
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "QCOM": {
+   "name": "QUALCOMM Incorporated",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3608
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2206
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.1904
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "RIVN": {
+   "name": "Rivian Automotive, Inc.",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.6569
+    },
+    "margin": {
+     "ok": false,
+     "value": -0.6379
+    },
+    "profit": {
+     "ok": false,
+     "value": 0
+    },
+    "discount": {
+     "ok": false,
+     "value": null
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "RTX": {
+   "name": "RTX Corporation",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1157
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1318
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.8546
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "SBUX": {
+   "name": "Starbucks Corporation",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": null
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0842
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.4233
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "SHEL": {
+   "name": "Shell plc",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.107
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1487
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.1062
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "SLB": {
+   "name": "Schlumberger Limited",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1407
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1227
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4767
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "SNPS": {
+   "name": "Synopsys, Inc.",
+   "group": "반도체 — AI 칩 · 설계",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0382
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.1038
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.1844
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "SO": {
+   "name": "The Southern Company",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1099
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2582
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5268
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "SPG": {
+   "name": "Simon Property Group",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 1.1359
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.4338
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.2871
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "SPOT": {
+   "name": "Spotify Technology S.A.",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3799
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1577
+    },
+    "profit": {
+     "ok": false,
+     "value": 3
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.8433
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "SRE": {
+   "name": "Sempra",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0569
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3062
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5544
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "STLA": {
+   "name": "Stellantis N.V.",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.3015
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0272
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.8345
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "T": {
+   "name": "AT&T Inc.",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1837
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2272
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.5816
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "TER": {
+   "name": "Teradyne, Inc.",
+   "group": "로보틱스 / 피지컬 AI",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2875
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.3761
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.4565
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "TM": {
+   "name": "Toyota Motor Corporation",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1023
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0457
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.4813
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "TMO": {
+   "name": "Thermo Fisher Scientific",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1352
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1789
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5275
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "TMUS": {
+   "name": "T-Mobile US, Inc.",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.1802
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2401
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.0469
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "TOELY": {
+   "name": "Tokyo Electron Limited",
+   "group": "반도체 — 장비 · 소재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2927
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2889
+    },
+    "profit": {
+     "ok": false,
+     "value": null
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.5146
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "TSLA": {
+   "name": "Tesla Inc.",
+   "group": "자동차 / 모빌리티",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.049
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.042
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 10.6792
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "TSM": {
+   "name": "Taiwan Semiconductor Mfg.",
+   "group": "반도체 — 파운드리 · 패키징 · 기판",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3621
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.581
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4384
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "TTWO": {
+   "name": "Take-Two Interactive",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": -0.1056
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0233
+    },
+    "profit": {
+     "ok": false,
+     "value": 0
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5048
+    }
+   },
+   "passed_count": 0,
+   "pass": false
+  },
+  "UNH": {
+   "name": "UnitedHealth Group",
+   "group": "바이오 / 제약 / 헬스케어",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1218
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0805
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.663
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  },
+  "UPS": {
+   "name": "United Parcel Service",
+   "group": "산업재 / 방산",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.3335
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0633
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.0193
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "V": {
+   "name": "Visa Inc.",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.6035
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.6735
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.4507
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "VICI": {
+   "name": "VICI Properties Inc.",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1133
+    },
+    "margin": {
+     "ok": true,
+     "value": 1.0749
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.4416
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "VRT": {
+   "name": "Vertiv Holdings Co",
+   "group": "전력 인프라 (AI)",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.451
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1636
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 2.305
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "VST": {
+   "name": "Vistra Corp.",
+   "group": "유틸리티 / 전력",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.429
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2658
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.4592
+    }
+   },
+   "passed_count": 3,
+   "pass": false
+  },
+  "VZ": {
+   "name": "Verizon Communications",
+   "group": "통신 / 미디어",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.172
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2519
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": true,
+     "value": -0.4502
+    }
+   },
+   "passed_count": 4,
+   "pass": true
+  },
+  "WELL": {
+   "name": "Welltower Inc.",
+   "group": "부동산 (REITs)",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0367
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.1804
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 4.1729
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "WFC": {
+   "name": "Wells Fargo & Company",
+   "group": "금융",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.1203
+    },
+    "margin": {
+     "ok": true,
+     "value": 0.2945
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": -0.0631
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "WMT": {
+   "name": "Walmart Inc.",
+   "group": "소비재",
+   "checks": {
+    "roe": {
+     "ok": true,
+     "value": 0.2413
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0422
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 1.0526
+    }
+   },
+   "passed_count": 2,
+   "pass": false
+  },
+  "XOM": {
+   "name": "Exxon Mobil Corporation",
+   "group": "에너지 / 원자재",
+   "checks": {
+    "roe": {
+     "ok": false,
+     "value": 0.0987
+    },
+    "margin": {
+     "ok": false,
+     "value": 0.0635
+    },
+    "profit": {
+     "ok": true,
+     "value": 4
+    },
+    "discount": {
+     "ok": false,
+     "value": 0.5322
+    }
+   },
+   "passed_count": 1,
+   "pass": false
+  }
+ }
+}

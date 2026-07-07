@@ -95,6 +95,34 @@ NGI, POWER Magazine, Energy-Storage.News, EIA/IEA/FERC/ERCOT/PJM 공식 자료,
 - 두 조달 경로의 `weekly_note` 는 반드시 매주 갱신 — "이번 주 무게추가 어느 쪽으로
   움직였나"가 이 지도의 헤드라인이다.
 
+### 2.35 옵시디언 시장 종합 파일 동기화 (`Luke_wiki/wiki/news/markets/power-ai/`)
+
+2.3 에서 갱신한 내용을 **시장 노드별 옵시디언 종합 페이지**에 반영한다.
+경로 계약: `Luke_wiki/wiki/news/markets/power-ai/{market_id}.md`
+(대시보드가 시장 노드 클릭 시 이 파일을 지도 아래에 표시한다. 섹션 앵커 규칙은
+`Luke_wiki/wiki/news/markets/README.md`).
+
+이번에 변화가 있었던 시장만 갱신한다 — `../market-research/ai-semiconductor.md`
+2.35 절과 동일한 규칙:
+
+- **[시장 정의] / [병목 상태]**: 지도 JSON 의 `definition`·`demand_driver`·
+  `bottleneck` 과 동기화. severity 를 바꿨으면 여기도 반영.
+- **[시장 상황 종합]** (`SYNTHESIS_START/END`): `weekly_note` 기반 1~3문장 —
+  특히 btm/grid-ftm 은 "이번 주 무게추" 판단을 출처와 함께.
+- **[시장 뉴스 로그]** (`MARKET_NEWS_START/END`): 뉴스 스토어에 추가한 항목을
+  같은 형식(`- **날짜** ± **제목** — 요약 (출처) [↗](url)`)으로 prepend (최신순).
+- **[사실 누적]**: Tier-1 2곳 이상으로 확정된 시장 구조 사실만 `[!fact]` 추가.
+- **[인접 시장]**: 지도 JSON `links` 를 바꿨을 때만 함께 갱신 (노드 간 옵시디언
+  그래프가 밸류체인을 미러링하는 섹션이다).
+- frontmatter `updated` 갱신. [소속 기업 동향] 표는 daily 루틴 몫 — 건드리지 않는다.
+- **새 시장 노드를 만들었으면 같은 id 의 옵시디언 파일도 생성한다**
+  (기존 파일 구조 복사, frontmatter 에 `map: power-ai`, `market_id: {id}`,
+  `tags: [routine-news, market-summary, power-ai, {id}]`).
+
+> 정확성 규칙: 이 파일은 지도 JSON·뉴스 스토어의 **거울**이다. 두 SSOT 와
+> 어긋나는 수치·주장을 쓰지 않는다. 갱신 후 `Luke_wiki` 에서
+> `python scripts/validate_vault.py` 로 격리 규칙을 확인한다.
+
 ### 2.4 펄스 재실행 + 검증 (커밋 전 필수)
 ```bash
 python scripts/market_pulse.py --industry power-ai   # 검증 + analysis 재생성
@@ -117,6 +145,12 @@ python scripts/market_pulse.py --industry power-ai   # 검증 + analysis 재생�
 SESSION_BRANCH=$(git branch --show-current)
 git add data/markets/power-ai.json data/markets/news/ data/markets/criteria/ data/markets/analysis/ .claude/routines/market-research/
 git commit -m "chore(markets): 전력·AI 시장 지도 갱신 ($(date -u +%Y-%m-%d))"
+git push -u origin "$SESSION_BRANCH"
+
+# Luke_wiki (시장 종합 파일을 갱신했으면 — 해당 레포 디렉토리에서)
+SESSION_BRANCH=$(git branch --show-current)
+git add wiki/news/markets/
+git commit -m "[routine-news] market summary sync $(date -u +%Y-%m-%d) (power-ai)"
 git push -u origin "$SESSION_BRANCH"
 ```
 그 뒤 `mcp__github__create_pull_request` (head=세션 브랜치, base=기본 브랜치)

@@ -395,21 +395,76 @@ section h2 {
   border-top-color: #7bb8ff;
 }
 
-/* ---------- 주식 패널: 섹터 그룹 헤더 ---------- */
+/* ---------- 주식 패널: 검색 툴바 ---------- */
+.stock-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.4rem;
+}
+#stock-search {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.8rem;
+  width: 280px;
+  max-width: 100%;
+}
+#stock-search:focus { outline: none; border-color: var(--red); }
+.stock-toolbar-btn {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  padding: 0.5rem 0.85rem;
+  white-space: nowrap;
+}
+.stock-toolbar-btn:hover { color: var(--text); border-color: var(--border-mid); }
+.stock-search-empty {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ---------- 주식 패널: 섹터 그룹 (접이식) 헤더 ---------- */
 .stock-group {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.4rem;
 }
 .stock-group:last-child {
   margin-bottom: 0;
 }
-.stock-group-header {
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: auto auto 1fr;
+.stock-group[hidden] { display: none !important; }
+/* 헤더는 토글 버튼 — 기존 헤더 룩을 유지하면서 클릭 가능하게 */
+button.stock-group-header {
+  display: flex;
   align-items: baseline;
-  gap: 0.6rem 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+  width: 100%;
+  margin-bottom: 0.9rem;
+  padding: 0 0 0.6rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+button.stock-group-header:hover .stock-group-title { color: var(--red-bright); }
+.sg-chevron {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  width: 1rem;
+  flex: 0 0 auto;
 }
 .stock-group-title {
   margin: 0;
@@ -428,17 +483,152 @@ section h2 {
   border: 1px solid var(--border);
   white-space: nowrap;
 }
+.stock-group-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--up);
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(90, 205, 128, 0.08);
+  border: 1px solid rgba(90, 205, 128, 0.35);
+  white-space: nowrap;
+}
 .stock-group-desc {
-  grid-column: 1 / -1;
+  flex-basis: 100%;
   margin: 0;
   font-size: 0.78rem;
   color: var(--text-dim);
   line-height: 1.5;
 }
-@media (max-width: 640px) {
-  .stock-group-header {
-    grid-template-columns: 1fr auto;
-  }
+/* 접혀 있는 동안 그룹 설명은 감춰 목록을 컴팩트하게 */
+button.stock-group-header[aria-expanded="false"] .stock-group-desc { display: none; }
+.stock-group-cards[hidden] { display: none !important; }
+.stock-slot[hidden], .stock-card[hidden] { display: none !important; }
+
+/* ---------- 주식 패널: 가치 발굴 (월간 스크리닝) ---------- */
+.vs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  margin-bottom: 1.4rem;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+.vs-meta b { color: var(--text); }
+.vs-meta .vs-meta-pass { color: var(--up); }
+.vs-criteria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+.vs-criterion {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--border-mid);
+  border-radius: var(--radius);
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.vs-criterion[data-kind="price"] { border-left-color: var(--red-bright); }
+.vs-criterion-kind {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.vs-criterion[data-kind="price"] .vs-criterion-kind { color: var(--red-bright); }
+.vs-criterion-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.vs-criterion-desc {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.vs-picks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.vs-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.vs-pick .card { flex: 1 1 auto; }
+.vs-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.vs-chip {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  background: var(--bg-elev);
+  white-space: nowrap;
+}
+.vs-chip b { font-weight: 700; }
+.vs-chip[data-ok="1"] { color: var(--up); border-color: rgba(90, 205, 128, 0.35); }
+.vs-chip[data-ok="0"] { color: var(--down); border-color: rgba(204, 36, 36, 0.4); }
+.vs-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1.6rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  background: var(--bg-elev);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--radius);
+}
+.vs-empty strong { color: var(--text); }
+.vs-near {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.vs-near-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(120px, 200px) 1fr;
+  gap: 0.4rem 1rem;
+  align-items: baseline;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+}
+.vs-near-name { color: var(--text); font-weight: 600; }
+.vs-near-group { color: var(--text-dim); }
+.vs-near-fail { color: var(--text-dim); }
+@media (max-width: 720px) {
+  .vs-near-row { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+/* 통과 종목의 일반 카드 헤더 배지 */
+.vs-pass-chip {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--up);
+  padding: 0.08rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(90, 205, 128, 0.08);
+  border: 1px solid rgba(90, 205, 128, 0.35);
+  white-space: nowrap;
+  margin-left: 0.45rem;
+  margin-right: auto;
 }
 
 .card-header {
