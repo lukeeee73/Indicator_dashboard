@@ -5766,18 +5766,45 @@ function wikiInitGraph(graph) {
        style="background:${WIKI_OTHER_COLOR}"></span>${WIKI_OTHER_LABEL}</span>` : "");
 
   // ---------- 초기 배치: 폴더별 클러스터 원형 배치 ----------
-  const W = () => wrap.clientWidth, H = () => wrap.clientHeight;
-  const cx = W() / 2, cy = H() / 2;
+  const W = () => wrap.clientWidth || 900, H = () => wrap.clientHeight || 560;
+  const centerX = () => W() / 2, centerY = () => H() / 2;
   const folders = [...new Set(nodes.map((n) => n.folder))];
-  folders.forEach((f, fi) => {
-    const angle = (fi / folders.length) * Math.PI * 2;
-    const fx = cx + Math.cos(angle) * Math.min(cx, cy) * 0.45;
-    const fy = cy + Math.sin(angle) * Math.min(cx, cy) * 0.45;
-    nodes.filter((n) => n.folder === f).forEach((n) => {
-      n.x = fx + (Math.random() - 0.5) * 120;
-      n.y = fy + (Math.random() - 0.5) * 120;
+  const folderRank = new Map(topFolders.map((f, i) => [f, i]));
+  const folderIndex = new Map(folders
+    .sort((a, b) => (folderRank.get(a) ?? 999) - (folderRank.get(b) ?? 999) || a.localeCompare(b))
+    .map((f, i) => [f, i]));
+
+  function seedCircularLayout() {
+    const cx = centerX(), cy = centerY();
+    const orbit = Math.max(90, Math.min(cx, cy) * 0.52);
+    const golden = Math.PI * (3 - Math.sqrt(5));
+    const groups = new Map();
+    nodes.forEach((n) => {
+      if (!groups.has(n.folder)) groups.set(n.folder, []);
+      groups.get(n.folder).push(n);
     });
-  });
+    groups.forEach((group, f) => {
+      group.sort((a, b) => b.deg - a.deg || a.title.localeCompare(b.title));
+      const fi = folderIndex.get(f) ?? 0;
+      const fa = -Math.PI / 2 + (fi / Math.max(folders.length, 1)) * Math.PI * 2;
+      const fx = cx + Math.cos(fa) * orbit;
+      const fy = cy + Math.sin(fa) * orbit;
+      const clusterR = Math.max(28, Math.min(150, 16 + Math.sqrt(group.length) * 18));
+      group.forEach((n, i) => {
+        if (n.deg >= 8) {
+          n.x = cx + Math.cos(fa) * orbit * 0.35;
+          n.y = cy + Math.sin(fa) * orbit * 0.35;
+        } else {
+          const a = fa + i * golden;
+          const r = clusterR * Math.sqrt((i + 0.5) / Math.max(group.length, 1));
+          n.x = fx + Math.cos(a) * r;
+          n.y = fy + Math.sin(a) * r;
+        }
+        n.vx = 0; n.vy = 0;
+      });
+    });
+  }
+  seedCircularLayout();
 
   // ---------- 뷰 상태 ----------
   const view = { scale: 1, ox: 0, oy: 0 };
@@ -5797,12 +5824,13 @@ function wikiInitGraph(graph) {
   // 초기 배치의 거친 움직임은 화면에 보여주지 않는다: 먼저 warm-up 을
   // 그리지 않고 돌려 레이아웃을 잡은 뒤, 낮은 온도 + 속도 상한 상태로
   // 천천히 정착하는 모습만 보여준다 (Obsidian 그래프 뷰와 같은 느낌).
-  const LIVE_ALPHA = 0.18;  // 화면에 보이는 단계의 시작 온도
-  const MAX_SPEED  = 2.2;   // px/frame — 노드가 화면에서 튀지 않는 상한
+  const LIVE_ALPHA = 0.16;  // 화면에 보이는 단계의 시작 온도
+  const MAX_SPEED  = 1.9;   // px/frame — 노드가 화면에서 튀지 않는 상한
 
   function tick(live) {
-    const K = 46;                    // 반발 상수
-    const REST = 76, SPRING = 0.025; // 스프링 길이/강도 — 노드 간격을 넓혀 제목이 겹치지 않게
+    const cx = centerX(), cy = centerY();
+    const K = 54;                    // 반발 상수
+    const REST = 82, SPRING = 0.022; // 스프링 길이/강도 — 노드 간격을 넓혀 제목이 겹치지 않게
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
       for (let j = i + 1; j < nodes.length; j++) {
@@ -5812,7 +5840,9 @@ function wikiInitGraph(graph) {
         if (d2 < 0.01) { dx = Math.random() - 0.5; dy = Math.random() - 0.5; d2 = 1; }
         if (d2 > 90000) continue;    // 300px 밖 반발 무시 (성능)
         const d = Math.sqrt(d2);
-        const f = (K * K) / d2 * alpha;
+        const minGap = a.r + b.r + 12;
+        const collide = d < minGap ? (minGap - d) * 0.035 : 0;
+        const f = ((K * K) / d2 + collide) * alpha;
         const fx = dx / d * f, fy = dy / d * f;
         a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
       }
@@ -5826,9 +5856,16 @@ function wikiInitGraph(graph) {
       a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
     });
     nodes.forEach((n) => {
-      // 중심으로 약한 중력 — 그래프가 흩어지지 않게
-      n.vx += (cx - n.x) * 0.004 * alpha;
-      n.vy += (cy - n.y) * 0.004 * alpha;
+      // 중심으로 약한 중력 + 폴더별 원형 앵커 — 그래프가 흩어지지 않고 자연스러운 원형을 유지한다
+      const fi = folderIndex.get(n.folder) ?? 0;
+      const fa = -Math.PI / 2 + (fi / Math.max(folders.length, 1)) * Math.PI * 2;
+      const anchorR = Math.max(70, Math.min(cx, cy) * (n.deg >= 8 ? 0.22 : 0.46));
+      const ax = cx + Math.cos(fa) * anchorR;
+      const ay = cy + Math.sin(fa) * anchorR;
+      n.vx += (cx - n.x) * 0.0025 * alpha;
+      n.vy += (cy - n.y) * 0.0025 * alpha;
+      n.vx += (ax - n.x) * 0.0028 * alpha;
+      n.vy += (ay - n.y) * 0.0028 * alpha;
       if (n === dragNode) { n.vx = 0; n.vy = 0; return; }
       // 보이는 단계는 감쇠를 세게 + 속도 상한 → 느릿한 정착
       const damp = live ? 0.72 : 0.82;
@@ -5844,8 +5881,9 @@ function wikiInitGraph(graph) {
 
   // 화면에 그리기 전 레이아웃을 미리 잡는다 (거친 초기 움직임 숨김)
   function warmup() {
+    seedCircularLayout();
     alpha = 1;
-    for (let i = 0; i < 220 && alpha > 0.05; i++) tick(false);
+    for (let i = 0; i < 280 && alpha > 0.04; i++) tick(false);
     nodes.forEach((n) => { n.vx = 0; n.vy = 0; });
     alpha = LIVE_ALPHA;
   }
