@@ -26,20 +26,20 @@
       </div>
 
       <nav class="sidebar-nav" aria-label="대시보드 섹션">
-        <button class="tab-btn active" data-tab="US">
+        <button class="tab-btn active" data-tab="WIKI">
+          <span class="tab-icon">🕸️</span><span class="tab-label">위키</span>
+        </button>
+        <button class="tab-btn" data-tab="STOCKS">
+          <span class="tab-icon">📈</span><span class="tab-label">주식</span>
+        </button>
+        <button class="tab-btn" data-tab="US">
           <span class="tab-icon">🇺🇸</span><span class="tab-label">미국</span>
         </button>
         <button class="tab-btn" data-tab="KR">
           <span class="tab-icon">🇰🇷</span><span class="tab-label">한국</span>
         </button>
-        <button class="tab-btn" data-tab="STOCKS">
-          <span class="tab-icon">📈</span><span class="tab-label">주식</span>
-        </button>
         <button class="tab-btn" data-tab="PRINCIPLES">
           <span class="tab-icon">🧭</span><span class="tab-label">원칙</span>
-        </button>
-        <button class="tab-btn" data-tab="WIKI">
-          <span class="tab-icon">🕸️</span><span class="tab-label">위키</span>
         </button>
       </nav>
 
@@ -60,7 +60,7 @@
     <!-- ══════════════════════════════════════════════════════
          미국 패널
     ══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="panel-US">
+    <div class="tab-panel" id="panel-US" hidden>
 
       <section class="assessment" id="assessment-US" hidden>
         <h2>현재 국면 (자동 판정)</h2>
@@ -390,7 +390,7 @@
     <!-- ══════════════════════════════════════════════════════
          위키 패널 — luke_wiki (Obsidian vault) 지식 그래프
     ══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="panel-WIKI" hidden>
+    <div class="tab-panel" id="panel-WIKI">
       <section class="category">
         <h2>루크 위키 — 지식 그래프</h2>
         <p class="category-desc">
