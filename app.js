@@ -649,6 +649,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     btn.addEventListener("click", () => switchToTab(btn.dataset.tab));
   });
   initSidebar();
+  // 첫 화면은 위키 — 지표 데이터와 무관하게 바로 그래프를 그린다
+  switchToTab("WIKI");
 
   try {
     const idxRes = await fetch("data/index.json", { cache: "no-cache" });
@@ -693,10 +695,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     _cachedData = data;
     renderLastUpdated(data.last_updated);
-    // US 탭 먼저 렌더링
-    renderTabContent("US", data);
-    _renderedTabs.add("US");
     wireEventsToggle();
+    // 지표 탭들은 첫 방문 때 지연 렌더링한다. 데이터가 도착하기 전에
+    // 사용자가 이미 지표 탭으로 이동해 있었다면 지금 채워 넣는다.
+    const active = document.querySelector(".tab-btn.active");
+    if (active && active.dataset.tab !== "WIKI") switchToTab(active.dataset.tab);
   } catch (err) {
     renderError(err);
   }
@@ -1257,8 +1260,12 @@ function monthsBetween(startIso, endIso) {
 }
 
 function renderError(err) {
-  document.querySelector("main").innerHTML =
-    `<div class="error">데이터를 불러오지 못했습니다: ${escapeHtml(err.message)}</div>`;
+  // main 전체를 지우지 않는다 — 첫 화면인 위키 그래프는 지표 데이터와
+  // 무관하게 동작하므로, 지표 로드 실패는 상단 배너로만 알린다.
+  const banner = document.createElement("div");
+  banner.className = "error";
+  banner.textContent = `데이터를 불러오지 못했습니다: ${err.message}`;
+  document.querySelector("main").prepend(banner);
 }
 
 
