@@ -1843,17 +1843,14 @@ function renderMarketChrome() {
   if (fs) fs.addEventListener("click", () => mcToggleFull());
 }
 
-// 시장 노드의 watchlist 기업 narrative_score 평균을 집계
+// 시장 노드의 watchlist 기업 뉴스 시그널 집계 — 편차 차트와 같은
+// 6주 감쇠 가중 평균(mcScoreRows)을 써서 지도 배지·분위기 라벨과
+// 차트의 기준선 숫자가 항상 일치한다.
 function mcAggregateScore(m, stocks) {
-  const scores = [];
-  (m.players || []).forEach((p) => {
-    if (!p.ticker || !p.in_watchlist) return;
-    const q = stocks && stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
-    if (q && typeof q.narrative_score === "number") scores.push(q.narrative_score);
-  });
-  if (!scores.length) return { count: 0, score: 0, tone: "neutral" };
-  const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
-  return { count: scores.length, score: avg, tone: avg > 0.05 ? "pos" : avg < -0.05 ? "neg" : "neutral" };
+  const rel = mcScoreRows(m.players, stocks);
+  if (!rel) return { count: 0, score: 0, tone: "neutral" };
+  const avg = rel.avg;
+  return { count: rel.rows.length, score: avg, tone: avg > 0.05 ? "pos" : avg < -0.05 ? "neg" : "neutral" };
 }
 
 // 집계 점수 → 시장 분위기 라벨
@@ -1872,30 +1869,100 @@ function mcMood(agg) {
 // 같은 시장 watchlist 기업들의 평균을 기준선(0)으로 삼고, 각 기업이
 // 평균에서 얼마나 벗어났는지(Δ)를 다이버징 바로 보여준다 — 시장 안에서의
 // 상대 위상을 읽는 그래프. 시장 상세 패널과 플레이어 지도가 함께 쓴다.
+//
+// 신호의 객관성을 위한 세 가지 장치:
+//  1) 하루치 점수가 아니라 최근 6주 history 를 반감기 14일로 감쇠 가중
+//     평균한다 — 단발 뉴스 하나에 순위가 뒤집히는 노이즈를 줄인다.
+//  2) 편차를 시장 표준편차(σ)로 정규화해, ±1σ 를 벗어난 기업만 유의한
+//     신호로 색을 입힌다. 그 안쪽(음영 구간)은 '평균 수준' = 회색.
+//  3) 1주 전의 상대 위치와 비교해 위상이 실제로 움직이는 방향(▲▼)을 함께
+//     보여준다 — 수준(level)과 변화(trend)를 분리해서 읽는다.
 
 const mcFmtScore = (v) => `${v >= 0 ? "+" : ""}${v.toFixed(2)}`;
+const MC_DEV_DAY            = 86400000;
+const MC_DEV_HALFLIFE_DAYS  = 14;   // 감쇠 반감기
+const MC_DEV_WINDOW_DAYS    = 42;   // 이보다 오래된 history 포인트는 무시
+const MC_DEV_STALE_DAYS     = 21;   // 최신 포인트가 이보다 오래되면 '데이터 오래됨'
+const MC_DEV_TREND_MIN      = 0.05; // 위상 변화(Δ편차) 표시 임계값
 
-// players[] 에서 watchlist 기업의 뉴스 시그널을 모아 시장 평균·편차·순위 계산
+// qualitative → 시계열 포인트 [{t, v}] (history 우선, 없으면 최신값 1점)
+function mcSignalPoints(q) {
+  const pts = [];
+  (q.history || []).forEach((h) => {
+    const t = Date.parse(h.date);
+    if (!Number.isNaN(t) && typeof h.narrative_score === "number") pts.push({ t, v: h.narrative_score });
+  });
+  if (!pts.length && typeof q.narrative_score === "number") {
+    const t = Date.parse(q.as_of || "");
+    pts.push({ t: Number.isNaN(t) ? Date.now() : t, v: q.narrative_score });
+  }
+  pts.sort((a, b) => a.t - b.t);
+  return pts;
+}
+
+// refMs 시점 기준 감쇠 가중 평균 (윈도 밖·미래 포인트 제외). 포인트 없으면 null.
+function mcDecayedAvg(pts, refMs) {
+  let ws = 0, vs = 0;
+  pts.forEach((p) => {
+    const age = (refMs - p.t) / MC_DEV_DAY;
+    if (age < 0 || age > MC_DEV_WINDOW_DAYS) return;
+    const w = Math.pow(0.5, age / MC_DEV_HALFLIFE_DAYS);
+    ws += w; vs += w * p.v;
+  });
+  return ws > 0 ? vs / ws : null;
+}
+
+// players[] 에서 watchlist 기업의 시그널을 모아 시장 평균·σ·편차·z·위상 변화 계산.
+// 기준 시점(ref)은 시장 내 가장 최신 데이터 날짜 — 전 종목이 같은 잣대로 감쇠된다.
 function mcScoreRows(players, stocks) {
-  const rows = [];
+  const cands = [];
   (players || []).forEach((p) => {
     if (!p.ticker || !p.in_watchlist) return;
     const q = stocks && stocks[p.ticker] && stocks[p.ticker].valuation && stocks[p.ticker].valuation.qualitative;
-    if (q && typeof q.narrative_score === "number")
-      rows.push({ name: p.name, ticker: p.ticker, score: q.narrative_score });
+    if (!q) return;
+    const pts = mcSignalPoints(q);
+    if (pts.length) cands.push({ name: p.name, ticker: p.ticker, pts });
+  });
+  if (!cands.length) return null;
+  const ref = Math.max(...cands.map((c) => c.pts[c.pts.length - 1].t));
+  const rows = [];
+  cands.forEach((c) => {
+    const score = mcDecayedAvg(c.pts, ref);
+    if (score == null) return;
+    const newest = c.pts[c.pts.length - 1];
+    rows.push({
+      name: c.name, ticker: c.ticker, score,
+      latest: newest.v,
+      n: c.pts.filter((p) => (ref - p.t) / MC_DEV_DAY <= MC_DEV_WINDOW_DAYS && p.t <= ref).length,
+      stale: (ref - newest.t) / MC_DEV_DAY > MC_DEV_STALE_DAYS,
+      prev: mcDecayedAvg(c.pts.filter((p) => p.t <= ref - 7 * MC_DEV_DAY), ref - 7 * MC_DEV_DAY),
+    });
   });
   if (!rows.length) return null;
   const avg = rows.reduce((a, r) => a + r.score, 0) / rows.length;
-  rows.forEach((r) => { r.dev = r.score - avg; });
+  const sd = Math.sqrt(rows.reduce((a, r) => a + (r.score - avg) ** 2, 0) / rows.length);
+  const prevRows = rows.filter((r) => r.prev != null);
+  const prevAvg = prevRows.length >= 2 ? prevRows.reduce((a, r) => a + r.prev, 0) / prevRows.length : null;
+  rows.forEach((r) => {
+    r.dev = r.score - avg;
+    r.z = sd > 0 ? r.dev / sd : 0;
+    r.trend = prevAvg != null && r.prev != null ? r.dev - (r.prev - prevAvg) : null; // 1주간 상대 위치 변화
+  });
   rows.sort((a, b) => b.score - a.score);
-  return { avg, rows };
+  return { avg, sd, rows };
+}
+
+// 편차 색은 ±1σ 를 벗어나면서 편차 자체도 임계 이상일 때만 — 그 외는 평균 수준(회색)
+function mcDevTone(r) {
+  if (Math.abs(r.z) >= 1 && Math.abs(r.dev) >= 0.05) return r.dev > 0 ? "pos" : "neg";
+  return "neutral";
 }
 
 // 편차 차트 블록 HTML. opts.highlight = 강조할 티커(플레이어 지도 기업 상세용)
 function mcDevChartHtml(players, stocks, opts = {}) {
   const rel = mcScoreRows(players, stocks);
   if (!rel) return "";
-  const { avg, rows } = rel;
+  const { avg, sd, rows } = rel;
   const title = opts.title || "시장 평균 대비 뉴스 시그널";
   if (rows.length < 2) {
     return `<div class="mc-dev mc-dev--single">
@@ -1903,23 +1970,34 @@ function mcDevChartHtml(players, stocks, opts = {}) {
         <p>시그널 데이터가 있는 watchlist 기업이 ${rows.length}곳뿐이라 시장 평균 비교가 아직 어렵습니다 — 2곳 이상부터 표시됩니다.</p>
       </div>`;
   }
-  const maxDev = Math.max(0.1, ...rows.map((r) => Math.abs(r.dev)));
+  const maxDev = Math.max(0.1, sd, ...rows.map((r) => Math.abs(r.dev)));
+  const bandPct = Math.min(50, Math.round((sd / maxDev) * 50)); // ±1σ 음영 구간 반폭(%)
+  const barBg = `linear-gradient(90deg, var(--bg-elev) 0 ${50 - bandPct}%, rgba(255,255,255,0.08) ${50 - bandPct}% ${50 + bandPct}%, var(--bg-elev) ${50 + bandPct}% 100%)`;
   const rowHtml = rows.map((r, i) => {
     const pct = Math.round((Math.abs(r.dev) / maxDev) * 50);
     const side = r.dev >= 0 ? "right" : "left";
-    const tone = r.dev > 0.05 ? "pos" : r.dev < -0.05 ? "neg" : "neutral";
-    const hl = opts.highlight && r.ticker === opts.highlight ? " mc-dev-row--hl" : "";
-    return `<div class="mc-dev-row${hl}" data-tone="${tone}"
-        title="${escapeHtml(r.name)} — 시그널 ${mcFmtScore(r.score)} · 시장 평균 ${mcFmtScore(avg)} 대비 ${mcFmtScore(r.dev)} · 시장 내 ${i + 1}/${rows.length}위">
-        <span class="mc-dev-name">${escapeHtml(r.name)}</span>
-        <span class="mc-dev-bar"><i data-side="${side}" data-tone="${tone}" style="width:${pct}%"></i></span>
+    const tone = mcDevTone(r);
+    const cls = "mc-dev-row"
+      + (opts.highlight && r.ticker === opts.highlight ? " mc-dev-row--hl" : "")
+      + (r.stale ? " mc-dev-row--stale" : "");
+    const trend = r.trend != null && Math.abs(r.trend) >= MC_DEV_TREND_MIN
+      ? `<span class="mc-dev-trend" data-dir="${r.trend > 0 ? "up" : "down"}" title="1주 전 대비 상대 위치 ${mcFmtScore(r.trend)}">${r.trend > 0 ? "▲" : "▼"}</span>`
+      : "";
+    const tipTrend = r.trend != null ? ` · 1주 위상 변화 ${mcFmtScore(r.trend)}` : "";
+    const tip = `${r.name} — 6주 가중 시그널 ${mcFmtScore(r.score)} (최신 ${mcFmtScore(r.latest)}, ${r.n}포인트)`
+      + ` · 시장 평균 ${mcFmtScore(avg)} 대비 ${mcFmtScore(r.dev)} (${r.z >= 0 ? "+" : ""}${r.z.toFixed(1)}σ)`
+      + ` · 시장 내 ${i + 1}/${rows.length}위${tipTrend}${r.stale ? " · 데이터 오래됨" : ""}`;
+    return `<div class="${cls}" data-tone="${tone}" data-sig="${Math.abs(r.z) >= 1 ? "1" : "0"}" title="${escapeHtml(tip)}">
+        <span class="mc-dev-name">${escapeHtml(r.name)}${trend}</span>
+        <span class="mc-dev-bar" style="background:${barBg}"><i data-side="${side}" data-tone="${tone}" style="width:${pct}%"></i></span>
         <span class="mc-dev-val">${mcFmtScore(r.dev)}</span>
       </div>`;
   }).join("");
   return `<div class="mc-dev">
-      <h5>${escapeHtml(title)} <span class="mc-dev-meta">watchlist ${rows.length}곳 평균이 기준선</span></h5>
+      <h5>${escapeHtml(title)} <span class="mc-dev-meta">6주 감쇠 가중 · watchlist&nbsp;${rows.length}곳 · σ&nbsp;${sd.toFixed(2)}</span></h5>
       <div class="mc-dev-rows">${rowHtml}</div>
       <p class="mc-dev-axis"><span>◀ 평균 미달</span><span class="mc-dev-avg">시장 평균 ${mcFmtScore(avg)}</span><span>평균 상회 ▶</span></p>
+      <p class="mc-dev-hint">음영 = 평균 ±1σ (평균 수준 범위) · 색 막대 = ±1σ 밖 유의 신호 · ▲▼ = 1주 전 대비 위상 변화</p>
     </div>`;
 }
 
@@ -3146,11 +3224,11 @@ function pmRenderDetail(id, suppliers, customers) {
     if (mine) {
       // 절대값 대신 시장 평균 대비 상대 위치로 읽는다 — 톤도 편차 기준
       const rank = rel.rows.indexOf(mine) + 1;
-      const tone = mine.dev > 0.05 ? "pos" : mine.dev < -0.05 ? "neg" : "neutral";
+      const tone = mcDevTone(mine);
       const relTxt = rel.rows.length >= 2
-        ? ` · 시장 평균 ${mcFmtScore(rel.avg)} 대비 <strong>${mcFmtScore(mine.dev)}</strong> (시장 내 ${rank}/${rel.rows.length}위)`
+        ? ` · 시장 평균 ${mcFmtScore(rel.avg)} 대비 <strong>${mcFmtScore(mine.dev)}</strong> (${mine.z >= 0 ? "+" : ""}${mine.z.toFixed(1)}σ · ${rank}/${rel.rows.length}위)`
         : " · watchlist 추적 중";
-      scoreHtml = `<p class="mc-mood" data-tone="${tone}"><span>뉴스 시그널</span> <strong>${mcFmtScore(mine.score)}</strong>${relTxt}</p>
+      scoreHtml = `<p class="mc-mood" data-tone="${tone}"><span>뉴스 시그널 (6주 가중)</span> <strong>${mcFmtScore(mine.score)}</strong>${relTxt}</p>
         ${rel.rows.length >= 2 ? mcDevChartHtml(d.players, stocks, { highlight: p.ticker, title: "시장 내 상대 위치" }) : ""}`;
     }
   }

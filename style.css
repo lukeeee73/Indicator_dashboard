@@ -1838,6 +1838,13 @@ a.mc-feed-title:hover { text-decoration: underline; }
   margin: 0.3rem 0 0; font-size: 0.62rem; color: var(--text-dim); }
 .mc-dev-avg { color: var(--text); font-size: 0.66rem; }
 .mc-dev--single p { margin: 0; font-size: 0.7rem; color: var(--text-dim); font-style: italic; }
+.mc-dev-row[data-sig="1"] .mc-dev-val { font-weight: 700; }
+.mc-dev-row--stale { opacity: 0.55; }
+.mc-dev-trend { margin-left: 0.25rem; font-size: 0.58rem; }
+.mc-dev-trend[data-dir="up"]   { color: var(--up); }
+.mc-dev-trend[data-dir="down"] { color: var(--down); }
+.mc-dev-hint { margin: 0.3rem 0 0; font-size: 0.62rem; color: var(--text-dim);
+  word-break: keep-all; opacity: 0.85; }
 
 /* ════════════════════════════════════════════════════════════════
    플레이어 지도 (player map) — 세부 시장 하나를 기업 단위로 펼친
