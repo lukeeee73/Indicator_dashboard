@@ -160,6 +160,34 @@ body.sb-collapsed .sidebar { display: none; }
 }
 .sidebar-foot .switch input { accent-color: var(--red); }
 
+/* 소셜 링크 아이콘 줄 */
+.sidebar-social {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  border: 1px solid transparent;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.social-link:hover,
+.social-link:focus-visible {
+  color: var(--text);
+  background: var(--bg-card);
+  border-color: var(--border-mid);
+  outline: none;
+}
+.social-link svg { display: block; }
+
 /* 모바일 드로어 배경 */
 .sidebar-backdrop {
   position: fixed;
