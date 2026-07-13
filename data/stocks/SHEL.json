@@ -4,22 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-07-05",
-      "value": 34.1
-    },
-    {
-      "date": "2016-07-06",
-      "value": 34.06
-    },
-    {
-      "date": "2016-07-07",
-      "value": 33.7
-    },
-    {
-      "date": "2016-07-08",
-      "value": 33.9
-    },
-    {
       "date": "2016-07-11",
       "value": 34.09
     },
@@ -10054,18 +10038,38 @@
     {
       "date": "2026-07-02",
       "value": 78.02
+    },
+    {
+      "date": "2026-07-06",
+      "value": 78.14
+    },
+    {
+      "date": "2026-07-07",
+      "value": 81.99
+    },
+    {
+      "date": "2026-07-08",
+      "value": 82.24
+    },
+    {
+      "date": "2026-07-09",
+      "value": 81.4
+    },
+    {
+      "date": "2026-07-10",
+      "value": 82.23
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 216200560640.0,
-      "pe_ratio": 12.152647,
-      "forward_pe": 8.609454,
+      "market_cap": 227866886144.0,
+      "pe_ratio": 12.808412,
+      "forward_pe": 9.288504,
       "eps_ttm": 6.42,
-      "dividend_yield": 4.01,
+      "dividend_yield": 3.8,
       "profit_margin": 0.07014,
       "operating_margin": 0.14873,
-      "price_to_book": 1.2671756,
+      "price_to_book": 1.335553,
       "return_on_equity": 0.10697
     },
     "quarterly": [
@@ -10107,8 +10111,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-02",
-    "current_price": 78.02,
+    "as_of": "2026-07-10",
+    "current_price": 82.23,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
@@ -10117,7 +10121,7 @@
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 99.68,
+        "fair_value": 97.38,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
@@ -10127,8 +10131,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 87.29,
-    "valuation_gap": -0.1062,
+    "fair_value": 86.6,
+    "valuation_gap": -0.0504,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10292,6 +10296,12 @@
         "price": 78.02,
         "fair_value": 77.04,
         "gap": 0.0127
+      },
+      {
+        "date": "2026-07-10",
+        "price": 82.23,
+        "fair_value": 77.04,
+        "gap": 0.0674
       }
     ],
     "qualitative": {
