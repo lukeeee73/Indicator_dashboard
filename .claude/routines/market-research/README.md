@@ -4,6 +4,9 @@
 기존 `../daily-market-analysis.md`(티커별 일일 뉴스)는 **그대로 유지**되고,
 이 디렉토리의 루틴들은 그 위에 **시장 층(market layer)** 을 얹는다.
 
+> 이 루틴들을 Claude Code 웹 루틴(주 1회 `weekly-market-research`)으로
+> 등록하는 폼 입력값은 [`../SETUP.md`](../SETUP.md) 참고.
+
 ---
 
 ## 두 파이프라인의 관계

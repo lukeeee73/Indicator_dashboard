@@ -143,7 +143,9 @@ def _standalone_main() -> int:
     merge_into_stocks(stocks)
     for ticker, payload in stocks.items():
         out = STOCKS_DIR / f"{ticker}.json"
-        out.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+        # fetch_fred.py 와 동일하게 파일 끝 개행 (POSIX 관례) — 없으면 매 실행마다
+        # 내용이 안 바뀐 종목 파일까지 개행 차이로 diff 가 생긴다.
+        out.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
     purged = _purge_old_news_files()
     print(f"Merged qualitative into {len(stocks)} stocks. Purged {purged} old news files.")
     return 0

@@ -391,6 +391,13 @@ fine-grained PAT 를 넣는다 (repository_dispatch 호출에 필요).
 [.claude/routines/daily-market-analysis.md](.claude/routines/daily-market-analysis.md)
 "종목·섹터 추가 가이드" 참고.
 
+> 🤖 이 daily 루틴과 주간 시장 리서치 루틴을 **Claude Code 웹**
+> (claude.ai/code/routines)에 등록·복원하는 폼 입력값(프롬프트 전문 ·
+> 스케줄 · 환경 설정 체크리스트)은
+> [.claude/routines/SETUP.md](.claude/routines/SETUP.md) 가 단일 기준이다.
+> 루틴은 레포가 아니라 개인 계정에 저장되므로, 삭제했다면 저 문서를 보고
+> 다시 등록한다.
+
 | 섹터 그룹 | 종목 수 | 대표 종목 |
 |---|---|---|
 | 빅테크 / 소프트웨어         | 10 | AAPL · MSFT · GOOGL · AMZN · META · ORCL · CRM · ADBE · IBM · PLTR |
