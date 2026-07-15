@@ -1,0 +1,75 @@
+{
+  "ticker": "TSLA",
+  "date": "2026-07-15",
+  "as_of_utc": "2026-07-15T21:00:00Z",
+  "news": [
+    {
+      "title": "Tesla's Stock Tanks Despite Growing Deliveries",
+      "source": "Forbes",
+      "url": "https://www.forbes.com/sites/zacharyfolk/2026/07/02/tesla-suddenly-plunges-8-despite-beating-expectations-on-deliveries/",
+      "published": "2026-07-02T00:00:00Z",
+      "summary": "2분기 인도량 48만대 서프라이즈에도 주가 8% 급락",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Tesla rolls out robotaxi service in Miami",
+      "source": "Yahoo Finance (Reuters)",
+      "url": "https://finance.yahoo.com/technology/ai/articles/tesla-rolls-robotaxi-miami-145913748.html",
+      "published": "2026-07-03T00:00:00Z",
+      "summary": "마이애미서 무감독 로보택시 첫 운행 개시(5번째 도시)",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "JPMorgan calls the possibility of a SpaceX-Tesla merger 'strategically coherent'",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/08/jpmorgan-calls-the-possibility-of-a-spacex-tesla-merger-strategically-coherent-.html",
+      "published": "2026-07-08T00:00:00Z",
+      "summary": "JP모건, 스페이스X-테슬라 합병설 전략적 타당성 평가",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "Tesla Second Quarter 2026 Production, Deliveries & Deployments",
+      "source": "Tesla IR",
+      "url": "https://ir.tesla.com/press-release/tesla-second-quarter-2026-production-deliveries-and-deployments",
+      "published": "2026-07-02T00:00:00Z",
+      "summary": "2분기 실적발표 7/22 예정, 컨센서스 매출 254억달러",
+      "impact": "neutral",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "BYDDY",
+      "headline": "BYD 6월 판매 40.3만대 역대 최대(해외 +94.7%, 중국 내수 -22%)",
+      "implication_for_target": "글로벌 EV 시장에서 테슬라의 중국·유럽 점유율 압박 요인"
+    },
+    {
+      "ticker": "F",
+      "headline": "포드 2분기 EV 판매 41% 급감",
+      "implication_for_target": "레거시 업체 EV 후퇴로 순수 EV 시장에서 테슬라 상대적 입지 유지"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.4,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": 0.11,
+  "summary_kr": "로보택시 마이애미 확장과 2분기 인도량 서프라이즈(48만대)로 성장 모멘텀은 유지되나, 밸류에이션 부담과 NHTSA의 FSD 결함 조사 격상이 겹치며 주가는 오히려 급락했다.",
+  "key_events": [
+    "2분기 인도량 48만대 서프라이즈에도 주가 8% 급락(7/2)",
+    "마이애미 무감독 로보택시 첫 운행(7/3)",
+    "JPMorgan 스페이스X 합병설 '전략적 타당' 평가(7/8)",
+    "2분기 실적발표 7/22 예정"
+  ],
+  "risks": [
+    "NHTSA FSD 결함 조사 엔지니어링 분석 단계로 격상",
+    "일부 주(뉴저지 등) 로보택시 서비스 제한 법안 추진",
+    "P/E 350배 이상 고밸류에이션 부담",
+    "스페이스X 합병설은 규제 승인 불확실성 큼"
+  ]
+}

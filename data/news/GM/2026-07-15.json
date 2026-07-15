@@ -1,0 +1,76 @@
+{
+  "ticker": "GM",
+  "date": "2026-07-15",
+  "as_of_utc": "2026-07-15T21:00:00Z",
+  "news": [
+    {
+      "title": "GM's Q2 US sales fall on discontinued models, EV slump; trucks and SUVs hold the line",
+      "source": "Automotive News",
+      "url": "https://www.autonews.com/general-motors/an-gm-q2-2026-sales-0701/",
+      "published": "2026-07-01T00:00:00Z",
+      "summary": "2분기 미국 판매 71.5만대, 전년比 4.2% 감소(3분기 연속)",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "General Motors and Micron sign long-term memory chip supply deal",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/technology/articles/general-motors-micron-sign-long-151750749.html",
+      "published": "2026-07-01T00:00:00Z",
+      "summary": "GM-마이크론, 차량용 메모리 반도체 장기 공급계약 체결",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "California AG Announces Record $12.75M Settlement with GM",
+      "source": "California DOJ",
+      "url": "https://oag.ca.gov/news/press-releases/when-it-comes-data-privacy-consumers-must-be-driver%E2%80%99s-seat-attorney-general",
+      "published": "2026-05-08T00:00:00Z",
+      "summary": "운전자 데이터 불법 판매로 사상 최대 CCPA 벌금 1,275만달러",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "GM adds $675 million to Brazil investment plan for hybrid vehicles, factory upgrades",
+      "source": "GM Authority",
+      "url": "https://gmauthority.com/blog/2026/06/gm-announces-additional-674m-investment-in-brazil/",
+      "published": "2026-06-24T00:00:00Z",
+      "summary": "브라질 하이브리드 생산·공장 현대화에 6.75억달러 추가 투자",
+      "impact": "+",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "TSLA",
+      "headline": "테슬라 2분기 인도량 48만대(+25%), 컨센서스 큰 폭 상회",
+      "implication_for_target": "GM EV 판매 부진과 대조되며 EV 수요 회복력 격차 부각"
+    },
+    {
+      "ticker": "TM",
+      "headline": "토요타, 멕시코→텍사스 태코마 조립 이전에 36억달러 투자",
+      "implication_for_target": "관세 회피·현지생산 확대 경쟁이 GM과 유사하게 심화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.15,
+    "competitive_position": 0.0,
+    "regulatory_risk": -0.35,
+    "macro_sensitivity": 0.1
+  },
+  "narrative_score": 0.01,
+  "summary_kr": "대법원 판결로 관세 비용 부담은 완화됐지만, 2분기 미국 판매가 3분기 연속 감소했고 캘리포니아주로부터 사상 최대 규모의 데이터 프라이버시 벌금을 부과받으며 단기 리스크가 부각됐다.",
+  "key_events": [
+    "2분기 미국 판매 4.2% 감소(71.5만대)",
+    "마이크론과 차량용 메모리 반도체 장기 공급계약",
+    "캘리포니아주 CCPA 벌금 1,275만달러(사상 최대)",
+    "브라질 하이브리드 투자 6.75억달러 추가",
+    "대법원 판결로 관세 비용 전망 25~35억달러로 하향"
+  ],
+  "risks": [
+    "연방 집단소송(1,600만 운전자 대상) 진행 중",
+    "EV 수요 둔화로 판매 감소 지속",
+    "여전히 수십억달러 규모 관세 비용 부담",
+    "데이터 프라이버시 관련 추가 규제 가능성"
+  ]
+}
