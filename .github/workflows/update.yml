@@ -40,6 +40,12 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/fetch_fred.py
 
+      - name: Sync indicators to Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+       run: python scripts/sync_supabase.py
+       
       - name: Rebuild principles timeline
         run: python scripts/build_principles.py
 
