@@ -25,10 +25,7 @@ BATCH_SIZE = 500
 
 # 처음 시험할 때는 두 지표만 넣습니다.
 # 전체 데를 넣을 때는 None으로 이터바꿉니다.
-TARGET_CODES: set[str] | None = {
-    "DGS10",
-    "T10Y2Y",
-}
+TARGET_CODES: set[str] | None = None
 
 
 def read_json(path: Path) -> dict[str, Any]:
