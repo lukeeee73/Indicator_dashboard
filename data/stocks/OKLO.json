@@ -5098,6 +5098,40 @@
     "valuation_gap": null,
     "signal": "n/a",
     "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
-    "gap_series_weekly": []
+    "gap_series_weekly": [],
+    "qualitative": {
+      "as_of": "2026-07-17",
+      "narrative_score": -0.23,
+      "summary_kr": "Oklo는 Switch(12GW), Equinix 등 대규모 비구속 전력공급계약을 다수 확보해 장기 성장 스토리는 유효하지만, NRC 설계인증 미완료 등 규제·수급 이슈가 겹치며 연초 대비 41% 급락했고, Groves 시험로 임계도달 여부가 단기 반등의 핵심 트리거다.",
+      "key_events": [
+        "연초 대비 주가 41% 하락(7/15 기준)",
+        "최근 한달간 28% 추가 하락(7/16)",
+        "DOE, Groves 시험로 최종 안전성분석 승인(7/1)"
+      ],
+      "risks": [
+        "NRC 원자로 설계 인증 미완료",
+        "상업 매출 부재(2027-28년 목표)",
+        "투기적 밸류에이션·패시브 자금 이탈"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "SMR",
+          "headline": "뉴스케일파워, 52주 신저가, 6개월간 54% 하락",
+          "implication_for_target": "SMR 업체 전반의 선행투자 리스크가 부각되어 Oklo 조정과 동일 맥락"
+        },
+        {
+          "ticker": "CEG",
+          "headline": "컨스텔레이션에너지, PJM 용량경매 전량 낙찰",
+          "implication_for_target": "대형 기존 원전 운영사가 AI 전력수요를 흡수하며 신생 SMR과 경쟁구도 형성"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-07-17",
+          "narrative_score": -0.23
+        }
+      ]
+    }
   }
 }
