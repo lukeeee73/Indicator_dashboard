@@ -16,33 +16,60 @@
 // SUPABASE_KEY 는 publishable(공개) 키로, 브라우저 노출을 전제로 한 값이다.
 // 읽기 권한은 DB 의 RLS SELECT 정책으로만 열려 있다.
 const SUPABASE_URL = "https://axijsbgyktrbiigybpgq.supabase.co";
-const SUPABASE_KEY = "__SUPABASE_PUBLISHABLE_KEY__";
+const SUPABASE_KEY = "sb_publishable_7sDi1DM8Wj0BWeFHntWzzg_wNFbIsc1";
 
-async function sbRpc(fn, args = {}) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: SUPABASE_KEY,
-      Authorization: `Bearer ${SUPABASE_KEY}`,
-    },
-    body: JSON.stringify(args),
-  });
-  if (!res.ok) throw new Error(`${fn} → HTTP ${res.status}`);
-  return res.json();
+// 전역 동시 요청 제한 — 무거운 집계 쿼리를 동시에 많이 보내면
+// DB statement timeout(57014)에 걸리므로 한 번에 4개까지만 보낸다.
+const SB_MAX_CONCURRENT = 4;
+let _sbActive = 0;
+const _sbWaiters = [];
+
+async function _sbAcquire() {
+  if (_sbActive < SB_MAX_CONCURRENT) { _sbActive += 1; return; }
+  await new Promise((resolve) => _sbWaiters.push(resolve));
+  _sbActive += 1;
 }
 
-// 코드 목록을 청크로 나눠 병렬 조회 후 { code: payload } 맵 하나로 합친다.
-// 한 번에 너무 많은 시계열을 집계하면 DB statement timeout 에 걸릴 수 있다.
-async function fetchPayloadMap(codes, chunkSize = 40) {
+function _sbRelease() {
+  _sbActive -= 1;
+  const next = _sbWaiters.shift();
+  if (next) next();
+}
+
+async function sbRpc(fn, args = {}) {
+  await _sbAcquire();
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+      },
+      body: JSON.stringify(args),
+    });
+    if (!res.ok) throw new Error(`${fn} → HTTP ${res.status}`);
+    return await res.json();
+  } finally {
+    _sbRelease();
+  }
+}
+
+// 코드 목록을 청크로 나눠 조회 후 { code: payload } 맵 하나로 합친다.
+// 실패한 청크는 1회 재시도한다 (일시적 timeout 대비).
+async function fetchPayloadMap(codes, chunkSize = 25) {
   if (!codes.length) return {};
   const chunks = [];
   for (let i = 0; i < codes.length; i += chunkSize) {
     chunks.push(codes.slice(i, i + chunkSize));
   }
-  const maps = await Promise.all(
-    chunks.map((c) => sbRpc("get_payload_map", { p_codes: c })),
-  );
+  const maps = await Promise.all(chunks.map(async (c) => {
+    try {
+      return await sbRpc("get_payload_map", { p_codes: c });
+    } catch (_) {
+      return await sbRpc("get_payload_map", { p_codes: c });
+    }
+  }));
   return Object.assign({}, ...maps);
 }
 
