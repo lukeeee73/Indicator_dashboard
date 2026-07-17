@@ -4,26 +4,6 @@
   "group": "반도체 — 메모리 (HBM·DRAM)",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 12.33
-    },
-    {
-      "date": "2016-07-12",
-      "value": 12.9
-    },
-    {
-      "date": "2016-07-13",
-      "value": 12.96
-    },
-    {
-      "date": "2016-07-14",
-      "value": 12.96
-    },
-    {
-      "date": "2016-07-15",
-      "value": 12.8
-    },
-    {
       "date": "2016-07-18",
       "value": 13.01
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 979.3
+    },
+    {
+      "date": "2026-07-13",
+      "value": 937.0
+    },
+    {
+      "date": "2026-07-14",
+      "value": 983.12
+    },
+    {
+      "date": "2026-07-15",
+      "value": 904.28
+    },
+    {
+      "date": "2026-07-16",
+      "value": 853.2
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1106014765056.0,
-      "pe_ratio": 22.126074,
-      "forward_pe": 6.5444407,
-      "eps_ttm": 44.26,
-      "dividend_yield": 0.05,
+      "market_cap": 963598221312.0,
+      "pe_ratio": 20.450623,
+      "forward_pe": 5.6704035,
+      "eps_ttm": 41.72,
+      "dividend_yield": 0.06,
       "profit_margin": 0.55906,
       "operating_margin": 0.80370003,
-      "price_to_book": 15.245108,
+      "price_to_book": 13.282065,
       "return_on_equity": 0.66638
     },
     "quarterly": [
@@ -10111,28 +10107,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 979.3,
+    "as_of": "2026-07-16",
+    "current_price": 853.2,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 1239.28,
+        "fair_value": 1168.16,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 3292.05,
+        "fair_value": 3310.24,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 252.92,
+        "fair_value": 245.56,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 1657.84,
-    "valuation_gap": -0.4093,
+    "fair_value": 1626.26,
+    "valuation_gap": -0.4754,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10248,6 +10244,12 @@
         "price": 979.3,
         "fair_value": 1236.76,
         "gap": -0.2082
+      },
+      {
+        "date": "2026-07-16",
+        "price": 853.2,
+        "fair_value": 1236.76,
+        "gap": -0.3101
       }
     ],
     "qualitative": {

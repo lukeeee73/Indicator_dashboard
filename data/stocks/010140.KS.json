@@ -4,18 +4,6 @@
   "group": "조선 (한국)",
   "series": [
     {
-      "date": "2016-07-13",
-      "value": 7187.96
-    },
-    {
-      "date": "2016-07-14",
-      "value": 7254.38
-    },
-    {
-      "date": "2016-07-15",
-      "value": 7490.53
-    },
-    {
       "date": "2016-07-18",
       "value": 7822.62
     },
@@ -9790,13 +9778,25 @@
     {
       "date": "2026-07-13",
       "value": 22050.0
+    },
+    {
+      "date": "2026-07-14",
+      "value": 21250.0
+    },
+    {
+      "date": "2026-07-15",
+      "value": 21850.0
+    },
+    {
+      "date": "2026-07-16",
+      "value": 22300.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 18834016698368.0,
+      "market_cap": 19047552909312.0,
       "pe_ratio": null,
-      "forward_pe": 12.7717495,
+      "forward_pe": 13.050095,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.05019,
@@ -9805,13 +9805,6 @@
       "return_on_equity": 0.13207
     },
     "quarterly": [
-      {
-        "date": "2024-12-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2025-03-31",
         "revenue": 2494285868060.0,
@@ -9850,18 +9843,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-13",
-    "current_price": 22050.0,
+    "as_of": "2026-07-16",
+    "current_price": 22300.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 29349.93,
+        "fair_value": 29049.6,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 29349.93,
-    "valuation_gap": -0.2487,
+    "fair_value": 29049.6,
+    "valuation_gap": -0.2323,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -9955,10 +9948,10 @@
         "gap": 0.7352
       },
       {
-        "date": "2026-07-13",
-        "price": 22050.0,
+        "date": "2026-07-16",
+        "price": 22300.0,
         "fair_value": 12880.0,
-        "gap": 0.712
+        "gap": 0.7314
       }
     ],
     "qualitative": {

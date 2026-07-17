@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 80.27
-    },
-    {
-      "date": "2016-07-12",
-      "value": 80.54
-    },
-    {
-      "date": "2016-07-13",
-      "value": 79.95
-    },
-    {
-      "date": "2016-07-14",
-      "value": 80.17
-    },
-    {
-      "date": "2016-07-15",
-      "value": 80.02
-    },
-    {
       "date": "2016-07-18",
       "value": 80.24
     },
@@ -2765,7 +2745,7 @@
     },
     {
       "date": "2019-04-08",
-      "value": 155.77
+      "value": 155.78
     },
     {
       "date": "2019-04-09",
@@ -5393,7 +5373,7 @@
     },
     {
       "date": "2021-11-12",
-      "value": 301.43
+      "value": 301.44
     },
     {
       "date": "2021-11-15",
@@ -7529,7 +7509,7 @@
     },
     {
       "date": "2023-12-29",
-      "value": 258.67
+      "value": 258.66
     },
     {
       "date": "2024-01-02",
@@ -8617,7 +8597,7 @@
     },
     {
       "date": "2025-01-31",
-      "value": 337.76
+      "value": 337.77
     },
     {
       "date": "2025-02-03",
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 163.32
+    },
+    {
+      "date": "2026-07-13",
+      "value": 171.22
+    },
+    {
+      "date": "2026-07-14",
+      "value": 167.56
+    },
+    {
+      "date": "2026-07-15",
+      "value": 167.0
+    },
+    {
+      "date": "2026-07-16",
+      "value": 172.68
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 133759082496.0,
-      "pe_ratio": 18.946636,
-      "forward_pe": 10.528393,
-      "eps_ttm": 8.62,
-      "dividend_yield": 1.08,
+      "market_cap": 141424918528.0,
+      "pe_ratio": 19.337065,
+      "forward_pe": 11.122547,
+      "eps_ttm": 8.93,
+      "dividend_yield": 1.05,
       "profit_margin": 0.18733,
       "operating_margin": 0.218,
-      "price_to_book": 3.9070837,
+      "price_to_book": 4.1310015,
       "return_on_equity": 0.16908
     },
     "quarterly": [
@@ -10111,28 +10107,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 163.32,
+    "as_of": "2026-07-16",
+    "current_price": 172.68,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 241.36,
+        "fair_value": 250.04,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 341.27,
+        "fair_value": 341.55,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 90.04,
+        "fair_value": 91.65,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 241.07,
-    "valuation_gap": -0.3225,
+    "fair_value": 245.82,
+    "valuation_gap": -0.2975,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10272,6 +10268,12 @@
         "price": 163.32,
         "fair_value": 241.92,
         "gap": -0.3249
+      },
+      {
+        "date": "2026-07-16",
+        "price": 172.68,
+        "fair_value": 241.92,
+        "gap": -0.2862
       }
     ],
     "qualitative": {

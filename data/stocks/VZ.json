@@ -4,26 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 32.66
-    },
-    {
-      "date": "2016-07-12",
-      "value": 32.39
-    },
-    {
-      "date": "2016-07-13",
-      "value": 32.7
-    },
-    {
-      "date": "2016-07-14",
-      "value": 32.6
-    },
-    {
-      "date": "2016-07-15",
-      "value": 32.6
-    },
-    {
       "date": "2016-07-18",
       "value": 32.66
     },
@@ -10058,21 +10038,44 @@
     {
       "date": "2026-07-10",
       "value": 42.12
+    },
+    {
+      "date": "2026-07-13",
+      "value": 42.68
+    },
+    {
+      "date": "2026-07-14",
+      "value": 42.47
+    },
+    {
+      "date": "2026-07-15",
+      "value": 42.83
+    },
+    {
+      "date": "2026-07-16",
+      "value": 43.88
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 175874539520.0,
-      "pe_ratio": 10.27317,
-      "forward_pe": 7.9980245,
+      "market_cap": 183223533568.0,
+      "pe_ratio": 10.702439,
+      "forward_pe": 8.333555,
       "eps_ttm": 4.1,
-      "dividend_yield": 6.72,
+      "dividend_yield": 6.61,
       "profit_margin": 0.12462,
       "operating_margin": 0.25186002,
-      "price_to_book": 1.7024373,
+      "price_to_book": 1.7735744,
       "return_on_equity": 0.17198
     },
     "quarterly": [
+      {
+        "date": "2024-12-31",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": null
+      },
       {
         "date": "2025-03-31",
         "revenue": 33485000000.0,
@@ -10111,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 42.12,
+    "as_of": "2026-07-16",
+    "current_price": 43.88,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10121,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 89.53,
+        "fair_value": 89.51,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -10132,7 +10135,7 @@
       }
     },
     "fair_value": 77.41,
-    "valuation_gap": -0.4559,
+    "valuation_gap": -0.4331,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10302,6 +10305,12 @@
         "price": 42.12,
         "fair_value": 82.0,
         "gap": -0.4863
+      },
+      {
+        "date": "2026-07-16",
+        "price": 43.88,
+        "fair_value": 82.0,
+        "gap": -0.4649
       }
     ],
     "qualitative": {

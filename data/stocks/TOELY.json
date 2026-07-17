@@ -4,26 +4,6 @@
   "group": "반도체 — 장비 · 소재",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 14.2
-    },
-    {
-      "date": "2016-07-12",
-      "value": 14.07
-    },
-    {
-      "date": "2016-07-13",
-      "value": 13.63
-    },
-    {
-      "date": "2016-07-14",
-      "value": 13.85
-    },
-    {
-      "date": "2016-07-15",
-      "value": 13.45
-    },
-    {
       "date": "2016-07-18",
       "value": 13.49
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 228.26
+    },
+    {
+      "date": "2026-07-13",
+      "value": 218.25
+    },
+    {
+      "date": "2026-07-14",
+      "value": 221.27
+    },
+    {
+      "date": "2026-07-15",
+      "value": 218.8
+    },
+    {
+      "date": "2026-07-16",
+      "value": 211.53
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 207650406400.0,
-      "pe_ratio": 59.134716,
+      "market_cap": 192726646784.0,
+      "pe_ratio": 56.671124,
       "forward_pe": null,
-      "eps_ttm": 3.86,
-      "dividend_yield": 0.87,
+      "eps_ttm": 3.74,
+      "dividend_yield": 0.91,
       "profit_margin": 0.23509,
       "operating_margin": 0.2889,
-      "price_to_book": 16.197855,
+      "price_to_book": 15.040461,
       "return_on_equity": 0.2927
     },
     "quarterly": [
@@ -10083,23 +10079,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 228.26,
+    "as_of": "2026-07-16",
+    "current_price": 211.53,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 108.08,
+        "fair_value": 104.72,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "graham_number": {
-        "fair_value": 34.98,
+        "fair_value": 34.4,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 87.19,
-    "valuation_gap": 1.6178,
+    "fair_value": 84.63,
+    "valuation_gap": 1.4995,
     "signal": "expensive",
     "gap_series_weekly": []
   }

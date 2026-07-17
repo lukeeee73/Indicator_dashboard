@@ -4,26 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 24.19
-    },
-    {
-      "date": "2016-07-12",
-      "value": 24.9
-    },
-    {
-      "date": "2016-07-13",
-      "value": 24.94
-    },
-    {
-      "date": "2016-07-14",
-      "value": 24.87
-    },
-    {
-      "date": "2016-07-15",
-      "value": 24.96
-    },
-    {
       "date": "2016-07-18",
       "value": 25.18
     },
@@ -509,7 +489,7 @@
     },
     {
       "date": "2017-01-09",
-      "value": 33.53
+      "value": 33.52
     },
     {
       "date": "2017-01-10",
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 658.56
+    },
+    {
+      "date": "2026-07-13",
+      "value": 646.7
+    },
+    {
+      "date": "2026-07-14",
+      "value": 660.94
+    },
+    {
+      "date": "2026-07-15",
+      "value": 648.84
+    },
+    {
+      "date": "2026-07-16",
+      "value": 631.02
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 98823610368.0,
-      "pe_ratio": 90.09029,
-      "forward_pe": 39.98091,
-      "eps_ttm": 7.31,
+      "market_cap": 94690951168.0,
+      "pe_ratio": 86.797806,
+      "forward_pe": 38.30897,
+      "eps_ttm": 7.27,
       "dividend_yield": 0.07,
       "profit_margin": 0.036679998,
       "operating_margin": 0.04244,
-      "price_to_book": 10.926105,
+      "price_to_book": 10.469192,
       "return_on_equity": 0.13534
     },
     "quarterly": [
@@ -10111,12 +10107,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 658.56,
+    "as_of": "2026-07-16",
+    "current_price": 631.02,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 146.2,
+        "fair_value": 145.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10126,13 +10122,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 99.57,
+        "fair_value": 99.29,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 177.02,
-    "valuation_gap": 2.7203,
+    "fair_value": 176.56,
+    "valuation_gap": 2.5739,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10302,6 +10298,12 @@
         "price": 658.56,
         "fair_value": 145.8,
         "gap": 3.5169
+      },
+      {
+        "date": "2026-07-16",
+        "price": 631.02,
+        "fair_value": 145.8,
+        "gap": 3.328
       }
     ],
     "qualitative": {

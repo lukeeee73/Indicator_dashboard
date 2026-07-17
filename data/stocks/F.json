@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 7.83
-    },
-    {
-      "date": "2016-07-12",
-      "value": 7.93
-    },
-    {
-      "date": "2016-07-13",
-      "value": 7.95
-    },
-    {
-      "date": "2016-07-14",
-      "value": 8.02
-    },
-    {
-      "date": "2016-07-15",
-      "value": 8.01
-    },
-    {
       "date": "2016-07-18",
       "value": 8.05
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 14.0
+    },
+    {
+      "date": "2026-07-13",
+      "value": 13.85
+    },
+    {
+      "date": "2026-07-14",
+      "value": 13.94
+    },
+    {
+      "date": "2026-07-15",
+      "value": 14.18
+    },
+    {
+      "date": "2026-07-16",
+      "value": 14.19
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 55785697280.0,
+      "market_cap": 56542789632.0,
       "pe_ratio": null,
-      "forward_pe": 7.664723,
+      "forward_pe": 7.778752,
       "eps_ttm": -1.55,
-      "dividend_yield": 4.29,
+      "dividend_yield": 4.23,
       "profit_margin": -0.03216,
       "operating_margin": 0.05743,
-      "price_to_book": 1.4895202,
+      "price_to_book": 1.509735,
       "return_on_equity": -0.14813
     },
     "quarterly": [
@@ -10111,18 +10107,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 14.0,
+    "as_of": "2026-07-16",
+    "current_price": 14.19,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 36.53,
+        "fair_value": 36.48,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 36.53,
-    "valuation_gap": -0.6168,
+    "fair_value": 36.48,
+    "valuation_gap": -0.611,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10214,6 +10210,12 @@
         "price": 14.0,
         "fair_value": 33.5,
         "gap": -0.5821
+      },
+      {
+        "date": "2026-07-16",
+        "price": 14.19,
+        "fair_value": 33.5,
+        "gap": -0.5764
       }
     ],
     "qualitative": {

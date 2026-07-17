@@ -4,26 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 41.19
-    },
-    {
-      "date": "2016-07-12",
-      "value": 41.57
-    },
-    {
-      "date": "2016-07-13",
-      "value": 41.73
-    },
-    {
-      "date": "2016-07-14",
-      "value": 41.77
-    },
-    {
-      "date": "2016-07-15",
-      "value": 41.67
-    },
-    {
       "date": "2016-07-18",
       "value": 42.13
     },
@@ -3157,7 +3137,7 @@
     },
     {
       "date": "2019-08-27",
-      "value": 63.11
+      "value": 63.12
     },
     {
       "date": "2019-08-28",
@@ -4433,7 +4413,7 @@
     },
     {
       "date": "2020-12-01",
-      "value": 133.87
+      "value": 133.88
     },
     {
       "date": "2020-12-02",
@@ -4469,7 +4449,7 @@
     },
     {
       "date": "2020-12-14",
-      "value": 130.04
+      "value": 130.03
     },
     {
       "date": "2020-12-15",
@@ -4585,7 +4565,7 @@
     },
     {
       "date": "2021-01-27",
-      "value": 136.59
+      "value": 136.6
     },
     {
       "date": "2021-01-28",
@@ -4913,7 +4893,7 @@
     },
     {
       "date": "2021-05-25",
-      "value": 119.46
+      "value": 119.45
     },
     {
       "date": "2021-05-26",
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 189.16
+    },
+    {
+      "date": "2026-07-13",
+      "value": 183.98
+    },
+    {
+      "date": "2026-07-14",
+      "value": 178.1
+    },
+    {
+      "date": "2026-07-15",
+      "value": 177.98
+    },
+    {
+      "date": "2026-07-16",
+      "value": 170.61
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 199374651392.0,
-      "pe_ratio": 20.317938,
-      "forward_pe": 17.18602,
-      "eps_ttm": 9.31,
-      "dividend_yield": 1.95,
+      "market_cap": 179822936064.0,
+      "pe_ratio": 19.126682,
+      "forward_pe": 15.4369135,
+      "eps_ttm": 8.92,
+      "dividend_yield": 2.07,
       "profit_margin": 0.22308001,
       "operating_margin": 0.22059,
-      "price_to_book": 7.343738,
+      "price_to_book": 6.6235733,
       "return_on_equity": 0.36083
     },
     "quarterly": [
@@ -10118,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 189.16,
+    "as_of": "2026-07-16",
+    "current_price": 170.61,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 260.68,
+        "fair_value": 249.76,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 242.15,
+        "fair_value": 243.15,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 73.46,
+        "fair_value": 71.9,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 217.68,
-    "valuation_gap": -0.131,
+    "fair_value": 212.21,
+    "valuation_gap": -0.196,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10309,6 +10305,12 @@
         "price": 189.16,
         "fair_value": 257.6,
         "gap": -0.2657
+      },
+      {
+        "date": "2026-07-16",
+        "price": 170.61,
+        "fair_value": 257.6,
+        "gap": -0.3377
       }
     ],
     "qualitative": {

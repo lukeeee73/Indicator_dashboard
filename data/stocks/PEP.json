@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 80.18
-    },
-    {
-      "date": "2016-07-12",
-      "value": 80.1
-    },
-    {
-      "date": "2016-07-13",
-      "value": 80.92
-    },
-    {
-      "date": "2016-07-14",
-      "value": 80.96
-    },
-    {
-      "date": "2016-07-15",
-      "value": 80.74
-    },
-    {
       "date": "2016-07-18",
       "value": 80.41
     },
@@ -1437,7 +1417,7 @@
     },
     {
       "date": "2017-12-08",
-      "value": 89.5
+      "value": 89.51
     },
     {
       "date": "2017-12-11",
@@ -2421,7 +2401,7 @@
     },
     {
       "date": "2018-11-30",
-      "value": 95.98
+      "value": 95.97
     },
     {
       "date": "2018-12-03",
@@ -3245,7 +3225,7 @@
     },
     {
       "date": "2019-09-27",
-      "value": 110.0
+      "value": 109.99
     },
     {
       "date": "2019-09-30",
@@ -3985,7 +3965,7 @@
     },
     {
       "date": "2020-06-23",
-      "value": 108.87
+      "value": 108.86
     },
     {
       "date": "2020-06-24",
@@ -4641,7 +4621,7 @@
     },
     {
       "date": "2021-02-17",
-      "value": 113.03
+      "value": 113.04
     },
     {
       "date": "2021-02-18",
@@ -4981,7 +4961,7 @@
     },
     {
       "date": "2021-06-18",
-      "value": 124.13
+      "value": 124.12
     },
     {
       "date": "2021-06-21",
@@ -6389,7 +6369,7 @@
     },
     {
       "date": "2022-11-09",
-      "value": 157.64
+      "value": 157.63
     },
     {
       "date": "2022-11-10",
@@ -7849,7 +7829,7 @@
     },
     {
       "date": "2024-04-25",
-      "value": 162.69
+      "value": 162.7
     },
     {
       "date": "2024-04-26",
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 137.38
+    },
+    {
+      "date": "2026-07-13",
+      "value": 138.49
+    },
+    {
+      "date": "2026-07-14",
+      "value": 135.45
+    },
+    {
+      "date": "2026-07-15",
+      "value": 135.4
+    },
+    {
+      "date": "2026-07-16",
+      "value": 139.43
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 187661090816.0,
-      "pe_ratio": 18.028872,
-      "forward_pe": 15.257139,
-      "eps_ttm": 7.62,
-      "dividend_yield": 4.31,
+      "market_cap": 190461362176.0,
+      "pe_ratio": 18.25,
+      "forward_pe": 15.515149,
+      "eps_ttm": 7.64,
+      "dividend_yield": 4.37,
       "profit_margin": 0.10785,
       "operating_margin": 0.16968,
-      "price_to_book": 8.788945,
+      "price_to_book": 8.9200945,
       "return_on_equity": 0.51508
     },
     "quarterly": [
@@ -10118,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 137.38,
+    "as_of": "2026-07-16",
+    "current_price": 139.43,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 167.64,
+        "fair_value": 168.08,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 162.08,
+        "fair_value": 161.76,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 51.77,
+        "fair_value": 51.84,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 142.8,
-    "valuation_gap": -0.0379,
+    "fair_value": 142.94,
+    "valuation_gap": -0.0245,
     "signal": "fair",
     "gap_series_weekly": [
       {
@@ -10231,6 +10227,12 @@
         "price": 137.38,
         "fair_value": 167.86,
         "gap": -0.1816
+      },
+      {
+        "date": "2026-07-16",
+        "price": 139.43,
+        "fair_value": 167.86,
+        "gap": -0.1694
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 14.99
-    },
-    {
-      "date": "2016-07-12",
-      "value": 14.98
-    },
-    {
-      "date": "2016-07-13",
-      "value": 14.84
-    },
-    {
-      "date": "2016-07-14",
-      "value": 14.77
-    },
-    {
-      "date": "2016-07-15",
-      "value": 14.69
-    },
-    {
       "date": "2016-07-18",
       "value": 15.08
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 407.76
+    },
+    {
+      "date": "2026-07-13",
+      "value": 394.76
+    },
+    {
+      "date": "2026-07-14",
+      "value": 396.18
+    },
+    {
+      "date": "2026-07-15",
+      "value": 394.46
+    },
+    {
+      "date": "2026-07-16",
+      "value": 391.06
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1531433975808.0,
-      "pe_ratio": 370.69092,
-      "forward_pe": 158.05571,
+      "market_cap": 1468713271296.0,
+      "pe_ratio": 355.5091,
+      "forward_pe": 153.11069,
       "eps_ttm": 1.1,
       "dividend_yield": null,
       "profit_margin": 0.03946,
       "operating_margin": 0.04203,
-      "price_to_book": 18.62173,
+      "price_to_book": 17.859068,
       "return_on_equity": 0.04901
     },
     "quarterly": [
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 407.76,
+    "as_of": "2026-07-16",
+    "current_price": 391.06,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10128,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 51.6,
+        "fair_value": 51.08,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
@@ -10138,8 +10134,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 33.89,
-    "valuation_gap": 11.0333,
+    "fair_value": 33.73,
+    "valuation_gap": 10.5938,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10309,6 +10305,12 @@
         "price": 407.76,
         "fair_value": 27.25,
         "gap": 13.9637
+      },
+      {
+        "date": "2026-07-16",
+        "price": 391.06,
+        "fair_value": 27.25,
+        "gap": 13.3508
       }
     ],
     "qualitative": {

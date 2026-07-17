@@ -4,26 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 143.93
-    },
-    {
-      "date": "2016-07-12",
-      "value": 144.67
-    },
-    {
-      "date": "2016-07-13",
-      "value": 145.93
-    },
-    {
-      "date": "2016-07-14",
-      "value": 145.73
-    },
-    {
-      "date": "2016-07-15",
-      "value": 145.97
-    },
-    {
       "date": "2016-07-18",
       "value": 146.57
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 493.71
+    },
+    {
+      "date": "2026-07-13",
+      "value": 496.85
+    },
+    {
+      "date": "2026-07-14",
+      "value": 491.09
+    },
+    {
+      "date": "2026-07-15",
+      "value": 488.35
+    },
+    {
+      "date": "2026-07-16",
+      "value": 493.12
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1064860254208.0,
-      "pe_ratio": 14.706881,
-      "forward_pe": 22.948685,
-      "eps_ttm": 33.57,
+      "market_cap": 1063587741696.0,
+      "pe_ratio": 14.676191,
+      "forward_pe": 22.92126,
+      "eps_ttm": 33.6,
       "dividend_yield": null,
       "profit_margin": 0.19305,
       "operating_margin": 0.14352,
-      "price_to_book": 0.00097656174,
+      "price_to_book": 0.0009753947,
       "return_on_equity": 0.10499
     },
     "quarterly": [
@@ -10118,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 493.71,
+    "as_of": "2026-07-16",
+    "current_price": 493.12,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 469.98,
+        "fair_value": 470.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
@@ -10133,13 +10129,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 19541.28,
+        "fair_value": 19550.01,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 4220.69,
-    "valuation_gap": -0.883,
+    "fair_value": 4222.65,
+    "valuation_gap": -0.8832,
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {

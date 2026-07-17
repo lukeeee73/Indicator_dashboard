@@ -4,26 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 37.58
-    },
-    {
-      "date": "2016-07-12",
-      "value": 37.72
-    },
-    {
-      "date": "2016-07-13",
-      "value": 38.14
-    },
-    {
-      "date": "2016-07-14",
-      "value": 38.37
-    },
-    {
-      "date": "2016-07-15",
-      "value": 38.65
-    },
-    {
       "date": "2016-07-18",
       "value": 38.87
     },
@@ -3353,7 +3333,7 @@
     },
     {
       "date": "2019-11-05",
-      "value": 71.23
+      "value": 71.22
     },
     {
       "date": "2019-11-06",
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 140.87
+    },
+    {
+      "date": "2026-07-13",
+      "value": 142.16
+    },
+    {
+      "date": "2026-07-14",
+      "value": 142.49
+    },
+    {
+      "date": "2026-07-15",
+      "value": 143.42
+    },
+    {
+      "date": "2026-07-16",
+      "value": 150.06
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 134403497984.0,
-      "pe_ratio": 35.305763,
-      "forward_pe": 41.55457,
+      "market_cap": 143171649536.0,
+      "pe_ratio": 37.60902,
+      "forward_pe": 44.265484,
       "eps_ttm": 3.99,
-      "dividend_yield": 3.04,
+      "dividend_yield": 2.98,
       "profit_margin": 0.39646,
       "operating_margin": 0.38491002,
-      "price_to_book": 2.4575634,
+      "price_to_book": 2.6178887,
       "return_on_equity": 0.06844
     },
     "quarterly": [
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 140.87,
+    "as_of": "2026-07-16",
+    "current_price": 150.06,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10139,7 +10135,7 @@
       }
     },
     "fair_value": 66.53,
-    "valuation_gap": 1.1174,
+    "valuation_gap": 1.2555,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10231,6 +10227,12 @@
         "price": 140.87,
         "fair_value": 55.98,
         "gap": 1.5164
+      },
+      {
+        "date": "2026-07-16",
+        "price": 150.06,
+        "fair_value": 55.98,
+        "gap": 1.6806
       }
     ],
     "qualitative": {

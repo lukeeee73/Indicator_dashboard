@@ -4,26 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-07-11",
-      "value": 9.29
-    },
-    {
-      "date": "2016-07-12",
-      "value": 9.34
-    },
-    {
-      "date": "2016-07-13",
-      "value": 9.3
-    },
-    {
-      "date": "2016-07-14",
-      "value": 9.38
-    },
-    {
-      "date": "2016-07-15",
-      "value": 9.29
-    },
-    {
       "date": "2016-07-18",
       "value": 9.37
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-10",
       "value": 235.81
+    },
+    {
+      "date": "2026-07-13",
+      "value": 217.53
+    },
+    {
+      "date": "2026-07-14",
+      "value": 222.44
+    },
+    {
+      "date": "2026-07-15",
+      "value": 206.26
+    },
+    {
+      "date": "2026-07-16",
+      "value": 188.3
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 211649953792.0,
-      "pe_ratio": 81.31379,
-      "forward_pe": 38.169804,
-      "eps_ttm": 2.9,
-      "dividend_yield": 0.1,
+      "market_cap": 169007628288.0,
+      "pe_ratio": 64.7079,
+      "forward_pe": 30.373907,
+      "eps_ttm": 2.91,
+      "dividend_yield": 0.12,
       "profit_margin": 0.28986,
       "operating_margin": 0.14479999,
-      "price_to_book": 11.334839,
+      "price_to_book": 9.051144,
       "return_on_equity": 0.16028
     },
     "quarterly": [
@@ -10118,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-10",
-    "current_price": 235.81,
+    "as_of": "2026-07-16",
+    "current_price": 188.3,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 81.2,
+        "fair_value": 81.48,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 135.91,
+        "fair_value": 136.39,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 36.84,
+        "fair_value": 36.91,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 88.74,
-    "valuation_gap": 1.6573,
+    "fair_value": 89.04,
+    "valuation_gap": 1.1148,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10279,6 +10275,12 @@
         "price": 235.81,
         "fair_value": 81.76,
         "gap": 1.8842
+      },
+      {
+        "date": "2026-07-16",
+        "price": 188.3,
+        "fair_value": 81.76,
+        "gap": 1.3031
       }
     ]
   }
