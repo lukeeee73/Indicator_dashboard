@@ -44,7 +44,7 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
-       run: python scripts/sync_supabase.py
+        run: python scripts/sync_supabase.py
        
       - name: Rebuild principles timeline
         run: python scripts/build_principles.py
