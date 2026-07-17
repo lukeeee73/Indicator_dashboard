@@ -2,7 +2,7 @@
  * Luke Dashboard — 프론트엔드 로직
  *
  * 역할:
- *   1. data/indicators.json 을 fetch
+ *   1. Supabase 에서 지표·자산·종목·지수 데이터를 조회
  *   2. 각 지표를 카드 + Chart.js 라인 차트로 렌더링
  *   3. 최신값 / 최근 변화 / 카테고리별 분류 표시
  *
@@ -10,6 +10,83 @@
  *   - 현재 4분면을 자동으로 찍지 않는다
  *   - 각 지표의 수치와 추세만 중립적으로 보여준다
  * ============================================================ */
+
+// ---------- Supabase 데이터 소스 ------------------------------
+// 지표·자산·종목·지수 시계열은 Supabase(Postgres)에서 RPC 로 가져온다.
+// SUPABASE_KEY 는 publishable(공개) 키로, 브라우저 노출을 전제로 한 값이다.
+// 읽기 권한은 DB 의 RLS SELECT 정책으로만 열려 있다.
+const SUPABASE_URL = "https://axijsbgyktrbiigybpgq.supabase.co";
+const SUPABASE_KEY = "sb_publishable_7sDi1DM8Wj0BWeFHntWzzg_wNFbIsc1";
+
+// 전역 동시 요청 제한 — 무거운 집계 쿼리를 동시에 많이 보내면
+// DB statement timeout(57014)에 걸리므로 한 번에 4개까지만 보낸다.
+const SB_MAX_CONCURRENT = 4;
+let _sbActive = 0;
+const _sbWaiters = [];
+
+async function _sbAcquire() {
+  if (_sbActive < SB_MAX_CONCURRENT) { _sbActive += 1; return; }
+  await new Promise((resolve) => _sbWaiters.push(resolve));
+  _sbActive += 1;
+}
+
+function _sbRelease() {
+  _sbActive -= 1;
+  const next = _sbWaiters.shift();
+  if (next) next();
+}
+
+async function sbRpc(fn, args = {}) {
+  await _sbAcquire();
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+      },
+      body: JSON.stringify(args),
+    });
+    if (!res.ok) throw new Error(`${fn} → HTTP ${res.status}`);
+    return await res.json();
+  } finally {
+    _sbRelease();
+  }
+}
+
+// 코드 목록을 청크로 나눠 조회 후 { code: payload } 맵 하나로 합친다.
+// 실패한 청크는 1회 재시도한다 (일시적 timeout 대비).
+async function fetchPayloadMap(codes, chunkSize = 25) {
+  if (!codes.length) return {};
+  const chunks = [];
+  for (let i = 0; i < codes.length; i += chunkSize) {
+    chunks.push(codes.slice(i, i + chunkSize));
+  }
+  const maps = await Promise.all(chunks.map(async (c) => {
+    try {
+      return await sbRpc("get_payload_map", { p_codes: c });
+    } catch (_) {
+      return await sbRpc("get_payload_map", { p_codes: c });
+    }
+  }));
+  return Object.assign({}, ...maps);
+}
+
+// documents 테이블에서 문서 하나를 통째로 가져온다.
+// (markets · wiki · principles · value_screen 등 비시계열 데이터)
+async function sbDoc(kind, key) {
+  const params =
+    `kind=eq.${encodeURIComponent(kind)}` +
+    `&key=eq.${encodeURIComponent(key)}&select=payload&limit=1`;
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/documents?${params}`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+  });
+  if (!res.ok) throw new Error(`documents ${kind}/${key} → HTTP ${res.status}`);
+  const rows = await res.json();
+  if (!rows.length) throw new Error(`documents ${kind}/${key} 를 찾을 수 없습니다`);
+  return rows[0].payload;
+}
 
 // ---------- 지표별 UI 메타데이터 ------------------------------
 // fetch_fred.py 의 INDICATORS 와 별도로, 프론트 표기 전용 정보를 둔다.
@@ -636,13 +713,13 @@ function switchToTab(tab) {
 
 // ---------- 진입점 ------------------------------------------
 //
-// 데이터 저장 구조 (2026-04 이후):
-//   data/index.json               — 메타데이터 + assessment
-//   data/indicators/<CODE>.json   — 지표별 전체 payload
-//   data/assets/<CODE>.json       — 자산별 전체 payload
+// 데이터 저장 구조 (2026-07 이후 — Supabase):
+//   app_meta('index')   — 메타데이터 + assessment (기존 index.json 과 동일 구조)
+//   series/observations — 지표·자산·종목·지수별 시계열 + 부가정보
 //
-// 각 파일이 독립 파일이라 수동 편집·가공이 쉬워진다.
-// 페이지 로드 시 index + 모든 파일을 병렬로 가져와 단일 dict 로 합친다.
+// get_payload_map RPC 가 기존 data/<종류>/<CODE>.json 과 같은 모양의
+// payload 를 { code: payload } 맵으로 돌려주므로 이후 렌더링 로직은 동일하다.
+// 페이지 로드 시 메타 + 모든 시계열을 병렬로 가져와 단일 dict 로 합친다.
 document.addEventListener("DOMContentLoaded", async () => {
   // 탭 버튼 이벤트 연결 — 데이터 로드 실패와 무관하게 탭 전환은 항상 동작
   document.querySelectorAll(".tab-btn").forEach(btn => {
@@ -653,35 +730,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   switchToTab("WIKI");
 
   try {
-    const idxRes = await fetch("data/index.json", { cache: "no-cache" });
-    if (!idxRes.ok) throw new Error(`HTTP ${idxRes.status}`);
-    const idx = await idxRes.json();
+    const idx = await sbRpc("get_app_meta");
+    if (!idx) throw new Error("app_meta 가 비어 있습니다");
 
     const indicatorEntries = idx.indicators || [];
     const assetEntries     = idx.assets     || [];
     const stockEntries     = idx.stocks     || [];
     const indexEntries     = idx.indices    || [];
 
-    const fetchJson = (url) => fetch(url, { cache: "no-cache" }).then((r) => {
-      if (!r.ok) throw new Error(`${url} → HTTP ${r.status}`);
-      return r.json();
-    });
-
-    const [indicatorPayloads, assetPayloads, stockPayloads, indexPayloads] = await Promise.all([
-      Promise.all(indicatorEntries.map((e) => fetchJson(`data/indicators/${e.code}.json`))),
-      Promise.all(assetEntries.map((e)     => fetchJson(`data/assets/${e.code}.json`))),
-      Promise.all(stockEntries.map((e)     => fetchJson(`data/stocks/${e.code}.json`))),
-      Promise.all(indexEntries.map((e)     => fetchJson(`data/indices/${e.filename || e.code}.json`))),
+    const [indicators, assets, stocks, indices] = await Promise.all([
+      fetchPayloadMap(indicatorEntries.map((e) => e.code)),
+      fetchPayloadMap(assetEntries.map((e) => e.code)),
+      fetchPayloadMap(stockEntries.map((e) => e.code)),
+      fetchPayloadMap(indexEntries.map((e) => e.code)),
     ]);
-
-    const indicators = {};
-    indicatorEntries.forEach((e, i) => { indicators[e.code] = indicatorPayloads[i]; });
-    const assets = {};
-    assetEntries.forEach((e, i) => { assets[e.code] = assetPayloads[i]; });
-    const stocks = {};
-    stockEntries.forEach((e, i) => { stocks[e.code] = stockPayloads[i]; });
-    const indices = {};
-    indexEntries.forEach((e, i) => { indices[e.code] = indexPayloads[i]; });
 
     const data = {
       last_updated:  idx.last_updated,
@@ -1750,18 +1812,17 @@ async function renderMarketCascade(stocks) {
     MC_STATE.loading = true;
     board.innerHTML = emptyMessage("시장 지도를 불러오는 중…");
     try {
-      const [mapRes, newsRes, pulseRes] = await Promise.all([
-        fetch(`data/markets/${mapId}.json`, { cache: "no-cache" }),
-        fetch(`data/markets/news/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
-        // 자동 병목 신호 (scripts/market_pulse.py 산출) — 없어도 지도는 그린다
-        fetch(`data/markets/analysis/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
-      ]);
-      if (!mapRes.ok) throw new Error(`HTTP ${mapRes.status}`);
-      MC_STATE.cache[mapId] = {
-        map: await mapRes.json(),
+      const [mapData, newsData, pulseData] = await Promise.all([
+        sbDoc("market", mapId),
         // 뉴스 스토어는 없어도 지도는 그린다 (recent_news 폴백)
-        news: newsRes && newsRes.ok ? await newsRes.json() : null,
-        pulse: pulseRes && pulseRes.ok ? await pulseRes.json() : null,
+        sbDoc("market", `news/${mapId}`).catch(() => null),
+        // 자동 병목 신호 (scripts/market_pulse.py 산출) — 없어도 지도는 그린다
+        sbDoc("market", `analysis/${mapId}`).catch(() => null),
+      ]);
+      MC_STATE.cache[mapId] = {
+        map: mapData,
+        news: newsData,
+        pulse: pulseData,
       };
     } catch (err) {
       board.innerHTML = emptyMessage(`시장 지도를 불러오지 못했습니다 (${err.message}).`);
@@ -2890,9 +2951,7 @@ async function pmOpen(marketId) {
   if (!m || !m.player_map || !host) return;
   if (!PM_STATE.cache[m.id]) {
     try {
-      const res = await fetch(`data/markets/${m.player_map}`, { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      PM_STATE.cache[m.id] = await res.json();
+      PM_STATE.cache[m.id] = await sbDoc("market", m.player_map.replace(/\.json$/, ""));
     } catch (err) {
       host.hidden = false;
       host.innerHTML = `<header class="pm-head">
@@ -3572,8 +3631,7 @@ const VALUE_SCREEN = { promise: null, data: null, passSet: new Set() };
 
 function loadValueScreen() {
   if (!VALUE_SCREEN.promise) {
-    VALUE_SCREEN.promise = fetch("data/value_screen.json", { cache: "no-cache" })
-      .then((r) => (r.ok ? r.json() : null))
+    VALUE_SCREEN.promise = sbDoc("value_screen", "latest")
       .catch(() => null)
       .then((data) => {
         VALUE_SCREEN.data = data;
@@ -4651,15 +4709,12 @@ async function renderPrinciplesTab() {
   const setup = document.getElementById("principles-setup");
   if (!setup) return;
   try {
-    const res = await fetch("data/principles/timeline.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    const data = await sbDoc("principles", "timeline");
     prInit(data);
   } catch (err) {
     setup.hidden = false;
     setup.innerHTML = emptyMessage(
-      `시나리오 데이터를 불러오지 못했습니다 (${err.message}). ` +
-      `scripts/build_principles.py 를 실행해 data/principles/timeline.json 을 생성해 주세요.`,
+      `시나리오 데이터를 불러오지 못했습니다 (${err.message}).`,
     );
   }
 }
@@ -5558,8 +5613,7 @@ const WN_STATE = { promise: null, graph: null, byPath: null, byTicker: null, ove
 
 function wnLoadGraph() {
   if (!WN_STATE.promise) {
-    WN_STATE.promise = fetch("data/wiki/graph.json", { cache: "no-cache" })
-      .then((res) => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
+    WN_STATE.promise = sbDoc("wiki", "graph")
       .then((graph) => {
         if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) return null;
         WN_STATE.graph = graph;
@@ -5672,9 +5726,7 @@ async function wnOpenByIdx(idx, opts = {}) {
   body.innerHTML = `<p class="wn-loading">불러오는 중…</p>`;
   ov.hidden = false;
   try {
-    const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const note = await res.json();
+    const note = await sbDoc("wiki_note", String(idx));
     body.innerHTML = wnRenderMarkdown(note.content || "");
     body.scrollTop = 0;
     // 본문 속 위키링크·상대 .md 링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
@@ -5750,9 +5802,7 @@ async function wnFillInlineNote(host, idx, opts = {}) {
   host.hidden = false;
   const body = host.querySelector(".wn-inline-body");
   try {
-    const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const note = await res.json();
+    const note = await sbDoc("wiki_note", String(idx));
     if (!body.isConnected) return true;
     body.innerHTML = wnRenderMarkdown(note.content || "");
     // 인라인 본문 속 노트 링크는 오버레이 뷰어로 이어 읽는다
