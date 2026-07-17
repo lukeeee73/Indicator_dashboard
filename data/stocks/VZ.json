@@ -10059,9 +10059,9 @@
   "financials": {
     "snapshot": {
       "market_cap": 183223533568.0,
-      "pe_ratio": 10.702439,
+      "pe_ratio": 10.447619,
       "forward_pe": 8.333555,
-      "eps_ttm": 4.1,
+      "eps_ttm": 4.2,
       "dividend_yield": 6.61,
       "profit_margin": 0.12462,
       "operating_margin": 0.25186002,
@@ -10069,13 +10069,6 @@
       "return_on_equity": 0.17198
     },
     "quarterly": [
-      {
-        "date": "2024-12-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2025-03-31",
         "revenue": 33485000000.0,
@@ -10119,7 +10112,7 @@
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 82.0,
+        "fair_value": 84.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10129,13 +10122,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 47.77,
+        "fair_value": 48.35,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 77.41,
-    "valuation_gap": -0.4331,
+    "fair_value": 78.52,
+    "valuation_gap": -0.4412,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
