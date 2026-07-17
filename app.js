@@ -73,6 +73,21 @@ async function fetchPayloadMap(codes, chunkSize = 25) {
   return Object.assign({}, ...maps);
 }
 
+// documents 테이블에서 문서 하나를 통째로 가져온다.
+// (markets · wiki · principles · value_screen 등 비시계열 데이터)
+async function sbDoc(kind, key) {
+  const params =
+    `kind=eq.${encodeURIComponent(kind)}` +
+    `&key=eq.${encodeURIComponent(key)}&select=payload&limit=1`;
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/documents?${params}`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+  });
+  if (!res.ok) throw new Error(`documents ${kind}/${key} → HTTP ${res.status}`);
+  const rows = await res.json();
+  if (!rows.length) throw new Error(`documents ${kind}/${key} 를 찾을 수 없습니다`);
+  return rows[0].payload;
+}
+
 // ---------- 지표별 UI 메타데이터 ------------------------------
 // fetch_fred.py 의 INDICATORS 와 별도로, 프론트 표기 전용 정보를 둔다.
 // 새 지표를 추가할 때마다 여기에도 한 줄 추가하면 끝.
@@ -1797,18 +1812,17 @@ async function renderMarketCascade(stocks) {
     MC_STATE.loading = true;
     board.innerHTML = emptyMessage("시장 지도를 불러오는 중…");
     try {
-      const [mapRes, newsRes, pulseRes] = await Promise.all([
-        fetch(`data/markets/${mapId}.json`, { cache: "no-cache" }),
-        fetch(`data/markets/news/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
-        // 자동 병목 신호 (scripts/market_pulse.py 산출) — 없어도 지도는 그린다
-        fetch(`data/markets/analysis/${mapId}.json`, { cache: "no-cache" }).catch(() => null),
-      ]);
-      if (!mapRes.ok) throw new Error(`HTTP ${mapRes.status}`);
-      MC_STATE.cache[mapId] = {
-        map: await mapRes.json(),
+      const [mapData, newsData, pulseData] = await Promise.all([
+        sbDoc("market", mapId),
         // 뉴스 스토어는 없어도 지도는 그린다 (recent_news 폴백)
-        news: newsRes && newsRes.ok ? await newsRes.json() : null,
-        pulse: pulseRes && pulseRes.ok ? await pulseRes.json() : null,
+        sbDoc("market", `news/${mapId}`).catch(() => null),
+        // 자동 병목 신호 (scripts/market_pulse.py 산출) — 없어도 지도는 그린다
+        sbDoc("market", `analysis/${mapId}`).catch(() => null),
+      ]);
+      MC_STATE.cache[mapId] = {
+        map: mapData,
+        news: newsData,
+        pulse: pulseData,
       };
     } catch (err) {
       board.innerHTML = emptyMessage(`시장 지도를 불러오지 못했습니다 (${err.message}).`);
@@ -2937,9 +2951,7 @@ async function pmOpen(marketId) {
   if (!m || !m.player_map || !host) return;
   if (!PM_STATE.cache[m.id]) {
     try {
-      const res = await fetch(`data/markets/${m.player_map}`, { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      PM_STATE.cache[m.id] = await res.json();
+      PM_STATE.cache[m.id] = await sbDoc("market", m.player_map.replace(/\.json$/, ""));
     } catch (err) {
       host.hidden = false;
       host.innerHTML = `<header class="pm-head">
@@ -3619,8 +3631,7 @@ const VALUE_SCREEN = { promise: null, data: null, passSet: new Set() };
 
 function loadValueScreen() {
   if (!VALUE_SCREEN.promise) {
-    VALUE_SCREEN.promise = fetch("data/value_screen.json", { cache: "no-cache" })
-      .then((r) => (r.ok ? r.json() : null))
+    VALUE_SCREEN.promise = sbDoc("value_screen", "latest")
       .catch(() => null)
       .then((data) => {
         VALUE_SCREEN.data = data;
@@ -4698,15 +4709,12 @@ async function renderPrinciplesTab() {
   const setup = document.getElementById("principles-setup");
   if (!setup) return;
   try {
-    const res = await fetch("data/principles/timeline.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    const data = await sbDoc("principles", "timeline");
     prInit(data);
   } catch (err) {
     setup.hidden = false;
     setup.innerHTML = emptyMessage(
-      `시나리오 데이터를 불러오지 못했습니다 (${err.message}). ` +
-      `scripts/build_principles.py 를 실행해 data/principles/timeline.json 을 생성해 주세요.`,
+      `시나리오 데이터를 불러오지 못했습니다 (${err.message}).`,
     );
   }
 }
@@ -5605,8 +5613,7 @@ const WN_STATE = { promise: null, graph: null, byPath: null, byTicker: null, ove
 
 function wnLoadGraph() {
   if (!WN_STATE.promise) {
-    WN_STATE.promise = fetch("data/wiki/graph.json", { cache: "no-cache" })
-      .then((res) => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
+    WN_STATE.promise = sbDoc("wiki", "graph")
       .then((graph) => {
         if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) return null;
         WN_STATE.graph = graph;
@@ -5719,9 +5726,7 @@ async function wnOpenByIdx(idx, opts = {}) {
   body.innerHTML = `<p class="wn-loading">불러오는 중…</p>`;
   ov.hidden = false;
   try {
-    const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const note = await res.json();
+    const note = await sbDoc("wiki_note", String(idx));
     body.innerHTML = wnRenderMarkdown(note.content || "");
     body.scrollTop = 0;
     // 본문 속 위키링크·상대 .md 링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
@@ -5797,9 +5802,7 @@ async function wnFillInlineNote(host, idx, opts = {}) {
   host.hidden = false;
   const body = host.querySelector(".wn-inline-body");
   try {
-    const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const note = await res.json();
+    const note = await sbDoc("wiki_note", String(idx));
     if (!body.isConnected) return true;
     body.innerHTML = wnRenderMarkdown(note.content || "");
     // 인라인 본문 속 노트 링크는 오버레이 뷰어로 이어 읽는다
