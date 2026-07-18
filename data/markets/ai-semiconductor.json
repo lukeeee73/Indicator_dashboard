@@ -2,7 +2,7 @@
   "id": "ai-semiconductor",
   "title": "AI · 반도체 밸류체인",
   "subtitle": "수요 → 공급 캐스케이드 · 병목 중심 시장 지도 (AI·반도체·피지컬 AI·국방·전력 인프라)",
-  "as_of": "2026-06",
+  "as_of": "2026-07",
   "intro": "기업이 아니라 '시장(수요)' 단위로 본 AI·반도체 산업. 위에서 아래로 내려갈수록 최종 수요(AI 앱·엣지)에서 자본·컴퓨팅을 거쳐 핵심 부품·제조 기반·장비/전력으로 이어진다. 수요가 공급을 끌어당기며, 빨갛게 표시된 노드가 지금 그 흐름을 막고 있는 병목이다.",
   "data_note": "시장 규모·성장률은 2024~2026 업계 트래커(SemiAnalysis, Epoch AI, Yole, TrendForce, Counterpoint, Dell'Oro, LightCounting, IEA, SEMI) 및 기업 공시 기준의 추정치다. 출처가 갈리는 값은 confidence 로 표시했다. size_usd_b 는 노드 크기 시각화를 위한 대표값이며 정밀치가 아니다.",
   "severity_legend": {
@@ -522,7 +522,7 @@
         "https://www.congress.gov/crs-product/IF12611",
         "https://www.sipri.org/media/press-release/2026/global-military-spending-rise-continues-european-and-asian-expenditures-surge"
       ],
-      "weekly_note": "DAWG $54.6B 요구로 자율전 SW 수요 급팽창. 이기종 군집 오케스트레이션 SW 공백이 핵심 병목 — 펜타곤 $100M Orchestrator Prize."
+      "weekly_note": "美 육군이 NGC2(차세대 지휘통제) 공통데이터레이어 리드사로 Anduril(+Palantir Foundry, Raft)을 선정했다. 지난 3월 체결한 10년 $20B 기업계약이 4보병사단 실전 검증을 거쳐 실행 단계로 넘어간 것으로, 이기종 데이터 통합이라는 핵심 SW 병목이 처음으로 구체적 프로그램 단위에서 풀리기 시작했다는 신호다."
     },
     {
       "id": "sovereign-ai",
@@ -633,7 +633,7 @@
         "https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion",
         "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html"
       ],
-      "weekly_note": "’26 빅4 capex $700B+로 재확대되나 현금 부담·Stargate 축소가 지속성 의문을 키움.",
+      "weekly_note": "빅4 ’26년 capex 합산 가이던스가 $700~725B(전년비 +75~77%)로 재확인됐다. TSMC 2분기 실적(HPC 매출 비중 66%, 연간 AI매출 성장률 40%대로 상향)이 실집행을 뒷받침하지만, 전력망 제약(변압기 최대 5년·스위치기어 ’28년 완판)이 집행 속도의 실질 상한으로 작용하고 있다.",
       "wiki": [
         {
           "path": "wiki/syntheses/semiconductor-ai-chip-value-chain.md",
@@ -653,8 +653,8 @@
       "size_confidence": "low",
       "demand_driver": "프런티어 모델사의 만성적 컴퓨트 부족 + 하이퍼스케일러의 외부 용량 오프테이크(MS→IREN $9.7B, Meta→Nebius $27B)가 초대형 선계약으로 성장 견인.",
       "bottleneck": {
-        "severity": "emerging",
-        "limit": "경쟁축이 GPU 확보전에서 '전력 전쟁'(GW급 부지·인도 속도)으로 이동. GPU 담보 6–9% 고금리 부채로 증설을 조달하고 NVIDIA 투자가 칩 구매로 환류하는 순환금융 구조 — GPU 잔존가치 3년 내 40–60% 하락 vs 장기부채 만기 불일치가 신용경색 시 시스템 리스크."
+        "severity": "acute",
+        "limit": "전력 확보 경쟁에 신용·경쟁 리스크가 겹쳐 부상 — CoreWeave 순손실 확대·이자비용 2배, Meta의 외부판매 클라우드 진출설로 '최대 고객=잠재 경쟁자' 우려까지 더해져 밸류에이션이 40~50% 조정됐다."
       },
       "players": [
         {
@@ -690,6 +690,17 @@
           "name": "IREN · Cipher · Core Scientific",
           "ticker": "IREN",
           "role": "채굴사→AI 전환 — 전력자산 재평가 (MS $9.7B 등)"
+        },
+        {
+          "name": "SoftBank (SB Neo)",
+          "role": "신규 진입 — 美 10GW 네오클라우드 목표, 오하이오 Portsmouth DOE 부지, 최대 $500B 투자 계획",
+          "ticker": "9984.T"
+        },
+        {
+          "name": "Meta",
+          "role": "잠재 신규 경쟁자 — 잉여 AI컴퓨팅 외부판매 클라우드('Meta Compute') 추진",
+          "ticker": "META",
+          "in_watchlist": true
         }
       ],
       "sources": [
@@ -697,7 +708,7 @@
         "https://www.cnbc.com/2026/05/07/coreweave-crwv-q1-earnings-report-2026.html",
         "https://www.datacenterknowledge.com/cloud/earnings-roundup-neoclouds-shift-from-gpu-race-to-power-wars"
       ],
-      "weekly_note": "실적 시즌 화두는 'GPU 확보전 → 전력 전쟁' 이동. 증설 자금이 VC에서 채권시장(전환사채·GPU 담보부채)으로 — 순환금융 리스크 주시."
+      "weekly_note": "블룸버그가 Meta의 잉여 AI컴퓨팅 외부판매 클라우드 사업('Meta Compute') 추진을 보도하며 '최대 잠재고객이 경쟁자로 전환될 수 있다'는 우려가 확산, CoreWeave·Nebius 주가가 고점 대비 40~50%대 급락했다. CoreWeave 1분기 순손실은 -$740M(전년 -$315M)로 확대되고 이자비용은 YoY 2배(-$536M)로 늘어 부채 부담이 가시화됐다. 한편 소프트뱅크는 'SB Neo'를 통해 美 10GW 규모 신규 네오클라우드 시장 진출을 선언했다."
     },
     {
       "id": "ai-gpu",
@@ -740,7 +751,7 @@
       "sources": [
         "https://www.bloomberg.com/company/press/ai-accelerator-market-looks-set-to-exceed-600-billion-by-2033-driven-by-hyperscale-spending-and-asic-adoption-according-to-bloomberg-intelligence/"
       ],
-      "weekly_note": "Blackwell→Rubin 전환기, 수요는 공급 초과 지속. 커스텀 ASIC이 점유율을 80%대로 잠식 중.",
+      "weekly_note": "루빈(Rubin) GPU의 열판(thermal lid) 생산 이슈가 해소되며 7월 생산 램프에 돌입했다. 다만 ’26년 생산 상한은 20~30만개 수준으로 추정되고 기업 온프렘 채널 할당은 ’27년까지 이월돼, CoWoS·HBM 상류 병목이 신세대 GPU에도 이어지는 모습이다.",
       "wiki": [
         {
           "path": "wiki/entities/nvidia.md",
@@ -795,7 +806,7 @@
         {
           "name": "Amazon Trainium",
           "ticker": "AMZN",
-          "role": "Trainium3 (3nm)",
+          "role": "외부(제3자 데이터센터) 판매 검토 — 커스텀 실리콘 사업 연환산 $20B+ 매출",
           "in_watchlist": true
         },
         {
@@ -814,7 +825,7 @@
       "sources": [
         "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia"
       ],
-      "weekly_note": "OpenAI·Anthropic 대형 약정으로 Broadcom AI 매출 +106% YoY. 추론 이동이 ASIC에 유리.",
+      "weekly_note": "아마존이 Trainium AI칩을 AWS 전용에서 벗어나 외부 데이터센터에 판매하는 방안을 검토 중이라고 블룸버그·테크크런치가 보도했다. 아마존 커스텀 실리콘 사업(Trainium·Graviton·Nitro)은 연환산 매출 $20B를 돌파 — ASIC의 '자가소비용' 한계가 완화될 조짐이다.",
       "wiki": [
         {
           "path": "wiki/entities/broadcom.md",
@@ -914,14 +925,14 @@
         {
           "name": "SK Hynix",
           "ticker": "000660.KS",
-          "role": "~62% (HBM4 NVIDIA 최초 인증)",
+          "role": "NVIDIA Vera Rubin HBM4 물량 약 70% 확보 — 3사 중 최대 배정",
           "share": 62,
           "in_watchlist": true
         },
         {
           "name": "Micron",
           "ticker": "MU",
-          "role": "~21% (’26 완판)",
+          "role": "2026 HBM4 생산능력 전량 매진(Sold out)",
           "in_watchlist": true,
           "share": 21
         },
@@ -937,7 +948,7 @@
         "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
         "https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/"
       ],
-      "weekly_note": "전 3사 ’26까지 매진, 삼성 HBM4 Rubin 인증으로 3강 경쟁 재점화. 적층 수율이 증설을 제약.",
+      "weekly_note": "HBM4 3사 모두 3분기 양산 출하 체제에 진입했고 SK하이닉스가 NVIDIA Rubin 물량의 약 70%를 확보한 것으로 전해진다. 동시에 NVIDIA가 벌써 16단(16-Hi) HBM4(’26 4분기 목표)를 요구하고 있어, 웨이퍼 박막화(50→30μm) 난도가 새로운 리스크로 떠올랐다.",
       "wiki": [
         {
           "path": "wiki/concepts/hbm.md",
@@ -988,7 +999,7 @@
         {
           "name": "Intel",
           "ticker": "INTC",
-          "role": "EMIB/Foveros (오버플로 수주)",
+          "role": "EMIB/Foveros — CoWoS 부족분 오버플로 수주 확대(구글 TPU向 등)",
           "in_watchlist": true,
           "share": 3
         }
@@ -996,7 +1007,7 @@
       "sources": [
         "https://www.trendforce.com/news/2025/12/08/news-tsmcs-cowos-l-s-reportedly-fully-booked-osat-partners-step-up-with-ases-cowop-in-focus/"
       ],
-      "weekly_note": "CoWoS 4배 증설로 ’23–24 급성 병목은 완화, 병목이 HBM·전력으로 이동.",
+      "weekly_note": "TrendForce는 TSMC CoWoS 수급갭이 20%→10%(’26년말)로 좁혀질 것으로 전망했다. 다만 TSMC 2분기 실적에서는 CoWoS가 연말까지 여전히 완판이고 리드타임이 ’27년까지 이월된다고 재확인했으며, 인텔 EMIB·대만 OSAT(ASE·SPIL 등)이 오버플로 물량을 흡수하는 구도가 굳어지고 있다. (market_pulse 발 emerging 하향 제안 검토·기각 — TSMC 실적상 완판·리드타임 이월 신호가 더 강해 easing 유지.)",
       "wiki": [
         {
           "path": "wiki/concepts/cowos.md",
@@ -1285,7 +1296,7 @@
         "https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html",
         "https://www.intelmarketresearch.com/torque-sensor-for-humanoid-robot-market-2830"
       ],
-      "weekly_note": "라이다 양사(Hesai·RoboSense) 모두 로봇향 폭증으로 흑자 전환 — '로봇의 눈'은 이미 돈이 되는 시장. 다음 병목은 촉각·힘토크."
+      "weekly_note": "로보센스 상반기 라이다 판매가 71.9만대(+169.6%YoY)를 기록했고, 그중 로보틱스향이 28.3만대로 +510.4%YoY 급증했다 — 로봇용 라이다·비전은 이미 자동차향 매출을 넘어 주력 매출원으로 자리잡았다. 촉각·힘토크 센서 쪽은 이번 조사 기간 중 뚜렷한 양산 돌파 소식이 확인되지 않아 기존 병목이 유지된다."
     },
     {
       "id": "foundry",
@@ -1628,7 +1639,7 @@
       "sources": [
         "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
       ],
-      "weekly_note": "DC 전력 ’30까지 2~3배, 전력망 접속 대기·가스터빈 리드타임이 최대 단기 병목.",
+      "weekly_note": "변압기 리드타임이 최대 5년(미국 평균 128주)까지 늘어난 가운데 스위치기어는 2028년까지 사실상 완판됐다. Hitachi Energy(버지니아 신공장, ’28년 가동)·지멘스(노스캐롤라이나 증설) 등 장비사 투자가 이어지지만 단기 완화는 어렵다는 평가가 우세하다.",
       "wiki": [
         {
           "path": "wiki/syntheses/ai-datacenter-power-infrastructure.md",
@@ -1745,7 +1756,7 @@
         "https://www.jll.com/en-us/newsroom/jll-north-america-data-center-report-year-end-2025",
         "https://www.bloomberg.com/news/articles/2026-06-01/us-construction-spending-on-data-centers-eclipses-50-billion"
       ],
-      "weekly_note": "美 DC 건설지출 첫 $50B 돌파에도 공실률 1% 사상최저 — 수요가 공급을 압도. 변압기·계통접속이 착공의 절반을 막는 중.",
+      "weekly_note": "CBRE 2026 글로벌 리포트에 따르면 세계 16개 주요 시장 공급이 16GW(+25%YoY)로 늘었음에도 평균 공실률은 8.3%→6.7%로 오히려 하락했다. 북미 1분기 순흡수는 +34%YoY, 버지니아주 공실률은 0.3%로 사상최저를 재경신 — 공급 확대보다 수요 흡수가 더 빠르다.",
       "wiki": [
         {
           "path": "wiki/syntheses/ai-datacenter-power-infrastructure.md",
