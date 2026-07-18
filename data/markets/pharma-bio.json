@@ -2,7 +2,7 @@
   "id": "pharma-bio",
   "title": "제약 · 바이오 밸류체인",
   "subtitle": "지불자 → 신약 → R&D 자본 캐스케이드 · 돈의 흐름 중심 시장 지도 (블록버스터·파이프라인·CDMO·AI 신약)",
-  "as_of": "2026-06",
+  "as_of": "2026-07",
   "intro": "기업이 아니라 '시장(돈의 흐름)' 단위로 본 제약·바이오 산업. 오른쪽 끝의 지불자(보험·정부)가 모든 돈의 원천이고, 그 돈이 블록버스터 신약 매출 → 빅파마 R&D·M&A 자본 → 임상·AI 신약 서비스 → 위탁생산 → 장비·소재로 흘러내린다. 산업의 최대 동력은 ① $400B 특허절벽이 강제하는 파이프라인 쟁탈전(중국 라이선싱·M&A), ② GLP-1 비만약의 슈퍼사이클, ③ 빅테크 AI의 신약개발 침투다. 빨갛게 표시된 노드가 지금 돈이 가장 절박하게 몰리는 압박 지점이다.",
   "data_note": "시장 규모·성장률은 2024~2026 업계 트래커(IQVIA, Evaluate, Drug Channels, Mordor, PharmaSource, DealForma)와 기업 공시 기준 추정치다. 출처가 갈리는 값은 confidence 로 표시했다. size_usd_b 는 노드 크기 시각화를 위한 대표값이며 정밀치가 아니다. 치료영역 노드는 가장 큰 3대 영역(항암·면역·비만대사)+기타로 묶었다.",
   "severity_legend": {
@@ -78,7 +78,7 @@
       "demand_driver": "고령화 + 비만·항암 신약 수요. 미국이 세계 최고가 시장으로 산업 전체 이익의 절반 이상을 부담 — 그래서 미국 약가 정책이 곧 산업 전체의 매출 함수.",
       "bottleneck": {
         "severity": "acute",
-        "limit": "약가 인하 압박이 산업 수익의 최대 외생 변수 — IRA 협상 1차분(10개 약, 정가 대비 -38~79%)이 ’26.1 발효, 차기 15개 지정. MFN(최혜국 약가) 자율협약에 17개 대형 제약사 서명 + 수입 브랜드약 100% 관세 행정명령. '약가 vs 혁신 보상'의 줄다리기가 모든 노드의 할인율을 결정."
+        "limit": "약가 인하·관세 이중 압박이 지속"
       },
       "players": [
         {
@@ -113,7 +113,7 @@
         "https://www.medicarerights.org/medicare-watch/2025/10/09/negotiated-prices-take-effect-for-ten-drugs-in-2026",
         "https://www.sidley.com/en/insights/newsupdates/2025/12/us-drug-pricing-year-in-review-reflections-on-2025-and-getting-ready-for-2026"
       ],
-      "weekly_note": "IRA 1차 협상가 ’26.1 발효(연 $6B 절감), 차기 15개 약 지정. MFN 17사 서명에도 실효성 논쟁 — 정책 헤드라인이 섹터 멀티플을 흔드는 국면."
+      "weekly_note": "Section 232 제약 관세가 4월 확정돼 7월31일부터 단계 발효 — 제네릭은 당장 제외되나 1년 내 확대 검토 대상이다. 메디케어 GLP-1 비만약 급여가 7월1일 개시돼 신규 수요층이 열렸다."
     },
     {
       "id": "distribution-pbm",
@@ -128,7 +128,7 @@
       "demand_driver": "고가 스페셜티(항암·면역·GLP-1) 비중 확대가 유통·조제 마진의 원천. 도매 3사가 $16B+ 인수로 스페셜티 유통·온콜로지 GPO로 영역 확장.",
       "bottleneck": {
         "severity": "structural",
-        "limit": "도매 3사(McKesson·Cencora·Cardinal) 90%+ · PBM 3사(Caremark·Optum·Express Scripts) ~80% — 대체 불가 과점 관문. 단, PBM 개혁 입법(리베이트 100% 패스스루·수수료 분리, ’28–29 시행)이 리베이트 기반 수익모델을 근본 재편 — 구조적 지위와 정책 리스크가 공존."
+        "limit": "과점 구조는 유지, 리베이트 모델 해체는 규제·소송 양쪽에서 동시 진행"
       },
       "players": [
         {
@@ -166,7 +166,7 @@
         "https://intuitionlabs.ai/articles/specialty-pharmacy-key-players",
         "https://www.firstanalysis.com/research/healthcare-technology-apr-2026/"
       ],
-      "weekly_note": "GLP-1·스페셜티 물량이 유통 실적을 견인. PBM 개혁(’28–29 시행)으로 리베이트 모델 해체가 예고 — 'Net Pricing' 전환이 중기 화두."
+      "weekly_note": "PBM 리베이트 개혁이 속도를 내는 중 — Optum Rx가 5월 정액수수료 전환을 발표했고, Express Scripts·CVS Caremark는 FTC 인슐린 리베이트 소송을 잇따라 화해했다."
     },
     {
       "id": "oncology",
@@ -181,13 +181,13 @@
       "demand_driver": "암 유병률 증가 + 치료 라인 확장. ADC가 화학요법을 대체하며 가장 빠르게 성장(승인 15개·임상 200개+), 이중특이성 ADC가 차기 프런티어.",
       "bottleneck": {
         "severity": "emerging",
-        "limit": "단일 최대 리스크는 키트루다 절벽 — $32.7B(’26 피크) IV 특허가 ’28 만료, 단일 제품 기준 사상 최대 매출이 증발 위험(머크는 피하주사 전환·20개 신규 출시로 방어). ADC는 고활성 접합 생산캐파가 타이트해 위탁생산 병목 공유."
+        "limit": "검증된 후기 ADC·온콜로지 자산에 대한 쟁탈전이 가격을 계속 밀어올림"
       },
       "players": [
         {
           "name": "Merck",
           "ticker": "MRK",
-          "role": "키트루다 — 세계 1위 의약품 (~$32B)",
+          "role": "Terns 인수($6.7B, 5월5일 종결) 등 절벽 대비 3번째 대형 인수",
           "in_watchlist": true
         },
         {
@@ -217,6 +217,11 @@
           "name": "BMS · Roche",
           "ticker": "BMY",
           "role": "옵디보(’28 LOE)·면역항암 빅4"
+        },
+        {
+          "name": "Gilead Sciences",
+          "role": "Tubulis 인수($3.15B 업프런트, 최대 $5B) — ADC 링커·페이로드 플랫폼 확보",
+          "ticker": "GILD"
         }
       ],
       "sources": [
@@ -224,7 +229,7 @@
         "https://www.mordorintelligence.com/industry-reports/antibody-drug-conjugates-market",
         "https://www.pharmavoice.com/news/big-pharma-navigating-patent-cliff-300-billion-jnj-merck-abbvie/810915/"
       ],
-      "weekly_note": "키트루다 피하주사 전환으로 절벽 방어 중. ADC 라이선싱 $5B+(’25 이후)·이중특이성 ADC 12개 임상 진입 — 항암 BD의 중심축."
+      "weekly_note": "절벽 방어용 ADC/온콜로지 M&A가 릴레이로 이어진다 — 길리어드 Tubulis($5B), 머크 Terns($6.7B, 5월 종결), 노바티스 Myricx($1.5B)가 잇따랐고, 키트루다는 7월10일 신규 승인으로 방어선을 넓혔다."
     },
     {
       "id": "immunology",
@@ -269,7 +274,7 @@
         "https://www.iqvia.com/insights/the-iqvia-institute/reports-and-publications/reports/global-medicine-use-trends-2026",
         "https://intuitionlabs.ai/articles/pharmaceutical-market-analysis-trends"
       ],
-      "weekly_note": "휴미라 바이오시밀러 침식 가속에도 스카이리치·듀피젠트가 영역 성장을 유지. 경구 면역약(TL1A 등)이 차기 BD 테마."
+      "weekly_note": "TL1A×IL-23 이중표적 항체가 IBD 라이선싱의 새 핫스팟으로 부상 — TrueLab-Bionyra $985M 딜(6월22일) 등 신생 바이오텍의 대형 라이선싱이 이어진다."
     },
     {
       "id": "obesity-glp1",
@@ -284,20 +289,20 @@
       "demand_driver": "전세계 비만 인구 10억+ 의 미충족 수요 + 심혈관·수면무호흡·신장 적응증 확장이 급여 대상을 확대. 경구약(위고비 필·오르포글리프론)이 주사 거부층과 신흥시장을 연다.",
       "bottleneck": {
         "severity": "easing",
-        "limit": "’23–24 급성 공급부족은 양사 메가 증설로 완화(FDA 부족 해제) — 제약이 공급에서 '가격·접근성'으로 이동. 릴리가 처방 57%로 역전, 노보는 ’26 매출 감소 가이던스로 수세. 미국 약가 인하(TrumpRx·메디케어 급여)와 컴파운딩 잔존이 단가를 압박."
+        "limit": "공급 병목은 해소, 이제 가격·급여 경쟁이 핵심 변수"
       },
       "players": [
         {
           "name": "Eli Lilly",
           "ticker": "LLY",
-          "role": "젭바운드·마운자로 — 처방 점유 ~57%, ’26 매출 $80–83B 가이던스",
+          "role": "오르포글리프론(파운다요) 4월1일 FDA 승인 — 경구 GLP-1 라인업 완성",
           "in_watchlist": true,
           "share": 57
         },
         {
           "name": "Novo Nordisk",
           "ticker": "NVO",
-          "role": "위고비·오젬픽 ~43% — 최초 경구 비만약 출시",
+          "role": "위고비 경구약 누적 처방 300만건 돌파 + 공격적 가격 인하로 방어",
           "in_watchlist": true,
           "share": 43
         },
@@ -323,7 +328,7 @@
         "https://www.cnbc.com/2026/01/10/2026-is-the-year-of-obesity-pills-from-novo-nordisk-eli-lilly-.html",
         "https://www.rootsanalysis.com/reports/glp-1-market.html"
       ],
-      "weekly_note": "’26은 경구약 원년 — 위고비 필 3주만에 주간 처방 5만건, 릴리 오르포글리프론 연내 승인 예상. 경쟁축이 공급에서 가격·제형으로 이동."
+      "weekly_note": "릴리 경구약 오르포글리프론(파운다요)이 4월1일 FDA 승인되며 노보·릴리 모두 경구 GLP-1 라인업을 완성했다. 메디케어 비만약 급여가 7월1일 시작돼 신규 고령 환자층이 열렸고, 노보는 위고비 가격을 큰 폭 인하하며 방어 중이다."
     },
     {
       "id": "other-specialty",
@@ -367,13 +372,18 @@
           "ticker": "PFE",
           "role": "백신 — 코로나 후 역성장 + 정책 리스크",
           "in_watchlist": true
+        },
+        {
+          "name": "Vertex Pharmaceuticals",
+          "role": "크리네틱스 인수($10B, 7월6일) — 아크로메갈리 신약 팔소니파이 확보",
+          "ticker": "VRTX"
         }
       ],
       "sources": [
         "https://www.evaluate.com/press-release/evaluate-releases-2030-forecasts-for-global-pharmaceutical-market/",
         "https://intuitionlabs.ai/articles/pharmaceutical-market-analysis-trends"
       ],
-      "weekly_note": "알츠하이머 항체가 느리지만 꾸준히 침투. 백신 섹터는 미 접종정책 축소로 투자심리 최악 — 역발상 가치 논쟁 진행 중."
+      "weekly_note": "버텍스가 희귀 내분비질환 바이오텍 크리네틱스를 $10B(7월6일)에 인수해 아크로메갈리 치료제 팔소니파이를 확보했다. 레켐비는 7월13일 주1회 피하주사 제형 승인으로 알츠하이머 투여 편의성 경쟁을 시작했다. 백신은 3월 법원의 ACIP 정지 명령으로 정책 불확실성이 일부 완화됐다."
     },
     {
       "id": "pharma-rd-capital",
@@ -394,7 +404,7 @@
         {
           "name": "Eli Lilly",
           "ticker": "LLY",
-          "role": "시총 1위 — 5개월간 중국 딜 5건 $13B+",
+          "role": "'26 상반기 10건 이상, $25B+ 인수로 최다 인수자 등극 — 매출 상위 12개사 합산 M&A의 절반 이상",
           "in_watchlist": true
         },
         {
@@ -433,7 +443,7 @@
         "https://www.drugpatentwatch.com/blog/kill-the-patent-cliff-how-to-turn-a-400-billion-revenue-loss-into-a-competitive-edge/",
         "https://www.foley.com/insights/publications/2025/09/patent-cliff-ma-activity-for-companies-right-now/"
       ],
-      "weekly_note": "’26 M&A가 코로나 전 이후 최대 페이스($106B) — 특허절벽 시계가 돌수록 딜은 커지고 비싸진다. 절벽 노출(BMS·화이자) vs 무풍(릴리)의 양극화."
+      "weekly_note": "'26 상반기 M&A가 이미 '25년 전체 페이스를 상회 — 릴리 홀로 10건 이상 $25B+를 투입하며 최다 인수자로 등극했다. 절벽 대응 빅딜(버텍스·머크·길리어드·노바티스)이 매주 이어지는 국면."
     },
     {
       "id": "biotech-funding",
@@ -448,7 +458,7 @@
       "demand_driver": "빅파마 M&A $228B가 만든 VC 유동성 환류 + 금리 인하 기대. 자금이 후기·검증 자산과 AI 플랫폼으로 양극화 집중.",
       "bottleneck": {
         "severity": "easing",
-        "limit": "’22–24 자금 겨울은 끝나는 중 — XBI +64%, IPO 창 재개방. 단 회복이 선별적: 임상 데이터 없는 초기 바이오텍·플랫폼은 여전히 조달난, 대형 라운드 집중(승자독식). NIH 예산 삭감이 기초연구 파이프라인의 장기 상류 리스크."
+        "limit": "전체 자금은 회복, 초기단계 공백은 오히려 확대"
       },
       "players": [
         {
@@ -476,7 +486,7 @@
         "https://www.ropesgray.com/en/insights/alerts/2026/03/from-volatility-to-vitality-how-2025-reset-the-life-sciences-market-and-whats-next-for-2026",
         "https://www.bioxconomy.com/investment/reflecting-on-the-biotech-funding-landscape-of-2025-and-looking-ahead-to-2026"
       ],
-      "weekly_note": "XBI 회복 + M&A 유동성 환류로 자금 겨울 탈출 중. 단 초기 단계는 여전히 선별적 — AI·후기 자산으로 쏠림."
+      "weekly_note": "VC는 상반기 $9.1B(68개사)로 '22년 이후 최대 반등을 보였으나, 첫 파이낸싱(초기단계)은 팬데믹 이전 이후 최악 페이스 — 후기·임상단계 자산으로 자금이 쏠리는 양극화가 심화됐다."
     },
     {
       "id": "china-licensing",
@@ -491,13 +501,13 @@
       "demand_driver": "중국의 빠른 임상 속도·낮은 개발비 + 빅파마의 절벽 압박이 결합. ADC·이중항체·경구 GLP-1 등 핫 모달리티에서 중국 자산이 글로벌 베스트인클래스로 — AZ·화이자·BMS 가 각 $16B+ 약정.",
       "bottleneck": {
         "severity": "emerging",
-        "limit": "지정학이 최대 리스크 — 미 행정부의 대중 바이오 견제(Biosecure 류 규제 확장) 시 딜 구조 자체가 흔들린다. '바겐세일 시대 종료'로 가격이 급등 중이고, NewCo 우회 구조(미국 법인화)가 규제 회피 수단으로 확산."
+        "limit": "가격 급등·지정학 리스크가 동시에 커지는 구도 지속"
       },
       "players": [
         {
           "name": "Hengrui Pharma",
           "ticker": "600276.SS",
-          "role": "중국 1위 — GSK 와 $12B 패키지 딜"
+          "role": "BMS와 $15.2B 글로벌 전략 제휴(5월12일)"
         },
         {
           "name": "Akeso",
@@ -518,6 +528,11 @@
           "name": "Innovent · Duality · 3SBio",
           "ticker": "1801.HK",
           "role": "ADC·이중항체 라이선싱 다수"
+        },
+        {
+          "name": "Innovent Biologics",
+          "role": "화이자와 온콜로지 12개 자산 $10B 라이선싱(5월28일)",
+          "ticker": "1801.HK"
         }
       ],
       "sources": [
@@ -525,7 +540,7 @@
         "https://www.pharmavoice.com/news/china-biotech-recognize-value-bargain-over/814979/",
         "https://www.biopharmadive.com/news/china-biotech-drug-licensing-deals-pipeline/758283/"
       ],
-      "weekly_note": "Q1’26 아웃라이선싱 $60B 사상 최대 — ’25 연간의 절반이 3개월에 압축. 가격 급등 + 지정학 리스크가 동시에 커지는 중."
+      "weekly_note": "5월 한달간 BMS-헝루이 $15.2B(5월12일)·화이자-이노벤트 $10B(5월28일) 초대형 딜이 연이어 터지며 중국 자산 쟁탈전이 정점을 찍었다."
     },
     {
       "id": "cro",
@@ -578,7 +593,7 @@
         "https://www.fiercebiotech.com/cro/iqvia-unveils-ai-suite-managing-clinical-trial-finances",
         "https://www.clinicalleader.com/doc/cro-industry-outlook-the-next-stage-of-clinical-trial-transformation-0001"
       ],
-      "weekly_note": "바이오텍 자금 회복으로 수주 반등. IQVIA 가 NVIDIA 와 에이전틱 AI 플랫폼(IQVIA.ai) 출시 — CRO 의 AI 전환이 본격화."
+      "weekly_note": "글로벌 임상시험 시장은 '26 성장세를 유지하나, AI 투자가 절감효과를 상회하는 국면이 '26~27년까지 이어질 전망(Medpace) — 생산성 전환은 아직 손익분기 이전이다."
     },
     {
       "id": "ai-drug-discovery",
@@ -621,6 +636,10 @@
           "name": "Schrödinger",
           "ticker": "SDGR",
           "role": "물리 기반 시뮬레이션 + AI"
+        },
+        {
+          "name": "Anthropic",
+          "role": "Claude Science 출시(6월30일) + 경시질환 타깃 자체 신약 프로그램 착수 (비상장)"
         }
       ],
       "sources": [
@@ -628,7 +647,7 @@
         "https://ai2.work/blog/why-big-pharma-is-betting-its-r-d-pipeline-on-ai-drug-discovery",
         "https://fortune.com/2026/06/10/nvidia-drug-pharma-isomorphic-brainstorm-tech-ai-healthcare-biotech-term-sheet/"
       ],
-      "weekly_note": "메가딜 러시 지속(누적 업프런트+마일스톤 수십$B). ’26–27 AI 설계 분자의 후기 임상 결과가 산업 전체의 검증 이벤트."
+      "weekly_note": "Anthropic가 6월30일 'Claude Science'를 출시하며 자체 신약 프로그램(경시질환 타깃)까지 착수 — AI 기업이 도구 제공자에서 신약개발 주체로 전환하는 상징적 사례. 사노피는 Owkin과 5년 K Pro 라이선싱(6월5일)으로 '바이오파마 에이전트' 공동개발에 나섰다."
     },
     {
       "id": "ai-pharma-infra",
@@ -660,7 +679,7 @@
         {
           "name": "OpenAI",
           "ticker": null,
-          "role": "Novo Nordisk 전략 제휴 — 발굴→커머셜 전반 (비상장)"
+          "role": "Novo Nordisk 전사 전략 제휴(4월14일) — '26말 전면 통합 목표 (비상장)"
         },
         {
           "name": "Microsoft · AWS",
@@ -681,7 +700,7 @@
         "https://www.biospace.com/business/ai-giant-anthropic-leans-into-life-sciences-with-400m-coefficient-bio-catch",
         "https://www.dcatvci.org/features/ai-the-marriage-of-high-tech-big-pharma/"
       ],
-      "weekly_note": "빅테크×빅파마 제휴가 분기마다 대형화 — Anthropic 의 Coefficient Bio 인수(4월)는 모델사가 신약 가치사슬 직접 참여로 넘어가는 신호."
+      "weekly_note": "노보 노디스크가 OpenAI와 전사 전략 제휴(4월14일)를 맺어 R&D부터 제조·상업까지 AI 통합에 나섰고, Anthropic는 Claude Science 출시(6월30일)로 도구 판매자에서 신약 가치사슬 참여자로 한 걸음 더 들어갔다."
     },
     {
       "id": "health-data",
@@ -729,7 +748,7 @@
         "https://www.biospace.com/press-releases/u-s-life-science-tools-market-size-to-hit-usd-156-51-billion-by-2034",
         "https://intuitionlabs.ai/articles/pharma-ai-vendor-landscape-2026"
       ],
-      "weekly_note": "Illumina Billion Cell Atlas 등 'AI 학습용 데이터 생성' 자체가 사업이 되는 중 — 데이터 해자 기업의 재평가 진행."
+      "weekly_note": "일루미나가 Billion Cell Atlas 얼라이언스를 확장(7월16일, Formation Bio 등 3개사 추가, 누적 3.5억+ 세포·6PB 데이터)했다. Merck·Gilead는 Tempus와 대형 RWD 계약을 잇따라 체결하며 데이터 자산의 몸값이 오르는 중."
     },
     {
       "id": "cdmo-biologics",
@@ -756,7 +775,7 @@
         {
           "name": "Samsung Biologics",
           "ticker": "207940.KS",
-          "role": "캐파 1위 (78.4만L→5공장 ’26) — Biosecure 수혜",
+          "role": "GSK 록빌 캠퍼스 인수로 첫 美 생산기지 확보 — 총 캐파 84.5만L",
           "share": 11
         },
         {
@@ -787,7 +806,7 @@
         "https://visionlifesciences.com/insights/cdmo-market-analysis",
         "https://www.pharmanow.live/pharma-manufacturing/pharmaceutical-contract-manufacturing-market-2026"
       ],
-      "weekly_note": "Biosecure 서명 후 첫 해 — ’25 CDMO 투자 발표 $24.9B 중 74%가 미국. 한국 3사 동시 증설의 공급과잉 리스크도 부상."
+      "weekly_note": "삼성바이오로직스는 GSK로부터 록빌 6만L 캠퍼스를 인수(작년말 발표, 올 1분기 종결)하며 첫 美 생산거점을 확보 — 글로벌 총 캐파가 84.5만L로 확대됐다. WuXi Biologics는 美 의존을 줄이고 유럽·일본·중국 내수로 축을 옮기는 중이다."
     },
     {
       "id": "glp1-manufacturing",
@@ -833,7 +852,7 @@
         "https://intuitionlabs.ai/articles/glp-1-drug-manufacturing-cdmo-tech-transfer",
         "https://www.sec.gov/Archives/edgar/data/0000353278/000035327826000018/caq12026.htm"
       ],
-      "weekly_note": "공급부족은 해소 국면 — 관심은 '캐파가 수요를 추월하는 시점'으로 이동. 경구약 램프가 정제·원료 합성의 새 병목을 만들지 주시."
+      "weekly_note": "노보의 前카탈렌트 블루밍턴 공장이 FDA와의 협의 진전으로 정상 가동을 재개했으나, 3월31일 발표된 400명 감원(5월초 시행)이 동반돼 캐파 통합의 성장통이 이어지고 있다."
     },
     {
       "id": "api-generics",
@@ -848,7 +867,7 @@
       "demand_driver": "$400B 특허절벽이 곧 제네릭·바이오시밀러의 기회 — 키트루다·엘리퀴스 만료가 ’28부터 물량을 연다. 각국 의료비 절감 정책이 구조적 순풍.",
       "bottleneck": {
         "severity": "structural",
-        "limit": "반도체의 희토류와 동형인 구조적 중국 의존 — 글로벌 API 의 40–45%가 중국, 인도 제네릭도 원료의 ~70%(항생제는 90%)를 중국에 의존. 미국 상위 100대 제네릭 중 83개는 미국 내 API 공급원 0, 제네릭 API 의 1/3은 단독 공급원. 관세·수출통제 시 의약품 안보 직격."
+        "limit": "중국 API 의존은 그대로, 관세 확대 여부가 새 불확실성으로 추가"
       },
       "players": [
         {
@@ -882,7 +901,7 @@
         "https://www.atlanticcouncil.org/blogs/econographics/sinographs/pharmaceuticals-are-chinas-next-trade-weapon/",
         "https://intuitionlabs.ai/articles/pharma-tariffs-2026-supply-chain-onshoring"
       ],
-      "weekly_note": "관세·온쇼어링 압박 속 인도 PLI·미국 필수의약품 리쇼어링 진행 — 단가 디플레 구조는 그대로라 '안보 프리미엄'을 누가 내느냐가 쟁점."
+      "weekly_note": "Section 232 제약 관세가 4월6일 확정 — 7월31일(1차 대상)·9월29일(2차)부터 단계 발효한다. 제네릭·바이오시밀러는 현재 관세 제외 대상이나, 상무부가 1년 내 확대 여부를 재검토하도록 규정돼 있어 불확실성이 남아 있다."
     },
     {
       "id": "bioprocessing",
@@ -984,7 +1003,7 @@
         "https://www.mordorintelligence.com/industry-reports/life-science-tools-market",
         "https://www.marketsandmarkets.com/ResearchInsight/genomics-market.asp"
       ],
-      "weekly_note": "NIH 삭감·중국 역풍으로 섹터 밸류에이션 바닥권 — AI 데이터 생성 수요(Billion Cell Atlas 등)가 반전 카드인지 검증 중."
+      "weekly_note": "美 NIH '26회계연도 예산이 소폭 증액되며 최악의 삭감 시나리오는 피했으나, 보조금 배분 불확실성으로 학계 지출은 여전히 위축 국면이다. 일루미나는 Billion Cell Atlas 확장(7월16일)과 실적 호조로 최근 1년 주가가 크게 반등했다."
     }
   ],
   "links": [

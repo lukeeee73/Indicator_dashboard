@@ -1,9 +1,37 @@
 {
   "industry": "power-ai",
-  "updated": "2026-07-04",
+  "updated": "2026-07-18",
   "schema_note": "markets.<market-id> = 시장 단위 뉴스 배열(최신순). 파일당 시장별 최대 20개 보관, 웹은 최신 6개+더보기 표시. 단일 기업 뉴스는 data/news/<TICKER>/ (daily 루틴) 몫. 각 뉴스의 signals[] 는 방향성 신호 태그 — {type: supply_tightening|supply_easing|demand_up|demand_down, strength: 1~3}. scripts/market_pulse.py 가 이를 집계해 병목 압력을 산출한다. 새 뉴스를 넣을 때 반드시 태깅한다(방향성이 없으면 빈 배열).",
   "markets": {
     "ai-dc-demand": [
+      {
+        "date": "2026-07-14",
+        "title": "데이터센터발 소비자 요금인상 누적 $230억 — 2028년까지 지속 전망",
+        "source": "Fortune",
+        "url": "https://fortune.com/2026/07/14/data-centers-23-billion-electricity-bills/",
+        "impact": "-",
+        "summary": "DC 전력수요가 요금인상 주범으로 지목 — 정치적 역풍 심화",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-07-03",
+        "title": "美 폭염에 그리드 비상 — PJM, 데이터센터에 15분 내 백업전원 전환 요청",
+        "source": "Al Jazeera",
+        "url": "https://www.aljazeera.com/economy/2026/7/3/us-heatwave-raises-alarms-over-ai-data-centre-energy-demands",
+        "impact": "neutral",
+        "summary": "폭염으로 전력망 압박 — DC 전력수요 관련 정책 리스크 부상",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
       {
         "date": "2026-06",
         "title": "골드만삭스: 美 DC 전력 31GW(’25)→41GW(’26)→66GW(’27) 전망",
@@ -11,10 +39,47 @@
         "url": "https://www.goldmansachs.com/insights/articles/us-data-center-power-demand-projected-to-double-by-2027",
         "impact": "+",
         "summary": "2027년까지 수요 2배 — 전력이 AI 빌드아웃 제1 제약으로",
-        "signals": [ { "type": "demand_up", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
       }
     ],
     "btm": [
+      {
+        "date": "2026-07",
+        "title": "Nebius 뉴저지 DC, 400MW 온사이트 가스발전 대기배출 허가 난항",
+        "source": "Cleanview",
+        "url": "https://cleanview.co/reports/behind-the-meter-data-centers",
+        "impact": "-",
+        "summary": "대기오염 허가가 MSFT 파트너사 컴퓨트 공급 일정 위협",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-07",
+        "title": "Williams, 사모펀드서 $53.4억 유치 — BTM 가스발전 6GW 파이프라인 확장",
+        "source": "PGJ / Williams",
+        "url": "https://pgjonline.com/news/2026/july/williams-secures-534-billion-for-gas-fired-power-projects",
+        "impact": "+",
+        "summary": "Blackstone·Apollo·KKR 참여 — BTM 자금조달은 오히려 원활",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
       {
         "date": "2026-06",
         "title": "BTM 가스발전, 소비자 요금 인상 논쟁으로 — 그래도 확산 지속",
@@ -22,7 +87,26 @@
         "url": "https://www.utilitydive.com/news/data-centers-raise-energy-bills-not-for-reason-you-think/822205/",
         "impact": "neutral",
         "summary": "BTM 붐이 가스 수요·요금에 파급 — 규제 리스크 부상",
-        "signals": [ { "type": "demand_up", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-06",
+        "title": "Oracle/STACK 텍사스 DC, 가스관 부재로 가동시점 2029년으로 밀려",
+        "source": "SemiAnalysis",
+        "url": "https://newsletter.semianalysis.com/p/stop-saying-half-of-2026-us-datacenter",
+        "impact": "-",
+        "summary": "가스관·인허가 부재가 BTM 실제 배치를 지연시키는 사례 확인",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
       },
       {
         "date": "2026-05",
@@ -31,7 +115,12 @@
         "url": "https://heatmap.news/energy/natural-gas-data-centers-speed",
         "impact": "+",
         "summary": "계통 3~5년 대기 vs BTM 가스 ~18개월 — 신규 DC 절반+가 BTM 전망",
-        "signals": [ { "type": "demand_up", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
       },
       {
         "date": "2026-04",
@@ -40,10 +129,65 @@
         "url": "https://www.naturalgasintel.com/news/data-centers-going-off-grid-with-natural-gas-to-find-any-way-to-get-power/",
         "impact": "+",
         "summary": "Williams·ET 가 파이프+발전 결합 상품으로 BTM 공급자化",
-        "signals": [ { "type": "supply_easing", "strength": 2 }, { "type": "demand_up", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-03-20",
+        "title": "뉴멕시코주, Stargate 프로젝트 가스관 우회로 불허 — 2.45GW 온사이트 발전 차질",
+        "source": "Public Citizen",
+        "url": "https://www.citizen.org/article/energy-transfer-green-chile-gas-pipeline-openai-oracle-jupiter-stargate-ai-data-center/",
+        "impact": "-",
+        "summary": "Green Chile 가스관 허가 거부 — OpenAI·Oracle DC 온사이트 발전 지연",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          }
+        ]
       }
     ],
     "grid-ftm": [
+      {
+        "date": "2026-07-11",
+        "title": "ERCOT, 대형부하 접속 절차를 'Batch Zero'로 전면 개편·시행",
+        "source": "Willkie Farr",
+        "url": "https://www.willkie.com/publications/2026/06/ercot-approves-implementing-new-batch-zero-process-for-large-load-interconnections",
+        "impact": "neutral",
+        "summary": "개별심사 대신 시스템 전체 일괄평가로 큐 절차 정비",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 1
+          }
+        ]
+      },
+      {
+        "date": "2026-07",
+        "title": "PJM 용량경매 또 상한가 도달 — 예비율 6.8GW 부족 확인",
+        "source": "Utility Dive",
+        "url": "https://www.utilitydive.com/news/pjm-capacity-auction-price-cap-reserve-shortfall/825282/",
+        "impact": "-",
+        "summary": "2년 연속 가격상한 — 신규 발전이 수요 증가를 못 따라감",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          },
+          {
+            "type": "demand_up",
+            "strength": 1
+          }
+        ]
+      },
       {
         "date": "2026-04",
         "title": "ERCOT 대형부하 큐 410GW — 1년새 4배, 87%가 데이터센터",
@@ -51,7 +195,16 @@
         "url": "https://www.latitudemedia.com/news/ercots-large-load-queue-has-nearly-quadrupled-in-a-single-year/",
         "impact": "-",
         "summary": "1Q26 신규 신청만 198GW — 접속 대기열이 곧 시장",
-        "signals": [ { "type": "supply_tightening", "strength": 3 }, { "type": "demand_up", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          },
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
       },
       {
         "date": "2026-03",
@@ -60,7 +213,12 @@
         "url": "https://www.whitecase.com/insight-alert/pjm-proposes-carve-out-new-services-co-located-data-centers",
         "impact": "neutral",
         "summary": "원전 옆 DC 직결 규칙 정비 — 그리드 조달의 게임 룰 재편",
-        "signals": [ { "type": "supply_easing", "strength": 1 } ]
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 1
+          }
+        ]
       },
       {
         "date": "2026-02",
@@ -69,10 +227,33 @@
         "url": "https://www.ascendanalytics.com/blog/large-load-interconnection-queues-data-center-grid-access",
         "impact": "-",
         "summary": "계약 103GW 중 23GW 만 가동 — 실물(장비·인력)이 병목",
-        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          }
+        ]
       }
     ],
     "gas-power": [
+      {
+        "date": "2026-07-02",
+        "title": "GEV 1분기 Gas Power 수주 $100억 — 신규 가스설비 계약 21GW",
+        "source": "CNBC",
+        "url": "https://www.cnbc.com/2026/07/02/ge-vernovas-gas-turbines-arent-the-only-way-its-winning-from-the-ai-boom.html",
+        "impact": "+",
+        "summary": "가스터빈·EPC 수주 동반 확대 — 신설 파이프라인 사상최대",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 1
+          }
+        ]
+      },
       {
         "date": "2026-06",
         "title": "'전력 부족 = 가스 붐' — 신설 CCGT·BTM 가스 발주 사상 최대",
@@ -80,10 +261,47 @@
         "url": "https://www.naturalgasintel.com/news/natural-gas-turbines-arent-gating-data-center-buildouts-ge-vernova-says/",
         "impact": "+",
         "summary": "가스가 AI 전력의 주력 증분 전원으로 — 착공은 터빈 슬롯에 종속",
-        "signals": [ { "type": "demand_up", "strength": 3 }, { "type": "supply_tightening", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-06",
+        "title": "헨리허브 가격 구조적 상승 압력 — LNG수출·DC수요 겹쳐 $4대 하단 전망",
+        "source": "Natural Gas Intel",
+        "url": "https://naturalgasintel.com/news/soaring-demand-costlier-supply-seen-pushing-henry-hub-higher/",
+        "impact": "-",
+        "summary": "저가 가스 시대 종료 시그널 — 가스발전 경제성에 변수",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
       }
     ],
     "nuclear-existing": [
+      {
+        "date": "2026-06",
+        "title": "팰리세이즈 원전, 애초 목표일 넘겼지만 재가동 완공 임박 보도",
+        "source": "Canary Media",
+        "url": "https://www.canarymedia.com/articles/nuclear/americas-first-nuclear-plant-restart",
+        "impact": "neutral",
+        "summary": "재가동 후보 소진 국면 — Holtec 목표일 재차 지연",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 1
+          }
+        ]
+      },
       {
         "date": "2026-05",
         "title": "하이퍼스케일러 원자력 계약 13건 ~9.8GW — 4사 전원 참전",
@@ -91,7 +309,16 @@
         "url": "https://smrintel.com/nuclear-data-center-deals/",
         "impact": "+",
         "summary": "MSFT·AWS·Meta·Google 모두 원자력 확보 — 기존 원전 완판 임박",
-        "signals": [ { "type": "demand_up", "strength": 3 }, { "type": "supply_tightening", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
       },
       {
         "date": "2026-01",
@@ -100,10 +327,51 @@
         "url": "https://www.datacenterfrontier.com/energy/article/55239739/data-center-nuclear-power-update-microsoft-constellation-aws-talen-meta",
         "impact": "+",
         "summary": "재가동 소진 후 업레이트까지 선점 — 프리미엄 PPA 구조 고착",
-        "signals": [ { "type": "demand_up", "strength": 3 }, { "type": "supply_tightening", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          }
+        ]
       }
     ],
     "smr": [
+      {
+        "date": "2026-07-04",
+        "title": "Aalo Atomics, INL서 임계 달성 — DOE 인가 4번째 차세대 원자로",
+        "source": "POWER Magazine",
+        "url": "https://www.powermag.com/aalo-atomics-test-reactor-reaches-criticality-at-inl-fourth-doe-authorized-advanced-reactor-by-july-4/",
+        "impact": "+",
+        "summary": "SMR 업계 임계 마일스톤 잇달아 — 인허가 파이프라인 진전",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 1
+          }
+        ]
+      },
+      {
+        "date": "2026-06-12",
+        "title": "Oklo, DOE 예비안전성분석서(PDSA) 승인 획득 — Aurora 착공 가속경로 진입",
+        "source": "ANS Nuclear Newswire",
+        "url": "https://www.ans.org/news/2026-06-12/article-8119/oklo-secures-doe-pdsa-approval/",
+        "impact": "+",
+        "summary": "FOAK 규제경로 단축 — 다만 첫 발전 시점은 '27말~'28초로 이동",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 1
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 1
+          }
+        ]
+      },
       {
         "date": "2026-03",
         "title": "X-energy, 나스닥 IPO 추진 (S-1 제출) — Amazon $700M 투자 업고",
@@ -111,7 +379,12 @@
         "url": "https://smrintel.com/state-of-smr-2026/",
         "impact": "+",
         "summary": "SMR 자본시장 진입 가속 — Xe-100 12기 Amazon 약정",
-        "signals": [ { "type": "demand_up", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
       },
       {
         "date": "2026-03",
@@ -120,10 +393,47 @@
         "url": "https://neutronbytes.com/2026/03/15/nuclear-fuel-deals-take-center-stage-for-smrs/",
         "impact": "neutral",
         "summary": "SMR 연료(HALEU) 확보전 개시 — ’29 전 공급 공백은 여전",
-        "signals": [ { "type": "supply_tightening", "strength": 2 }, { "type": "supply_easing", "strength": 1 } ]
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          },
+          {
+            "type": "supply_easing",
+            "strength": 1
+          }
+        ]
       }
     ],
     "renewables-storage": [
+      {
+        "date": "2026-07-09",
+        "title": "EQT, Carlyle의 Copia Power $26억에 인수 — 발전+ESS 통합 플랫폼",
+        "source": "EQT / PR Newswire",
+        "url": "https://eqtgroup.com/news/eqt-to-acquire-copia-power-a-leading-integrated-power-and-ai-infrastructure-platform-2026-07-09",
+        "impact": "+",
+        "summary": "2.6GW 가동+9GW 파이프라인 — AI 전력 인프라 M&A 활발",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-07",
+        "title": "OBBBA 착공 데드라인 7/4 경과 — 풍력·태양광 세액공제 절벽 본격화",
+        "source": "Utility Dive",
+        "url": "https://www.utilitydive.com/news/power-demand-renewable-energy-2026-data-centers-trump-solar-wind/809938/",
+        "impact": "-",
+        "summary": "7/4 전 착공 못한 신규 프로젝트는 세액공제 상실 위기",
+        "signals": [
+          {
+            "type": "demand_down",
+            "strength": 2
+          }
+        ]
+      },
       {
         "date": "2026-05",
         "title": "1Q26 美 신규 발전용량의 91%가 태양광+ESS",
@@ -131,7 +441,16 @@
         "url": "https://www.energy-storage.news/us-renewables-and-battery-storage-are-poised-for-sustained-growth-as-data-centre-demand-accelerates/",
         "impact": "+",
         "summary": "물량은 재생+ESS 압도 — DC 수요가 성장 지속 견인",
-        "signals": [ { "type": "demand_up", "strength": 2 }, { "type": "supply_easing", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          },
+          {
+            "type": "supply_easing",
+            "strength": 2
+          }
+        ]
       },
       {
         "date": "2026-04",
@@ -140,7 +459,12 @@
         "url": "https://www.orrick.com/en/Insights/2026/04/Energy-Storage-Update-2026-Data-Centers-Revenue-Opportunities-OBBBA-and-Tariffs",
         "impact": "neutral",
         "summary": "정책 역풍 속 ESS 만 세제 생존 — FEOC 가 중국산 제약",
-        "signals": [ { "type": "demand_down", "strength": 1 } ]
+        "signals": [
+          {
+            "type": "demand_down",
+            "strength": 1
+          }
+        ]
       }
     ],
     "fuel-cells": [
@@ -151,7 +475,12 @@
         "url": "https://www.datacenterdynamics.com/en/news/brookfield-expands-partnership-with-bloom-energy-to-support-fuel-cell-deployment-across-ai-data-centers/",
         "impact": "+",
         "summary": "AI 인프라 펀드($100B)의 전력 축 — 연료전지 BTM 본선 진입",
-        "signals": [ { "type": "demand_up", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
       },
       {
         "date": "2026-01",
@@ -160,7 +489,12 @@
         "url": "https://introl.com/blog/fuel-cells-data-center-power-dark-horse-7-billion",
         "impact": "+",
         "summary": "90일간 $7.65B 계약 (Oracle 2.8GW 포함) — 터빈 매진의 반사수혜",
-        "signals": [ { "type": "demand_up", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
       }
     ],
     "transmission": [
@@ -171,10 +505,55 @@
         "url": "https://finance.yahoo.com/markets/stocks/articles/quantas-record-48-5b-backlog-160200162.html",
         "impact": "+",
         "summary": "T&D EPC 슈퍼사이클 — 변압기 제조 내재화 $5~7억 투자",
-        "signals": [ { "type": "demand_up", "strength": 3 }, { "type": "supply_tightening", "strength": 1 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 1
+          }
+        ]
       }
     ],
     "turbines": [
+      {
+        "date": "2026-07-05",
+        "title": "두산에너빌리티, 1분기만 가스터빈 10기 수주 — 북미 DC향 7기 포함",
+        "source": "다음(연합뉴스 계열)",
+        "url": "https://v.daum.net/v/20260705171802973",
+        "impact": "+",
+        "summary": "3사 매진 반사수혜 지속 — 상반기 수주 순항",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "title": "GEV 1분기 가스설비 수주 $100억 — 백로그+슬롯예약 100GW 육박",
+        "source": "CNBC",
+        "url": "https://www.cnbc.com/2026/07/02/ge-vernovas-gas-turbines-arent-the-only-way-its-winning-from-the-ai-boom.html",
+        "impact": "+",
+        "summary": "매진 심화 지속 — 연말 110GW 목표 재확인",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
+      },
       {
         "date": "2026-06",
         "title": "GE Vernova 가스터빈 ’29까지 매진 — ’26말 ’30 매진 전망",
@@ -182,7 +561,16 @@
         "url": "https://www.digitaltoday.co.kr/en/view/75930/ge-vernova-gas-turbines-sold-out-through-2029-amid-surging-ai-power-demand",
         "impact": "-",
         "summary": "백로그 110GW+ · DC 비중 ~20% — 슬롯 배급제 심화",
-        "signals": [ { "type": "supply_tightening", "strength": 3 }, { "type": "demand_up", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          },
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
       },
       {
         "date": "2026-05",
@@ -191,7 +579,16 @@
         "url": "https://www.mt.co.kr/industry/2026/05/29/2026052814244420781",
         "impact": "+",
         "summary": "3사 매진의 반사수혜 — 미국향 누적 12기, 1Q26 수주 2.8조원",
-        "signals": [ { "type": "supply_easing", "strength": 2 }, { "type": "demand_up", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
       },
       {
         "date": "2025-12",
@@ -200,10 +597,65 @@
         "url": "https://www.utilitydive.com/news/ge-vernova-gas-turbine-investor/807662/",
         "impact": "-",
         "summary": "Siemens €136B·MHI ’28 매진 — 3사 과점 배급제",
-        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          }
+        ]
       }
     ],
     "transformers": [
+      {
+        "date": "2026-07-02",
+        "title": "HD현대일렉트릭, 북미 빅테크와 1.1조원 전력인프라 패키지 계약",
+        "source": "아주경제 / ZDNet Korea",
+        "url": "https://www.ajunews.com/view/20260702110308228",
+        "impact": "+",
+        "summary": "배전기기·전력기기 결합 공급 — '28년까지 순차 납품 예정",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 1
+          }
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "title": "효성중공업, 호주 송전망에 5년 독점 초고압기기 공급 계약(3100억원)",
+        "source": "인사이트코리아",
+        "url": "https://www.insight.co.kr/news/561275",
+        "impact": "+",
+        "summary": "해외 장기계약 확대 — K-변압기 수주 랠리 지속",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "title": "GEV Electrification 부문, DC향 장비 수주 $24억 — 작년 전체 초과",
+        "source": "CNBC",
+        "url": "https://www.cnbc.com/2026/07/02/ge-vernovas-gas-turbines-arent-the-only-way-its-winning-from-the-ai-boom.html",
+        "impact": "+",
+        "summary": "가스터빈 이어 변압기·스위치기어도 병목 심화 신호",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
+      },
       {
         "date": "2026-05",
         "title": "美 변압기 리드타임 4~5년으로 — 신규 DC 지연 최대 원인",
@@ -211,7 +663,26 @@
         "url": "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/",
         "impact": "-",
         "summary": "GOES 강판·숙련공·시험설비가 증산 상한",
-        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          }
+        ]
+      },
+      {
+        "date": "2026-03",
+        "title": "Hitachi Energy, 중남미 변압기 생산에 $1.5억 추가 투자",
+        "source": "Hitachi Energy",
+        "url": "https://www.hitachienergy.com/us/en/news-and-events/features/2026/03/hitachi-energy-reaffirms-commitment-to-latin-america-through-an-additional-150-million-usd-investment-to-expand-power-transformer-manufacturing-capacity",
+        "impact": "+",
+        "summary": "글로벌 변압기 3사도 증설 경쟁 — 유효공급은 '27년 이후",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 1
+          }
+        ]
       },
       {
         "date": "2026-02",
@@ -220,7 +691,16 @@
         "url": "https://zdnet.co.kr/view/?no=20260206190629",
         "impact": "+",
         "summary": "HD현대일렉 영업익 1조 돌파 — 수주잔고 30조+ (5년치)",
-        "signals": [ { "type": "demand_up", "strength": 3 }, { "type": "supply_tightening", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
       }
     ],
     "bess": [
@@ -231,10 +711,61 @@
         "url": "https://www.utilitydive.com/news/us-sees-record-q1-2026-energy-storage-installations-amid-rosy-outlook/823547/",
         "impact": "+",
         "summary": "FEOC 로 비중국 셀 프리미엄 — K-배터리 ESS 전환 가속",
-        "signals": [ { "type": "demand_up", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-02-12",
+        "title": "IRS, FEOC 세부지침 발표 — 중국산 배터리 실효관세 약 60%로",
+        "source": "Davis Graham",
+        "url": "https://davisgraham.com/news-events/battery-storage-for-data-centers-in-2026-feoc-compliance-ferc-co-location-and-the-deals-getting-done-now/",
+        "impact": "neutral",
+        "summary": "비중국 셀(K-배터리) 프리미엄이 정책적으로 고착",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
       }
     ],
     "natgas": [
+      {
+        "date": "2026-07",
+        "title": "Williams, 사모펀드서 $53.4억 유치 — BTM 가스발전 6GW 파이프라인 확장",
+        "source": "PGJ",
+        "url": "https://pgjonline.com/news/2026/july/williams-secures-534-billion-for-gas-fired-power-projects",
+        "impact": "+",
+        "summary": "Blackstone·Apollo·KKR 참여 — 미드스트림 발전 진출 자금 몰림",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 1
+          },
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-06",
+        "title": "헨리허브, LNG수출·DC수요 겹치며 구조적 상승압력 — 하단 $4대 전망",
+        "source": "Natural Gas Intel",
+        "url": "https://naturalgasintel.com/news/soaring-demand-costlier-supply-seen-pushing-henry-hub-higher/",
+        "impact": "-",
+        "summary": "저가 가스 시대 종료 시그널 — BTM 경제성 변수로 부상",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
+      },
       {
         "date": "2025-10",
         "title": "Williams, 'power innovation' $5.1B — DC 온사이트 모듈러 가스발전",
@@ -242,10 +773,55 @@
         "url": "https://rextag.com/blogs/blog/natural-gas-fuels-the-ai-boom-williams-builds-the-backbone-for-data-centers",
         "impact": "+",
         "summary": "Project Socrates ’26 하반기 완공 — 미드스트림의 발전사업 진출",
-        "signals": [ { "type": "demand_up", "strength": 2 }, { "type": "supply_easing", "strength": 1 } ]
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          },
+          {
+            "type": "supply_easing",
+            "strength": 1
+          }
+        ]
       }
     ],
     "uranium": [
+      {
+        "date": "2026-07-01",
+        "title": "Centrus, DOE $9억 태스크오더 계약 최종 체결 — 상업 HALEU 전환 착수",
+        "source": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/centrus-signs-contract-with-department-of-energy-for-900-million-award-intends-to-transition-haleu-production-cascade-to-commercial-operation-302816385.html",
+        "impact": "+",
+        "summary": "시연생산 900kg 조기완료 — 상업규모 램프업 개시",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 1
+          }
+        ]
+      },
+      {
+        "date": "2026-06-02",
+        "title": "Urenco USA, 뉴멕시코 농축시설 SWU 210만 증설 발표 — 상업가동은 '32~'36",
+        "source": "World Nuclear News",
+        "url": "https://www.world-nuclear-news.org/articles/urenco-usa-to-build-new-us-enrichment-plant",
+        "impact": "neutral",
+        "summary": "서방 농축 재무장 지속되나 유효공급까지 6~10년 소요",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 1
+          },
+          {
+            "type": "supply_easing",
+            "strength": 1
+          }
+        ]
+      },
       {
         "date": "2026-06",
         "title": "Cameco: 우라늄 구조적 공급부족 — SWU $40→$200, U3O8 ~$120/lb",
@@ -253,7 +829,12 @@
         "url": "https://www.realclearenergy.org/articles/2026/06/15/fueling_the_coming_nuclear_renaissance_1187984.html",
         "impact": "-",
         "summary": "농축 가격 5배 — 러 금수 ’28 전면 발효 앞두고 재고 확보전",
-        "signals": [ { "type": "supply_tightening", "strength": 3 } ]
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          }
+        ]
       },
       {
         "date": "2026-01",
@@ -262,7 +843,16 @@
         "url": "https://www.powermag.com/doe-issues-2-7b-orders-to-scale-domestic-nuclear-leu-and-haleu-enrichment/",
         "impact": "+",
         "summary": "러시아 의존 탈피 — Centrus HALEU 12t/yr, ’29 신규 캐스케이드",
-        "signals": [ { "type": "supply_easing", "strength": 2 }, { "type": "demand_up", "strength": 2 } ]
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 2
+          }
+        ]
       }
     ]
   }

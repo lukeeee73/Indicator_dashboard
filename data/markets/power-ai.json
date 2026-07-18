@@ -118,7 +118,7 @@
         "https://www.goldmansachs.com/insights/articles/us-data-center-power-demand-projected-to-double-by-2027",
         "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
       ],
-      "weekly_note": "전력 확보가 '컴퓨트 전쟁'의 본선으로 — 4대 하이퍼스케일러 전원이 원자력 계약 체결, 조달 무게추는 BTM 으로 이동 중."
+      "weekly_note": "美 폭염으로 그리드 부담 급증 — PJM이 비상시 데이터센터에 15분 내 백업발전 전환을 요청. 데이터센터발 소비자 요금인상은 누적 $230억 규모로 집계되며 정치적 역풍이 커지는 중."
     },
     {
       "id": "btm",
@@ -127,13 +127,13 @@
       "name_en": "Behind-the-Meter / On-site Power",
       "definition": "계통(그리드)을 우회해 DC 부지 안·옆에 전용 발전(가스터빈·연료전지·향후 SMR)을 두는 조달 경로. 속도가 무기.",
       "size_usd_b": 45,
-      "size_label": "’28 BTM 40GW+ 전망(SemiAnalysis) · 신규 증분의 25–33%(McKinsey) · 장비 TAM ~50GW/yr(’29)",
-      "growth": "’28+ 신규 DC 의 절반 이상 전망",
-      "size_confidence": "low",
+      "size_label": "'28 BTM 40GW+ 전망(SemiAnalysis) · 신규 증분의 25–33%(McKinsey) · 실제 가동 中 BTM은 ~2GW(SemiAnalysis, '26.6 기준, 4개 프로젝트 — 대부분 xAI Colossus 1&2)",
+      "growth": "전망치와 실제 가동 GW 간 괴리 확대",
+      "size_confidence": "very_low",
       "demand_driver": "계통접속 3~5년 vs BTM 가스 ~18개월. xAI Colossus(VoltaGrid 가스발전기)가 원형 — 이후 하이퍼스케일러·네오클라우드의 기본 옵션으로 확산.",
       "bottleneck": {
-        "severity": "emerging",
-        "limit": "속도의 대가 — 터빈·왕복엔진 리드타임(’29 매진), 대기오염 인허가(가스 연소), 부지 가스 공급 인프라가 제약. 소비자 요금 전가 논쟁과 규제 리스크도 부상."
+        "severity": "acute",
+        "limit": "속도의 대가가 현실화 — 터빈 리드타임뿐 아니라 가스관·대기오염 인허가 거부가 실제 프로젝트 지연으로 이어지는 사례가 누적(뉴멕시코 Green Chile 가스관 불허, Oracle/STACK 2029 연기, Nebius NJ 대기배출허가 지연). SemiAnalysis는 실제 가동 중인 BTM은 ~2GW(대부분 xAI Colossus)뿐이라 지적 — 전망치와 실물 사이 괴리가 확인됨."
       },
       "players": [
         {
@@ -173,7 +173,7 @@
         "https://www.naturalgasintel.com/news/data-centers-going-off-grid-with-natural-gas-to-find-any-way-to-get-power/",
         "https://heatmap.news/energy/natural-gas-data-centers-speed"
       ],
-      "weekly_note": "BTM 이 '예외'에서 '기본 옵션'으로 — ’28+ 신규 DC 절반 이상이 BTM 전망. 미드스트림·연료전지 업체가 직접 전력 공급자로 변신 중."
+      "weekly_note": "BTM 깃발 프로젝트들이 잇달아 인허가 벽에 부딪히는 중 — Stargate 뉴멕시코 가스관 불허, Oracle/STACK 부지는 2029년으로 밀림, Nebius 뉴저지는 대기배출 허가 난항. 반면 Williams는 사모펀드에서 $53.4억을 유치해 BTM 가스발전 6GW 파이프라인을 계속 확장 — 자금은 몰리지만 인허가가 새 병목으로 부상."
     },
     {
       "id": "grid-ftm",
@@ -232,7 +232,7 @@
         "https://www.ascendanalytics.com/blog/large-load-interconnection-queues-data-center-grid-access",
         "https://www.whitecase.com/insight-alert/pjm-proposes-carve-out-new-services-co-located-data-centers"
       ],
-      "weekly_note": "ERCOT 큐 410GW — '접속 대기열'이 곧 시장. FERC/PJM 공동입지 규칙과 대형부하 요금제가 게임의 룰을 다시 쓰는 중."
+      "weekly_note": "PJM 2028/29 용량경매가 또다시 가격상한($325/MW-day)에 도달 — 예비율 목표 대비 6.8GW 부족. ERCOT는 7/11부로 기존 개별심사 대기열 절차를 'Batch Zero' 시스템으로 전면 교체."
     },
     {
       "id": "gas-power",
@@ -277,7 +277,7 @@
         "https://www.utilitydive.com/news/ge-vernova-gas-turbine-investor/807662/",
         "https://www.naturalgasintel.com/news/data-centers-going-off-grid-with-natural-gas-to-find-any-way-to-get-power/"
       ],
-      "weekly_note": "'전력 부족 = 가스 붐' — 신설 속도가 터빈 슬롯 배정에 좌우되고, IPP 밸류에이션은 전력 희소성 프리미엄을 반영 중."
+      "weekly_note": "GE Vernova 1분기 Gas Power 부문 수주 $100억(+59%) — 신규 가스설비 계약 21GW. 헨리허브 가격은 LNG수출·DC수요가 겹치며 구조적 상승 압력(신규 하단 $4.00~4.60/MMBtu 전망)을 받는 중."
     },
     {
       "id": "nuclear-existing",
@@ -330,7 +330,7 @@
         "https://www.datacenterfrontier.com/energy/article/55239739/data-center-nuclear-power-update-microsoft-constellation-aws-talen-meta",
         "https://smrintel.com/nuclear-data-center-deals/"
       ],
-      "weekly_note": "Meta-Vistra 업레이트까지 선점되며 '지어진 원전'은 사실상 완판 — 다음 전선은 SMR 과 대형 신설로 이동."
+      "weekly_note": "재가동 파이프라인의 실물 리스크가 드러나는 중 — Palisades는 애초 목표일(연초)을 넘겨 지연됐지만 완공 임박 단계로 보도됨. 신규 대형 원전-DC 계약 발표는 이번 조사기간 중 확인되지 않음."
     },
     {
       "id": "smr",
@@ -385,7 +385,7 @@
         "https://smrintel.com/state-of-smr-2026/",
         "https://neutronbytes.com/2026/03/15/nuclear-fuel-deals-take-center-stage-for-smrs/"
       ],
-      "weekly_note": "딜은 쏟아지나 전자(電子)는 ’30 전 미미 — 시장은 인허가·착공·HALEU 확보 마일스톤에 반응하는 기대 선반영 구간."
+      "weekly_note": "DOE의 7/4 임계 목표 달성 여부는 원자로별로 갈림 — Aalo Atomics는 INL서 임계 달성(4번째 DOE 인가 원자로)한 반면, Oklo Aurora-INL은 목표를 놓치고 첫 발전 목표를 '27말~'28초로 재조정. Oklo는 대신 DOE 예비안전성분석서(PDSA) 승인이라는 별도 마일스톤 확보."
     },
     {
       "id": "renewables-storage",
@@ -429,13 +429,17 @@
           "name": "Brookfield Renewable",
           "ticker": "BEP",
           "role": "MS 10.5GW 재생 프레임워크"
+        },
+        {
+          "name": "EQT",
+          "role": "Copia Power(발전+ESS 통합 플랫폼) $26억에 인수 — Carlyle로부터, 2.6GW 가동·9GW+ 파이프라인"
         }
       ],
       "sources": [
         "https://www.energy-storage.news/us-renewables-and-battery-storage-are-poised-for-sustained-growth-as-data-centre-demand-accelerates/",
         "https://www.orrick.com/en/Insights/2026/04/Energy-Storage-Update-2026-Data-Centers-Revenue-Opportunities-OBBBA-and-Tariffs"
       ],
-      "weekly_note": "정책 역풍에도 물량은 태양광+ESS 가 압도 — DC 향은 '가스·원자력의 보조 전원' 역할로 정착 중."
+      "weekly_note": "OBBBA 착공 데드라인(7/4)이 지나며 풍력·태양광 세액공제 절벽이 현실화 국면 진입. EQT는 Carlyle로부터 Copia Power(발전+ESS 2.6GW 가동·9GW+ 파이프라인)를 $26억에 인수 — AI 인프라향 통합 전력 플랫폼에 자금이 계속 유입."
     },
     {
       "id": "fuel-cells",
@@ -552,7 +556,7 @@
         {
           "name": "GE Vernova",
           "ticker": "GEV",
-          "role": "대형 터빈 1위 — 백로그 110GW+",
+          "role": "1Q26 Gas Power 수주 $100억(+59%) — 21GW 신규계약, 백로그+슬롯 100GW 근접",
           "in_watchlist": true,
           "share": 40
         },
@@ -571,7 +575,7 @@
         {
           "name": "두산에너빌리티",
           "ticker": "034020.KS",
-          "role": "국산 가스터빈 — 미국향 누적 12기, 빅테크 380MW×7기",
+          "role": "1Q26 가스터빈 10기 수주 — 북미 DC향 7기, 연간목표 13.3조 중 상반기 약 4조 달성",
           "in_watchlist": true
         }
       ],
@@ -580,7 +584,7 @@
         "https://www.power-eng.com/gas/turbines/data-centers-drive-record-surge-in-ge-vernova-power-equipment-orders-as-turbine-slots-tighten-through-2030/",
         "https://www.mt.co.kr/industry/2026/05/29/2026052814244420781"
       ],
-      "weekly_note": "터빈 슬롯이 가스 신설 속도를 결정 — 3사 매진 속 두산 등 2군 OEM 이 반사수혜로 수주 릴레이."
+      "weekly_note": "GEV 1분기 가스설비 수주 $100억(+59%) — 슬롯예약 21GW 추가로 백로그+슬롯예약 합산 100GW 육박. 두산에너빌리티는 1분기에만 가스터빈 10기를 수주(북미 DC향 7기 포함)하며 3사 매진의 반사수혜를 이어감."
     },
     {
       "id": "transformers",
@@ -612,13 +616,13 @@
         {
           "name": "HD현대일렉트릭",
           "ticker": "267260.KS",
-          "role": "북미 대형 변압기 — ’25 영업익 1조 돌파",
+          "role": "북미 빅테크 배전·전력기기 패키지 최대 1.1212조원('28까지 순차납품)",
           "in_watchlist": true
         },
         {
           "name": "효성중공업",
           "ticker": "298040.KS",
-          "role": "초고압 변압기 — 미국 공장 증설",
+          "role": "호주 빅토리아주 송전망 5년 독점 초고압기기 공급(3100억원)",
           "in_watchlist": true
         },
         {
@@ -632,6 +636,12 @@
           "ticker": "VRT",
           "role": "DC 내부 전력체인 (UPS·PDU·부스웨이)",
           "in_watchlist": true
+        },
+        {
+          "name": "GE Vernova",
+          "role": "Electrification(전력기기) 부문 DC향 장비 수주 $24억 — 작년 전체 초과",
+          "ticker": "GEV",
+          "in_watchlist": true
         }
       ],
       "sources": [
@@ -639,7 +649,7 @@
         "https://www.sedaily.com/NewsView/2H0I41MC9B",
         "https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/"
       ],
-      "weekly_note": "K-빅3 가 5년치 일감 확보 — 변압기가 'K-조선 슈퍼사이클'의 재판. 미국 현지 증설 경쟁 개시."
+      "weekly_note": "K-변압기 수주 랠리 지속 — HD현대일렉트릭이 북미 빅테크와 최대 1.1212조원 배전·전력기기 패키지 계약(7/2, '28까지 순차납품)을, 효성중공업은 호주 송전망에 5년 독점 공급(3100억원)을 각각 체결. GE Vernova Electrification 부문도 DC향 장비 수주 $24억으로 이미 작년 전체를 초과 — 병목이 터빈에서 변압기·스위치기어 쪽으로도 함께 조여오는 신호가 다수 확인됨."
     },
     {
       "id": "bess",
@@ -688,7 +698,7 @@
         "https://www.orrick.com/en/Insights/2026/04/Energy-Storage-Update-2026-Data-Centers-Revenue-Opportunities-OBBBA-and-Tariffs",
         "https://www.utilitydive.com/news/us-sees-record-q1-2026-energy-storage-installations-amid-rosy-outlook/823547/"
       ],
-      "weekly_note": "FEOC 발 비중국 셀 특수 — K-배터리의 ESS 전환 가속. 설치량은 분기 최대 행진 지속."
+      "weekly_note": "FEOC·301조 관세로 중국산 배터리 셀 실효세율이 약 60%까지 치솟으며(IRS Notice 2026-15, 2/12 발효) 비중국 셀 프리미엄이 정책적으로 고착. EQT의 Copia Power 인수($26억)도 발전+ESS 통합자산에 자금이 몰리는 사례."
     },
     {
       "id": "natgas",
@@ -731,7 +741,7 @@
         "https://rextag.com/blogs/blog/natural-gas-fuels-the-ai-boom-williams-builds-the-backbone-for-data-centers",
         "https://www.enverus.com/blog/why-data-centers-are-looking-to-natural-gas-for-behind-the-meter-power/"
       ],
-      "weekly_note": "미드스트림의 정체성 전환 — 운송업자에서 'DC 전력 공급자'로. 가스 수요 전망 상향 릴레이."
+      "weekly_note": "헨리허브 가격이 LNG 수출 확대(Plaquemines·Golden Pass)와 DC 발전수요가 겹치며 구조적 상승 압력을 받는 중 — 신규 하단 $4.00~4.60/MMBtu 전망(모간스탠리 등). Williams는 사모펀드 $53.4억을 유치해 BTM 가스발전 6GW 파이프라인을 확장."
     },
     {
       "id": "uranium",
@@ -774,7 +784,7 @@
         "https://www.powermag.com/doe-issues-2-7b-orders-to-scale-domestic-nuclear-leu-and-haleu-enrichment/",
         "https://www.realclearenergy.org/articles/2026/06/15/fueling_the_coming_nuclear_renaissance_1187984.html"
       ],
-      "weekly_note": "러 금수 ’28 을 앞두고 서방 농축 재무장 — DOE $2.7B 발주. SWU 5배 상승이 구조적 부족의 증거."
+      "weekly_note": "Centrus가 DOE와 $9억 태스크오더 계약을 최종 체결(7/1)하고 상업 캐스케이드 전환에 착수 — HALEU 시연생산 900kg을 예정보다 2주 앞당겨 완료(누적 1900kg+). Urenco USA도 뉴멕시코 시설에 SWU 210만 추가 증설을 발표(6/2)했으나 상업가동은 '32~'36년."
     }
   ],
   "links": [

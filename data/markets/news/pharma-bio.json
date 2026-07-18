@@ -1,9 +1,25 @@
 {
   "industry": "pharma-bio",
-  "updated": "2026-06-11",
+  "updated": "2026-07-18",
   "schema_note": "markets.<market-id> = 시장 단위 뉴스 배열(최신순). 파일당 시장별 최대 20개 보관, 웹은 최신 6개+더보기 표시. 단일 기업 뉴스는 data/news/<TICKER>/ (daily 루틴) 몫.",
   "markets": {
     "obesity-glp1": [
+      {
+        "date": "2026-07-01",
+        "title": "메디케어 비만약(GLP-1) 급여 개시 — 월 $50 코페이",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "고령층 신규 수요 개방, 릴리·노보 처방 확대 기대.",
+        "url": "https://www.cnbc.com/2026/06/30/medicare-obesity-drug-glp-1-coverage-starting-july-1.html"
+      },
+      {
+        "date": "2026-04-01",
+        "title": "릴리 경구 GLP-1 오르포글리프론(파운다요) FDA 승인",
+        "source": "HCPLive",
+        "impact": "+",
+        "summary": "국가우선바우처로 신청 50일만에 초고속 승인, 경구약 경쟁 완비.",
+        "url": "https://www.hcplive.com/view/diabetes-dialogue-orforglipron-receives-fda-approval-for-chronic-weight-management"
+      },
       {
         "date": "2026-02",
         "title": "릴리 ’26 매출 $80–83B 가이던스 — 노보는 매출 감소 전망으로 양극화",
@@ -23,6 +39,14 @@
     ],
     "pharma-rd-capital": [
       {
+        "date": "2026-06-22",
+        "title": "'26 상반기 M&A, 이미 '25년 전체 규모 상회",
+        "source": "STAT News",
+        "impact": "+",
+        "summary": "특허절벽 압박 속 딜메이킹이 가속, 딜 프리미엄도 동반 상승.",
+        "url": "https://www.statnews.com/2026/06/22/pharma-biotech-ma-boom-2026-deals-total-123-billion/"
+      },
+      {
         "date": "2026-06",
         "title": "바이오텍 M&A ’26 상반기 $106B — 코로나 전 이후 최대 페이스",
         "source": "CNBC",
@@ -40,6 +64,22 @@
       }
     ],
     "china-licensing": [
+      {
+        "date": "2026-05-28",
+        "title": "화이자, 이노벤트와 온콜로지 12개 자산 $10B 라이선싱",
+        "source": "업계",
+        "impact": "+",
+        "summary": "단일 패키지로 12개 항암 파이프라인 확보, 중국 자산 대형화 상징.",
+        "url": "https://www.indoneo.com/capital/pfizer-innovent-china-biotech-10-billion-deal/"
+      },
+      {
+        "date": "2026-05-12",
+        "title": "BMS-헝루이, $15.2B 글로벌 전략 제휴 체결",
+        "source": "VCBeat Health",
+        "impact": "+",
+        "summary": "상하이 헝루이와 대형 패키지딜, 중국 자산 프리미엄 재확인.",
+        "url": "https://www.vcbeathealth.com/article/58923"
+      },
       {
         "date": "2026-04",
         "title": "중국 바이오텍 아웃라이선싱 Q1에만 $60B — 전년比 +73% 사상 최대",
@@ -59,6 +99,22 @@
     ],
     "ai-pharma-infra": [
       {
+        "date": "2026-06-30",
+        "title": "Anthropic, 제약연구용 'Claude Science' 정식 출시",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "제약 R&D 워크벤치 제품화 — 빅테크의 신약 가치사슬 참여 심화.",
+        "url": "https://www.cnbc.com/2026/06/30/anthropic-launches-ai-drug-discovery-program-claude-science.html"
+      },
+      {
+        "date": "2026-04-14",
+        "title": "노보 노디스크, OpenAI와 전사 AI 전략 제휴",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "발굴부터 제조·상업까지 AI 통합, '26년말 전면 통합 목표.",
+        "url": "https://www.cnbc.com/2026/04/14/novo-nordisk-openai-ai-drug-discovery-healthcare-nvo.html"
+      },
+      {
         "date": "2026-04",
         "title": "Anthropic, Coefficient Bio $400M 인수 — 모델사의 신약 가치사슬 직접 진입",
         "source": "BioSpace",
@@ -76,6 +132,22 @@
       }
     ],
     "ai-drug-discovery": [
+      {
+        "date": "2026-06-30",
+        "title": "Anthropic, 'Claude Science' 출시 + 자체 신약 프로그램 착수",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "60개+ 과학 DB 통합 워크벤치, 경시질환 타깃 자체 신약개발도 시작.",
+        "url": "https://www.cnbc.com/2026/06/30/anthropic-launches-ai-drug-discovery-program-claude-science.html"
+      },
+      {
+        "date": "2026-06-05",
+        "title": "사노피-Owkin, 5년 K Pro 라이선싱으로 '바이오파마 에이전트' 공동개발",
+        "source": "BusinessWire",
+        "impact": "+",
+        "summary": "AI 에이전트가 발굴부터 임상까지 자율 수행하는 차세대 플랫폼 계약.",
+        "url": "https://www.businesswire.com/news/home/20260605704506/en/Owkin-to-Build-AI-Agents-as-Part-of-a-Multi-Year-K-Pro-Collaboration-with-Sanofi"
+      },
       {
         "date": "2026-06",
         "title": "AI 신약 리더들, 미 연구비 삭감이 글로벌 경쟁력 위협 경고",
@@ -95,6 +167,14 @@
     ],
     "cro": [
       {
+        "date": "2026-07-15",
+        "title": "글로벌 임상시험 시장 '30년 $176.32B 전망 — AI·분산형 임상이 성장 견인",
+        "source": "GlobeNewswire",
+        "impact": "neutral",
+        "summary": "AI·탈중앙 임상이 성장축이나 근시일 생산성 효과는 제한적.",
+        "url": "https://www.globenewswire.com/news-release/2026/07/15/3327567/0/en/Global-Clinical-Trials-Market-to-Reach-176-32-Billion-by-2030-as-AI-and-Decentralized-Research-Accelerate-Growth.html"
+      },
+      {
         "date": "2026-04",
         "title": "IQVIA, NVIDIA 와 에이전틱 AI 플랫폼 'IQVIA.ai' 출시",
         "source": "Fierce Biotech",
@@ -105,12 +185,28 @@
     ],
     "us-payers": [
       {
+        "date": "2026-07-01",
+        "title": "메디케어 GLP-1 비만약 급여 개시 — 월 $50 코페이",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "수천만 고령층에 비만약 급여 열려, 릴리·노보 신규 수요 기대.",
+        "url": "https://www.cnbc.com/2026/06/30/medicare-obesity-drug-glp-1-coverage-starting-july-1.html"
+      },
+      {
         "date": "2026-05",
         "title": "백악관, MFN 약가 정책 절감 효과 발표 — 실효성 논쟁 지속",
         "source": "White House",
         "impact": "neutral",
         "summary": "MFN 협약은 자율·비공개·3년 한시 — 법정 구속력 있는 IRA 협상가와 달리 실제 절감 효과는 불투명.",
         "url": "https://www.whitehouse.gov/research/2026/05/savings-from-most-favored-nation-drug-pricing-policy/"
+      },
+      {
+        "date": "2026-04-06",
+        "title": "제약 수입품 Section 232 관세 확정 — 7월31일부터 단계 발효",
+        "source": "Crowell & Moring",
+        "impact": "-",
+        "summary": "특허 브랜드약·API에 최대 100% 관세, MFN 서명 기업은 2029년까지 면제.",
+        "url": "https://www.crowell.com/en/insights/client-alerts/trump-administration-imposes-section-232-tariffs-on-patented-pharmaceutical-imports-tiered-rate-structure-takes-effect-beginning-july-31-2026"
       },
       {
         "date": "2026-01",
@@ -129,9 +225,25 @@
         "impact": "+",
         "summary": "’25 CDMO 신규 투자 발표 $24.9B 중 74%가 미국행. 한국 3사 동시 증설의 공급과잉 리스크도 부상.",
         "url": "https://www.koreabiomed.com/news/articleView.html?idxno=29468"
+      },
+      {
+        "date": "2025-12-21",
+        "title": "삼성바이오로직스, GSK 록빌 캠퍼스 인수 — 첫 美 생산기지 확보",
+        "source": "PR Newswire",
+        "impact": "+",
+        "summary": "$280M·6만L 캐파 인수로 Biosecure 수혜 지속, 총 캐파 84.5만L.",
+        "url": "https://www.prnewswire.com/news-releases/samsung-biologics-expands-us-manufacturing-capabilities-with-strategic-acquisition-of-human-genome-sciences-from-gsk-302647637.html"
       }
     ],
     "api-generics": [
+      {
+        "date": "2026-04-06",
+        "title": "Section 232 제약 관세 확정 — 특허약 최대 100%, 제네릭은 당분간 제외",
+        "source": "Crowell & Moring",
+        "impact": "neutral",
+        "summary": "7월31일부터 단계 발효, 제네릭 확대 여부는 1년 내 재검토 대상.",
+        "url": "https://www.crowell.com/en/insights/client-alerts/trump-administration-imposes-section-232-tariffs-on-patented-pharmaceutical-imports-tiered-rate-structure-takes-effect-beginning-july-31-2026"
+      },
       {
         "date": "2026-02",
         "title": "수입 브랜드 의약품 100% 관세 행정명령 — 의약품 공급망 안보 전면화",
@@ -143,12 +255,154 @@
     ],
     "health-data": [
       {
+        "date": "2026-07-16",
+        "title": "일루미나, Billion Cell Atlas 얼라이언스에 신규 3개사 추가",
+        "source": "PR Newswire",
+        "impact": "+",
+        "summary": "3.5억+ 세포·6PB 데이터로 AI 신약사 공동 얼라이언스 확대.",
+        "url": "https://www.prnewswire.com/news-releases/illumina-expands-billion-cell-atlas-program-with-new-ai-drug-developers-302827780.html"
+      },
+      {
+        "date": "2026-03-03",
+        "title": "머크-Tempus, 정밀의료 바이오마커 확대 협력",
+        "source": "Tempus/Merck",
+        "impact": "+",
+        "summary": "AI/ML로 바이오마커·내성 기전 발굴, 온콜로지 파이프라인에 활용.",
+        "url": "https://investors.tempus.com/news-releases/news-release-details/tempus-announces-strategic-collaboration-agreement-merck"
+      },
+      {
         "date": "2026-01",
         "title": "Illumina 'Billion Cell Atlas' 공개 — AI 신약용 50억 세포 퍼터베이션 데이터",
         "source": "Mordor/업계",
         "impact": "+",
         "summary": "AI 학습용 대규모 생물학 데이터 생성 자체가 사업이 되는 신호 — 데이터 해자 기업 재평가.",
         "url": "https://www.mordorintelligence.com/industry-reports/life-science-tools-market"
+      }
+    ],
+    "distribution-pbm": [
+      {
+        "date": "2026-05-11",
+        "title": "Optum Rx, 리베이트 연동 폐지하고 정액수수료제 전환 발표",
+        "source": "DistilINFO",
+        "impact": "neutral",
+        "summary": "UnitedHealth Optum Rx가 2027년까지 정액수수료 모델로 전환 착수.",
+        "url": "https://distilinfo.com/2026/05/13/optum-rx-reforms-drug-pricing-for-transparency/"
+      },
+      {
+        "date": "2026-03-23",
+        "title": "CVS Caremark, FTC 인슐린 소송 화해 — 10년간 $8.5B 절감 추산",
+        "source": "Healthcare Dive",
+        "impact": "neutral",
+        "summary": "리베이트·접근성 개혁 조건부 화해, PBM 3사 모두 규제 전환기 진입.",
+        "url": "https://www.healthcaredive.com/news/cvs-caremark-ftc-proposed-settlement-insulin-lawsuit/815581/"
+      },
+      {
+        "date": "2026-02-04",
+        "title": "Express Scripts, FTC와 인슐린 리베이트 소송 화해 — 10년간 $7B 절감 약정",
+        "source": "AJMC",
+        "impact": "neutral",
+        "summary": "3대 PBM 중 최초로 FTC 소송 화해, 투명성·환자부담 완화 조건부.",
+        "url": "https://www.ajmc.com/view/pbm-reforms-signed-into-law-reshaping-medicare-part-d-drug-pricing-transparency"
+      }
+    ],
+    "oncology": [
+      {
+        "date": "2026-07-10",
+        "title": "FDA, 머크 키트루다(Qlex 포함) 신규 적응증 승인",
+        "source": "GuruFocus",
+        "impact": "+",
+        "summary": "방광암 등 적응증 확대로 절벽 이전 매출 방어선 강화.",
+        "url": "https://www.gurufocus.com/news/8953680/merck-mrk-receives-fda-approval-for-bladder-cancer-treatment"
+      },
+      {
+        "date": "2026-07-06",
+        "title": "노바티스, ADC 페이로드 스타트업 Myricx 인수 — 최대 $1.5B",
+        "source": "GlobeNewswire",
+        "impact": "+",
+        "summary": "차세대 NMTi 페이로드 기술로 ADC 파이프라인 강화.",
+        "url": "https://www.globenewswire.com/news-release/2026/07/06/3322139/0/en/Myricx-Bio-to-be-Acquired-by-Novartis-to-Advance-Next-Generation-ADC-Payloads-for-Oncology-with-Novel-NMTi-Platform.html"
+      },
+      {
+        "date": "2026-05-05",
+        "title": "머크, Terns Pharma 인수 완료 — $6.7B, 백혈병 치료제 확보",
+        "source": "CNBC",
+        "impact": "+",
+        "summary": "키트루다 절벽 대비 3번째 대형 인수, 경구 TKI 후보 TERN-701 확보.",
+        "url": "https://www.cnbc.com/2026/03/25/merck-buy-terns-pharmaceuticals-mrk-stock-boost-cancer-pipeline.html"
+      },
+      {
+        "date": "2026-04-07",
+        "title": "길리어드, ADC 전문 Tubulis 인수 — 업프런트 $3.15B",
+        "source": "BioPharma Dive",
+        "impact": "+",
+        "summary": "최대 $5B 규모, 차세대 ADC 링커·페이로드 플랫폼 확보.",
+        "url": "https://www.biopharmadive.com/news/gilead-tubulis-acquire-deal-adc-cancer/816823/"
+      }
+    ],
+    "immunology": [
+      {
+        "date": "2026-06-22",
+        "title": "TrueLab-Bionyra, TL1A·이중표적 항체 라이선싱 — 최대 $985M",
+        "source": "PR Newswire",
+        "impact": "+",
+        "summary": "IBD 겨냥 TL1A/IL-23p19 이중항체, 신생 바이오텍 $165M 시드로 출범.",
+        "url": "https://www.prnewswire.com/news-releases/truelab-biopharmaceutical-announces-license-agreement-with-bionyra-pharma-for-two-next-generation-monoclonal-and-bispecific-antibodies-for-immune-mediated-inflammatory-diseases-valued-up-to-985-million-302804996.html"
+      }
+    ],
+    "other-specialty": [
+      {
+        "date": "2026-07-13",
+        "title": "레켐비 주1회 피하주사 제형 FDA 승인",
+        "source": "Los Altos Neurology",
+        "impact": "+",
+        "summary": "격주 정맥주사 대신 주1회 자가주사 가능 — 투여 편의성 경쟁 시작.",
+        "url": "https://losaltosneurology.com/2026/07/15/summer-2026-alzheimers-disease-updates/"
+      },
+      {
+        "date": "2026-07-06",
+        "title": "버텍스, 희귀내분비 바이오텍 크리네틱스 $10B 인수",
+        "source": "BioPharma Dive",
+        "impact": "+",
+        "summary": "아크로메갈리 신약 팔소니파이 확보, 희귀질환 포트폴리오 확장.",
+        "url": "https://www.biopharmadive.com/news/vertex-crinetics-acquire-deal-palsonify-acromegaly/824545/"
+      },
+      {
+        "date": "2026-03-16",
+        "title": "연방법원, ACIP 위원 임명·백신 접종 스케줄 변경에 제동",
+        "source": "APHA",
+        "impact": "neutral",
+        "summary": "소아과학회 등 소송 승소, 백신 정책 불확실성 일부 완화.",
+        "url": "https://www.apha.org/news-and-media/news-releases/apha-news-releases/federal-judge-blocks-immunization-schedule-changes"
+      }
+    ],
+    "biotech-funding": [
+      {
+        "date": "2026-07-13",
+        "title": "바이오텍 VC 반등에도 초기단계 자금 공백은 확대",
+        "source": "BioPharma Dive",
+        "impact": "neutral",
+        "summary": "상반기 $9.1B 조달, 그러나 첫 파이낸싱은 팬데믹前 이후 최저.",
+        "url": "https://www.biopharmadive.com/news/biotech-venture-capital-funding-2026-first-half/824881/"
+      }
+    ],
+    "glp1-manufacturing": [
+      {
+        "date": "2026-03-31",
+        "title": "노보 노디스크, 블루밍턴(前카탈렌트) 공장 400명 감원 발표",
+        "source": "Fierce Pharma",
+        "impact": "-",
+        "summary": "FDA 경고서한 이후 정상화 진행 중에도 구조조정 단행.",
+        "url": "https://www.fiercepharma.com/manufacturing/novo-nordisk-cuts-hundreds-roles-troubled-bloomington-site"
+      }
+    ],
+    "life-science-tools": [
+      {
+        "date": "2026-07-16",
+        "title": "일루미나, Billion Cell Atlas 얼라이언스에 신규 3개사 추가",
+        "source": "PR Newswire",
+        "impact": "+",
+        "summary": "AI 신약사 공동 데이터 조달 모델 확산 — 학계 수요 공백을 산업 수요가 메우는 신호.",
+        "url": "https://www.prnewswire.com/news-releases/illumina-expands-billion-cell-atlas-program-with-new-ai-drug-developers-302827780.html"
       }
     ]
   }
