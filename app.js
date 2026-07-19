@@ -6468,6 +6468,8 @@ function wikiInitGraphLegacy(graph) {
 // frontmatter 기반 3차원 지식 좌표계. force-directed 레이아웃처럼 링크 수가
 // 위치를 결정하지 않는다. 링크는 관계선과 노드 크기에만 남기고, 위치는
 // 검증 강도(X) · 판단 비중(Y) · 나의 개입도(Z)가 결정한다.
+// 화면 배치: Z(나의 개입도)가 세로축 — 내 판단·원칙이 위로 떠오른다.
+// X(검증 강도)는 가로, Y(판단 비중)는 깊이(앞으로 나올수록 핵심).
 function wikiInitGraph(graph) {
   const canvas = document.getElementById("wiki-canvas");
   if (canvas._wiki && canvas._wiki.graph === graph) { canvas._wiki.refresh(); return; }
@@ -6535,9 +6537,10 @@ function wikiInitGraph(graph) {
       dimensions,
       domain: domainKey(frontmatter),
       color: WIKI_DOMAIN_COLORS[domainKey(frontmatter)],
+      // projectPoint 의 up 축은 wy — 나의 개입도(Z)를 세로로 세운다.
       wx: coordinate(Number(dimensions.evidence) || 0),
-      wy: coordinate(Number(dimensions.importance) || 0),
-      wz: coordinate(Number(dimensions.agency) || 0),
+      wy: coordinate(Number(dimensions.agency) || 0),
+      wz: coordinate(Number(dimensions.importance) || 0),
       deg: 0,
       sx: 0, sy: 0, sr: 0, depth: 0,
     };
@@ -6632,14 +6635,15 @@ function wikiInitGraph(graph) {
       drawLine([t, -1, -1], [t, 1, -1], "rgba(255,255,255,0.045)");
       drawLine([-1, -1, t], [1, -1, t], "rgba(255,255,255,0.045)");
     });
+    // 세로(월드 y)는 Z 나의 개입도, 깊이(월드 z)는 Y 판단 비중이다.
     drawLine([-1, -1, -1], [1, -1, -1], "rgba(214,161,75,0.8)", 1.6);
-    drawLine([-1, -1, -1], [-1, 1, -1], "rgba(98,185,141,0.8)", 1.6);
-    drawLine([-1, -1, -1], [-1, -1, 1], "rgba(141,141,232,0.9)", 1.6);
+    drawLine([-1, -1, -1], [-1, 1, -1], "rgba(141,141,232,0.9)", 1.6);
+    drawLine([-1, -1, -1], [-1, -1, 1], "rgba(98,185,141,0.8)", 1.6);
 
     const labels = [
       { p: [1, -1, -1], text: "X  검증 강도", color: "#d6a14b" },
-      { p: [-1, 1, -1], text: "Y  판단 비중", color: "#62b98d" },
-      { p: [-1, -1, 1], text: "Z  나의 개입도", color: "#8d8de8" },
+      { p: [-1, 1, -1], text: "Z  나의 개입도", color: "#8d8de8" },
+      { p: [-1, -1, 1], text: "Y  판단 비중", color: "#62b98d" },
     ];
     ctx.font = '600 11px -apple-system, "Apple SD Gothic Neo", sans-serif';
     ctx.textBaseline = "middle";
