@@ -258,10 +258,10 @@ python scripts/build_principles.py   # data/principles/timeline.json 재생성
 대시보드 왼쪽 사이드바의 **위키** 탭은 Obsidian vault(`lukeeee73/luke_wiki`)의
 노트와 `[[위키링크]]` 구조를 frontmatter 기반 **3D 지식 좌표계**로 시각화한다.
 
-- **X — 검증 강도**: `confidence` + `type` + `sources` + fact/claim callout
-- **Y — 판단 비중**: `weight` + `type` (reference → foundational)
-- **Z — 나의 개입도**: `authorship`/`origin` 명시값을 우선하고, 없으면 폴더·`type`·
-  `[!judgment]` callout으로 추정 (AI·루틴 → 내 판단·원칙)
+- **X — 검증 강도** (가로): `confidence` + `type` + `sources` + fact/claim callout
+- **Y — 판단 비중** (깊이): `weight` + `type` (reference → foundational)
+- **Z — 나의 개입도** (세로): `authorship`/`origin` 명시값을 우선하고, 없으면 폴더·`type`·
+  `[!judgment]` callout으로 추정 — 위로 갈수록 내 판단·원칙, 아래는 AI·루틴 수집
 - **색** = domain, **크기** = 연결 수, **선** = 위키링크
 
 `나의 개입도`는 저자를 단정하는 값이 아니다. 현재 노트 대부분에는 작성 주체 필드가
