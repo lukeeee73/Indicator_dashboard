@@ -5592,28 +5592,48 @@ function initSidebar() {
 
 
 // ════════════════════════════════════════════════════════════════
-// 위키 지식 그래프 — luke_wiki (Obsidian vault) 시각화
+// 위키 지식 좌표계 — luke_wiki (Obsidian vault) 시각화
 //
 // data/wiki/graph.json (scripts/build_wiki_graph.py 가 생성) 을 읽어
-// 노트=노드, [[위키링크]]=엣지인 force-directed 그래프를 캔버스에 그린다.
-// 노드 크기 = 연결 수, 색 = 폴더. 휠 줌 / 배경 팬 / 노드 드래그 지원.
+// 노트=노드, [[위키링크]]=엣지인 3D 지식 지도를 캔버스에 그린다.
+// X=검증 강도, Y=판단 비중, Z=나의 개입도. 색=도메인, 크기=연결 수.
 // ════════════════════════════════════════════════════════════════
 
 // 폴더별 카테고리 색 — 다크 배경(#121212) 기준 CVD 검증 통과 팔레트, 순서 고정
 const WIKI_FOLDER_COLORS = ["#3987e5", "#199e70", "#c98500", "#9085e9", "#e66767", "#d55181"];
 const WIKI_OTHER_COLOR   = "#8a8a8a";
 const WIKI_OTHER_LABEL   = "기타";
+const WIKI_DOMAIN_COLORS = {
+  finance: "#d6a14b",
+  ai: "#8d8de8",
+  design: "#4fa9c6",
+  multi: "#d56f91",
+  meta: "#7f9b8a",
+  other: "#8a8a8a",
+};
 
 // ── 공유 노트 뷰어 ──────────────────────────────────────────────
 // graph.json 로드·색인과 노트 본문 모달은 위키 탭 전용이 아니라 전역이다:
 // 시장 지도의 '위키 노트' 버튼도 같은 뷰어로 노트를 연다.
 //  - wnLoadGraph(): graph.json 1회 로드 + (경로→노드, 티커→뉴스 로그) 색인
 //  - wnOpenByIdx(idx): data/wiki/notes/<idx>.json 본문을 모달로 렌더
-const WN_STATE = { promise: null, graph: null, byPath: null, byTicker: null, overlay: null };
+const WN_STATE = { promise: null, graph: null, source: null, byPath: null, byTicker: null, overlay: null };
 
 function wnLoadGraph() {
   if (!WN_STATE.promise) {
-    WN_STATE.promise = sbDoc("wiki", "graph")
+    // wiki-sync 워크플로가 커밋하는 정적 graph.json을 우선한다. 예전 Supabase
+    // 문서는 갱신 주기가 달라 노드 수와 frontmatter 좌표가 뒤처질 수 있으므로
+    // 정적 파일이 없는 배포에서만 폴백으로 사용한다.
+    WN_STATE.promise = fetch("data/wiki/graph.json", { cache: "no-store" })
+      .then((res) => {
+        if (!res.ok) throw new Error(`wiki graph → HTTP ${res.status}`);
+        WN_STATE.source = "static";
+        return res.json();
+      })
+      .catch(() => {
+        WN_STATE.source = "supabase";
+        return sbDoc("wiki", "graph");
+      })
       .then((graph) => {
         if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) return null;
         WN_STATE.graph = graph;
@@ -5632,6 +5652,19 @@ function wnLoadGraph() {
       .catch(() => null);
   }
   return WN_STATE.promise;
+}
+
+async function wnLoadNote(idx) {
+  if (WN_STATE.source === "static") {
+    try {
+      const res = await fetch(`data/wiki/notes/${idx}.json`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`wiki note ${idx} → HTTP ${res.status}`);
+      return await res.json();
+    } catch (_) {
+      // 과거 배포처럼 graph만 정적이고 본문은 Supabase에 있는 경우를 지원한다.
+    }
+  }
+  return sbDoc("wiki_note", String(idx));
 }
 
 // vault 상대 경로(예: wiki/concepts/hbm.md) → 노드 인덱스. 없으면 -1.
@@ -5726,7 +5759,7 @@ async function wnOpenByIdx(idx, opts = {}) {
   body.innerHTML = `<p class="wn-loading">불러오는 중…</p>`;
   ov.hidden = false;
   try {
-    const note = await sbDoc("wiki_note", String(idx));
+    const note = await wnLoadNote(idx);
     body.innerHTML = wnRenderMarkdown(note.content || "");
     body.scrollTop = 0;
     // 본문 속 위키링크·상대 .md 링크 → 그 노트를 이어서 연다 (+호출부에 이동 알림)
@@ -5802,7 +5835,7 @@ async function wnFillInlineNote(host, idx, opts = {}) {
   host.hidden = false;
   const body = host.querySelector(".wn-inline-body");
   try {
-    const note = await sbDoc("wiki_note", String(idx));
+    const note = await wnLoadNote(idx);
     if (!body.isConnected) return true;
     body.innerHTML = wnRenderMarkdown(note.content || "");
     // 인라인 본문 속 노트 링크는 오버레이 뷰어로 이어 읽는다
@@ -5848,7 +5881,7 @@ async function renderWikiTab() {
   }
 }
 
-function wikiInitGraph(graph) {
+function wikiInitGraphLegacy(graph) {
   const canvas = document.getElementById("wiki-canvas");
   // 탭 재진입 시 전체 재초기화를 피한다 — 이벤트 리스너와 시뮬레이션 루프가
   // 중첩되면 서로 다른 레이아웃이 한 캔버스를 놓고 싸워 그래프가 이상하게
@@ -6427,6 +6460,481 @@ function wikiInitGraph(graph) {
       listeners.abort();
       ro.disconnect();
       if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      canvas._wiki = null;
+    },
+  };
+}
+
+// frontmatter 기반 3차원 지식 좌표계. force-directed 레이아웃처럼 링크 수가
+// 위치를 결정하지 않는다. 링크는 관계선과 노드 크기에만 남기고, 위치는
+// 검증 강도(X) · 판단 비중(Y) · 나의 개입도(Z)가 결정한다.
+function wikiInitGraph(graph) {
+  const canvas = document.getElementById("wiki-canvas");
+  if (canvas._wiki && canvas._wiki.graph === graph) { canvas._wiki.refresh(); return; }
+  if (canvas._wiki) canvas._wiki.destroy();
+
+  const listeners = new AbortController();
+  const sig = listeners.signal;
+  const wrap = canvas.parentElement;
+  const detail = document.getElementById("wiki-detail");
+  const legend = document.getElementById("wiki-legend");
+  const search = document.getElementById("wiki-search");
+  const resetBtn = document.getElementById("wiki-reset");
+  const presetButtons = [...document.querySelectorAll("#wiki-presets .wiki-preset")];
+  const ctx = canvas.getContext("2d");
+
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const asArray = (value) => Array.isArray(value) ? value : (value ? String(value).split(",").map((v) => v.trim()) : []);
+  const labelMap = {
+    finance: "금융", ai: "AI", design: "디자인", multi: "복수 도메인",
+    meta: "메타", other: "기타",
+  };
+  function domainKey(frontmatter) {
+    const domains = asArray(frontmatter && frontmatter.domain).filter(Boolean);
+    if (domains.length > 1) return "multi";
+    const key = (domains[0] || "other").toLowerCase();
+    return WIKI_DOMAIN_COLORS[key] ? key : "other";
+  }
+  function hashSeed(value) {
+    let h = 2166136261;
+    for (const ch of String(value)) {
+      h ^= ch.charCodeAt(0);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+  function seeded(seed) {
+    let s = seed || 1;
+    return () => {
+      s += 0x6D2B79F5;
+      let t = s;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  const nodes = graph.nodes.map((raw, index) => {
+    const frontmatter = raw.frontmatter || {};
+    const dimensions = raw.dimensions || {
+      evidence: 0.35,
+      importance: 0.34,
+      agency: String(raw.path || "").startsWith("wiki/news/") ? 0.03 : 0.2,
+      agency_basis: "이전 그래프 형식의 기본값",
+      agency_inferred: true,
+    };
+    const rnd = seeded(hashSeed(raw.id || raw.path || index));
+    // 같은 enum 값의 노트가 완전히 겹치지 않도록 작은 결정론적 오프셋만 준다.
+    // 축 점수의 순서는 유지하면서 밀집된 routine-news 군집도 읽을 수 있게 한다.
+    const jitter = 0.17;
+    const coordinate = (score) => clamp(score * 2 - 1 + (rnd() - 0.5) * jitter, -1, 1);
+    return {
+      ...raw,
+      index,
+      frontmatter,
+      dimensions,
+      domain: domainKey(frontmatter),
+      color: WIKI_DOMAIN_COLORS[domainKey(frontmatter)],
+      wx: coordinate(Number(dimensions.evidence) || 0),
+      wy: coordinate(Number(dimensions.importance) || 0),
+      wz: coordinate(Number(dimensions.agency) || 0),
+      deg: 0,
+      sx: 0, sy: 0, sr: 0, depth: 0,
+    };
+  });
+  const edges = (graph.edges || []).filter(([a, b]) =>
+    a !== b && a >= 0 && b >= 0 && a < nodes.length && b < nodes.length);
+  const adj = nodes.map(() => new Set());
+  edges.forEach(([a, b]) => { adj[a].add(b); adj[b].add(a); });
+  nodes.forEach((n, i) => { n.deg = adj[i].size; });
+
+  const domainCounts = {};
+  nodes.forEach((n) => { domainCounts[n.domain] = (domainCounts[n.domain] || 0) + 1; });
+  legend.innerHTML = Object.keys(domainCounts)
+    .sort((a, b) => domainCounts[b] - domainCounts[a])
+    .map((key) => `<span class="wiki-legend-item"><span class="wiki-legend-dot"
+      style="background:${WIKI_DOMAIN_COLORS[key]}"></span>${labelMap[key]}
+      <span style="opacity:.6">(${domainCounts[key]})</span></span>`).join("") +
+    `<span class="wiki-legend-item"><span class="wiki-legend-size"></span>크기 = 연결 수</span>` +
+    `<span class="wiki-legend-item">선 = 위키링크</span>`;
+
+  const presetCounts = {
+    all: nodes.length,
+    mine: nodes.filter((n) => n.dimensions.agency >= 0.6).length,
+    core: nodes.filter((n) => n.dimensions.importance >= 0.8).length,
+    evidence: nodes.filter((n) => n.dimensions.evidence >= 0.72).length,
+  };
+  presetButtons.forEach((button) => {
+    const base = button.textContent.replace(/\s+\d+$/, "");
+    button.textContent = `${base} ${presetCounts[button.dataset.preset] || 0}`;
+  });
+
+  const camera = { yaw: -0.68, pitch: 0.42, zoom: 1, panX: 0, panY: 0 };
+  const initialCamera = { ...camera };
+  let selectedIdx = -1;
+  let hoverIdx = -1;
+  let query = "";
+  let activePreset = "all";
+  let cssW = 0, cssH = 0;
+
+  function matchesPreset(n) {
+    if (activePreset === "mine") return n.dimensions.agency >= 0.6;
+    if (activePreset === "core") return n.dimensions.importance >= 0.8;
+    if (activePreset === "evidence") return n.dimensions.evidence >= 0.72;
+    return true;
+  }
+  function matchesQuery(n) {
+    if (!query) return true;
+    const haystack = [n.title, n.path, n.frontmatter.type, n.frontmatter.weight,
+      n.frontmatter.confidence, ...asArray(n.frontmatter.domain), ...(n.tags || [])]
+      .filter(Boolean).join(" ").toLowerCase();
+    return haystack.includes(query);
+  }
+  function isActive(n) { return matchesPreset(n) && matchesQuery(n); }
+
+  function projectPoint(x, y, z) {
+    const cy = Math.cos(camera.yaw), sy = Math.sin(camera.yaw);
+    const cp = Math.cos(camera.pitch), sp = Math.sin(camera.pitch);
+    const rx = x * cy + z * sy;
+    const rz = -x * sy + z * cy;
+    const ry = y * cp - rz * sp;
+    const depth = y * sp + rz * cp;
+    const distance = 3.7;
+    const perspective = distance / Math.max(1.5, distance - depth);
+    const scale = Math.min(cssW, cssH) * 0.33 * camera.zoom;
+    return {
+      x: cssW / 2 + camera.panX + rx * scale * perspective,
+      y: cssH / 2 + camera.panY - ry * scale * perspective,
+      depth,
+      perspective,
+    };
+  }
+
+  function drawLine(a, b, color, width = 1) {
+    const pa = projectPoint(...a), pb = projectPoint(...b);
+    ctx.beginPath();
+    ctx.moveTo(pa.x, pa.y); ctx.lineTo(pb.x, pb.y);
+    ctx.strokeStyle = color; ctx.lineWidth = width; ctx.stroke();
+  }
+
+  const cubeEdges = [];
+  [-1, 1].forEach((a) => [-1, 1].forEach((b) => {
+    cubeEdges.push([[-1, a, b], [1, a, b]]);
+    cubeEdges.push([[a, -1, b], [a, 1, b]]);
+    cubeEdges.push([[a, b, -1], [a, b, 1]]);
+  }));
+
+  function drawFrame() {
+    // 바깥 큐브와 50% 보조선. 축 자체는 색으로 한 번 더 구분한다.
+    cubeEdges.forEach(([a, b]) => drawLine(a, b, "rgba(255,255,255,0.12)", 1));
+    [-1, 0, 1].forEach((t) => {
+      drawLine([-1, t, -1], [1, t, -1], "rgba(255,255,255,0.045)");
+      drawLine([t, -1, -1], [t, 1, -1], "rgba(255,255,255,0.045)");
+      drawLine([-1, -1, t], [1, -1, t], "rgba(255,255,255,0.045)");
+    });
+    drawLine([-1, -1, -1], [1, -1, -1], "rgba(214,161,75,0.8)", 1.6);
+    drawLine([-1, -1, -1], [-1, 1, -1], "rgba(98,185,141,0.8)", 1.6);
+    drawLine([-1, -1, -1], [-1, -1, 1], "rgba(141,141,232,0.9)", 1.6);
+
+    const labels = [
+      { p: [1, -1, -1], text: "X  검증 강도", color: "#d6a14b" },
+      { p: [-1, 1, -1], text: "Y  판단 비중", color: "#62b98d" },
+      { p: [-1, -1, 1], text: "Z  나의 개입도", color: "#8d8de8" },
+    ];
+    ctx.font = '600 11px -apple-system, "Apple SD Gothic Neo", sans-serif';
+    ctx.textBaseline = "middle";
+    labels.forEach(({ p, text, color }) => {
+      const q = projectPoint(...p);
+      ctx.fillStyle = color;
+      ctx.fillText(text, q.x + 7, q.y - 5);
+    });
+  }
+
+  function draw() {
+    if (!cssW || !cssH) return;
+    const dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, cssW, cssH);
+    ctx.lineCap = "round";
+    drawFrame();
+
+    nodes.forEach((n) => {
+      const p = projectPoint(n.wx, n.wy, n.wz);
+      n.sx = p.x; n.sy = p.y; n.depth = p.depth;
+      n.sr = (2.2 + Math.min(5.8, Math.sqrt(n.deg) * 0.58)) * p.perspective;
+    });
+    const focus = selectedIdx >= 0 ? selectedIdx : hoverIdx;
+    const focusSet = focus >= 0 ? adj[focus] : null;
+
+    // 관계선은 좌표를 정하지 않고, 선택한 노트의 맥락을 읽는 역할만 한다.
+    edges.slice().sort(([a1, b1], [a2, b2]) =>
+      (nodes[a1].depth + nodes[b1].depth) - (nodes[a2].depth + nodes[b2].depth))
+      .forEach(([a, b]) => {
+        const na = nodes[a], nb = nodes[b];
+        const active = isActive(na) && isActive(nb);
+        const focused = focus >= 0 && (a === focus || b === focus);
+        ctx.beginPath(); ctx.moveTo(na.sx, na.sy); ctx.lineTo(nb.sx, nb.sy);
+        ctx.strokeStyle = focused ? "rgba(230,48,48,0.68)" :
+          (active ? "rgba(255,255,255,0.075)" : "rgba(255,255,255,0.012)");
+        ctx.lineWidth = focused ? 1.35 : 0.7;
+        ctx.stroke();
+      });
+
+    const ordered = nodes.slice().sort((a, b) => a.depth - b.depth);
+    ordered.forEach((n) => {
+      const active = isActive(n);
+      const related = focus < 0 || n.index === focus || focusSet.has(n.index);
+      let alpha = active ? 0.93 : 0.045;
+      if (active && !related) alpha = 0.17;
+      ctx.globalAlpha = alpha;
+      ctx.beginPath(); ctx.arc(n.sx, n.sy, Math.max(1.5, n.sr), 0, Math.PI * 2);
+      ctx.fillStyle = n.color; ctx.fill();
+      ctx.lineWidth = n.index === selectedIdx ? 2.1 : 0.8;
+      ctx.strokeStyle = n.index === selectedIdx ? "#f2f2f2" : "rgba(8,8,8,0.95)";
+      ctx.stroke();
+      if (n.dimensions.agency >= 0.6 && active) {
+        ctx.beginPath(); ctx.arc(n.sx, n.sy, Math.max(3, n.sr) + 2.2, 0, Math.PI * 2);
+        ctx.strokeStyle = n.index === selectedIdx ? "#e63030" : "rgba(141,141,232,0.55)";
+        ctx.lineWidth = 1; ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    });
+
+    ctx.font = '500 11px -apple-system, "Apple SD Gothic Neo", sans-serif';
+    ctx.textAlign = "center"; ctx.textBaseline = "bottom";
+    const occupiedLabels = [];
+    const labelCandidates = ordered.filter((n) => {
+      const prominent = n.dimensions.importance >= 0.8 || n.dimensions.agency >= 0.85;
+      return isActive(n) && (n.index === selectedIdx || n.index === hoverIdx || (focus < 0 && prominent));
+    }).sort((a, b) => {
+      const af = a.index === selectedIdx || a.index === hoverIdx ? 1 : 0;
+      const bf = b.index === selectedIdx || b.index === hoverIdx ? 1 : 0;
+      return bf - af || (b.dimensions.importance + b.dimensions.agency) -
+        (a.dimensions.importance + a.dimensions.agency);
+    });
+    labelCandidates.forEach((n) => {
+      const y = n.sy - n.sr - 5;
+      const width = ctx.measureText(n.title).width + 8;
+      const box = { left: n.sx - width / 2, right: n.sx + width / 2, top: y - 15, bottom: y + 2 };
+      const forced = n.index === selectedIdx || n.index === hoverIdx;
+      const overlaps = occupiedLabels.some((other) =>
+        box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top);
+      if (overlaps && !forced) return;
+      occupiedLabels.push(box);
+      ctx.lineWidth = 3.5; ctx.strokeStyle = "rgba(8,8,8,0.9)";
+      ctx.strokeText(n.title, n.sx, y);
+      ctx.fillStyle = "#f2f2f2"; ctx.fillText(n.title, n.sx, y);
+    });
+  }
+
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    cssW = wrap.clientWidth;
+    cssH = wrap.clientHeight;
+    canvas.width = Math.max(1, Math.round(cssW * dpr));
+    canvas.height = Math.max(1, Math.round(cssH * dpr));
+    draw();
+  }
+
+  function pick(x, y) {
+    let hit = -1, bestDepth = -Infinity;
+    nodes.forEach((n) => {
+      if (!isActive(n)) return;
+      // 작은 원도 실제 포인터/터치로 선택하기 쉽게 시각 반경보다 넓은 히트 영역을 둔다.
+      const radius = Math.max(12, n.sr + 6);
+      if ((n.sx - x) ** 2 + (n.sy - y) ** 2 <= radius ** 2 && n.depth > bestDepth) {
+        hit = n.index; bestDepth = n.depth;
+      }
+    });
+    return hit;
+  }
+
+  function resetCamera() {
+    Object.assign(camera, initialCamera);
+    draw();
+  }
+
+  function scoreRow(key, label, value) {
+    const pct = Math.round(clamp(Number(value) || 0, 0, 1) * 100);
+    return `<div class="wiki-coordinate wiki-coordinate--${key}">
+      <div class="wiki-coordinate-head"><span>${label}</span><strong>${pct}</strong></div>
+      <div class="wiki-coordinate-track"><i style="width:${pct}%"></i></div>
+    </div>`;
+  }
+
+  function wikiShowDetail(idx) {
+    if (idx < 0) {
+      detail.innerHTML = `<p class="vc-detail-hint">노드 ${nodes.length}개 · 링크 ${edges.length}개<br>
+        노드를 선택하면 frontmatter, 좌표 점수, 사실·주장·판단 callout 분포가 표시됩니다.</p>`;
+      return;
+    }
+    const n = nodes[idx];
+    const fm = n.frontmatter || {};
+    const d = n.dimensions || {};
+    const epistemic = n.epistemic || {};
+    const neighbors = [...adj[idx]].sort((a, b) => nodes[b].deg - nodes[a].deg).slice(0, 24);
+    const repoUrl = graph.repo_url || "https://github.com/lukeeee73/luke_wiki";
+    const branch = graph.branch || "main";
+    const fileUrl = `${repoUrl}/blob/${encodeURIComponent(branch)}/` +
+      n.path.split("/").map(encodeURIComponent).join("/");
+    const epistemicLabels = { fact: "사실", claim: "주장", judgment: "내 판단", principle: "원칙", opinion: "의견" };
+    const epistemicHtml = Object.keys(epistemicLabels)
+      .filter((key) => Number(epistemic[key]) > 0)
+      .map((key) => `<span class="wiki-tag">${epistemicLabels[key]} <strong>${epistemic[key]}</strong></span>`).join("");
+    const domains = asArray(fm.domain).join(" · ") || "—";
+    const sources = asArray(fm.sources);
+
+    detail.innerHTML = `
+      <h3>${escapeHtml(n.title)}</h3>
+      <p class="wiki-detail-meta">${escapeHtml(n.path)}<br>연결 ${n.deg}개${n.mtime ? ` · 수정 ${escapeHtml(n.mtime)}` : ""}</p>
+      <dl class="wiki-frontmatter">
+        <div><dt>domain</dt><dd>${escapeHtml(domains)}</dd></div>
+        <div><dt>type</dt><dd>${escapeHtml(fm.type || "—")}</dd></div>
+        <div><dt>weight</dt><dd>${escapeHtml(fm.weight || "—")}</dd></div>
+        <div><dt>confidence</dt><dd>${escapeHtml(fm.confidence || "—")}</dd></div>
+        <div><dt>sources</dt><dd>${sources.length}개</dd></div>
+        <div><dt>updated</dt><dd>${escapeHtml(fm.updated || n.mtime || "—")}</dd></div>
+      </dl>
+      <div class="wiki-coordinates">
+        ${scoreRow("x", "X · 검증 강도", d.evidence)}
+        ${scoreRow("y", "Y · 판단 비중", d.importance)}
+        ${scoreRow("z", "Z · 나의 개입도", d.agency)}
+      </div>
+      <p class="wiki-agency-note">${d.agency_inferred ? "추정값 · " : "명시값 · "}${escapeHtml(d.agency_basis || "근거 없음")}
+        ${d.agency_inferred ? "<br>정확한 구분은 frontmatter의 authorship: human | mixed | ai | routine 으로 덮어쓸 수 있습니다." : ""}</p>
+      ${epistemicHtml ? `<div class="wiki-epistemic" aria-label="문장별 인식론 표식">${epistemicHtml}</div>` : ""}
+      ${(n.tags && n.tags.length) ? `<div class="wiki-detail-tags">${n.tags.map((t) =>
+        `<span class="wiki-tag">#${escapeHtml(t)}</span>`).join("")}</div>` : ""}
+      ${neighbors.length ? `<div class="wiki-detail-links"><h4>연결된 노트</h4>${neighbors.map((j) =>
+        `<button type="button" class="wiki-link-item" data-idx="${j}">
+          <span style="color:${nodes[j].color}">●</span> ${escapeHtml(nodes[j].title)}</button>`).join("")}</div>` : ""}
+      ${graph.has_content ? `<button type="button" class="wiki-read-btn" id="wiki-read-btn">📖 이 화면에서 읽기</button>` : ""}
+      <a class="wiki-open-github" href="${fileUrl}" target="_blank" rel="noopener">GitHub 에서 노트 열기 ↗</a>`;
+
+    detail.querySelectorAll(".wiki-link-item").forEach((button) => {
+      button.addEventListener("click", () => {
+        selectedIdx = Number(button.dataset.idx);
+        wikiShowDetail(selectedIdx);
+        draw();
+      });
+    });
+    const readBtn = detail.querySelector("#wiki-read-btn");
+    if (readBtn) readBtn.addEventListener("click", () => {
+      wnOpenByIdx(idx, {
+        deg: n.deg,
+        onNavigate: (j) => { selectedIdx = j; wikiShowDetail(j); draw(); },
+      });
+    });
+  }
+
+  // 포인터 1개는 회전, 2개는 확대/축소. 이동 없이 놓으면 노드 선택이다.
+  const pointers = new Map();
+  let pointerStart = null;
+  let pinchStart = null;
+  let gestureMoved = false;
+  let suppressNextClick = false;
+  const pointInCanvas = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  };
+  canvas.addEventListener("pointerdown", (e) => {
+    canvas.setPointerCapture(e.pointerId);
+    const p = pointInCanvas(e);
+    pointers.set(e.pointerId, p);
+    if (pointers.size === 1) {
+      pointerStart = { ...p, yaw: camera.yaw, pitch: camera.pitch, hit: pick(p.x, p.y) };
+      gestureMoved = false;
+    } else if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinchStart = { distance: Math.hypot(a.x - b.x, a.y - b.y), zoom: camera.zoom };
+      gestureMoved = true;
+    }
+    canvas.classList.add("dragging");
+  }, { signal: sig });
+  canvas.addEventListener("pointermove", (e) => {
+    const p = pointInCanvas(e);
+    if (pointers.has(e.pointerId)) pointers.set(e.pointerId, p);
+    if (pointers.size >= 2 && pinchStart) {
+      const [a, b] = [...pointers.values()];
+      const distance = Math.hypot(a.x - b.x, a.y - b.y);
+      camera.zoom = clamp(pinchStart.zoom * distance / Math.max(1, pinchStart.distance), 0.55, 3.2);
+      draw();
+      return;
+    }
+    if (pointers.size === 1 && pointerStart && pointers.has(e.pointerId)) {
+      const dx = p.x - pointerStart.x, dy = p.y - pointerStart.y;
+      if (Math.hypot(dx, dy) > 3) gestureMoved = true;
+      if (gestureMoved) {
+        camera.yaw = pointerStart.yaw + dx * 0.008;
+        camera.pitch = clamp(pointerStart.pitch + dy * 0.008, -1.15, 1.15);
+        draw();
+      }
+      return;
+    }
+    const hit = pick(p.x, p.y);
+    if (hit !== hoverIdx) {
+      hoverIdx = hit;
+      canvas.style.cursor = hit >= 0 ? "pointer" : "grab";
+      draw();
+    }
+  }, { signal: sig });
+  function endPointer(e) {
+    pointers.delete(e.pointerId);
+    if (pointers.size === 0) {
+      suppressNextClick = gestureMoved;
+      pointerStart = null; pinchStart = null; gestureMoved = false;
+      canvas.classList.remove("dragging");
+    }
+  }
+  canvas.addEventListener("pointerup", endPointer, { signal: sig });
+  canvas.addEventListener("pointercancel", endPointer, { signal: sig });
+  canvas.addEventListener("click", (e) => {
+    if (suppressNextClick) { suppressNextClick = false; return; }
+    const p = pointInCanvas(e);
+    selectedIdx = pick(p.x, p.y);
+    wikiShowDetail(selectedIdx);
+    draw();
+  }, { signal: sig });
+  canvas.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    camera.zoom = clamp(camera.zoom * (e.deltaY < 0 ? 1.1 : 1 / 1.1), 0.55, 3.2);
+    draw();
+  }, { passive: false, signal: sig });
+  canvas.addEventListener("dblclick", resetCamera, { signal: sig });
+  resetBtn.addEventListener("click", resetCamera, { signal: sig });
+
+  search.addEventListener("input", () => {
+    query = search.value.trim().toLowerCase();
+    draw();
+  }, { signal: sig });
+  presetButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activePreset = button.dataset.preset || "all";
+      presetButtons.forEach((candidate) => {
+        const active = candidate === button;
+        candidate.classList.toggle("active", active);
+        candidate.setAttribute("aria-pressed", String(active));
+      });
+      if (selectedIdx >= 0 && !isActive(nodes[selectedIdx])) {
+        selectedIdx = -1;
+        wikiShowDetail(-1);
+      }
+      draw();
+    }, { signal: sig });
+  });
+
+  const ro = new ResizeObserver(resize);
+  ro.observe(wrap);
+  resize();
+  wikiShowDetail(-1);
+  canvas._wiki = {
+    graph,
+    nodes,
+    camera,
+    refresh() { resize(); },
+    destroy() {
+      listeners.abort();
+      ro.disconnect();
       canvas._wiki = null;
     },
   };

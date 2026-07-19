@@ -424,23 +424,39 @@
     ══════════════════════════════════════════════════════ -->
     <div class="tab-panel" id="panel-WIKI">
       <section class="category">
-        <h2>루크 위키 — 지식 그래프</h2>
+        <h2>루크 위키 — 지식 좌표계</h2>
         <p class="category-desc">
-          Obsidian vault(<code>luke_wiki</code>)의 노트와 <code>[[링크]]</code> 구조를
-          그래프로 시각화한다. <strong>노드 크기 = 연결 수, 색 = 폴더</strong>.
-          노드를 클릭하면 오른쪽 패널에 노트 정보가 뜨고, GitHub에서 원문을 열 수 있다.
-          마우스 휠로 확대/축소, 빈 곳을 끌면 이동, 노드를 끌면 위치를 옮길 수 있다.
+          링크가 많은 노트만 커지는 평면 그래프 대신, frontmatter와 문장별 인식론 표식을
+          세 축에 배치한다. <strong>앞으로 나올수록 내 판단에 가깝고, 위로 갈수록 판단의
+          핵심이며, 오른쪽일수록 근거가 강하다.</strong> 좌표는 진실 판정이 아니라
+          <code>confidence</code>·<code>weight</code>·<code>type</code>·출처·callout을 조합한 지도다.
         </p>
+
+        <div class="wiki-axis-guide" aria-label="지식 좌표축 설명">
+          <div class="wiki-axis-item wiki-axis-x"><span>X</span><strong>검증 강도</strong><small>주장·미검증 → 사실·검증</small></div>
+          <div class="wiki-axis-item wiki-axis-y"><span>Y</span><strong>판단 비중</strong><small>참고 → 핵심 원칙</small></div>
+          <div class="wiki-axis-item wiki-axis-z"><span>Z</span><strong>나의 개입도</strong><small>AI·루틴 → 내 판단·원칙</small></div>
+        </div>
 
         <div class="wiki-toolbar" id="wiki-toolbar" hidden>
           <input type="search" id="wiki-search" placeholder="노트 검색…" aria-label="노트 검색">
-          <div class="wiki-legend" id="wiki-legend" aria-label="폴더 범례"></div>
+          <div class="wiki-presets" id="wiki-presets" aria-label="지식 레이어">
+            <button type="button" class="wiki-preset active" data-preset="all" aria-pressed="true">전체</button>
+            <button type="button" class="wiki-preset" data-preset="mine" aria-pressed="false">내 판단</button>
+            <button type="button" class="wiki-preset" data-preset="core" aria-pressed="false">핵심 원칙</button>
+            <button type="button" class="wiki-preset" data-preset="evidence" aria-pressed="false">검증된 지식</button>
+          </div>
+          <button type="button" class="wiki-reset" id="wiki-reset">시점 초기화</button>
+          <div class="wiki-legend" id="wiki-legend" aria-label="도메인 범례"></div>
         </div>
 
         <div class="wiki-layout" id="wiki-layout" hidden>
-          <div class="wiki-graph-wrap"><canvas id="wiki-canvas"></canvas></div>
+          <div class="wiki-graph-wrap">
+            <canvas id="wiki-canvas" role="img" aria-label="검증 강도, 판단 비중, 나의 개입도로 배치한 3차원 위키 그래프"></canvas>
+            <p class="wiki-canvas-help">드래그 회전 · 휠 확대 · 노드 선택 · 더블클릭 초기화</p>
+          </div>
           <aside class="wiki-detail" id="wiki-detail">
-            <p class="vc-detail-hint">노드를 클릭하면 노트 정보가 표시됩니다.</p>
+            <p class="vc-detail-hint">노드를 클릭하면 frontmatter와 좌표 근거가 표시됩니다.</p>
           </aside>
         </div>
 

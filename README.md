@@ -256,8 +256,18 @@ python scripts/build_principles.py   # data/principles/timeline.json 재생성
 ## 위키 탭 — luke_wiki 지식 그래프
 
 대시보드 왼쪽 사이드바의 **위키** 탭은 Obsidian vault(`lukeeee73/luke_wiki`)의
-노트와 `[[위키링크]]` 구조를 force-directed 그래프로 시각화한다
-(노드 크기 = 연결 수, 색 = 폴더). 노드를 클릭하면 상세 패널이 뜨고,
+노트와 `[[위키링크]]` 구조를 frontmatter 기반 **3D 지식 좌표계**로 시각화한다.
+
+- **X — 검증 강도**: `confidence` + `type` + `sources` + fact/claim callout
+- **Y — 판단 비중**: `weight` + `type` (reference → foundational)
+- **Z — 나의 개입도**: `authorship`/`origin` 명시값을 우선하고, 없으면 폴더·`type`·
+  `[!judgment]` callout으로 추정 (AI·루틴 → 내 판단·원칙)
+- **색** = domain, **크기** = 연결 수, **선** = 위키링크
+
+`나의 개입도`는 저자를 단정하는 값이 아니다. 현재 노트 대부분에는 작성 주체 필드가
+없어 휴리스틱으로 추정하며, 정확히 고정하려면 노트 frontmatter에
+`authorship: human | mixed | ai | routine`을 추가한다. 노드를 클릭하면 상세 패널에
+원본 frontmatter, 세 축 점수, fact/claim/judgment callout 수가 뜨고,
 **📖 이 화면에서 읽기** 로 노트 본문을 대시보드 안에서 마크다운으로 읽을 수 있다
 (본문 속 `[[위키링크]]` 를 클릭하면 그 노트로 바로 이동).
 
@@ -279,7 +289,7 @@ python scripts/build_principles.py   # data/principles/timeline.json 재생성
 
 `scripts/build_wiki_graph.py` 가 vault 를 파싱해 두 가지를 만든다:
 
-- `data/wiki/graph.json` — 노드/엣지 구조 (그래프 뷰)
+- `data/wiki/graph.json` — 노드/엣지 + frontmatter + 인식론 callout + 3D 좌표 점수
 - `data/wiki/notes/{i}.json` — 노트 본문 (노트 뷰어; `--no-content` 로 끌 수 있음)
 
 > ⚠️ 본문을 내보내면 대시보드 배포본에 노트 내용이 포함된다.
