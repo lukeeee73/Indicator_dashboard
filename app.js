@@ -5612,6 +5612,80 @@ const WIKI_DOMAIN_COLORS = {
   other: "#8a8a8a",
 };
 
+// ── 주제 필터 정의 ──────────────────────────────────────────────
+// 노트를 주제별로 묶는 기준 3가지 (하나라도 맞으면 소속, 복수 소속 가능):
+//  1) keywords — 태그·제목·경로·도메인을 합친 문자열과 대조.
+//     영문 단일 단어(gpu, design …)는 단어 단위 일치 — codesign 같은 오탐 방지.
+//     한글·복합어("data center", "multi-agent")는 부분 문자열 일치.
+//  2) domains  — frontmatter domain 이 여기 속하면 소속 (ai, design 처럼 도메인=주제인 경우)
+//  3) map      — 시장 지도 id. 그 지도 폴더(wiki/news/markets/{map}/)의 종합 노트와,
+//     지도 플레이어 티커의 뉴스 로그(wiki/news/tickers/)를 자동 포함한다.
+const WIKI_TOPICS = [
+  {
+    id: "semi", label: "반도체·AI칩", map: "ai-semiconductor",
+    keywords: ["반도체", "semiconductor", "hbm", "gpu", "cuda", "tsmc", "asml", "euv",
+      "웨이퍼", "wafer", "파운드리", "foundry", "엔비디아", "nvidia", "브로드컴", "broadcom",
+      "마벨", "marvell", "asic", "serdes", "cowos", "칩렛", "chiplet", "패키징",
+      "메모리", "dram", "낸드", "nand", "micron", "하이닉스", "hynix", "삼성전자", "ai칩",
+      "리소그래피", "lithography"],
+  },
+  {
+    id: "power", label: "전력·에너지", map: "power-ai",
+    keywords: ["전력", "에너지", "energy", "가스터빈", "터빈", "turbine", "원전", "원자력",
+      "nuclear", "smr", "연료전지", "fuel cell", "수소", "grid", "송전", "변전", "변압기",
+      "btm", "데이터센터", "datacenter", "data center", "유틸리티", "utility"],
+  },
+  {
+    id: "pharma", label: "제약·바이오", map: "pharma-bio",
+    keywords: ["제약", "바이오", "pharma", "biotech", "신약", "임상", "fda", "비만",
+      "obesity", "glp", "항암", "oncology", "헬스케어", "healthcare", "의약"],
+  },
+  {
+    id: "ai", label: "AI·LLM", domains: ["ai"],
+    keywords: ["llm", "에이전트", "agent", "anthropic", "claude", "openai", "gpt",
+      "딥시크", "deepseek", "프롬프트", "prompt", "인공지능", "머신러닝", "scaling",
+      "슈퍼인텔리전스", "superintelligence", "eval", "benchmark", "harness", "mcp",
+      "multi-agent", "sycophancy"],
+  },
+  {
+    id: "macro", label: "투자·매크로",
+    keywords: ["투자", "매크로", "macro", "포트폴리오", "portfolio", "자산배분", "금리",
+      "환율", "인플레", "달리오", "dalio", "all weather", "올웨더", "risk", "리스크",
+      "채권", "bond", "지정학", "geopolitics", "연준", "fed", "fomc"],
+  },
+  {
+    id: "design", label: "디자인", domains: ["design"],
+    keywords: ["디자인", "design", "ui-ux", "ux", "ui", "피그마", "figma"],
+  },
+];
+
+// 시장 지도별 플레이어 티커 집합 로드 (1회 캐시).
+// wiki-sync 와 같은 정적 파일 우선, 없으면 Supabase 폴백, 그마저 없으면 빈 집합 —
+// 티커 매칭만 빠질 뿐 키워드·폴더 기반 주제 필터는 그대로 동작한다.
+const WIKI_TOPIC_TICKERS = { promise: null };
+function wikiLoadTopicTickers() {
+  if (!WIKI_TOPIC_TICKERS.promise) {
+    WIKI_TOPIC_TICKERS.promise = Promise.all(
+      WIKI_TOPICS.filter((t) => t.map).map(async (t) => {
+        let map = null;
+        try {
+          const res = await fetch(`data/markets/${t.map}.json`, { cache: "no-store" });
+          if (res.ok) map = await res.json();
+        } catch (_) { /* 정적 파일 없음 — 폴백으로 */ }
+        if (!map) {
+          try { map = await sbDoc("market", t.map); } catch (_) { /* 폴백도 없음 */ }
+        }
+        const tickers = new Set();
+        ((map && map.markets) || []).forEach((m) => (m.players || []).forEach((p) => {
+          if (p.ticker) tickers.add(String(p.ticker).toUpperCase());
+        }));
+        return [t.id, tickers];
+      }),
+    ).then((entries) => new Map(entries));
+  }
+  return WIKI_TOPIC_TICKERS.promise;
+}
+
 // ── 공유 노트 뷰어 ──────────────────────────────────────────────
 // graph.json 로드·색인과 노트 본문 모달은 위키 탭 전용이 아니라 전역이다:
 // 시장 지도의 '위키 노트' 버튼도 같은 뷰어로 노트를 연다.
@@ -6578,13 +6652,85 @@ function wikiInitGraph(graph) {
   let hoverIdx = -1;
   let query = "";
   let activePreset = "all";
+  let activeTopic = "all";
   let cssW = 0, cssH = 0;
+
+  // ── 주제 소속 계산 ──
+  // keywords·domains 는 즉시, 시장 지도 티커는 지도 JSON 로드 후 비동기로 더해진다.
+  const topicsEl = document.getElementById("wiki-topics");
+  nodes.forEach((n) => {
+    const hay = [n.title, n.path, ...asArray(n.frontmatter.domain), ...(n.tags || [])]
+      .filter(Boolean).join(" ").toLowerCase();
+    // 짧은 영문 약어(fed, ui …)가 다른 단어 속에서 오탐하지 않도록 단어 토큰도 만든다
+    const tokens = new Set(hay.split(/[^a-z0-9가-힣]+/).filter(Boolean));
+    const nodeDomains = asArray(n.frontmatter.domain).map((d) => d.toLowerCase());
+    const tickerMatch = /^wiki\/news\/tickers\/(\S+) - /.exec(n.path || "");
+    n.ticker = tickerMatch ? tickerMatch[1].toUpperCase() : null;
+    n.topics = new Set();
+    WIKI_TOPICS.forEach((t) => {
+      const inMapFolder = t.map && String(n.path || "").startsWith(`wiki/news/markets/${t.map}/`);
+      const inDomain = (t.domains || []).some((d) => nodeDomains.includes(d));
+      const hasKeyword = t.keywords.some((kw) =>
+        /^[a-z0-9]+$/.test(kw) ? tokens.has(kw) : hay.includes(kw));
+      if (inMapFolder || inDomain || hasKeyword) n.topics.add(t.id);
+    });
+  });
+
+  function renderTopicChips() {
+    if (!topicsEl) return;
+    const counts = {};
+    WIKI_TOPICS.forEach((t) => {
+      counts[t.id] = nodes.filter((n) => n.topics.has(t.id)).length;
+    });
+    topicsEl.innerHTML = `<span class="wiki-topics-label">주제</span>` +
+      [{ id: "all", label: "전체" }, ...WIKI_TOPICS].map((t) => {
+        const active = t.id === activeTopic;
+        const count = t.id === "all" ? "" : ` ${counts[t.id]}`;
+        return `<button type="button" class="wiki-topic${active ? " active" : ""}"
+          data-topic="${t.id}" aria-pressed="${active}">${t.label}${count}</button>`;
+      }).join("");
+    topicsEl.querySelectorAll(".wiki-topic").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeTopic = button.dataset.topic || "all";
+        topicsEl.querySelectorAll(".wiki-topic").forEach((candidate) => {
+          const on = candidate === button;
+          candidate.classList.toggle("active", on);
+          candidate.setAttribute("aria-pressed", String(on));
+        });
+        if (selectedIdx >= 0 && !isActive(nodes[selectedIdx])) {
+          selectedIdx = -1;
+          wikiShowDetail(-1);
+        }
+        draw();
+      }, { signal: sig });
+    });
+  }
+  renderTopicChips();
+  // 시장 지도 플레이어 티커 → 그 지도 주제로 뉴스 로그 노트를 편입 (예: NVDA → 반도체·AI칩)
+  wikiLoadTopicTickers().then((tickerSets) => {
+    if (sig.aborted || !tickerSets) return;
+    let changed = false;
+    nodes.forEach((n) => {
+      if (!n.ticker) return;
+      WIKI_TOPICS.forEach((t) => {
+        const set = t.map && tickerSets.get(t.id);
+        if (set && set.has(n.ticker) && !n.topics.has(t.id)) {
+          n.topics.add(t.id);
+          changed = true;
+        }
+      });
+    });
+    if (changed) { renderTopicChips(); draw(); }
+  });
 
   function matchesPreset(n) {
     if (activePreset === "mine") return n.dimensions.agency >= 0.6;
     if (activePreset === "core") return n.dimensions.importance >= 0.8;
     if (activePreset === "evidence") return n.dimensions.evidence >= 0.72;
     return true;
+  }
+  function matchesTopic(n) {
+    return activeTopic === "all" || n.topics.has(activeTopic);
   }
   function matchesQuery(n) {
     if (!query) return true;
@@ -6593,7 +6739,7 @@ function wikiInitGraph(graph) {
       .filter(Boolean).join(" ").toLowerCase();
     return haystack.includes(query);
   }
-  function isActive(n) { return matchesPreset(n) && matchesQuery(n); }
+  function isActive(n) { return matchesPreset(n) && matchesTopic(n) && matchesQuery(n); }
 
   function projectPoint(x, y, z) {
     const cy = Math.cos(camera.yaw), sy = Math.sin(camera.yaw);

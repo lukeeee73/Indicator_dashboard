@@ -2595,6 +2595,39 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .wiki-preset[aria-pressed="true"] { color: var(--text); border-color: var(--red); background: var(--red-dim); }
 .wiki-reset { margin-left: auto; }
 
+/* 주제 필터 — 지식 레이어(빨강)와 구분되는 골드 액센트. 활성은 색+배경 이중 표시 */
+.wiki-topics {
+  display: inline-flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1 0 100%;
+}
+.wiki-topics:empty { display: none; }
+.wiki-topics-label {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-right: 0.2rem;
+  letter-spacing: 0.04em;
+}
+.wiki-topic {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.74rem;
+  padding: 0.42rem 0.62rem;
+}
+.wiki-topic:hover { color: var(--text); border-color: var(--border-mid); }
+.wiki-topic.active,
+.wiki-topic[aria-pressed="true"] {
+  color: var(--text);
+  border-color: #d6a14b;
+  background: rgba(214, 161, 75, 0.13);
+}
+
 .wiki-legend {
   display: flex;
   gap: 0.8rem;
@@ -2748,6 +2781,7 @@ a.mc-feed-title:hover { text-decoration: underline; }
   #wiki-search { width: 100%; }
   .wiki-presets { width: 100%; }
   .wiki-preset { flex: 1 1 45%; }
+  .wiki-topic { flex: 1 1 30%; }
   .wiki-graph-wrap { height: 430px; }
 }
 
