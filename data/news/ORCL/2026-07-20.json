@@ -1,0 +1,65 @@
+{
+  "ticker": "ORCL",
+  "date": "2026-07-20",
+  "as_of_utc": "2026-07-20T12:00:00Z",
+  "news": [
+    {
+      "title": "S&P, 오라클 신용등급 BBB-로 강등 (정크 한 단계 위)",
+      "source": "S&P Global Ratings",
+      "url": "https://www.spglobal.com/ratings/en/regulatory/article/-/view/sourceId/101695609",
+      "published": "2026-07-09T00:00:00Z",
+      "summary": "S&P가 AI 설비투자 부담·OpenAI 의존을 이유로 신용등급 강등",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "뉴멕시코주, 오라클 Project Jupiter 가스관 허가 재차 거부",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-16/new-mexico-denies-gas-pipeline-permit-for-oracle-data-center",
+      "published": "2026-07-16T00:00:00Z",
+      "summary": "주 토지위원, AI 데이터센터용 가스관을 온실가스·수자원 우려로 두 번째 거부",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "신용등급 강등·금리 우려 속 오라클 등 기술주 동반 약세",
+      "source": "Timothy Sykes",
+      "url": "https://www.timothysykes.com/news/oracle-corporation-orcl-news-2026_07_17/",
+      "published": "2026-07-17T00:00:00Z",
+      "summary": "인력감축 재확인·연준 금리 경계감 겹치며 오라클 등 테크주 동반 하락",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "IBM",
+      "headline": "IBM 2분기 실적 경고로 주가 25% 폭락, 소프트웨어 업종 전반 동반 매도 (2026-07-14)",
+      "implication_for_target": "오라클 고유 이슈는 아니지만 'AI 하드웨어 투자가 소프트웨어 지출을 잠식한다'는 우려가 업종 전반에 번지면 오라클 클라우드 애플리케이션(SaaS) 사업 심리에도 부담"
+    },
+    {
+      "ticker": "SAP",
+      "headline": "EU 집행위, SAP ERP 유지보수 반독점 조사를 10년 구속력 시정조치로 종결 (2026-07-09)",
+      "implication_for_target": "SAP는 EU 규제 불확실성을 해소한 반면, 오라클 Fusion/NetSuite는 아직 이런 명시적 정리가 없어 ERP 경쟁에서 상대적으로 규제 리스크가 남아있음"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.10,
+    "competitive_position": -0.05,
+    "regulatory_risk": -0.30,
+    "macro_sensitivity": -0.35
+  },
+  "narrative_score": -0.17,
+  "summary_kr": "새 실적 발표는 없었지만 신용등급 강등과 데이터센터 인허가 차질, 금리 경계감이 겹치며 오라클 주가에 계속 역풍이 부는 하루였다.",
+  "key_events": [
+    "S&P 신용등급 BBB-로 강등 (정크 한 단계 위)",
+    "Project Jupiter 데이터센터 가스관 허가 두 번째 거부",
+    "신용등급·금리 우려로 기술주 동반 약세"
+  ],
+  "risks": [
+    "신용등급 추가 강등 시 조달금리 상승으로 레버리지 부담 가중",
+    "Project Jupiter 등 대형 데이터센터 인허가 지연이 AI 인프라 확장 일정에 차질",
+    "업종 전반 'AI 투자 대비 매출 회수' 의심이 지속되며 밸류에이션 압박"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ORCL%20-%20Oracle%20Corporation.md"
+}

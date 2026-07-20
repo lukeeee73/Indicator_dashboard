@@ -1,0 +1,80 @@
+{
+  "ticker": "IBM",
+  "date": "2026-07-20",
+  "as_of_utc": "2026-07-20T12:00:00Z",
+  "news": [
+    {
+      "title": "IBM stock craters 25%, the worst day on record, after company issues second-quarter earnings warning",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/14/ibm-warns-second-quarter-earnings-fell-short-of-expectations.html",
+      "published": "2026-07-14T14:00:00Z",
+      "summary": "IBM 2분기 실적 경고에 주가 25% 폭락, 115년 사상 최악의 하루",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "IBM's Warning Is a 'Hammer' Slamming Down on Tech's AI Outsiders",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-17/ibm-s-warning-is-a-hammer-slamming-down-on-tech-s-ai-outsiders",
+      "published": "2026-07-17T10:00:00Z",
+      "summary": "IBM 경고로 AI 소외 전통 IT기업 전반에 경계감 확산",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "IBM Faces Analyst Split After Historic Share Drop",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/8966010/ibm-faces-analyst-split-after-historic-share-drop",
+      "published": "2026-07-18T12:00:00Z",
+      "summary": "HSBC 매도의견, Citi 목표가 32% 하향 등 애널리스트 반응 엇갈려",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "IBM Form 8-K — Preliminary Second-Quarter 2026 Results",
+      "source": "SEC EDGAR (IBM 공시)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000051143/000005114326000070/ibm-20260714xex991.htm",
+      "published": "2026-07-14T11:00:00Z",
+      "summary": "IBM, 매출 172억달러로 예상치 하회했다고 공식 공시",
+      "impact": "-",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "마이크로소프트, 25억달러·6000명 규모 자체 AI 도입 전담 조직 신설",
+      "implication_for_target": "MS가 기업 AI 도입 컨설팅을 직접 내재화하면 IBM 컨설팅 사업의 잠재 고객군을 잠식할 위험이 커진다"
+    },
+    {
+      "ticker": "ORCL",
+      "headline": "오라클, FY2027 AI·클라우드 설비투자 최대 950억달러로 확대(부채+지분 약 400억달러 조달 계획)",
+      "implication_for_target": "오라클의 공격적 AI 인프라 베팅은 IBM 하이브리드 클라우드·인프라 매출과의 규모 격차를 더 벌리는 방향"
+    },
+    {
+      "ticker": "ACN",
+      "headline": "액센츄어, NATO와 약 2억유로·7년 클라우드 현대화 계약 체결 및 Google Cloud와 중견기업용 에이전틱 AI 서비스 'Accenture Edge' 출시",
+      "implication_for_target": "IBM이 실적 경고로 컨설팅·소프트웨어 성장 둔화를 인정한 시점에 액센츄어는 대형 정부 계약과 신규 AI 서비스로 매출원을 넓히고 있어 컨설팅 시장 점유율 격차 우려"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.7,
+    "competitive_position": -0.5,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.3
+  },
+  "narrative_score": -0.45,
+  "summary_kr": "IBM이 7/14 2분기 실적 경고를 내며 주가가 하루 만에 25% 폭락(115년 사상 최악)했고, 고객들이 AI 하드웨어 구매로 지출을 돌리면서 소프트웨어·인프라 매출이 예상보다 크게 둔화됐다는 점이 확인됐다. Citi·JPMorgan·HSBC 등 다수 애널리스트가 목표주가를 큰 폭으로 낮췄으며, 7/22 정식 실적발표에서 회복 신호가 나올지가 최대 관심사다.",
+  "key_events": [
+    "7/14 2분기 예비실적 발표(매출 172억달러, 컨센서스 178~186억달러 하회) 직후 주가 -25%, 시가총액 약 670억달러 증발",
+    "CEO 크리슈나, 고객들이 6월 말 AI 서버·스토리지·메모리 확보를 위해 지출을 재분배했다고 설명(소프트웨어·인프라 부문 직격)",
+    "Citi(-32%), JPMorgan, HSBC(매도의견) 등 다수 IB가 목표주가 하향, Oppenheimer는 등급 하향",
+    "7/22 정식 2분기 실적발표 예정 — 컨센서스 EPS 약 3.02달러, 매출 약 177억달러"
+  ],
+  "risks": [
+    "AI 인프라 붐이 IBM 소프트웨어·컨설팅 수요를 잠식하는 구조적 전환일 가능성",
+    "7/22 실적발표에서 가이던스 추가 하향 시 2차 조정 위험",
+    "경쟁사(오라클 대규모 AI 인프라 투자, 마이크로소프트 자체 AI 도입 조직) 대비 IBM의 AI 수혜 포지셔닝이 뒤처졌다는 시장 인식 확산"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/IBM%20-%20International%20Business%20Machines.md"
+}

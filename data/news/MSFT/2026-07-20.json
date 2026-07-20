@@ -1,0 +1,76 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-07-20",
+  "as_of_utc": "2026-07-20T12:00:00Z",
+  "news": [
+    {
+      "title": "마이크로소프트, 엑셀·아웃룩서 오픈AI·앤트로픽 대신 자체 AI(MAI)로 교체 시작",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-07/microsoft-replaces-openai-anthropic-with-own-ai-in-some-apps",
+      "published": "2026-07-07T00:00:00Z",
+      "summary": "AI 비용 절감 위해 일부 앱에 자체 MAI 모델 투입 시작",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "마이크로소프트, Xbox·영업·컨설팅 부문서 약 5,000명 감원",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/07/06/microsoft-lays-off-nearly-5000-employees-across-xbox-commercial-sales/",
+      "published": "2026-07-06T00:00:00Z",
+      "summary": "AI 투자 확대 속 Xbox·영업 인력 감축, 연중 최대 5,700명 전망",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "오픈AI, GPT-5.6을 MS 365 코파일럿 '기본 모델'로 유지—결별설 속 협업 지속",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/07/09/openai-says-gpt-5-6-is-the-preferred-model-for-microsoft-copilot-amid-breakup-chatter/",
+      "published": "2026-07-09T00:00:00Z",
+      "summary": "결별 소문에도 오픈AI 최신모델이 코파일럿 핵심 모델로 남음",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "마이크로소프트, 역대 최대 규모 보안패치 배포—SharePoint 제로데이 포함",
+      "source": "SecurityWeek",
+      "url": "https://www.securityweek.com/microsoft-patches-record-622-vulnerabilities-including-two-exploited-zero-days/",
+      "published": "2026-07-14T00:00:00Z",
+      "summary": "역대 최다 622건 패치, 실공격 중인 SharePoint 취약점 포함",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMZN",
+      "headline": "AWS, AI 컴퓨팅(P6 액셀러레이터) 가격 약 20% 인상 (7/1 발효)",
+      "implication_for_target": "클라우드 업계 전반 AI 인프라 원가 상승 신호 — Azure도 유사한 capex·마진 압박에 노출될 수 있으나, 경쟁사도 동일 부담이라 상대적 경쟁 지위엔 중립적"
+    },
+    {
+      "ticker": "GOOGL",
+      "headline": "구글클라우드 Next 2026서 'Gemini Enterprise 에이전트 플랫폼' 대규모 발표, Gemini 3.1 Pro 출시",
+      "implication_for_target": "구글이 기업용 AI 에이전트 시장에서 코파일럿·애저 AI 파운드리와 정면 경쟁하는 플랫폼을 공격적으로 확장 — MS의 엔터프라이즈 AI 고객 유치 경쟁 심화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.10,
+    "competitive_position": 0.10,
+    "regulatory_risk": 0.00,
+    "macro_sensitivity": -0.05
+  },
+  "narrative_score": 0.06,
+  "summary_kr": "마이크로소프트는 자체 AI(MAI) 전환과 감원을 통한 비용 절감으로 수익성 방어에 나섰지만 오픈AI 의존은 당분간 지속되며, 역대 최대 보안패치와 업계 전반의 AI 인프라 원가 상승이 부담 요인으로 남았다.",
+  "key_events": [
+    "엑셀·아웃룩 일부 기능에서 오픈AI·앤트로픽 대신 자체 개발 AI(MAI)로 교체 시작 (7/7)",
+    "Xbox·영업·컨설팅 부문에서 약 5,000명 감원, AI 투자 확대와 병행 (7/6)",
+    "오픈AI 최신 모델 GPT-5.6이 결별설 속에서도 MS 365 코파일럿 기본 모델로 유지 (7/9)",
+    "역대 최다 규모(622건) 보안패치 배포, 실공격 중인 SharePoint 제로데이 포함 (7/14)"
+  ],
+  "risks": [
+    "실공격 중인 SharePoint 제로데이(CVE-2026-56164)로 인한 기업 고객 보안 노출 및 연방기관 긴급 대응 요구",
+    "자체 AI(MAI) 전환 과정에서 품질 저하나 고객 이탈 우려, 오픈AI 의존 완전 탈피는 아직 요원",
+    "AWS 등 업계 전반 AI 컴퓨팅 원가 상승이 대규모 capex 회수 압박을 키울 가능성",
+    "반복되는 감원으로 조직 사기·실행력 저하 우려, Xbox 게임 경쟁력 약화 신호 지속"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MSFT%20-%20Microsoft%20Corporation.md"
+}
