@@ -1,0 +1,66 @@
+{
+  "ticker": "GOOGL",
+  "date": "2026-07-20",
+  "as_of_utc": "2026-07-20T12:00:00Z",
+  "news": [
+    {
+      "title": "Gemini 3.5 Pro 출시 지연 보도로 주가 -4.4%, 시가총액 약 2000억달러 증발",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-16/google-gemini-launch-delayed-as-tech-falls-short-of-internal-goals",
+      "published": "2026-07-16T00:00:00Z",
+      "summary": "차세대 AI모델 코딩 성능 미달로 출시 몇 달 지연, 주가 급락",
+      "impact": "-",
+      "category": "product"
+    },
+    {
+      "title": "구글, 클라라나(Klarna) 상대 비교쇼핑 반독점 소송서 약 20억달러 배상 판결",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-01/google-ordered-to-pay-klarna-nearly-2-billion-in-antitrust-suit",
+      "published": "2026-07-01T00:00:00Z",
+      "summary": "비교쇼핑 시장 지배력 남용으로 클라라나에 약 20억달러 배상",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "英 금융당국, 구글클라우드를 'Critical Third Party'로 신규 지정·직접 감독",
+      "source": "Bank of England / GOV.UK",
+      "url": "https://www.bankofengland.co.uk/news/2026/july/uk-financial-regulators-to-begin-overseeing-critical-third-parties-announced-by-hmt",
+      "published": "2026-07-13T00:00:00Z",
+      "summary": "MS·AWS·오라클과 함께 英 금융 인프라 핵심 공급자로 지정, 직접 감독 시작",
+      "impact": "neutral",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "META",
+      "headline": "Meta, 자체 AI 클라우드 서비스 'Meta Compute' 7월 출시 — GPU 대여 가격을 기존 대비 20~30% 낮게 책정 (Bloomberg, 2026-07-01)",
+      "implication_for_target": "구글클라우드가 속한 하이퍼스케일러 GPU 대여 가격 경쟁이 한층 심화됨. 3위 사업자인 GCP에 가격 하방 압력으로 작용할 가능성"
+    },
+    {
+      "ticker": "MSFT",
+      "headline": "Azure 점유율 약 28%로 AWS(31%)와 격차 축소, 구글클라우드는 14%로 3위 고착 (Synergy Research, 2026 Q1 기준)",
+      "implication_for_target": "구글클라우드는 매출 성장에도 불구하고 하이퍼스케일러 3강 중 여전히 3위 — 점유율 확대가 여전히 핵심 과제"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.00,
+    "competitive_position": -0.35,
+    "regulatory_risk": -0.30,
+    "macro_sensitivity": 0.00
+  },
+  "narrative_score": -0.15,
+  "summary_kr": "차세대 AI모델 Gemini 3.5 Pro 출시 지연으로 주가가 급락했고, 클라라나 반독점 배상 판결과 英 금융당국의 구글클라우드 직접 감독 지정까지 겹치며 규제 리스크도 재차 부각됐다. 7/22 Q2 실적 발표를 앞두고 시장은 AI 투자 집행력과 클라우드 성장의 실질 증거를 기다리는 국면이다.",
+  "key_events": [
+    "Gemini 3.5 Pro 출시 지연 보도(Bloomberg, 7/16) — 주가 -4.4%, 시총 약 2000억달러 증발",
+    "클라라나 비교쇼핑 반독점 소송 약 20억달러 배상 판결(7/1)",
+    "英 금융당국, 구글클라우드를 Critical Third Party로 지정해 직접 감독 개시(7/13)",
+    "7/22 Q2 실적 발표 예정 — 컨센서스 EPS $2.86, 매출 $116.5B"
+  ],
+  "risks": [
+    "AI 모델 출시 지연이 오픈AI·앤트로픽 대비 경쟁력 약화로 이어질 가능성",
+    "EU·美 DOJ에 이어 클라라나·英 금융당국까지 규제·소송 리스크가 다면화",
+    "실적 발표 전 대규모 capex($175~190B) 대비 FCF 마진 우려 지속"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GOOGL%20-%20Alphabet%20Inc.md"
+}
