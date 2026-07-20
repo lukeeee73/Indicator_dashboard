@@ -953,7 +953,7 @@
     },
     {
       "date": "2017-06-26",
-      "value": 124.57
+      "value": 124.56
     },
     {
       "date": "2017-06-27",
@@ -1013,7 +1013,7 @@
     },
     {
       "date": "2017-07-18",
-      "value": 124.57
+      "value": 124.56
     },
     {
       "date": "2017-07-19",
@@ -4673,7 +4673,7 @@
     },
     {
       "date": "2021-03-08",
-      "value": 185.39
+      "value": 185.4
     },
     {
       "date": "2021-03-09",
@@ -7149,7 +7149,7 @@
     },
     {
       "date": "2023-08-22",
-      "value": 261.18
+      "value": 261.19
     },
     {
       "date": "2023-08-23",
@@ -10054,18 +10054,22 @@
     {
       "date": "2026-07-16",
       "value": 273.46
+    },
+    {
+      "date": "2026-07-17",
+      "value": 267.71
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 194294923264.0,
-      "pe_ratio": 21.841852,
-      "forward_pe": 19.302507,
-      "eps_ttm": 12.52,
-      "dividend_yield": 2.81,
+      "market_cap": 190209523712.0,
+      "pe_ratio": 22.070074,
+      "forward_pe": 18.91728,
+      "eps_ttm": 12.13,
+      "dividend_yield": 2.78,
       "profit_margin": 0.31618,
       "operating_margin": 0.44252998,
-      "price_to_book": -151.08287,
+      "price_to_book": -147.90608,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10107,23 +10111,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 273.46,
+    "as_of": "2026-07-17",
+    "current_price": 267.71,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 313.0,
+        "fair_value": 303.25,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 283.34,
+        "fair_value": 283.03,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 301.88,
-    "valuation_gap": -0.0941,
+    "fair_value": 295.67,
+    "valuation_gap": -0.0946,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10295,10 +10299,10 @@
         "gap": -0.0945
       },
       {
-        "date": "2026-07-16",
-        "price": 273.46,
+        "date": "2026-07-17",
+        "price": 267.71,
         "fair_value": 303.25,
-        "gap": -0.0982
+        "gap": -0.1172
       }
     ],
     "qualitative": {

@@ -101,7 +101,7 @@
     },
     {
       "date": "2016-08-19",
-      "value": 301.95
+      "value": 301.96
     },
     {
       "date": "2016-08-22",
@@ -633,7 +633,7 @@
     },
     {
       "date": "2017-03-02",
-      "value": 312.07
+      "value": 312.06
     },
     {
       "date": "2017-03-03",
@@ -1041,7 +1041,7 @@
     },
     {
       "date": "2017-07-27",
-      "value": 372.54
+      "value": 372.53
     },
     {
       "date": "2017-07-28",
@@ -2885,7 +2885,7 @@
     },
     {
       "date": "2019-05-29",
-      "value": 423.46
+      "value": 423.45
     },
     {
       "date": "2019-05-30",
@@ -4533,7 +4533,7 @@
     },
     {
       "date": "2021-01-14",
-      "value": 619.9
+      "value": 619.91
     },
     {
       "date": "2021-01-15",
@@ -5137,7 +5137,7 @@
     },
     {
       "date": "2021-08-20",
-      "value": 760.04
+      "value": 760.03
     },
     {
       "date": "2021-08-23",
@@ -5173,11 +5173,11 @@
     },
     {
       "date": "2021-09-02",
-      "value": 795.32
+      "value": 795.33
     },
     {
       "date": "2021-09-03",
-      "value": 802.96
+      "value": 802.97
     },
     {
       "date": "2021-09-07",
@@ -5229,7 +5229,7 @@
     },
     {
       "date": "2021-09-23",
-      "value": 771.29
+      "value": 771.3
     },
     {
       "date": "2021-09-24",
@@ -7601,7 +7601,7 @@
     },
     {
       "date": "2024-02-02",
-      "value": 799.8
+      "value": 799.81
     },
     {
       "date": "2024-02-05",
@@ -8165,7 +8165,7 @@
     },
     {
       "date": "2024-08-26",
-      "value": 788.54
+      "value": 788.55
     },
     {
       "date": "2024-08-27",
@@ -8617,7 +8617,7 @@
     },
     {
       "date": "2025-02-07",
-      "value": 902.94
+      "value": 902.93
     },
     {
       "date": "2025-02-10",
@@ -9361,7 +9361,7 @@
     },
     {
       "date": "2025-11-04",
-      "value": 816.41
+      "value": 816.4
     },
     {
       "date": "2025-11-05",
@@ -10054,18 +10054,22 @@
     {
       "date": "2026-07-16",
       "value": 1009.14
+    },
+    {
+      "date": "2026-07-17",
+      "value": 1020.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 99525672960.0,
-      "pe_ratio": 69.98197,
-      "forward_pe": 52.24644,
-      "eps_ttm": 14.42,
+      "market_cap": 100596736000.0,
+      "pe_ratio": 70.44199,
+      "forward_pe": 52.813267,
+      "eps_ttm": 14.48,
       "dividend_yield": 1.93,
       "profit_margin": 0.14928001,
       "operating_margin": 0.24343,
-      "price_to_book": 6.9607387,
+      "price_to_book": 7.0356474,
       "return_on_equity": 0.10059
     },
     "quarterly": [
@@ -10114,28 +10118,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 1009.14,
+    "as_of": "2026-07-17",
+    "current_price": 1020.0,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 259.56,
+        "fair_value": 260.64,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 309.04,
+        "fair_value": 309.01,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 216.88,
+        "fair_value": 217.33,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 265.87,
-    "valuation_gap": 2.7956,
+    "fair_value": 266.49,
+    "valuation_gap": 2.8276,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10307,10 +10311,10 @@
         "gap": 3.0416
       },
       {
-        "date": "2026-07-16",
-        "price": 1009.14,
+        "date": "2026-07-17",
+        "price": 1020.0,
         "fair_value": 260.1,
-        "gap": 2.8798
+        "gap": 2.9216
       }
     ],
     "qualitative": {

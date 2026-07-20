@@ -2969,7 +2969,7 @@
     },
     {
       "date": "2019-06-27",
-      "value": 17.14
+      "value": 17.15
     },
     {
       "date": "2019-06-28",
@@ -5821,7 +5821,7 @@
     },
     {
       "date": "2022-04-26",
-      "value": 43.75
+      "value": 43.74
     },
     {
       "date": "2022-04-27",
@@ -10054,18 +10054,22 @@
     {
       "date": "2026-07-16",
       "value": 320.96
+    },
+    {
+      "date": "2026-07-17",
+      "value": 313.3
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 401383260160.0,
-      "pe_ratio": 63.305717,
-      "forward_pe": 39.714466,
-      "eps_ttm": 5.07,
-      "dividend_yield": 0.31,
+      "market_cap": 391803895808.0,
+      "pe_ratio": 59.224953,
+      "forward_pe": 38.766644,
+      "eps_ttm": 5.29,
+      "dividend_yield": 0.33,
       "profit_margin": 0.30938998,
       "operating_margin": 0.35042998,
-      "price_to_book": 37.920605,
+      "price_to_book": 37.015594,
       "return_on_equity": 0.66762
     },
     "quarterly": [
@@ -10114,12 +10118,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 320.96,
+    "as_of": "2026-07-17",
+    "current_price": 313.3,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 141.96,
+        "fair_value": 148.12,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10129,13 +10133,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 31.07,
+        "fair_value": 31.74,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 130.53,
-    "valuation_gap": 1.4588,
+    "fair_value": 133.75,
+    "valuation_gap": 1.3425,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10307,10 +10311,10 @@
         "gap": 1.3607
       },
       {
-        "date": "2026-07-16",
-        "price": 320.96,
+        "date": "2026-07-17",
+        "price": 313.3,
         "fair_value": 148.4,
-        "gap": 1.1628
+        "gap": 1.1112
       }
     ],
     "qualitative": {

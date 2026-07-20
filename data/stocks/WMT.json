@@ -8877,7 +8877,7 @@
     },
     {
       "date": "2025-05-13",
-      "value": 95.09
+      "value": 95.08
     },
     {
       "date": "2025-05-14",
@@ -10054,18 +10054,22 @@
     {
       "date": "2026-07-16",
       "value": 114.95
+    },
+    {
+      "date": "2026-07-17",
+      "value": 114.24
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 914781175808.0,
-      "pe_ratio": 39.637928,
-      "forward_pe": 34.984188,
-      "eps_ttm": 2.9,
-      "dividend_yield": 0.88,
+      "market_cap": 909130924032.0,
+      "pe_ratio": 40.225353,
+      "forward_pe": 34.768105,
+      "eps_ttm": 2.84,
+      "dividend_yield": 0.87,
       "profit_margin": 0.03135,
       "operating_margin": 0.042150002,
-      "price_to_book": 9.70206,
+      "price_to_book": 9.642134,
       "return_on_equity": 0.24132
     },
     "quarterly": [
@@ -10121,12 +10125,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 114.95,
+    "as_of": "2026-07-17",
+    "current_price": 114.24,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 63.8,
+        "fair_value": 62.48,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
@@ -10136,13 +10140,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 27.8,
+        "fair_value": 27.52,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 55.2,
-    "valuation_gap": 1.0824,
+    "fair_value": 54.49,
+    "valuation_gap": 1.0967,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10284,10 +10288,10 @@
         "gap": 0.8166
       },
       {
-        "date": "2026-07-16",
-        "price": 114.95,
+        "date": "2026-07-17",
+        "price": 114.24,
         "fair_value": 62.7,
-        "gap": 0.8333
+        "gap": 0.822
       }
     ],
     "qualitative": {

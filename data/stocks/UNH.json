@@ -477,7 +477,7 @@
     },
     {
       "date": "2017-01-04",
-      "value": 138.46
+      "value": 138.47
     },
     {
       "date": "2017-01-05",
@@ -1405,7 +1405,7 @@
     },
     {
       "date": "2017-12-05",
-      "value": 191.07
+      "value": 191.06
     },
     {
       "date": "2017-12-06",
@@ -2593,7 +2593,7 @@
     },
     {
       "date": "2019-02-12",
-      "value": 231.84
+      "value": 231.83
     },
     {
       "date": "2019-02-13",
@@ -4021,7 +4021,7 @@
     },
     {
       "date": "2020-07-14",
-      "value": 278.43
+      "value": 278.42
     },
     {
       "date": "2020-07-15",
@@ -4093,7 +4093,7 @@
     },
     {
       "date": "2020-08-07",
-      "value": 286.11
+      "value": 286.1
     },
     {
       "date": "2020-08-10",
@@ -5321,7 +5321,7 @@
     },
     {
       "date": "2021-10-26",
-      "value": 417.91
+      "value": 417.92
     },
     {
       "date": "2021-10-27",
@@ -7077,7 +7077,7 @@
     },
     {
       "date": "2023-07-27",
-      "value": 475.52
+      "value": 475.53
     },
     {
       "date": "2023-07-28",
@@ -7897,7 +7897,7 @@
     },
     {
       "date": "2024-05-20",
-      "value": 492.32
+      "value": 492.31
     },
     {
       "date": "2024-05-21",
@@ -7965,7 +7965,7 @@
     },
     {
       "date": "2024-06-13",
-      "value": 473.35
+      "value": 473.34
     },
     {
       "date": "2024-06-14",
@@ -8505,7 +8505,7 @@
     },
     {
       "date": "2024-12-26",
-      "value": 492.21
+      "value": 492.2
     },
     {
       "date": "2024-12-27",
@@ -10054,19 +10054,23 @@
     {
       "date": "2026-07-16",
       "value": 423.38
+    },
+    {
+      "date": "2026-07-17",
+      "value": 426.09
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 384490176512.0,
-      "pe_ratio": 31.548435,
-      "forward_pe": 19.863035,
-      "eps_ttm": 13.42,
-      "dividend_yield": 2.22,
-      "profit_margin": 0.02678,
-      "operating_margin": 0.080469996,
-      "price_to_book": 3.9275312,
-      "return_on_equity": 0.121759996
+      "market_cap": 386951249920.0,
+      "pe_ratio": 32.060947,
+      "forward_pe": 19.195015,
+      "eps_ttm": 13.29,
+      "dividend_yield": 2.18,
+      "profit_margin": 0.03137,
+      "operating_margin": 0.071329996,
+      "price_to_book": 3.9526708,
+      "return_on_equity": 0.14152999
     },
     "quarterly": [
       {
@@ -10107,28 +10111,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 423.38,
+    "as_of": "2026-07-17",
+    "current_price": 426.09,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 241.56,
+        "fair_value": 239.22,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 341.04,
+        "fair_value": 355.17,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 180.42,
+        "fair_value": 179.54,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 259.18,
-    "valuation_gap": 0.6336,
+    "fair_value": 262.07,
+    "valuation_gap": 0.6259,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10300,10 +10304,10 @@
         "gap": 0.7817
       },
       {
-        "date": "2026-07-16",
-        "price": 423.38,
+        "date": "2026-07-17",
+        "price": 426.09,
         "fair_value": 238.32,
-        "gap": 0.7765
+        "gap": 0.7879
       }
     ],
     "qualitative": {

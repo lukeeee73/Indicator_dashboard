@@ -817,7 +817,7 @@
     },
     {
       "date": "2017-05-08",
-      "value": 149.75
+      "value": 149.74
     },
     {
       "date": "2017-05-09",
@@ -4997,7 +4997,7 @@
     },
     {
       "date": "2021-07-01",
-      "value": 351.31
+      "value": 351.3
     },
     {
       "date": "2021-07-02",
@@ -5633,7 +5633,7 @@
     },
     {
       "date": "2022-02-16",
-      "value": 214.65
+      "value": 214.66
     },
     {
       "date": "2022-02-17",
@@ -6433,7 +6433,7 @@
     },
     {
       "date": "2022-12-02",
-      "value": 122.41
+      "value": 122.42
     },
     {
       "date": "2022-12-05",
@@ -7621,7 +7621,7 @@
     },
     {
       "date": "2024-02-09",
-      "value": 464.03
+      "value": 464.04
     },
     {
       "date": "2024-02-12",
@@ -7717,7 +7717,7 @@
     },
     {
       "date": "2024-03-15",
-      "value": 480.4
+      "value": 480.39
     },
     {
       "date": "2024-03-18",
@@ -8709,7 +8709,7 @@
     },
     {
       "date": "2025-03-13",
-      "value": 587.73
+      "value": 587.74
     },
     {
       "date": "2025-03-14",
@@ -10054,18 +10054,22 @@
     {
       "date": "2026-07-16",
       "value": 664.54
+    },
+    {
+      "date": "2026-07-17",
+      "value": 646.01
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1686883794944.0,
-      "pe_ratio": 24.750092,
-      "forward_pe": 18.292294,
-      "eps_ttm": 26.85,
-      "dividend_yield": 0.31,
+      "market_cap": 1639846903808.0,
+      "pe_ratio": 23.474201,
+      "forward_pe": 17.782232,
+      "eps_ttm": 27.52,
+      "dividend_yield": 0.33,
       "profit_margin": 0.32837,
       "operating_margin": 0.40617,
-      "price_to_book": 6.9213543,
+      "price_to_book": 6.7283597,
       "return_on_equity": 0.32930002
     },
     "quarterly": [
@@ -10114,12 +10118,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 664.54,
+    "as_of": "2026-07-17",
+    "current_price": 646.01,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 537.0,
+        "fair_value": 550.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10129,13 +10133,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 240.84,
+        "fair_value": 243.83,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 501.95,
-    "valuation_gap": 0.3239,
+    "fair_value": 509.24,
+    "valuation_gap": 0.2686,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10307,10 +10311,10 @@
         "gap": 0.2163
       },
       {
-        "date": "2026-07-16",
-        "price": 664.54,
+        "date": "2026-07-17",
+        "price": 646.01,
         "fair_value": 550.2,
-        "gap": 0.2078
+        "gap": 0.1741
       }
     ],
     "qualitative": {

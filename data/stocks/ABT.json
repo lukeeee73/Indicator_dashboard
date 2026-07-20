@@ -7453,7 +7453,7 @@
     },
     {
       "date": "2023-12-08",
-      "value": 98.73
+      "value": 98.72
     },
     {
       "date": "2023-12-11",
@@ -7613,7 +7613,7 @@
     },
     {
       "date": "2024-02-07",
-      "value": 107.55
+      "value": 107.56
     },
     {
       "date": "2024-02-08",
@@ -10054,19 +10054,23 @@
     {
       "date": "2026-07-16",
       "value": 98.83
+    },
+    {
+      "date": "2026-07-17",
+      "value": 100.68
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 172143394816.0,
-      "pe_ratio": 25.020254,
-      "forward_pe": 16.30554,
-      "eps_ttm": 3.95,
-      "dividend_yield": 2.82,
-      "profit_margin": 0.13904999,
-      "operating_margin": 0.13472,
-      "price_to_book": 3.3065677,
-      "return_on_equity": 0.123339996
+      "market_cap": null,
+      "pe_ratio": 28.201681,
+      "forward_pe": 16.595623,
+      "eps_ttm": 3.57,
+      "dividend_yield": 2.5,
+      "profit_margin": 0.116450004,
+      "operating_margin": 0.14151,
+      "price_to_book": 3.3684633,
+      "return_on_equity": null
     },
     "quarterly": [
       {
@@ -10107,28 +10111,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 98.83,
+    "as_of": "2026-07-17",
+    "current_price": 100.68,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 71.1,
+        "fair_value": 64.26,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 96.98,
+        "fair_value": 97.07,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 51.54,
+        "fair_value": 49.0,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 74.95,
-    "valuation_gap": 0.3186,
+    "fair_value": 71.05,
+    "valuation_gap": 0.417,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10300,10 +10304,10 @@
         "gap": 0.4513
       },
       {
-        "date": "2026-07-16",
-        "price": 98.83,
+        "date": "2026-07-17",
+        "price": 100.68,
         "fair_value": 64.26,
-        "gap": 0.538
+        "gap": 0.5668
       }
     ],
     "qualitative": {

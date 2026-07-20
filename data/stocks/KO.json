@@ -4869,7 +4869,7 @@
     },
     {
       "date": "2021-05-17",
-      "value": 46.78
+      "value": 46.77
     },
     {
       "date": "2021-05-18",
@@ -10054,18 +10054,22 @@
     {
       "date": "2026-07-16",
       "value": 84.92
+    },
+    {
+      "date": "2026-07-17",
+      "value": 81.56
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 365366804480.0,
-      "pe_ratio": 25.890244,
-      "forward_pe": 24.379879,
-      "eps_ttm": 3.28,
-      "dividend_yield": 2.57,
+      "market_cap": null,
+      "pe_ratio": 25.647797,
+      "forward_pe": 23.42184,
+      "eps_ttm": 3.18,
+      "dividend_yield": 2.6,
       "profit_margin": 0.278,
       "operating_margin": 0.35055,
-      "price_to_book": 10.864892,
+      "price_to_book": 10.435005,
       "return_on_equity": 0.43372002
     },
     "quarterly": [
@@ -10114,28 +10118,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 84.92,
+    "as_of": "2026-07-17",
+    "current_price": 81.56,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 72.16,
+        "fair_value": 69.96,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 62.7,
+        "fair_value": 62.68,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 24.02,
+        "fair_value": 23.65,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 59.69,
-    "valuation_gap": 0.4226,
+    "fair_value": 58.51,
+    "valuation_gap": 0.3939,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10307,10 +10311,10 @@
         "gap": 0.1934
       },
       {
-        "date": "2026-07-16",
-        "price": 84.92,
+        "date": "2026-07-17",
+        "price": 81.56,
         "fair_value": 69.96,
-        "gap": 0.2138
+        "gap": 0.1658
       }
     ],
     "qualitative": {

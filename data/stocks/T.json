@@ -10054,18 +10054,22 @@
     {
       "date": "2026-07-16",
       "value": 21.98
+    },
+    {
+      "date": "2026-07-17",
+      "value": 21.81
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 152724488192.0,
-      "pe_ratio": 7.2065573,
-      "forward_pe": 8.607591,
-      "eps_ttm": 3.05,
-      "dividend_yield": 5.18,
+      "market_cap": 151543267328.0,
+      "pe_ratio": 7.343434,
+      "forward_pe": 8.541017,
+      "eps_ttm": 2.97,
+      "dividend_yield": 5.09,
       "profit_margin": 0.16938,
       "operating_margin": 0.22723,
-      "price_to_book": 1.3959987,
+      "price_to_book": 1.3852016,
       "return_on_equity": 0.18370001
     },
     "quarterly": [
@@ -10107,12 +10111,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-16",
-    "current_price": 21.98,
+    "as_of": "2026-07-17",
+    "current_price": 21.81,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 61.0,
+        "fair_value": 59.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10122,13 +10126,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 32.87,
+        "fair_value": 32.44,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 50.1,
-    "valuation_gap": -0.5613,
+    "fair_value": 49.21,
+    "valuation_gap": -0.5568,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10300,10 +10304,10 @@
         "gap": -0.6455
       },
       {
-        "date": "2026-07-16",
-        "price": 21.98,
+        "date": "2026-07-17",
+        "price": 21.81,
         "fair_value": 59.6,
-        "gap": -0.6312
+        "gap": -0.6341
       }
     ],
     "qualitative": {
