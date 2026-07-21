@@ -10126,31 +10126,30 @@
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-06-30",
-      "narrative_score": 0.43,
-      "summary_kr": "Cantor 목표가 67% 상향과 18A-P 리스크 생산 진입으로 파운드리 로드맵 가시화, 주가 +7.2%. TSMC 가격 인상이 자체 파운드리 경쟁력을 부각하고 GPU→CPU 추론 시프트가 x86 강점을 강화.",
+      "as_of": "2026-07-21",
+      "narrative_score": -0.19,
+      "summary_kr": "18A 공정의 수익성 있는 수율 확보가 늦어지고 데이터센터 매출에서 처음으로 AMD에 역전당하면서 주가가 한 주 만에 21% 급락했다. 7/23 실적 발표를 앞두고 $100선에서 안정화를 시도 중이나, 파운드리 반전 스토리의 신뢰가 흔들리고 있다.",
       "key_events": [
-        "Cantor 목표가 $150(+67%)",
-        "18A-P 리스크 생산 진입",
-        "TSMC 인상 반사이익",
-        "Q1 호실적·강한 Q2 가이던스"
+        "18A 수익성 수율 확보 2027년으로 지연",
+        "데이터센터 매출 AMD에 첫 역전",
+        "7/23 Q2 실적 발표 대기"
       ],
       "risks": [
-        "18A-P 양산 불확실성",
-        "TSMC 기술 선도 지속",
-        "AMD 서버 점유율 잠식"
+        "18A 파운드리 수율·수익성 지연 지속",
+        "서버 CPU 점유율 AMD에 지속 잠식",
+        "반도체 섹터 전반 밸류에이션 조정 여진"
       ],
-      "news_count": 5,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "AMD",
-          "headline": "AMD 목표가 상향, 웰스파고 CPU AI 시프트 긍정",
-          "implication_for_target": "GPU→CPU 전환은 인텔 x86 직접 수혜, TSMC 인상은 AMD 원가 압박"
+          "headline": "AMD 데이터센터 매출이 처음으로 인텔 추월($5.8B vs $5.1B)",
+          "implication_for_target": "인텔 서버 CPU 점유율 하락 추세 재확인 — 파운드리 반등 없이는 구조적 열세 지속 우려"
         },
         {
           "ticker": "TSM",
-          "headline": "TSMC H2 가격 5~10% 인상(3nm 최대 15%)",
-          "implication_for_target": "인텔 18A-P 자체 파운드리 상대 경쟁력 개선"
+          "headline": "TSMC 2026 설비투자 $60~64B로 상향, 2nm 양산 본격화",
+          "implication_for_target": "TSMC와의 첨단공정 기술 격차가 유지되는 가운데, 18A 수율 지연은 인텔 파운드리 반전 스토리에 부담"
         }
       ],
       "history": [
@@ -10189,6 +10188,10 @@
         {
           "date": "2026-06-30",
           "narrative_score": 0.43
+        },
+        {
+          "date": "2026-07-21",
+          "narrative_score": -0.19
         }
       ]
     }

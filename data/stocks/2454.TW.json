@@ -9802,6 +9802,39 @@
     "fair_value": 1884.05,
     "valuation_gap": 0.7728,
     "signal": "expensive",
-    "gap_series_weekly": []
+    "gap_series_weekly": [],
+    "qualitative": {
+      "as_of": "2026-07-21",
+      "narrative_score": 0.1,
+      "summary_kr": "미디어텍은 구글 TPU(AI 가속 칩) 수주 확대와 엔비디아와의 AI PC 협력으로 경쟁력 서사가 강화되고 있으나, 최근 영어권 매체의 신규 보도는 제한적이며 7월24일 2분기 실적 발표를 앞두고 있다.",
+      "key_events": [
+        "구글 TPU v9 수주 및 ASIC(맞춤형 칩) 가격 10-20% 인상 관측",
+        "브로드컴과의 TPU 점유율 경쟁 구도 지속",
+        "7월24일 2분기 실적 발표 예정"
+      ],
+      "risks": [
+        "중국 스마트폰 수요 둔화(샤오미 등 출하량 하향 조정)",
+        "브로드컴 대비 TPU 점유율 여전히 열세"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "QCOM",
+          "headline": "Qualcomm shares rally on hyperscaler custom-chip prospects but Citi flags China smartphone demand risk (Xiaomi cuts 2026 shipment forecast ~30%)",
+          "implication_for_target": "퀄컴이 겪는 중국 스마트폰 수요 둔화는 미디어텍에도 유사하게 부정적 영향을 줄 수 있음"
+        },
+        {
+          "ticker": "005930.KS",
+          "headline": "Samsung to unveil Galaxy Z Flip8/Fold8 (Jul 22) with in-house Exynos 2600, now rated on par with MediaTek/Qualcomm SoCs",
+          "implication_for_target": "삼성 엑시노스 2600 성능이 미디어텍과 동급으로 평가되며 프리미엄 칩 경쟁이 심화될 가능성"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-07-21",
+          "narrative_score": 0.1
+        }
+      ]
+    }
   }
 }

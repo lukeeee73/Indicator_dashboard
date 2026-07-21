@@ -1,0 +1,66 @@
+{
+  "ticker": "LRCX",
+  "date": "2026-07-21",
+  "as_of_utc": "2026-07-21T20:10:00Z",
+  "news": [
+    {
+      "title": "Lam Research anticipates China revenue below 30% in 2026 as AI drives record $5B+ quarters",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/news/4507247-lam-research-anticipates-china-revenue-below-30-percent-in-2026-as-ai-drives-record-5b",
+      "published": "2026-07-08T13:00:00Z",
+      "summary": "미국 수출통제 강화(Hua Hong 관련)로 중국 매출 비중 34~35%→30% 이하로 하락 전망, 약 $6억 손실",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Lam Research CEO Archer reports $11.7m in stock sales",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/insider-trading-news/lam-research-ceo-archer-reports-117m-in-stock-sales-93CH-4777104",
+      "published": "2026-07-03T09:00:00Z",
+      "summary": "CEO 티모시 아처, 7/2 자사주 3만주(약 $1,170만) 매도 공시 — 임원진 매도 지속 패턴",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Morgan Stanley Adjusts Price Target on Lam Research to $404 From $331",
+      "source": "MarketScreener",
+      "url": "https://www.marketscreener.com/news/morgan-stanley-adjusts-price-target-on-lam-research-to-404-from-331-ce7f5edad08cf626",
+      "published": "2026-07-06T13:00:00Z",
+      "summary": "모건스탠리, 목표가 $331→$404 상향 — 9월 분기 실적이 컨센서스 상회할 것으로 전망(DRAM 수요 견인)",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Lam Research (LRCX) Dips More Than Broader Market",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/lam-research-lrcx-dips-more-215004455.html",
+      "published": "2026-07-20T21:00:00Z",
+      "summary": "7/20 LRCX $306.90, 전일比 하락 — 반도체 장비 섹터 전반 조정에 동반 약세",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMAT",
+      "headline": "AMAT는 CEO 발언 및 목표가 상향(UBS $705 등)으로 이번 주 상대적으로 견조",
+      "implication_for_target": "동일 WFE 사이클 내에서도 LRCX는 中 규제·내부자 매도 겹악재로 상대적 약세 — 개별 리스크 프리미엄 존재"
+    },
+    {
+      "ticker": "KLAC",
+      "headline": "KLA도 7/7·7/15 두 차례 5~7% 급락 — DRAM 가격 급등에 따른 마진 압박 + 섹터 셀오프",
+      "implication_for_target": "LRCX와 KLA 모두 中 노출·밸류에이션 부담이라는 공통 리스크를 공유, 장비 3사 전반의 단기 조정 국면"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.2,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.3
+  },
+  "narrative_score": 0.01,
+  "summary_kr": "LRCX는 모건스탠리의 목표가 상향($404, DRAM 수요 견인 실적 서프라이즈 기대)과 中 수출통제로 인한 약 $6억 매출 손실 전망, CEO의 대규모 자사주 매도가 동시에 겹치며 신호가 엇갈린다. 7/29 실적 발표가 방향성을 가를 분수령이다.",
+  "key_events": ["中 수출통제(Hua Hong 관련)로 매출 비중 30% 이하 하락, ~$6억 손실 전망", "CEO 아처 $1,170만 자사주 매도(7/2)", "모건스탠리 목표가 $404로 상향(7/6)"],
+  "risks": ["7/29 실적 발표에서 DRAM 수요 기대가 실제 확인되는지", "대중국 수출통제 추가 확대 가능성", "내부자 매도 지속에 따른 투자심리 부담"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/LRCX%20-%20Lam%20Research%20Corp.md"
+}
