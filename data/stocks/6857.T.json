@@ -9898,6 +9898,39 @@
     "fair_value": 9482.31,
     "valuation_gap": 1.9007,
     "signal": "expensive",
-    "gap_series_weekly": []
+    "gap_series_weekly": [],
+    "qualitative": {
+      "as_of": "2026-07-21",
+      "narrative_score": 0.03,
+      "summary_kr": "어드반테스트는 AI 반도체 테스트 수요 자체는 견조하고 SiConic 생태계 확장 등 제품 경쟁력도 유지하고 있으나, AI 설비투자 지속가능성에 대한 시장 전반의 불안으로 이번 주 주가가 9.4% 급락 — 7/29 실적 발표 전까지 거시 심리가 주가를 지배하는 상황.",
+      "key_events": [
+        "AI 설비투자 우려로 주가 -9.4% (7/16~17)",
+        "SiConic-DFT 엔지니어링 확장 발표 (7/16)",
+        "7월 29일 1분기(FY26) 실적 발표 예정"
+      ],
+      "risks": [
+        "AI 데이터센터 투자 둔화 시 테스터 수요 조정 리스크",
+        "테라다인과의 SoC 테스터 점유율 경쟁"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "TER",
+          "headline": "Teradyne Q1 2026 revenue surged 87% on AI chip testing demand, ~70% of revenue AI-related",
+          "implication_for_target": "경쟁사 테라다인의 강한 실적은 AI 테스트 수요 섹터 전반의 견조함을 확인시켜 어드반테스트의 7/29 실적 기대에도 긍정적 신호."
+        },
+        {
+          "ticker": "042700.KS",
+          "headline": "Hanmi Semiconductor pushes to buy 8th factory citing HBM/AI packaging equipment shortage",
+          "implication_for_target": "HBM 공급망 전반의 장비 부족 신호는 후공정뿐 아니라 테스트 장비 수요 사이클도 계속 강할 것을 시사."
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-07-21",
+          "narrative_score": 0.03
+        }
+      ]
+    }
   }
 }

@@ -10293,6 +10293,39 @@
         "fair_value": 120.96,
         "gap": 2.1769
       }
-    ]
+    ],
+    "qualitative": {
+      "as_of": "2026-07-21",
+      "narrative_score": -0.05,
+      "summary_kr": "문샷AI의 Kimi K3가 시놉시스·케이던스의 상용 EDA(칩 설계 자동화) 툴 없이도 48시간 만에 칩을 설계해 보이며 핵심 소프트웨어 경쟁 우위에 대한 우려로 주가가 급락했다. 레거시 공정관리 소프트웨어 정리 등 AI 설계 중심 전략 전환은 진행 중이나, 단기적으로는 경쟁 지위 우려가 실적 모멘텀을 압도하는 모습이다.",
+      "key_events": [
+        "Kimi K3, 상용 EDA 툴 없이 48시간 만에 칩 설계 시연 → 주가 7.85%↓, 시총 63억달러 증발",
+        "레거시 팹 소프트웨어(EES·FDC) 단계적 폐지, AI 설계로 자원 재배치",
+        "벤치마크, 목표주가 570달러로 매수 커버리지 개시"
+      ],
+      "risks": [
+        "오픈소스 AI 기반 칩 설계 툴이 장기적으로 EDA 경쟁 우위를 잠식할 가능성(현재는 45nm 구형 공정 수준에 그침)",
+        "설계 IP 라이선스 사업부 성장 둔화 우려"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "CDNS",
+          "headline": "Cadence also fell ~9-10% on Kimi K3 fears but has since won a Benchmark Buy rating and reported a record $8B order backlog",
+          "implication_for_target": "경쟁사 케이던스와 동반 하락·반등 흐름은 이번 리스크가 시놉시스만의 개별 이슈가 아니라 EDA(칩 설계 자동화) 업종 전체의 재평가임을 시사"
+        },
+        {
+          "ticker": "ARM",
+          "headline": "Arm downgraded by HSBC to Hold on stretched AI valuation",
+          "implication_for_target": "반도체 설계 관련주 전반의 밸류에이션 부담이 시놉시스에도 유사하게 적용될 수 있음"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-07-21",
+          "narrative_score": -0.05
+        }
+      ]
+    }
   }
 }
