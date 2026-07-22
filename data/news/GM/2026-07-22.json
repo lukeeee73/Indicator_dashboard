@@ -1,0 +1,57 @@
+{
+  "ticker": "GM",
+  "date": "2026-07-22",
+  "as_of_utc": "2026-07-22T21:00:00Z",
+  "news": [
+    {
+      "title": "GM boosts full-year guidance, reports Q2 earnings beat as costs come down",
+      "source": "Yahoo Finance (Reuters)",
+      "url": "https://finance.yahoo.com/markets/stocks/article/gm-boosts-full-year-guidance-reports-q2-earnings-beat-as-costs-come-down-162130416.html",
+      "published": "2026-07-21T00:00:00Z",
+      "summary": "2분기 EPS 3.57달러로 서프라이즈, 연간 EBIT 가이던스 140~160억달러로 상향",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "GM's Q2 US sales fall on discontinued models, EV slump; trucks and SUVs hold the line",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/article/gms-q2-us-sales-fall-on-discontinued-models-ev-slump-trucks-and-suvs-hold-the-line-155934656.html",
+      "published": "2026-07-21T00:00:00Z",
+      "summary": "이쿼녹스EV -61.8%·블레이저EV -68.1% 등 EV 판매 급감, 트럭·SUV가 방어",
+      "impact": "-",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "TSLA",
+      "headline": "테슬라 2분기 인도량 48만대로 분기 최대치 경신",
+      "implication_for_target": "EV 부문에서 GM의 상대적 열위 지속, 다만 GM은 트럭·SUV로 수익성 방어"
+    },
+    {
+      "ticker": "STLA",
+      "headline": "스텔란티스, 램·지프 브랜드 수장 전격 교체로 조직 재정비",
+      "implication_for_target": "경쟁사의 브랜드 리더십 혼란이 GM 트럭 부문엔 상대적 반사이익 가능성"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.50,
+    "competitive_position": 0.10,
+    "regulatory_risk": 0.20,
+    "macro_sensitivity": 0.05
+  },
+  "narrative_score": 0.27,
+  "summary_kr": "GM이 2분기 어닝서프라이즈와 함께 연간 가이던스를 큰 폭으로 상향했다. 트럭·SUV 마진 개선과 관세 환급 효과가 EV 판매 급감을 상쇄하며 강한 순풍을 만들었다.",
+  "key_events": [
+    "2분기 EPS 3.57달러(예상 3.20달러 상회), 매출 480억달러",
+    "연간 EBIT 가이던스 140~160억달러로 상향(기존 135~155억)",
+    "이쿼녹스EV -61.8%·블레이저EV -68.1%·허머EV -56.8% 등 EV 판매 급감",
+    "북미 조정EBIT 마진 8.6%로 개선(전년 6.1%)"
+  ],
+  "risks": [
+    "연방 EV 세액공제 종료 이후 EV 수요 지속 둔화",
+    "트럭·SUV 의존도 심화에 따른 포트폴리오 편중",
+    "관세 환급 효과의 일회성 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GM%20-%20General%20Motors%20Company.md"
+}
