@@ -1,6 +1,6 @@
 {
   "industry": "power-ai",
-  "updated": "2026-07-18",
+  "updated": "2026-07-25",
   "schema_note": "markets.<market-id> = 시장 단위 뉴스 배열(최신순). 파일당 시장별 최대 20개 보관, 웹은 최신 6개+더보기 표시. 단일 기업 뉴스는 data/news/<TICKER>/ (daily 루틴) 몫. 각 뉴스의 signals[] 는 방향성 신호 태그 — {type: supply_tightening|supply_easing|demand_up|demand_down, strength: 1~3}. scripts/market_pulse.py 가 이를 집계해 병목 압력을 산출한다. 새 뉴스를 넣을 때 반드시 태깅한다(방향성이 없으면 빈 배열).",
   "markets": {
     "ai-dc-demand": [
@@ -518,6 +518,24 @@
       }
     ],
     "turbines": [
+      {
+        "date": "2026-07-22",
+        "title": "GEV 2분기 수주 $242억(+88%) — 가스설비 백로그+슬롯예약 116GW로 확대",
+        "source": "GE Vernova (2분기 실적발표)",
+        "url": "https://www.gevernova.com/news/press-releases/ge-vernova-reports-second-quarter-2026-financial-results-raises-2026-financial",
+        "impact": "+",
+        "summary": "백로그+슬롯 100→116GW, 연말 125GW+ 목표. 총 백로그 $1,760억",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          },
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
+      },
       {
         "date": "2026-07-05",
         "title": "두산에너빌리티, 1분기만 가스터빈 10기 수주 — 북미 DC향 7기 포함",
