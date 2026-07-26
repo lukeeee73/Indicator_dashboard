@@ -45,6 +45,8 @@ AUCTIONS_DIR   = DATA_DIR / "auctions"
 INDEX_PATH     = DATA_DIR / "index.json"
 
 BASE = "https://www.treasurydirect.gov/TA_WS/securities"
+FISCAL_BASE = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service"
+FISCAL_PAGE_SIZE = 5000
 TIMEOUT = 30
 
 # TreasuryDirect 의 공개 문서가 얕아서 어떤 엔드포인트가 우리가 원하는 만기를
@@ -77,19 +79,34 @@ TENORS: dict[str, str] = {
     "30-Year": "30Y",
 }
 
-# API 필드명이 문서마다 조금씩 달라서 후보를 두고 먼저 잡히는 것을 쓴다.
+# 필드명 후보. TreasuryDirect 는 camelCase, Fiscal Data 는 snake_case 를 쓰므로
+# 둘 다 등록해 두고 먼저 잡히는 것을 쓴다.
+# 이렇게 하면 두 소스가 **같은 normalize() 를 통과**하게 되어, 정의가 어긋날
+# 여지가 원천적으로 없어진다 (분모·단위·날짜 형식이 한 곳에서만 결정된다).
 FIELD_CANDIDATES: dict[str, tuple[str, ...]] = {
-    "auction_date": ("auctionDate",),
-    "term":         ("securityTerm", "originalSecurityTerm"),
-    "type":         ("securityType",),
+    "auction_date": ("auctionDate", "auction_date"),
+    "term":         ("securityTerm", "security_term",
+                     "originalSecurityTerm", "original_security_term"),
+    "type":         ("securityType", "security_type"),
     "cusip":        ("cusip",),
-    "btc":          ("bidToCoverRatio",),
-    "indirect":     ("indirectBidderAccepted",),
-    "direct":       ("directBidderAccepted",),
-    "dealer":       ("primaryDealerAccepted",),
-    "offering":     ("offeringAmount",),
-    "high_yield":   ("highYield", "highDiscountRate"),
+    "btc":          ("bidToCoverRatio", "bid_to_cover_ratio"),
+    "indirect":     ("indirectBidderAccepted", "indirect_bidder_accepted"),
+    "direct":       ("directBidderAccepted", "direct_bidder_accepted"),
+    "dealer":       ("primaryDealerAccepted", "primary_dealer_accepted"),
+    "offering":     ("offeringAmount", "offering_amount"),
+    "high_yield":   ("highYield", "high_yield", "highDiscountRate", "high_discount_rate"),
+    # 아래 셋은 정합성 검증·필터용 (실제 응답에서 존재를 확인한 필드들)
+    "tips":         ("tips",),
+    "floating":     ("floatingRate", "floating_rate"),
+    "competitive":  ("competitiveAccepted", "competitive_accepted"),
 }
+
+
+def _is_truthy_flag(val: Any) -> bool:
+    """API 가 'Yes'/'No' 또는 true/false 로 주는 플래그를 관대하게 해석."""
+    if val is None:
+        return False
+    return str(val).strip().lower() in ("yes", "y", "true", "1")
 
 
 # --------------------------------------------------------------------------
@@ -199,13 +216,20 @@ def fetch_excluded_cusips() -> set[str]:
     return excluded
 
 
-def normalize(raw: list[dict], excluded_cusips: set[str] | None = None) -> list[dict]:
-    """원본 레코드에서 필요한 필드만 뽑아 정규화. 대상 만기의 명목채만 남긴다."""
+def normalize(raw: list[dict], excluded_cusips: set[str] | None = None,
+              source: str = "treasurydirect") -> list[dict]:
+    """원본 레코드에서 필요한 필드만 뽑아 정규화. 대상 만기의 명목채만 남긴다.
+
+    TreasuryDirect(camelCase)와 Fiscal Data(snake_case)가 **모두 이 함수를**
+    통과한다. 분모·단위·날짜 형식이 여기서만 결정되므로 두 소스의 정의가
+    어긋날 수 없다.
+    """
     excluded_cusips = excluded_cusips or set()
     out: list[dict] = []
     skipped_no_date = 0
     skipped_no_btc = 0
     skipped_linker = 0
+    denom_mismatch = 0
 
     for rec in raw:
         term = _pick(rec, "term")
@@ -213,7 +237,12 @@ def normalize(raw: list[dict], excluded_cusips: set[str] | None = None) -> list[
             continue
 
         # TIPS·FRN 제외 — 만기 표기가 명목채와 같아서 여기서 안 걸러내면 섞인다.
-        if _pick(rec, "cusip") in excluded_cusips:
+        # 두 겹으로 막는다: 레코드 자체의 tips/floatingRate 플래그(실제 응답에
+        # 존재함을 확인) + API 가 분류해 준 CUSIP 제외 목록.
+        # 어느 한쪽이 없거나 소스가 달라도 나머지가 걸러 준다.
+        if (_is_truthy_flag(_pick(rec, "tips"))
+                or _is_truthy_flag(_pick(rec, "floating"))
+                or _pick(rec, "cusip") in excluded_cusips):
             skipped_linker += 1
             continue
 
@@ -239,11 +268,19 @@ def normalize(raw: list[dict], excluded_cusips: set[str] | None = None) -> list[
         if len(shares) == 3 and sum(shares) > 0:
             competitive = sum(shares)
 
+        # API 가 주는 competitiveAccepted 와 대조해 분모 정의가 맞는지 확인한다.
+        # 두 소스가 이 값을 다르게 정의하면 indirect 비중이 소리 없이 어긋나므로,
+        # 어긋난 건수를 세어 로그로 드러낸다.
+        reported = _as_float(_pick(rec, "competitive"))
+        if competitive and reported and abs(competitive - reported) / reported > 0.01:
+            denom_mismatch += 1
+
         out.append({
             "date":            date,
             "tenor":           TENORS[term],
             "cusip":           _pick(rec, "cusip"),
             "security_type":   _pick(rec, "type"),
+            "source":          source,
             "bid_to_cover":    btc,
             "offering_amount": _as_float(_pick(rec, "offering")),
             "high_yield":      _as_float(_pick(rec, "high_yield")),
@@ -255,11 +292,132 @@ def normalize(raw: list[dict], excluded_cusips: set[str] | None = None) -> list[
         })
 
     if skipped_no_date or skipped_no_btc or skipped_linker:
-        print(f"  건너뜀: TIPS/FRN {skipped_linker}건, "
+        print(f"  [{source}] 건너뜀: TIPS/FRN {skipped_linker}건, "
               f"날짜 없음 {skipped_no_date}건, 응찰률 없음 {skipped_no_btc}건")
+    if denom_mismatch:
+        print(f"  [{source}] 경고: 3분할 합계와 competitiveAccepted 가 1% 넘게 "
+              f"어긋난 레코드 {denom_mismatch}건", file=sys.stderr)
 
     out.sort(key=lambda r: (r["date"], r["tenor"]))
     return out
+
+
+# --------------------------------------------------------------------------
+# Fiscal Data — 만기된 채권까지 포함한 전체 이력
+# --------------------------------------------------------------------------
+# TreasuryDirect 의 auctioned 목록은 "아직 살아 있는" 채권만 돌려준다. 그래서
+# 만기 도래한 옛 10년물이 통째로 빠지고, 30년물만 과대 대표되는 생존 편향이
+# 생긴다. Fiscal Data 의 auctions_query 는 만기된 것까지 보존하므로 이걸로
+# 과거 구간을 메운다.
+# 데이터셋 경로도 문서로 확정하지 못해 후보를 순서대로 시도한다.
+FISCAL_ENDPOINTS: list[str] = [
+    "/v1/accounting/od/auctions_query",
+    "/v2/accounting/od/auctions_query",
+    "/v1/accounting/od/auctions",
+]
+
+
+def _fetch_fiscal_endpoint(path: str, max_pages: int) -> list[dict]:
+    """한 엔드포인트를 페이지 단위로 끝까지 받는다. 실패하면 빈 목록."""
+    out: list[dict] = []
+    for page in range(1, max_pages + 1):
+        url = (f"{FISCAL_BASE}{path}?sort=-auction_date"
+               f"&page[size]={FISCAL_PAGE_SIZE}&page[number]={page}")
+        try:
+            resp = requests.get(url, timeout=TIMEOUT)
+            resp.raise_for_status()
+            payload = resp.json()
+        except (requests.RequestException, ValueError) as e:
+            if page == 1:
+                print(f"  {path} 실패 ({e})")
+            else:
+                print(f"  {path} page {page} 실패 ({e}) — 여기까지만 사용")
+            break
+
+        rows = payload.get("data") if isinstance(payload, dict) else None
+        if not rows:
+            break
+        out.extend(rows)
+
+        if page == 1:
+            print(f"  {path} OK — 응답 필드: {sorted(rows[0].keys())}")
+
+        meta = payload.get("meta", {}) if isinstance(payload, dict) else {}
+        total_pages = meta.get("total-pages")
+        if isinstance(total_pages, int) and page >= total_pages:
+            break
+    return out
+
+
+def fetch_fiscaldata(max_pages: int = 40) -> list[dict]:
+    """Fiscal Data 입찰 데이터셋 전체 이력. 후보 엔드포인트 중 되는 것을 쓴다."""
+    for path in FISCAL_ENDPOINTS:
+        rows = _fetch_fiscal_endpoint(path, max_pages)
+        if rows:
+            print(f"Fiscal Data 합계 {len(rows)}건 ({path})")
+            return rows
+    print("Fiscal Data 후보 엔드포인트가 모두 실패했다.", file=sys.stderr)
+    return []
+
+
+def merge_sources(primary: list[dict], secondary: list[dict]) -> tuple[list[dict], dict]:
+    """두 소스를 합치고, 겹치는 구간이 실제로 일치하는지 감사한다.
+
+    - 키는 (cusip, date). 같은 입찰이면 두 소스에서 같은 CUSIP·같은 날짜로 온다.
+    - 겹칠 때는 primary(TreasuryDirect — 이미 검증한 쪽)를 남기고,
+      secondary 는 primary 에 없는 구간만 메운다.
+    - 겹치는 구간의 응찰률·indirect 비중을 대조해 불일치를 집계한다.
+      숫자가 어긋난 채로 이어 붙이면 시계열에 가짜 단차가 생기기 때문에,
+      이 감사 결과를 결과 파일에 남겨 눈으로 확인할 수 있게 한다.
+    """
+    by_key = {(r["cusip"], r["date"]): r for r in primary}
+
+    overlap = 0
+    btc_mismatch: list[dict] = []
+    share_mismatch: list[dict] = []
+    added = 0
+
+    for rec in secondary:
+        key = (rec["cusip"], rec["date"])
+        base = by_key.get(key)
+        if base is None:
+            by_key[key] = rec
+            added += 1
+            continue
+
+        overlap += 1
+        a, b = base["bid_to_cover"], rec["bid_to_cover"]
+        if a is not None and b is not None and abs(a - b) > 0.01:
+            btc_mismatch.append({"cusip": rec["cusip"], "date": rec["date"],
+                                 "treasurydirect": a, "fiscaldata": b})
+
+        a, b = base["indirect_share"], rec["indirect_share"]
+        if a is not None and b is not None and abs(a - b) > 0.5:
+            share_mismatch.append({"cusip": rec["cusip"], "date": rec["date"],
+                                   "treasurydirect": round(a, 2),
+                                   "fiscaldata": round(b, 2)})
+
+    merged = sorted(by_key.values(), key=lambda r: (r["date"], r["tenor"]))
+
+    audit = {
+        "overlap_records":     overlap,
+        "filled_from_fiscal":  added,
+        "btc_mismatch":        len(btc_mismatch),
+        "indirect_mismatch":   len(share_mismatch),
+        "btc_mismatch_sample":      btc_mismatch[:5],
+        "indirect_mismatch_sample": share_mismatch[:5],
+    }
+
+    print(f"병합: 겹침 {overlap}건, Fiscal Data 로 메움 {added}건 → 총 {len(merged)}건")
+    if btc_mismatch or share_mismatch:
+        print(f"  경고: 겹치는 구간 불일치 — 응찰률 {len(btc_mismatch)}건, "
+              f"indirect 비중 {len(share_mismatch)}건", file=sys.stderr)
+        for m in (btc_mismatch + share_mismatch)[:5]:
+            print(f"    {m}", file=sys.stderr)
+    elif overlap:
+        print(f"  겹치는 {overlap}건 모두 두 소스의 값이 일치")
+
+    return merged, audit
 
 
 # --------------------------------------------------------------------------
@@ -361,7 +519,7 @@ def main() -> int:
         return 1
 
     excluded = fetch_excluded_cusips()
-    records = normalize(raw, excluded)
+    records = normalize(raw, excluded, source="treasurydirect")
     print(f"대상 만기({', '.join(TENORS.values())}) 명목채 레코드: {len(records)}건")
     if not records:
         # 만기 표기가 예상과 다르면 여기서 걸린다 — 실제로 어떤 값이 왔는지 남긴다.
@@ -378,6 +536,24 @@ def main() -> int:
         print("  경고: indirect/direct/primaryDealer 필드를 못 찾았다. "
               f"응답 필드명 확인 필요 → {sorted(sample.keys())}", file=sys.stderr)
 
+    # ── Fiscal Data 로 과거 구간 메우기 ────────────────────────────────
+    print("\nFiscal Data 로 과거 이력 보강 중...")
+    fiscal_raw = fetch_fiscaldata()
+    audit: dict = {"fiscal_raw_count": len(fiscal_raw)}
+    if fiscal_raw:
+        # 같은 normalize() 를 통과시킨다 — 분모·단위·날짜 정의가 동일해진다.
+        fiscal_records = normalize(fiscal_raw, excluded, source="fiscaldata")
+        print(f"Fiscal Data 명목채 레코드: {len(fiscal_records)}건")
+        records, merge_audit = merge_sources(records, fiscal_records)
+        audit.update(merge_audit)
+    else:
+        print("Fiscal Data 없이 TreasuryDirect 만으로 진행한다.", file=sys.stderr)
+
+    by_source = {}
+    for r in records:
+        by_source[r["source"]] = by_source.get(r["source"], 0) + 1
+    audit["by_source"] = by_source
+
     # 진단 정보를 파일에 같이 남긴다 — 스키마가 바뀌었을 때 Actions 로그를 뒤지지
     # 않고 결과물만 보고도 원인을 알 수 있도록.
     sample = next((r for r in raw if isinstance(r, dict)), {})
@@ -387,6 +563,7 @@ def main() -> int:
         "raw_count":        len(raw),
         "excluded_cusips":  len(excluded),
         "source_fields":    sorted(sample.keys()),
+        "consistency":      audit,
         "records":          records,
     })
 
