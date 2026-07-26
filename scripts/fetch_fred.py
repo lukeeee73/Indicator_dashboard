@@ -170,10 +170,85 @@ INDICATORS: dict[str, dict] = {
     },
     "GFDEGDQ188S": {
         # 분기 데이터, 이미 GDP 대비 % — transform 없이 원시값 사용
+        # 주의: 이 "총부채" 에는 정부간 부채(사회보장 신탁기금 등 정부 내부 계정이
+        # 보유한 국채)가 포함된다. 시장이 실제로 소화해야 하는 물량은 아래
+        # FYGFGDQ188S(공공보유) 쪽이므로 두 계열을 함께 봐야 한다.
         "name": "US Federal Debt (% of GDP)",
         "category": "dollar",
         "unit": "percent",
         "transform": None,
+        "exclude_assessment": True,
+    },
+
+    # ── 미국 부채 수준 (stock) ──────────────────────────────────────────
+    # "얼마나 쌓였나" 만 보는 최소 세트. 감당능력(이자비용)·수요(입찰)는 별도.
+    # 총액(GFDEBTN) - 공공보유(FYGFDPUN) = 정부간 부채.
+    "GFDEBTN": {
+        # 분기. FRED 원본은 백만 달러 → 조 달러로 환산해 저장한다.
+        # 정부간 부채를 포함한 연방부채 총액.
+        "name": "US Federal Debt: Total Public Debt",
+        "category": "dollar",
+        "unit": "trillion_usd",
+        "transform": "million_to_trillion",
+        "exclude_assessment": True,
+    },
+    "FYGFDPUN": {
+        # 분기, 1970~. FRED 원본 백만 달러 → 조 달러.
+        # 시장이 실제로 보유한 부채. GFDEBTN 과의 차이가 정부간 부채.
+        "name": "US Federal Debt Held by the Public",
+        "category": "dollar",
+        "unit": "trillion_usd",
+        "transform": "million_to_trillion",
+        "exclude_assessment": True,
+    },
+    "FYGFGDQ188S": {
+        # 분기, 이미 GDP 대비 % — 공공보유 기준. GFDEGDQ188S(총부채) 와 짝.
+        "name": "US Federal Debt Held by the Public (% of GDP)",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": None,
+        "exclude_assessment": True,
+    },
+    "GDP": {
+        # 분기. FRED 원본은 십억 달러 → 부채 계열과 같은 조 달러로 맞춘다.
+        # 부채 비율의 분모 — 이후 다른 비율 계산에도 계속 쓰인다.
+        "name": "US Nominal GDP",
+        "category": "dollar",
+        "unit": "trillion_usd",
+        "transform": "billion_to_trillion",
+        "exclude_assessment": True,
+    },
+
+    # ── 미국 국채 수요 (demand) ─────────────────────────────────────────
+    # "누가 사주고 있나" 를 보는 계열. 입찰 현장 데이터(응찰률·낙찰 배분)는
+    # 다차원이라 FRED 로 안 오므로 별도 수집이 필요하고, 여기서는 FRED 로
+    # 받을 수 있는 세 가지만 다룬다.
+    "TREAST": {
+        # 주간(수요일 기준), 2002~. FRED 원본 백만 달러 → 조 달러.
+        # Fed 가 보유한 국채. 늘고 있으면 매입(QE), 줄고 있으면 축소(QT).
+        # 민간 수요를 볼 때는 Fed 흡수분을 빼고 봐야 한다.
+        "name": "Fed Holdings of US Treasury Securities",
+        "category": "dollar",
+        "unit": "trillion_usd",
+        "transform": "million_to_trillion",
+        "exclude_assessment": True,
+    },
+    "THREEFYTP10": {
+        # 일간, 1990~. Kim-Wright 모형 기반 10년 텀 프리미엄.
+        # 금리 상승분 중 "불안해서 요구하는 몫" — 음수도 나오므로 zeroline 표시.
+        "name": "10-Year Term Premium",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": None,
+        "exclude_assessment": True,
+    },
+    "FDHBFIN": {
+        # 분기. 이 계열만 FRED 원본이 십억 달러다(다른 부채 계열은 백만) — 조 달러로 환산.
+        # 외국인·국제기구가 보유한 연방부채. 외국 수요의 스톡 측면.
+        "name": "US Federal Debt Held by Foreign and International Investors",
+        "category": "dollar",
+        "unit": "trillion_usd",
+        "transform": "billion_to_trillion",
         "exclude_assessment": True,
     },
 
@@ -606,9 +681,30 @@ def compute_yoy_pct_daily(series: list[dict]) -> list[dict]:
     return _pandas_to_series(yoy.dropna())
 
 
+def _rescale(series: list[dict], divisor: float) -> list[dict]:
+    """모든 값을 divisor 로 나눈다 — 단위만 바꾸고 시계열 모양은 그대로."""
+    return [
+        {**p, "value": p["value"] / divisor}
+        for p in series
+        if p.get("value") is not None
+    ]
+
+
+def million_to_trillion(series: list[dict]) -> list[dict]:
+    """백만 달러 → 조 달러. FRED 부채 계열(GFDEBTN 등)은 백만 단위라 자릿수가 너무 크다."""
+    return _rescale(series, 1_000_000.0)
+
+
+def billion_to_trillion(series: list[dict]) -> list[dict]:
+    """십억 달러 → 조 달러. GDP 계열을 부채 계열과 같은 단위로 맞춘다."""
+    return _rescale(series, 1_000.0)
+
+
 TRANSFORMS = {
     "yoy_pct":       compute_yoy_pct,
     "yoy_pct_daily": compute_yoy_pct_daily,
+    "million_to_trillion": million_to_trillion,
+    "billion_to_trillion": billion_to_trillion,
 }
 
 

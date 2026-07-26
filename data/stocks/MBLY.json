@@ -3734,19 +3734,35 @@
     {
       "date": "2026-07-17",
       "value": 9.22
+    },
+    {
+      "date": "2026-07-20",
+      "value": 8.95
+    },
+    {
+      "date": "2026-07-21",
+      "value": 8.99
+    },
+    {
+      "date": "2026-07-22",
+      "value": 8.78
+    },
+    {
+      "date": "2026-07-23",
+      "value": 7.47
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 7764956160.0,
+      "market_cap": 2031977728.0,
       "pe_ratio": null,
-      "forward_pe": 26.544598,
-      "eps_ttm": -5.03,
+      "forward_pe": 18.343817,
+      "eps_ttm": -4.97,
       "dividend_yield": null,
-      "profit_margin": -2.03972,
-      "operating_margin": -0.19354999,
-      "price_to_book": 0.9502216,
-      "return_on_equity": -0.40647
+      "profit_margin": -2.0148802,
+      "operating_margin": -0.05906,
+      "price_to_book": 0.8296403,
+      "return_on_equity": -0.40067002
     },
     "quarterly": [
       {
@@ -3755,13 +3771,6 @@
         "operating_income": null,
         "net_income": null,
         "eps": null
-      },
-      {
-        "date": "2025-03-31",
-        "revenue": 438000000.0,
-        "operating_income": -117000000.0,
-        "net_income": -102000000.0,
-        "eps": -0.13
       },
       {
         "date": "2025-06-30",
@@ -3790,23 +3799,30 @@
         "operating_income": -108000000.0,
         "net_income": -3818000000.0,
         "eps": -4.68
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": 508000000.0,
+        "operating_income": -30000000.0,
+        "net_income": -21000000.0,
+        "eps": -0.03
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-17",
-    "current_price": 9.22,
+    "as_of": "2026-07-23",
+    "current_price": 7.47,
     "sector": "Technology",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 7.64,
+        "fair_value": 8.96,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       }
     },
-    "fair_value": 7.64,
-    "valuation_gap": 0.2068,
-    "signal": "expensive",
+    "fair_value": 8.96,
+    "valuation_gap": -0.1663,
+    "signal": "undervalued",
     "gap_series_weekly": [],
     "qualitative": {
       "as_of": "2026-07-21",

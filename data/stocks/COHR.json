@@ -4,26 +4,6 @@
   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
   "series": [
     {
-      "date": "2016-07-18",
-      "value": 19.74
-    },
-    {
-      "date": "2016-07-19",
-      "value": 19.67
-    },
-    {
-      "date": "2016-07-20",
-      "value": 19.81
-    },
-    {
-      "date": "2016-07-21",
-      "value": 19.62
-    },
-    {
-      "date": "2016-07-22",
-      "value": 19.75
-    },
-    {
       "date": "2016-07-25",
       "value": 19.85
     },
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-17",
       "value": 277.6
+    },
+    {
+      "date": "2026-07-20",
+      "value": 285.4
+    },
+    {
+      "date": "2026-07-21",
+      "value": 317.22
+    },
+    {
+      "date": "2026-07-22",
+      "value": 312.19
+    },
+    {
+      "date": "2026-07-23",
+      "value": 313.22
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 54309478400.0,
-      "pe_ratio": 131.564,
-      "forward_pe": 33.682697,
-      "eps_ttm": 2.11,
+      "market_cap": 55246594048.0,
+      "pe_ratio": 135.11484,
+      "forward_pe": 34.06291,
+      "eps_ttm": 2.09,
       "dividend_yield": null,
       "profit_margin": 0.07102,
       "operating_margin": 0.13572,
-      "price_to_book": 5.084156,
+      "price_to_book": 5.1718836,
       "return_on_equity": 0.04718
     },
     "quarterly": [
@@ -10118,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-17",
-    "current_price": 277.6,
+    "as_of": "2026-07-23",
+    "current_price": 313.22,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 59.08,
+        "fair_value": 58.52,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 181.32,
+        "fair_value": 202.3,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 50.91,
+        "fair_value": 53.37,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 94.12,
-    "valuation_gap": 1.9495,
+    "fair_value": 100.62,
+    "valuation_gap": 2.1128,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10315,6 +10311,12 @@
         "price": 277.6,
         "fair_value": 58.52,
         "gap": 3.7437
+      },
+      {
+        "date": "2026-07-23",
+        "price": 313.22,
+        "fair_value": 58.52,
+        "gap": 4.3524
       }
     ],
     "qualitative": {

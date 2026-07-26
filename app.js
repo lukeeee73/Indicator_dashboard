@@ -216,9 +216,97 @@ const INDICATOR_META = {
   },
   GFDEGDQ188S: {
     displayName: "미국 연방 부채 (% of GDP)",
-    description: "미국 연방 정부 빚의 GDP 대비 비율. 재정 건전성을 장기적으로 보여주는 지표로 분기 단위로 발표된다.",
+    description: "미국 연방 정부 빚의 GDP 대비 비율. 재정 건전성을 장기적으로 보여주는 지표로 분기 단위로 발표된다. 단 이 '총부채'에는 사회보장 신탁기금 같은 정부 내부 계정이 들고 있는 국채(정부간 부채)가 포함돼 있어, 시장이 실제로 소화해야 하는 물량보다 크게 나온다.",
     unit: "% GDP",
     decimals: 1,
+  },
+
+  // ── 미국 부채 수준 (stock) ────────────────────────────────────────────
+  GFDEBTN: {
+    displayName: "미국 연방 부채 총액",
+    description: "미국 연방 정부가 지고 있는 빚의 절대 규모(조 달러). 정부간 부채까지 포함한 전체 숫자로, 뉴스에서 '미국 국가부채 OO조 달러'라고 할 때 쓰는 값이 이것이다.",
+    unit: "조$",
+    decimals: 2,
+  },
+  FYGFDPUN: {
+    displayName: "미국 연방 부채 (공공 보유)",
+    description: "전체 부채 중 정부 바깥, 즉 시장이 실제로 들고 있는 부분(조 달러). 총액에서 이 값을 빼면 정부가 자기 왼쪽 주머니에서 오른쪽 주머니로 빌린 정부간 부채가 나온다. 시장 관점에서는 이쪽이 진짜 부채다.",
+    unit: "조$",
+    decimals: 2,
+  },
+  FYGFGDQ188S: {
+    displayName: "미국 연방 부채 공공보유 (% of GDP)",
+    description: "공공 보유 부채를 GDP로 나눈 비율. 위의 총부채 %GDP와 나란히 보면 두 숫자의 간격이 곧 정부간 부채의 크기다. 국제 비교나 시장 부담을 볼 때는 이 쪽을 쓴다.",
+    unit: "% GDP",
+    decimals: 1,
+  },
+  GDP: {
+    displayName: "미국 명목 GDP",
+    description: "물가를 조정하지 않은 미국 경제의 크기(조 달러). 부채 비율의 분모이며, 부채가 경제 성장보다 빠르게 늘고 있는지 확인하는 기준선이 된다.",
+    unit: "조$",
+    decimals: 2,
+  },
+
+  // ── 미국 국채 수요 (demand) ───────────────────────────────────────────
+  TREAST: {
+    displayName: "Fed 보유 국채",
+    description: "연준이 들고 있는 미국 국채 규모(조 달러, 주간). 늘고 있으면 연준이 사는 중(QE), 줄고 있으면 파는 중(QT)이다. 연준은 입찰에서 직접 살 수 없고 유통시장에서만 매입하며, 재정 지원이 아니라 통화정책 목적으로 움직인다. 연준이 흡수해 주는 만큼 민간이 소화할 물량은 줄어들기 때문에, 시장 수요를 볼 때는 이 몫을 빼고 봐야 한다.",
+    unit: "조$",
+    decimals: 3,
+  },
+  THREEFYTP10: {
+    displayName: "10Y 텀 프리미엄",
+    description: "투자자가 10년짜리 국채를 들어주는 대가로 요구하는 추가 수익. 금리 상승분 중 '불안해서 요구하는 몫'만 떼어낸 값이다. 금리가 올랐을 때 경기가 좋아져서인지 정부를 못 믿어서인지가 여기서 갈린다. 수요가 넘치면 마이너스까지 내려가고, 수요가 마르면 올라간다.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  // ── 국채 입찰 결과 (TreasuryDirect) ───────────────────────────────────
+  // 미 국채 입찰은 딜러 응찰 의무 때문에 사실상 유찰되지 않는다. 그래서 수요 약화는
+  // "안 팔림"이 아니라 "더 높은 금리를 줘야 팔림"으로 나타난다 — 겉보기엔 늘 성공한
+  // 입찰이라, 응찰률과 낙찰 배분을 봐야 그 안이 보인다.
+  AUCT_BTC_2Y: {
+    displayName: "입찰 응찰률 (2년)",
+    description: "2년물 입찰에서 파는 물량 대비 들어온 주문 총액의 배수. 2년물은 재정 우려보다 기준금리 기대에 좌우되므로, 10년·30년물과 비교하는 대조군으로 쓴다.",
+    unit: "배",
+    decimals: 2,
+  },
+  AUCT_BTC_10Y: {
+    displayName: "입찰 응찰률 (10년)",
+    description: "10년물 입찰의 응찰률. 낮아질수록 같은 물량을 소화시키기 위해 금리를 더 얹어줘야 한다는 뜻이다. 발행량과 함께 봐야 한다 — 300억 달러를 팔 때의 2.4와 600억 달러를 팔 때의 2.4는 다른 얘기다.",
+    unit: "배",
+    decimals: 2,
+  },
+  AUCT_BTC_30Y: {
+    displayName: "입찰 응찰률 (30년)",
+    description: "30년물 입찰의 응찰률. 재정에 대한 불안은 만기가 긴 쪽에서 먼저 드러나기 때문에, 수요 이탈의 조기 신호로는 이 계열이 가장 예민하다.",
+    unit: "배",
+    decimals: 2,
+  },
+  AUCT_IND_2Y: {
+    displayName: "indirect 낙찰 비중 (2년)",
+    description: "2년물 경쟁입찰 낙찰액 중 indirect(딜러를 통해 들어온 고객 주문) 몫. 주로 외국 중앙은행·국부펀드다.",
+    unit: "%",
+    decimals: 1,
+  },
+  AUCT_IND_10Y: {
+    displayName: "indirect 낙찰 비중 (10년)",
+    description: "10년물 낙찰액 중 외국 중앙은행·국부펀드 등이 가져간 비중. 외국 수요를 실시간에 가깝게 볼 수 있는 유일한 창구로, 분기 발표인 외국인 보유 잔액(FDHBFIN)보다 훨씬 빠르다. 이 비중이 빠지면 그만큼을 국내 투자자나 딜러가 떠안아야 한다.",
+    unit: "%",
+    decimals: 1,
+  },
+  AUCT_IND_30Y: {
+    displayName: "indirect 낙찰 비중 (30년)",
+    description: "30년물 낙찰액 중 indirect 몫. 이 비중이 떨어지면서 응찰률도 같이 낮아지면, 장기 국채를 들어줄 주체가 줄고 있다는 신호다.",
+    unit: "%",
+    decimals: 1,
+  },
+
+  FDHBFIN: {
+    displayName: "외국인 보유 미국 국채",
+    description: "외국 정부·중앙은행·국제기구가 보유한 미국 연방 부채(조 달러, 분기). 외국 수요가 쌓인 결과를 보여준다. 분기 발표라 반응이 느리므로, 실시간 외국 수요는 입찰의 indirect 낙찰 비중으로 봐야 한다.",
+    unit: "조$",
+    decimals: 3,
   },
 
   // ── 달러 가치 분석 지표 (한국) ────────────────────────────────────────
@@ -582,6 +670,41 @@ const COMPARE_RECOMMENDATIONS = {
     primary:   ["DGS10", "BAMLH0A0HYM2", "DEXKOUS"],
     secondary: ["GOLD", "DTWEXBGS"],
     note: "부채/GDP 급등 구간에서 장기금리·크레딧 스프레드 반응을 체크. 금·달러 약세와의 연관성.",
+  },
+  GFDEBTN: {
+    primary:   ["DGS10", "GOLD", "DTWEXBGS"],
+    secondary: ["SP500", "BAMLH0A0HYM2"],
+    note: "부채 절대 규모의 증가 속도를 장기금리·금과 비교. 규모 자체보다 기울기가 급해지는 구간이 중요.",
+  },
+  FYGFDPUN: {
+    primary:   ["DGS10", "DTWEXBGS", "GOLD"],
+    secondary: ["BAMLH0A0HYM2", "SP500"],
+    note: "시장이 실제로 흡수해야 하는 물량. 이 계열이 총액보다 빠르게 늘면 장기금리 상방 압력이 커진다.",
+  },
+  FYGFGDQ188S: {
+    primary:   ["DGS10", "BAMLH0A0HYM2", "DEXKOUS"],
+    secondary: ["GOLD", "DTWEXBGS"],
+    note: "총부채 %GDP(GFDEGDQ188S)와 겹쳐 보면 두 선의 간격이 정부간 부채. 국제 비교는 이 쪽 기준.",
+  },
+  GDP: {
+    primary:   ["SP500", "DGS10", "DTWEXBGS"],
+    secondary: ["GOLD", "VIXCLS"],
+    note: "부채 계열과 겹쳐 보는 용도. 부채가 GDP보다 가파르면 비율이 올라간다는 뜻.",
+  },
+  TREAST: {
+    primary:   ["DGS10", "SP500", "GOLD"],
+    secondary: ["DTWEXBGS", "BAMLH0A0HYM2"],
+    note: "연준 보유가 늘던 구간(QE)과 줄던 구간(QT)에서 장기금리·위험자산이 어떻게 갈렸는지 확인.",
+  },
+  THREEFYTP10: {
+    primary:   ["DGS10", "GOLD", "DTWEXBGS"],
+    secondary: ["BAMLH0A0HYM2", "SP500"],
+    note: "10Y 금리와 겹쳐 보면 금리 상승분 중 리스크 프리미엄 몫이 보인다. 금리는 올랐는데 텀프리미엄이 그대로면 성장·정책 기대, 텀프리미엄이 같이 오르면 재정 우려 쪽.",
+  },
+  FDHBFIN: {
+    primary:   ["DGS10", "DTWEXBGS", "DEXKOUS"],
+    secondary: ["GOLD", "SP500"],
+    note: "외국인 보유가 정체·감소하는 구간에서 장기금리와 달러가 어떻게 반응했는지 확인.",
   },
   IRLTLT01KRM156N: {
     primary:   ["DEXKOUS", "DGS10", "KOSPI"],

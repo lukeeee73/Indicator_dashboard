@@ -4,26 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-07-18",
-      "value": 28.19
-    },
-    {
-      "date": "2016-07-19",
-      "value": 28.27
-    },
-    {
-      "date": "2016-07-20",
-      "value": 28.7
-    },
-    {
-      "date": "2016-07-21",
-      "value": 27.56
-    },
-    {
-      "date": "2016-07-22",
-      "value": 27.87
-    },
-    {
       "date": "2016-07-25",
       "value": 27.9
     },
@@ -5541,7 +5521,7 @@
     },
     {
       "date": "2022-01-13",
-      "value": 50.95
+      "value": 50.96
     },
     {
       "date": "2022-01-14",
@@ -10058,28 +10038,37 @@
     {
       "date": "2026-07-17",
       "value": 95.04
+    },
+    {
+      "date": "2026-07-20",
+      "value": 97.06
+    },
+    {
+      "date": "2026-07-21",
+      "value": 105.45
+    },
+    {
+      "date": "2026-07-22",
+      "value": 102.62
+    },
+    {
+      "date": "2026-07-23",
+      "value": 100.23
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 477671030784.0,
+      "market_cap": 465662050304.0,
       "pe_ratio": null,
-      "forward_pe": 58.897167,
-      "eps_ttm": -0.6,
+      "forward_pe": 47.609715,
+      "eps_ttm": -2.09,
       "dividend_yield": null,
-      "profit_margin": -0.05904,
-      "operating_margin": 0.06879,
-      "price_to_book": 4.285521,
-      "return_on_equity": -0.02911
+      "profit_margin": -0.19794,
+      "operating_margin": 0.12189999,
+      "price_to_book": 4.1628714,
+      "return_on_equity": -0.10715
     },
     "quarterly": [
-      {
-        "date": "2025-03-31",
-        "revenue": 12667000000.0,
-        "operating_income": -145000000.0,
-        "net_income": -821000000.0,
-        "eps": -0.19
-      },
       {
         "date": "2025-06-30",
         "revenue": 12859000000.0,
@@ -10107,22 +10096,29 @@
         "operating_income": 934000000.0,
         "net_income": -3728000000.0,
         "eps": -0.73
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": 16128000000.0,
+        "operating_income": 1966000000.0,
+        "net_income": -11033000000.0,
+        "eps": -2.16
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-17",
-    "current_price": 95.04,
+    "as_of": "2026-07-23",
+    "current_price": 100.23,
     "sector": "Technology",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 35.5,
+        "fair_value": 46.32,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       }
     },
-    "fair_value": 35.5,
-    "valuation_gap": 1.6772,
+    "fair_value": 46.32,
+    "valuation_gap": 1.1639,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

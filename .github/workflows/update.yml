@@ -40,6 +40,14 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/fetch_fred.py
 
+      # 국채 입찰 결과(응찰률·낙찰 배분) — TreasuryDirect, API 키 불필요.
+      # fetch_fred.py 가 data/indicators/ 를 정리하고 index.json 을 새로 쓰므로
+      # 반드시 그 다음에 실행해야 한다.
+      # TreasuryDirect 가 죽어도 나머지 지표 갱신은 계속 진행되도록 continue-on-error.
+      - name: Fetch Treasury auction results
+        continue-on-error: true
+        run: python scripts/fetch_auctions.py
+
       - name: Sync indicators to Supabase
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}

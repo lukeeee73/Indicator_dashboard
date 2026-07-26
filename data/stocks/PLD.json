@@ -4,26 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-07-18",
-      "value": 38.87
-    },
-    {
-      "date": "2016-07-19",
-      "value": 38.94
-    },
-    {
-      "date": "2016-07-20",
-      "value": 38.86
-    },
-    {
-      "date": "2016-07-21",
-      "value": 38.99
-    },
-    {
-      "date": "2016-07-22",
-      "value": 39.59
-    },
-    {
       "date": "2016-07-25",
       "value": 39.9
     },
@@ -4453,7 +4433,7 @@
     },
     {
       "date": "2020-12-15",
-      "value": 84.74
+      "value": 84.73
     },
     {
       "date": "2020-12-16",
@@ -10058,18 +10038,34 @@
     {
       "date": "2026-07-17",
       "value": 149.79
+    },
+    {
+      "date": "2026-07-20",
+      "value": 147.48
+    },
+    {
+      "date": "2026-07-21",
+      "value": 149.94
+    },
+    {
+      "date": "2026-07-22",
+      "value": 144.7
+    },
+    {
+      "date": "2026-07-23",
+      "value": 145.12
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": null,
-      "pe_ratio": 33.3608,
-      "forward_pe": 44.185837,
+      "market_cap": 140853198848.0,
+      "pe_ratio": 32.879734,
+      "forward_pe": 43.388687,
       "eps_ttm": 4.49,
-      "dividend_yield": 2.86,
+      "dividend_yield": 2.9,
       "profit_margin": 0.43575,
       "operating_margin": 0.43030998,
-      "price_to_book": null,
+      "price_to_book": 2.5640004,
       "return_on_equity": 0.07749
     },
     "quarterly": [
@@ -10114,12 +10110,19 @@
         "operating_income": 827032000.0,
         "net_income": 981976000.0,
         "eps": 1.05
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": 1.13
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-17",
-    "current_price": 149.79,
+    "as_of": "2026-07-23",
+    "current_price": 145.12,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10128,13 +10131,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 54.24,
+        "fair_value": 53.51,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
+      },
+      "graham_number": {
+        "fair_value": 75.62,
+        "weight": 2.0,
+        "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 70.85,
-    "valuation_gap": 1.1141,
+    "fair_value": 71.59,
+    "valuation_gap": 1.0272,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10218,20 +10226,26 @@
       {
         "date": "2026-07-02",
         "price": 139.43,
-        "fair_value": 55.98,
-        "gap": 1.4907
+        "fair_value": 64.98,
+        "gap": 1.1457
       },
       {
         "date": "2026-07-10",
         "price": 140.87,
-        "fair_value": 55.98,
-        "gap": 1.5164
+        "fair_value": 64.98,
+        "gap": 1.1679
       },
       {
         "date": "2026-07-17",
         "price": 149.79,
-        "fair_value": 55.98,
-        "gap": 1.6758
+        "fair_value": 64.98,
+        "gap": 1.3052
+      },
+      {
+        "date": "2026-07-23",
+        "price": 145.12,
+        "fair_value": 64.98,
+        "gap": 1.2333
       }
     ],
     "qualitative": {
