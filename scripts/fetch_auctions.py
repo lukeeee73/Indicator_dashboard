@@ -58,6 +58,17 @@ CANDIDATE_URLS: list[str] = [
     f"{BASE}/auctioned?format=json",
 ]
 
+# TIPS 와 FRN 은 securityTerm 이 명목채와 똑같다("10-Year" 등). 그런데 auctioned
+# 목록에서는 securityType 이 다 "Note" 로 와서 필드만으로는 구분이 안 된다.
+# 섞이면 시계열이 망가진다 — 10년 TIPS 는 실질금리라 낙찰금리가 명목의 절반이고
+# 발행액도 절반이며, FRN 은 낙찰금리 자체가 없다.
+# 그래서 API 에 TIPS·FRN 목록을 따로 물어 CUSIP 집합을 만들고 제외한다.
+# 분류를 우리가 추측하지 않고 API 가 하도록 맡기는 방식.
+EXCLUDE_URLS: list[str] = [
+    f"{BASE}/auctioned?format=json&type=TIPS&pagesize=10000",
+    f"{BASE}/auctioned?format=json&type=FRN&pagesize=10000",
+]
+
 # 수집 대상 만기. 2Y 는 정책금리 기대에 좌우되는 대조군이고,
 # 10Y·30Y 가 재정 리스크가 실제로 드러나는 구간이다.
 TENORS: dict[str, str] = {
@@ -159,15 +170,51 @@ def fetch_raw() -> list[dict]:
     return list(merged.values())
 
 
-def normalize(raw: list[dict]) -> list[dict]:
-    """원본 레코드에서 필요한 필드만 뽑아 정규화. 대상 만기만 남긴다."""
+def fetch_excluded_cusips() -> set[str]:
+    """TIPS·FRN 의 CUSIP 집합. 명목채 시계열에서 걸러내기 위해 API 에 직접 묻는다."""
+    excluded: set[str] = set()
+    for url in EXCLUDE_URLS:
+        print(f"제외 목록 {url} ...", end=" ", flush=True)
+        try:
+            resp = requests.get(url, timeout=TIMEOUT)
+            resp.raise_for_status()
+            payload = resp.json()
+        except (requests.RequestException, ValueError) as e:
+            print(f"FAILED ({e})")
+            continue
+
+        if not isinstance(payload, list):
+            print(f"EMPTY (type={type(payload).__name__})")
+            continue
+
+        found = {rec["cusip"] for rec in payload
+                 if isinstance(rec, dict) and rec.get("cusip")}
+        excluded |= found
+        print(f"OK ({len(found)} CUSIP)")
+
+    if not excluded:
+        # 제외 목록을 못 받으면 TIPS·FRN 이 명목채 시계열에 섞인다.
+        print("경고: TIPS/FRN CUSIP 목록을 받지 못했다. 시계열이 오염될 수 있다.",
+              file=sys.stderr)
+    return excluded
+
+
+def normalize(raw: list[dict], excluded_cusips: set[str] | None = None) -> list[dict]:
+    """원본 레코드에서 필요한 필드만 뽑아 정규화. 대상 만기의 명목채만 남긴다."""
+    excluded_cusips = excluded_cusips or set()
     out: list[dict] = []
     skipped_no_date = 0
     skipped_no_btc = 0
+    skipped_linker = 0
 
     for rec in raw:
         term = _pick(rec, "term")
         if term not in TENORS:
+            continue
+
+        # TIPS·FRN 제외 — 만기 표기가 명목채와 같아서 여기서 안 걸러내면 섞인다.
+        if _pick(rec, "cusip") in excluded_cusips:
+            skipped_linker += 1
             continue
 
         date = _as_date(_pick(rec, "auction_date"))
@@ -207,8 +254,9 @@ def normalize(raw: list[dict]) -> list[dict]:
             "dealer_share":    (dealer   / competitive * 100.0) if competitive and dealer   is not None else None,
         })
 
-    if skipped_no_date or skipped_no_btc:
-        print(f"  건너뜀: 날짜 없음 {skipped_no_date}건, 응찰률 없음 {skipped_no_btc}건")
+    if skipped_no_date or skipped_no_btc or skipped_linker:
+        print(f"  건너뜀: TIPS/FRN {skipped_linker}건, "
+              f"날짜 없음 {skipped_no_date}건, 응찰률 없음 {skipped_no_btc}건")
 
     out.sort(key=lambda r: (r["date"], r["tenor"]))
     return out
@@ -312,8 +360,9 @@ def main() -> int:
         print("입찰 데이터를 가져오지 못했다. 기존 파일을 유지하고 종료한다.", file=sys.stderr)
         return 1
 
-    records = normalize(raw)
-    print(f"대상 만기({', '.join(TENORS.values())}) 레코드: {len(records)}건")
+    excluded = fetch_excluded_cusips()
+    records = normalize(raw, excluded)
+    print(f"대상 만기({', '.join(TENORS.values())}) 명목채 레코드: {len(records)}건")
     if not records:
         # 만기 표기가 예상과 다르면 여기서 걸린다 — 실제로 어떤 값이 왔는지 남긴다.
         seen = sorted({str(r.get("securityTerm")) for r in raw if isinstance(r, dict)})
@@ -329,10 +378,16 @@ def main() -> int:
         print("  경고: indirect/direct/primaryDealer 필드를 못 찾았다. "
               f"응답 필드명 확인 필요 → {sorted(sample.keys())}", file=sys.stderr)
 
+    # 진단 정보를 파일에 같이 남긴다 — 스키마가 바뀌었을 때 Actions 로그를 뒤지지
+    # 않고 결과물만 보고도 원인을 알 수 있도록.
+    sample = next((r for r in raw if isinstance(r, dict)), {})
     _write_json(AUCTIONS_DIR / "records.json", {
-        "last_updated": records[-1]["date"],
-        "count":        len(records),
-        "records":      records,
+        "last_updated":     records[-1]["date"],
+        "count":            len(records),
+        "raw_count":        len(raw),
+        "excluded_cusips":  len(excluded),
+        "source_fields":    sorted(sample.keys()),
+        "records":          records,
     })
 
     payloads = build_indicator_payloads(records)
