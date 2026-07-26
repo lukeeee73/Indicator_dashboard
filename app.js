@@ -247,6 +247,27 @@ const INDICATOR_META = {
     decimals: 2,
   },
 
+  // ── 미국 국채 수요 (demand) ───────────────────────────────────────────
+  TREAST: {
+    displayName: "Fed 보유 국채",
+    description: "연준이 들고 있는 미국 국채 규모(조 달러, 주간). 늘고 있으면 연준이 사는 중(QE), 줄고 있으면 파는 중(QT)이다. 연준은 입찰에서 직접 살 수 없고 유통시장에서만 매입하며, 재정 지원이 아니라 통화정책 목적으로 움직인다. 연준이 흡수해 주는 만큼 민간이 소화할 물량은 줄어들기 때문에, 시장 수요를 볼 때는 이 몫을 빼고 봐야 한다.",
+    unit: "조$",
+    decimals: 3,
+  },
+  THREEFYTP10: {
+    displayName: "10Y 텀 프리미엄",
+    description: "투자자가 10년짜리 국채를 들어주는 대가로 요구하는 추가 수익. 금리 상승분 중 '불안해서 요구하는 몫'만 떼어낸 값이다. 금리가 올랐을 때 경기가 좋아져서인지 정부를 못 믿어서인지가 여기서 갈린다. 수요가 넘치면 마이너스까지 내려가고, 수요가 마르면 올라간다.",
+    unit: "%",
+    decimals: 2,
+    zeroline: true,
+  },
+  FDHBFIN: {
+    displayName: "외국인 보유 미국 국채",
+    description: "외국 정부·중앙은행·국제기구가 보유한 미국 연방 부채(조 달러, 분기). 외국 수요가 쌓인 결과를 보여준다. 분기 발표라 반응이 느리므로, 실시간 외국 수요는 입찰의 indirect 낙찰 비중으로 봐야 한다.",
+    unit: "조$",
+    decimals: 3,
+  },
+
   // ── 달러 가치 분석 지표 (한국) ────────────────────────────────────────
   IRLTLT01KRM156N: {
     displayName: "🇰🇷 한국 10Y 국채 수익률",
@@ -628,6 +649,21 @@ const COMPARE_RECOMMENDATIONS = {
     primary:   ["SP500", "DGS10", "DTWEXBGS"],
     secondary: ["GOLD", "VIXCLS"],
     note: "부채 계열과 겹쳐 보는 용도. 부채가 GDP보다 가파르면 비율이 올라간다는 뜻.",
+  },
+  TREAST: {
+    primary:   ["DGS10", "SP500", "GOLD"],
+    secondary: ["DTWEXBGS", "BAMLH0A0HYM2"],
+    note: "연준 보유가 늘던 구간(QE)과 줄던 구간(QT)에서 장기금리·위험자산이 어떻게 갈렸는지 확인.",
+  },
+  THREEFYTP10: {
+    primary:   ["DGS10", "GOLD", "DTWEXBGS"],
+    secondary: ["BAMLH0A0HYM2", "SP500"],
+    note: "10Y 금리와 겹쳐 보면 금리 상승분 중 리스크 프리미엄 몫이 보인다. 금리는 올랐는데 텀프리미엄이 그대로면 성장·정책 기대, 텀프리미엄이 같이 오르면 재정 우려 쪽.",
+  },
+  FDHBFIN: {
+    primary:   ["DGS10", "DTWEXBGS", "DEXKOUS"],
+    secondary: ["GOLD", "SP500"],
+    note: "외국인 보유가 정체·감소하는 구간에서 장기금리와 달러가 어떻게 반응했는지 확인.",
   },
   IRLTLT01KRM156N: {
     primary:   ["DEXKOUS", "DGS10", "KOSPI"],

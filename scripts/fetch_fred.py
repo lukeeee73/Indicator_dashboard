@@ -219,6 +219,39 @@ INDICATORS: dict[str, dict] = {
         "exclude_assessment": True,
     },
 
+    # ── 미국 국채 수요 (demand) ─────────────────────────────────────────
+    # "누가 사주고 있나" 를 보는 계열. 입찰 현장 데이터(응찰률·낙찰 배분)는
+    # 다차원이라 FRED 로 안 오므로 별도 수집이 필요하고, 여기서는 FRED 로
+    # 받을 수 있는 세 가지만 다룬다.
+    "TREAST": {
+        # 주간(수요일 기준), 2002~. FRED 원본 백만 달러 → 조 달러.
+        # Fed 가 보유한 국채. 늘고 있으면 매입(QE), 줄고 있으면 축소(QT).
+        # 민간 수요를 볼 때는 Fed 흡수분을 빼고 봐야 한다.
+        "name": "Fed Holdings of US Treasury Securities",
+        "category": "dollar",
+        "unit": "trillion_usd",
+        "transform": "million_to_trillion",
+        "exclude_assessment": True,
+    },
+    "THREEFYTP10": {
+        # 일간, 1990~. Kim-Wright 모형 기반 10년 텀 프리미엄.
+        # 금리 상승분 중 "불안해서 요구하는 몫" — 음수도 나오므로 zeroline 표시.
+        "name": "10-Year Term Premium",
+        "category": "dollar",
+        "unit": "percent",
+        "transform": None,
+        "exclude_assessment": True,
+    },
+    "FDHBFIN": {
+        # 분기. FRED 원본 백만 달러 → 조 달러.
+        # 외국인·국제기구가 보유한 연방부채. 외국 수요의 스톡 측면.
+        "name": "US Federal Debt Held by Foreign and International Investors",
+        "category": "dollar",
+        "unit": "trillion_usd",
+        "transform": "million_to_trillion",
+        "exclude_assessment": True,
+    },
+
     # ── 달러 가치 분석 지표 (한국) ──────────────────────────────────────
     "IRLTLT01KRM156N": {
         "name": "Korea 10-Year Government Bond Yield",
