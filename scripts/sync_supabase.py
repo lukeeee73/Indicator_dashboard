@@ -201,6 +201,39 @@ def sync_observations(
     )
 
 
+def sync_app_meta(
+    client: Client,
+    index_data: dict[str, Any],
+) -> None:
+    """index.json 전체를 app_meta('index')에 저장합니다.
+
+    프론트엔드(app.js)는 지표 목록을 series 테이블이 아니라 이 app_meta 에서
+    읽어옵니다. 여기가 갱신되지 않으면 series/observations 를 아무리 채워도
+    화면에는 예전 목록만 보입니다 — 실제로 이 누락 때문에 2026-07-17 이후
+    추가된 지표가 대시보드에 나타나지 않았습니다.
+    """
+
+    (
+        client
+        .table("app_meta")
+        .upsert(
+            {
+                "key": "index",
+                "value": index_data,
+            }
+        )
+        .execute()
+    )
+
+    print(
+        "app_meta('index') 갱신: "
+        f"지표 {len(index_data.get('indicators', []))}개, "
+        f"자산 {len(index_data.get('assets', []))}개, "
+        f"종목 {len(index_data.get('stocks', []))}개, "
+        f"지수 {len(index_data.get('indices', []))}개"
+    )
+
+
 def main() -> None:
     """JSON을 읽고 Supabase 동기화 과정을 순서대로 실행합니다."""
 
@@ -256,6 +289,10 @@ def main() -> None:
         total_observations += len(
             observation_rows
         )
+
+    # 시계열을 다 넣은 뒤에 목록을 갱신합니다. 순서가 반대면 프론트가
+    # 아직 없는 시계열을 조회하는 순간이 생깁니다.
+    sync_app_meta(client, index_data)
 
     print(
         "동기화 완료: "
