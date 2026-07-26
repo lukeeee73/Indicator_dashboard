@@ -243,12 +243,12 @@ INDICATORS: dict[str, dict] = {
         "exclude_assessment": True,
     },
     "FDHBFIN": {
-        # 분기. FRED 원본 백만 달러 → 조 달러.
+        # 분기. 이 계열만 FRED 원본이 십억 달러다(다른 부채 계열은 백만) — 조 달러로 환산.
         # 외국인·국제기구가 보유한 연방부채. 외국 수요의 스톡 측면.
         "name": "US Federal Debt Held by Foreign and International Investors",
         "category": "dollar",
         "unit": "trillion_usd",
-        "transform": "million_to_trillion",
+        "transform": "billion_to_trillion",
         "exclude_assessment": True,
     },
 
