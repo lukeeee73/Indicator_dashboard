@@ -47,12 +47,15 @@ INDEX_PATH     = DATA_DIR / "index.json"
 BASE = "https://www.treasurydirect.gov/TA_WS/securities"
 TIMEOUT = 30
 
-# 응답 스키마가 문서화가 얕아서, 후보 URL 을 순서대로 시도하고 첫 성공을 쓴다.
-# 실패해도 어떤 URL 이 무엇을 반환했는지 로그에 남겨 다음 실행에서 좁힐 수 있게 한다.
+# TreasuryDirect 의 공개 문서가 얕아서 어떤 엔드포인트가 우리가 원하는 만기를
+# 충분히 돌려주는지 미리 단정할 수 없다. 그래서 후보를 전부 때려보고 결과를
+# (cusip, auctionDate) 기준으로 합친다 — 하나가 비어도 나머지로 메워진다.
+# 2Y·10Y 는 Note, 30Y 는 Bond 로 분류된다.
 CANDIDATE_URLS: list[str] = [
     f"{BASE}/auctioned?format=json&pagesize=10000",
+    f"{BASE}/auctioned?format=json&type=Note&pagesize=10000",
+    f"{BASE}/auctioned?format=json&type=Bond&pagesize=10000",
     f"{BASE}/auctioned?format=json",
-    f"{BASE}/Note?format=json&pagesize=10000",
 ]
 
 # 수집 대상 만기. 2Y 는 정책금리 기대에 좌우되는 대조군이고,
@@ -112,8 +115,10 @@ def _as_date(val: Any) -> Optional[str]:
 # 수집
 # --------------------------------------------------------------------------
 def fetch_raw() -> list[dict]:
-    """후보 URL 을 순서대로 시도해 입찰 기록 목록을 가져온다."""
-    last_error: Optional[str] = None
+    """후보 URL 을 모두 시도해 결과를 합친다. (cusip, auctionDate) 로 중복 제거."""
+    merged: dict[tuple, dict] = {}
+    schema_logged = False
+
     for url in CANDIDATE_URLS:
         print(f"Trying {url} ...", end=" ", flush=True)
         try:
@@ -122,24 +127,36 @@ def fetch_raw() -> list[dict]:
             payload = resp.json()
         except requests.RequestException as e:
             print(f"FAILED (network: {e})")
-            last_error = str(e)
             continue
         except ValueError as e:
             print(f"FAILED (JSON 파싱: {e})")
-            last_error = str(e)
             continue
 
-        if isinstance(payload, list) and payload:
-            print(f"OK ({len(payload)} records)")
-            # 스키마가 바뀌었을 때 바로 알아채도록 첫 레코드의 키를 남긴다.
+        if not isinstance(payload, list) or not payload:
+            print(f"EMPTY (type={type(payload).__name__})")
+            continue
+
+        added = 0
+        for rec in payload:
+            if not isinstance(rec, dict):
+                continue
+            key = (rec.get("cusip"), rec.get("auctionDate"), rec.get("securityTerm"))
+            if key not in merged:
+                merged[key] = rec
+                added += 1
+        print(f"OK ({len(payload)} records, 신규 {added}건)")
+
+        # 스키마가 바뀌었을 때 바로 알아채도록 첫 레코드의 키를 한 번만 남긴다.
+        if not schema_logged:
             print(f"  응답 필드: {sorted(payload[0].keys())}")
-            return payload
+            schema_logged = True
 
-        print(f"EMPTY (type={type(payload).__name__})")
-        last_error = "빈 응답"
+    if not merged:
+        print("모든 후보 URL 에서 입찰 기록을 얻지 못했다.", file=sys.stderr)
+        return []
 
-    print(f"모든 후보 URL 실패 — 마지막 오류: {last_error}", file=sys.stderr)
-    return []
+    print(f"합계 {len(merged)}건 (중복 제거 후)")
+    return list(merged.values())
 
 
 def normalize(raw: list[dict]) -> list[dict]:
@@ -298,8 +315,19 @@ def main() -> int:
     records = normalize(raw)
     print(f"대상 만기({', '.join(TENORS.values())}) 레코드: {len(records)}건")
     if not records:
-        print("대상 만기에 해당하는 레코드가 없다. 필드명/만기 표기를 확인해야 한다.", file=sys.stderr)
+        # 만기 표기가 예상과 다르면 여기서 걸린다 — 실제로 어떤 값이 왔는지 남긴다.
+        seen = sorted({str(r.get("securityTerm")) for r in raw if isinstance(r, dict)})
+        print(f"대상 만기에 해당하는 레코드가 없다. 응답의 securityTerm 값: {seen[:40]}",
+              file=sys.stderr)
         return 1
+
+    # 낙찰 배분 필드가 실제로 왔는지 확인 — 안 왔으면 indirect 계열이 통째로 빈다.
+    with_share = sum(1 for r in records if r["indirect_share"] is not None)
+    print(f"  낙찰 3분할이 있는 레코드: {with_share}/{len(records)}건")
+    if with_share == 0:
+        sample = next((r for r in raw if isinstance(r, dict)), {})
+        print("  경고: indirect/direct/primaryDealer 필드를 못 찾았다. "
+              f"응답 필드명 확인 필요 → {sorted(sample.keys())}", file=sys.stderr)
 
     _write_json(AUCTIONS_DIR / "records.json", {
         "last_updated": records[-1]["date"],
