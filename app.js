@@ -216,9 +216,35 @@ const INDICATOR_META = {
   },
   GFDEGDQ188S: {
     displayName: "미국 연방 부채 (% of GDP)",
-    description: "미국 연방 정부 빚의 GDP 대비 비율. 재정 건전성을 장기적으로 보여주는 지표로 분기 단위로 발표된다.",
+    description: "미국 연방 정부 빚의 GDP 대비 비율. 재정 건전성을 장기적으로 보여주는 지표로 분기 단위로 발표된다. 단 이 '총부채'에는 사회보장 신탁기금 같은 정부 내부 계정이 들고 있는 국채(정부간 부채)가 포함돼 있어, 시장이 실제로 소화해야 하는 물량보다 크게 나온다.",
     unit: "% GDP",
     decimals: 1,
+  },
+
+  // ── 미국 부채 수준 (stock) ────────────────────────────────────────────
+  GFDEBTN: {
+    displayName: "미국 연방 부채 총액",
+    description: "미국 연방 정부가 지고 있는 빚의 절대 규모(조 달러). 정부간 부채까지 포함한 전체 숫자로, 뉴스에서 '미국 국가부채 OO조 달러'라고 할 때 쓰는 값이 이것이다.",
+    unit: "조$",
+    decimals: 2,
+  },
+  FYGFDPUN: {
+    displayName: "미국 연방 부채 (공공 보유)",
+    description: "전체 부채 중 정부 바깥, 즉 시장이 실제로 들고 있는 부분(조 달러). 총액에서 이 값을 빼면 정부가 자기 왼쪽 주머니에서 오른쪽 주머니로 빌린 정부간 부채가 나온다. 시장 관점에서는 이쪽이 진짜 부채다.",
+    unit: "조$",
+    decimals: 2,
+  },
+  FYGFGDQ188S: {
+    displayName: "미국 연방 부채 공공보유 (% of GDP)",
+    description: "공공 보유 부채를 GDP로 나눈 비율. 위의 총부채 %GDP와 나란히 보면 두 숫자의 간격이 곧 정부간 부채의 크기다. 국제 비교나 시장 부담을 볼 때는 이 쪽을 쓴다.",
+    unit: "% GDP",
+    decimals: 1,
+  },
+  GDP: {
+    displayName: "미국 명목 GDP",
+    description: "물가를 조정하지 않은 미국 경제의 크기(조 달러). 부채 비율의 분모이며, 부채가 경제 성장보다 빠르게 늘고 있는지 확인하는 기준선이 된다.",
+    unit: "조$",
+    decimals: 2,
   },
 
   // ── 달러 가치 분석 지표 (한국) ────────────────────────────────────────
@@ -582,6 +608,26 @@ const COMPARE_RECOMMENDATIONS = {
     primary:   ["DGS10", "BAMLH0A0HYM2", "DEXKOUS"],
     secondary: ["GOLD", "DTWEXBGS"],
     note: "부채/GDP 급등 구간에서 장기금리·크레딧 스프레드 반응을 체크. 금·달러 약세와의 연관성.",
+  },
+  GFDEBTN: {
+    primary:   ["DGS10", "GOLD", "DTWEXBGS"],
+    secondary: ["SP500", "BAMLH0A0HYM2"],
+    note: "부채 절대 규모의 증가 속도를 장기금리·금과 비교. 규모 자체보다 기울기가 급해지는 구간이 중요.",
+  },
+  FYGFDPUN: {
+    primary:   ["DGS10", "DTWEXBGS", "GOLD"],
+    secondary: ["BAMLH0A0HYM2", "SP500"],
+    note: "시장이 실제로 흡수해야 하는 물량. 이 계열이 총액보다 빠르게 늘면 장기금리 상방 압력이 커진다.",
+  },
+  FYGFGDQ188S: {
+    primary:   ["DGS10", "BAMLH0A0HYM2", "DEXKOUS"],
+    secondary: ["GOLD", "DTWEXBGS"],
+    note: "총부채 %GDP(GFDEGDQ188S)와 겹쳐 보면 두 선의 간격이 정부간 부채. 국제 비교는 이 쪽 기준.",
+  },
+  GDP: {
+    primary:   ["SP500", "DGS10", "DTWEXBGS"],
+    secondary: ["GOLD", "VIXCLS"],
+    note: "부채 계열과 겹쳐 보는 용도. 부채가 GDP보다 가파르면 비율이 올라간다는 뜻.",
   },
   IRLTLT01KRM156N: {
     primary:   ["DEXKOUS", "DGS10", "KOSPI"],
