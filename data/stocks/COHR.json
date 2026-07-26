@@ -10054,10 +10054,6 @@
     {
       "date": "2026-07-23",
       "value": 313.22
-    },
-    {
-      "date": "2026-07-24",
-      "value": 282.39
     }
   ],
   "financials": {
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 282.39,
+    "as_of": "2026-07-23",
+    "current_price": 313.22,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10128,18 +10124,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 182.39,
+        "fair_value": 202.3,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 50.67,
+        "fair_value": 53.37,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 94.11,
-    "valuation_gap": 2.0006,
+    "fair_value": 100.62,
+    "valuation_gap": 2.1128,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10317,10 +10313,10 @@
         "gap": 3.7437
       },
       {
-        "date": "2026-07-24",
-        "price": 282.39,
+        "date": "2026-07-23",
+        "price": 313.22,
         "fair_value": 58.52,
-        "gap": 3.8255
+        "gap": 4.3524
       }
     ],
     "qualitative": {

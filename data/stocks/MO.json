@@ -5629,7 +5629,7 @@
     },
     {
       "date": "2022-02-23",
-      "value": 36.64
+      "value": 36.63
     },
     {
       "date": "2022-02-24",
@@ -7357,7 +7357,7 @@
     },
     {
       "date": "2023-11-10",
-      "value": 32.55
+      "value": 32.56
     },
     {
       "date": "2023-11-13",
@@ -7677,7 +7677,7 @@
     },
     {
       "date": "2024-03-08",
-      "value": 34.87
+      "value": 34.86
     },
     {
       "date": "2024-03-11",
@@ -10054,10 +10054,6 @@
     {
       "date": "2026-07-23",
       "value": 72.08
-    },
-    {
-      "date": "2026-07-24",
-      "value": 72.99
     }
   ],
   "financials": {
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 72.99,
+    "as_of": "2026-07-23",
+    "current_price": 72.08,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10128,13 +10124,13 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 105.76,
+        "fair_value": 104.44,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       }
     },
-    "fair_value": 105.52,
-    "valuation_gap": -0.3083,
+    "fair_value": 105.03,
+    "valuation_gap": -0.3137,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10390,10 +10386,10 @@
         "gap": -0.2899
       },
       {
-        "date": "2026-07-24",
-        "price": 72.99,
+        "date": "2026-07-23",
+        "price": 72.08,
         "fair_value": 104.5,
-        "gap": -0.3015
+        "gap": -0.3102
       }
     ],
     "qualitative": {

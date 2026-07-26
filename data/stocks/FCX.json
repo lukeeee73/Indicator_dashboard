@@ -4641,7 +4641,7 @@
     },
     {
       "date": "2021-03-03",
-      "value": 32.53
+      "value": 32.52
     },
     {
       "date": "2021-03-04",
@@ -4893,7 +4893,7 @@
     },
     {
       "date": "2021-06-02",
-      "value": 40.36
+      "value": 40.37
     },
     {
       "date": "2021-06-03",
@@ -6877,7 +6877,7 @@
     },
     {
       "date": "2023-05-22",
-      "value": 34.13
+      "value": 34.14
     },
     {
       "date": "2023-05-23",
@@ -8001,7 +8001,7 @@
     },
     {
       "date": "2024-07-05",
-      "value": 50.08
+      "value": 50.09
     },
     {
       "date": "2024-07-08",
@@ -9277,7 +9277,7 @@
     },
     {
       "date": "2025-10-13",
-      "value": 42.33
+      "value": 42.32
     },
     {
       "date": "2025-10-14",
@@ -10054,10 +10054,6 @@
     {
       "date": "2026-07-23",
       "value": 63.5
-    },
-    {
-      "date": "2026-07-24",
-      "value": 62.6
     }
   ],
   "financials": {
@@ -10125,8 +10121,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 62.6,
+    "as_of": "2026-07-23",
+    "current_price": 63.5,
     "sector": "Materials",
     "methods": {
       "pe_benchmark": {
@@ -10135,18 +10131,18 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 55.57,
+        "fair_value": 56.37,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (14)"
       },
       "graham_number": {
-        "fair_value": 25.68,
+        "fair_value": 25.86,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 38.13,
-    "valuation_gap": 0.6419,
+    "fair_value": 38.4,
+    "valuation_gap": 0.6535,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10246,10 +10242,10 @@
         "gap": 0.7974
       },
       {
-        "date": "2026-07-24",
-        "price": 62.6,
+        "date": "2026-07-23",
+        "price": 63.5,
         "fair_value": 32.48,
-        "gap": 0.9273
+        "gap": 0.955
       }
     ],
     "qualitative": {

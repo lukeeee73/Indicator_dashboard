@@ -10054,10 +10054,6 @@
     {
       "date": "2026-07-23",
       "value": 490.85
-    },
-    {
-      "date": "2026-07-24",
-      "value": 494.93
     }
   ],
   "financials": {
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 494.93,
+    "as_of": "2026-07-23",
+    "current_price": 490.85,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10128,18 +10124,18 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 258.16,
+        "fair_value": 256.04,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 19552.92,
+        "fair_value": 19472.16,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 4223.3,
-    "valuation_gap": -0.8828,
+    "fair_value": 4206.51,
+    "valuation_gap": -0.8833,
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {

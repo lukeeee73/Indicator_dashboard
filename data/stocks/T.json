@@ -10054,10 +10054,6 @@
     {
       "date": "2026-07-23",
       "value": 22.96
-    },
-    {
-      "date": "2026-07-24",
-      "value": 24.13
     }
   ],
   "financials": {
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 24.13,
+    "as_of": "2026-07-23",
+    "current_price": 22.96,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10128,18 +10124,18 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 43.64,
+        "fair_value": 41.52,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 33.09,
+        "fair_value": 32.27,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 50.01,
-    "valuation_gap": -0.5175,
+    "fair_value": 49.21,
+    "valuation_gap": -0.5334,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10239,10 +10235,10 @@
         "gap": -0.6389
       },
       {
-        "date": "2026-07-24",
-        "price": 24.13,
+        "date": "2026-07-23",
+        "price": 22.96,
         "fair_value": 60.4,
-        "gap": -0.6005
+        "gap": -0.6199
       }
     ],
     "qualitative": {

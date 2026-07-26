@@ -1137,7 +1137,7 @@
     },
     {
       "date": "2017-09-07",
-      "value": 61.94
+      "value": 61.93
     },
     {
       "date": "2017-09-08",
@@ -3513,7 +3513,7 @@
     },
     {
       "date": "2020-01-17",
-      "value": 71.42
+      "value": 71.43
     },
     {
       "date": "2020-01-21",
@@ -5429,7 +5429,7 @@
     },
     {
       "date": "2021-12-10",
-      "value": 70.77
+      "value": 70.76
     },
     {
       "date": "2021-12-13",
@@ -5665,11 +5665,11 @@
     },
     {
       "date": "2022-03-08",
-      "value": 76.76
+      "value": 76.75
     },
     {
       "date": "2022-03-09",
-      "value": 76.44
+      "value": 76.43
     },
     {
       "date": "2022-03-10",
@@ -10054,10 +10054,6 @@
     {
       "date": "2026-07-23",
       "value": 112.79
-    },
-    {
-      "date": "2026-07-24",
-      "value": 113.01
     }
   ],
   "financials": {
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 113.01,
+    "as_of": "2026-07-23",
+    "current_price": 112.79,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10128,18 +10124,18 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 97.36,
+        "fair_value": 97.17,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
       "graham_number": {
-        "fair_value": 96.33,
+        "fair_value": 96.24,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 95.91,
-    "valuation_gap": 0.1782,
+    "fair_value": 95.84,
+    "valuation_gap": 0.1769,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10317,10 +10313,10 @@
         "gap": 0.1823
       },
       {
-        "date": "2026-07-24",
-        "price": 113.01,
+        "date": "2026-07-23",
+        "price": 112.79,
         "fair_value": 95.04,
-        "gap": 0.1891
+        "gap": 0.1868
       }
     ],
     "qualitative": {

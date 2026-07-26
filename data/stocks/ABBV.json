@@ -4477,7 +4477,7 @@
     },
     {
       "date": "2020-12-31",
-      "value": 86.13
+      "value": 86.14
     },
     {
       "date": "2021-01-04",
@@ -8745,7 +8745,7 @@
     },
     {
       "date": "2025-04-02",
-      "value": 195.5
+      "value": 195.51
     },
     {
       "date": "2025-04-03",
@@ -10054,10 +10054,6 @@
     {
       "date": "2026-07-23",
       "value": 256.92
-    },
-    {
-      "date": "2026-07-24",
-      "value": 259.36
     }
   ],
   "financials": {
@@ -10066,7 +10062,7 @@
       "pe_ratio": 126.51707,
       "forward_pe": 15.919361,
       "eps_ttm": 2.05,
-      "dividend_yield": 2.67,
+      "dividend_yield": 2.69,
       "profit_margin": 0.05786,
       "operating_margin": 0.32156,
       "price_to_book": -68.85054,
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 259.36,
+    "as_of": "2026-07-23",
+    "current_price": 256.92,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10128,13 +10124,13 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 260.67,
+        "fair_value": 258.22,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       }
     },
-    "fair_value": 120.81,
-    "valuation_gap": 1.1468,
+    "fair_value": 119.9,
+    "valuation_gap": 1.1429,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10312,10 +10308,10 @@
         "gap": 5.9647
       },
       {
-        "date": "2026-07-24",
-        "price": 259.36,
+        "date": "2026-07-23",
+        "price": 256.92,
         "fair_value": 36.54,
-        "gap": 6.098
+        "gap": 6.0312
       }
     ],
     "qualitative": {
