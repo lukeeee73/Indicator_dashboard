@@ -4665,7 +4665,7 @@
     },
     {
       "date": "2021-03-11",
-      "value": 95.12
+      "value": 95.13
     },
     {
       "date": "2021-03-12",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 103.21
+    },
+    {
+      "date": "2026-07-24",
+      "value": 103.25
     }
   ],
   "financials": {
@@ -10107,8 +10111,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 103.21,
+    "as_of": "2026-07-24",
+    "current_price": 103.25,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10117,13 +10121,13 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 60.23,
+        "fair_value": 60.25,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 43.05,
-    "valuation_gap": 1.3972,
+    "fair_value": 43.06,
+    "valuation_gap": 1.3977,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10301,10 +10305,10 @@
         "gap": 2.2139
       },
       {
-        "date": "2026-07-23",
-        "price": 103.21,
+        "date": "2026-07-24",
+        "price": 103.25,
         "fair_value": 32.82,
-        "gap": 2.1445
+        "gap": 2.1457
       }
     ],
     "qualitative": {

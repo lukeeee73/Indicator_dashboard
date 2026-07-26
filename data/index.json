@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-26T07:56:03Z",
+  "last_updated": "2026-07-26T09:28:44Z",
   "indicators": [
     {
       "code": "T10Y2Y",
@@ -419,10 +419,100 @@
       "category": "dollar",
       "exclude_assessment": true,
       "current": {
-        "value": 0.0093,
+        "value": 9.2709,
         "date": "2025-10-01",
         "percentile_full": 99.8,
         "percentile_10y": 98.8,
+        "label_full": "high",
+        "label_10y": "high"
+      }
+    },
+    {
+      "code": "AUCT_BTC_10Y",
+      "name": "Auction Bid-to-Cover (10Y)",
+      "unit": "ratio",
+      "category": "dollar",
+      "exclude_assessment": true,
+      "current": {
+        "value": 2.3,
+        "date": "2026-07-23",
+        "percentile_full": 6.2,
+        "percentile_10y": 6.2,
+        "label_full": "low",
+        "label_10y": "low"
+      }
+    },
+    {
+      "code": "AUCT_BTC_2Y",
+      "name": "Auction Bid-to-Cover (2Y)",
+      "unit": "ratio",
+      "category": "dollar",
+      "exclude_assessment": true,
+      "current": {
+        "value": 2.64,
+        "date": "2026-06-23",
+        "percentile_full": 43.3,
+        "percentile_10y": 43.3,
+        "label_full": "neutral",
+        "label_10y": "neutral"
+      }
+    },
+    {
+      "code": "AUCT_BTC_30Y",
+      "name": "Auction Bid-to-Cover (30Y)",
+      "unit": "ratio",
+      "category": "dollar",
+      "exclude_assessment": true,
+      "current": {
+        "value": 2.3,
+        "date": "2026-05-13",
+        "percentile_full": 55.8,
+        "percentile_10y": 56.0,
+        "label_full": "neutral",
+        "label_10y": "neutral"
+      }
+    },
+    {
+      "code": "AUCT_IND_10Y",
+      "name": "Auction Indirect Bidder Share (10Y)",
+      "unit": "percent",
+      "category": "dollar",
+      "exclude_assessment": true,
+      "current": {
+        "value": 65.1568,
+        "date": "2026-07-23",
+        "percentile_full": 31.2,
+        "percentile_10y": 31.2,
+        "label_full": "low",
+        "label_10y": "low"
+      }
+    },
+    {
+      "code": "AUCT_IND_2Y",
+      "name": "Auction Indirect Bidder Share (2Y)",
+      "unit": "percent",
+      "category": "dollar",
+      "exclude_assessment": true,
+      "current": {
+        "value": 55.4507,
+        "date": "2026-06-23",
+        "percentile_full": 15.0,
+        "percentile_10y": 15.0,
+        "label_full": "low",
+        "label_10y": "low"
+      }
+    },
+    {
+      "code": "AUCT_IND_30Y",
+      "name": "Auction Indirect Bidder Share (30Y)",
+      "unit": "percent",
+      "category": "dollar",
+      "exclude_assessment": true,
+      "current": {
+        "value": 66.6049,
+        "date": "2026-05-13",
+        "percentile_full": 79.2,
+        "percentile_10y": 70.2,
         "label_full": "high",
         "label_10y": "high"
       }
@@ -492,10 +582,10 @@
         "AMZN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 321.66,
-        "fair_value": 184.32,
-        "valuation_gap": 0.7451,
+        "as_of": "2026-07-24",
+        "current_price": 333.02,
+        "fair_value": 186.62,
+        "valuation_gap": 0.7845,
         "signal": "expensive",
         "narrative_score": 0.2,
         "qualitative_as_of": "2026-07-06"
@@ -513,10 +603,10 @@
         "INTC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 208.76,
-        "fair_value": 184.21,
-        "valuation_gap": 0.1333,
+        "as_of": "2026-07-24",
+        "current_price": 206.84,
+        "fair_value": 183.39,
+        "valuation_gap": 0.1279,
         "signal": "overvalued",
         "narrative_score": -0.06,
         "qualitative_as_of": "2026-07-21"
@@ -534,10 +624,10 @@
         "NIO"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 319.69,
-        "fair_value": 32.06,
-        "valuation_gap": 8.9722,
+        "as_of": "2026-07-24",
+        "current_price": 313.03,
+        "fair_value": 31.78,
+        "valuation_gap": 8.8508,
         "signal": "expensive",
         "narrative_score": -0.05,
         "qualitative_as_of": "2026-07-22"
@@ -552,10 +642,10 @@
         "GOOGL"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 606.1,
-        "fair_value": 516.41,
-        "valuation_gap": 0.1737,
+        "as_of": "2026-07-24",
+        "current_price": 595.19,
+        "fair_value": 512.51,
+        "valuation_gap": 0.1613,
         "signal": "overvalued",
         "narrative_score": -0.05,
         "qualitative_as_of": "2026-07-06"
@@ -574,10 +664,10 @@
         "CRM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 381.58,
-        "fair_value": 391.95,
-        "valuation_gap": -0.0265,
+        "as_of": "2026-07-24",
+        "current_price": 381.7,
+        "fair_value": 391.99,
+        "valuation_gap": -0.0263,
         "signal": "fair",
         "narrative_score": 0.12,
         "qualitative_as_of": "2026-07-06"
@@ -594,10 +684,10 @@
         "AMZN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 317.69,
-        "fair_value": 304.2,
-        "valuation_gap": 0.0443,
+        "as_of": "2026-07-24",
+        "current_price": 319.74,
+        "fair_value": 304.78,
+        "valuation_gap": 0.0491,
         "signal": "fair",
         "narrative_score": -0.12,
         "qualitative_as_of": "2026-07-06"
@@ -615,10 +705,10 @@
         "WMT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 233.66,
-        "fair_value": 182.04,
-        "valuation_gap": 0.2836,
+        "as_of": "2026-07-24",
+        "current_price": 232.11,
+        "fair_value": 181.58,
+        "valuation_gap": 0.2783,
         "signal": "expensive",
         "narrative_score": 0.24,
         "qualitative_as_of": "2026-07-06"
@@ -635,10 +725,10 @@
         "IBM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 120.04,
-        "fair_value": 165.11,
-        "valuation_gap": -0.2729,
+        "as_of": "2026-07-24",
+        "current_price": 114.99,
+        "fair_value": 161.77,
+        "valuation_gap": -0.2892,
         "signal": "deep_value",
         "narrative_score": 0.16,
         "qualitative_as_of": "2026-07-06"
@@ -655,10 +745,10 @@
         "IBM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 123.37,
-        "fair_value": 28.02,
-        "valuation_gap": 3.4031,
+        "as_of": "2026-07-24",
+        "current_price": 122.92,
+        "fair_value": 27.96,
+        "valuation_gap": 3.3957,
         "signal": "expensive",
         "narrative_score": 0.49,
         "qualitative_as_of": "2026-07-06"
@@ -676,10 +766,10 @@
         "TSM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 539.69,
-        "fair_value": 145.39,
-        "valuation_gap": 2.7121,
+        "as_of": "2026-07-24",
+        "current_price": 521.95,
+        "fair_value": 142.15,
+        "valuation_gap": 2.6718,
         "signal": "expensive",
         "narrative_score": 0.14,
         "qualitative_as_of": "2026-07-21"
@@ -696,10 +786,10 @@
         "AMKR"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 415.58,
-        "fair_value": 310.62,
-        "valuation_gap": 0.3379,
+        "as_of": "2026-07-24",
+        "current_price": 403.41,
+        "fair_value": 306.28,
+        "valuation_gap": 0.3171,
         "signal": "expensive",
         "narrative_score": 0.21,
         "qualitative_as_of": "2026-07-21"
@@ -717,10 +807,10 @@
         "QCOM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 392.47,
-        "fair_value": 226.1,
-        "valuation_gap": 0.7358,
+        "as_of": "2026-07-24",
+        "current_price": 381.92,
+        "fair_value": 222.42,
+        "valuation_gap": 0.7172,
         "signal": "expensive",
         "narrative_score": 0.16,
         "qualitative_as_of": "2026-07-21"
@@ -738,10 +828,10 @@
         "PFE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 1185.87,
-        "fair_value": 496.11,
-        "valuation_gap": 1.3903,
+        "as_of": "2026-07-24",
+        "current_price": 1196.03,
+        "fair_value": 498.07,
+        "valuation_gap": 1.4013,
         "signal": "expensive",
         "narrative_score": 0.11,
         "qualitative_as_of": "2026-07-23"
@@ -758,10 +848,10 @@
         "MRK"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 48.18,
-        "fair_value": 58.14,
-        "valuation_gap": -0.1713,
+        "as_of": "2026-07-24",
+        "current_price": 48.77,
+        "fair_value": 58.36,
+        "valuation_gap": -0.1643,
         "signal": "undervalued",
         "narrative_score": 0.08,
         "qualitative_as_of": "2026-07-23"
@@ -779,10 +869,10 @@
         "ABBV"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 259.27,
-        "fair_value": 154.16,
-        "valuation_gap": 0.6818,
+        "as_of": "2026-07-24",
+        "current_price": 263.4,
+        "fair_value": 155.25,
+        "valuation_gap": 0.6966,
         "signal": "expensive",
         "narrative_score": 0.2,
         "qualitative_as_of": "2026-07-23"
@@ -797,10 +887,10 @@
         "JNJ"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 423.56,
-        "fair_value": 265.4,
-        "valuation_gap": 0.596,
+        "as_of": "2026-07-24",
+        "current_price": 420.74,
+        "fair_value": 264.55,
+        "valuation_gap": 0.5904,
         "signal": "expensive",
         "narrative_score": 0.41,
         "qualitative_as_of": "2026-07-23"
@@ -817,10 +907,10 @@
         "COP"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 156.89,
-        "fair_value": 89.1,
-        "valuation_gap": 0.7609,
+        "as_of": "2026-07-24",
+        "current_price": 156.94,
+        "fair_value": 89.11,
+        "valuation_gap": 0.7612,
         "signal": "expensive",
         "narrative_score": 0.34,
         "qualitative_as_of": "2026-07-17"
@@ -835,10 +925,10 @@
         "NEM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 63.5,
-        "fair_value": 38.4,
-        "valuation_gap": 0.6535,
+        "as_of": "2026-07-24",
+        "current_price": 62.6,
+        "fair_value": 38.13,
+        "valuation_gap": 0.6419,
         "signal": "expensive",
         "narrative_score": 0.13,
         "qualitative_as_of": "2026-07-17"
@@ -853,10 +943,10 @@
         "FCX"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 94.72,
-        "fair_value": 124.12,
-        "valuation_gap": -0.2369,
+        "as_of": "2026-07-24",
+        "current_price": 93.19,
+        "fair_value": 123.26,
+        "valuation_gap": -0.244,
         "signal": "deep_value",
         "narrative_score": 0.19,
         "qualitative_as_of": "2026-07-17"
@@ -874,10 +964,10 @@
         "GS"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 349.9,
-        "fair_value": 304.29,
-        "valuation_gap": 0.1499,
+        "as_of": "2026-07-24",
+        "current_price": 353.21,
+        "fair_value": 305.37,
+        "valuation_gap": 0.1567,
         "signal": "overvalued",
         "narrative_score": 0.03,
         "qualitative_as_of": "2026-07-25"
@@ -893,10 +983,10 @@
         "AXP"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 351.6,
-        "fair_value": 146.84,
-        "valuation_gap": 1.3944,
+        "as_of": "2026-07-24",
+        "current_price": 355.74,
+        "fair_value": 147.54,
+        "valuation_gap": 1.4111,
         "signal": "expensive",
         "narrative_score": 0.28,
         "qualitative_as_of": "2026-07-25"
@@ -914,10 +1004,10 @@
         "AAPL"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 490.85,
-        "fair_value": 4206.51,
-        "valuation_gap": -0.8833,
+        "as_of": "2026-07-24",
+        "current_price": 494.93,
+        "fair_value": 4223.3,
+        "valuation_gap": -0.8828,
         "signal": "deep_value",
         "narrative_score": 0.09,
         "qualitative_as_of": "2026-07-25"
@@ -933,10 +1023,10 @@
         "AMZN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 108.4,
-        "fair_value": 54.28,
-        "valuation_gap": 0.9969,
+        "as_of": "2026-07-24",
+        "current_price": 109.47,
+        "fair_value": 54.48,
+        "valuation_gap": 1.0093,
         "signal": "expensive",
         "narrative_score": 0.32,
         "qualitative_as_of": "2026-06-28"
@@ -951,10 +1041,10 @@
         "WMT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 924.59,
-        "fair_value": 365.75,
-        "valuation_gap": 1.5279,
+        "as_of": "2026-07-24",
+        "current_price": 935.03,
+        "fair_value": 367.26,
+        "valuation_gap": 1.5459,
         "signal": "expensive",
         "narrative_score": 0.34,
         "qualitative_as_of": "2026-06-28"
@@ -969,10 +1059,10 @@
         "PEP"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 81.17,
-        "fair_value": 58.24,
-        "valuation_gap": 0.3937,
+        "as_of": "2026-07-24",
+        "current_price": 82.25,
+        "fair_value": 58.52,
+        "valuation_gap": 0.4055,
         "signal": "expensive",
         "narrative_score": 0.15,
         "qualitative_as_of": "2026-06-28"
@@ -987,10 +1077,10 @@
         "DE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 894.54,
-        "fair_value": 384.38,
-        "valuation_gap": 1.3272,
+        "as_of": "2026-07-24",
+        "current_price": 888.73,
+        "fair_value": 383.28,
+        "valuation_gap": 1.3188,
         "signal": "expensive",
         "narrative_score": 0.39,
         "qualitative_as_of": "2026-06-28"
@@ -1007,10 +1097,10 @@
         "NOC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 209.23,
-        "fair_value": 50.47,
-        "valuation_gap": 3.146,
+        "as_of": "2026-07-24",
+        "current_price": 209.52,
+        "fair_value": 50.5,
+        "valuation_gap": 3.1492,
         "signal": "expensive",
         "narrative_score": 0.23,
         "qualitative_as_of": "2026-06-28"
@@ -1027,10 +1117,10 @@
         "BA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 568.59,
-        "fair_value": 460.51,
-        "valuation_gap": 0.2347,
+        "as_of": "2026-07-24",
+        "current_price": 582.6,
+        "fair_value": 463.17,
+        "valuation_gap": 0.2579,
         "signal": "expensive",
         "narrative_score": 0.27,
         "qualitative_as_of": "2026-06-28"
@@ -1047,10 +1137,10 @@
         "DLR"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 164.65,
-        "fair_value": 94.77,
-        "valuation_gap": 0.7373,
+        "as_of": "2026-07-24",
+        "current_price": 166.67,
+        "fair_value": 95.21,
+        "valuation_gap": 0.7506,
         "signal": "expensive",
         "narrative_score": 0.33,
         "qualitative_as_of": "2026-07-25"
@@ -1065,10 +1155,10 @@
         "PSA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 145.12,
-        "fair_value": 71.59,
-        "valuation_gap": 1.0272,
+        "as_of": "2026-07-24",
+        "current_price": 147.63,
+        "fair_value": 72.0,
+        "valuation_gap": 1.0505,
         "signal": "expensive",
         "narrative_score": 0.31,
         "qualitative_as_of": "2026-07-25"
@@ -1084,10 +1174,10 @@
         "AMT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 1033.55,
-        "fair_value": 260.5,
-        "valuation_gap": 2.9675,
+        "as_of": "2026-07-24",
+        "current_price": 1084.24,
+        "fair_value": 265.86,
+        "valuation_gap": 3.0783,
         "signal": "expensive",
         "narrative_score": 0.33,
         "qualitative_as_of": "2026-07-25"
@@ -1142,10 +1232,10 @@
         "ADBE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 156.93,
-        "fair_value": 236.49,
-        "valuation_gap": -0.3364,
+        "as_of": "2026-07-24",
+        "current_price": 163.66,
+        "fair_value": 241.07,
+        "valuation_gap": -0.3211,
         "signal": "deep_value",
         "narrative_score": 0.22,
         "qualitative_as_of": "2026-07-06"
@@ -1161,10 +1251,10 @@
         "CRM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 212.17,
-        "fair_value": 436.54,
-        "valuation_gap": -0.514,
+        "as_of": "2026-07-24",
+        "current_price": 225.11,
+        "fair_value": 447.59,
+        "valuation_gap": -0.4971,
         "signal": "deep_value",
         "narrative_score": 0.06,
         "qualitative_as_of": "2026-07-06"
@@ -1180,11 +1270,11 @@
         "ORCL"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 206.65,
-        "fair_value": 260.43,
-        "valuation_gap": -0.2065,
-        "signal": "deep_value",
+        "as_of": "2026-07-24",
+        "current_price": 214.19,
+        "fair_value": 263.84,
+        "valuation_gap": -0.1882,
+        "signal": "undervalued",
         "narrative_score": 0.22,
         "qualitative_as_of": "2026-07-06"
       }
@@ -1200,10 +1290,10 @@
         "QCOM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 100.23,
-        "fair_value": 46.32,
-        "valuation_gap": 1.1639,
+        "as_of": "2026-07-24",
+        "current_price": 92.32,
+        "fair_value": 38.47,
+        "valuation_gap": 1.3998,
         "signal": "expensive",
         "narrative_score": -0.19,
         "qualitative_as_of": "2026-07-21"
@@ -1221,10 +1311,10 @@
         "MU"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 171.11,
-        "fair_value": 219.28,
-        "valuation_gap": -0.2197,
+        "as_of": "2026-07-24",
+        "current_price": 166.97,
+        "fair_value": 217.3,
+        "valuation_gap": -0.2316,
         "signal": "deep_value",
         "narrative_score": -0.15,
         "qualitative_as_of": "2026-07-21"
@@ -1242,10 +1332,10 @@
         "TOELY"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 1803.0,
-        "fair_value": 803.64,
-        "valuation_gap": 1.2435,
+        "as_of": "2026-07-24",
+        "current_price": 1757.09,
+        "fair_value": 793.59,
+        "valuation_gap": 1.2141,
         "signal": "expensive",
         "narrative_score": 0.25,
         "qualitative_as_of": "2026-07-21"
@@ -1263,10 +1353,10 @@
         "TOELY"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 562.8,
-        "fair_value": 283.15,
-        "valuation_gap": 0.9876,
+        "as_of": "2026-07-24",
+        "current_price": 536.25,
+        "fair_value": 277.22,
+        "valuation_gap": 0.9344,
         "signal": "expensive",
         "narrative_score": 0.24,
         "qualitative_as_of": "2026-07-21"
@@ -1284,10 +1374,10 @@
         "TOELY"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 319.78,
-        "fair_value": 136.98,
-        "valuation_gap": 1.3345,
+        "as_of": "2026-07-24",
+        "current_price": 305.21,
+        "fair_value": 134.25,
+        "valuation_gap": 1.2734,
         "signal": "expensive",
         "narrative_score": 0.01,
         "qualitative_as_of": "2026-07-21"
@@ -1304,10 +1394,10 @@
         "INTC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 990.21,
-        "fair_value": 1762.35,
-        "valuation_gap": -0.4381,
+        "as_of": "2026-07-24",
+        "current_price": 920.95,
+        "fair_value": 1693.2,
+        "valuation_gap": -0.4561,
         "signal": "deep_value",
         "narrative_score": -0.03,
         "qualitative_as_of": "2026-07-21"
@@ -1325,10 +1415,10 @@
         "STLA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 176.8,
-        "fair_value": 334.52,
-        "valuation_gap": -0.4715,
+        "as_of": "2026-07-24",
+        "current_price": 177.42,
+        "fair_value": 334.81,
+        "valuation_gap": -0.4701,
         "signal": "deep_value",
         "narrative_score": 0.04,
         "qualitative_as_of": "2026-07-22"
@@ -1346,10 +1436,10 @@
         "TM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 14.15,
-        "fair_value": 35.9,
-        "valuation_gap": -0.6058,
+        "as_of": "2026-07-24",
+        "current_price": 14.37,
+        "fair_value": 36.46,
+        "valuation_gap": -0.6059,
         "signal": "deep_value",
         "narrative_score": 0.0,
         "qualitative_as_of": "2026-07-22"
@@ -1367,10 +1457,10 @@
         "TM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 80.67,
-        "fair_value": 124.71,
-        "valuation_gap": -0.3531,
+        "as_of": "2026-07-24",
+        "current_price": 82.64,
+        "fair_value": 126.93,
+        "valuation_gap": -0.3489,
         "signal": "deep_value",
         "narrative_score": 0.27,
         "qualitative_as_of": "2026-07-22"
@@ -1388,9 +1478,9 @@
         "HMC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 5.75,
-        "fair_value": 33.38,
+        "as_of": "2026-07-24",
+        "current_price": 5.69,
+        "fair_value": 33.03,
         "valuation_gap": -0.8277,
         "signal": "deep_value",
         "narrative_score": -0.02,
@@ -1408,9 +1498,9 @@
         "GM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 27.99,
-        "fair_value": 98.6,
+        "as_of": "2026-07-24",
+        "current_price": 28.16,
+        "fair_value": 99.2,
         "valuation_gap": -0.7161,
         "signal": "deep_value",
         "narrative_score": -0.16,
@@ -1429,8 +1519,8 @@
         "NIO"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 16.46,
+        "as_of": "2026-07-24",
+        "current_price": 15.84,
         "fair_value": null,
         "valuation_gap": null,
         "signal": "n/a",
@@ -1448,10 +1538,10 @@
         "RIVN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 4.64,
-        "fair_value": 3.58,
-        "valuation_gap": 0.2961,
+        "as_of": "2026-07-24",
+        "current_price": 4.49,
+        "fair_value": 3.47,
+        "valuation_gap": 0.2939,
         "signal": "expensive",
         "narrative_score": 0.1,
         "qualitative_as_of": "2026-07-22"
@@ -1511,10 +1601,10 @@
         "AZN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 24.58,
-        "fair_value": 29.73,
-        "valuation_gap": -0.1733,
+        "as_of": "2026-07-24",
+        "current_price": 24.54,
+        "fair_value": 29.71,
+        "valuation_gap": -0.174,
         "signal": "undervalued",
         "narrative_score": -0.06,
         "qualitative_as_of": "2026-07-23"
@@ -1531,10 +1621,10 @@
         "AZN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 130.48,
-        "fair_value": 85.78,
-        "valuation_gap": 0.5211,
+        "as_of": "2026-07-24",
+        "current_price": 131.07,
+        "fair_value": 86.01,
+        "valuation_gap": 0.5239,
         "signal": "expensive",
         "narrative_score": 0.07,
         "qualitative_as_of": "2026-07-23"
@@ -1551,10 +1641,10 @@
         "PFE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 256.92,
-        "fair_value": 119.9,
-        "valuation_gap": 1.1429,
+        "as_of": "2026-07-24",
+        "current_price": 259.36,
+        "fair_value": 120.81,
+        "valuation_gap": 1.1468,
         "signal": "expensive",
         "narrative_score": 0.05,
         "qualitative_as_of": "2026-07-23"
@@ -1571,10 +1661,10 @@
         "ABBV"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 168.27,
-        "fair_value": 115.01,
-        "valuation_gap": 0.4631,
+        "as_of": "2026-07-24",
+        "current_price": 169.26,
+        "fair_value": 115.3,
+        "valuation_gap": 0.468,
         "signal": "expensive",
         "narrative_score": -0.09,
         "qualitative_as_of": "2026-07-23"
@@ -1589,10 +1679,10 @@
         "ABT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 572.32,
-        "fair_value": 348.46,
-        "valuation_gap": 0.6424,
+        "as_of": "2026-07-24",
+        "current_price": 568.26,
+        "fair_value": 347.34,
+        "valuation_gap": 0.636,
         "signal": "expensive",
         "narrative_score": -0.04,
         "qualitative_as_of": "2026-07-23"
@@ -1608,10 +1698,10 @@
         "TMO"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 100.75,
-        "fair_value": 65.28,
-        "valuation_gap": 0.5433,
+        "as_of": "2026-07-24",
+        "current_price": 103.06,
+        "fair_value": 66.04,
+        "valuation_gap": 0.5606,
         "signal": "expensive",
         "narrative_score": 0.33,
         "qualitative_as_of": "2026-07-23"
@@ -1629,10 +1719,10 @@
         "OXY"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 194.42,
-        "fair_value": 98.15,
-        "valuation_gap": 0.9808,
+        "as_of": "2026-07-24",
+        "current_price": 194.79,
+        "fair_value": 98.25,
+        "valuation_gap": 0.9826,
         "signal": "expensive",
         "narrative_score": 0.36,
         "qualitative_as_of": "2026-07-17"
@@ -1649,10 +1739,10 @@
         "OXY"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 120.2,
-        "fair_value": 81.74,
-        "valuation_gap": 0.4705,
+        "as_of": "2026-07-24",
+        "current_price": 120.26,
+        "fair_value": 81.76,
+        "valuation_gap": 0.4709,
         "signal": "expensive",
         "narrative_score": 0.04,
         "qualitative_as_of": "2026-07-17"
@@ -1688,10 +1778,10 @@
         "CVX"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 57.6,
-        "fair_value": 22.12,
-        "valuation_gap": 1.6035,
+        "as_of": "2026-07-24",
+        "current_price": 57.3,
+        "fair_value": 22.04,
+        "valuation_gap": 1.5995,
         "signal": "expensive",
         "narrative_score": 0.36,
         "qualitative_as_of": "2026-07-17"
@@ -1704,10 +1794,10 @@
       "group": "에너지 / 원자재",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 47.22,
-        "fair_value": 27.47,
-        "valuation_gap": 0.7187,
+        "as_of": "2026-07-24",
+        "current_price": 52.42,
+        "fair_value": 28.79,
+        "valuation_gap": 0.8206,
         "signal": "expensive",
         "narrative_score": 0.1,
         "qualitative_as_of": "2026-07-17"
@@ -1722,10 +1812,10 @@
         "APD"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 506.32,
-        "fair_value": 235.35,
-        "valuation_gap": 1.1513,
+        "as_of": "2026-07-24",
+        "current_price": 512.28,
+        "fair_value": 236.51,
+        "valuation_gap": 1.166,
         "signal": "expensive",
         "narrative_score": 0.27,
         "qualitative_as_of": "2026-07-17"
@@ -1740,10 +1830,10 @@
         "LIN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 294.29,
-        "fair_value": 159.65,
-        "valuation_gap": 0.8433,
+        "as_of": "2026-07-24",
+        "current_price": 297.87,
+        "fair_value": 160.52,
+        "valuation_gap": 0.8557,
         "signal": "expensive",
         "narrative_score": 0.07,
         "qualitative_as_of": "2026-07-17"
@@ -1760,10 +1850,10 @@
         "C"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 61.28,
-        "fair_value": 61.31,
-        "valuation_gap": -0.0006,
+        "as_of": "2026-07-24",
+        "current_price": 62.05,
+        "fair_value": 61.62,
+        "valuation_gap": 0.0069,
         "signal": "fair",
         "narrative_score": 0.23,
         "qualitative_as_of": "2026-07-25"
@@ -1780,10 +1870,10 @@
         "C"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 86.19,
-        "fair_value": 94.6,
-        "valuation_gap": -0.0889,
+        "as_of": "2026-07-24",
+        "current_price": 86.31,
+        "fair_value": 94.65,
+        "valuation_gap": -0.0881,
         "signal": "undervalued",
         "narrative_score": -0.03,
         "qualitative_as_of": "2026-07-25"
@@ -1801,10 +1891,10 @@
         "GS"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 131.88,
-        "fair_value": 141.88,
-        "valuation_gap": -0.0705,
+        "as_of": "2026-07-24",
+        "current_price": 132.19,
+        "fair_value": 142.02,
+        "valuation_gap": -0.0692,
         "signal": "undervalued",
         "narrative_score": 0.06,
         "qualitative_as_of": "2026-07-25"
@@ -1821,10 +1911,10 @@
         "C"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 1074.72,
-        "fair_value": 867.67,
-        "valuation_gap": 0.2386,
+        "as_of": "2026-07-24",
+        "current_price": 1061.23,
+        "fair_value": 863.39,
+        "valuation_gap": 0.2291,
         "signal": "expensive",
         "narrative_score": 0.28,
         "qualitative_as_of": "2026-07-25"
@@ -1840,10 +1930,10 @@
         "JPM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 215.18,
-        "fair_value": 163.01,
-        "valuation_gap": 0.32,
+        "as_of": "2026-07-24",
+        "current_price": 214.48,
+        "fair_value": 162.8,
+        "valuation_gap": 0.3174,
         "signal": "expensive",
         "narrative_score": 0.44,
         "qualitative_as_of": "2026-07-25"
@@ -1859,10 +1949,10 @@
         "AXP"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 530.29,
-        "fair_value": 212.29,
-        "valuation_gap": 1.498,
+        "as_of": "2026-07-24",
+        "current_price": 539.66,
+        "fair_value": 213.81,
+        "valuation_gap": 1.5241,
         "signal": "expensive",
         "narrative_score": 0.14,
         "qualitative_as_of": "2026-07-25"
@@ -1878,10 +1968,10 @@
         "MA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 340.84,
-        "fair_value": 218.73,
-        "valuation_gap": 0.5583,
+        "as_of": "2026-07-24",
+        "current_price": 326.17,
+        "fair_value": 214.87,
+        "valuation_gap": 0.518,
         "signal": "expensive",
         "narrative_score": 0.02,
         "qualitative_as_of": "2026-07-25"
@@ -1896,11 +1986,11 @@
         "KO"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 134.95,
-        "fair_value": 142.22,
-        "valuation_gap": -0.0511,
-        "signal": "undervalued",
+        "as_of": "2026-07-24",
+        "current_price": 136.64,
+        "fair_value": 142.88,
+        "valuation_gap": -0.0437,
+        "signal": "fair",
         "narrative_score": -0.27,
         "qualitative_as_of": "2026-06-28"
       }
@@ -1912,10 +2002,10 @@
       "group": "소비재",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 145.88,
-        "fair_value": 124.79,
-        "valuation_gap": 0.169,
+        "as_of": "2026-07-24",
+        "current_price": 147.41,
+        "fair_value": 125.25,
+        "valuation_gap": 0.1769,
         "signal": "overvalued",
         "narrative_score": 0.2,
         "qualitative_as_of": "2026-06-28"
@@ -1928,10 +2018,10 @@
       "group": "소비재",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 72.08,
-        "fair_value": 105.03,
-        "valuation_gap": -0.3137,
+        "as_of": "2026-07-24",
+        "current_price": 72.99,
+        "fair_value": 105.52,
+        "valuation_gap": -0.3083,
         "signal": "deep_value",
         "narrative_score": -0.08,
         "qualitative_as_of": "2026-06-28"
@@ -1946,10 +2036,10 @@
         "SBUX"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 262.8,
-        "fair_value": 294.66,
-        "valuation_gap": -0.1081,
+        "as_of": "2026-07-24",
+        "current_price": 264.76,
+        "fair_value": 295.45,
+        "valuation_gap": -0.1039,
         "signal": "undervalued",
         "narrative_score": -0.09,
         "qualitative_as_of": "2026-06-28"
@@ -1962,10 +2052,10 @@
       "group": "소비재",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 324.71,
-        "fair_value": 283.4,
-        "valuation_gap": 0.1458,
+        "as_of": "2026-07-24",
+        "current_price": 332.98,
+        "fair_value": 285.96,
+        "valuation_gap": 0.1644,
         "signal": "overvalued",
         "narrative_score": -0.14,
         "qualitative_as_of": "2026-06-28"
@@ -1978,10 +2068,10 @@
       "group": "소비재",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 40.99,
-        "fair_value": 44.17,
-        "valuation_gap": -0.072,
+        "as_of": "2026-07-24",
+        "current_price": 41.7,
+        "fair_value": 44.44,
+        "valuation_gap": -0.0616,
         "signal": "undervalued",
         "narrative_score": -0.18,
         "qualitative_as_of": "2026-06-28"
@@ -1996,10 +2086,10 @@
         "MCD"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 103.21,
-        "fair_value": 43.05,
-        "valuation_gap": 1.3972,
+        "as_of": "2026-07-24",
+        "current_price": 103.25,
+        "fair_value": 43.06,
+        "valuation_gap": 1.3977,
         "signal": "expensive",
         "narrative_score": 0.15,
         "qualitative_as_of": "2026-06-28"
@@ -2014,10 +2104,10 @@
         "CAT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 610.02,
-        "fair_value": 328.67,
-        "valuation_gap": 0.856,
+        "as_of": "2026-07-24",
+        "current_price": 628.16,
+        "fair_value": 332.6,
+        "valuation_gap": 0.8886,
         "signal": "expensive",
         "narrative_score": 0.11,
         "qualitative_as_of": "2026-06-28"
@@ -2034,10 +2124,10 @@
         "BA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 209.16,
-        "fair_value": 111.5,
-        "valuation_gap": 0.8758,
+        "as_of": "2026-07-24",
+        "current_price": 212.79,
+        "fair_value": 112.32,
+        "valuation_gap": 0.8946,
         "signal": "expensive",
         "narrative_score": 0.21,
         "qualitative_as_of": "2026-06-28"
@@ -2054,10 +2144,10 @@
         "BA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 533.48,
-        "fair_value": 524.77,
-        "valuation_gap": 0.0166,
+        "as_of": "2026-07-24",
+        "current_price": 542.24,
+        "fair_value": 527.75,
+        "valuation_gap": 0.0275,
         "signal": "fair",
         "narrative_score": 0.1,
         "qualitative_as_of": "2026-06-28"
@@ -2073,10 +2163,10 @@
         "RTX"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 246.27,
-        "fair_value": 343.04,
-        "valuation_gap": -0.2821,
+        "as_of": "2026-07-24",
+        "current_price": 243.15,
+        "fair_value": 342.56,
+        "valuation_gap": -0.2902,
         "signal": "deep_value",
         "narrative_score": 0.28,
         "qualitative_as_of": "2026-06-28"
@@ -2093,10 +2183,10 @@
         "BA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 349.0,
-        "fair_value": 141.91,
-        "valuation_gap": 1.4594,
+        "as_of": "2026-07-24",
+        "current_price": 353.73,
+        "fair_value": 142.5,
+        "valuation_gap": 1.4823,
         "signal": "expensive",
         "narrative_score": 0.46,
         "qualitative_as_of": "2026-06-28"
@@ -2112,10 +2202,10 @@
         "AMZN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 114.1,
-        "fair_value": 112.76,
-        "valuation_gap": 0.0119,
+        "as_of": "2026-07-24",
+        "current_price": 114.79,
+        "fair_value": 113.03,
+        "valuation_gap": 0.0155,
         "signal": "fair",
         "narrative_score": 0.04,
         "qualitative_as_of": "2026-06-28"
@@ -2131,10 +2221,10 @@
         "AMZN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 315.62,
-        "fair_value": 337.22,
-        "valuation_gap": -0.0641,
+        "as_of": "2026-07-24",
+        "current_price": 314.96,
+        "fair_value": 336.86,
+        "valuation_gap": -0.065,
         "signal": "undervalued",
         "narrative_score": 0.07,
         "qualitative_as_of": "2026-06-28"
@@ -2150,10 +2240,10 @@
         "DLR"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 74.57,
-        "fair_value": 44.92,
-        "valuation_gap": 0.6599,
+        "as_of": "2026-07-24",
+        "current_price": 74.9,
+        "fair_value": 45.0,
+        "valuation_gap": 0.6644,
         "signal": "expensive",
         "narrative_score": 0.06,
         "qualitative_as_of": "2026-07-25"
@@ -2169,10 +2259,10 @@
         "AMT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 179.34,
-        "fair_value": 22.88,
-        "valuation_gap": 6.8383,
+        "as_of": "2026-07-24",
+        "current_price": 199.08,
+        "fair_value": 24.57,
+        "valuation_gap": 7.1022,
         "signal": "expensive",
         "narrative_score": 0.49,
         "qualitative_as_of": "2026-07-25"
@@ -2185,10 +2275,10 @@
       "group": "부동산 (REITs)",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 64.72,
-        "fair_value": 25.81,
-        "valuation_gap": 1.5077,
+        "as_of": "2026-07-24",
+        "current_price": 65.6,
+        "fair_value": 25.96,
+        "valuation_gap": 1.5267,
         "signal": "expensive",
         "narrative_score": 0.08,
         "qualitative_as_of": "2026-07-25"
@@ -2201,10 +2291,10 @@
       "group": "부동산 (REITs)",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 225.2,
-        "fair_value": 174.86,
-        "valuation_gap": 0.2879,
+        "as_of": "2026-07-24",
+        "current_price": 229.78,
+        "fair_value": 175.64,
+        "valuation_gap": 0.3082,
         "signal": "expensive",
         "narrative_score": 0.13,
         "qualitative_as_of": "2026-07-25"
@@ -2217,10 +2307,10 @@
       "group": "부동산 (REITs)",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 247.05,
-        "fair_value": 45.09,
-        "valuation_gap": 4.4792,
+        "as_of": "2026-07-24",
+        "current_price": 252.07,
+        "fair_value": 45.52,
+        "valuation_gap": 4.5378,
         "signal": "expensive",
         "narrative_score": 0.32,
         "qualitative_as_of": "2026-07-25"
@@ -2233,10 +2323,10 @@
       "group": "부동산 (REITs)",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 315.01,
-        "fair_value": 73.47,
-        "valuation_gap": 3.2876,
+        "as_of": "2026-07-24",
+        "current_price": 322.48,
+        "fair_value": 74.72,
+        "valuation_gap": 3.3158,
         "signal": "expensive",
         "narrative_score": 0.02,
         "qualitative_as_of": "2026-07-25"
@@ -2249,10 +2339,10 @@
       "group": "부동산 (REITs)",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 26.32,
-        "fair_value": 48.39,
-        "valuation_gap": -0.4561,
+        "as_of": "2026-07-24",
+        "current_price": 26.73,
+        "fair_value": 48.67,
+        "valuation_gap": -0.4508,
         "signal": "deep_value",
         "narrative_score": -0.23,
         "qualitative_as_of": "2026-07-25"
@@ -2268,10 +2358,10 @@
         "TMUS"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 43.82,
-        "fair_value": 72.77,
-        "valuation_gap": -0.3978,
+        "as_of": "2026-07-24",
+        "current_price": 46.38,
+        "fair_value": 74.51,
+        "valuation_gap": -0.3775,
         "signal": "deep_value",
         "narrative_score": 0.03,
         "qualitative_as_of": "2026-06-28"
@@ -2287,10 +2377,10 @@
         "TMUS"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 22.96,
-        "fair_value": 49.21,
-        "valuation_gap": -0.5334,
+        "as_of": "2026-07-24",
+        "current_price": 24.13,
+        "fair_value": 50.01,
+        "valuation_gap": -0.5175,
         "signal": "deep_value",
         "narrative_score": 0.08,
         "qualitative_as_of": "2026-06-28"
@@ -2306,10 +2396,10 @@
         "T"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 170.42,
-        "fair_value": 185.69,
-        "valuation_gap": -0.0823,
+        "as_of": "2026-07-24",
+        "current_price": 180.09,
+        "fair_value": 190.22,
+        "valuation_gap": -0.0532,
         "signal": "undervalued",
         "narrative_score": 0.16,
         "qualitative_as_of": "2026-06-28"
@@ -2326,10 +2416,10 @@
         "NFLX"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 21.92,
-        "fair_value": 57.76,
-        "valuation_gap": -0.6205,
+        "as_of": "2026-07-24",
+        "current_price": 22.3,
+        "fair_value": 58.22,
+        "valuation_gap": -0.617,
         "signal": "deep_value",
         "narrative_score": 0.03,
         "qualitative_as_of": "2026-06-28"
@@ -2346,10 +2436,10 @@
         "T"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 126.5,
-        "fair_value": 686.0,
-        "valuation_gap": -0.8156,
+        "as_of": "2026-07-24",
+        "current_price": 123.31,
+        "fair_value": 678.74,
+        "valuation_gap": -0.8183,
         "signal": "deep_value",
         "narrative_score": 0.09,
         "qualitative_as_of": "2026-06-28"
@@ -2366,10 +2456,10 @@
         "SPOT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 68.89,
-        "fair_value": 55.45,
-        "valuation_gap": 0.2424,
+        "as_of": "2026-07-24",
+        "current_price": 70.09,
+        "fair_value": 55.82,
+        "valuation_gap": 0.2556,
         "signal": "expensive",
         "narrative_score": 0.24,
         "qualitative_as_of": "2026-06-28"
@@ -2385,10 +2475,10 @@
         "CMCSA"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 92.83,
-        "fair_value": 118.29,
-        "valuation_gap": -0.2152,
+        "as_of": "2026-07-24",
+        "current_price": 94.85,
+        "fair_value": 119.3,
+        "valuation_gap": -0.205,
         "signal": "deep_value",
         "narrative_score": 0.2,
         "qualitative_as_of": "2026-06-28"
@@ -2404,10 +2494,10 @@
         "AAPL"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 468.99,
-        "fair_value": 260.15,
-        "valuation_gap": 0.8028,
+        "as_of": "2026-07-24",
+        "current_price": 482.66,
+        "fair_value": 263.09,
+        "valuation_gap": 0.8346,
         "signal": "expensive",
         "narrative_score": 0.18,
         "qualitative_as_of": "2026-06-28"
@@ -2423,10 +2513,10 @@
         "MSFT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 209.0,
-        "fair_value": 93.42,
-        "valuation_gap": 1.2372,
+        "as_of": "2026-07-24",
+        "current_price": 209.06,
+        "fair_value": 93.44,
+        "valuation_gap": 1.2374,
         "signal": "expensive",
         "narrative_score": -0.03,
         "qualitative_as_of": "2026-06-28"
@@ -2442,9 +2532,9 @@
         "MSFT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 230.25,
-        "fair_value": 169.04,
+        "as_of": "2026-07-24",
+        "current_price": 231.65,
+        "fair_value": 170.07,
         "valuation_gap": 0.3621,
         "signal": "expensive",
         "narrative_score": 0.33,
@@ -2462,10 +2552,10 @@
         "AEP"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 89.79,
+        "as_of": "2026-07-24",
+        "current_price": 89.78,
         "fair_value": 65.71,
-        "valuation_gap": 0.3664,
+        "valuation_gap": 0.3662,
         "signal": "expensive",
         "narrative_score": 0.15,
         "qualitative_as_of": "2026-07-17"
@@ -2482,10 +2572,10 @@
         "NEE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 96.6,
-        "fair_value": 63.99,
-        "valuation_gap": 0.5096,
+        "as_of": "2026-07-24",
+        "current_price": 97.25,
+        "fair_value": 64.17,
+        "valuation_gap": 0.5154,
         "signal": "expensive",
         "narrative_score": 0.27,
         "qualitative_as_of": "2026-07-17"
@@ -2502,10 +2592,10 @@
         "AEP"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 129.26,
-        "fair_value": 103.9,
-        "valuation_gap": 0.244,
+        "as_of": "2026-07-24",
+        "current_price": 130.52,
+        "fair_value": 104.31,
+        "valuation_gap": 0.2512,
         "signal": "expensive",
         "narrative_score": 0.19,
         "qualitative_as_of": "2026-07-17"
@@ -2523,10 +2613,10 @@
         "EXC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 134.92,
-        "fair_value": 50.05,
-        "valuation_gap": 1.6958,
+        "as_of": "2026-07-24",
+        "current_price": 135.54,
+        "fair_value": 50.21,
+        "valuation_gap": 1.6995,
         "signal": "expensive",
         "narrative_score": 0.3,
         "qualitative_as_of": "2026-07-17"
@@ -2543,10 +2633,10 @@
         "SO"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 47.28,
-        "fair_value": 43.81,
-        "valuation_gap": 0.0792,
+        "as_of": "2026-07-24",
+        "current_price": 47.53,
+        "fair_value": 43.9,
+        "valuation_gap": 0.0826,
         "signal": "overvalued",
         "narrative_score": -0.05,
         "qualitative_as_of": "2026-07-17"
@@ -2563,10 +2653,10 @@
         "DUK"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 275.6,
-        "fair_value": 184.68,
-        "valuation_gap": 0.4923,
+        "as_of": "2026-07-24",
+        "current_price": 274.35,
+        "fair_value": 184.33,
+        "valuation_gap": 0.4883,
         "signal": "expensive",
         "narrative_score": 0.47,
         "qualitative_as_of": "2026-07-17"
@@ -2582,10 +2672,10 @@
         "NEE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 168.98,
-        "fair_value": 105.27,
-        "valuation_gap": 0.6053,
+        "as_of": "2026-07-24",
+        "current_price": 163.38,
+        "fair_value": 103.48,
+        "valuation_gap": 0.5789,
         "signal": "expensive",
         "narrative_score": 0.45,
         "qualitative_as_of": "2026-07-17"
@@ -2602,10 +2692,10 @@
         "NEE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 93.44,
-        "fair_value": 60.01,
-        "valuation_gap": 0.557,
+        "as_of": "2026-07-24",
+        "current_price": 92.98,
+        "fair_value": 59.86,
+        "valuation_gap": 0.5533,
         "signal": "expensive",
         "narrative_score": 0.21,
         "qualitative_as_of": "2026-07-17"
@@ -2622,10 +2712,10 @@
         "DUK"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 112.79,
-        "fair_value": 95.84,
-        "valuation_gap": 0.1769,
+        "as_of": "2026-07-24",
+        "current_price": 113.01,
+        "fair_value": 95.91,
+        "valuation_gap": 0.1782,
         "signal": "overvalued",
         "narrative_score": -0.09,
         "qualitative_as_of": "2026-07-17"
@@ -2643,10 +2733,10 @@
         "AEP"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 71.46,
-        "fair_value": 54.29,
-        "valuation_gap": 0.3163,
+        "as_of": "2026-07-24",
+        "current_price": 71.1,
+        "fair_value": 54.18,
+        "valuation_gap": 0.3123,
         "signal": "expensive",
         "narrative_score": 0.22,
         "qualitative_as_of": "2026-07-17"
@@ -2682,10 +2772,10 @@
         "LRCX"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 373.75,
-        "fair_value": 158.16,
-        "valuation_gap": 1.3632,
+        "as_of": "2026-07-24",
+        "current_price": 349.92,
+        "fair_value": 153.2,
+        "valuation_gap": 1.284,
         "signal": "expensive",
         "narrative_score": 0.05,
         "qualitative_as_of": "2026-07-22"
@@ -2700,10 +2790,10 @@
         "MBLY"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 14.76,
-        "fair_value": 14.46,
-        "valuation_gap": 0.0204,
+        "as_of": "2026-07-24",
+        "current_price": 14.6,
+        "fair_value": 14.39,
+        "valuation_gap": 0.0146,
         "signal": "fair",
         "narrative_score": -0.05,
         "qualitative_as_of": "2026-07-22"
@@ -2719,10 +2809,10 @@
         "NEM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 44.65,
-        "fair_value": 14.55,
-        "valuation_gap": 2.0687,
+        "as_of": "2026-07-24",
+        "current_price": 41.3,
+        "fair_value": 13.46,
+        "valuation_gap": 2.0684,
         "signal": "expensive",
         "narrative_score": -0.08,
         "qualitative_as_of": "2026-07-22"
@@ -2739,10 +2829,10 @@
         "NOC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 158.73,
-        "fair_value": 79.82,
-        "valuation_gap": 0.9886,
+        "as_of": "2026-07-24",
+        "current_price": 149.51,
+        "fair_value": 75.19,
+        "valuation_gap": 0.9884,
         "signal": "expensive",
         "narrative_score": -0.08,
         "qualitative_as_of": "2026-06-28"
@@ -2759,10 +2849,10 @@
         "GE"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 49.44,
-        "fair_value": 9.22,
-        "valuation_gap": 4.364,
+        "as_of": "2026-07-24",
+        "current_price": 47.35,
+        "fair_value": 8.93,
+        "valuation_gap": 4.3006,
         "signal": "expensive",
         "narrative_score": 0.12,
         "qualitative_as_of": "2026-06-28"
@@ -2819,10 +2909,10 @@
         "PWR"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 1031.19,
-        "fair_value": 514.97,
-        "valuation_gap": 1.0024,
+        "as_of": "2026-07-24",
+        "current_price": 1014.75,
+        "fair_value": 512.63,
+        "valuation_gap": 0.9795,
         "signal": "expensive",
         "narrative_score": 0.34,
         "qualitative_as_of": "2026-07-17"
@@ -2840,10 +2930,10 @@
         "298040.KS"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 415.13,
-        "fair_value": 206.77,
-        "valuation_gap": 1.0077,
+        "as_of": "2026-07-24",
+        "current_price": 404.07,
+        "fair_value": 204.27,
+        "valuation_gap": 0.9781,
         "signal": "expensive",
         "narrative_score": 0.32,
         "qualitative_as_of": "2026-07-17"
@@ -2860,10 +2950,10 @@
         "010120.KS"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 304.04,
-        "fair_value": 93.38,
-        "valuation_gap": 2.2559,
+        "as_of": "2026-07-24",
+        "current_price": 290.36,
+        "fair_value": 91.12,
+        "valuation_gap": 2.1867,
         "signal": "expensive",
         "narrative_score": 0.34,
         "qualitative_as_of": "2026-07-17"
@@ -2879,10 +2969,10 @@
         "ETN"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 653.8,
-        "fair_value": 180.76,
-        "valuation_gap": 2.617,
+        "as_of": "2026-07-24",
+        "current_price": 625.84,
+        "fair_value": 176.56,
+        "valuation_gap": 2.5446,
         "signal": "expensive",
         "narrative_score": 0.37,
         "qualitative_as_of": "2026-07-17"
@@ -2897,10 +2987,10 @@
         "GEV"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 217.3,
-        "fair_value": 90.82,
-        "valuation_gap": 1.3926,
+        "as_of": "2026-07-24",
+        "current_price": 184.89,
+        "fair_value": 77.27,
+        "valuation_gap": 1.3928,
         "signal": "expensive",
         "narrative_score": 0.02,
         "qualitative_as_of": "2026-07-17"
@@ -2916,8 +3006,8 @@
         "034020.KS"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 44.0,
+        "as_of": "2026-07-24",
+        "current_price": 40.25,
         "fair_value": null,
         "valuation_gap": null,
         "signal": "n/a",
@@ -3017,10 +3107,10 @@
         "ANET"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 209.32,
-        "fair_value": 92.79,
-        "valuation_gap": 1.2558,
+        "as_of": "2026-07-24",
+        "current_price": 194.23,
+        "fair_value": 89.31,
+        "valuation_gap": 1.1747,
         "signal": "expensive",
         "narrative_score": 0.05,
         "qualitative_as_of": "2026-07-21"
@@ -3058,10 +3148,10 @@
         "HSAI"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 7.47,
-        "fair_value": 8.96,
-        "valuation_gap": -0.1663,
+        "as_of": "2026-07-24",
+        "current_price": 8.05,
+        "fair_value": 9.65,
+        "valuation_gap": -0.1658,
         "signal": "undervalued",
         "narrative_score": 0.14,
         "qualitative_as_of": "2026-07-21"
@@ -3077,10 +3167,10 @@
         "ARM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 373.52,
-        "fair_value": 200.27,
-        "valuation_gap": 0.8651,
+        "as_of": "2026-07-24",
+        "current_price": 373.47,
+        "fair_value": 200.25,
+        "valuation_gap": 0.865,
         "signal": "expensive",
         "narrative_score": -0.05,
         "qualitative_as_of": "2026-07-21"
@@ -3096,10 +3186,10 @@
         "ARM"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 330.46,
-        "fair_value": 132.27,
-        "valuation_gap": 1.4984,
+        "as_of": "2026-07-24",
+        "current_price": 326.24,
+        "fair_value": 131.4,
+        "valuation_gap": 1.4827,
         "signal": "expensive",
         "narrative_score": 0.0,
         "qualitative_as_of": "2026-07-21"
@@ -3117,10 +3207,10 @@
         "AMD"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 283.04,
-        "fair_value": 36.7,
-        "valuation_gap": 6.7123,
+        "as_of": "2026-07-24",
+        "current_price": 260.01,
+        "fair_value": 34.8,
+        "valuation_gap": 6.4722,
         "signal": "expensive",
         "narrative_score": 0.13,
         "qualitative_as_of": "2026-07-21"
@@ -3176,10 +3266,10 @@
         "INTC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 65.33,
-        "fair_value": 47.1,
-        "valuation_gap": 0.3871,
+        "as_of": "2026-07-24",
+        "current_price": 64.96,
+        "fair_value": 46.98,
+        "valuation_gap": 0.3826,
         "signal": "expensive",
         "narrative_score": 0.16,
         "qualitative_as_of": "2026-07-21"
@@ -3215,10 +3305,10 @@
         "KLAC"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 199.58,
-        "fair_value": 87.07,
-        "valuation_gap": 1.2922,
+        "as_of": "2026-07-24",
+        "current_price": 188.09,
+        "fair_value": 86.72,
+        "valuation_gap": 1.1689,
         "signal": "expensive",
         "narrative_score": 0.17,
         "qualitative_as_of": "2026-07-21"
@@ -3236,10 +3326,10 @@
         "TOELY"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 218.73,
-        "fair_value": 88.59,
-        "valuation_gap": 1.469,
+        "as_of": "2026-07-24",
+        "current_price": 210.52,
+        "fair_value": 87.2,
+        "valuation_gap": 1.4143,
         "signal": "expensive",
         "narrative_score": 0.06,
         "qualitative_as_of": "2026-07-21"
@@ -3351,10 +3441,10 @@
         "MRVL"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 176.61,
-        "fair_value": 76.0,
-        "valuation_gap": 1.3237,
+        "as_of": "2026-07-24",
+        "current_price": 173.99,
+        "fair_value": 75.52,
+        "valuation_gap": 1.3039,
         "signal": "expensive",
         "narrative_score": 0.46,
         "qualitative_as_of": "2026-07-06"
@@ -3370,10 +3460,10 @@
         "MRVL"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 313.22,
-        "fair_value": 100.62,
-        "valuation_gap": 2.1128,
+        "as_of": "2026-07-24",
+        "current_price": 282.39,
+        "fair_value": 94.11,
+        "valuation_gap": 2.0006,
         "signal": "expensive",
         "narrative_score": 0.27,
         "qualitative_as_of": "2026-07-06"
@@ -3386,10 +3476,10 @@
       "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
       "competitors_in_watchlist": [],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 1397.15,
-        "fair_value": 439.07,
-        "valuation_gap": 2.1821,
+        "as_of": "2026-07-24",
+        "current_price": 1333.81,
+        "fair_value": 428.76,
+        "valuation_gap": 2.1109,
         "signal": "expensive",
         "narrative_score": 0.2,
         "qualitative_as_of": "2026-07-06"
@@ -3407,8 +3497,8 @@
         "MSFT"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 81.1,
+        "as_of": "2026-07-24",
+        "current_price": 71.88,
         "fair_value": null,
         "valuation_gap": null,
         "signal": "n/a",
@@ -3426,10 +3516,10 @@
         "ORCL"
       ],
       "valuation_summary": {
-        "as_of": "2026-07-23",
-        "current_price": 220.97,
-        "fair_value": 64.38,
-        "valuation_gap": 2.4323,
+        "as_of": "2026-07-24",
+        "current_price": 187.77,
+        "fair_value": 63.4,
+        "valuation_gap": 1.9618,
         "signal": "expensive",
         "narrative_score": 0.04,
         "qualitative_as_of": "2026-07-06"

@@ -7329,7 +7329,7 @@
     },
     {
       "date": "2023-11-01",
-      "value": 58.35
+      "value": 58.34
     },
     {
       "date": "2023-11-02",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 57.6
+    },
+    {
+      "date": "2026-07-24",
+      "value": 57.3
     }
   ],
   "financials": {
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 57.6,
+    "as_of": "2026-07-24",
+    "current_price": 57.3,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 43.78,
+        "fair_value": 43.55,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
       "graham_number": {
-        "fair_value": 22.75,
+        "fair_value": 22.69,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 22.12,
-    "valuation_gap": 1.6035,
+    "fair_value": 22.04,
+    "valuation_gap": 1.5995,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10313,10 +10317,10 @@
         "gap": 0.1516
       },
       {
-        "date": "2026-07-23",
-        "price": 57.6,
+        "date": "2026-07-24",
+        "price": 57.3,
         "fair_value": 47.64,
-        "gap": 0.2091
+        "gap": 0.2028
       }
     ],
     "qualitative": {

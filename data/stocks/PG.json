@@ -4709,7 +4709,7 @@
     },
     {
       "date": "2021-03-26",
-      "value": 117.62
+      "value": 117.63
     },
     {
       "date": "2021-03-29",
@@ -4717,7 +4717,7 @@
     },
     {
       "date": "2021-03-30",
-      "value": 117.62
+      "value": 117.63
     },
     {
       "date": "2021-03-31",
@@ -7189,7 +7189,7 @@
     },
     {
       "date": "2023-09-13",
-      "value": 141.47
+      "value": 141.46
     },
     {
       "date": "2023-09-14",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 145.88
+    },
+    {
+      "date": "2026-07-24",
+      "value": 147.41
     }
   ],
   "financials": {
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 145.88,
+    "as_of": "2026-07-24",
+    "current_price": 147.41,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 125.64,
+        "fair_value": 126.96,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 59.29,
+        "fair_value": 59.6,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 124.79,
-    "valuation_gap": 0.169,
+    "fair_value": 125.25,
+    "valuation_gap": 0.1769,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10313,10 +10317,10 @@
         "gap": -0.0107
       },
       {
-        "date": "2026-07-23",
-        "price": 145.88,
+        "date": "2026-07-24",
+        "price": 147.41,
         "fair_value": 150.48,
-        "gap": -0.0306
+        "gap": -0.0204
       }
     ],
     "qualitative": {

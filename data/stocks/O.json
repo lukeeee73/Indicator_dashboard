@@ -2113,7 +2113,7 @@
     },
     {
       "date": "2018-08-27",
-      "value": 38.69
+      "value": 38.68
     },
     {
       "date": "2018-08-28",
@@ -7201,7 +7201,7 @@
     },
     {
       "date": "2023-09-18",
-      "value": 45.86
+      "value": 45.87
     },
     {
       "date": "2023-09-19",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 64.72
+    },
+    {
+      "date": "2026-07-24",
+      "value": 65.6
     }
   ],
   "financials": {
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 64.72,
+    "as_of": "2026-07-24",
+    "current_price": 65.6,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 26.95,
+        "fair_value": 27.31,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 33.72,
+        "fair_value": 33.95,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 25.81,
-    "valuation_gap": 1.5077,
+    "fair_value": 25.96,
+    "valuation_gap": 1.5267,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10313,10 +10317,10 @@
         "gap": 1.9923
       },
       {
-        "date": "2026-07-23",
-        "price": 64.72,
+        "date": "2026-07-24",
+        "price": 65.6,
         "fair_value": 21.96,
-        "gap": 1.9472
+        "gap": 1.9872
       }
     ],
     "qualitative": {

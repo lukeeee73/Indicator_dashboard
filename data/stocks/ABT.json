@@ -1201,7 +1201,7 @@
     },
     {
       "date": "2017-09-29",
-      "value": 45.29
+      "value": 45.3
     },
     {
       "date": "2017-10-02",
@@ -6897,7 +6897,7 @@
     },
     {
       "date": "2023-05-30",
-      "value": 95.1
+      "value": 95.09
     },
     {
       "date": "2023-05-31",
@@ -7433,7 +7433,7 @@
     },
     {
       "date": "2023-12-08",
-      "value": 98.72
+      "value": 98.73
     },
     {
       "date": "2023-12-11",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 100.75
+    },
+    {
+      "date": "2026-07-24",
+      "value": 103.06
     }
   ],
   "financials": {
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 100.75,
+    "as_of": "2026-07-24",
+    "current_price": 103.06,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 94.86,
+        "fair_value": 97.03,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 45.07,
+        "fair_value": 45.59,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 65.28,
-    "valuation_gap": 0.5433,
+    "fair_value": 66.04,
+    "valuation_gap": 0.5606,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10235,10 +10239,10 @@
         "gap": 0.8101
       },
       {
-        "date": "2026-07-23",
-        "price": 100.75,
+        "date": "2026-07-24",
+        "price": 103.06,
         "fair_value": 55.62,
-        "gap": 0.8114
+        "gap": 0.8529
       }
     ],
     "qualitative": {
