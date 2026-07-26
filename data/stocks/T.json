@@ -4,26 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-07-18",
-      "value": 16.11
-    },
-    {
-      "date": "2016-07-19",
-      "value": 16.08
-    },
-    {
-      "date": "2016-07-20",
-      "value": 16.06
-    },
-    {
-      "date": "2016-07-21",
-      "value": 15.99
-    },
-    {
-      "date": "2016-07-22",
-      "value": 16.21
-    },
-    {
       "date": "2016-07-25",
       "value": 16.14
     },
@@ -121,7 +101,7 @@
     },
     {
       "date": "2016-08-26",
-      "value": 15.29
+      "value": 15.3
     },
     {
       "date": "2016-08-29",
@@ -10058,27 +10038,43 @@
     {
       "date": "2026-07-17",
       "value": 21.81
+    },
+    {
+      "date": "2026-07-20",
+      "value": 21.95
+    },
+    {
+      "date": "2026-07-21",
+      "value": 22.26
+    },
+    {
+      "date": "2026-07-22",
+      "value": 23.04
+    },
+    {
+      "date": "2026-07-23",
+      "value": 22.96
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 151543267328.0,
-      "pe_ratio": 7.343434,
-      "forward_pe": 8.541017,
-      "eps_ttm": 2.97,
-      "dividend_yield": 5.09,
-      "profit_margin": 0.16938,
-      "operating_margin": 0.22723,
-      "price_to_book": 1.3852016,
-      "return_on_equity": 0.18370001
+      "market_cap": 165348065280.0,
+      "pe_ratio": 7.963696,
+      "forward_pe": 9.399895,
+      "eps_ttm": 3.03,
+      "dividend_yield": 4.6,
+      "profit_margin": 0.16943,
+      "operating_margin": 0.24786,
+      "price_to_book": 1.502865,
+      "return_on_equity": 0.18339
     },
     "quarterly": [
       {
         "date": "2025-03-31",
-        "revenue": 30626000000.0,
-        "operating_income": 6258000000.0,
-        "net_income": 4351000000.0,
-        "eps": 0.61
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": null
       },
       {
         "date": "2025-06-30",
@@ -10107,112 +10103,41 @@
         "operating_income": 6658000000.0,
         "net_income": 3829000000.0,
         "eps": 0.54
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": 31558000000.0,
+        "operating_income": 7324000000.0,
+        "net_income": 4627000000.0,
+        "eps": 0.66
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-17",
-    "current_price": 21.81,
+    "as_of": "2026-07-23",
+    "current_price": 22.96,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 59.4,
+        "fair_value": 60.6,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 43.41,
+        "fair_value": 41.52,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 32.44,
+        "fair_value": 32.27,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
     "fair_value": 49.21,
-    "valuation_gap": -0.5568,
+    "valuation_gap": -0.5334,
     "signal": "deep_value",
     "gap_series_weekly": [
-      {
-        "date": "2026-01-02",
-        "price": 23.71,
-        "fair_value": 61.0,
-        "gap": -0.6113
-      },
-      {
-        "date": "2026-01-09",
-        "price": 23.16,
-        "fair_value": 61.0,
-        "gap": -0.6203
-      },
-      {
-        "date": "2026-01-16",
-        "price": 22.94,
-        "fair_value": 61.0,
-        "gap": -0.6239
-      },
-      {
-        "date": "2026-01-23",
-        "price": 23.04,
-        "fair_value": 61.0,
-        "gap": -0.6223
-      },
-      {
-        "date": "2026-01-30",
-        "price": 25.6,
-        "fair_value": 61.0,
-        "gap": -0.5803
-      },
-      {
-        "date": "2026-02-06",
-        "price": 26.49,
-        "fair_value": 61.0,
-        "gap": -0.5657
-      },
-      {
-        "date": "2026-02-13",
-        "price": 28.02,
-        "fair_value": 61.0,
-        "gap": -0.5407
-      },
-      {
-        "date": "2026-02-20",
-        "price": 27.32,
-        "fair_value": 61.0,
-        "gap": -0.5521
-      },
-      {
-        "date": "2026-02-27",
-        "price": 27.35,
-        "fair_value": 61.0,
-        "gap": -0.5516
-      },
-      {
-        "date": "2026-03-06",
-        "price": 27.97,
-        "fair_value": 61.0,
-        "gap": -0.5415
-      },
-      {
-        "date": "2026-03-13",
-        "price": 27.07,
-        "fair_value": 61.0,
-        "gap": -0.5562
-      },
-      {
-        "date": "2026-03-20",
-        "price": 27.65,
-        "fair_value": 61.0,
-        "gap": -0.5467
-      },
-      {
-        "date": "2026-03-27",
-        "price": 28.42,
-        "fair_value": 61.0,
-        "gap": -0.5341
-      },
       {
         "date": "2026-04-02",
         "price": 27.67,
@@ -10294,20 +10219,26 @@
       {
         "date": "2026-07-02",
         "price": 20.31,
-        "fair_value": 59.6,
-        "gap": -0.6592
+        "fair_value": 60.4,
+        "gap": -0.6637
       },
       {
         "date": "2026-07-10",
         "price": 21.13,
-        "fair_value": 59.6,
-        "gap": -0.6455
+        "fair_value": 60.4,
+        "gap": -0.6502
       },
       {
         "date": "2026-07-17",
         "price": 21.81,
-        "fair_value": 59.6,
-        "gap": -0.6341
+        "fair_value": 60.4,
+        "gap": -0.6389
+      },
+      {
+        "date": "2026-07-23",
+        "price": 22.96,
+        "fair_value": 60.4,
+        "gap": -0.6199
       }
     ],
     "qualitative": {

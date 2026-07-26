@@ -4,18 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-07-20",
-      "value": 149.89
-    },
-    {
-      "date": "2016-07-21",
-      "value": 148.31
-    },
-    {
-      "date": "2016-07-22",
-      "value": 148.63
-    },
-    {
       "date": "2016-07-25",
       "value": 148.63
     },
@@ -9726,18 +9714,34 @@
     {
       "date": "2026-07-20",
       "value": 3340.0
+    },
+    {
+      "date": "2026-07-21",
+      "value": 3670.0
+    },
+    {
+      "date": "2026-07-22",
+      "value": 3850.0
+    },
+    {
+      "date": "2026-07-23",
+      "value": 3875.0
+    },
+    {
+      "date": "2026-07-24",
+      "value": 3750.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 5331008094208.0,
-      "pe_ratio": 50.56775,
-      "forward_pe": 26.280846,
-      "eps_ttm": 66.05,
-      "dividend_yield": 1.59,
+      "market_cap": 5985413365760.0,
+      "pe_ratio": 56.81818,
+      "forward_pe": 28.977179,
+      "eps_ttm": 66.0,
+      "dividend_yield": 1.43,
       "profit_margin": 0.16923,
       "operating_margin": 0.15347,
-      "price_to_book": 13.659414,
+      "price_to_book": 15.336168,
       "return_on_equity": 0.25424
     },
     "quarterly": [
@@ -9779,28 +9783,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-20",
-    "current_price": 3340.0,
+    "as_of": "2026-07-24",
+    "current_price": 3750.0,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 1849.4,
+        "fair_value": 1848.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 2795.95,
+        "fair_value": 2847.07,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 602.82,
+        "fair_value": 602.59,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 1884.05,
-    "valuation_gap": 0.7728,
+    "fair_value": 1898.64,
+    "valuation_gap": 0.9751,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

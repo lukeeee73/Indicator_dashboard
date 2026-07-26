@@ -8586,18 +8586,34 @@
     {
       "date": "2026-07-17",
       "value": 26.87
+    },
+    {
+      "date": "2026-07-20",
+      "value": 26.84
+    },
+    {
+      "date": "2026-07-21",
+      "value": 26.58
+    },
+    {
+      "date": "2026-07-22",
+      "value": 26.58
+    },
+    {
+      "date": "2026-07-23",
+      "value": 26.32
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 29586026496.0,
-      "pe_ratio": 9.202055,
-      "forward_pe": 9.155026,
+      "market_cap": 29431873536.0,
+      "pe_ratio": 9.154109,
+      "forward_pe": 9.122867,
       "eps_ttm": 2.92,
-      "dividend_yield": 6.7,
+      "dividend_yield": 6.73,
       "profit_margin": 0.7683,
       "operating_margin": 1.0749099,
-      "price_to_book": 1.0189996,
+      "price_to_book": 1.0136904,
       "return_on_equity": 0.11331
     },
     "quarterly": [
@@ -8646,8 +8662,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-17",
-    "current_price": 26.87,
+    "as_of": "2026-07-23",
+    "current_price": 26.32,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -8656,18 +8672,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 46.96,
+        "fair_value": 46.16,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 41.62,
+        "fair_value": 41.3,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 48.69,
-    "valuation_gap": -0.4482,
+    "fair_value": 48.39,
+    "valuation_gap": -0.4561,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -8843,6 +8859,12 @@
         "price": 26.87,
         "fair_value": 52.56,
         "gap": -0.4888
+      },
+      {
+        "date": "2026-07-23",
+        "price": 26.32,
+        "fair_value": 52.56,
+        "gap": -0.4992
       }
     ],
     "qualitative": {
