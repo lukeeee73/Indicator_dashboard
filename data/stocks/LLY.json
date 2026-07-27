@@ -2105,7 +2105,7 @@
     },
     {
       "date": "2018-08-23",
-      "value": 94.56
+      "value": 94.57
     },
     {
       "date": "2018-08-24",
@@ -2233,7 +2233,7 @@
     },
     {
       "date": "2018-10-09",
-      "value": 104.15
+      "value": 104.16
     },
     {
       "date": "2018-10-10",
@@ -3029,7 +3029,7 @@
     },
     {
       "date": "2019-07-26",
-      "value": 99.25
+      "value": 99.26
     },
     {
       "date": "2019-07-29",
@@ -3281,7 +3281,7 @@
     },
     {
       "date": "2019-10-24",
-      "value": 99.41
+      "value": 99.42
     },
     {
       "date": "2019-10-25",
@@ -6013,7 +6013,7 @@
     },
     {
       "date": "2022-07-13",
-      "value": 311.93
+      "value": 311.94
     },
     {
       "date": "2022-07-14",
@@ -6081,7 +6081,7 @@
     },
     {
       "date": "2022-08-05",
-      "value": 291.48
+      "value": 291.49
     },
     {
       "date": "2022-08-08",
@@ -6321,7 +6321,7 @@
     },
     {
       "date": "2022-10-31",
-      "value": 351.42
+      "value": 351.41
     },
     {
       "date": "2022-11-01",
@@ -7009,7 +7009,7 @@
     },
     {
       "date": "2023-07-11",
-      "value": 430.12
+      "value": 430.13
     },
     {
       "date": "2023-07-12",
@@ -7153,7 +7153,7 @@
     },
     {
       "date": "2023-08-30",
-      "value": 537.59
+      "value": 537.58
     },
     {
       "date": "2023-08-31",
@@ -10054,13 +10054,17 @@
     {
       "date": "2026-07-23",
       "value": 1185.87
+    },
+    {
+      "date": "2026-07-24",
+      "value": 1196.03
     }
   ],
   "financials": {
     "snapshot": {
       "market_cap": 1066549444608.0,
       "pe_ratio": 42.548203,
-      "forward_pe": 26.658058,
+      "forward_pe": 26.529959,
       "eps_ttm": 28.11,
       "dividend_yield": 0.58,
       "profit_margin": 0.34986,
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 1185.87,
+    "as_of": "2026-07-24",
+    "current_price": 1196.03,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 711.75,
+        "fair_value": 721.32,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 147.97,
+        "fair_value": 148.61,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 496.11,
-    "valuation_gap": 1.3903,
+    "fair_value": 499.11,
+    "valuation_gap": 1.3963,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10313,10 +10317,10 @@
         "gap": 1.327
       },
       {
-        "date": "2026-07-23",
-        "price": 1185.87,
+        "date": "2026-07-24",
+        "price": 1196.03,
         "fair_value": 506.7,
-        "gap": 1.3404
+        "gap": 1.3604
       }
     ],
     "qualitative": {

@@ -4601,7 +4601,7 @@
     },
     {
       "date": "2021-02-17",
-      "value": 113.04
+      "value": 113.03
     },
     {
       "date": "2021-02-18",
@@ -5021,7 +5021,7 @@
     },
     {
       "date": "2021-07-19",
-      "value": 132.98
+      "value": 132.99
     },
     {
       "date": "2021-07-20",
@@ -6125,7 +6125,7 @@
     },
     {
       "date": "2022-08-22",
-      "value": 156.49
+      "value": 156.5
     },
     {
       "date": "2022-08-23",
@@ -7809,7 +7809,7 @@
     },
     {
       "date": "2024-04-25",
-      "value": 162.7
+      "value": 162.69
     },
     {
       "date": "2024-04-26",
@@ -10054,13 +10054,17 @@
     {
       "date": "2026-07-23",
       "value": 134.95
+    },
+    {
+      "date": "2026-07-24",
+      "value": 136.64
     }
   ],
   "financials": {
     "snapshot": {
       "market_cap": 186650247168.0,
       "pe_ratio": 17.931759,
-      "forward_pe": 15.204691,
+      "forward_pe": 15.218678,
       "eps_ttm": 7.62,
       "dividend_yield": 4.33,
       "profit_margin": 0.10785,
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 134.95,
+    "as_of": "2026-07-24",
+    "current_price": 136.64,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10124,19 +10128,19 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 159.76,
+        "fair_value": 161.61,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 52.34,
+        "fair_value": 52.66,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 142.22,
-    "valuation_gap": -0.0511,
-    "signal": "undervalued",
+    "fair_value": 142.83,
+    "valuation_gap": -0.0434,
+    "signal": "fair",
     "gap_series_weekly": [
       {
         "date": "2026-04-02",
@@ -10235,10 +10239,10 @@
         "gap": -0.1831
       },
       {
-        "date": "2026-07-23",
-        "price": 134.95,
+        "date": "2026-07-24",
+        "price": 136.64,
         "fair_value": 167.86,
-        "gap": -0.1961
+        "gap": -0.186
       }
     ],
     "qualitative": {

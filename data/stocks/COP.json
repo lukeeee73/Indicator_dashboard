@@ -3569,7 +3569,7 @@
     },
     {
       "date": "2020-02-07",
-      "value": 45.86
+      "value": 45.87
     },
     {
       "date": "2020-02-10",
@@ -10054,13 +10054,17 @@
     {
       "date": "2026-07-23",
       "value": 120.2
+    },
+    {
+      "date": "2026-07-24",
+      "value": 120.26
     }
   ],
   "financials": {
     "snapshot": {
       "market_cap": 146512035840.0,
       "pe_ratio": 20.38305,
-      "forward_pe": 13.413626,
+      "forward_pe": 13.360292,
       "eps_ttm": 5.9,
       "dividend_yield": 2.79,
       "profit_margin": 0.12331,
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 120.2,
+    "as_of": "2026-07-24",
+    "current_price": 120.26,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 98.57,
+        "fair_value": 99.01,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
       "graham_number": {
-        "fair_value": 83.84,
+        "fair_value": 83.86,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 81.74,
-    "valuation_gap": 0.4705,
+    "fair_value": 81.88,
+    "valuation_gap": 0.4688,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10313,10 +10317,10 @@
         "gap": 0.6229
       },
       {
-        "date": "2026-07-23",
-        "price": 120.2,
+        "date": "2026-07-24",
+        "price": 120.26,
         "fair_value": 70.68,
-        "gap": 0.7006
+        "gap": 0.7015
       }
     ],
     "qualitative": {

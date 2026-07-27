@@ -6221,7 +6221,7 @@
     },
     {
       "date": "2022-09-26",
-      "value": 96.92
+      "value": 96.93
     },
     {
       "date": "2022-09-27",
@@ -8853,7 +8853,7 @@
     },
     {
       "date": "2025-05-12",
-      "value": 253.94
+      "value": 253.95
     },
     {
       "date": "2025-05-13",
@@ -9217,7 +9217,7 @@
     },
     {
       "date": "2025-09-22",
-      "value": 306.57
+      "value": 306.58
     },
     {
       "date": "2025-09-23",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 349.9
+    },
+    {
+      "date": "2026-07-24",
+      "value": 353.21
     }
   ],
   "financials": {
@@ -10121,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 349.9,
+    "as_of": "2026-07-24",
+    "current_price": 353.21,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10131,18 +10135,18 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 294.06,
+        "fair_value": 296.84,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 263.1,
+        "fair_value": 264.35,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 304.29,
-    "valuation_gap": 0.1499,
+    "fair_value": 305.37,
+    "valuation_gap": 0.1567,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10242,10 +10246,10 @@
         "gap": 0.0439
       },
       {
-        "date": "2026-07-23",
-        "price": 349.9,
+        "date": "2026-07-24",
+        "price": 353.21,
         "fair_value": 326.76,
-        "gap": 0.0708
+        "gap": 0.0809
       }
     ],
     "qualitative": {

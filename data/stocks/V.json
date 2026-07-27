@@ -629,7 +629,7 @@
     },
     {
       "date": "2017-03-08",
-      "value": 83.38
+      "value": 83.39
     },
     {
       "date": "2017-03-09",
@@ -2449,7 +2449,7 @@
     },
     {
       "date": "2018-12-27",
-      "value": 125.2
+      "value": 125.21
     },
     {
       "date": "2018-12-28",
@@ -3573,7 +3573,7 @@
     },
     {
       "date": "2020-02-10",
-      "value": 196.62
+      "value": 196.63
     },
     {
       "date": "2020-02-11",
@@ -4657,7 +4657,7 @@
     },
     {
       "date": "2021-03-09",
-      "value": 211.96
+      "value": 211.97
     },
     {
       "date": "2021-03-10",
@@ -8045,7 +8045,7 @@
     },
     {
       "date": "2024-07-22",
-      "value": 263.69
+      "value": 263.7
     },
     {
       "date": "2024-07-23",
@@ -9177,7 +9177,7 @@
     },
     {
       "date": "2025-09-08",
-      "value": 340.22
+      "value": 340.21
     },
     {
       "date": "2025-09-09",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 351.6
+    },
+    {
+      "date": "2026-07-24",
+      "value": 355.74
     }
   ],
   "financials": {
@@ -10107,8 +10111,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 351.6,
+    "as_of": "2026-07-24",
+    "current_price": 355.74,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10117,18 +10121,18 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 176.38,
+        "fair_value": 178.45,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 68.9,
+        "fair_value": 69.3,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 146.84,
-    "valuation_gap": 1.3944,
+    "fair_value": 147.54,
+    "valuation_gap": 1.4111,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10306,10 +10310,10 @@
         "gap": 1.231
       },
       {
-        "date": "2026-07-23",
-        "price": 351.6,
+        "date": "2026-07-24",
+        "price": 355.74,
         "fair_value": 160.72,
-        "gap": 1.1877
+        "gap": 1.2134
       }
     ],
     "qualitative": {

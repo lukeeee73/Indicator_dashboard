@@ -4,14 +4,6 @@
   "group": "반도체 — 장비 · 소재",
   "series": [
     {
-      "date": "2016-07-25",
-      "value": 9.06
-    },
-    {
-      "date": "2016-07-26",
-      "value": 9.14
-    },
-    {
       "date": "2016-07-27",
       "value": 9.31
     },
@@ -10242,18 +10234,22 @@
     {
       "date": "2026-07-24",
       "value": 227.0
+    },
+    {
+      "date": "2026-07-27",
+      "value": 219.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 17975709696.0,
-      "pe_ratio": 86.97318,
-      "forward_pe": 35.17068,
+      "market_cap": 17340743680.0,
+      "pe_ratio": 83.90805,
+      "forward_pe": 33.84827,
       "eps_ttm": 2.61,
       "dividend_yield": 0.7,
       "profit_margin": 0.28435,
       "operating_margin": 0.43537998,
-      "price_to_book": 32.003384,
+      "price_to_book": 30.875511,
       "return_on_equity": 0.44873002
     },
     "quarterly": [
@@ -10302,8 +10298,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 227.0,
+    "as_of": "2026-07-27",
+    "current_price": 219.0,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10312,7 +10308,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 141.99,
+        "fair_value": 142.34,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -10322,8 +10318,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 83.22,
-    "valuation_gap": 1.7277,
+    "fair_value": 83.32,
+    "valuation_gap": 1.6283,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10505,6 +10501,12 @@
         "price": 227.0,
         "fair_value": 55.72,
         "gap": 3.0739
+      },
+      {
+        "date": "2026-07-27",
+        "price": 219.0,
+        "fair_value": 55.72,
+        "gap": 2.9304
       }
     ],
     "qualitative": {

@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 158.73
+    },
+    {
+      "date": "2026-07-24",
+      "value": 149.51
     }
   ],
   "financials": {
@@ -10074,28 +10078,28 @@
         "revenue": null,
         "operating_income": null,
         "net_income": null,
-        "eps": null
+        "eps": 0.27
       },
       {
         "date": "2025-01-31",
         "revenue": null,
         "operating_income": null,
         "net_income": null,
-        "eps": null
+        "eps": -0.06
       },
       {
         "date": "2025-04-30",
         "revenue": 275050000.0,
         "operating_income": 32176000.0,
         "net_income": 16664000.0,
-        "eps": 0.59
+        "eps": null
       },
       {
         "date": "2025-07-31",
         "revenue": 454676000.0,
         "operating_income": -69272000.0,
         "net_income": -67370000.0,
-        "eps": -1.44
+        "eps": null
       },
       {
         "date": "2025-10-31",
@@ -10121,18 +10125,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 158.73,
+    "as_of": "2026-07-24",
+    "current_price": 149.51,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 79.82,
+        "fair_value": 75.19,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 79.82,
-    "valuation_gap": 0.9886,
+    "fair_value": 75.19,
+    "valuation_gap": 0.9884,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

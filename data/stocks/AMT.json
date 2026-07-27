@@ -4997,7 +4997,7 @@
     },
     {
       "date": "2021-07-09",
-      "value": 238.17
+      "value": 238.16
     },
     {
       "date": "2021-07-12",
@@ -5137,7 +5137,7 @@
     },
     {
       "date": "2021-08-27",
-      "value": 244.2
+      "value": 244.19
     },
     {
       "date": "2021-08-30",
@@ -5925,7 +5925,7 @@
     },
     {
       "date": "2022-06-09",
-      "value": 225.91
+      "value": 225.9
     },
     {
       "date": "2022-06-10",
@@ -6117,7 +6117,7 @@
     },
     {
       "date": "2022-08-18",
-      "value": 240.61
+      "value": 240.6
     },
     {
       "date": "2022-08-19",
@@ -6205,7 +6205,7 @@
     },
     {
       "date": "2022-09-20",
-      "value": 207.78
+      "value": 207.77
     },
     {
       "date": "2022-09-21",
@@ -6341,7 +6341,7 @@
     },
     {
       "date": "2022-11-07",
-      "value": 177.73
+      "value": 177.72
     },
     {
       "date": "2022-11-08",
@@ -6441,7 +6441,7 @@
     },
     {
       "date": "2022-12-13",
-      "value": 196.52
+      "value": 196.53
     },
     {
       "date": "2022-12-14",
@@ -9121,7 +9121,7 @@
     },
     {
       "date": "2025-08-18",
-      "value": 195.58
+      "value": 195.57
     },
     {
       "date": "2025-08-19",
@@ -10054,6 +10054,10 @@
     {
       "date": "2026-07-23",
       "value": 164.65
+    },
+    {
+      "date": "2026-07-24",
+      "value": 166.67
     }
   ],
   "financials": {
@@ -10114,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-23",
-    "current_price": 164.65,
+    "as_of": "2026-07-24",
+    "current_price": 166.67,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10128,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 108.39,
+        "fair_value": 109.72,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 32.28,
+        "fair_value": 32.47,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 94.77,
-    "valuation_gap": 0.7373,
+    "fair_value": 95.21,
+    "valuation_gap": 0.7506,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10313,10 +10317,10 @@
         "gap": 0.5263
       },
       {
-        "date": "2026-07-23",
-        "price": 164.65,
+        "date": "2026-07-24",
+        "price": 166.67,
         "fair_value": 111.42,
-        "gap": 0.4777
+        "gap": 0.4959
       }
     ],
     "qualitative": {
