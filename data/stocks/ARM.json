@@ -3136,35 +3136,45 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-21",
-      "narrative_score": 0.13,
-      "summary_kr": "Arm은 하이퍼스케일러 CPU 연산에서 점유율을 계속 넓히며 인텔의 x86 지배력을 잠식하는 구조적 성장 서사가 이어지고 있으나, HSBC의 밸류에이션 경고성 다운그레이드와 반도체 업종 전반의 차익실현으로 주가는 조정을 받고 있다. 7월29일 실적 발표가 다음 확인 지점이다.",
+      "as_of": "2026-07-28",
+      "narrative_score": 0.03,
+      "summary_kr": "Arm 주가가 밸류에이션 경계감 속에 한 달간 28% 조정받으며 7월29일 실적 발표를 앞두고 있다. CEO 르네 하스가 언급한 AGI CPU 수요 급증(5주 만에 예약 2배)이 실적에서 숫자로 확인되는지가 관건으로, 펀더멘털과 주가 사이 팽팽한 줄다리기가 이어지는 국면이다.",
       "key_events": [
-        "서버 CPU 시장서 Arm 점유율 17.7%로 확대, 인텔은 54.9%로 하락",
-        "HSBC, 밸류에이션 부담 이유로 매수→보유 강등(목표가는 315달러로 상향)",
-        "7월29일 1분기(FY2027) 실적 발표 예정"
+        "실적 발표 앞두고 한 달간 주가 -28%",
+        "CEO 르네 하스, AGI CPU 수요 5주 만에 2배(20억달러) 언급",
+        "7/29 FY2027 1분기 실적 발표 예정"
       ],
       "risks": [
-        "퀄컴과의 Nuvia 소송 항소심 및 별도 소송 진행 중",
-        "파운드리(위탁생산) 공급 병목으로 단기 매출 성장 제약 가능성(HSBC 지적)"
+        "밸류에이션 부담이 실적 호조에도 추가 조정으로 이어질 가능성",
+        "AGI CPU 수요가 실제 로열티 매출로 확인되지 않을 경우 서사 훼손",
+        "파운드리 공급 병목이 단기 매출 반영을 제약할 가능성"
       ],
-      "news_count": 4,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "INTC",
-          "headline": "Intel's server CPU share slips to 54.9% as AMD and Arm widen the gap",
-          "implication_for_target": "인텔의 x86 서버 지배력 약화는 Arm 아키텍처 채택 확대로 직결되며 로열티(칩 팔릴 때마다 받는 라이선스 수수료) 매출에 구조적 긍정 요인"
+          "headline": "인텔 2분기 데이터센터·AI 매출 +59% 급증했으나 설비투자 200억달러 확대 부담으로 주가 급락 후 반등",
+          "implication_for_target": "인텔의 서버 시장 방어 노력은 확인됐지만, Arm 설계 기반 서버 칩으로의 구조적 점유율 이전 흐름 자체를 바꾸지는 못했다는 평가"
         },
         {
-          "ticker": "SNPS",
-          "headline": "Synopsys, Cadence shares hit by Kimi K3 AI chip-design demo fears",
-          "implication_for_target": "AI가 칩 설계 도구를 대체할 수 있다는 우려는 Arm의 IP 라이선스 사업 모델에도 장기적으로 유사한 disruption 서사를 자극할 수 있음"
+          "ticker": "AMD",
+          "headline": "AMD, 마이크로소프트 애저에 Helios AI 인프라 공급 확대 — 주가 +7.9%",
+          "implication_for_target": "AMD의 하이퍼스케일러 공급 확대는 x86 진영의 반격이나, Arm 아키텍처 채택 확산이라는 구조적 흐름과는 다른 축의 경쟁"
+        },
+        {
+          "ticker": "CDNS",
+          "headline": "케이던스 2분기 실적 서프라이즈·가이던스 상향, 주가 +4.37%",
+          "implication_for_target": "반도체 설계 관련주 전반의 밸류에이션 경계감 속에서도 실적으로 방어한 사례 — Arm의 7/29 실적에 대한 시장 기대치를 간접적으로 높일 수 있음"
         }
       ],
       "history": [
         {
           "date": "2026-07-21",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-07-28",
+          "narrative_score": 0.03
         }
       ]
     }

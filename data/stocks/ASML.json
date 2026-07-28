@@ -10246,30 +10246,29 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-21",
-      "narrative_score": 0.25,
-      "summary_kr": "ASML은 7/15 Q2 실적에서 연간 가이던스를 올해 두 번째로 상향(€43~45B)했고, 7/20에는 인텔이 High-NA EUV로 18A 공정 리스크 생산에 들어갔다는 소식에 52주 신고가를 기록했다. EUV 독점 지위가 재확인되는 국면이나, 중국 매출 비중 하락(19%→14%)이 보여주듯 수출통제 리스크는 여전히 살아있다.",
+      "as_of": "2026-07-28",
+      "narrative_score": -0.12,
+      "summary_kr": "중국의 국영 후원 기업이 자체 DUV 노광장비 양산을 시작했다는 보도로 ASML 주가가 8% 넘게 급락했다. EUV(최첨단) 독점 지위는 당장 위협받지 않지만 '반도체를 만들려면 무조건 ASML'이라는 서사에 처음으로 균열이 생긴 사건이다. 한편 인텔 7/23 실적에서 18A 수율이 65%→85%로 개선되고 파운드리 매출이 +31% 늘며, ASML의 High-NA EUV 장비 수요 근거는 오히려 재확인됐다.",
       "key_events": [
-        "Q2 실적 발표 및 연간 가이던스 재상향 (€43~45B)",
-        "인텔 18A-P 리스크 생산 진입 확인, 52주 신고가",
-        "中 매출 비중 19%→14%로 하락"
+        "中 국영 후원 DUV 노광장비 양산 개시 보도",
+        "ASML 주가 -8.4%",
+        "인텔 18A 수율 65%→85%, 파운드리 매출 +31% (7/23 실적)"
       ],
       "risks": [
-        "미국의 대중국 수출통제 추가 강화 가능성",
-        "인텔 7/23 실적에서 18A 수요가 실제 매출로 이어지는지 확인 필요",
-        "반도체 장비 섹터 전반의 AI 투자 지속가능성 논쟁"
+        "中 자체 노광장비 생태계가 저가형 DUV 시장부터 ASML 점유율을 잠식할 가능성",
+        "EUV(최선단)는 당장 안전하나 장기 독점 서사 훼손"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "AMAT",
-          "headline": "AMAT CEO, 나이케이 아시아 인터뷰서 고객사 장비 수요 전망이 2030년까지 이어진다고 언급 — 주가 +8%",
-          "implication_for_target": "동일 WFE(반도체 장비 지출) 슈퍼사이클 서사를 공유 — ASML EUV 수요 장기 가시성에도 긍정적 참고 지표"
+          "headline": "HSBC and UBS raise Applied Materials price targets to $683/$705, citing 2028 WFE forecast of $272B (+25% YoY)",
+          "implication_for_target": "WFE(반도체 장비 지출) 사이클 자체는 여전히 강하다는 신호 — ASML 매출 가시성에도 참고가 되지만 개별 경쟁 리스크(中 DUV)와는 별개 이슈."
         },
         {
           "ticker": "KLAC",
-          "headline": "Cantor Fitzgerald, KLA 목표가 $325(스트리트 최고치)로 상향 — AI發 반도체 장비 업사이클이 2030년 $3.5조 규모까지 확대될 것으로 전망",
-          "implication_for_target": "장비 섹터 전반에 대한 장기 강세 컨센서스 — ASML의 독점적 EUV 지위에 대한 밸류에이션 정당화에도 참고"
+          "headline": "KLA shares fall ~5.9% on same China DUV report; China accounts for roughly a third of KLA revenue",
+          "implication_for_target": "장비 3사 모두 동반 하락했으나 ASML의 中 매출 비중(14%)은 KLA(~33%)보다 낮아 상대적으로 덜 취약."
         }
       ],
       "history": [
@@ -10312,6 +10311,10 @@
         {
           "date": "2026-07-21",
           "narrative_score": 0.25
+        },
+        {
+          "date": "2026-07-28",
+          "narrative_score": -0.12
         }
       ]
     }

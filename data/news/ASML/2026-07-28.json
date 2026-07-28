@@ -1,0 +1,57 @@
+{
+  "ticker": "ASML",
+  "date": "2026-07-28",
+  "as_of_utc": "2026-07-28T09:00:00Z",
+  "news": [
+    {
+      "title": "ASML Shares Fall Sharply After Report of Chinese State-Backed DUV Lithography Rival",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/news/4618749-unnamed-chinese-company-begins-developing-advanced-chip-making-machines-asml-drops-report",
+      "published": "2026-07-27T14:30:00Z",
+      "summary": "中 상하이 소재 국영 후원 기업이 자체 DUV(심자외선) 노광장비 양산을 시작했다는 보도에 ASML 주가가 하루 만에 8% 이상 급락했다.",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "China's Homegrown DUV Lithography Machines Target SMIC, Hua Hong, ChangXin Memory Deliveries in 2026-2027",
+      "source": "Yahoo Finance (CA)",
+      "url": "https://ca.finance.yahoo.com/news/chip-stocks-slide-china-advances-161500744.html",
+      "published": "2026-07-27T16:15:00Z",
+      "summary": "해당 중국 기업은 올해 DUV 장비 5대, 내년 20대까지 늘려 SMIC·화홍반도체·창신메모리에 납품할 계획. ASML의 EUV 독점은 아직 안전하지만 저가형 DUV 시장부터 잠식 조짐.",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "ASML Still Looks ~42% Overvalued on GF Value Model Despite China Competition Selloff",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/8980729/asml-looks-421-overvalued-on-gf-value-amid-chinese-duv-lithography-push",
+      "published": "2026-07-27T20:00:00Z",
+      "summary": "주가 급락에도 GuruFocus 밸류에이션 모델은 ASML이 여전히 약 42% 고평가 상태라고 진단했다.",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMAT",
+      "headline": "HSBC and UBS raise Applied Materials price targets to $683/$705, citing 2028 WFE forecast of $272B (+25% YoY)",
+      "implication_for_target": "WFE(반도체 장비 지출) 사이클 자체는 여전히 강하다는 신호 — ASML 매출 가시성에도 참고가 되지만 개별 경쟁 리스크(中 DUV)와는 별개 이슈."
+    },
+    {
+      "ticker": "KLAC",
+      "headline": "KLA shares fall ~5.9% on same China DUV report; China accounts for roughly a third of KLA revenue",
+      "implication_for_target": "장비 3사 모두 동반 하락했으나 ASML의 中 매출 비중(14%)은 KLA(~33%)보다 낮아 상대적으로 덜 취약."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": -0.35,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": -0.12,
+  "summary_kr": "중국의 국영 후원 기업이 자체 DUV 노광장비 양산을 시작했다는 보도로 ASML 주가가 8% 넘게 급락했다. EUV(최첨단) 독점 지위는 당장 위협받지 않지만 '반도체를 만들려면 무조건 ASML'이라는 서사에 처음으로 균열이 생긴 사건이다. 한편 인텔 7/23 실적에서 18A 수율이 65%→85%로 개선되고 파운드리 매출이 +31% 늘며, ASML의 High-NA EUV 장비 수요 근거는 오히려 재확인됐다.",
+  "key_events": ["中 국영 후원 DUV 노광장비 양산 개시 보도", "ASML 주가 -8.4%", "인텔 18A 수율 65%→85%, 파운드리 매출 +31% (7/23 실적)"],
+  "risks": ["中 자체 노광장비 생태계가 저가형 DUV 시장부터 ASML 점유율을 잠식할 가능성", "EUV(최선단)는 당장 안전하나 장기 독점 서사 훼손"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ASML%20-%20ASML%20Holding%20NV.md"
+}

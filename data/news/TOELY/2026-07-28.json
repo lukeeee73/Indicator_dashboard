@@ -1,0 +1,48 @@
+{
+  "ticker": "TOELY",
+  "date": "2026-07-28",
+  "as_of_utc": "2026-07-28T09:00:00Z",
+  "news": [
+    {
+      "title": "Chip-Equipment Stocks Slide as China Advances Domestic Lithography and Memory Production",
+      "source": "Yahoo Finance (CA)",
+      "url": "https://ca.finance.yahoo.com/news/chip-stocks-slide-china-advances-161500744.html",
+      "published": "2026-07-27T16:15:00Z",
+      "summary": "中 국영 후원 기업의 DUV 노광장비 양산 소식에 미국 장비주(ASML·AMAT·LRCX·KLA)가 일제히 하락 — 도쿄일렉트론의 EUV용 코터/디벨로퍼(감광액 도포·현상 장비)도 노광 공정과 짝을 이뤄 간접 영향권.",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "China's Homegrown DUV Machines Aim to Reduce Reliance on Western Fab Equipment Suppliers",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/news/4618749-unnamed-chinese-company-begins-developing-advanced-chip-making-machines-asml-drops-report",
+      "published": "2026-07-27T14:30:00Z",
+      "summary": "SiCarrier·화웨이 관련설이 도는 중국 국영 후원 기업이 DUV 노광장비 양산에 착수 — 성공 시 中 파운드리들이 서방 장비(TOELY 포함) 의존도를 낮출 유인이 커진다.",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "ASML",
+      "headline": "ASML falls 8.4% on China DUV competitor report",
+      "implication_for_target": "TOELY의 코터/디벨로퍼 사업은 ASML의 노광 장비와 짝을 이루는 공정이라, ASML 수요 위축 시나리오는 TOELY에도 연쇄적으로 부정적."
+    },
+    {
+      "ticker": "AMAT",
+      "headline": "HSBC/UBS raise AMAT targets to $683/$705 on 2028 WFE forecast $272B (+25% YoY)",
+      "implication_for_target": "WFE 사이클 전체가 강하다는 방증은 TOELY의 식각·증착 장비 수요에도 긍정적 참고."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": -0.15,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": -0.07,
+  "summary_kr": "중국의 자체 DUV 노광장비 생산 소식으로 미국 장비주가 일제히 하락한 가운데, 도쿄일렉트론은 이 노광 공정과 짝을 이루는 감광액 코터/디벨로퍼 사업을 하고 있어 직접 언급되진 않았지만 간접 영향권에 있다. TOELY(ADR) 자체의 구체적 주가 반응 수치는 이번 조사에서 확인되지 않았다.",
+  "key_events": ["中 DUV 노광장비 양산 소식發 美 장비주 동반 하락", "TOELY는 EUV용 코터/디벨로퍼 사실상 독점 — 간접 노출"],
+  "risks": ["中 자체 노광장비 생태계 확산 시 TOELY의 짝 공정(코터/디벨로퍼) 수요도 장기적으로 영향 가능", "역사적으로 높은 中 매출 비중이 자체 장비 국산화 드라이브에 취약"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/TOELY%20-%20Tokyo%20Electron%20Limited.md"
+}

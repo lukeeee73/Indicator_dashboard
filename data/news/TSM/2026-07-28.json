@@ -1,0 +1,52 @@
+{
+  "ticker": "TSM",
+  "date": "2026-07-28",
+  "as_of_utc": "2026-07-28T09:00:00Z",
+  "news": [
+    {
+      "title": "TSMC finalizes 2027 chip price hikes of 5-10% base plus 10-15% premium for extra HPC orders, Nikkei reports",
+      "source": "Bloomberg / Nikkei Asia",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-21/tsmc-in-talks-to-raise-prices-by-up-to-10-in-2027-nikkei-says",
+      "published": "2026-07-21T05:00:00Z",
+      "summary": "TSMC, 2027년부터 기본가 5~10%·추가 HPC 주문엔 10~15% 프리미엄 가격 인상 확정",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "TSMC stock slides toward $390, down ~17% in July on capex and China chip competition worries despite record Q2",
+      "source": "FX Leaders",
+      "url": "https://www.fxleaders.com/news/2026/07/27/tsmc-stock-faces-major-390-test-as-massive-2026-capex-and-chinas-chip-ambitions-raises-risk/",
+      "published": "2026-07-27T12:00:00Z",
+      "summary": "TSMC 주가 7월 한 달간 -17%, $390선 시험 — capex 부담·중국 반도체 경쟁 우려",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Intel posts fastest revenue growth in 15 years in Q2; foundry loss narrows to $2.1B as 18A yields climb to 85%",
+      "source": "CNBC / FX Leaders",
+      "url": "https://www.cnbc.com/2026/07/23/intel-intc-earnings-report-q2-2026.html",
+      "published": "2026-07-23T20:00:00Z",
+      "summary": "인텔 2분기 매출 15년만 최대 성장, 파운드리 적자 축소·18A 수율 85%까지 개선",
+      "impact": "-",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "INTC",
+      "headline": "Intel Q2 2026: revenue $16.1B (+25% YoY, fastest in 15 years), Foundry operating loss narrows to $2.1B from $3.2B, 18A yields ~85%",
+      "implication_for_target": "인텔 파운드리의 수율 개선은 장기적으로 TSMC 첨단공정 독점 서사에 부담이나, 물량 규모 격차는 여전히 압도적"
+    },
+    {
+      "ticker": "GFS",
+      "headline": "GlobalFoundries stock down 18.5% over 7 straight sessions through July 21, erasing ~$7.2B market cap on AI capex jitters",
+      "implication_for_target": "파운드리 업종 전반이 AI 설비투자 지속성 의구심에 흔들리는 중 — TSMC도 같은 매크로 바람을 맞고 있음을 시사"
+    }
+  ],
+  "scores": {"earnings_outlook": 0.1, "competitive_position": 0.05, "regulatory_risk": 0.0, "macro_sensitivity": -0.35},
+  "narrative_score": 0.0,
+  "summary_kr": "TSMC는 2027년 칩 가격을 최대 10~15% 인상하기로 확정하며 가격결정력을 재확인했지만, 주가는 capex 부담과 중국 반도체 경쟁 우려로 7월 한 달간 17% 빠지며 $390선까지 밀렸다. 경쟁사 인텔 파운드리도 수율 개선을 발표해 장기 경쟁 압박이 소폭 커졌다.",
+  "key_events": ["2027년 가격 인상 5~15% 확정", "7월 한 달 주가 -17%, $390선 시험", "인텔 파운드리 18A 수율 85%로 개선"],
+  "risks": ["AI 설비투자 지속성에 대한 시장 전반의 의구심", "인텔 파운드리 장기 경쟁 심화 가능성", "반도체 섹터 밸류에이션 조정 장기화"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude%2Fcreate-knowledge-repo-2LeNp/wiki/news/tickers/TSM%20-%20Taiwan%20Semiconductor%20Mfg.md"
+}
