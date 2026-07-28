@@ -9896,35 +9896,40 @@
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-07-21",
-      "narrative_score": 0.03,
-      "summary_kr": "어드반테스트는 AI 반도체 테스트 수요 자체는 견조하고 SiConic 생태계 확장 등 제품 경쟁력도 유지하고 있으나, AI 설비투자 지속가능성에 대한 시장 전반의 불안으로 이번 주 주가가 9.4% 급락 — 7/29 실적 발표 전까지 거시 심리가 주가를 지배하는 상황.",
+      "as_of": "2026-07-28",
+      "narrative_score": -0.12,
+      "summary_kr": "어드반테스트가 7/23 알파벳의 대규모 설비투자 상향에 힘입어 급등했다가, 7/28에는 UBS의 투자의견 '매도' 하향(AI 수요 둔화·재고 조정 장기화 우려)으로 8%대 급락하며 롤러코스터 장세를 보였다. 내일(7/29) 발표될 1분기 실적과 가이던스가 이 우려의 실제 여부를 가릴 분수령이다.",
       "key_events": [
-        "AI 설비투자 우려로 주가 -9.4% (7/16~17)",
-        "SiConic-DFT 엔지니어링 확장 발표 (7/16)",
+        "UBS 투자의견 '매도' 하향, 주가 8%대 급락 (7/28)",
+        "알파벳 capex $205B 상향 후 반도체 장비주 동반 급등 (7/23)",
         "7월 29일 1분기(FY26) 실적 발표 예정"
       ],
       "risks": [
-        "AI 데이터센터 투자 둔화 시 테스터 수요 조정 리스크",
-        "테라다인과의 SoC 테스터 점유율 경쟁"
+        "7/29 실적·가이던스가 UBS의 AI 수요 둔화 우려를 확인시킬 경우 추가 조정",
+        "4월 저점 대비 급등한 밸류에이션 부담(기대 선반영)",
+        "테라다인 등 경쟁사 실적 결과에 따른 동반 변동성"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "TER",
-          "headline": "Teradyne Q1 2026 revenue surged 87% on AI chip testing demand, ~70% of revenue AI-related",
-          "implication_for_target": "경쟁사 테라다인의 강한 실적은 AI 테스트 수요 섹터 전반의 견조함을 확인시켜 어드반테스트의 7/29 실적 기대에도 긍정적 신호."
+          "headline": "Teradyne set to report Q2 2026 earnings around July 28-29, with AI-related demand now ~70% of revenue",
+          "implication_for_target": "테라다인 실적이 AI 테스트 수요 지속성을 가늠할 선행지표 — 강하게 나오면 UBS의 'AI 수요 둔화' 근거를 약화시켜 어드반테스트에 긍정적 참고."
         },
         {
           "ticker": "042700.KS",
-          "headline": "Hanmi Semiconductor pushes to buy 8th factory citing HBM/AI packaging equipment shortage",
-          "implication_for_target": "HBM 공급망 전반의 장비 부족 신호는 후공정뿐 아니라 테스트 장비 수요 사이클도 계속 강할 것을 시사."
+          "headline": "Hanmi Semiconductor shares fell 7.4% amid broad Iran-US tension selloff, unrelated to company fundamentals",
+          "implication_for_target": "HBM 공급망 전반의 장비 수요 자체는 훼손되지 않은 매크로성 조정이라는 근거 — 어드반테스트의 이번 급락도 실적 이전 밸류에이션 조정 성격일 가능성."
         }
       ],
       "history": [
         {
           "date": "2026-07-21",
           "narrative_score": 0.03
+        },
+        {
+          "date": "2026-07-28",
+          "narrative_score": -0.12
         }
       ]
     }

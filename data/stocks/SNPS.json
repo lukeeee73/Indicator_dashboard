@@ -10301,35 +10301,40 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-21",
-      "narrative_score": -0.05,
-      "summary_kr": "문샷AI의 Kimi K3가 시놉시스·케이던스의 상용 EDA(칩 설계 자동화) 툴 없이도 48시간 만에 칩을 설계해 보이며 핵심 소프트웨어 경쟁 우위에 대한 우려로 주가가 급락했다. 레거시 공정관리 소프트웨어 정리 등 AI 설계 중심 전략 전환은 진행 중이나, 단기적으로는 경쟁 지위 우려가 실적 모멘텀을 압도하는 모습이다.",
+      "as_of": "2026-07-28",
+      "narrative_score": 0.08,
+      "summary_kr": "시놉시스가 DAC 콘퍼런스에서 엔비디아·마이크로소프트·AMD와 잇따라 에이전틱 AI 칩 설계 협업을 공개하며 주가가 5%대 상승했다. Kimi K3발 'AI가 EDA를 대체할 수 있다'는 우려 이후, 대형 파트너와의 실질적 협업 성과로 해자를 재확인하는 모습이다.",
       "key_events": [
-        "Kimi K3, 상용 EDA 툴 없이 48시간 만에 칩 설계 시연 → 주가 7.85%↓, 시총 63억달러 증발",
-        "레거시 팹 소프트웨어(EES·FDC) 단계적 폐지, AI 설계로 자원 재배치",
-        "벤치마크, 목표주가 570달러로 매수 커버리지 개시"
+        "엔비디아와 완전자율 AI 검증 워크플로우 공개(최대 50배 속도 향상)",
+        "마이크로소프트·AMD와 에이전틱 AI 설계 협업 발표",
+        "발표 후 주가 5.4% 상승"
       ],
       "risks": [
-        "오픈소스 AI 기반 칩 설계 툴이 장기적으로 EDA 경쟁 우위를 잠식할 가능성(현재는 45nm 구형 공정 수준에 그침)",
-        "설계 IP 라이선스 사업부 성장 둔화 우려"
+        "AI 에이전트 기반 설계 도구의 실제 매출 기여 시점 불확실",
+        "Kimi K3 같은 오픈소스 대안의 장기적 침투 가능성",
+        "8/26 3분기 실적에서 성장률 둔화 여부 확인 필요"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "CDNS",
-          "headline": "Cadence also fell ~9-10% on Kimi K3 fears but has since won a Benchmark Buy rating and reported a record $8B order backlog",
-          "implication_for_target": "경쟁사 케이던스와 동반 하락·반등 흐름은 이번 리스크가 시놉시스만의 개별 이슈가 아니라 EDA(칩 설계 자동화) 업종 전체의 재평가임을 시사"
+          "headline": "케이던스, 2분기 실적 EPS $2.11 서프라이즈·연간 가이던스 상향, 주가 +4.37%",
+          "implication_for_target": "EDA 듀오폴리 파트너의 실적 서프라이즈가 Kimi K3발 '해자 붕괴' 우려를 업종 차원에서 완화시키는 근거로 작용, 8/26 시놉시스 실적 기대치도 함께 높일 수 있음"
         },
         {
           "ticker": "ARM",
-          "headline": "Arm downgraded by HSBC to Hold on stretched AI valuation",
-          "implication_for_target": "반도체 설계 관련주 전반의 밸류에이션 부담이 시놉시스에도 유사하게 적용될 수 있음"
+          "headline": "Arm, 밸류에이션 부담 속 실적 발표(7/29) 앞두고 한 달간 주가 -28%",
+          "implication_for_target": "반도체 설계 관련주 전반의 밸류에이션 재평가 압력이 이어지고 있어 시놉시스도 비슷한 경계감에서 자유롭지 않음"
         }
       ],
       "history": [
         {
           "date": "2026-07-21",
           "narrative_score": -0.05
+        },
+        {
+          "date": "2026-07-28",
+          "narrative_score": 0.08
         }
       ]
     }

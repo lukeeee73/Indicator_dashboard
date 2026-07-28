@@ -1,0 +1,75 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-07-28",
+  "as_of_utc": "2026-07-28T05:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia weighs $250 billion guarantee so OpenAI can lease SoftBank's 10-gigawatt Ohio campus",
+      "source": "Tom's Hardware",
+      "url": "https://www.tomshardware.com/tech-industry/data-centers/nvidia-weighs-250-billion-guarantee-so-openai-can-lease-softbanks-10-gigawatt-ohio-campus",
+      "published": "2026-07-27T00:00:00Z",
+      "summary": "NVDA가 OpenAI의 오하이오 10GW 데이터센터 리스·건설 부채를 위해 $250B 재무보증을 논의 중, 별도 $350B 칩 구매 금융도 검토 — 주가 5% 급락(2월 이후 최대 낙폭)",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Nvidia locks down memory supply from SK Hynix as part of $500 billion AI deal",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/25/nvidia-locks-down-memory-from-sk-hynix-as-part-of-500-billion-ai-deal.html",
+      "published": "2026-07-25T00:00:00Z",
+      "summary": "NVDA-SK그룹 $500B+ AI 파트너십 체결, SK하이닉스 HBM4 장기 공급 계약 및 차세대 HBM 공동개발 확정",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Nvidia, SpaceX, Microsoft launch AI safety initiative as OpenAI cyberattack fallout continues",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/27/nvidia-ai-initiative-openai-cyber-attack.html",
+      "published": "2026-07-27T00:00:00Z",
+      "summary": "NVDA 주도로 MS·SpaceX·Palantir 등 37개사 참여 'Open Secure AI Alliance' 출범 — 허깅페이스 AI 자율 해킹 사고 대응",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "Alphabet earnings takeaways: Q2 revenue beats, GOOGL stock sinks on 2026 capex hike",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html",
+      "published": "2026-07-23T00:00:00Z",
+      "summary": "알파벳 2026 설비투자 가이던스 $205B로 상향, 분기 FCF 첫 마이너스 전환 — AI 투자 수익화 의문이 반도체 섹터 전반 셀오프 촉발",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "AMD Advancing AI 2026: Helios 랙·MI455 GPU·Zen6 EPYC 'Venice' 공개, AI 가속기 시장 2030년 $1.4T 전망",
+      "implication_for_target": "AMD가 CPU+GPU 통합 랙스케일 솔루션으로 NVDA 데이터센터 아키텍처를 직접 겨냥 — 다만 발표 직후 주가는 sell-the-news로 하락"
+    },
+    {
+      "ticker": "AVGO",
+      "headline": "Samsung-Broadcom $200B AI칩 파트너십(2030년까지) — 2nm 파운드리·HBM4/4E·2.3D 패키징",
+      "implication_for_target": "커스텀 ASIC 진영(AVGO)이 삼성 파운드리로 TSMC 의존도를 낮추며 NVDA 표준 GPU 대비 원가 경쟁력 확보 시도"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.20,
+    "competitive_position": 0.20,
+    "regulatory_risk": 0.05,
+    "macro_sensitivity": -0.25
+  },
+  "narrative_score": -0.06,
+  "summary_kr": "NVDA가 SK그룹과 $500B AI 파트너십으로 HBM4 공급을 확보하는 등 사업 확장은 계속되지만, OpenAI 오하이오 데이터센터에 $250B 규모 재무보증을 제공하는 방안이 논의되면서 '칩 판매자에서 금융 보증인으로' 역할이 확대되는 데 대한 우려로 주가가 5% 급락했다. 알파벳의 설비투자 급증·FCF 적자 전환까지 겹치며 AI 섹터 전반의 밸류에이션 재평가 압력이 커지는 국면이다.",
+  "key_events": [
+    "OpenAI 오하이오 데이터센터 $250B 재무보증 논의",
+    "SK그룹과 $500B AI 파트너십 (SK하이닉스 HBM4 장기공급)",
+    "Open Secure AI Alliance 출범",
+    "알파벳 2026 capex $205B 상향, 섹터 셀오프 촉발"
+  ],
+  "risks": [
+    "OpenAI 신용등급 없는 상태에서의 $250B+$350B 금융 익스포저 확대",
+    "AI 설비투자 수익화 의문에 따른 밸류에이션 재평가",
+    "빅테크 실적 시즌(MSFT·META·AMZN·GOOG) capex 방향성 변수"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}
