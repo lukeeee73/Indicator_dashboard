@@ -24,53 +24,95 @@ const SB_MAX_CONCURRENT = 4;
 let _sbActive = 0;
 const _sbWaiters = [];
 
+// 응답이 없는 요청은 영원히 기다리지 않는다 — 타임아웃이 없으면 모바일에서
+// 커넥션 하나가 멈추는 순간 "Loading…" 상태로 화면이 그대로 굳어버린다.
+// 정상 응답은 3~6초 — 15초면 충분한 여유이고, 최악의 경우(3번 모두 타임아웃)에도
+// 45초 안에 실패가 화면에 드러난다.
+const SB_TIMEOUT_MS = 15000;
+const SB_RETRIES = 2;  // 최초 시도 외 추가 시도 횟수
+
 async function _sbAcquire() {
   if (_sbActive < SB_MAX_CONCURRENT) { _sbActive += 1; return; }
+  // 대기자를 깨울 때 슬롯을 그대로 넘겨받는다 (_sbRelease 가 감소시키지 않음).
+  // 여기서 다시 +1 하면 깨어나는 사이에 끼어든 요청과 슬롯을 이중으로 세게 된다.
   await new Promise((resolve) => _sbWaiters.push(resolve));
-  _sbActive += 1;
 }
 
 function _sbRelease() {
-  _sbActive -= 1;
   const next = _sbWaiters.shift();
-  if (next) next();
+  if (next) next();          // 슬롯을 대기자에게 그대로 인계 (_sbActive 유지)
+  else _sbActive -= 1;
 }
 
-async function sbRpc(fn, args = {}) {
+const sbSleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// 한 번의 시도 = 동시 요청 슬롯 확보 → 타임아웃 붙인 fetch.
+async function _sbFetchOnce(url, init) {
   await _sbAcquire();
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), SB_TIMEOUT_MS);
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        apikey: SUPABASE_KEY,
-        Authorization: `Bearer ${SUPABASE_KEY}`,
-      },
-      body: JSON.stringify(args),
-    });
-    if (!res.ok) throw new Error(`${fn} → HTTP ${res.status}`);
+    const res = await fetch(url, { ...init, signal: ctl.signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
   } finally {
+    clearTimeout(timer);
     _sbRelease();
   }
 }
 
+// 일시적 실패(타임아웃·5xx·네트워크 끊김)는 지수 백오프로 재시도한다.
+async function _sbWithRetry(label, run) {
+  let lastErr;
+  for (let attempt = 0; attempt <= SB_RETRIES; attempt += 1) {
+    if (attempt > 0) await sbSleep(500 * 2 ** (attempt - 1));
+    try {
+      return await run();
+    } catch (err) {
+      lastErr = err;
+    }
+  }
+  const reason = lastErr && lastErr.name === "AbortError"
+    ? `${SB_TIMEOUT_MS / 1000}초 안에 응답이 없었습니다`
+    : (lastErr && lastErr.message) || "알 수 없는 오류";
+  throw new Error(`${label} → ${reason}`);
+}
+
+async function sbRpc(fn, args = {}) {
+  return _sbWithRetry(fn, () => _sbFetchOnce(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+    },
+    body: JSON.stringify(args),
+  }));
+}
+
 // 코드 목록을 청크로 나눠 조회 후 { code: payload } 맵 하나로 합친다.
-// 실패한 청크는 1회 재시도한다 (일시적 timeout 대비).
+// 청크 하나가 끝까지 실패해도 나머지는 살린다 — 종목 하나 때문에 탭 전체가
+// 빈 화면이 되는 것보다 부분 표시가 낫다. 실패 코드는 missing 으로 보고한다.
 async function fetchPayloadMap(codes, chunkSize = 25) {
-  if (!codes.length) return {};
+  if (!codes.length) return { map: {}, missing: [] };
   const chunks = [];
   for (let i = 0; i < codes.length; i += chunkSize) {
     chunks.push(codes.slice(i, i + chunkSize));
   }
-  const maps = await Promise.all(chunks.map(async (c) => {
-    try {
-      return await sbRpc("get_payload_map", { p_codes: c });
-    } catch (_) {
-      return await sbRpc("get_payload_map", { p_codes: c });
-    }
-  }));
-  return Object.assign({}, ...maps);
+  const results = await Promise.allSettled(
+    chunks.map((c) => sbRpc("get_payload_map", { p_codes: c })),
+  );
+  const map = {};
+  const missing = [];
+  results.forEach((r, i) => {
+    if (r.status === "fulfilled") Object.assign(map, r.value);
+    else missing.push(...chunks[i]);
+  });
+  // 전부 실패했다면 부분 성공이 아니라 그냥 실패다 — 호출자가 알아야 한다.
+  if (missing.length === codes.length) {
+    throw results.find((r) => r.status === "rejected").reason;
+  }
+  return { map, missing };
 }
 
 // documents 테이블에서 문서 하나를 통째로 가져온다.
@@ -79,11 +121,10 @@ async function sbDoc(kind, key) {
   const params =
     `kind=eq.${encodeURIComponent(kind)}` +
     `&key=eq.${encodeURIComponent(key)}&select=payload&limit=1`;
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/documents?${params}`, {
-    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
-  });
-  if (!res.ok) throw new Error(`documents ${kind}/${key} → HTTP ${res.status}`);
-  const rows = await res.json();
+  const rows = await _sbWithRetry(`documents ${kind}/${key}`, () =>
+    _sbFetchOnce(`${SUPABASE_URL}/rest/v1/documents?${params}`, {
+      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+    }));
   if (!rows.length) throw new Error(`documents ${kind}/${key} 를 찾을 수 없습니다`);
   return rows[0].payload;
 }
@@ -806,31 +847,94 @@ const APP_STATE = {
 let _cachedData = null;
 const _renderedTabs = new Set();
 
+// 데이터 그룹별 로드 상태 — 각 탭은 자기가 쓰는 그룹만 기다린다.
+// 예전에는 지표·자산·종목·지수를 하나의 Promise.all 로 묶어 20MB 남짓을
+// 전부 받은 뒤에야 아무 탭이나 그려졌고, 그 중 하나만 실패하면 모든 탭이
+// 영구히 빈 화면이 됐다. 그룹을 쪼개면 종목 쪽이 늦거나 실패해도
+// 지표 탭은 정상적으로 뜬다.
+//   indicators : 지표 + 자산  → 미국 / 한국 탭
+//   stocks     : 종목 + 지수  → 주식 탭
+const TAB_GROUP = { US: "indicators", KR: "indicators", STOCKS: "stocks" };
+const DATA_GROUPS = {
+  indicators: { state: "loading", error: null },
+  stocks:     { state: "loading", error: null },
+};
+
 function switchToTab(tab) {
-  // 첫 방문 시 해당 탭 컨텐츠를 지연 렌더링
-  // (WIKI 탭은 지표 데이터와 무관하게 자체 JSON 을 가져온다)
-  if (tab === "WIKI") {
-    if (!_renderedTabs.has(tab)) {
-      renderWikiTab();
-      _renderedTabs.add(tab);
-    }
-  } else if (!_renderedTabs.has(tab) && _cachedData) {
-    if (tab === "STOCKS") {
-      renderStocksTab(_cachedData);
-    } else if (tab === "PRINCIPLES") {
-      renderPrinciplesTab();
-    } else {
-      renderTabContent(tab, _cachedData);
-    }
-    _renderedTabs.add(tab);
-  }
-  // 패널 전환
+  // 패널 전환은 데이터와 무관하게 항상 먼저 — 로딩 중에도 탭은 살아 있어야 한다
   document.querySelectorAll(".tab-panel").forEach(p => { p.hidden = true; });
   document.getElementById(`panel-${tab}`).hidden = false;
-  // 버튼 active 상태
   document.querySelectorAll(".tab-btn").forEach(b => {
     b.classList.toggle("active", b.dataset.tab === tab);
   });
+  renderTabIfReady(tab);
+}
+
+// 탭 컨텐츠는 첫 방문 때 지연 렌더링한다.
+// 아직 데이터가 없으면 빈 화면 대신 로딩/실패 상태를 보여준다.
+function renderTabIfReady(tab) {
+  // 위키(정적 graph.json)와 원칙(자체 documents 행)은 지표 로드와 무관하다.
+  if (tab === "WIKI" || tab === "PRINCIPLES") {
+    if (_renderedTabs.has(tab)) return;
+    _renderedTabs.add(tab);
+    if (tab === "WIKI") renderWikiTab();
+    else renderPrinciplesTab();
+    return;
+  }
+
+  const { state, error } = DATA_GROUPS[TAB_GROUP[tab]];
+  if (state !== "ready") { setTabStatus(tab, state, error); return; }
+
+  clearTabStatus(tab);
+  if (_renderedTabs.has(tab)) return;
+  _renderedTabs.add(tab);
+  if (tab === "STOCKS") renderStocksTab(_cachedData);
+  else renderTabContent(tab, _cachedData);
+}
+
+// 패널 맨 위에 붙는 로딩/실패 안내 줄.
+function tabStatusHost(tab, create) {
+  const panel = document.getElementById(`panel-${tab}`);
+  if (!panel) return null;
+  let el = panel.querySelector(".tab-status");
+  if (!el && create) {
+    el = document.createElement("div");
+    el.className = "tab-status";
+    panel.prepend(el);
+  }
+  return el;
+}
+
+function setTabStatus(tab, state, err) {
+  const el = tabStatusHost(tab, true);
+  if (!el) return;
+  if (state === "loading") {
+    el.innerHTML = emptyMessage("데이터를 불러오는 중입니다…");
+    return;
+  }
+  const reason = (err && err.message) || "알 수 없는 오류";
+  el.innerHTML = emptyMessage(`데이터를 불러오지 못했습니다 — ${reason}`)
+    + `<button type="button" class="tab-retry">다시 시도</button>`;
+  el.querySelector(".tab-retry").addEventListener("click", () => { loadDashboardData(); });
+}
+
+function clearTabStatus(tab) {
+  const el = tabStatusHost(tab, false);
+  if (el) el.remove();
+}
+
+// 그룹 상태가 바뀌면 보이는 탭은 즉시 다시 판단하고,
+// 숨은 탭은 상태 표시만 갱신해 둔다 (첫 방문 때 렌더링).
+function setGroupState(group, state, err = null) {
+  DATA_GROUPS[group] = { state, error: err };
+  const active = document.querySelector(".tab-btn.active");
+  const activeTab = active && active.dataset.tab;
+  for (const [tab, g] of Object.entries(TAB_GROUP)) {
+    if (g !== group) continue;
+    if (tab === activeTab) renderTabIfReady(tab);
+    else if (state === "ready") clearTabStatus(tab);
+    else setTabStatus(tab, state, err);
+  }
 }
 
 
@@ -842,52 +946,70 @@ function switchToTab(tab) {
 //
 // get_payload_map RPC 가 기존 data/<종류>/<CODE>.json 과 같은 모양의
 // payload 를 { code: payload } 맵으로 돌려주므로 이후 렌더링 로직은 동일하다.
-// 페이지 로드 시 메타 + 모든 시계열을 병렬로 가져와 단일 dict 로 합친다.
-document.addEventListener("DOMContentLoaded", async () => {
+// 메타를 먼저 받아 화면을 살린 뒤, 시계열은 그룹별로 따로 채워 넣는다.
+async function loadDashboardData() {
+  clearGlobalError();
+  setGroupState("indicators", "loading");
+  setGroupState("stocks", "loading");
+
+  let idx;
+  try {
+    idx = await sbRpc("get_app_meta");
+    if (!idx) throw new Error("app_meta 가 비어 있습니다");
+  } catch (err) {
+    // 메타가 없으면 지표·종목 어느 쪽도 그릴 수 없다 — 배너 + 탭별 재시도 안내
+    const stamp = document.getElementById("last-updated");
+    if (stamp) stamp.textContent = "갱신 정보를 불러오지 못했습니다";
+    renderError(err);
+    setGroupState("indicators", "error", err);
+    setGroupState("stocks", "error", err);
+    return;
+  }
+
+  _cachedData = {
+    last_updated:  idx.last_updated,
+    indicators: {}, assets: {}, stocks: {}, indices: {},
+    assessment:    idx.assessment    || null,
+    assessment_kr: idx.assessment_kr || null,
+  };
+  renderLastUpdated(idx.last_updated);
+
+  const codesOf = (list) => (list || []).map((e) => e.code);
+  const loadGroup = async (group, parts) => {
+    try {
+      const results = await Promise.all(parts.map(([, codes]) => fetchPayloadMap(codes)));
+      const missing = [];
+      parts.forEach(([key], i) => {
+        Object.assign(_cachedData[key], results[i].map);
+        missing.push(...results[i].missing);
+      });
+      setGroupState(group, "ready");
+      if (missing.length) {
+        console.warn(`${group}: ${missing.length}개 코드를 불러오지 못했습니다`, missing);
+      }
+    } catch (err) {
+      setGroupState(group, "error", err);
+    }
+  };
+
+  await Promise.allSettled([
+    loadGroup("indicators", [["indicators", codesOf(idx.indicators)],
+                             ["assets",     codesOf(idx.assets)]]),
+    loadGroup("stocks",     [["stocks",     codesOf(idx.stocks)],
+                             ["indices",    codesOf(idx.indices)]]),
+  ]);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
   // 탭 버튼 이벤트 연결 — 데이터 로드 실패와 무관하게 탭 전환은 항상 동작
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => switchToTab(btn.dataset.tab));
   });
   initSidebar();
+  wireEventsToggle();   // 체크박스는 데이터와 무관 — 먼저 연결한다
   // 첫 화면은 위키 — 지표 데이터와 무관하게 바로 그래프를 그린다
   switchToTab("WIKI");
-
-  try {
-    const idx = await sbRpc("get_app_meta");
-    if (!idx) throw new Error("app_meta 가 비어 있습니다");
-
-    const indicatorEntries = idx.indicators || [];
-    const assetEntries     = idx.assets     || [];
-    const stockEntries     = idx.stocks     || [];
-    const indexEntries     = idx.indices    || [];
-
-    const [indicators, assets, stocks, indices] = await Promise.all([
-      fetchPayloadMap(indicatorEntries.map((e) => e.code)),
-      fetchPayloadMap(assetEntries.map((e) => e.code)),
-      fetchPayloadMap(stockEntries.map((e) => e.code)),
-      fetchPayloadMap(indexEntries.map((e) => e.code)),
-    ]);
-
-    const data = {
-      last_updated:  idx.last_updated,
-      indicators,
-      assets,
-      stocks,
-      indices,
-      assessment:    idx.assessment    || null,
-      assessment_kr: idx.assessment_kr || null,
-    };
-
-    _cachedData = data;
-    renderLastUpdated(data.last_updated);
-    wireEventsToggle();
-    // 지표 탭들은 첫 방문 때 지연 렌더링한다. 데이터가 도착하기 전에
-    // 사용자가 이미 지표 탭으로 이동해 있었다면 지금 채워 넣는다.
-    const active = document.querySelector(".tab-btn.active");
-    if (active && active.dataset.tab !== "WIKI") switchToTab(active.dataset.tab);
-  } catch (err) {
-    renderError(err);
-  }
+  loadDashboardData();
 });
 
 function wireEventsToggle() {
@@ -1447,10 +1569,25 @@ function monthsBetween(startIso, endIso) {
 function renderError(err) {
   // main 전체를 지우지 않는다 — 첫 화면인 위키 그래프는 지표 데이터와
   // 무관하게 동작하므로, 지표 로드 실패는 상단 배너로만 알린다.
+  clearGlobalError();   // 재시도할 때마다 배너가 쌓이지 않게 한다
+  const main = document.querySelector("main");
+  if (!main) return;
   const banner = document.createElement("div");
   banner.className = "error";
-  banner.textContent = `데이터를 불러오지 못했습니다: ${err.message}`;
-  document.querySelector("main").prepend(banner);
+  banner.id = "global-error";
+  banner.append(`데이터를 불러오지 못했습니다: ${err.message} `);
+  const retry = document.createElement("button");
+  retry.type = "button";
+  retry.className = "tab-retry";
+  retry.textContent = "다시 시도";
+  retry.addEventListener("click", () => { loadDashboardData(); });
+  banner.append(retry);
+  main.prepend(banner);
+}
+
+function clearGlobalError() {
+  const prev = document.getElementById("global-error");
+  if (prev) prev.remove();
 }
 
 
