@@ -1352,6 +1352,7 @@ button.stock-group-header[aria-expanded="false"] .stock-group-desc { display: no
   border: 1px solid var(--red);
   border-radius: var(--radius);
   padding: 1rem;
+  margin-bottom: 1.25rem;
 }
 .empty {
   color: var(--text-dim);
@@ -1362,6 +1363,24 @@ button.stock-group-header[aria-expanded="false"] .stock-group-desc { display: no
   border: 1px dashed var(--border-mid);
   border-radius: var(--radius);
 }
+
+/* 탭 상단의 로딩/실패 안내 — 데이터가 늦거나 실패해도 빈 화면을 보여주지 않는다 */
+.tab-status {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.tab-retry {
+  margin-top: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--bg-elev);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.tab-retry:hover { border-color: var(--red); color: #fca5a5; }
 
 /* ---------- 모바일/태블릿 — 사이드바를 드로어로 전환 ---------- */
 @media (max-width: 900px) {
