@@ -478,11 +478,13 @@
     </div><!-- /content -->
   </div><!-- /app-layout -->
 
-  <!-- Chart.js + annotation 플러그인 -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+  <!-- Chart.js + annotation 플러그인 — vendor/ 에 자체 호스팅한다.
+       외부 CDN(jsdelivr)에서 받던 때는 CDN 이 막히면 Chart 전역이 없는 채로
+       app.js 가 돌아 지표·주식 탭이 빈 화면이 됐다. vendor/README.md 참고. -->
+  <script src="vendor/chart.umd.js"></script>
+  <script src="vendor/chartjs-plugin-annotation.min.js"></script>
   <!-- marked — 위키 노트 뷰어의 마크다운 렌더링 (로드 실패 시 일반 텍스트 폴백) -->
-  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="vendor/marked.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

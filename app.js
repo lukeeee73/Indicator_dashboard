@@ -1089,7 +1089,15 @@ function renderTabContent(tab, data) {
     if (payload.category === "growth") host = growthHost;
     else if (payload.category === "dollar") host = dollarHost;
     else host = inflationHost;
-    if (host) host.appendChild(renderCard(code, payload, assets));
+    // 카드 하나가 터져도 나머지는 그린다 — 예외를 그대로 올리면 이 루프가
+    // 중단되고 탭 전체가 빈 화면이 된다.
+    if (host) {
+      try {
+        host.appendChild(renderCard(code, payload, assets));
+      } catch (err) {
+        console.error(`${code} 카드를 그리지 못했습니다`, err);
+      }
+    }
   }
 
   wireSectorNav(tab);
@@ -1289,7 +1297,7 @@ function renderScatter(assessment, tab) {
   };
 
   // eslint-disable-next-line no-undef
-  canvas._chart = new Chart(canvas, {
+  canvas._chart = createChart(canvas, {
     type: "scatter",
     data: { datasets: [trajDataset, curDataset] },
     options: {
@@ -1640,6 +1648,41 @@ function sliceSeriesByMonths(series, months) {
   return start === -1 ? series.slice(-1) : series.slice(start);
 }
 
+// ---------- Chart.js 가용성 방어 ------------------------------
+// vendor/chart.umd.js 를 못 받으면 Chart 전역이 없다. 그 상태로 `new Chart(...)`
+// 를 직접 호출하면 예외가 카드 렌더 루프까지 거슬러 올라가 루프를 중단시키고,
+// 결과적으로 미국·한국·주식 탭이 안내도 없이 완전히 빈 화면이 된다.
+// 차트만 포기하고 숫자·변화폭·배지·설명은 그대로 보여준다.
+let _chartLibWarned = false;
+
+function noteChartLibMissing() {
+  if (_chartLibWarned) return;
+  _chartLibWarned = true;
+  console.error("Chart.js 를 불러오지 못했습니다 — vendor/chart.umd.js 를 확인하세요");
+  const main = document.querySelector("main");
+  if (!main || document.getElementById("chart-lib-error")) return;
+  const el = document.createElement("div");
+  el.className = "error";
+  el.id = "chart-lib-error";
+  el.textContent =
+    "차트 라이브러리를 불러오지 못해 그래프가 표시되지 않습니다. "
+    + "숫자와 설명은 그대로 확인할 수 있습니다. "
+    + "새로고침해도 같으면 광고 차단기·회사망 등 네트워크 차단을 확인해 주세요.";
+  main.prepend(el);
+}
+
+// 모든 차트 생성은 이 함수를 거친다. 실패하면 null 을 돌려주고,
+// 호출측은 이미 반환값 truthy 검사로 destroy 를 감싸고 있어 그대로 동작한다.
+function createChart(target, config) {
+  if (typeof Chart === "undefined") { noteChartLibMissing(); return null; }
+  try {
+    return new Chart(target, config);
+  } catch (err) {
+    console.error("차트를 그리지 못했습니다", err);
+    return null;
+  }
+}
+
 /**
  * 공용 차트 렌더러.
  *   - opts.overlay: { series, meta, name } → 오버레이 시리즈 (기본: 이중 Y축)
@@ -1805,7 +1848,7 @@ function renderChart(canvas, series, category, opts = {}) {
   }
 
   // eslint-disable-next-line no-undef
-  return new Chart(canvas, {
+  return createChart(canvas, {
     type: "line",
     data: { labels, datasets },
     options: {
@@ -2021,7 +2064,11 @@ function renderStocksTab(data) {
     } else {
       for (const [code, payload] of Object.entries(indices)) {
         if (!payload || !payload.series || payload.series.length === 0) continue;
-        indexHost.appendChild(renderIndexCard(code, payload));
+        try {
+          indexHost.appendChild(renderIndexCard(code, payload));
+        } catch (err) {
+          console.error(`${code} 지수 카드를 그리지 못했습니다`, err);
+        }
       }
     }
   }
@@ -3813,9 +3860,14 @@ function renderStocksByGroup(host, stocks) {
       ensureCard(ticker) {
         const el = this.els.get(ticker);
         if (!el || el.tagName === "ARTICLE") return;
-        const card = renderStockCard(ticker, stocks[ticker], stocks);
-        el.replaceWith(card);
-        this.els.set(ticker, card);
+        try {
+          const card = renderStockCard(ticker, stocks[ticker], stocks);
+          el.replaceWith(card);
+          this.els.set(ticker, card);
+        } catch (err) {
+          // 한 종목이 터져도 섹터의 나머지 카드는 계속 열린다
+          console.error(`${ticker} 카드를 그리지 못했습니다`, err);
+        }
       },
       setOpen(open) {
         this.collapsed = !open;
@@ -4021,7 +4073,11 @@ function renderValuePicks(vs, stocks) {
       const wrap = document.createElement("div");
       wrap.className = "vs-pick";
       wrap.innerHTML = `<div class="vs-checks">${vsChecksHtml(result, vs.criteria)}</div>`;
-      wrap.appendChild(renderStockCard(ticker, stocks[ticker], stocks));
+      try {
+        wrap.appendChild(renderStockCard(ticker, stocks[ticker], stocks));
+      } catch (err) {
+        console.error(`${ticker} 가치발굴 카드를 그리지 못했습니다`, err);
+      }
       picksHost.appendChild(wrap);
     }
   }
@@ -4613,7 +4669,7 @@ function renderValuationGapChart(canvas, gapSeries) {
   const positiveColor = "rgba(204, 36, 36, 0.85)";
   const negativeColor = "rgba(90, 205, 128, 0.85)";
 
-  return new Chart(canvas.getContext("2d"), {
+  return createChart(canvas.getContext("2d"), {
     type: "line",
     data: {
       labels,
@@ -4781,7 +4837,7 @@ function renderFinancialsChart(canvas, quarterly, stockMeta) {
     },
   ];
 
-  return new Chart(canvas.getContext("2d"), {
+  return createChart(canvas.getContext("2d"), {
     type: "bar",
     data: { labels, datasets },
     options: {
@@ -5424,7 +5480,7 @@ function prRenderPathChart(sc) {
   if (!canvas) return;
   if (PR_STATE.pathChart) { PR_STATE.pathChart.destroy(); PR_STATE.pathChart = null; }
   // eslint-disable-next-line no-undef
-  PR_STATE.pathChart = new Chart(canvas, {
+  PR_STATE.pathChart = createChart(canvas, {
     type: "line",
     data: {
       labels: sc.pathYms,
