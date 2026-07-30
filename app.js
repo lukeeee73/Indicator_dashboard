@@ -53,12 +53,23 @@ async function _sbFetchOnce(url, init) {
   const timer = setTimeout(() => ctl.abort(), SB_TIMEOUT_MS);
   try {
     const res = await fetch(url, { ...init, signal: ctl.signal });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) {
+      const err = new Error(`HTTP ${res.status}`);
+      err.status = res.status;   // 재시도 여부 판단용
+      throw err;
+    }
     return await res.json();
   } finally {
     clearTimeout(timer);
     _sbRelease();
   }
+}
+
+// 4xx 는 요청·권한 자체가 잘못된 것이라 다시 물어도 같은 답이 온다.
+// (408 타임아웃·429 과다요청은 예외 — 잠시 뒤 성공할 수 있다.)
+function _sbRetryable(err) {
+  const s = err && err.status;
+  return !(s >= 400 && s < 500 && s !== 408 && s !== 429);
 }
 
 // 일시적 실패(타임아웃·5xx·네트워크 끊김)는 지수 백오프로 재시도한다.
@@ -70,6 +81,7 @@ async function _sbWithRetry(label, run) {
       return await run();
     } catch (err) {
       lastErr = err;
+      if (!_sbRetryable(err)) break;   // 재시도해도 소용없는 오류는 바로 알린다
     }
   }
   const reason = lastErr && lastErr.name === "AbortError"
@@ -947,7 +959,13 @@ function setGroupState(group, state, err = null) {
 // get_payload_map RPC 가 기존 data/<종류>/<CODE>.json 과 같은 모양의
 // payload 를 { code: payload } 맵으로 돌려주므로 이후 렌더링 로직은 동일하다.
 // 메타를 먼저 받아 화면을 살린 뒤, 시계열은 그룹별로 따로 채워 넣는다.
+// 재시도 버튼을 연달아 누르면 로드가 겹친다. 뒤늦게 끝난 이전 로드가
+// 새 로드의 _cachedData 를 덮어써 "ready 인데 내용은 빈" 상태가 되는 것을
+// 세대 번호로 막는다 — 항상 마지막 로드만 화면에 반영한다.
+let _loadSeq = 0;
+
 async function loadDashboardData() {
+  const seq = ++_loadSeq;
   clearGlobalError();
   setGroupState("indicators", "loading");
   setGroupState("stocks", "loading");
@@ -957,6 +975,7 @@ async function loadDashboardData() {
     idx = await sbRpc("get_app_meta");
     if (!idx) throw new Error("app_meta 가 비어 있습니다");
   } catch (err) {
+    if (seq !== _loadSeq) return;
     // 메타가 없으면 지표·종목 어느 쪽도 그릴 수 없다 — 배너 + 탭별 재시도 안내
     const stamp = document.getElementById("last-updated");
     if (stamp) stamp.textContent = "갱신 정보를 불러오지 못했습니다";
@@ -965,38 +984,52 @@ async function loadDashboardData() {
     setGroupState("stocks", "error", err);
     return;
   }
+  if (seq !== _loadSeq) return;
 
-  _cachedData = {
+  const target = {
     last_updated:  idx.last_updated,
     indicators: {}, assets: {}, stocks: {}, indices: {},
     assessment:    idx.assessment    || null,
     assessment_kr: idx.assessment_kr || null,
   };
+  _cachedData = target;
   renderLastUpdated(idx.last_updated);
 
   const codesOf = (list) => (list || []).map((e) => e.code);
+
+  // parts = [[키, 코드목록, 필수여부], …]
+  // 필수 목록이 통째로 실패하면 그룹을 실패로 본다. 보조 목록(자산·지수)이
+  // 빠져도 렌더러는 각 섹션의 "데이터 없음" 안내로 처리하므로 탭은 살린다.
   const loadGroup = async (group, parts) => {
-    try {
-      const results = await Promise.all(parts.map(([, codes]) => fetchPayloadMap(codes)));
-      const missing = [];
-      parts.forEach(([key], i) => {
-        Object.assign(_cachedData[key], results[i].map);
-        missing.push(...results[i].missing);
-      });
-      setGroupState(group, "ready");
-      if (missing.length) {
-        console.warn(`${group}: ${missing.length}개 코드를 불러오지 못했습니다`, missing);
+    const results = await Promise.allSettled(parts.map(([, codes]) => fetchPayloadMap(codes)));
+    if (seq !== _loadSeq) return;   // 이미 새 로드가 시작됐으면 결과를 버린다
+
+    const missing = [];
+    let fatal = null;
+    results.forEach((r, i) => {
+      const [key, , required] = parts[i];
+      if (r.status === "fulfilled") {
+        Object.assign(target[key], r.value.map);
+        missing.push(...r.value.missing);
+      } else if (required) {
+        fatal = r.reason;
+      } else {
+        missing.push(...parts[i][1]);
       }
-    } catch (err) {
-      setGroupState(group, "error", err);
+    });
+
+    if (fatal) { setGroupState(group, "error", fatal); return; }
+    setGroupState(group, "ready");
+    if (missing.length) {
+      console.warn(`${group}: ${missing.length}개 코드를 불러오지 못했습니다`, missing);
     }
   };
 
-  await Promise.allSettled([
-    loadGroup("indicators", [["indicators", codesOf(idx.indicators)],
-                             ["assets",     codesOf(idx.assets)]]),
-    loadGroup("stocks",     [["stocks",     codesOf(idx.stocks)],
-                             ["indices",    codesOf(idx.indices)]]),
+  await Promise.all([
+    loadGroup("indicators", [["indicators", codesOf(idx.indicators), true],
+                             ["assets",     codesOf(idx.assets),     false]]),
+    loadGroup("stocks",     [["stocks",     codesOf(idx.stocks),     true],
+                             ["indices",    codesOf(idx.indices),    false]]),
   ]);
 }
 
