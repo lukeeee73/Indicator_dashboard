@@ -864,13 +864,28 @@ const _renderedTabs = new Set();
 // 전부 받은 뒤에야 아무 탭이나 그려졌고, 그 중 하나만 실패하면 모든 탭이
 // 영구히 빈 화면이 됐다. 그룹을 쪼개면 종목 쪽이 늦거나 실패해도
 // 지표 탭은 정상적으로 뜬다.
-//   indicators : 지표 + 자산  → 미국 / 한국 탭
-//   stocks     : 종목 + 지수  → 주식 탭
+//   indicators : 지표 + 자산  → 미국 / 한국 탭   (약 2MB, 바로 받는다)
+//   stocks     : 종목 + 지수  → 주식 탭        (약 19MB, 탭 열 때 받는다)
+//
+// 종목 그룹은 154개 종목의 전체 일별 히스토리라 압축 전 19MB 다. 첫 화면인
+// 위키에서는 쓰지 않으므로 페이지 로드와 함께 받을 이유가 없다. "idle" 로
+// 두고 주식 탭을 처음 열 때 받으면 초기 전송량이 1/10 로 줄어든다.
 const TAB_GROUP = { US: "indicators", KR: "indicators", STOCKS: "stocks" };
 const DATA_GROUPS = {
   indicators: { state: "loading", error: null },
   stocks:     { state: "loading", error: null },
 };
+// group → 실제 로드를 실행하는 함수. app_meta 가 도착한 뒤 채워진다.
+const _groupLoaders = {};
+
+// "idle" 그룹을 처음 필요해진 순간에 로드한다.
+function ensureGroupLoaded(group) {
+  if (DATA_GROUPS[group].state !== "idle") return;
+  const load = _groupLoaders[group];
+  if (!load) return;              // 아직 메타가 안 왔다 — 메타 쪽이 이어서 처리
+  setGroupState(group, "loading");
+  load();
+}
 
 function switchToTab(tab) {
   // 패널 전환은 데이터와 무관하게 항상 먼저 — 로딩 중에도 탭은 살아 있어야 한다
@@ -894,7 +909,9 @@ function renderTabIfReady(tab) {
     return;
   }
 
-  const { state, error } = DATA_GROUPS[TAB_GROUP[tab]];
+  const group = TAB_GROUP[tab];
+  ensureGroupLoaded(group);      // 지연 로드 그룹이면 지금 받기 시작한다
+  const { state, error } = DATA_GROUPS[group];
   if (state !== "ready") { setTabStatus(tab, state, error); return; }
 
   clearTabStatus(tab);
@@ -920,14 +937,24 @@ function tabStatusHost(tab, create) {
 function setTabStatus(tab, state, err) {
   const el = tabStatusHost(tab, true);
   if (!el) return;
-  if (state === "loading") {
+  if (state !== "error") {   // loading · idle — 아직 오류가 아니다
     el.innerHTML = emptyMessage("데이터를 불러오는 중입니다…");
     return;
   }
   const reason = (err && err.message) || "알 수 없는 오류";
   el.innerHTML = emptyMessage(`데이터를 불러오지 못했습니다 — ${reason}`)
     + `<button type="button" class="tab-retry">다시 시도</button>`;
-  el.querySelector(".tab-retry").addEventListener("click", () => { loadDashboardData(); });
+  el.querySelector(".tab-retry").addEventListener("click", () => { retryTab(tab); });
+}
+
+// 탭의 재시도는 그 탭이 쓰는 그룹만 다시 받는다 — 지표가 이미 떠 있는데
+// 주식 때문에 전체를 다시 받게 하지 않는다. 메타부터 실패한 경우엔 전체 재시도.
+function retryTab(tab) {
+  const group = TAB_GROUP[tab];
+  const load = _groupLoaders[group];
+  if (!load) { loadDashboardData(); return; }
+  setGroupState(group, "loading");
+  load();
 }
 
 function clearTabStatus(tab) {
@@ -944,7 +971,7 @@ function setGroupState(group, state, err = null) {
   for (const [tab, g] of Object.entries(TAB_GROUP)) {
     if (g !== group) continue;
     if (tab === activeTab) renderTabIfReady(tab);
-    else if (state === "ready") clearTabStatus(tab);
+    else if (state === "ready" || state === "idle") clearTabStatus(tab);
     else setTabStatus(tab, state, err);
   }
 }
@@ -1025,12 +1052,18 @@ async function loadDashboardData() {
     }
   };
 
-  await Promise.all([
-    loadGroup("indicators", [["indicators", codesOf(idx.indicators), true],
-                             ["assets",     codesOf(idx.assets),     false]]),
-    loadGroup("stocks",     [["stocks",     codesOf(idx.stocks),     true],
-                             ["indices",    codesOf(idx.indices),    false]]),
-  ]);
+  _groupLoaders.indicators = () => loadGroup("indicators",
+    [["indicators", codesOf(idx.indicators), true],
+     ["assets",     codesOf(idx.assets),     false]]);
+  _groupLoaders.stocks = () => loadGroup("stocks",
+    [["stocks",     codesOf(idx.stocks),     true],
+     ["indices",    codesOf(idx.indices),    false]]);
+
+  // 종목(약 19MB)은 주식 탭을 처음 열 때까지 미룬다.
+  // setGroupState 가 활성 탭을 다시 판단하므로, 메타를 기다리는 동안 사용자가
+  // 이미 주식 탭에 들어와 있었다면 이 한 줄에서 곧바로 로드가 시작된다.
+  setGroupState("stocks", "idle");
+  await _groupLoaders.indicators();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
