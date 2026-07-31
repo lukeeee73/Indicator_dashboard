@@ -105,14 +105,15 @@ async function sbRpc(fn, args = {}) {
 // 코드 목록을 청크로 나눠 조회 후 { code: payload } 맵 하나로 합친다.
 // 청크 하나가 끝까지 실패해도 나머지는 살린다 — 종목 하나 때문에 탭 전체가
 // 빈 화면이 되는 것보다 부분 표시가 낫다. 실패 코드는 missing 으로 보고한다.
-async function fetchPayloadMap(codes, chunkSize = 25) {
+// extraArgs 를 주면 RPC 인자에 그대로 얹는다 (다운샘플링 경계 등).
+async function fetchPayloadMap(codes, extraArgs = null, chunkSize = 25) {
   if (!codes.length) return { map: {}, missing: [] };
   const chunks = [];
   for (let i = 0; i < codes.length; i += chunkSize) {
     chunks.push(codes.slice(i, i + chunkSize));
   }
   const results = await Promise.allSettled(
-    chunks.map((c) => sbRpc("get_payload_map", { p_codes: c })),
+    chunks.map((c) => sbRpc("get_payload_map", { p_codes: c, ...extraArgs })),
   );
   const map = {};
   const missing = [];
@@ -126,6 +127,26 @@ async function fetchPayloadMap(codes, chunkSize = 25) {
   }
   return { map, missing };
 }
+
+// 종목 시계열 다운샘플링 경계 — get_payload_map 의 p_daily_since / p_weekly_since.
+// 최근 1년은 일별 그대로, 그 앞 4년은 주당 1개, 그보다 오래된 구간은 월당 1개만
+// 받는다. 서버가 각 구간의 '마지막' 관측치를 고르므로 최신값은 항상 살아있고
+// 장기 추세선도 눈으로는 차이가 없다. 154개 종목 기준 36만 → 7.7만 포인트.
+// 인자를 빼면 예전처럼 전체 일별이 오므로, 지표·자산·지수는 그대로 둔다.
+const STOCK_DAILY_YEARS  = 1;
+const STOCK_WEEKLY_YEARS = 5;
+
+function _isoYearsAgo(years) {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() - years);
+  return d.toISOString().slice(0, 10);
+}
+
+// 호출 시점에 계산한다 — 탭을 안 열고 자정을 넘겨도 경계가 따라간다.
+const STOCK_SERIES_ARGS = () => ({
+  p_daily_since:  _isoYearsAgo(STOCK_DAILY_YEARS),
+  p_weekly_since: _isoYearsAgo(STOCK_WEEKLY_YEARS),
+});
 
 // documents 테이블에서 문서 하나를 통째로 가져온다.
 // (markets · wiki · principles · value_screen 등 비시계열 데이터)
@@ -1024,11 +1045,12 @@ async function loadDashboardData() {
 
   const codesOf = (list) => (list || []).map((e) => e.code);
 
-  // parts = [[키, 코드목록, 필수여부], …]
+  // parts = [[키, 코드목록, 필수여부, RPC 추가인자], …]
   // 필수 목록이 통째로 실패하면 그룹을 실패로 본다. 보조 목록(자산·지수)이
   // 빠져도 렌더러는 각 섹션의 "데이터 없음" 안내로 처리하므로 탭은 살린다.
   const loadGroup = async (group, parts) => {
-    const results = await Promise.allSettled(parts.map(([, codes]) => fetchPayloadMap(codes)));
+    const results = await Promise.allSettled(
+      parts.map(([, codes, , extraArgs]) => fetchPayloadMap(codes, extraArgs)));
     if (seq !== _loadSeq) return;   // 이미 새 로드가 시작됐으면 결과를 버린다
 
     const missing = [];
@@ -1055,11 +1077,12 @@ async function loadDashboardData() {
   _groupLoaders.indicators = () => loadGroup("indicators",
     [["indicators", codesOf(idx.indicators), true],
      ["assets",     codesOf(idx.assets),     false]]);
+  // 지수는 4개뿐이라 전체 일별을 그대로 받고, 154개인 종목만 다운샘플링한다.
   _groupLoaders.stocks = () => loadGroup("stocks",
-    [["stocks",     codesOf(idx.stocks),     true],
+    [["stocks",     codesOf(idx.stocks),     true,  STOCK_SERIES_ARGS()],
      ["indices",    codesOf(idx.indices),    false]]);
 
-  // 종목(약 19MB)은 주식 탭을 처음 열 때까지 미룬다.
+  // 종목(다운샘플링 후 약 4MB)은 주식 탭을 처음 열 때까지 미룬다.
   // setGroupState 가 활성 탭을 다시 판단하므로, 메타를 기다리는 동안 사용자가
   // 이미 주식 탭에 들어와 있었다면 이 한 줄에서 곧바로 로드가 시작된다.
   setGroupState("stocks", "idle");
@@ -1616,17 +1639,14 @@ function filterAvailableTimeframes(series) {
   if (!series || series.length === 0) return [TIMEFRAMES[TIMEFRAMES.length - 1]];
   const spanMonths = monthsBetween(series[0].date, series[series.length - 1].date);
 
-  // 시리즈의 평균 데이터 간격(일). 분수 month 타임프레임은 충분한 포인트가 있을 때만 노출.
-  const totalDays = Math.max(1,
-    Math.round((new Date(series[series.length - 1].date) - new Date(series[0].date)) / 86400000));
-  const avgGapDays = totalDays / Math.max(1, series.length - 1);
-
   const available = TIMEFRAMES.filter((tf) => {
     if (tf.months == null) return true;
     if (tf.months > spanMonths) return false;
     // 짧은 타임프레임에 최소 3개 이상의 포인트가 들어가야 차트로 의미 있음.
-    const tfDays = tf.months * 30.44;
-    return tfDays / avgGapDays >= 3;
+    // 전체 평균 간격으로 어림하지 않고 실제로 그릴 구간의 포인트를 직접 센다.
+    // 종목 시계열은 최근만 일별이고 과거는 주·월별이라, 전체 평균으로 재면
+    // 최근 구간이 촘촘한데도 1W 같은 짧은 프레임이 부당하게 빠진다.
+    return sliceSeriesByMonths(series, tf.months).length >= 3;
   });
   if (!available.some((tf) => tf.months == null)) {
     available.push(TIMEFRAMES[TIMEFRAMES.length - 1]);
