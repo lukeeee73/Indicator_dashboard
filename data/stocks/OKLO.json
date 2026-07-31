@@ -5140,36 +5140,38 @@
     "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-07-17",
-      "narrative_score": -0.23,
-      "summary_kr": "Oklo는 Switch(12GW), Equinix 등 대규모 비구속 전력공급계약을 다수 확보해 장기 성장 스토리는 유효하지만, NRC 설계인증 미완료 등 규제·수급 이슈가 겹치며 연초 대비 41% 급락했고, Groves 시험로 임계도달 여부가 단기 반등의 핵심 트리거다.",
+      "as_of": "2026-07-31",
+      "narrative_score": 0.18,
+      "summary_kr": "Oklo는 아직 상업 매출이 없는 가운데, 경쟁사 홀텍의 원전 부지 재활용 승인이라는 규제 호재에 SMR 섹터 전체가 동반 급등하며 주가가 10%대 상승했다. 다만 연초 대비로는 여전히 46% 낮은 수준이라 반등이 추세 전환인지는 불확실하다.",
       "key_events": [
-        "연초 대비 주가 41% 하락(7/15 기준)",
-        "최근 한달간 28% 추가 하락(7/16)",
-        "DOE, Groves 시험로 최종 안전성분석 승인(7/1)"
+        "홀텍 오이스터크릭 부지 NRC 수용 → SMR 섹터 동반 급등 — 2026-07-30",
+        "Oklo 프로젝트 파이프라인 14GW 돌파 — 2026-07-30"
       ],
       "risks": [
-        "NRC 원자로 설계 인증 미완료",
-        "상업 매출 부재(2027-28년 목표)",
-        "투기적 밸류에이션·패시브 자금 이탈"
+        "자사 원자로 설계인증(NRC)은 여전히 미완료 — 이번 호재는 경쟁사 마일스톤",
+        "선행투자 단계 지속에 따른 밸류에이션·현금소진 부담"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "SMR",
-          "headline": "뉴스케일파워, 52주 신저가, 6개월간 54% 하락",
-          "implication_for_target": "SMR 업체 전반의 선행투자 리스크가 부각되어 Oklo 조정과 동일 맥락"
+          "headline": "뉴스케일파워도 같은 날 10%+ 동반 급등, 다만 바클레이즈는 TVA 프로젝트 지연 우려로 목표가 하향(15→11달러)",
+          "implication_for_target": "SMR 섹터 전체가 규제 마일스톤 뉴스에 동반 반응하는 구조 — Oklo 개별 펀더멘털과 무관한 베타 효과도 상당 부분 포함"
         },
         {
-          "ticker": "CEG",
-          "headline": "컨스텔레이션에너지, PJM 용량경매 전량 낙찰",
-          "implication_for_target": "대형 기존 원전 운영사가 AI 전력수요를 흡수하며 신생 SMR과 경쟁구도 형성"
+          "ticker": "BWXT",
+          "headline": "BWX Technologies, JPMorgan이 커버리지 개시하며 비중확대·목표가 230달러 제시, 부품 제조사(PCG) 인수로 생산능력 확장",
+          "implication_for_target": "SMR 공급망 상류(부품 제조) 투자 확대는 Oklo 등 SMR 개발사의 부품 조달 안정성에 긍정적"
         }
       ],
       "history": [
         {
           "date": "2026-07-17",
           "narrative_score": -0.23
+        },
+        {
+          "date": "2026-07-31",
+          "narrative_score": 0.18
         }
       ]
     }
