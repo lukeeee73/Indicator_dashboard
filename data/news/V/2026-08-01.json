@@ -1,0 +1,21 @@
+{
+  "ticker": "V",
+  "date": "2026-08-01",
+  "as_of_utc": "2026-08-01T12:00:00Z",
+  "news": [
+    {"title": "Visa Reports Fiscal Third Quarter 2026 Results", "source": "Visa Inc. (company IR)", "url": "https://s1.q4cdn.com/050606653/files/doc_financials/2026/q3/Q3-2026-Earnings-Release_vF.pdf", "published": "2026-07-28T20:00:00Z", "summary": "비자 3분기 매출 14%↑, 결제금액 4조달러 첫 돌파", "impact": "+", "category": "earnings"},
+    {"title": "Wolfe Research raises Visa stock price target to $435 on growth", "source": "Investing.com", "url": "https://www.investing.com/news/analyst-ratings/wolfe-research-raises-visa-stock-price-target-to-435-on-growth-93CH-4819252", "published": "2026-07-30T14:00:00Z", "summary": "웰스파고·울프리서치 등, 비자 목표주가 400~450달러대 상향", "impact": "+", "category": "other"},
+    {"title": "Fiserv debit network sale skepticism abounds", "source": "Payments Dive", "url": "https://www.paymentsdive.com/news/fiserv-debit-network-sale-skepticism-abounds/824706/", "published": "2026-07-08T12:00:00Z", "summary": "대형은행들, 피서브 직불망 인수 검토 지속(논의 배경, 8월까지 이어짐)", "impact": "-", "category": "regulation"},
+    {"title": "Visa (NYSE:V) Insider Sells 57,272 Shares", "source": "MarketsDaily / SEC Form 4 (StockTitan)", "url": "https://www.stocktitan.net/sec-filings/V/form-4-visa-inc-insider-trading-activity-5f6aa825d5b8.html", "published": "2026-07-30T20:00:00Z", "summary": "비자 부회장, 옵션 행사 후 자사주 5.7만주 매도", "impact": "neutral", "category": "other"}
+  ],
+  "competitor_context": [
+    {"ticker": "MA", "headline": "Mastercard Beats Q2 Earnings on Solid Cross-Border Volume Growth (EPS $5.04, +21.4% YoY)", "implication_for_target": "결제업계 전반 소비 호조를 재확인시키지만 마스터카드도 같은 Fiserv발 직불망 리스크에 노출돼 있음"},
+    {"ticker": "PYPL", "headline": "PayPal Q2 2026 revenue $8.68B beats estimates, raises 2026 outlook, stock +4% (2026-07-28)", "implication_for_target": "페이팔 턴어라운드가 계속되면 온라인 결제 시장에서 비자 카드망 의존도를 낮추는 대안이 하나 더 늘어남"}
+  ],
+  "scores": {"earnings_outlook": 0.80, "competitive_position": -0.10, "regulatory_risk": -0.25, "macro_sensitivity": 0.15},
+  "narrative_score": 0.27,
+  "summary_kr": "비자가 3분기 매출 14% 성장과 결제금액 4조달러 돌파라는 강한 실적을 내며 목표주가가 줄줄이 올랐지만, 대형은행들의 Fiserv 직불망 우회 시도와 스와이프 수수료 합의는 여전한 구조적 리스크다.",
+  "key_events": ["비자 3분기 실적 발표(7/28), 매출 +14%·결제금액 4조달러 돌파", "웰스파고·울프리서치 등 목표주가 400~450달러대 상향(7/30)", "대형은행 Fiserv 직불망 인수 논의 지속"],
+  "risks": ["대형은행 컨소시엄의 Fiserv 직불망 인수 시 라우팅 수수료 잠식 가능성", "$380억 스와이프 수수료 합의에 따른 수수료 인하 압력", "UK FCA 디지털 지갑 경쟁 조사 결과 대기"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/V%20-%20Visa%20Inc.md"
+}
