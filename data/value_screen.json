@@ -1,7 +1,7 @@
 {
- "as_of": "2026-07-06",
- "month": "2026-07",
- "generated_utc": "2026-07-06T14:56:00Z",
+ "as_of": "2026-08-01",
+ "month": "2026-08",
+ "generated_utc": "2026-08-01T11:13:01Z",
  "criteria": [
   {
    "key": "roe",
@@ -32,6 +32,7 @@
   "CRM",
   "MU",
   "NEM",
+  "ORCL",
   "T",
   "VZ"
  ],
@@ -54,10 +55,13 @@
   "CEG",
   "CMCSA",
   "DE",
+  "DIS",
   "ETN",
-  "FCX",
   "GE",
   "GOOGL",
+  "GS",
+  "HON",
+  "IBM",
   "JNJ",
   "JPM",
   "KLAC",
@@ -69,16 +73,15 @@
   "META",
   "MO",
   "MPWR",
-  "MS",
   "MSFT",
   "NFLX",
   "NVDA",
   "NVO",
-  "ORCL",
   "PEP",
   "PG",
   "PLTR",
   "PSA",
+  "QCOM",
   "SPG",
   "TER",
   "TMUS",
@@ -107,7 +110,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.6597
+     "value": -0.7247
     }
    },
    "passed_count": 2,
@@ -131,7 +134,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.7589
+     "value": -0.817
     }
    },
    "passed_count": 4,
@@ -143,11 +146,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.0754
+     "value": 0.0717
     },
     "margin": {
      "ok": false,
-     "value": 0.0547
+     "value": 0.0579
     },
     "profit": {
      "ok": true,
@@ -155,7 +158,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.4914
+     "value": -0.5875
     }
    },
    "passed_count": 2,
@@ -179,7 +182,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.7728
+     "value": -0.823
     }
    },
    "passed_count": 4,
@@ -203,7 +206,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.8607
+     "value": 1.4097
     }
    },
    "passed_count": 2,
@@ -227,7 +230,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.2067
+     "value": -0.2219
     }
    },
    "passed_count": 2,
@@ -251,7 +254,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2013
+     "value": -0.0545
     }
    },
    "passed_count": 2,
@@ -275,7 +278,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 4.1269
+     "value": 3.2177
     }
    },
    "passed_count": 0,
@@ -299,7 +302,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.1363
+     "value": -0.1282
     }
    },
    "passed_count": 2,
@@ -323,7 +326,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.8769
+     "value": 0.7489
     }
    },
    "passed_count": 3,
@@ -347,7 +350,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.9743
+     "value": 0.6815
     }
    },
    "passed_count": 2,
@@ -371,7 +374,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.2079
+     "value": 0.9375
     }
    },
    "passed_count": 3,
@@ -395,7 +398,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.59
+     "value": 0.3488
     }
    },
    "passed_count": 3,
@@ -419,7 +422,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4884
+     "value": 0.263
     }
    },
    "passed_count": 2,
@@ -443,7 +446,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.0093
+     "value": -0.1654
     }
    },
    "passed_count": 3,
@@ -467,7 +470,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.7772
+     "value": 1.944
     }
    },
    "passed_count": 0,
@@ -479,11 +482,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1068
+     "value": 0.1123
     },
     "margin": {
      "ok": true,
-     "value": 0.2144
+     "value": 0.2624
     },
     "profit": {
      "ok": false,
@@ -491,7 +494,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.789
+     "value": 0.4825
     }
    },
    "passed_count": 1,
@@ -503,11 +506,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.2509
+     "value": 0.2738
     },
     "margin": {
      "ok": true,
-     "value": 0.4399
+     "value": 0.4269
     },
     "profit": {
      "ok": false,
@@ -515,7 +518,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.6964
+     "value": 1.1668
     }
    },
    "passed_count": 2,
@@ -539,7 +542,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 12.3217
+     "value": 8.824
     }
    },
    "passed_count": 0,
@@ -563,7 +566,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.1077
+     "value": 1.9889
     }
    },
    "passed_count": 2,
@@ -587,7 +590,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.3113
+     "value": 1.1
     }
    },
    "passed_count": 1,
@@ -611,7 +614,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.6544
+     "value": 0.7842
     }
    },
    "passed_count": 3,
@@ -635,7 +638,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.166
+     "value": 1.1466
     }
    },
    "passed_count": 2,
@@ -647,11 +650,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1233
+     "value": null
     },
     "margin": {
      "ok": false,
-     "value": 0.1347
+     "value": 0.1415
     },
     "profit": {
      "ok": true,
@@ -659,7 +662,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.3435
+     "value": 0.5606
     }
    },
    "passed_count": 1,
@@ -683,7 +686,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.5094
+     "value": -0.4971
     }
    },
    "passed_count": 4,
@@ -707,7 +710,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.3343
+     "value": 1.6995
     }
    },
    "passed_count": 2,
@@ -731,7 +734,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.2028
+     "value": 0.9344
     }
    },
    "passed_count": 3,
@@ -755,7 +758,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.7173
+     "value": 2.6604
     }
    },
    "passed_count": 1,
@@ -779,7 +782,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5176
+     "value": 0.3826
     }
    },
    "passed_count": 1,
@@ -803,7 +806,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.7441
+     "value": 0.7506
     }
    },
    "passed_count": 3,
@@ -827,7 +830,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4098
+     "value": 0.2783
     }
    },
    "passed_count": 2,
@@ -851,7 +854,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.1209
+     "value": 1.3039
     }
    },
    "passed_count": 3,
@@ -875,7 +878,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.9617
+     "value": 0.8557
     }
    },
    "passed_count": 2,
@@ -899,7 +902,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 8.0927
+     "value": 6.4722
     }
    },
    "passed_count": 2,
@@ -911,11 +914,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.5224
+     "value": 0.5394
     },
     "margin": {
      "ok": true,
-     "value": 0.3602
+     "value": 0.3706
     },
     "profit": {
      "ok": true,
@@ -923,7 +926,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.3817
+     "value": 1.214
     }
    },
    "passed_count": 3,
@@ -947,7 +950,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.4289
+     "value": 0.9884
     }
    },
    "passed_count": 0,
@@ -971,7 +974,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.6216
+     "value": 0.7144
     }
    },
    "passed_count": 3,
@@ -983,11 +986,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.3442
+     "value": 0.3438
     },
     "margin": {
      "ok": true,
-     "value": 0.2125
+     "value": 0.2032
     },
     "profit": {
      "ok": true,
@@ -995,7 +998,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.6643
+     "value": 0.5162
     }
    },
    "passed_count": 3,
@@ -1019,7 +1022,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.6948
+     "value": 0.4685
     }
    },
    "passed_count": 3,
@@ -1043,7 +1046,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 3.4495
+     "value": 3.1553
     }
    },
    "passed_count": 1,
@@ -1055,11 +1058,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1064
+     "value": 0.112
     },
     "margin": {
      "ok": true,
-     "value": 0.3596
+     "value": 0.3831
     },
     "profit": {
      "ok": true,
@@ -1067,7 +1070,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.0061
+     "value": 0.0069
     }
    },
    "passed_count": 2,
@@ -1091,7 +1094,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.6206
+     "value": 1.3928
     }
    },
    "passed_count": 0,
@@ -1103,11 +1106,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.3127
+     "value": 0.4487
     },
     "margin": {
      "ok": true,
-     "value": 0.3458
+     "value": 0.4354
     },
     "profit": {
      "ok": true,
@@ -1115,7 +1118,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.5624
+     "value": 1.6283
     }
    },
    "passed_count": 3,
@@ -1139,7 +1142,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.8798
+     "value": -0.8828
     }
    },
    "passed_count": 2,
@@ -1151,11 +1154,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.0765
+     "value": 0.0853
     },
     "margin": {
      "ok": true,
-     "value": 0.3408
+     "value": 0.3623
     },
     "profit": {
      "ok": true,
@@ -1163,7 +1166,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.0725
+     "value": -0.0692
     }
    },
    "passed_count": 2,
@@ -1187,7 +1190,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.5253
+     "value": 1.3188
     }
    },
    "passed_count": 3,
@@ -1203,7 +1206,7 @@
     },
     "margin": {
      "ok": true,
-     "value": 0.4772
+     "value": 0.4682
     },
     "profit": {
      "ok": true,
@@ -1211,7 +1214,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.7241
+     "value": 0.6644
     }
    },
    "passed_count": 2,
@@ -1235,7 +1238,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.8336
+     "value": 1.4827
     }
    },
    "passed_count": 3,
@@ -1259,7 +1262,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2993
+     "value": 0.4883
     }
    },
    "passed_count": 3,
@@ -1271,11 +1274,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.275
+     "value": 0.272
     },
     "margin": {
      "ok": true,
-     "value": 0.2388
+     "value": 0.235
     },
     "profit": {
      "ok": true,
@@ -1283,7 +1286,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.7934
+     "value": -0.8179
     }
    },
    "passed_count": 4,
@@ -1294,12 +1297,12 @@
    "group": "통신 / 미디어",
    "checks": {
     "roe": {
-     "ok": true,
-     "value": 0.2092
+     "ok": false,
+     "value": 0.1149
     },
     "margin": {
-     "ok": false,
-     "value": 0.1315
+     "ok": true,
+     "value": 0.1723
     },
     "profit": {
      "ok": true,
@@ -1307,7 +1310,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.7054
+     "value": -0.6163
     }
    },
    "passed_count": 3,
@@ -1331,7 +1334,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.5554
+     "value": 2.0006
     }
    },
    "passed_count": 0,
@@ -1355,7 +1358,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2688
+     "value": 0.4688
     }
    },
    "passed_count": 2,
@@ -1379,7 +1382,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.5954
+     "value": 1.5459
     }
    },
    "passed_count": 2,
@@ -1403,7 +1406,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.3118
+     "value": -0.3211
     }
    },
    "passed_count": 4,
@@ -1451,7 +1454,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.7255
+     "value": 0.9826
     }
    },
    "passed_count": 1,
@@ -1475,7 +1478,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2876
+     "value": 0.3123
     }
    },
    "passed_count": 2,
@@ -1499,7 +1502,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.866
+     "value": 0.8886
     }
    },
    "passed_count": 3,
@@ -1522,11 +1525,11 @@
      "value": 4
     },
     "discount": {
-     "ok": false,
-     "value": -0.1667
+     "ok": true,
+     "value": -0.205
     }
    },
-   "passed_count": 2,
+   "passed_count": 3,
    "pass": false
   },
   "DLR": {
@@ -1535,11 +1538,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.0569
+     "value": 0.0295
     },
     "margin": {
      "ok": true,
-     "value": 0.1719
+     "value": 0.2611
     },
     "profit": {
      "ok": true,
@@ -1547,7 +1550,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.7673
+     "value": 7.1022
     }
    },
    "passed_count": 2,
@@ -1571,7 +1574,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2413
+     "value": 0.2512
     }
    },
    "passed_count": 2,
@@ -1595,7 +1598,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.1926
+     "value": 1.2374
     }
    },
    "passed_count": 2,
@@ -1619,7 +1622,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.1886
+     "value": 0.1782
     }
    },
    "passed_count": 2,
@@ -1643,7 +1646,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.7736
+     "value": 3.0783
     }
    },
    "passed_count": 2,
@@ -1667,7 +1670,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.9535
+     "value": 0.9781
     }
    },
    "passed_count": 3,
@@ -1691,7 +1694,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.0906
+     "value": 0.0826
     }
    },
    "passed_count": 2,
@@ -1715,7 +1718,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.6351
+     "value": -0.6071
     }
    },
    "passed_count": 1,
@@ -1726,12 +1729,12 @@
    "group": "에너지 / 원자재",
    "checks": {
     "roe": {
-     "ok": true,
-     "value": 0.1563
+     "ok": false,
+     "value": 0.1475
     },
     "margin": {
      "ok": true,
-     "value": 0.3107
+     "value": 0.334
     },
     "profit": {
      "ok": true,
@@ -1739,10 +1742,10 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.6698
+     "value": 0.6221
     }
    },
-   "passed_count": 3,
+   "passed_count": 2,
    "pass": false
   },
   "FDX": {
@@ -1763,7 +1766,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.0782
+     "value": -0.0653
     }
    },
    "passed_count": 1,
@@ -1775,11 +1778,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.4543
+     "value": 0.4823
     },
     "margin": {
      "ok": true,
-     "value": 0.2021
+     "value": 0.2057
     },
     "profit": {
      "ok": true,
@@ -1787,7 +1790,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.78
+     "value": 1.4823
     }
    },
    "passed_count": 3,
@@ -1799,11 +1802,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.7571
+     "value": 0.8258
     },
     "margin": {
      "ok": false,
-     "value": 0.0546
+     "value": 0.0747
     },
     "profit": {
      "ok": true,
@@ -1811,7 +1814,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.1964
+     "value": 0.9795
     }
    },
    "passed_count": 2,
@@ -1823,11 +1826,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.0401
+     "value": 0.0316
     },
     "margin": {
      "ok": false,
-     "value": 0.0936
+     "value": 0.032
     },
     "profit": {
      "ok": false,
@@ -1835,7 +1838,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.4236
+     "value": -0.3516
     }
    },
    "passed_count": 1,
@@ -1847,11 +1850,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.3888
+     "value": 0.4868
     },
     "margin": {
      "ok": true,
-     "value": 0.3612
+     "value": 0.3403
     },
     "profit": {
      "ok": true,
@@ -1859,7 +1862,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5867
+     "value": 0.0499
     }
    },
    "passed_count": 3,
@@ -1870,12 +1873,12 @@
    "group": "금융",
    "checks": {
     "roe": {
-     "ok": false,
-     "value": 0.1455
+     "ok": true,
+     "value": 0.1695
     },
     "margin": {
      "ok": true,
-     "value": 0.386
+     "value": 0.4232
     },
     "profit": {
      "ok": true,
@@ -1883,10 +1886,10 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.3533
+     "value": 0.2291
     }
    },
-   "passed_count": 2,
+   "passed_count": 3,
    "pass": false
   },
   "HD": {
@@ -1907,7 +1910,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2527
+     "value": 0.1644
     }
    },
    "passed_count": 2,
@@ -1923,7 +1926,7 @@
     },
     "margin": {
      "ok": false,
-     "value": -0.1728
+     "value": -0.1645
     },
     "profit": {
      "ok": false,
@@ -1931,7 +1934,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.7175
+     "value": -0.7161
     }
    },
    "passed_count": 1,
@@ -1943,22 +1946,22 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.2426
+     "value": 0.4658
     },
     "margin": {
      "ok": true,
-     "value": 0.21
+     "value": 0.2025
     },
     "profit": {
      "ok": false,
      "value": 3
     },
     "discount": {
-     "ok": false,
-     "value": 0.1751
+     "ok": true,
+     "value": -0.2906
     }
    },
-   "passed_count": 2,
+   "passed_count": 3,
    "pass": false
   },
   "HSAI": {
@@ -1979,7 +1982,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.1905
+     "value": 0.0146
     }
    },
    "passed_count": 1,
@@ -1991,11 +1994,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.3577
+     "value": 0.3446
     },
     "margin": {
-     "ok": false,
-     "value": 0.1381
+     "ok": true,
+     "value": 0.1655
     },
     "profit": {
      "ok": true,
@@ -2003,10 +2006,10 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.0894
+     "value": -0.1882
     }
    },
-   "passed_count": 2,
+   "passed_count": 3,
    "pass": false
   },
   "INTC": {
@@ -2015,11 +2018,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": -0.0291
+     "value": -0.1071
     },
     "margin": {
      "ok": false,
-     "value": 0.0688
+     "value": 0.1219
     },
     "profit": {
      "ok": false,
@@ -2027,7 +2030,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.5026
+     "value": 1.1136
     }
    },
    "passed_count": 0,
@@ -2039,11 +2042,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.2642
+     "value": 0.2574
     },
     "margin": {
      "ok": true,
-     "value": 0.2741
+     "value": 0.2919
     },
     "profit": {
      "ok": true,
@@ -2051,7 +2054,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.6972
+     "value": 0.6966
     }
    },
    "passed_count": 3,
@@ -2063,11 +2066,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.1647
+     "value": 0.1779
     },
     "margin": {
      "ok": true,
-     "value": 0.4374
+     "value": 0.5039
     },
     "profit": {
      "ok": true,
@@ -2075,7 +2078,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.1902
+     "value": 0.1567
     }
    },
    "passed_count": 3,
@@ -2099,7 +2102,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.7184
+     "value": 1.4143
     }
    },
    "passed_count": 3,
@@ -2123,7 +2126,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4378
+     "value": 0.4055
     }
    },
    "passed_count": 3,
@@ -2147,7 +2150,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 5.2444
+     "value": 4.3006
     }
    },
    "passed_count": 1,
@@ -2171,7 +2174,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.305
+     "value": 1.166
     }
    },
    "passed_count": 3,
@@ -2195,7 +2198,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.444
+     "value": 1.3963
     }
    },
    "passed_count": 3,
@@ -2207,11 +2210,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.6764
+     "value": 0.8917
     },
     "margin": {
      "ok": false,
-     "value": 0.11
+     "value": 0.1196
     },
     "profit": {
      "ok": true,
@@ -2219,7 +2222,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.3833
+     "value": 0.2526
     }
    },
    "passed_count": 2,
@@ -2243,7 +2246,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.6284
+     "value": 1.2734
     }
    },
    "passed_count": 3,
@@ -2279,11 +2282,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": -0.4065
+     "value": -0.4007
     },
     "margin": {
      "ok": false,
-     "value": -0.1935
+     "value": -0.0591
     },
     "profit": {
      "ok": false,
@@ -2291,7 +2294,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2222
+     "value": -0.1769
     }
    },
    "passed_count": 0,
@@ -2315,7 +2318,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.052
+     "value": -0.1039
     }
    },
    "passed_count": 2,
@@ -2339,7 +2342,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.1392
+     "value": 0.1613
     }
    },
    "passed_count": 3,
@@ -2363,7 +2366,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.311
+     "value": -0.3083
     }
    },
    "passed_count": 3,
@@ -2387,7 +2390,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.674
+     "value": 2.0684
     }
    },
    "passed_count": 0,
@@ -2411,7 +2414,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.027
+     "value": 2.1109
     }
    },
    "passed_count": 3,
@@ -2435,7 +2438,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5074
+     "value": 0.5239
     }
    },
    "passed_count": 2,
@@ -2459,7 +2462,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.7546
+     "value": 1.1747
     }
    },
    "passed_count": 2,
@@ -2470,12 +2473,12 @@
    "group": "금융",
    "checks": {
     "roe": {
-     "ok": true,
-     "value": 0.1639
+     "ok": false,
+     "value": null
     },
     "margin": {
      "ok": true,
-     "value": 0.4062
+     "value": 0.4157
     },
     "profit": {
      "ok": true,
@@ -2483,10 +2486,10 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4338
+     "value": 0.3174
     }
    },
-   "passed_count": 3,
+   "passed_count": 2,
    "pass": false
   },
   "MSFT": {
@@ -2507,7 +2510,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.0035
+     "value": -0.0262
     }
    },
    "passed_count": 3,
@@ -2531,7 +2534,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.4112
+     "value": -0.4561
     }
    },
    "passed_count": 4,
@@ -2555,7 +2558,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 3.6109
+     "value": 1.9618
     }
    },
    "passed_count": 0,
@@ -2567,11 +2570,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1032
+     "value": 0.1168
     },
     "margin": {
      "ok": true,
-     "value": 0.3018
+     "value": 0.3152
     },
     "profit": {
      "ok": true,
@@ -2579,7 +2582,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4479
+     "value": 0.3661
     }
    },
    "passed_count": 2,
@@ -2591,11 +2594,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.2583
+     "value": 0.2591
     },
     "margin": {
      "ok": true,
-     "value": 0.6138
+     "value": 0.5157
     },
     "profit": {
      "ok": true,
@@ -2603,7 +2606,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.2165
+     "value": -0.244
     }
    },
    "passed_count": 4,
@@ -2615,11 +2618,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.4849
+     "value": 0.4954
     },
     "margin": {
      "ok": true,
-     "value": 0.323
+     "value": 0.3338
     },
     "profit": {
      "ok": true,
@@ -2627,7 +2630,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.408
+     "value": 0.2556
     }
    },
    "passed_count": 3,
@@ -2651,7 +2654,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.3924
+     "value": 0.2939
     }
    },
    "passed_count": 0,
@@ -2667,7 +2670,7 @@
     },
     "margin": {
      "ok": false,
-     "value": 0.1195
+     "value": 0.1269
     },
     "profit": {
      "ok": true,
@@ -2675,7 +2678,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.0172
+     "value": -0.0616
     }
    },
    "passed_count": 2,
@@ -2687,11 +2690,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.2851
+     "value": 0.2696
     },
     "margin": {
      "ok": false,
-     "value": 0.1169
+     "value": 0.116
     },
     "profit": {
      "ok": true,
@@ -2699,7 +2702,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.0327
+     "value": 0.0274
     }
    },
    "passed_count": 2,
@@ -2723,7 +2726,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.0673
+     "value": 0.1279
     }
    },
    "passed_count": 3,
@@ -2747,7 +2750,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.1336
+     "value": -0.1643
     }
    },
    "passed_count": 3,
@@ -2771,7 +2774,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.4634
+     "value": 1.5267
     }
    },
    "passed_count": 2,
@@ -2818,12 +2821,12 @@
      "value": 4
     },
     "discount": {
-     "ok": false,
-     "value": -0.1348
+     "ok": true,
+     "value": -0.2892
     }
    },
-   "passed_count": 3,
-   "pass": false
+   "passed_count": 4,
+   "pass": true
   },
   "OXY": {
    "name": "Occidental Petroleum",
@@ -2843,7 +2846,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.2089
+     "value": 1.5903
     }
    },
    "passed_count": 2,
@@ -2855,11 +2858,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.4388
+     "value": 0.5151
     },
     "margin": {
      "ok": true,
-     "value": 0.1696
+     "value": 0.1684
     },
     "profit": {
      "ok": true,
@@ -2867,7 +2870,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.1215
+     "value": -0.0434
     }
    },
    "passed_count": 3,
@@ -2891,7 +2894,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.1808
+     "value": -0.1741
     }
    },
    "passed_count": 1,
@@ -2915,7 +2918,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2081
+     "value": 0.1769
     }
    },
    "passed_count": 3,
@@ -2927,11 +2930,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.0684
+     "value": 0.0775
     },
     "margin": {
      "ok": true,
-     "value": 0.3849
+     "value": 0.4303
     },
     "profit": {
      "ok": true,
@@ -2939,7 +2942,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.1026
+     "value": 1.0505
     }
    },
    "passed_count": 2,
@@ -2963,7 +2966,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 3.6238
+     "value": 3.3957
     }
    },
    "passed_count": 3,
@@ -2987,7 +2990,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.1535
+     "value": 3.3158
     }
    },
    "passed_count": 3,
@@ -3011,7 +3014,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.7839
+     "value": 2.5446
     }
    },
    "passed_count": 1,
@@ -3034,11 +3037,11 @@
      "value": 3
     },
     "discount": {
-     "ok": false,
-     "value": -0.1904
+     "ok": true,
+     "value": -0.2321
     }
    },
-   "passed_count": 2,
+   "passed_count": 3,
    "pass": false
   },
   "RIVN": {
@@ -3071,11 +3074,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1157
+     "value": 0.1227
     },
     "margin": {
      "ok": false,
-     "value": 0.1318
+     "value": 0.127
     },
     "profit": {
      "ok": true,
@@ -3083,7 +3086,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.8546
+     "value": 0.8946
     }
    },
    "passed_count": 1,
@@ -3107,7 +3110,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.4233
+     "value": 1.3977
     }
    },
    "passed_count": 1,
@@ -3131,7 +3134,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.1062
+     "value": 0.0256
     }
    },
    "passed_count": 1,
@@ -3143,11 +3146,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1407
+     "value": 0.1291
     },
     "margin": {
      "ok": false,
-     "value": 0.1227
+     "value": 0.1271
     },
     "profit": {
      "ok": true,
@@ -3155,7 +3158,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4767
+     "value": 0.8213
     }
    },
    "passed_count": 1,
@@ -3179,7 +3182,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.1844
+     "value": 0.865
     }
    },
    "passed_count": 1,
@@ -3203,7 +3206,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5268
+     "value": 0.5154
     }
    },
    "passed_count": 2,
@@ -3227,7 +3230,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.2871
+     "value": 0.3082
     }
    },
    "passed_count": 3,
@@ -3251,7 +3254,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.8433
+     "value": 0.8347
     }
    },
    "passed_count": 2,
@@ -3275,7 +3278,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5544
+     "value": 0.5533
     }
    },
    "passed_count": 2,
@@ -3299,7 +3302,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.8345
+     "value": -0.8277
     }
    },
    "passed_count": 1,
@@ -3311,11 +3314,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.1837
+     "value": 0.1834
     },
     "margin": {
      "ok": true,
-     "value": 0.2272
+     "value": 0.2479
     },
     "profit": {
      "ok": true,
@@ -3323,7 +3326,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.5816
+     "value": -0.5176
     }
    },
    "passed_count": 4,
@@ -3347,7 +3350,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.4565
+     "value": 1.284
     }
    },
    "passed_count": 3,
@@ -3371,7 +3374,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.4813
+     "value": -0.4701
     }
    },
    "passed_count": 2,
@@ -3383,11 +3386,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1352
+     "value": 0.1351
     },
     "margin": {
      "ok": true,
-     "value": 0.1789
+     "value": 0.1875
     },
     "profit": {
      "ok": true,
@@ -3395,7 +3398,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5275
+     "value": 0.6355
     }
    },
    "passed_count": 2,
@@ -3407,11 +3410,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.1802
+     "value": 0.1799
     },
     "margin": {
      "ok": true,
-     "value": 0.2401
+     "value": 0.2522
     },
     "profit": {
      "ok": true,
@@ -3419,7 +3422,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.0469
+     "value": -0.0532
     }
    },
    "passed_count": 3,
@@ -3443,7 +3446,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.5146
+     "value": 1.1689
     }
    },
    "passed_count": 2,
@@ -3455,11 +3458,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.049
+     "value": 0.0467
     },
     "margin": {
      "ok": false,
-     "value": 0.042
+     "value": 0.0141
     },
     "profit": {
      "ok": true,
@@ -3467,7 +3470,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 10.6792
+     "value": 8.8508
     }
    },
    "passed_count": 1,
@@ -3479,11 +3482,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.3621
+     "value": 0.3997
     },
     "margin": {
      "ok": true,
-     "value": 0.581
+     "value": 0.6034
     },
     "profit": {
      "ok": true,
@@ -3491,7 +3494,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4384
+     "value": 0.3093
     }
    },
    "passed_count": 3,
@@ -3515,7 +3518,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5048
+     "value": 0.3621
     }
    },
    "passed_count": 0,
@@ -3527,11 +3530,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1218
+     "value": 0.1415
     },
     "margin": {
      "ok": false,
-     "value": 0.0805
+     "value": 0.0713
     },
     "profit": {
      "ok": true,
@@ -3539,7 +3542,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.663
+     "value": 0.5904
     }
    },
    "passed_count": 1,
@@ -3563,7 +3566,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.0193
+     "value": 0.0155
     }
    },
    "passed_count": 2,
@@ -3587,7 +3590,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.4507
+     "value": 1.4111
     }
    },
    "passed_count": 3,
@@ -3611,7 +3614,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.4416
+     "value": -0.4508
     }
    },
    "passed_count": 3,
@@ -3635,7 +3638,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 2.305
+     "value": 2.1867
     }
    },
    "passed_count": 3,
@@ -3659,7 +3662,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.4592
+     "value": 0.5775
     }
    },
    "passed_count": 3,
@@ -3671,11 +3674,11 @@
    "checks": {
     "roe": {
      "ok": true,
-     "value": 0.172
+     "value": 0.1584
     },
     "margin": {
      "ok": true,
-     "value": 0.2519
+     "value": 0.2096
     },
     "profit": {
      "ok": true,
@@ -3683,7 +3686,7 @@
     },
     "discount": {
      "ok": true,
-     "value": -0.4502
+     "value": -0.3777
     }
    },
    "passed_count": 4,
@@ -3707,7 +3710,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 4.1729
+     "value": 4.5378
     }
    },
    "passed_count": 2,
@@ -3719,11 +3722,11 @@
    "checks": {
     "roe": {
      "ok": false,
-     "value": 0.1203
+     "value": 0.1258
     },
     "margin": {
      "ok": true,
-     "value": 0.2945
+     "value": 0.3707
     },
     "profit": {
      "ok": true,
@@ -3731,7 +3734,7 @@
     },
     "discount": {
      "ok": false,
-     "value": -0.0631
+     "value": -0.0881
     }
    },
    "passed_count": 2,
@@ -3755,7 +3758,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 1.0526
+     "value": 1.0093
     }
    },
    "passed_count": 2,
@@ -3779,7 +3782,7 @@
     },
     "discount": {
      "ok": false,
-     "value": 0.5322
+     "value": 0.7719
     }
    },
    "passed_count": 1,
