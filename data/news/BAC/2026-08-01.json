@@ -1,0 +1,20 @@
+{
+  "ticker": "BAC",
+  "date": "2026-08-01",
+  "as_of_utc": "2026-08-01T12:00:00Z",
+  "news": [
+    {"title": "Bank of America to acquire information security consultancy MDSec Consulting Limited", "source": "Bank of America Newsroom (company IR)", "url": "https://newsroom.bankofamerica.com/content/newsroom/press-releases/2026/07/bank-of-america-to-acquire-information-security-consultancy-mdse.html", "published": "2026-07-30T13:00:00Z", "summary": "BofA, 영국 사이버보안 컨설팅업체 MDSec 인수 발표", "impact": "+", "category": "m&a"},
+    {"title": "Bank of America Increases Common Stock Dividend 14% to $0.32 Per Share", "source": "PR Newswire (company IR)", "url": "https://www.prnewswire.com/news-releases/bank-of-america-increases-common-stock-dividend-14-to-0-32-per-share-302834056.html", "published": "2026-07-24T13:00:00Z", "summary": "BofA, 분기 배당 14% 인상해 주당 0.32달러로 확정", "impact": "+", "category": "earnings"},
+    {"title": "JPMorgan Adjusts Price Target on Bank of America to $68 From $62.50, Maintains Overweight Rating", "source": "MarketScreener", "url": "https://www.marketscreener.com/news/jpmorgan-adjusts-price-target-on-bank-of-america-to-68-from-62-50-maintains-overweight-rating-ce7f51d2de88f020", "published": "2026-07-29T14:00:00Z", "summary": "JP모건, BofA 목표주가 62.50→68달러로 상향", "impact": "+", "category": "other"}
+  ],
+  "competitor_context": [
+    {"ticker": "JPM", "headline": "JP모건, 롱숏 ETF(JLVP) 출시·토큰화 예금 네트워크 주도(7/28~31)", "implication_for_target": "규모의 경제에서 BofA가 계속 따라잡아야 하는 입장이지만, MDSec 인수처럼 틈새 영역(사이버보안)에서 차별화를 시도 중"},
+    {"ticker": "WFC", "headline": "Wells Fargo & Company Increases Common Stock Dividend by 11% to $0.50 (board approved 2026-07-28)", "implication_for_target": "대형은행 전반의 자본여력이 튼튼하다는 뜻으로, BofA만의 특별한 우위로 보긴 어려움"}
+  ],
+  "scores": {"earnings_outlook": 0.20, "competitive_position": 0.35, "regulatory_risk": 0.0, "macro_sensitivity": 0.05},
+  "narrative_score": 0.18,
+  "summary_kr": "뱅크오브아메리카가 사이버보안업체 MDSec 인수와 배당 14% 인상을 잇달아 발표했고, JP모건도 목표주가를 68달러로 올리며 신뢰를 보탰다.",
+  "key_events": ["MDSec 사이버보안 컨설팅업체 인수 발표(7/30)", "분기 배당 14% 인상 확정, 주당 $0.32(7/24)", "JP모건 목표주가 $68로 상향(7/29)"],
+  "risks": ["MDSec 인수의 규제 승인 지연 가능성(4분기 완료 목표)", "NII 가이던스 상향 실현 여부의 지속적 확인 필요"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/BAC%20-%20Bank%20of%20America%20Corp.md"
+}
