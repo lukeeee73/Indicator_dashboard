@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-07-25",
-      "value": 20.7
-    },
-    {
-      "date": "2016-07-26",
-      "value": 20.75
-    },
-    {
-      "date": "2016-07-27",
-      "value": 20.89
-    },
-    {
-      "date": "2016-07-28",
-      "value": 20.78
-    },
-    {
-      "date": "2016-07-29",
-      "value": 20.88
-    },
-    {
       "date": "2016-08-01",
       "value": 21.01
     },
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-07-24",
       "value": 28.16
+    },
+    {
+      "date": "2026-07-27",
+      "value": 29.13
+    },
+    {
+      "date": "2026-07-28",
+      "value": 30.28
+    },
+    {
+      "date": "2026-07-29",
+      "value": 30.68
+    },
+    {
+      "date": "2026-07-30",
+      "value": 30.72
+    },
+    {
+      "date": "2026-07-31",
+      "value": 30.11
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 36538355712.0,
+      "market_cap": null,
       "pe_ratio": null,
-      "forward_pe": 5.677419,
+      "forward_pe": null,
       "eps_ttm": -1.95,
-      "dividend_yield": 4.73,
+      "dividend_yield": 4.42,
       "profit_margin": -0.019450001,
       "operating_margin": -0.16450001,
-      "price_to_book": 0.5066168,
+      "price_to_book": 0.5204638,
       "return_on_equity": -0.028499998
     },
     "quarterly": [
@@ -10111,19 +10111,14 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 28.16,
+    "as_of": "2026-07-31",
+    "current_price": 30.11,
     "sector": "Consumer Discretionary",
-    "methods": {
-      "forward_pe_benchmark": {
-        "fair_value": 99.2,
-        "weight": 3.0,
-        "note": "내재 forward EPS × 섹터 Forward P/E (20)"
-      }
-    },
-    "fair_value": 99.2,
-    "valuation_gap": -0.7161,
-    "signal": "deep_value",
+    "methods": {},
+    "fair_value": null,
+    "valuation_gap": null,
+    "signal": "n/a",
+    "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
       "as_of": "2026-07-22",

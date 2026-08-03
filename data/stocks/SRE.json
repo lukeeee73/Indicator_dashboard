@@ -4,26 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-07-25",
-      "value": 41.24
-    },
-    {
-      "date": "2016-07-26",
-      "value": 41.05
-    },
-    {
-      "date": "2016-07-27",
-      "value": 40.51
-    },
-    {
-      "date": "2016-07-28",
-      "value": 40.69
-    },
-    {
-      "date": "2016-07-29",
-      "value": 40.87
-    },
-    {
       "date": "2016-08-01",
       "value": 40.77
     },
@@ -5497,7 +5477,7 @@
     },
     {
       "date": "2022-01-05",
-      "value": 58.78
+      "value": 58.79
     },
     {
       "date": "2022-01-06",
@@ -7437,7 +7417,7 @@
     },
     {
       "date": "2023-12-11",
-      "value": 68.43
+      "value": 68.42
     },
     {
       "date": "2023-12-12",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-07-24",
       "value": 92.98
+    },
+    {
+      "date": "2026-07-27",
+      "value": 91.25
+    },
+    {
+      "date": "2026-07-28",
+      "value": 90.56
+    },
+    {
+      "date": "2026-07-29",
+      "value": 88.82
+    },
+    {
+      "date": "2026-07-30",
+      "value": 89.58
+    },
+    {
+      "date": "2026-07-31",
+      "value": 88.55
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 60781715456.0,
-      "pe_ratio": 31.62585,
-      "forward_pe": 16.792912,
+      "market_cap": null,
+      "pe_ratio": 30.119047,
+      "forward_pe": 15.99282,
       "eps_ttm": 2.94,
-      "dividend_yield": 2.83,
+      "dividend_yield": 2.97,
       "profit_margin": 0.1443,
       "operating_margin": 0.30616,
-      "price_to_book": 1.8842841,
+      "price_to_book": 1.7945081,
       "return_on_equity": 0.05689
     },
     "quarterly": [
@@ -10118,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 92.98,
+    "as_of": "2026-07-31",
+    "current_price": 88.55,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10139,7 +10139,7 @@
       }
     },
     "fair_value": 59.86,
-    "valuation_gap": 0.5533,
+    "valuation_gap": 0.4793,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10321,6 +10321,12 @@
         "price": 92.98,
         "fair_value": 47.2,
         "gap": 0.9699
+      },
+      {
+        "date": "2026-07-31",
+        "price": 88.55,
+        "fair_value": 47.2,
+        "gap": 0.8761
       }
     ],
     "qualitative": {

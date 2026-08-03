@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-07-25",
-      "value": 3.67
-    },
-    {
-      "date": "2016-07-26",
-      "value": 3.73
-    },
-    {
-      "date": "2016-07-27",
-      "value": 3.57
-    },
-    {
-      "date": "2016-07-28",
-      "value": 3.4
-    },
-    {
-      "date": "2016-07-29",
-      "value": 3.42
-    },
-    {
       "date": "2016-08-01",
       "value": 3.38
     },
@@ -10058,19 +10038,39 @@
     {
       "date": "2026-07-24",
       "value": 5.69
+    },
+    {
+      "date": "2026-07-27",
+      "value": 5.7
+    },
+    {
+      "date": "2026-07-28",
+      "value": 5.76
+    },
+    {
+      "date": "2026-07-29",
+      "value": 6.01
+    },
+    {
+      "date": "2026-07-30",
+      "value": 5.86
+    },
+    {
+      "date": "2026-07-31",
+      "value": 5.76
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 16486819840.0,
+      "market_cap": 21699786752.0,
       "pe_ratio": null,
-      "forward_pe": 3.4455614,
-      "eps_ttm": -8.54,
+      "forward_pe": 4.119582,
+      "eps_ttm": -7.76,
       "dividend_yield": 10.58,
-      "profit_margin": -0.13866,
-      "operating_margin": 0.02725,
-      "price_to_book": 0.26026496,
-      "return_on_equity": -0.30152
+      "profit_margin": -0.12104999,
+      "operating_margin": 0.02238,
+      "price_to_book": 0.26404533,
+      "return_on_equity": -0.28694
     },
     "quarterly": [
       {
@@ -10085,7 +10085,7 @@
         "revenue": 38448000000.0,
         "operating_income": -1397000000.0,
         "net_income": -1869000000.0,
-        "eps": null
+        "eps": -0.65
       },
       {
         "date": "2025-12-31",
@@ -10100,22 +10100,29 @@
         "operating_income": 687000000.0,
         "net_income": 390000000.0,
         "eps": 0.14
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": 43482000000.0,
+        "operating_income": 983000000.0,
+        "net_income": 266000000.0,
+        "eps": 0.07
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 5.69,
+    "as_of": "2026-07-31",
+    "current_price": 5.76,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 33.03,
+        "fair_value": 27.96,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 33.03,
-    "valuation_gap": -0.8277,
+    "fair_value": 27.96,
+    "valuation_gap": -0.794,
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {

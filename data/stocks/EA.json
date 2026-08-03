@@ -4,26 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-07-25",
-      "value": 74.63
-    },
-    {
-      "date": "2016-07-26",
-      "value": 74.57
-    },
-    {
-      "date": "2016-07-27",
-      "value": 74.4
-    },
-    {
-      "date": "2016-07-28",
-      "value": 74.03
-    },
-    {
-      "date": "2016-07-29",
-      "value": 74.07
-    },
-    {
       "date": "2016-08-01",
       "value": 74.37
     },
@@ -1845,7 +1825,7 @@
     },
     {
       "date": "2018-05-22",
-      "value": 128.27
+      "value": 128.28
     },
     {
       "date": "2018-05-23",
@@ -3009,7 +2989,7 @@
     },
     {
       "date": "2019-07-19",
-      "value": 84.91
+      "value": 84.92
     },
     {
       "date": "2019-07-22",
@@ -3317,7 +3297,7 @@
     },
     {
       "date": "2019-11-06",
-      "value": 95.76
+      "value": 95.75
     },
     {
       "date": "2019-11-07",
@@ -8305,7 +8285,7 @@
     },
     {
       "date": "2024-10-22",
-      "value": 144.59
+      "value": 144.58
     },
     {
       "date": "2024-10-23",
@@ -9229,7 +9209,7 @@
     },
     {
       "date": "2025-09-25",
-      "value": 167.84
+      "value": 167.85
     },
     {
       "date": "2025-09-26",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-07-24",
       "value": 209.06
+    },
+    {
+      "date": "2026-07-27",
+      "value": 209.07
+    },
+    {
+      "date": "2026-07-28",
+      "value": 208.87
+    },
+    {
+      "date": "2026-07-29",
+      "value": 208.91
+    },
+    {
+      "date": "2026-07-30",
+      "value": 209.59
+    },
+    {
+      "date": "2026-07-31",
+      "value": 209.86
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 52422107136.0,
-      "pe_ratio": 59.561253,
-      "forward_pe": 21.7119,
-      "eps_ttm": 3.51,
+      "market_cap": 52965273600.0,
+      "pe_ratio": 59.96,
+      "forward_pe": 21.794985,
+      "eps_ttm": 3.5,
       "dividend_yield": 0.36,
       "profit_margin": 0.11778,
       "operating_margin": 0.24009001,
-      "price_to_book": 7.74899,
+      "price_to_book": 7.7786427,
       "return_on_equity": 0.1349
     },
     "quarterly": [
@@ -10118,12 +10118,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 209.06,
+    "as_of": "2026-07-31",
+    "current_price": 209.86,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 70.2,
+        "fair_value": 70.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10133,13 +10133,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 46.16,
+        "fair_value": 46.09,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 93.44,
-    "valuation_gap": 1.2374,
+    "fair_value": 93.33,
+    "valuation_gap": 1.2487,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10321,6 +10321,12 @@
         "price": 209.06,
         "fair_value": 69.8,
         "gap": 1.9951
+      },
+      {
+        "date": "2026-07-31",
+        "price": 209.86,
+        "fair_value": 69.8,
+        "gap": 2.0066
       }
     ],
     "qualitative": {

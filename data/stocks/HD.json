@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-07-25",
-      "value": 107.2
-    },
-    {
-      "date": "2016-07-26",
-      "value": 107.39
-    },
-    {
-      "date": "2016-07-27",
-      "value": 107.05
-    },
-    {
-      "date": "2016-07-28",
-      "value": 108.34
-    },
-    {
-      "date": "2016-07-29",
-      "value": 108.56
-    },
-    {
       "date": "2016-08-01",
       "value": 108.98
     },
@@ -1149,7 +1129,7 @@
     },
     {
       "date": "2017-09-12",
-      "value": 129.17
+      "value": 129.16
     },
     {
       "date": "2017-09-13",
@@ -1809,7 +1789,7 @@
     },
     {
       "date": "2018-05-09",
-      "value": 152.16
+      "value": 152.15
     },
     {
       "date": "2018-05-10",
@@ -4853,7 +4833,7 @@
     },
     {
       "date": "2021-05-18",
-      "value": 278.23
+      "value": 278.22
     },
     {
       "date": "2021-05-19",
@@ -4873,7 +4853,7 @@
     },
     {
       "date": "2021-05-25",
-      "value": 278.23
+      "value": 278.22
     },
     {
       "date": "2021-05-26",
@@ -5225,7 +5205,7 @@
     },
     {
       "date": "2021-09-29",
-      "value": 299.02
+      "value": 299.01
     },
     {
       "date": "2021-09-30",
@@ -5385,7 +5365,7 @@
     },
     {
       "date": "2021-11-24",
-      "value": 365.73
+      "value": 365.74
     },
     {
       "date": "2021-11-26",
@@ -6913,7 +6893,7 @@
     },
     {
       "date": "2023-06-05",
-      "value": 271.65
+      "value": 271.64
     },
     {
       "date": "2023-06-06",
@@ -7273,7 +7253,7 @@
     },
     {
       "date": "2023-10-12",
-      "value": 273.3
+      "value": 273.31
     },
     {
       "date": "2023-10-13",
@@ -7813,7 +7793,7 @@
     },
     {
       "date": "2024-04-26",
-      "value": 316.52
+      "value": 316.53
     },
     {
       "date": "2024-04-29",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-07-24",
       "value": 332.98
+    },
+    {
+      "date": "2026-07-27",
+      "value": 336.09
+    },
+    {
+      "date": "2026-07-28",
+      "value": 344.47
+    },
+    {
+      "date": "2026-07-29",
+      "value": 338.27
+    },
+    {
+      "date": "2026-07-30",
+      "value": 333.35
+    },
+    {
+      "date": "2026-07-31",
+      "value": 331.96
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 332019924992.0,
-      "pe_ratio": 23.632364,
-      "forward_pe": 20.691948,
-      "eps_ttm": 14.09,
-      "dividend_yield": 2.8,
+      "market_cap": null,
+      "pe_ratio": 23.576704,
+      "forward_pe": 20.628653,
+      "eps_ttm": 14.08,
+      "dividend_yield": 2.81,
       "profit_margin": 0.08411,
       "operating_margin": 0.11926,
-      "price_to_book": 23.927853,
+      "price_to_book": 23.854555,
       "return_on_equity": 1.2838
     },
     "quarterly": [
@@ -10111,12 +10111,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 332.98,
+    "as_of": "2026-07-31",
+    "current_price": 331.96,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 352.25,
+        "fair_value": 352.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
@@ -10126,13 +10126,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
       "graham_number": {
-        "fair_value": 66.42,
+        "fair_value": 66.4,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 285.96,
-    "valuation_gap": 0.1644,
+    "fair_value": 285.83,
+    "valuation_gap": 0.1614,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10284,6 +10284,12 @@
         "price": 332.98,
         "fair_value": 352.0,
         "gap": -0.054
+      },
+      {
+        "date": "2026-07-31",
+        "price": 331.96,
+        "fair_value": 352.0,
+        "gap": -0.0569
       }
     ],
     "qualitative": {

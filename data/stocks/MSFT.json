@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-07-25",
-      "value": 50.16
-    },
-    {
-      "date": "2016-07-26",
-      "value": 50.18
-    },
-    {
-      "date": "2016-07-27",
-      "value": 49.68
-    },
-    {
-      "date": "2016-07-28",
-      "value": 49.7
-    },
-    {
-      "date": "2016-07-29",
-      "value": 50.11
-    },
-    {
       "date": "2016-08-01",
       "value": 50.02
     },
@@ -3901,7 +3881,7 @@
     },
     {
       "date": "2020-06-08",
-      "value": 179.04
+      "value": 179.03
     },
     {
       "date": "2020-06-09",
@@ -8593,7 +8573,7 @@
     },
     {
       "date": "2025-02-06",
-      "value": 410.95
+      "value": 410.94
     },
     {
       "date": "2025-02-07",
@@ -9561,7 +9541,7 @@
     },
     {
       "date": "2026-01-26",
-      "value": 468.19
+      "value": 468.2
     },
     {
       "date": "2026-01-27",
@@ -10058,28 +10038,41 @@
     {
       "date": "2026-07-24",
       "value": 381.7
+    },
+    {
+      "date": "2026-07-27",
+      "value": 389.1
+    },
+    {
+      "date": "2026-07-28",
+      "value": 393.35
+    },
+    {
+      "date": "2026-07-29",
+      "value": 390.54
+    },
+    {
+      "date": "2026-07-30",
+      "value": 451.1
+    },
+    {
+      "date": "2026-07-31",
+      "value": 464.72
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 2835433652224.0,
-      "pe_ratio": 22.73377,
-      "forward_pe": 19.7027,
-      "eps_ttm": 16.79,
-      "dividend_yield": 0.95,
-      "profit_margin": 0.39341998,
-      "operating_margin": 0.46326,
-      "price_to_book": 6.8433228,
-      "return_on_equity": 0.34013999
+      "market_cap": 3450799652864.0,
+      "pe_ratio": 25.904123,
+      "forward_pe": 19.801651,
+      "eps_ttm": 17.94,
+      "dividend_yield": 0.78,
+      "profit_margin": 0.40305,
+      "operating_margin": 0.45111,
+      "price_to_book": 7.8018975,
+      "return_on_equity": 0.34039003
     },
     "quarterly": [
-      {
-        "date": "2025-03-31",
-        "revenue": 70066000000.0,
-        "operating_income": 32000000000.0,
-        "net_income": 25824000000.0,
-        "eps": 3.46
-      },
       {
         "date": "2025-06-30",
         "revenue": 76441000000.0,
@@ -10107,112 +10100,41 @@
         "operating_income": 38398000000.0,
         "net_income": 31778000000.0,
         "eps": 4.27
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": 90007000000.0,
+        "operating_income": 40603000000.0,
+        "net_income": 35766000000.0,
+        "eps": 4.81
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-24",
-    "current_price": 381.7,
+    "as_of": "2026-07-31",
+    "current_price": 464.72,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 470.12,
+        "fair_value": 502.32,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 426.21,
+        "fair_value": 516.31,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 145.16,
+        "fair_value": 155.06,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 391.95,
-    "valuation_gap": -0.0262,
-    "signal": "fair",
+    "fair_value": 437.06,
+    "valuation_gap": 0.0633,
+    "signal": "overvalued",
     "gap_series_weekly": [
-      {
-        "date": "2026-01-02",
-        "price": 470.84,
-        "fair_value": 447.72,
-        "gap": 0.0516
-      },
-      {
-        "date": "2026-01-09",
-        "price": 477.16,
-        "fair_value": 447.72,
-        "gap": 0.0658
-      },
-      {
-        "date": "2026-01-16",
-        "price": 457.82,
-        "fair_value": 447.72,
-        "gap": 0.0226
-      },
-      {
-        "date": "2026-01-23",
-        "price": 463.88,
-        "fair_value": 447.72,
-        "gap": 0.0361
-      },
-      {
-        "date": "2026-01-30",
-        "price": 428.38,
-        "fair_value": 447.72,
-        "gap": -0.0432
-      },
-      {
-        "date": "2026-02-06",
-        "price": 399.36,
-        "fair_value": 447.72,
-        "gap": -0.108
-      },
-      {
-        "date": "2026-02-13",
-        "price": 399.54,
-        "fair_value": 447.72,
-        "gap": -0.1076
-      },
-      {
-        "date": "2026-02-20",
-        "price": 396.37,
-        "fair_value": 447.72,
-        "gap": -0.1147
-      },
-      {
-        "date": "2026-02-27",
-        "price": 391.89,
-        "fair_value": 447.72,
-        "gap": -0.1247
-      },
-      {
-        "date": "2026-03-06",
-        "price": 408.08,
-        "fair_value": 447.72,
-        "gap": -0.0885
-      },
-      {
-        "date": "2026-03-13",
-        "price": 394.7,
-        "fair_value": 447.72,
-        "gap": -0.1184
-      },
-      {
-        "date": "2026-03-20",
-        "price": 381.04,
-        "fair_value": 447.72,
-        "gap": -0.1489
-      },
-      {
-        "date": "2026-03-27",
-        "price": 356.0,
-        "fair_value": 447.72,
-        "gap": -0.2049
-      },
       {
         "date": "2026-04-02",
         "price": 372.65,
@@ -10294,26 +10216,32 @@
       {
         "date": "2026-07-02",
         "price": 390.49,
-        "fair_value": 470.4,
-        "gap": -0.1699
+        "fair_value": 502.88,
+        "gap": -0.2235
       },
       {
         "date": "2026-07-10",
         "price": 385.1,
-        "fair_value": 470.4,
-        "gap": -0.1813
+        "fair_value": 502.88,
+        "gap": -0.2342
       },
       {
         "date": "2026-07-17",
         "price": 393.82,
-        "fair_value": 470.4,
-        "gap": -0.1628
+        "fair_value": 502.88,
+        "gap": -0.2169
       },
       {
         "date": "2026-07-24",
         "price": 381.7,
-        "fair_value": 470.4,
-        "gap": -0.1886
+        "fair_value": 502.88,
+        "gap": -0.241
+      },
+      {
+        "date": "2026-07-31",
+        "price": 464.72,
+        "fair_value": 502.88,
+        "gap": -0.0759
       }
     ],
     "qualitative": {
