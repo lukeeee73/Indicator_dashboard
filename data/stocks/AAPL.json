@@ -10317,22 +10317,29 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-27",
-      "narrative_score": 0.0,
-      "summary_kr": "지난 24시간 동안 AAPL 단독의 검증 가능한 1차 뉴스는 확인되지 않았다. 7월 30일 실적 발표를 앞두고 시장은 관망세이며, 저capex 기반 AI 전략에 대한 프리미엄 부여 논의가 배경으로 이어지고 있다.",
+      "as_of": "2026-08-03",
+      "narrative_score": -0.19,
+      "summary_kr": "애플 3분기 실적은 매출·EPS 모두 컨센서스를 상회했지만, 서비스 매출 성장 10% 미만 둔화와 중국 매출 예상 하회, 약한 9월분기 가이던스가 겹치며 주가는 6.6% 급락했다. 모건스탠리·골드만삭스 등이 목표주가를 하향했다.",
       "key_events": [
-        "7월 30일 FY26 3분기 실적 발표 예정(캘린더 일정)"
+        "7/30 FY26 3분기 실적 발표: 매출 $109.4B(+16%), EPS $2.02(+29%), 서비스 매출 성장 10% 미만 둔화, 중국 매출 $188억(컨센서스 $196억 하회)",
+        "9월분기(FY26 Q4) 가이던스 매출 성장률 9~11%로 전분기 대비 둔화"
       ],
       "risks": [
-        "실적 발표 직전 변동성 확대 가능성",
-        "낮은 AI 자본지출 전략에 대한 시장 평가가 실적 결과에 따라 엇갈릴 수 있음"
+        "서비스 매출 성장 둔화가 환율 요인인지 구조적 둔화인지 불분명",
+        "중국 매출 부진 지속 시 화웨이 등 로컬 경쟁사에 점유율 추가 잠식 우려",
+        "낮은 AI capex 전략이 경쟁사(MSFT·AMZN) 대비 성장률 격차로 이어질 위험"
       ],
-      "news_count": 0,
+      "news_count": 4,
       "competitor_context": [
         {
+          "ticker": "MSFT",
+          "headline": "마이크로소프트, 애저 43% 성장·연매출 1000억달러 돌파로 하루 만에 시총 4500억달러 증가(2008년來 최대 상승)",
+          "implication_for_target": "경쟁사가 AI 인프라 투자의 실제 성과를 실적으로 입증하면서, 애플의 상대적으로 낮은 AI capex 전략이 이번 분기엔 오히려 성장 둔화로 대비되어 보임"
+        },
+        {
           "ticker": "AMZN",
-          "headline": "Wall Street analysts (led by KeyBanc) raise Amazon price targets to $335 on accelerating AWS growth and ~$485B backlog, ahead of Amazon's July 30 earnings",
-          "implication_for_target": "클라우드/AI 인프라 투자 경쟁이 여전히 뜨거움을 시사 — 애플은 상대적으로 낮은 capex로 AI 대응한다는 자본효율성 차별점이 부각될 수 있음"
+          "headline": "아마존 AWS 2분기 매출 37%↑(18분기 만에 최고 성장률), 수주잔고 4960억달러로 확대",
+          "implication_for_target": "빅테크 클라우드·AI 사업 전반이 강한 성장을 보이는 가운데, 하드웨어·서비스 중심인 애플만 성장 둔화 신호가 부각되는 모양새"
         }
       ],
       "history": [
@@ -10383,6 +10390,10 @@
         {
           "date": "2026-07-27",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-08-03",
+          "narrative_score": -0.19
         }
       ]
     }

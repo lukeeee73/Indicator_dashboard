@@ -10277,17 +10277,31 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-27",
-      "narrative_score": 0.0,
-      "summary_kr": "2026-07-26~27(UTC) 구간에서 검증 가능한 ADBE 관련 신규 뉴스를 찾지 못함. 직전 이슈였던 Morgan Stanley의 Underweight 하향(7/21)이 여전히 최신 화제이나 새 뉴스는 없음.",
+      "as_of": "2026-08-03",
+      "narrative_score": 0.12,
+      "summary_kr": "어도비는 CLSA의 낙관적 커버리지 개시와 IBM·ServiceNow·SAP발 소프트웨어 섹터 심리 회복에 힘입어 주가가 반등했으나(52주 저점 대비 +30%), CEO·CFO 리더십 공백과 AI 잠식 우려는 여전히 해소되지 않은 상태다.",
       "key_events": [
-        "지난 24시간 내 특이 뉴스 없음"
+        "CLSA, 어도비 커버리지 개시(Outperform·목표가 300달러), AI 잠식 우려는 과도하다고 평가 (7/20)",
+        "IBM 실적경고 재해석·ServiceNow·SAP 호실적에 소프트웨어 섹터 전반 심리 회복, 주가 +5.7% (7/29)"
       ],
       "risks": [
-        "Morgan Stanley Underweight 하향 및 CEO/CFO 교체, 프리미엄 AI 전략에 대한 우려가 지속"
+        "CEO·CFO 정규직 선임 지연에 따른 리더십 공백 장기화",
+        "OpenAI Sora 2·구글 Veo 3 등 AI 네이티브 경쟁자의 크리에이티브 영역 잠식",
+        "프리미엄 전환·가격 인상 유예로 인한 하반기 ARR 성장 둔화"
       ],
-      "news_count": 0,
-      "competitor_context": [],
+      "news_count": 2,
+      "competitor_context": [
+        {
+          "ticker": "MSFT",
+          "headline": "마이크로소프트 4분기 실적서 코파일럿 유료 전환 확대·애저 +43% 성장 확인",
+          "implication_for_target": "생성형 AI 생산성 도구 경쟁이 격화되는 가운데, 어도비 파이어플라이(Firefly)의 크리에이티브 영역 차별화가 계속 시험대에 오를 수 있음"
+        },
+        {
+          "ticker": "CRM",
+          "headline": "세일즈포스, 이번 달 KeyBanc·Bernstein·Morgan Stanley 3연속 애널리스트 하향",
+          "implication_for_target": "AI 에이전트 실제 도입 속도에 대한 월가의 의구심이 어도비를 포함한 SaaS 업종 전반에 밸류에이션 압박으로 번질 수 있음을 시사"
+        }
+      ],
       "history": [
         {
           "date": "2026-05-18",
@@ -10324,6 +10338,10 @@
         {
           "date": "2026-07-27",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-08-03",
+          "narrative_score": 0.12
         }
       ]
     }

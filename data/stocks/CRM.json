@@ -10287,17 +10287,27 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-27",
-      "narrative_score": 0.0,
-      "summary_kr": "2026-07-26~27(UTC) 구간에서 검증 가능한 CRM 관련 신규 뉴스를 찾지 못함. 직전 이벤트(7/21 Morgan Stanley 다운그레이드, 7/24 VA 16억달러 계약)는 이미 반영된 것으로 보이며 새로운 재료는 없음.",
+      "as_of": "2026-08-03",
+      "narrative_score": -0.08,
+      "summary_kr": "세일즈포스는 美 재향군인부와 16억달러 규모 정부 계약을 새로 따냈지만, 같은 달 KeyBanc·Bernstein·Morgan Stanley 등 애널리스트 3곳이 잇달아 투자의견을 하향하며 Agentforce의 실제 고객 도입 속도에 대한 월가의 의구심이 커지고 있다. 지난 루틴 실행(7/27) 이후 공백을 반영해 7/9~7/24 핵심 사건을 정리함.",
       "key_events": [
-        "지난 24시간 내 특이 뉴스 없음"
+        "美 재향군인부와 16억달러 규모 3년 Agentic Enterprise License Agreement 체결 (7/24)",
+        "Morgan Stanley, 투자의견 하향·목표가 287→185달러 (7/21)",
+        "KeyBanc·Bernstein 동시 Sector Weight 하향, Agentforce 도입 증거 부족 지적 (7/9)"
       ],
       "risks": [
-        "직전 주 Morgan Stanley의 Equal-Weight 하향(목표가 185달러) 여파가 아직 진정되지 않은 상태"
+        "Agentforce의 실제 고객 도입·매출 기여가 애널리스트 기대에 못 미칠 가능성",
+        "MSFT Copilot·SAP Joule 등 엔터프라이즈 AI 에이전트 경쟁 심화",
+        "SaaS 구독 모델 자체를 AI 에이전트가 대체할 것이라는 밸류에이션 압박 지속"
       ],
-      "news_count": 0,
-      "competitor_context": [],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "MSFT",
+          "headline": "마이크로소프트 4분기 실적서 코파일럿 유료 전환 확대·애저 +43% 성장 확인",
+          "implication_for_target": "Agentforce와 직접 경쟁하는 코파일럿의 모멘텀이 강화되며 세일즈포스의 AI 에이전트 시장 점유 확대에 부담"
+        }
+      ],
       "history": [
         {
           "date": "2026-05-18",
@@ -10334,6 +10344,10 @@
         {
           "date": "2026-07-27",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-08-03",
+          "narrative_score": -0.08
         }
       ]
     }

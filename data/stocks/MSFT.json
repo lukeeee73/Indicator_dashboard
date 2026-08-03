@@ -10317,22 +10317,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-27",
-      "narrative_score": 0.0,
-      "summary_kr": "지난 24시간 동안 MSFT 단독의 검증 가능한 1차 뉴스는 확인되지 않았다. 7월 29일 FY26 4분기 실적 발표를 앞두고 Azure/Copilot 성장과 대규모 AI capex 소화 여부가 핵심 관심사로 남아있다.",
+      "as_of": "2026-08-03",
+      "narrative_score": 0.45,
+      "summary_kr": "마이크로소프트는 FY26 4분기 실적에서 매출 18%·애저 43% 성장(연매출 첫 1000억달러 돌파)이라는 컨센서스 대폭 상회 실적을 내며 하루 만에 시가총액이 약 4500억~4800억달러 늘었다(2008년 이후 최대 하루 상승폭). 나델라는 자체 AI모델·칩 전략도 재확인했다.",
       "key_events": [
-        "7월 29일 FY26 4분기 실적 발표 예정(캘린더 일정)"
+        "7/29 FY26 4분기 실적: 매출 $90B(+18%), 애저 +43%(연매출 첫 $100B 돌파), EPS $4.74(컨센서스 $4.24 상회)",
+        "분기 capex 사상최대 $41B, 계약 백로그 $678B(+$51B QoQ)",
+        "주가 하루 만에 15~17% 급등, 시가총액 약 $450~480B 증가 — 2008년 이후 최대 하루 상승"
       ],
       "risks": [
-        "연초 대비 주가 약세(약 -18% YTD) 지속 시 밸류에이션 재평가 압력",
-        "Copilot/Azure 관련 증권집단소송 진행 중(리드플레인티프 신청 마감 8/11)"
+        "분기 capex $41B 등 대규모 AI 투자 지속이 향후 마진에 부담이 될 가능성",
+        "자체 AI모델(MAI) 전략이 OpenAI와의 파트너십 긴장으로 번질 가능성",
+        "이례적인 단기 급등 이후 밸류에이션 부담"
       ],
-      "news_count": 0,
+      "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "AMZN",
-          "headline": "Wall Street analysts (led by KeyBanc) raise Amazon price targets to $335 on accelerating AWS growth and ~$485B backlog, ahead of Amazon's July 30 earnings",
-          "implication_for_target": "AWS 성장 재가속 기대는 Azure와의 클라우드 경쟁이 여전히 치열함을 의미 — 7/29 MSFT 실적에서 Azure 성장률 비교가 핵심 포인트"
+          "ticker": "AAPL",
+          "headline": "애플 3분기 실적은 컨센서스 상회했지만 서비스·중국 매출 부진으로 주가 6.6% 급락, 목표주가 줄줄이 하향",
+          "implication_for_target": "AI 인프라 투자를 공격적으로 늘려온 MS가 성장률로 결과를 증명한 반면, 상대적으로 낮은 capex를 유지해온 애플은 성장 둔화를 겪으며 두 회사의 전략 차이가 이번 분기 실적으로 극명하게 갈림"
+        },
+        {
+          "ticker": "ORCL",
+          "headline": "오라클, 구글클라우드와 제미나이 통합 확대 발표로 주가 6%↑",
+          "implication_for_target": "오라클도 AI 클라우드 파트너십을 강화하며 엔터프라이즈 AI 인프라 시장에서 애저의 경쟁자로 계속 부상 중"
         }
       ],
       "history": [
@@ -10383,6 +10391,10 @@
         {
           "date": "2026-07-27",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-08-03",
+          "narrative_score": 0.45
         }
       ]
     }
