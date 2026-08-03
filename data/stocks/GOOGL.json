@@ -10253,20 +10253,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-27",
-      "narrative_score": 0.0,
-      "summary_kr": "지난 24시간 동안 GOOGL 단독의 새로운 검증 가능한 1차 뉴스는 확인되지 않았다. 직전 주(7/22) 발표된 2분기 실적(매출 24% 성장, capex 급증)에 대한 시장의 재평가 국면이 이어지고 있다.",
-      "key_events": [],
-      "risks": [
-        "AI 인프라 capex 지속 확대에 따른 잉여현금흐름 악화 우려",
-        "대규모 증자 프로그램에 따른 주식 희석 우려"
+      "as_of": "2026-08-03",
+      "narrative_score": -0.03,
+      "summary_kr": "알파벳은 2분기 검색광고·클라우드 매출은 견조했지만(클라우드 +82%), capex가 449억달러로 2배 급증하며 상장 후 처음으로 분기 잉여현금흐름이 적자(-59억달러)로 전환했다. 연간 capex 가이던스도 최대 2050억달러로 재상향됐고, 주가는 급락 후 7/31 소폭 반등했다.",
+      "key_events": [
+        "7/22 2분기 실적: 검색광고 매출 +19% $604억, 구글클라우드 +82% $248억, capex $449억(전년比 2배)",
+        "사상 첫 분기 잉여현금흐름 적자(-$59억), CFO는 2026 capex 가이던스를 $195~205B로 재상향하고 2027년 추가 증액 예고",
+        "7/31 주가 3.03% 반등 — 매도 과잉 이후 저가 매수 유입"
       ],
-      "news_count": 0,
+      "risks": [
+        "capex 급증과 FCF 적자가 지속될 경우 밸류에이션 디스카운트 위험",
+        "장기부채가 상반기에만 111% 증가($98B)하며 재무구조 부담 확대",
+        "빅테크 전반의 AI capex 회의론이 재점화될 경우 동반 조정 가능성"
+      ],
+      "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "AMZN",
-          "headline": "Wall Street analysts (led by KeyBanc) raise Amazon price targets to $335 on accelerating AWS growth and ~$485B backlog, ahead of Amazon's July 30 earnings",
-          "implication_for_target": "AWS 백로그 확대는 구글클라우드·Azure·AWS 3파전이 지속됨을 시사 — 구글의 TPU-as-a-Service 등 차별화 전략의 중요성이 부각됨"
+          "ticker": "MSFT",
+          "headline": "마이크로소프트 애저 43% 성장에 하루 만에 시총 4500억달러 급증(2008년來 최대 상승)",
+          "implication_for_target": "클라우드 3파전에서 애저의 고성장이 부각되며, 구글클라우드(82% 성장이지만 규모는 아직 작음)의 capex 대비 수익화 속도가 투자자들의 비교 잣대가 됨"
+        },
+        {
+          "ticker": "META",
+          "headline": "메타도 capex를 1450억달러로 늘리며 FCF 91% 급감, 주가 10%↓",
+          "implication_for_target": "'AI 투자 대비 현금흐름 우려'가 구글에 국한된 문제가 아니라 빅테크 전반의 공통 테마임을 보여주며, 이번 주 빅테크 전체 밸류에이션 재평가 압력으로 이어짐"
         }
       ],
       "history": [
@@ -10313,6 +10323,10 @@
         {
           "date": "2026-07-27",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-08-03",
+          "narrative_score": -0.03
         }
       ]
     }
