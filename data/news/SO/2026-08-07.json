@@ -1,0 +1,55 @@
+{
+  "ticker": "SO",
+  "date": "2026-08-07",
+  "as_of_utc": "2026-08-07T12:00:00Z",
+  "news": [
+    {
+      "title": "Southern Co. contracted large load rises to 17 GW",
+      "source": "Utility Dive",
+      "url": "https://www.utilitydive.com/news/southern-co-contracted-large-load-data-centers/826919/",
+      "published": "2026-08-04T00:00:00Z",
+      "summary": "1분기 이후 6GW 추가 계약, 조지아파워-OpenAI 3.2GW 25년 계약 포함 총 17GW",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Southern Company Announces Upsize and Pricing of $725 Million and $1.65 Billion Convertible Senior Notes",
+      "source": "PR Newswire",
+      "url": "https://www.prnewswire.com/news-releases/southern-company-announces-upsize-and-pricing-of-725-million-in-aggregate-principal-amount-of-series-2026a-2-125-convertible-senior-notes-due-december-15--2027-and-1-65-billion-in-aggregate-principal-amount-of-series-2026b-3-50--302841822.html",
+      "published": "2026-08-06T00:00:00Z",
+      "summary": "전환사채 총 27.3억달러 발행, 일부는 고금리 기존 채권 상환에 사용",
+      "impact": "neutral",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AEP",
+      "headline": "AEP, 13GW 가스터빈 확보로 발전설비 확충 발표(8/3)",
+      "implication_for_target": "동남부(서던)와 중부(AEP) 모두 대형 발전·계약 확대로 데이터센터 수요를 선점하려는 경쟁이 심화됨"
+    },
+    {
+      "ticker": "DUK",
+      "headline": "듀크에너지, 2분기 실적서 데이터센터發 5-10억달러 추가 자본계획 상향 시사(8/4)",
+      "implication_for_target": "동남부 인접 경쟁사인 듀크도 유사한 파이프라인 확대를 보고하며 서던의 우위가 상대적일 뿐임을 보여줌"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.3,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.14,
+  "summary_kr": "OpenAI와의 3.2GW 25년 계약을 포함해 계약부하가 17GW로 늘며 데이터센터 수요 확보에서 뚜렷한 성과를 보였지만, 27.3억달러 규모 전환사채 발행으로 자본조달 비용 관리에도 나섰다.",
+  "key_events": [
+    "계약된 대형부하 17GW로 확대, 조지아파워-OpenAI 3.2GW 25년 계약 포함(8/4)",
+    "전환사채 27.3억달러 발행, 일부 고금리채 상환(8/6)"
+  ],
+  "risks": [
+    "대형부하 8GW 추가 협상이 실제 계약으로 전환되는 속도",
+    "전환사채 발행에 따른 희석 가능성",
+    "조지아 요금 규제 및 affordability 정치적 압력"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/SO%20-%20The%20Southern%20Company.md"
+}

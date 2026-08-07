@@ -1,0 +1,65 @@
+{
+  "ticker": "ED",
+  "date": "2026-08-07",
+  "as_of_utc": "2026-08-07T12:00:00Z",
+  "news": [
+    {
+      "title": "Con Edison Reports 2026 Second Quarter Earnings",
+      "source": "Con Edison (PR Newswire/IR)",
+      "url": "http://www.prnewswire.com/news-releases/con-edison-reports-2026-second-quarter-earnings-302845443.html",
+      "published": "2026-08-06T20:15:00Z",
+      "summary": "2분기 순이익 $3.08억(주당 $0.83)로 전년 $2.46억(주당 $0.68) 대비 개선, 연간 가이던스 $6.00~6.20 재확인",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Con Edison Reports 2026 Second Quarter Earnings (dividend declaration)",
+      "source": "Con Edison (PR Newswire/IR)",
+      "url": "http://www.prnewswire.com/news-releases/con-edison-reports-2026-second-quarter-earnings-302845443.html",
+      "published": "2026-08-06T20:15:00Z",
+      "summary": "분기 배당 주당 88.75센트 선언, 9/15 지급(기록일 8/19) — 52년 연속 증가 유지",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Con Edison 2026 second quarter earnings call — grid investment plan",
+      "source": "SEC Form 10-Q / earnings call commentary",
+      "url": "http://www.prnewswire.com/news-releases/con-edison-reports-2026-second-quarter-earnings-302845443.html",
+      "published": "2026-08-06T20:15:00Z",
+      "summary": "2035년까지 신규 변전소 28개 추가 등 장기 그리드 투자계획 재확인",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AEP",
+      "headline": "AEP, 텍사스 하이퍼스케일러 수요로 연간 가이던스 상향($6.25~6.55)(7/30)",
+      "implication_for_target": "데이터센터 노출이 큰 AEP·DUK 대비 ED는 뉴욕 중심 안정 성장 스토리로 대비되며, 이번 분기 실적 자체는 견조했다"
+    },
+    {
+      "ticker": "EXC",
+      "headline": "Exelon, 2분기 EPS 미스로 주가 4.5% 급락(7/30)",
+      "implication_for_target": "같은 대도시 T&D 유틸리티인 EXC의 부진과 달리 ED는 이번 분기 EPS가 전년 대비 개선되며 상대적으로 견조한 실적을 냈다"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": -0.15,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.05
+  },
+  "narrative_score": 0.08,
+  "summary_kr": "2분기 순이익과 EPS가 전년 대비 개선되고 연간 가이던스가 재확인됐으며 배당도 52년 연속 증가를 이어갔지만, 데이터센터 노출이 낮은 구조적 성장 제약은 여전하다.",
+  "key_events": [
+    "2분기 순이익 $3.08억(EPS $0.83), 전년 $2.46억(EPS $0.68) 대비 개선(8/6)",
+    "분기 배당 88.75센트 선언, 52년 연속 증가(8/6)",
+    "2035년까지 신규 변전소 28개 등 장기 그리드 투자계획 재확인(8/6)"
+  ],
+  "risks": [
+    "데이터센터 부하 노출이 낮아 동종업계 대비 성장 스토리 약함 (기존 open claim)",
+    "7월 두 차례 폭염 스트레스에 따른 규제당국 신뢰성 심사 강화 가능성 (기존 open claim)",
+    "고금리 환경에서 배당주 밸류에이션 압박"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ED%20-%20Consolidated%20Edison.md"
+}
