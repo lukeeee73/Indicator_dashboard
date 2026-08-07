@@ -1,0 +1,36 @@
+name: Sync Dashboard Data to Supabase
+
+# 사람이 data/ 변경을 머지하거나 동기화 코드가 바뀌면 즉시 DB를 맞춘다.
+# 주간 update.yml은 GitHub Actions 토큰으로 data/를 커밋하므로 다른 workflow를
+# 다시 호출하지 않는다. 따라서 주간 실행 안에도 동일한 sync step을 유지한다.
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/build-indicators-pipeline-QFtLk]
+    paths:
+      - "data/**"
+      - "scripts/sync_supabase.py"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Sync all dashboard data to Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          SYNC_LOOKBACK_DAYS: "120"
+        run: python scripts/sync_supabase.py
