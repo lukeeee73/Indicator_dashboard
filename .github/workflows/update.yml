@@ -1,20 +1,19 @@
 name: Update FRED Indicators
 
 # 주 1회 FRED API + Yahoo Finance 호출 → data/index.json + data/indicators/*.json
-# + data/assets/*.json + data/stocks/*.json 갱신 → 변경 시 자동 커밋.
+# + data/assets/*.json + data/stocks/*.json 갱신 → Supabase 전체 동기화 → 변경 시 자동 커밋.
 # 매주 월요일 09:00 UTC (= 한국시간 월요일 18:00) 자동 + 수동 실행.
-# 워치리스트(종목 목록)가 바뀌어 main 에 머지되면 즉시 실행해 신규 종목 데이터를 시딩한다.
+# 워치리스트나 수집 코드가 바뀌어 기본 브랜치에 머지되면 즉시 실행한다.
 on:
   schedule:
     - cron: "0 9 * * 1"
   workflow_dispatch:
   push:
-    branches: [claude/build-indicators-pipeline-QFtLk]  # 레포 기본 브랜치
+    branches: [claude/build-indicators-pipeline-QFtLk]
     paths:
       - "scripts/watchlist_data.py"
       - "scripts/fetch_fred.py"
 
-# GITHUB_TOKEN 에 푸시 권한 부여 (자동 커밋을 위해 필요)
 permissions:
   contents: write
 
@@ -43,17 +42,10 @@ jobs:
       # 국채 입찰 결과(응찰률·낙찰 배분) — TreasuryDirect, API 키 불필요.
       # fetch_fred.py 가 data/indicators/ 를 정리하고 index.json 을 새로 쓰므로
       # 반드시 그 다음에 실행해야 한다.
-      # TreasuryDirect 가 죽어도 나머지 지표 갱신은 계속 진행되도록 continue-on-error.
       - name: Fetch Treasury auction results
         continue-on-error: true
         run: python scripts/fetch_auctions.py
 
-      - name: Sync indicators to Supabase
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
-        run: python scripts/sync_supabase.py
-       
       - name: Rebuild principles timeline
         run: python scripts/build_principles.py
 
@@ -69,18 +61,25 @@ jobs:
           repository: lukeeee73/luke_wiki
           token: ${{ secrets.WIKI_REPO_TOKEN || github.token }}
           path: .luke_wiki_src
-          fetch-depth: 0   # 노트별 마지막 수정일을 git log 에서 뽑기 위해 전체 이력
+          fetch-depth: 0
 
       - name: Build wiki knowledge graph
         if: steps.wiki_checkout.outcome == 'success'
         run: python scripts/build_wiki_graph.py --vault .luke_wiki_src --out data/wiki/graph.json --repo lukeeee73/luke_wiki
+
+      # 모든 data/ 산출물이 완성된 뒤 시계열·문서·뉴스를 한 번에 반영한다.
+      - name: Sync all dashboard data to Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          SYNC_LOOKBACK_DAYS: "120"
+        run: python scripts/sync_supabase.py
 
       - name: Commit & push if data/ changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # data/ 디렉토리 전체의 변경 유무 판단 (신규 파일 포함 — git diff 는 untracked 를 못 본다)
           if [ -z "$(git status --porcelain -- data/)" ]; then
             echo "No changes under data/ — skipping commit."
           else
