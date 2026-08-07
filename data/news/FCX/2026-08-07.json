@@ -1,0 +1,48 @@
+{
+  "ticker": "FCX",
+  "date": "2026-08-07",
+  "as_of_utc": "2026-08-07T12:00:00Z",
+  "news": [
+    {
+      "title": "Copper tops $14,000 as US stockpiles swell before tariff call",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-04/copper-marches-closer-to-14-000-as-flows-to-us-tighten-market",
+      "published": "2026-08-04T00:00:00Z",
+      "summary": "관세 불확실성·재고 타이트로 구리가격 톤당 14,000달러 돌파",
+      "impact": "+",
+      "category": "macro"
+    },
+    {
+      "title": "Freeport-McMoRan rides record copper prices with disciplined growth focus",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/freeport-mcmoran-rides-record-copper-151226514.html",
+      "published": "2026-08-05T00:00:00Z",
+      "summary": "구리 사상 최고가 랠리에 FCX 주가 동반 강세, 확장은 신중 기조",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "FCX looks 40.4% overvalued on GF Value as copper prices surge",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/9002469/fcx-looks-404-overvalued-on-gf-value-as-copper-prices-surge",
+      "published": "2026-08-04T00:00:00Z",
+      "summary": "구리가 급등에도 GF Value 기준 40.4% 고평가 지적",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "NEM", "headline": "Newmont 주가 8/5 하루 6.9% 급등, 금값 랠리 수혜", "implication_for_target": "구리(FCX)·금(NEM) 동반 원자재 랠리 국면 — FCX는 관세발 공급 타이트라는 자체 촉매까지 추가로 보유"}
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.05,
+    "macro_sensitivity": 0.3
+  },
+  "narrative_score": 0.1,
+  "summary_kr": "구리 가격이 관세 불확실성과 공급 타이트로 사상 최고치(파운드당 6.70달러 부근)를 기록하며 FCX 주가에 우호적 배경을 제공했다. 다만 밸류에이션은 이미 상당 부분 반영됐다는 지적도 나온다.",
+  "key_events": ["구리 가격 파운드당 6.70달러 부근 사상 최고", "美 구리 관세 결정(루트닉 재무장관) 아직 미확정", "GF Value 40.4% 고평가 지적"],
+  "risks": ["관세 결정 지연에 따른 가격 변동성", "밸류에이션 과열 우려", "그라스버그 생산 정상화 속도"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/FCX%20-%20Freeport-McMoRan.md"
+}
