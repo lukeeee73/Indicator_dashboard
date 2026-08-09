@@ -1,0 +1,55 @@
+{
+  "ticker": "SPOT",
+  "date": "2026-08-09",
+  "as_of_utc": "2026-08-09T12:00:00Z",
+  "news": [
+    {
+      "title": "Spotify Shares Slide After Second-Quarter Earnings Miss",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/spotify-shares-slide-second-quarter-122923912.html",
+      "published": "2026-08-04T00:00:00Z",
+      "summary": "스포티파이, 2분기 실적 예상치 미달로 주가 하락",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Apple raises prices on some streaming services as licensing costs climb",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/media-advertising/articles/apple-raises-prices-streaming-services-195347855.html",
+      "published": "2026-07-17T00:00:00Z",
+      "summary": "애플뮤직, 2022년 이후 첫 구독료 인상",
+      "impact": "+",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NFLX",
+      "headline": "넷플릭스는 2분기 가이던스 실망으로 주가가 급락했으나 이후 상당폭 반등",
+      "implication_for_target": "스포티파이 대비 광고 매출 의존도가 낮은 구독 중심 모델의 방어력이 부각됨."
+    },
+    {
+      "ticker": "AAPL",
+      "headline": "애플뮤직이 4년 만에 처음 구독료를 인상(개인 $1↑, 가족 $3↑)",
+      "implication_for_target": "스포티파이도 향후 가격 인상 여력이 있다는 긍정적 시그널로 해석 가능."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": 0.3,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.05
+  },
+  "narrative_score": 0.11,
+  "summary_kr": "2분기 EPS·매출이 예상치를 소폭 밑돌며 발표 직후 주가가 급락했다가 이후 반등했다. 프리미엄 구독자 3억명 돌파, 사상 최고 매출총이익률 등 구조적 개선 지표는 견조했다. 경쟁사 애플뮤직의 4년 만의 첫 가격 인상은 업계 전반의 가격결정력 회복 신호로 해석된다.",
+  "key_events": [
+    "2분기 EPS 미달",
+    "프리미엄 구독자 3억명 돌파",
+    "애플뮤직 가격 인상"
+  ],
+  "risks": [
+    "3분기 영업이익 가이던스 하회 우려",
+    "음원 라이선스 비용 상승에 따른 마진 압박"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/SPOT%20-%20Spotify%20Technology%20S.A..md"
+}
