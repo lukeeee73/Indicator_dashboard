@@ -1,0 +1,75 @@
+{
+  "ticker": "AAPL",
+  "date": "2026-08-10",
+  "as_of_utc": "2026-08-10T00:24:24Z",
+  "news": [
+    {
+      "title": "Apple shares downgraded due to memory chip inflation",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/04/apple-shares-downgraded-due-to-memory-chip-inflation.html",
+      "published": "2026-08-04",
+      "summary_kr": "필립증권 등 메모리 원가 부담 이유로 목표주가 $290 하향(Reduce)",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Apple tests China's CXMT memory chips for iPhones and MacBooks, WSJ reports",
+      "source": "Reuters (citing WSJ)",
+      "url": "https://www.tradingview.com/news/reuters.com,2026:newsml_FWN446032:0-apple-tests-china-s-cxmt-memory-chips-for-iphones-macbooks-wsj-reports/",
+      "published": "2026-08-09",
+      "summary_kr": "메모리 부족 대응해 중국 CXMT 칩 테스트, 백악관 승인 필요",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "OpenAI asks judge to toss Apple suit alleging trade secret theft",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-06/openai-asks-judge-to-toss-apple-suit-alleging-trade-secret-theft",
+      "published": "2026-08-06",
+      "summary_kr": "오픈AI, 애플 영업비밀 소송 기각 신청 — 10/1 심리 예정",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Here's When Apple Will Reveal Its iPhone 18 Pro Special Event Date",
+      "source": "Forbes",
+      "url": "https://www.forbes.com/sites/davidphelan/2026/08/09/heres-when-apple-will-reveal-its-iphone-18-pro-special-event-date/",
+      "published": "2026-08-09",
+      "summary_kr": "9/9 아이폰18 프로·첫 폴더블 공개 예상, 신임 CEO 존 터너스 첫 키노트",
+      "impact": "+",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "마이크로소프트 AI 매출의 약 70%(연 241억달러)가 오픈AI 한 곳에서 발생한다는 공시 확인, 동시에 자체 직원들에게도 자사 MAI 모델 대신 오픈AI 최신 모델을 기본값으로 쓰라고 지시",
+      "implication_for_target": "경쟁사도 자체 AI 역량만으로는 부족해 외부 모델에 의존하는 현실이 드러나, 애플의 제미나이 의존적 시리 전략이 업계 전반의 공통 타협임을 보여준다"
+    },
+    {
+      "ticker": "GOOGL",
+      "headline": "구글, 제프 딘 등 핵심 AI 리더 4명이 회사를 떠나 별도 스타트업을 창업하며 AI 조직 개편 — 주가 4% 이상 급락",
+      "implication_for_target": "구글의 AI 리더십 공백은 애플이 시리에 빌려 쓰는 제미나이 모델의 향후 로드맵 안정성에 대한 불확실성을 키우는 요인"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.15,
+    "competitive_position": -0.05,
+    "regulatory_risk": -0.12,
+    "macro_sensitivity": -0.12
+  },
+  "narrative_score": -0.11,
+  "summary_kr": "메모리 원가 부담을 이유로 한 애널리스트 목표주가 하향과 중국 CXMT 칩 테스트(공급망 다변화 시도이자 지정학적 리스크), 오픈AI의 영업비밀 소송 기각 신청이 겹쳐 전반적으로 역풍이 우세했다. 다만 9월 9일로 예상되는 아이폰18 프로·첫 폴더블 공개 행사가 신임 CEO 존 터너스의 첫 키노트로 예정돼 있어 단기 반등 재료도 남아있다.",
+  "key_events": [
+    "8/4 필립증권 등 메모리 원가발 목표주가 하향(Reduce, $290)",
+    "8/9 WSJ, 애플의 중국 CXMT 메모리 칩 테스트 및 백악관 승인 절차 보도",
+    "8/6 오픈AI, 애플 영업비밀 소송 기각 신청(10/1 심리)",
+    "9/9(예상) 아이폰18 프로·첫 폴더블 공개 행사, 존 터너스 첫 키노트(9/1 CEO 취임)"
+  ],
+  "risks": [
+    "CXMT 칩 채택이 백악관 승인·상원의원 반대 등 정치적 변수로 무산될 가능성",
+    "메모리 원가 부담이 향후 몇 분기 지속될 경우 마진 추가 압박",
+    "오픈AI 소송이 기각될 경우 애플의 AI 인재·기술 유출 대응 명분 약화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AAPL%20-%20Apple%20Inc.md"
+}

@@ -1,0 +1,70 @@
+{
+  "ticker": "ORCL",
+  "date": "2026-08-10",
+  "as_of_utc": "2026-08-10T00:24:23Z",
+  "news": [
+    {
+      "title": "Michael Burry reopens short position against Oracle, calls AI infrastructure trade 'fish in a barrel'",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/investing/stocks/orcl-oracle-nbis-nebius-michael-burry-shorts",
+      "published": "2026-08-07",
+      "summary_kr": "'빅쇼트' 버리, 오라클 주당 144.63달러에 재차 숏 베팅 — GPU 감가상각 과소계상으로 이익 26~27% 과대평가 주장",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "UBS cuts Oracle price target to $245 from $285 on AI infrastructure and credit market concerns",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/analyst-ratings/ubs-cuts-oracle-stock-price-target-on-ai-infrastructure-concerns-93CH-4841325",
+      "published": "2026-08-06",
+      "summary_kr": "UBS, 오라클 목표주가 285→245달러 하향, 매수의견은 유지",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Oracle's credit default swap spread hits highest level since 2008",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/oracles-credit-risk-nears-18-151000986.html",
+      "published": "2026-08-04",
+      "summary_kr": "오라클 CDS(부도보험료) 스프레드 2.03%p로 2008년 이후 최고치",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CRM",
+      "headline": "세일즈포스, Agentforce 360이 미 국방부 보안 인증 획득 + 재향군인부(VA)와 16억달러 계약 체결",
+      "implication_for_target": "오라클도 최근 국방부와 최대 70억달러 계약을 따냈지만, 세일즈포스 역시 정부·공공 AI 시장에서 직접 경쟁을 확대하고 있어 공공부문 수주전이 치열해지는 모양새"
+    },
+    {
+      "ticker": "IBM",
+      "headline": "IBM, 2분기 실적 부진에 2026년 전망 하향 — 연초 이후 주가 -30% (S&P500은 +10%)",
+      "implication_for_target": "메인프레임 수요 둔화로 고전하는 IBM과 달리 오라클은 AI 클라우드(OCI) 수요 자체는 견조해, 상대적으로는 오라클의 성장 스토리가 부각되는 대조 구도"
+    },
+    {
+      "ticker": "MSFT",
+      "headline": "마이크로소프트, AI 전환 속 약 4,800명 규모 감원 진행 — 애저는 여전히 고성장 유지",
+      "implication_for_target": "MS도 AI 투자 확대와 비용 절감을 동시에 추진 중이라는 점에서, 오라클의 부채·현금흐름 부담이 업계 전반의 문제인지 오라클 고유의 문제인지에 대한 시장의 시선이 갈리는 지점"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.15,
+    "competitive_position": -0.05,
+    "regulatory_risk": 0.00,
+    "macro_sensitivity": -0.40
+  },
+  "narrative_score": -0.15,
+  "summary_kr": "오라클을 둘러싼 부채·신용 우려가 이번 주 다시 부각됐다. '빅쇼트'의 마이클 버리가 오라클 숏(공매도) 포지션을 재개했고, UBS는 매수 의견은 유지하면서도 목표주가를 285달러에서 245달러로 낮췄다. 오라클의 CDS(신용부도스와프) 스프레드도 2008년 이후 최고치로 뛰며 채권시장이 매기는 부도 위험 가격이 계속 오르고 있다.",
+  "key_events": [
+    "8/7 마이클 버리, 오라클 주당 144.63달러에 숏 재진입 — GPU 감가상각 관련 이익 과대계상 주장(2028년까지 26~27%)",
+    "8/6 UBS, 오라클 목표주가 285→245달러 하향(매수의견 유지) — AI 인프라 지출·투자자본이익률·신용시장·오픈AI 의존도 우려",
+    "8/4 오라클 CDS 스프레드 2.03%p로 2008년 이후 최고치 — 5년물 채권 부도보험료 급등"
+  ],
+  "risks": [
+    "버리의 GPU 감가상각 논리가 다른 기관투자자에게 확산되면 밸류에이션 재평가 압력 커질 가능성",
+    "CDS 스프레드 상승이 실제 회사채 발행금리 인상으로 이어지면 AI 데이터센터 확장 자금조달 비용 추가 상승",
+    "UBS는 매수의견을 유지했으나 목표배수를 28배→19배로 크게 낮춰, 강세론 내에서도 눈높이가 낮아지는 중"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ORCL%20-%20Oracle%20Corporation.md"
+}
