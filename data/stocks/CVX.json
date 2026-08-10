@@ -4,26 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-08-01",
-      "value": 64.89
-    },
-    {
-      "date": "2016-08-02",
-      "value": 65.2
-    },
-    {
-      "date": "2016-08-03",
-      "value": 65.87
-    },
-    {
-      "date": "2016-08-04",
-      "value": 65.73
-    },
-    {
-      "date": "2016-08-05",
-      "value": 65.81
-    },
-    {
       "date": "2016-08-08",
       "value": 66.26
     },
@@ -1365,7 +1345,7 @@
     },
     {
       "date": "2017-12-05",
-      "value": 83.64
+      "value": 83.65
     },
     {
       "date": "2017-12-06",
@@ -2481,7 +2461,7 @@
     },
     {
       "date": "2019-01-16",
-      "value": 80.39
+      "value": 80.38
     },
     {
       "date": "2019-01-17",
@@ -2597,7 +2577,7 @@
     },
     {
       "date": "2019-02-28",
-      "value": 87.15
+      "value": 87.16
     },
     {
       "date": "2019-03-01",
@@ -4073,7 +4053,7 @@
     },
     {
       "date": "2020-08-14",
-      "value": 69.64
+      "value": 69.65
     },
     {
       "date": "2020-08-17",
@@ -6749,7 +6729,7 @@
     },
     {
       "date": "2023-04-13",
-      "value": 150.19
+      "value": 150.2
     },
     {
       "date": "2023-04-14",
@@ -7337,7 +7317,7 @@
     },
     {
       "date": "2023-11-10",
-      "value": 127.2
+      "value": 127.19
     },
     {
       "date": "2023-11-13",
@@ -10058,28 +10038,41 @@
     {
       "date": "2026-07-31",
       "value": 196.83
+    },
+    {
+      "date": "2026-08-03",
+      "value": 193.18
+    },
+    {
+      "date": "2026-08-04",
+      "value": 190.4
+    },
+    {
+      "date": "2026-08-05",
+      "value": 186.41
+    },
+    {
+      "date": "2026-08-06",
+      "value": 189.23
+    },
+    {
+      "date": "2026-08-07",
+      "value": 186.56
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 392006172672.0,
-      "pe_ratio": 18.944176,
-      "forward_pe": 15.407279,
+      "market_cap": 365956726784.0,
+      "pe_ratio": 17.955727,
+      "forward_pe": 14.387335,
       "eps_ttm": 10.39,
-      "dividend_yield": 3.62,
-      "profit_margin": 0.09835,
-      "operating_margin": 0.21951,
-      "price_to_book": 2.118593,
-      "return_on_equity": null
+      "dividend_yield": 3.82,
+      "profit_margin": 0.09834,
+      "operating_margin": 0.21866,
+      "price_to_book": 1.9272727,
+      "return_on_equity": 0.12231
     },
     "quarterly": [
-      {
-        "date": "2025-03-31",
-        "revenue": 46101000000.0,
-        "operating_income": 4297000000.0,
-        "net_income": 3500000000.0,
-        "eps": null
-      },
       {
         "date": "2025-06-30",
         "revenue": 44375000000.0,
@@ -10110,16 +10103,16 @@
       },
       {
         "date": "2026-06-30",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
+        "revenue": 67199000000.0,
+        "operating_income": 14276000000.0,
+        "net_income": 12072000000.0,
         "eps": 6.11
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-31",
-    "current_price": 196.83,
+    "as_of": "2026-08-07",
+    "current_price": 186.56,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
@@ -10128,18 +10121,18 @@
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 140.53,
+        "fair_value": 142.64,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
       "graham_number": {
-        "fair_value": 147.37,
+        "fair_value": 150.43,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 133.97,
-    "valuation_gap": 0.4692,
+    "fair_value": 135.22,
+    "valuation_gap": 0.3797,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10249,6 +10242,12 @@
         "price": 196.83,
         "fair_value": 125.16,
         "gap": 0.5726
+      },
+      {
+        "date": "2026-08-07",
+        "price": 186.56,
+        "fair_value": 125.16,
+        "gap": 0.4906
       }
     ],
     "qualitative": {

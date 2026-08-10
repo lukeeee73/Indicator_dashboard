@@ -4,26 +4,6 @@
   "group": "반도체 — 장비 · 소재",
   "series": [
     {
-      "date": "2016-08-01",
-      "value": 13.59
-    },
-    {
-      "date": "2016-08-02",
-      "value": 13.67
-    },
-    {
-      "date": "2016-08-03",
-      "value": 13.52
-    },
-    {
-      "date": "2016-08-04",
-      "value": 13.5
-    },
-    {
-      "date": "2016-08-05",
-      "value": 13.24
-    },
-    {
       "date": "2016-08-08",
       "value": 13.64
     },
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-07-31",
       "value": 167.37
+    },
+    {
+      "date": "2026-08-03",
+      "value": 175.87
+    },
+    {
+      "date": "2026-08-04",
+      "value": 188.11
+    },
+    {
+      "date": "2026-08-05",
+      "value": 182.0
+    },
+    {
+      "date": "2026-08-06",
+      "value": 174.54
+    },
+    {
+      "date": "2026-08-07",
+      "value": 175.21
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 152189943808.0,
-      "pe_ratio": 43.699738,
+      "market_cap": 159318884352.0,
+      "pe_ratio": 44.469543,
       "forward_pe": null,
-      "eps_ttm": 3.83,
-      "dividend_yield": 1.19,
+      "eps_ttm": 3.94,
+      "dividend_yield": 1.13,
       "profit_margin": 0.23645,
       "operating_margin": 0.28866,
-      "price_to_book": 11.6024,
+      "price_to_book": 11.732258,
       "return_on_equity": 0.30929002
     },
     "quarterly": [
@@ -10090,23 +10090,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-07-31",
-    "current_price": 167.37,
+    "as_of": "2026-08-07",
+    "current_price": 175.21,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 107.24,
+        "fair_value": 110.32,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "graham_number": {
-        "fair_value": 35.26,
+        "fair_value": 36.39,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 86.67,
-    "valuation_gap": 0.931,
+    "fair_value": 89.2,
+    "valuation_gap": 0.9643,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

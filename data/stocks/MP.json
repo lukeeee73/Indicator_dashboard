@@ -6142,19 +6142,39 @@
     {
       "date": "2026-07-31",
       "value": 41.37
+    },
+    {
+      "date": "2026-08-03",
+      "value": 43.84
+    },
+    {
+      "date": "2026-08-04",
+      "value": 47.47
+    },
+    {
+      "date": "2026-08-05",
+      "value": 47.91
+    },
+    {
+      "date": "2026-08-06",
+      "value": 47.49
+    },
+    {
+      "date": "2026-08-07",
+      "value": 51.11
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 7364777984.0,
+      "market_cap": 9098714112.0,
       "pe_ratio": null,
-      "forward_pe": 43.512558,
-      "eps_ttm": -0.4,
+      "forward_pe": 55.52719,
+      "eps_ttm": -0.33,
       "dividend_yield": null,
-      "profit_margin": -0.20482999,
-      "operating_margin": -0.07876,
-      "price_to_book": 3.7364523,
-      "return_on_equity": -0.04167
+      "profit_margin": -0.14563,
+      "operating_margin": -0.1472,
+      "price_to_book": 4.616149,
+      "return_on_equity": -0.03585
     },
     "quarterly": [
       {
@@ -6169,7 +6189,7 @@
         "revenue": 60810000.0,
         "operating_income": -33802000.0,
         "net_income": -22648000.0,
-        "eps": -0.14
+        "eps": null
       },
       {
         "date": "2025-06-30",
@@ -6198,22 +6218,29 @@
         "operating_income": -18233000.0,
         "net_income": -7968000.0,
         "eps": -0.04
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": -0.11
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-07-31",
-    "current_price": 41.37,
+    "as_of": "2026-08-07",
+    "current_price": 51.11,
     "sector": "Materials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 13.31,
+        "fair_value": 12.89,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (14)"
       }
     },
-    "fair_value": 13.31,
-    "valuation_gap": 2.1082,
+    "fair_value": 12.89,
+    "valuation_gap": 2.9651,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

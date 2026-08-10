@@ -4,26 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-08-03",
-      "value": 156.81
-    },
-    {
-      "date": "2016-08-04",
-      "value": 152.72
-    },
-    {
-      "date": "2016-08-05",
-      "value": 156.81
-    },
-    {
-      "date": "2016-08-08",
-      "value": 156.5
-    },
-    {
-      "date": "2016-08-09",
-      "value": 157.44
-    },
-    {
       "date": "2016-08-10",
       "value": 157.44
     },
@@ -1973,7 +1953,7 @@
     },
     {
       "date": "2018-08-08",
-      "value": 186.76
+      "value": 186.75
     },
     {
       "date": "2018-08-09",
@@ -2565,7 +2545,7 @@
     },
     {
       "date": "2019-03-21",
-      "value": 186.76
+      "value": 186.75
     },
     {
       "date": "2019-03-22",
@@ -3465,7 +3445,7 @@
     },
     {
       "date": "2020-02-25",
-      "value": 262.07
+      "value": 262.08
     },
     {
       "date": "2020-02-26",
@@ -3493,7 +3473,7 @@
     },
     {
       "date": "2020-03-06",
-      "value": 262.07
+      "value": 262.08
     },
     {
       "date": "2020-03-09",
@@ -4149,7 +4129,7 @@
     },
     {
       "date": "2020-11-03",
-      "value": 468.87
+      "value": 468.86
     },
     {
       "date": "2020-11-04",
@@ -5833,7 +5813,7 @@
     },
     {
       "date": "2022-07-27",
-      "value": 545.91
+      "value": 545.9
     },
     {
       "date": "2022-07-28",
@@ -5905,7 +5885,7 @@
     },
     {
       "date": "2022-08-22",
-      "value": 545.91
+      "value": 545.9
     },
     {
       "date": "2022-08-23",
@@ -6581,7 +6561,7 @@
     },
     {
       "date": "2023-05-09",
-      "value": 545.91
+      "value": 545.9
     },
     {
       "date": "2023-05-10",
@@ -7505,7 +7485,7 @@
     },
     {
       "date": "2024-04-19",
-      "value": 910.04
+      "value": 910.05
     },
     {
       "date": "2024-04-22",
@@ -9726,18 +9706,38 @@
     {
       "date": "2026-08-03",
       "value": 3910.0
+    },
+    {
+      "date": "2026-08-04",
+      "value": 3865.0
+    },
+    {
+      "date": "2026-08-05",
+      "value": 4000.0
+    },
+    {
+      "date": "2026-08-06",
+      "value": 3920.0
+    },
+    {
+      "date": "2026-08-07",
+      "value": 3900.0
+    },
+    {
+      "date": "2026-08-10",
+      "value": 3960.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 6240790904832.0,
-      "pe_ratio": 62.142406,
-      "forward_pe": 28.943623,
-      "eps_ttm": 62.92,
-      "dividend_yield": 1.5,
+      "market_cap": 6320532488192.0,
+      "pe_ratio": 63.067368,
+      "forward_pe": 28.821497,
+      "eps_ttm": 62.79,
+      "dividend_yield": 1.37,
       "profit_margin": 0.16279,
       "operating_margin": 0.15027,
-      "price_to_book": 14.712135,
+      "price_to_book": 14.9002695,
       "return_on_equity": 0.23864001
     },
     "quarterly": [
@@ -9779,28 +9779,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-03",
-    "current_price": 3910.0,
+    "as_of": "2026-08-10",
+    "current_price": 3960.0,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 1761.76,
+        "fair_value": 1758.12,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 2971.98,
+        "fair_value": 3022.74,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 613.39,
+        "fair_value": 612.76,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 1895.15,
-    "valuation_gap": 1.0632,
+    "fair_value": 1908.43,
+    "valuation_gap": 1.075,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -9912,10 +9912,16 @@
         "gap": 0.8998
       },
       {
-        "date": "2026-08-03",
-        "price": 3910.0,
+        "date": "2026-08-07",
+        "price": 3900.0,
         "fair_value": 1871.24,
-        "gap": 1.0895
+        "gap": 1.0842
+      },
+      {
+        "date": "2026-08-10",
+        "price": 3960.0,
+        "fair_value": 1871.24,
+        "gap": 1.1162
       }
     ],
     "qualitative": {
