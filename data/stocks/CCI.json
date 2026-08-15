@@ -10253,30 +10253,36 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-08",
-      "narrative_score": -0.16,
-      "summary_kr": "CCI는 배당은 유지했지만 타워 리스 회복 속도에 대한 투자자 불안으로 주가가 하루 만에 9.8% 급락하며 52주 신저가를 기록했고, 여러 애널리스트가 목표주가를 하향했다.",
+      "as_of": "2026-08-15",
+      "narrative_score": -0.3,
+      "summary_kr": "CCI는 8/5 실적 발표 후 리스율 성장 둔화와 서비스매출 감소, 이자비용 부담으로 9.8% 급락해 52주 신저가를 기록했으며 Truist는 목표가를 $87로 낮췄다. 이후 $75선까지 소폭 반등했으나 AMT·SBAC 등 경쟁사 대비 훨씬 부진해 순수타워 전략의 리스크가 부각되고 있다.",
       "key_events": [
-        "분기 배당 $1.0625 유지 발표 (8/5)",
-        "주가 9.8% 급락, 52주 신저가 $73.46 (8/5)",
-        "Truist 목표주가 $95→$87 하향"
+        "8/5 Q2 실적: EPS $0.69(예상 $0.39 상회)였으나 매출 성장 둔화 우려로 주가 9.8% 급락, 52주 신저가 $73.46",
+        "Truist 목표가 $95→$87 하향",
+        "8/5 분기배당 $1.0625 유지(9/30 지급, 9/15 기준일)",
+        "8/14 기준 주가 $75.75로 저점 대비 완만한 반등"
       ],
       "risks": [
-        "타워 리스 회복 속도 시장 기대에 못 미침",
-        "DISH/Sprint/EchoStar 이탈 여진 지속",
-        "고금리로 인한 이자비용 부담 확대"
+        "순수타워 전환에 따른 사업 다각화 부재 — 데이터센터 노출 있는 AMT/DLR/EQIX 대비 상대적 약세",
+        "높은 레버리지·이자비용 부담이 고금리 환경에서 특히 취약(금리 환경 민감도 높음)",
+        "AFFO 가이던스($4.53~4.65) 달성 여부 연말까지 미확정"
       ],
-      "news_count": 3,
+      "news_count": 1,
       "competitor_context": [
         {
-          "ticker": "SBAC",
-          "headline": "SBA Communications modestly raised 2026 site leasing/AFFO guidance, plans ~600 new tower builds and resumes buybacks in H2 2026 (early Aug 2026)",
-          "implication_for_target": "SBAC은 신규 타워 건설과 자사주 매입 재개 등 공격적 성장 전략을 펴는 반면, 순수 타워로 전환한 CCI는 리스 회복 속도 우려로 주가가 급락해 경쟁사 대비 모멘텀 열세"
+          "ticker": "AMT",
+          "headline": "AMT는 8/5 낙폭(-4.1%)이 CCI(-9.8%)보다 작고 8/14 $175선까지 빠르게 회복",
+          "implication_for_target": "CCI의 급락이 타워섹터 전반이 아닌 CCI 고유 문제(리스율 성장 둔화, 서비스매출 감소, 이자비용 부담)임을 시사"
         },
         {
-          "ticker": "AMT",
-          "headline": "American Tower raised 2026 guidance for the second time this year, with CoreSite data center revenue growth guidance lifted to ~15%",
-          "implication_for_target": "AMT는 데이터센터 다각화로 실적 가이던스를 거듭 올리는 반면, CCI는 순수 타워 단일 사업 구조라 다각화 옵션이 제한적임을 대비적으로 보여줌"
+          "ticker": "SBAC",
+          "headline": "SBAC는 같은 기간 급락 없이 애널리스트 목표가만 혼재(골드만 Hold $200, TD코웬 $229)",
+          "implication_for_target": "SBAC도 무사히 지나가, CCI 낙폭이 섹터 공통 리스크가 아니라는 판단을 강화"
+        },
+        {
+          "ticker": "DLR",
+          "headline": "DLR·EQIX는 동시기 목표가 상향(Mizuho $223 등)·가이던스 상향 발표",
+          "implication_for_target": "데이터센터로 다각화한 리츠들과 대조적으로 순수타워 CCI만 하방 압력을 받아, 다각화 포기의 트레이드오프가 부각"
         }
       ],
       "history": [
@@ -10315,6 +10321,10 @@
         {
           "date": "2026-08-08",
           "narrative_score": -0.16
+        },
+        {
+          "date": "2026-08-15",
+          "narrative_score": -0.3
         }
       ]
     }
