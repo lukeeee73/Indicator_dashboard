@@ -1,0 +1,73 @@
+{
+  "ticker": "JPM",
+  "date": "2026-08-15",
+  "as_of_utc": "2026-08-15T12:00:00Z",
+  "news": [
+    {
+      "title": "JPMorgan Cut Polymarket Banking Ties Over Regulatory Concerns",
+      "source": "PYMNTS (citing FT)",
+      "url": "https://www.pymnts.com/news/banking/2026/jpmorgan-cut-polymarket-banking-ties-over-regulatory-concerns/",
+      "published": "2026-08-14",
+      "summary": "JPM, 규제 우려로 예측시장 폴리마켓과 은행 거래관계 작년에 이미 종료했다고 FT 보도",
+      "impact": "neutral",
+      "category": "regulation"
+    },
+    {
+      "title": "July CPI inflation report",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/12/cpi-inflation-report-july-2026.html",
+      "published": "2026-08-12",
+      "summary": "7월 CPI 헤드라인 3.4%·근원 2.5%로 완만, 9월 금리인하 기대 유지",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "JPMorgan is the latest to raise its S&P 500 target, this time to 8,000",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/10/jpmorgan-is-the-latest-to-raise-its-sp-500-target-this-time-to-8000-heres-why.html",
+      "published": "2026-08-10",
+      "summary": "JPM 리서치, 실적 개선·AI 수익화 근거로 연말 목표 7800→8000 상향",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "BAC",
+      "headline": "BofA, 인도 지오크레딧(Jio Credit) 지분 최대 49.9% 취득 조인트벤처 체결",
+      "implication_for_target": "BAC가 인도 신용시장 선점에 나서면서 JPM의 신흥국 확장 속도와 비교될 전망"
+    },
+    {
+      "ticker": "WFC",
+      "headline": "웰스파고, 자산상한 해제 후 성장 재개 스토리 지속",
+      "implication_for_target": "JPM 대비 저평가 구간의 웰스파고가 밸류에이션 갭을 좁힐 경우 JPM 프리미엄 정당성에 대한 시장 관심 증가"
+    },
+    {
+      "ticker": "C",
+      "headline": "씨티그룹 연중 +14%, 프레이저 CEO 턴어라운드 스토리 부각",
+      "implication_for_target": "씨티의 리레이팅이 이어지면 JPM의 상대적 밸류에이션 매력이 희석될 수 있음"
+    },
+    {
+      "ticker": "GS",
+      "headline": "골드만삭스, 스페이스X IPO 주관 수수료로 어닝 서프라이즈",
+      "implication_for_target": "IB(투자은행) 부문에서 골드만의 딜 파이프라인 강세가 JPM과의 경쟁 심화 시사"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.2,
+    "regulatory_risk": 0.1,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.18,
+  "summary_kr": "폴리마켓 거래 중단 보도는 JPM 자체 리스크라기보다 규제 신중함을 보여주는 사례이며, 7월 CPI가 완만하게 나오면서 9월 금리인하 기대가 유지돼 은행주 전반에 우호적인 배경이 조성됐다. $50B 자사주매입·AI 에이전트 배포 등 기존 가설은 아직 구체적 집행 데이터가 없어 계속 추적이 필요하다.",
+  "key_events": [
+    "FT, JPM-폴리마켓 거래관계 종료 보도(8/14)",
+    "7월 CPI 발표(8/12) 완만",
+    "JPM S&P500 목표 8000 상향(8/10)"
+  ],
+  "risks": [
+    "9월 FOMC에서 금리 인하 시 순이자마진(NIM) 압박 가능성",
+    "가상자산·예측시장 관련 은행 규제 강화 리스크"
+  ]
+}

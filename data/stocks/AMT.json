@@ -10336,28 +10336,31 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-08",
-      "narrative_score": 0.07,
-      "summary_kr": "AMT 자체 뉴스는 8/11 TD Cowen 컨퍼런스 참가 발표 정도였으나, 8/5 금리 상승과 CCI 급락 여파로 통신타워 섹터 전반이 동반 하락했다. CoreSite 데이터센터 성장세는 여전히 견조하다.",
+      "as_of": "2026-08-15",
+      "narrative_score": 0.2,
+      "summary_kr": "AMT는 7/28 Q2 실적에서 가이던스를 상향했지만 매출 전망이 컨센서스를 밑돌아 8/5 4.1% 하락했다. 이후 $175 선까지 빠르게 회복하며 CCI와 달리 안정화됐고, 데이터센터 자회사 코어사이트(CoreSite)의 견조한 성장이 핵심 강점으로 남아있다.",
       "key_events": [
-        "TD Cowen 12차 통신 인프라 서밋 참가 예고 (8/11)",
-        "8/5 주가 4.1% 하락, GF Value 대비 저평가 구간 진입"
+        "7/28 Q2 실적: 매출 $27.5억(+4.7%), EPS $1.86 서프라이즈",
+        "연간 가이던스 2차 상향(AFFO, 조정 FFO=조정운영현금흐름 주당 $11.00~11.17)",
+        "코어사이트 데이터센터 매출 가이던스 13%→15%로 상향",
+        "8/5 주가 4.1% 하락(가이던스 컨센서스 하회 + 금리 상승) 후 8/14 $175.58로 회복"
       ],
       "risks": [
-        "10년물 금리 4.68%까지 상승, 리츠 밸류에이션 압박",
-        "DISH/EchoStar 이탈 여진에 따른 2026년 성장 저점 국면 지속"
+        "DISH 이탈에 따른 AFFO 성장 둔화, 2026년을 저점으로 CFO가 공식화",
+        "고금리·부채 재조달 이자비용 부담 지속",
+        "10년물 국채금리 4.66%, 9월 금리인상 가능성 40%까지 반영되며 REIT 밸류에이션 압박"
       ],
-      "news_count": 2,
+      "news_count": 1,
       "competitor_context": [
         {
           "ticker": "CCI",
-          "headline": "Crown Castle stock fell 9.8% on Aug 5, 2026 and hit a 52-week low ($73.46) amid tower leasing pace concerns and analyst price target cuts (Truist to $87)",
-          "implication_for_target": "동종 순수 타워업체 CCI의 급락은 타워 리스 회복 속도에 대한 시장의 회의론을 보여주지만, AMT는 CoreSite 데이터센터 다각화 덕에 같은 업황에서도 상대적으로 방어력이 있음을 시사"
+          "headline": "CCI는 8/5 -9.8% 급락 후 52주 신저가, Truist 목표가 $87로 하향, 8/14 $75.75까지만 완만히 반등",
+          "implication_for_target": "AMT의 8/5 낙폭(-4.1%)이 CCI보다 훨씬 작고 이후 빠르게 회복해, 8/5 하락이 타워섹터 공통 리스크가 아니라 CCI 고유 문제였음을 시사"
         },
         {
-          "ticker": "EQIX",
-          "headline": "Equinix signed a new Cloud Network Hub deal with All Nippon Airways (Aug 5) and raised 2026 revenue growth guidance to 11-12%",
-          "implication_for_target": "AI·클라우드발 데이터센터 수요 강세가 EQIX 실적으로 계속 확인되고 있어, AMT의 CoreSite 데이터센터 사업에도 우호적인 업황 배경"
+          "ticker": "SBAC",
+          "headline": "SBAC는 이번 주 급락 없이 애널리스트 목표가만 혼재(골드만 Hold $200, TD코웬 $229, 모건스탠리 $215)",
+          "implication_for_target": "SBAC도 무사히 지나가, AMT/CCI 비교 판단(8/5는 CCI 고유 이슈)을 뒷받침"
         }
       ],
       "history": [
@@ -10396,6 +10399,10 @@
         {
           "date": "2026-08-08",
           "narrative_score": 0.07
+        },
+        {
+          "date": "2026-08-15",
+          "narrative_score": 0.2
         }
       ]
     }
