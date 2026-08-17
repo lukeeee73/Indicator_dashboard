@@ -1,0 +1,84 @@
+{
+  "ticker": "AMZN",
+  "date": "2026-08-17",
+  "as_of_utc": "2026-08-17T12:00:00Z",
+  "news": [
+    {
+      "title": "Amazon (AMZN) Stock Market Cap Earnings — AWS growth reaccelerates, Q2 beats guidance",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/03/amazon-amzn-stock-market-cap-earnings.html",
+      "published": "2026-08-03T00:00:00Z",
+      "summary": "2분기 매출 20%↑, AWS 성장률 36.7%로 18분기 만 최고치",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Amazon Joins Elite List of Stocks to Top $3 Trillion in Value",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-03/amazon-joins-elite-list-of-stocks-to-top-3-trillion-in-value",
+      "published": "2026-08-03T00:00:00Z",
+      "summary": "아마존, 사상 최초로 시가총액 3조달러 돌파",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Amazon hikes 2026 capex to $220 billion due to higher memory costs",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/30/amazon-amzn-q2-earnings-report-2026.html",
+      "published": "2026-07-30T00:00:00Z",
+      "summary": "메모리 가격 상승으로 2026 설비투자 2,200억달러로 상향",
+      "impact": "neutral",
+      "category": "earnings"
+    },
+    {
+      "title": "Amazon's Price Target Says +32% and Not a Single Analyst Says Sell",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/08/13/amazons-price-target-says-32-and-not-a-single-analyst-says-sell/",
+      "published": "2026-08-13T00:00:00Z",
+      "summary": "월가 목표주가 잇달아 상향, 매도 의견 전무",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "FTC v. Amazon.com antitrust monopoly trial moving toward October 2026",
+      "source": "RetailDive",
+      "url": "https://www.retaildive.com/news/ftc-amazon-antitrust-lawsuit-trial-2026/702951/",
+      "published": "2026-08-10T00:00:00Z",
+      "summary": "FTC 대 아마존 반독점 소송, 10월 재판 향해 진행 중",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "구글 클라우드 매출 82% 성장",
+      "implication_for_target": "AWS(37%)보다 훨씬 빠르게 성장, 3위 사업자 추격 거세짐 — AWS 점유율 방어 부담"
+    },
+    {
+      "ticker": "MSFT",
+      "headline": "마이크로소프트 애저 매출 43% 성장, AI 연환산 매출 370억달러(+123%)",
+      "implication_for_target": "클라우드 AI 경쟁이 3파전으로 치열해짐"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.6,
+    "competitive_position": 0.35,
+    "regulatory_risk": -0.25,
+    "macro_sensitivity": -0.25
+  },
+  "narrative_score": 0.24,
+  "summary_kr": "아마존은 AWS 성장 재가속과 시가총액 3조달러 돌파 등 압도적으로 강한 모멘텀을 보이고 있으며 월가의 매도 의견은 전혀 없다. 다만 메모리 가격발 설비투자 확대와 10월로 다가오는 FTC 반독점 재판이 리스크 요인으로 남아 있다.",
+  "key_events": [
+    "2분기 매출 20% 성장, AWS 36.7% 성장으로 18분기 만 최고치",
+    "시가총액 사상 최초 3조달러 돌파(8/3)",
+    "메모리 가격 상승으로 2026 설비투자 2,200억달러로 상향",
+    "월가 목표주가 일제히 상향, 매도의견 전무"
+  ],
+  "risks": [
+    "FTC 반독점 소송 10월 재판 향해 진행, 패소 시 사업 관행 구조적 제약 가능",
+    "메모리·서버 부품 가격 상승 지속 시 마진 압박",
+    "구글 클라우드가 AWS보다 훨씬 빠르게 성장 중 — 장기 점유율 경쟁 심화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMZN%20-%20Amazon.com%20Inc..md"
+}

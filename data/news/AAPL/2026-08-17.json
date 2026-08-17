@@ -1,0 +1,75 @@
+{
+  "ticker": "AAPL",
+  "date": "2026-08-17",
+  "as_of_utc": "2026-08-17T12:00:00Z",
+  "news": [
+    {
+      "title": "Apple Trained a China-Specific AI Model With Alibaba's Support, Reuters Reports",
+      "source": "Reuters (via Yahoo Finance)",
+      "url": "https://finance.yahoo.com/technology/ai/articles/apple-develops-china-specific-ai-101429816.html",
+      "published": "2026-08-14T00:00:00Z",
+      "summary": "애플이 알리바바와 협력해 중국 시장 전용 자체 AI 모델을 훈련시켰다",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Apple Opens Advanced Manufacturing Center in Houston",
+      "source": "Apple Newsroom",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-opens-advanced-manufacturing-center-in-houston/",
+      "published": "2026-08-13T00:00:00Z",
+      "summary": "휴스턴에 중소기업 대상 무료 제조 교육센터 개소, 대미 우호도 제고",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Apple Fails to Delay Filing New App Store Fees to Court as Epic Battle Continues",
+      "source": "AppleInsider",
+      "url": "https://appleinsider.com/articles/26/08/11/apple-fails-to-delay-filing-new-app-store-fees-to-court-as-epic-battle-continues",
+      "published": "2026-08-11T00:00:00Z",
+      "summary": "법원이 수수료안 제출 연기 요청 거부, 에픽게임즈 소송전 지속",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Commerce Secretary Says US Opposes Apple Buying Chinese Memory Chips",
+      "source": "9to5Mac",
+      "url": "https://9to5mac.com/2026/08/14/commerce-secretary-says-us-opposes-apple-buying-chinese-memory-chips/",
+      "published": "2026-08-14T00:00:00Z",
+      "summary": "상무장관, 애플의 CXMT 등 중국산 메모리칩 구매에 반대 입장",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "알파벳 검색 반독점 항소심서 검색 기본탑재 대가 지급 금지 요구, 설비투자는 1,950억~2,050억달러로 상향",
+      "implication_for_target": "항소심 결과에 따라 애플이 구글로부터 받는 연 약 200억달러 검색 기본탑재 수익이 사라질 위험"
+    },
+    {
+      "ticker": "MSFT",
+      "headline": "마이크로소프트 애저 매출 43% 급증, 코파일럿 앱 통합 발표",
+      "implication_for_target": "MS의 기업용 AI·클라우드 성장 가속 속 애플의 온디바이스 AI는 아직 초기 단계로 상대적으로 뒤처진다는 인식 강화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.35,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.06,
+  "summary_kr": "애플은 알리바바와 손잡고 중국 전용 AI 모델을 확보해 현지 AI 기능 출시에 다가섰고 휴스턴 제조센터 개소로 대미 정치적 우호도를 높였지만, 에픽게임즈와의 앱스토어 수수료 소송과 상무부의 중국산 메모리칩 구매 반대 등 규제·정치 리스크가 겹치며 전반적으로 약한 역풍 국면이다.",
+  "key_events": [
+    "8/14 애플-알리바바 협력, 중국 전용 AI 모델 훈련 완료",
+    "8/13 휴스턴 첨단 제조 센터 개소",
+    "8/11 에픽게임즈 앱스토어 수수료 소송 지연 시도 무산",
+    "8/14 상무장관, 애플의 중국산 메모리칩 구매 반대"
+  ],
+  "risks": [
+    "앱스토어 수수료 소송이 대법원까지 갈 경우 서비스 매출 타격 가능",
+    "구글 반독점 항소심 결과에 따른 검색 기본탑재 수익(연 약 200억달러) 상실 위험",
+    "미중 반도체·AI 공급망 긴장 지속"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AAPL%20-%20Apple%20Inc..md"
+}
