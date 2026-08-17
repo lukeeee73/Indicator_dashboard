@@ -4,26 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-08-08",
-      "value": 37.14
-    },
-    {
-      "date": "2016-08-09",
-      "value": 37.15
-    },
-    {
-      "date": "2016-08-10",
-      "value": 36.58
-    },
-    {
-      "date": "2016-08-11",
-      "value": 36.63
-    },
-    {
-      "date": "2016-08-12",
-      "value": 36.37
-    },
-    {
       "date": "2016-08-15",
       "value": 36.65
     },
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-08-07",
       "value": 87.25
+    },
+    {
+      "date": "2026-08-10",
+      "value": 87.52
+    },
+    {
+      "date": "2026-08-11",
+      "value": 87.45
+    },
+    {
+      "date": "2026-08-12",
+      "value": 88.93
+    },
+    {
+      "date": "2026-08-13",
+      "value": 88.11
+    },
+    {
+      "date": "2026-08-14",
+      "value": 88.82
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 263843938304.0,
-      "pe_ratio": 12.681685,
-      "forward_pe": 11.043716,
+      "market_cap": 268591611904.0,
+      "pe_ratio": 12.9098835,
+      "forward_pe": 11.24244,
       "eps_ttm": 6.88,
-      "dividend_yield": 2.29,
+      "dividend_yield": 2.25,
       "profit_margin": 0.27232,
       "operating_margin": 0.37387002,
-      "price_to_book": 1.6402225,
+      "price_to_book": 1.6697372,
       "return_on_equity": 0.12575
     },
     "quarterly": [
@@ -10125,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-07",
-    "current_price": 87.25,
+    "as_of": "2026-08-14",
+    "current_price": 88.82,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10146,7 +10146,7 @@
       }
     },
     "fair_value": 94.75,
-    "valuation_gap": -0.0792,
+    "valuation_gap": -0.0626,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10262,6 +10262,12 @@
         "price": 87.25,
         "fair_value": 96.32,
         "gap": -0.0942
+      },
+      {
+        "date": "2026-08-14",
+        "price": 88.82,
+        "fair_value": 96.32,
+        "gap": -0.0779
       }
     ],
     "qualitative": {
@@ -10299,10 +10305,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-05-17",
-          "narrative_score": 0.18
-        },
         {
           "date": "2026-05-23",
           "narrative_score": 0.16

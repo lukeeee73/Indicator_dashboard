@@ -4,26 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-08-08",
-      "value": 41.28
-    },
-    {
-      "date": "2016-08-09",
-      "value": 41.57
-    },
-    {
-      "date": "2016-08-10",
-      "value": 41.74
-    },
-    {
-      "date": "2016-08-11",
-      "value": 41.12
-    },
-    {
-      "date": "2016-08-12",
-      "value": 41.4
-    },
-    {
       "date": "2016-08-15",
       "value": 41.0
     },
@@ -721,7 +701,7 @@
     },
     {
       "date": "2017-04-25",
-      "value": 37.08
+      "value": 37.07
     },
     {
       "date": "2017-04-26",
@@ -8741,7 +8721,7 @@
     },
     {
       "date": "2025-04-15",
-      "value": 53.04
+      "value": 53.03
     },
     {
       "date": "2025-04-16",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-08-07",
       "value": 62.51
+    },
+    {
+      "date": "2026-08-10",
+      "value": 61.89
+    },
+    {
+      "date": "2026-08-11",
+      "value": 61.89
+    },
+    {
+      "date": "2026-08-12",
+      "value": 62.59
+    },
+    {
+      "date": "2026-08-13",
+      "value": 62.95
+    },
+    {
+      "date": "2026-08-14",
+      "value": 62.74
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 59147083776.0,
-      "pe_ratio": 45.627735,
-      "forward_pe": 36.61658,
+      "market_cap": 59364712448.0,
+      "pe_ratio": 45.79562,
+      "forward_pe": 36.751312,
       "eps_ttm": 1.37,
-      "dividend_yield": 5.2,
+      "dividend_yield": 5.18,
       "profit_margin": 0.20898001,
       "operating_margin": 0.46965998,
-      "price_to_book": 1.4955261,
+      "price_to_book": 1.5010288,
       "return_on_equity": 0.03225
     },
     "quarterly": [
@@ -10125,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-07",
-    "current_price": 62.51,
+    "as_of": "2026-08-14",
+    "current_price": 62.74,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -10146,7 +10146,7 @@
       }
     },
     "fair_value": 27.7,
-    "valuation_gap": 1.2566,
+    "valuation_gap": 1.2649,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10262,6 +10262,12 @@
         "price": 62.51,
         "fair_value": 24.66,
         "gap": 1.5349
+      },
+      {
+        "date": "2026-08-14",
+        "price": 62.74,
+        "fair_value": 24.66,
+        "gap": 1.5442
       }
     ],
     "qualitative": {
@@ -10285,10 +10291,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-05-17",
-          "narrative_score": 0.05
-        },
         {
           "date": "2026-05-23",
           "narrative_score": 0.04

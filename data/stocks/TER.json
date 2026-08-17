@@ -4,26 +4,6 @@
   "group": "로보틱스 / 피지컬 AI",
   "series": [
     {
-      "date": "2016-08-08",
-      "value": 18.98
-    },
-    {
-      "date": "2016-08-09",
-      "value": 18.8
-    },
-    {
-      "date": "2016-08-10",
-      "value": 18.81
-    },
-    {
-      "date": "2016-08-11",
-      "value": 18.92
-    },
-    {
-      "date": "2016-08-12",
-      "value": 18.99
-    },
-    {
       "date": "2016-08-15",
       "value": 19.48
     },
@@ -1741,7 +1721,7 @@
     },
     {
       "date": "2018-04-30",
-      "value": 31.26
+      "value": 31.25
     },
     {
       "date": "2018-05-01",
@@ -3345,7 +3325,7 @@
     },
     {
       "date": "2019-12-02",
-      "value": 60.92
+      "value": 60.93
     },
     {
       "date": "2019-12-03",
@@ -3789,7 +3769,7 @@
     },
     {
       "date": "2020-05-12",
-      "value": 59.81
+      "value": 59.8
     },
     {
       "date": "2020-05-13",
@@ -4249,7 +4229,7 @@
     },
     {
       "date": "2020-10-23",
-      "value": 90.0
+      "value": 90.01
     },
     {
       "date": "2020-10-26",
@@ -5045,7 +5025,7 @@
     },
     {
       "date": "2021-08-10",
-      "value": 120.12
+      "value": 120.11
     },
     {
       "date": "2021-08-11",
@@ -6789,7 +6769,7 @@
     },
     {
       "date": "2023-05-04",
-      "value": 88.85
+      "value": 88.86
     },
     {
       "date": "2023-05-05",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-08-07",
       "value": 379.31
+    },
+    {
+      "date": "2026-08-10",
+      "value": 365.1
+    },
+    {
+      "date": "2026-08-11",
+      "value": 379.56
+    },
+    {
+      "date": "2026-08-12",
+      "value": 402.74
+    },
+    {
+      "date": "2026-08-13",
+      "value": 410.52
+    },
+    {
+      "date": "2026-08-14",
+      "value": 418.79
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 59301609472.0,
-      "pe_ratio": 52.10302,
-      "forward_pe": 32.83208,
-      "eps_ttm": 7.28,
-      "dividend_yield": 0.14,
+      "market_cap": 65473945600.0,
+      "pe_ratio": 57.44719,
+      "forward_pe": 36.249367,
+      "eps_ttm": 7.29,
+      "dividend_yield": 0.12,
       "profit_margin": 0.25766,
       "operating_margin": 0.33161,
-      "price_to_book": 18.887117,
+      "price_to_book": 20.85296,
       "return_on_equity": 0.36465
     },
     "quarterly": [
@@ -10118,12 +10118,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-07",
-    "current_price": 379.31,
+    "as_of": "2026-08-14",
+    "current_price": 418.79,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 203.84,
+        "fair_value": 204.12,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10133,13 +10133,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 57.35,
+        "fair_value": 57.39,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 189.64,
-    "valuation_gap": 1.0001,
+    "fair_value": 189.79,
+    "valuation_gap": 1.2066,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10255,6 +10255,12 @@
         "price": 379.31,
         "fair_value": 204.12,
         "gap": 0.8583
+      },
+      {
+        "date": "2026-08-14",
+        "price": 418.79,
+        "fair_value": 204.12,
+        "gap": 1.0517
       }
     ],
     "qualitative": {

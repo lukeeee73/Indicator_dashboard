@@ -4,26 +4,6 @@
   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
   "series": [
     {
-      "date": "2016-08-08",
-      "value": 20.73
-    },
-    {
-      "date": "2016-08-09",
-      "value": 20.78
-    },
-    {
-      "date": "2016-08-10",
-      "value": 21.1
-    },
-    {
-      "date": "2016-08-11",
-      "value": 21.32
-    },
-    {
-      "date": "2016-08-12",
-      "value": 21.34
-    },
-    {
       "date": "2016-08-15",
       "value": 21.63
     },
@@ -10058,19 +10038,39 @@
     {
       "date": "2026-08-07",
       "value": 379.13
+    },
+    {
+      "date": "2026-08-10",
+      "value": 325.15
+    },
+    {
+      "date": "2026-08-11",
+      "value": 328.57
+    },
+    {
+      "date": "2026-08-12",
+      "value": 355.64
+    },
+    {
+      "date": "2026-08-13",
+      "value": 327.23
+    },
+    {
+      "date": "2026-08-14",
+      "value": 325.83
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 74172735488.0,
-      "pe_ratio": 181.40192,
-      "forward_pe": 45.289967,
-      "eps_ttm": 2.09,
+      "market_cap": 63745159168.0,
+      "pe_ratio": 79.27737,
+      "forward_pe": 23.375454,
+      "eps_ttm": 4.11,
       "dividend_yield": null,
-      "profit_margin": 0.07102,
-      "operating_margin": 0.13572,
-      "price_to_book": 6.9436455,
-      "return_on_equity": 0.04718
+      "profit_margin": 0.11309,
+      "operating_margin": 0.118269995,
+      "price_to_book": 5.8481555,
+      "return_on_equity": 0.07981
     },
     "quarterly": [
       {
@@ -10118,28 +10118,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-07",
-    "current_price": 379.13,
+    "as_of": "2026-08-14",
+    "current_price": 325.83,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 58.52,
+        "fair_value": 115.08,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 184.17,
+        "fair_value": 306.66,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 50.67,
+        "fair_value": 71.78,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 94.65,
-    "valuation_gap": 3.0058,
+    "fair_value": 163.89,
+    "valuation_gap": 0.9881,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10333,6 +10333,12 @@
         "price": 379.13,
         "fair_value": 58.52,
         "gap": 5.4786
+      },
+      {
+        "date": "2026-08-14",
+        "price": 325.83,
+        "fair_value": 58.52,
+        "gap": 4.5678
       }
     ],
     "qualitative": {

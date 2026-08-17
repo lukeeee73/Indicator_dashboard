@@ -4,26 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-08-08",
-      "value": 94.05
-    },
-    {
-      "date": "2016-08-09",
-      "value": 93.88
-    },
-    {
-      "date": "2016-08-10",
-      "value": 93.83
-    },
-    {
-      "date": "2016-08-11",
-      "value": 94.14
-    },
-    {
-      "date": "2016-08-12",
-      "value": 93.72
-    },
-    {
       "date": "2016-08-15",
       "value": 93.03
     },
@@ -1169,7 +1149,7 @@
     },
     {
       "date": "2017-10-03",
-      "value": 103.85
+      "value": 103.86
     },
     {
       "date": "2017-10-04",
@@ -2121,7 +2101,7 @@
     },
     {
       "date": "2018-09-13",
-      "value": 112.93
+      "value": 112.94
     },
     {
       "date": "2018-09-14",
@@ -5097,7 +5077,7 @@
     },
     {
       "date": "2021-08-27",
-      "value": 151.14
+      "value": 151.13
     },
     {
       "date": "2021-08-30",
@@ -6977,7 +6957,7 @@
     },
     {
       "date": "2023-07-13",
-      "value": 145.5
+      "value": 145.49
     },
     {
       "date": "2023-07-14",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-08-07",
       "value": 259.24
+    },
+    {
+      "date": "2026-08-10",
+      "value": 261.81
+    },
+    {
+      "date": "2026-08-11",
+      "value": 259.8
+    },
+    {
+      "date": "2026-08-12",
+      "value": 260.86
+    },
+    {
+      "date": "2026-08-13",
+      "value": 262.08
+    },
+    {
+      "date": "2026-08-14",
+      "value": 260.35
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 624742039552.0,
-      "pe_ratio": 30.039396,
-      "forward_pe": 21.063578,
-      "eps_ttm": 8.63,
-      "dividend_yield": 2.07,
+      "market_cap": 627417088000.0,
+      "pe_ratio": 30.203018,
+      "forward_pe": 21.153769,
+      "eps_ttm": 8.62,
+      "dividend_yield": 2.06,
       "profit_margin": 0.21482,
       "operating_margin": 0.2919,
-      "price_to_book": 7.347239,
+      "price_to_book": 7.378699,
       "return_on_equity": 0.25742
     },
     "quarterly": [
@@ -10125,12 +10125,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-07",
-    "current_price": 259.24,
+    "as_of": "2026-08-14",
+    "current_price": 260.35,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 155.34,
+        "fair_value": 155.16,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
@@ -10140,13 +10140,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 82.77,
+        "fair_value": 82.72,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 153.3,
-    "valuation_gap": 0.6911,
+    "fair_value": 153.2,
+    "valuation_gap": 0.6994,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10262,6 +10262,12 @@
         "price": 259.24,
         "fair_value": 155.34,
         "gap": 0.6689
+      },
+      {
+        "date": "2026-08-14",
+        "price": 260.35,
+        "fair_value": 155.34,
+        "gap": 0.676
       }
     ],
     "qualitative": {
