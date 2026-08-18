@@ -1,0 +1,44 @@
+{
+  "ticker": "ASML",
+  "date": "2026-08-18",
+  "as_of_utc": "2026-08-18T12:00:00Z",
+  "news": [
+    {
+      "title": "ASML Stock Rises 1.7% as AI Demand Signal Strengthens",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/asml-stock-rises-1-7-200347865.html",
+      "published": "2026-08-14T00:00:00Z",
+      "summary": "AI 반도체 수요 신호 강화로 주가 1.7% 상승, 52주 고점 근접",
+      "impact": "+",
+      "category": "macro"
+    },
+    {
+      "title": "Bernstein Sticks to Their Buy Rating for ASML Holding NV, Raises Price Target to $2,859",
+      "source": "The Globe and Mail",
+      "url": "https://www.theglobeandmail.com/investing/markets/stocks/ASML/pressreleases/3798836/bernstein-sticks-to-their-buy-rating-for-asml-holding-nv-0qb8/",
+      "published": "2026-08-12T00:00:00Z",
+      "summary": "번스타인, ASML 목표가 재상향($2,859) — Buy 유지",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "ASML stock trades close to record highs as AI demand and institutional flows support valuation",
+      "source": "ad-hoc-news.de",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/asml-stock-trades-close-to-record-highs-as-ai-demand-and-institutional/69959893",
+      "published": "2026-08-17T00:00:00Z",
+      "summary": "AI 수요·기관 자금 유입으로 주가 사상 최고가 근접, YTD +72%",
+      "impact": "+",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "AMAT", "headline": "Q3 FY2026 기록적 매출($9.12B)에도 마진 우려·FCF 급감으로 주가 6% 하락", "implication_for_target": "전공정 EUV 수요와는 별개로 후공정 장비사의 마진 부담 — ASML 자체 마진 프로파일과는 무관하나 섹터 밸류에이션 경계 심리 확산 가능"},
+    {"ticker": "LRCX", "headline": "$3B R&D 랩 확장 발표 + 中 매출 비중 34%→26% 급감 확인", "implication_for_target": "장비 3사 공통의 中 수출규제 리스크가 실제 매출 숫자로 재확인됨 — ASML의 中 매출 비중(14%) 안정화 여부도 10월 Q3 실적에서 재검증 필요"}
+  ],
+  "scores": {"earnings_outlook": 0.25, "competitive_position": 0.20, "regulatory_risk": 0.0, "macro_sensitivity": 0.15},
+  "narrative_score": 0.17,
+  "summary_kr": "특별한 악재 없이 AI 반도체 수요 모멘텀에 힘입어 주가가 사상 최고가 부근에서 유지되고 있고, 번스타인이 목표가를 $2,859로 재상향했다.",
+  "key_events": ["AI 수요 신호 강화로 주가 +1.7%", "번스타인 목표가 $2,859로 상향(Buy 유지)", "주가 사상 최고가 근접, YTD +72%"],
+  "risks": ["中 EUV/DUV 자체 개발 확산 장기 리스크(진행 중, 미해결)", "밸류에이션 부담 — 42 애널리스트 평균 목표가 대비 이미 상당 부분 반영"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ASML - ASML Holding NV.md"
+}
