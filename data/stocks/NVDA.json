@@ -10305,31 +10305,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-07-28",
-      "narrative_score": -0.06,
-      "summary_kr": "NVDA가 SK그룹과 $500B AI 파트너십으로 HBM4 공급을 확보하는 등 사업 확장은 계속되지만, OpenAI 오하이오 데이터센터에 $250B 규모 재무보증을 제공하는 방안이 논의되면서 '칩 판매자에서 금융 보증인으로' 역할이 확대되는 데 대한 우려로 주가가 5% 급락했다. 알파벳의 설비투자 급증·FCF 적자 전환까지 겹치며 AI 섹터 전반의 밸류에이션 재평가 압력이 커지는 국면이다.",
+      "as_of": "2026-08-18",
+      "narrative_score": 0.07,
+      "summary_kr": "엔비디아가 오픈AI의 오하이오 데이터센터에 최대 1,050억달러 규모 재무보증을 제공하기로 공식 확정했다. 젠슨 황은 '순환금융이 아니다'라며 2030년까지 6,000억달러 컴퓨팅 매출 기회를 강조했지만, 이는 지난 7월 거론되던 2,500억달러보다는 축소된 규모이자 직접투자가 아닌 보증 구조라 시장 반응은 소폭 상승에 그쳤다.",
       "key_events": [
-        "OpenAI 오하이오 데이터센터 $250B 재무보증 논의",
-        "SK그룹과 $500B AI 파트너십 (SK하이닉스 HBM4 장기공급)",
-        "Open Secure AI Alliance 출범",
-        "알파벳 2026 capex $205B 상향, 섹터 셀오프 촉발"
+        "오픈AI 오하이오 데이터센터 $105B 재무보증 확정(8/17)",
+        "SB Energy에 $1.5B 투자",
+        "젠슨 황 순환금융 비판 반박, $600B 컴퓨팅 기회 제시"
       ],
       "risks": [
-        "OpenAI 신용등급 없는 상태에서의 $250B+$350B 금융 익스포저 확대",
-        "AI 설비투자 수익화 의문에 따른 밸류에이션 재평가",
-        "빅테크 실적 시즌(MSFT·META·AMZN·GOOG) capex 방향성 변수"
+        "오픈AI 신용 리스크를 엔비디아가 대신 부담하는 구조",
+        "반도체 업종 전반 부채 의존 AI 확장에 대한 시장 경계감 확산",
+        "TSMC 파운드리 원가 상승이 마진에 미치는 영향 (미검증 지속)"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
-          "ticker": "AMD",
-          "headline": "AMD Advancing AI 2026: Helios 랙·MI455 GPU·Zen6 EPYC 'Venice' 공개, AI 가속기 시장 2030년 $1.4T 전망",
-          "implication_for_target": "AMD가 CPU+GPU 통합 랙스케일 솔루션으로 NVDA 데이터센터 아키텍처를 직접 겨냥 — 다만 발표 직후 주가는 sell-the-news로 하락"
+          "ticker": "AVGO",
+          "headline": "BofA, 브로드컴 AI 칩 금융특수목적법인(XPV) 부채 2029년 3,700억달러 전망 제기 — 주가 6% 급락(8/14)",
+          "implication_for_target": "반도체 업종 전반의 부채 의존 AI 인프라 확장에 대한 시장 경계감이 커지면서, 엔비디아의 오픈AI 재무보증 구조도 같은 잣대로 비교 평가받을 가능성"
         },
         {
-          "ticker": "AVGO",
-          "headline": "Samsung-Broadcom $200B AI칩 파트너십(2030년까지) — 2nm 파운드리·HBM4/4E·2.3D 패키징",
-          "implication_for_target": "커스텀 ASIC 진영(AVGO)이 삼성 파운드리로 TSMC 의존도를 낮추며 NVDA 표준 GPU 대비 원가 경쟁력 확보 시도"
+          "ticker": "INTC",
+          "headline": "인텔, 200억달러 유상증자 완료(8/12) + CEO 개인자금 1,000만달러 자사주 매입(8/17 공개)",
+          "implication_for_target": "인텔이 파운드리 확장 자금을 확보하며 장기적으로 TSMC 대안 공급망이 넓어질 가능성 — 엔비디아의 파운드리 다변화 옵션 확대"
         }
       ],
       "history": [
@@ -10376,6 +10375,10 @@
         {
           "date": "2026-07-28",
           "narrative_score": -0.06
+        },
+        {
+          "date": "2026-08-18",
+          "narrative_score": 0.07
         }
       ]
     }

@@ -1,0 +1,35 @@
+{
+  "ticker": "AMD",
+  "date": "2026-08-18",
+  "as_of_utc": "2026-08-18T12:00:00Z",
+  "news": [
+    {
+      "title": "AMD Raises $4.75 Billion From Bond Sale as AI Demand Surges",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-13/amd-plans-to-raise-as-much-as-5-billion-from-debt-offering",
+      "published": "2026-08-13T00:00:00Z",
+      "summary": "AI·데이터센터 확장 자금으로 사상 최대 규모 47.5억달러 회사채 4개 트랜치 발행",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Baird Raises AMD Stock Price Target to Street-High of $1,250",
+      "source": "TipRanks",
+      "url": "https://www.tipranks.com/news/baird-raises-amd-stock-price-target-to-street-high-of-1250-jefferies-sees-more-upside-after-advancing-ai-event",
+      "published": "2026-08-14T00:00:00Z",
+      "summary": "베어드, AMD 목표주가 625달러에서 1,250달러로 2배 상향 — 2030년 AI GPU 매출 1,470억달러 전망",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "NVDA", "headline": "엔비디아, 오픈AI 오하이오 데이터센터에 최대 1,050억달러 재무보증 확정(8/17)", "implication_for_target": "AI 인프라 슈퍼사이클이 지속된다는 근거이나, 동시에 반도체 업종 전반의 부채·보증 의존 확장에 대한 시장 경계감도 함께 키워 AMD의 채권 발행에도 비교 잣대로 작용"},
+    {"ticker": "AVGO", "headline": "BofA, 브로드컴 AI 칩 금융특수목적법인 부채 2029년 3,700억달러 전망 — 주가 6% 급락(8/14)", "implication_for_target": "AI 인프라 부채 조달 모델에 대한 시장 경계감이 커진 같은 날 AMD 채권 발행은 우호적으로 소화돼 상대적으로 신뢰를 얻은 대조적 구도"}
+  ],
+  "scores": {"earnings_outlook": 0.20, "competitive_position": 0.15, "regulatory_risk": 0.00, "macro_sensitivity": -0.05},
+  "narrative_score": 0.11,
+  "summary_kr": "AMD가 AI·데이터센터 확장 자금으로 사상 최대 47.5억달러 채권을 발행했고, 베어드는 목표주가를 업계 최고 수준인 1,250달러(2배 상향)로 올려잡으며 2030년 AI GPU 매출 1,470억달러 전망을 제시했다. 자금 조달과 애널리스트 신뢰가 동시에 확인되며 주가는 4/14 이후 480달러대에서 510달러대로 반등했다.",
+  "key_events": ["사상 최대 47.5억달러 회사채 발행(8/13)", "베어드 목표주가 1,250달러로 2배 상향(8/14)", "주가 480달러대→510달러대 반등"],
+  "risks": ["채권 발행 자금이 실제 AI 생산능력 확대로 이어지는지 불투명(일반 운영자금 명시)", "부채 확대에 따른 금리 민감도 상승", "베어드 전망(15% 시장점유율 가정)이 낙관적 시나리오에 근거"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMD%20-%20Advanced%20Micro%20Devices.md"
+}

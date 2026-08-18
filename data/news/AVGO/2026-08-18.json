@@ -1,0 +1,44 @@
+{
+  "ticker": "AVGO",
+  "date": "2026-08-18",
+  "as_of_utc": "2026-08-18T12:00:00Z",
+  "news": [
+    {
+      "title": "Broadcom Shares Plunge on Major VMware Security Threat",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/broadcom-shares-plunge-major-vmware-182433296.html",
+      "published": "2026-08-14T00:00:00Z",
+      "summary": "VMware vCenter 취약점(CVE-2026-59310) 실제 악용 정황 확인, 주가 5% 급락",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Broadcom's AI Financing Could Reach $370 Billion. But It's Not as Bad as It Sounds.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/08/17/broadcom-s-ai-financing-could-reach-usd370-billion-but-it-s-not-as-bad-as-it-sounds/",
+      "published": "2026-08-17T00:00:00Z",
+      "summary": "BofA, AI칩 금융특수목적법인(XPV) 부채 2029년 3,700억달러 전망 — 브로드컴 직접 부채는 아니라는 반박 분석",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "What's Going On With Broadcom Stock Monday?",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/08/61241712/whats-going-on-with-broadcom-stock-monday-7",
+      "published": "2026-08-17T00:00:00Z",
+      "summary": "VMware·부채 우려로 급락했던 주가, 반도체 업종 강세 속 391~399달러선 회복 시도",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "MRVL", "headline": "마벨, 신규 AI 메모리 인프라 플랫폼(Bravera SC6·Structera X·Photonic Fabric) 공개 후 주가 급등(8/10~8/12)", "implication_for_target": "커스텀 AI 실리콘·메모리 인터커넥트 영역에서 브로드컴의 하이퍼스케일러 설계 수주 경쟁이 격화"},
+    {"ticker": "QCOM", "headline": "퀄컴, 데이터센터 CPU '드래곤플라이' 로드맵 진전 — 2029 회계연도 비휴대폰 매출 400억달러 목표", "implication_for_target": "브로드컴의 커스텀 ASIC 텃밭에 자금력 있는 신규 경쟁자가 계속 진입 중"}
+  ],
+  "scores": {"earnings_outlook": 0.00, "competitive_position": 0.05, "regulatory_risk": -0.15, "macro_sensitivity": -0.15},
+  "narrative_score": -0.04,
+  "summary_kr": "VMware vCenter 취약점 실제 악용 정황과 BofA의 AI칩 금융특수목적법인(XPV) 3,700억달러 부채 전망이 겹치며 주가가 8/14 하루에만 5~6% 급락했으나, 부채는 브로드컴 직접 채무가 아니라는 후속 분석과 반도체 업종 강세에 힘입어 8/17 주가는 391~399달러선까지 일부 회복했다.",
+  "key_events": ["VMware vCenter 취약점 실제 악용 확인, 주가 5% 급락(8/14)", "BofA XPV 부채 3,700억달러 전망 제기, 주가 6% 급락(8/14)", "8/17 주가 일부 회복"],
+  "risks": ["VMware 취약점發 고객 이탈·소송 가능성", "XPV 금융특수목적법인 부채 확대가 향후 신용등급·조달비용에 미칠 영향", "9월초 Q3 실적 발표까지 밸류에이션 불확실성 지속"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AVGO%20-%20Broadcom%20Inc.md"
+}
