@@ -10127,26 +10127,28 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-14",
-      "narrative_score": 0.24,
-      "summary_kr": "2분기 실적이 컨센서스를 크게 상회하고 Helix 데이터센터 파트너십과 Cogentrix 인수 FERC 승인까지 겹치며 강한 순풍이 나타났다. 다만 Wells Fargo가 2027년 전망에는 다소 신중한 시각을 냈다.",
+      "as_of": "2026-08-21",
+      "narrative_score": -0.09,
+      "summary_kr": "펜실베이니아 행정명령으로 주가가 하락하고 애널리스트 목표가도 낮아졌지만, 이미 확보한 텍사스 Comanche Peak-아마존 핵심 계약은 이번 규제와 무관하다는 점이 다운사이드를 제한하고 있다.",
       "key_events": [
-        "2분기 조정EPS $1.80(컨센서스 $1.54 상회), EBITDA +30%↑, KKR·Nvidia $10억 Helix 파트너십 공개(8/7)",
-        "ERCOT 데이터센터 접속대기열 일시중단 지지, Comanche Peak·아마존 PPA는 무관(8/7)",
-        "FERC, Cogentrix($40억) 인수 승인(8/5)",
-        "Wells Fargo, 목표가 $220→$212 하향(2027 전망 신중)(8/10)"
+        "펜실베이니아 GRID 행정명령(8/18), VST 주가 약 4% 하락",
+        "TD Cowen 목표가 $222→$221 하향(8/19), BNP Paribas $282→$255 하향"
       ],
       "risks": [
-        "매출은 컨센서스 하회($40.2억)",
-        "2027년 전망에 대한 애널리스트 신중론",
-        "ERCOT 데이터센터 대기열 감사 결과가 향후 파이프라인에 미칠 영향 (기존 open claim)"
+        "펜실베이니아·텍사스 이중 규제 리스크가 11월 중간선거까지 지속될 가능성",
+        "신규 데이터센터 계약 파이프라인 확대 속도 둔화"
       ],
-      "news_count": 4,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "CEG",
-          "headline": "Constellation, Argus가 금리 부담 이유로 목표가 $350→$325 하향(8/11), 다만 주가는 자사주 매입 힘입어 상승",
-          "implication_for_target": "동일 머천트 원전·가스 발전 대장주 CEG도 밸류에이션 압박을 받고 있어, 상대적으로 낮은 밸류에이션의 VST가 부각될 여지"
+          "headline": "콘스텔레이션도 같은 행정명령으로 주가 하락, BNP Paribas 목표가 하향",
+          "implication_for_target": "원자력·가스 기반 데이터센터 계약 모델을 가진 두 회사 모두 펜실베이니아·텍사스 이중 규제 리스크에 함께 노출"
+        },
+        {
+          "ticker": "SO",
+          "headline": "서던·듀크 등 규제 유틸리티는 이번 규제 리스크에서 상대적으로 자유로움",
+          "implication_for_target": "비스트라 같은 머천트 발전사와 규제 유틸리티 간 밸류에이션 격차 요인이 될 수 있다"
         }
       ],
       "history": [
@@ -10193,6 +10195,10 @@
         {
           "date": "2026-08-14",
           "narrative_score": 0.24
+        },
+        {
+          "date": "2026-08-21",
+          "narrative_score": -0.09
         }
       ]
     }
