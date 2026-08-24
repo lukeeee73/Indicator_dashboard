@@ -4,26 +4,6 @@
   "group": "반도체 — 장비 · 소재",
   "series": [
     {
-      "date": "2016-08-15",
-      "value": 14.3
-    },
-    {
-      "date": "2016-08-16",
-      "value": 14.32
-    },
-    {
-      "date": "2016-08-17",
-      "value": 14.08
-    },
-    {
-      "date": "2016-08-18",
-      "value": 14.51
-    },
-    {
-      "date": "2016-08-19",
-      "value": 14.48
-    },
-    {
       "date": "2016-08-22",
       "value": 14.64
     },
@@ -9984,6 +9964,14 @@
       "value": 201.81
     },
     {
+      "date": "2026-07-21",
+      "value": 209.15
+    },
+    {
+      "date": "2026-07-22",
+      "value": 204.53
+    },
+    {
       "date": "2026-07-23",
       "value": 199.58
     },
@@ -10006,6 +9994,10 @@
     {
       "date": "2026-07-30",
       "value": 173.5
+    },
+    {
+      "date": "2026-07-31",
+      "value": 167.37
     },
     {
       "date": "2026-08-03",
@@ -10046,18 +10038,38 @@
     {
       "date": "2026-08-14",
       "value": 185.0
+    },
+    {
+      "date": "2026-08-17",
+      "value": 188.85
+    },
+    {
+      "date": "2026-08-18",
+      "value": 170.24
+    },
+    {
+      "date": "2026-08-19",
+      "value": 172.22
+    },
+    {
+      "date": "2026-08-20",
+      "value": 167.05
+    },
+    {
+      "date": "2026-08-21",
+      "value": 170.41
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 168220950528.0,
-      "pe_ratio": 47.19388,
+      "market_cap": 154833453056.0,
+      "pe_ratio": 43.141773,
       "forward_pe": null,
-      "eps_ttm": 3.92,
-      "dividend_yield": 1.07,
+      "eps_ttm": 3.95,
+      "dividend_yield": 1.16,
       "profit_margin": 0.23645,
       "operating_margin": 0.28866,
-      "price_to_book": 12.387807,
+      "price_to_book": 11.410844,
       "return_on_equity": 0.30929002
     },
     "quarterly": [
@@ -10078,23 +10090,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-14",
-    "current_price": 185.0,
+    "as_of": "2026-08-21",
+    "current_price": 170.41,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 109.76,
+        "fair_value": 110.6,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "graham_number": {
-        "fair_value": 36.29,
+        "fair_value": 36.43,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 88.77,
-    "valuation_gap": 1.0841,
+    "fair_value": 89.41,
+    "valuation_gap": 0.906,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

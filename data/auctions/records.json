@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-27",
-  "count": 529,
+  "last_updated": "2026-08-13",
+  "count": 531,
   "raw_count": 626,
   "excluded_cusips": 61,
   "source_fields": [
@@ -126,16 +126,16 @@
     "xmlFilenameSpecialAnnouncement"
   ],
   "consistency": {
-    "fiscal_raw_count": 11072,
-    "overlap_records": 103,
-    "filled_from_fiscal": 426,
+    "fiscal_raw_count": 11090,
+    "overlap_records": 104,
+    "filled_from_fiscal": 427,
     "btc_mismatch": 0,
     "indirect_mismatch": 0,
     "btc_mismatch_sample": [],
     "indirect_mismatch_sample": [],
     "by_source": {
-      "fiscaldata": 426,
-      "treasurydirect": 103
+      "fiscaldata": 427,
+      "treasurydirect": 104
     }
   },
   "records": [
@@ -3609,9 +3609,9 @@
       "tenor": "30Y",
       "cusip": "912810QU5",
       "security_type": "Bond",
-      "source": "treasurydirect",
+      "source": "fiscaldata",
       "bid_to_cover": 2.47,
-      "offering_amount": 16000000000.0,
+      "offering_amount": null,
       "high_yield": 3.24,
       "indirect_amount": 4657449900.0,
       "direct_amount": 2354000000.0,
@@ -8073,6 +8073,36 @@
       "dealer_amount": 6340843200.0,
       "indirect_share": 56.59084042357717,
       "dealer_share": 9.355581965936684
+    },
+    {
+      "date": "2026-08-12",
+      "tenor": "10Y",
+      "cusip": "91282CRF0",
+      "security_type": "Note",
+      "source": "treasurydirect",
+      "bid_to_cover": 2.53,
+      "offering_amount": 42000000000.0,
+      "high_yield": 4.683,
+      "indirect_amount": 32087936000.0,
+      "direct_amount": 6135867600.0,
+      "dealer_amount": 3597810000.0,
+      "indirect_share": 76.72572442302896,
+      "dealer_share": 8.602752716360996
+    },
+    {
+      "date": "2026-08-13",
+      "tenor": "30Y",
+      "cusip": "912810UW6",
+      "security_type": "Bond",
+      "source": "treasurydirect",
+      "bid_to_cover": 2.39,
+      "offering_amount": 25000000000.0,
+      "high_yield": 5.216,
+      "indirect_amount": 16647723000.0,
+      "direct_amount": 5390150000.0,
+      "dealer_amount": 2866735000.0,
+      "indirect_share": 66.84595477270713,
+      "dealer_share": 11.510861765019548
     }
   ]
 }

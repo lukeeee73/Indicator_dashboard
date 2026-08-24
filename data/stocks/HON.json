@@ -4,26 +4,6 @@
   "group": "산업재 / 방산",
   "series": [
     {
-      "date": "2016-08-15",
-      "value": 89.22
-    },
-    {
-      "date": "2016-08-16",
-      "value": 88.75
-    },
-    {
-      "date": "2016-08-17",
-      "value": 88.87
-    },
-    {
-      "date": "2016-08-18",
-      "value": 88.93
-    },
-    {
-      "date": "2016-08-19",
-      "value": 89.12
-    },
-    {
       "date": "2016-08-22",
       "value": 89.48
     },
@@ -1825,7 +1805,7 @@
     },
     {
       "date": "2018-06-06",
-      "value": 120.81
+      "value": 120.8
     },
     {
       "date": "2018-06-07",
@@ -4821,7 +4801,7 @@
     },
     {
       "date": "2021-05-27",
-      "value": 205.45
+      "value": 205.46
     },
     {
       "date": "2021-05-28",
@@ -5085,7 +5065,7 @@
     },
     {
       "date": "2021-08-31",
-      "value": 206.84
+      "value": 206.85
     },
     {
       "date": "2021-09-01",
@@ -8749,7 +8729,7 @@
     },
     {
       "date": "2025-04-25",
-      "value": 191.1
+      "value": 191.11
     },
     {
       "date": "2025-04-28",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-08-14",
       "value": 233.96
+    },
+    {
+      "date": "2026-08-17",
+      "value": 229.45
+    },
+    {
+      "date": "2026-08-18",
+      "value": 227.71
+    },
+    {
+      "date": "2026-08-19",
+      "value": 221.73
+    },
+    {
+      "date": "2026-08-20",
+      "value": 218.32
+    },
+    {
+      "date": "2026-08-21",
+      "value": 215.9
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 74151280640.0,
-      "pe_ratio": 8.991545,
-      "forward_pe": 23.354126,
+      "market_cap": 68427345920.0,
+      "pe_ratio": 8.297463,
+      "forward_pe": 21.604322,
       "eps_ttm": 26.02,
-      "dividend_yield": 1.2,
+      "dividend_yield": 1.3,
       "profit_margin": 0.21581,
       "operating_margin": 0.20249,
-      "price_to_book": 4.0002055,
+      "price_to_book": 3.6914186,
       "return_on_equity": 0.46577
     },
     "quarterly": [
@@ -10125,8 +10125,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-14",
-    "current_price": 233.96,
+    "as_of": "2026-08-21",
+    "current_price": 215.9,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
@@ -10135,7 +10135,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 170.3,
+        "fair_value": 169.89,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -10145,8 +10145,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 348.3,
-    "valuation_gap": -0.3283,
+    "fair_value": 348.18,
+    "valuation_gap": -0.3799,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10268,6 +10268,12 @@
         "price": 233.96,
         "fair_value": 541.0,
         "gap": -0.5675
+      },
+      {
+        "date": "2026-08-21",
+        "price": 215.9,
+        "fair_value": 541.0,
+        "gap": -0.6009
       }
     ],
     "qualitative": {

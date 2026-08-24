@@ -4,26 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-08-15",
-      "value": 10.96
-    },
-    {
-      "date": "2016-08-16",
-      "value": 10.88
-    },
-    {
-      "date": "2016-08-17",
-      "value": 10.81
-    },
-    {
-      "date": "2016-08-18",
-      "value": 11.01
-    },
-    {
-      "date": "2016-08-19",
-      "value": 10.78
-    },
-    {
       "date": "2016-08-22",
       "value": 10.65
     },
@@ -4293,7 +4273,7 @@
     },
     {
       "date": "2020-11-16",
-      "value": 19.51
+      "value": 19.52
     },
     {
       "date": "2020-11-17",
@@ -4581,7 +4561,7 @@
     },
     {
       "date": "2021-03-03",
-      "value": 32.52
+      "value": 32.53
     },
     {
       "date": "2021-03-04",
@@ -4833,7 +4813,7 @@
     },
     {
       "date": "2021-06-02",
-      "value": 40.36
+      "value": 40.37
     },
     {
       "date": "2021-06-03",
@@ -10058,18 +10038,38 @@
     {
       "date": "2026-08-14",
       "value": 66.49
+    },
+    {
+      "date": "2026-08-17",
+      "value": 68.38
+    },
+    {
+      "date": "2026-08-18",
+      "value": 66.32
+    },
+    {
+      "date": "2026-08-19",
+      "value": 69.09
+    },
+    {
+      "date": "2026-08-20",
+      "value": 71.22
+    },
+    {
+      "date": "2026-08-21",
+      "value": 76.66
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 93085999104.0,
-      "pe_ratio": 32.593136,
-      "forward_pe": 16.126488,
+      "market_cap": 110085111808.0,
+      "pe_ratio": 37.578434,
+      "forward_pe": 18.593122,
       "eps_ttm": 2.04,
-      "dividend_yield": 0.9,
+      "dividend_yield": 0.78,
       "profit_margin": 0.113850005,
       "operating_margin": 0.33404,
-      "price_to_book": 4.748268,
+      "price_to_book": 5.474541,
       "return_on_equity": 0.14755
     },
     "quarterly": [
@@ -10111,8 +10111,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-14",
-    "current_price": 66.49,
+    "as_of": "2026-08-21",
+    "current_price": 76.66,
     "sector": "Materials",
     "methods": {
       "pe_benchmark": {
@@ -10132,7 +10132,7 @@
       }
     },
     "fair_value": 38.71,
-    "valuation_gap": 0.7178,
+    "valuation_gap": 0.9806,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10254,6 +10254,12 @@
         "price": 66.49,
         "fair_value": 32.48,
         "gap": 1.0471
+      },
+      {
+        "date": "2026-08-21",
+        "price": 76.66,
+        "fair_value": 32.48,
+        "gap": 1.3602
       }
     ],
     "qualitative": {

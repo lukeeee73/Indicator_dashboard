@@ -4,30 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-08-16",
-      "value": 21649.96
-    },
-    {
-      "date": "2016-08-17",
-      "value": 21805.16
-    },
-    {
-      "date": "2016-08-18",
-      "value": 21882.75
-    },
-    {
-      "date": "2016-08-19",
-      "value": 22193.15
-    },
-    {
-      "date": "2016-08-22",
-      "value": 21649.96
-    },
-    {
-      "date": "2016-08-23",
-      "value": 21921.55
-    },
-    {
       "date": "2016-08-24",
       "value": 21921.55
     },
@@ -9790,19 +9766,39 @@
     {
       "date": "2026-08-14",
       "value": 82600.0
+    },
+    {
+      "date": "2026-08-18",
+      "value": 77900.0
+    },
+    {
+      "date": "2026-08-19",
+      "value": 76200.0
+    },
+    {
+      "date": "2026-08-20",
+      "value": 75900.0
+    },
+    {
+      "date": "2026-08-21",
+      "value": 73300.0
+    },
+    {
+      "date": "2026-08-24",
+      "value": 73000.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 52792370659328.0,
+      "market_cap": 46656695304192.0,
       "pe_ratio": null,
-      "forward_pe": 79.45515,
+      "forward_pe": 70.1944,
       "eps_ttm": null,
       "dividend_yield": null,
-      "profit_margin": 0.00879,
-      "operating_margin": 0.054640003,
+      "profit_margin": 0.01021,
+      "operating_margin": 0.06576,
       "price_to_book": null,
-      "return_on_equity": 0.02369
+      "return_on_equity": 0.025940001
     },
     "quarterly": [
       {
@@ -9850,18 +9846,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-14",
-    "current_price": 82600.0,
+    "as_of": "2026-08-24",
+    "current_price": 73000.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 17672.86,
+        "fair_value": 17679.47,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 17672.86,
-    "valuation_gap": 3.6738,
+    "fair_value": 17679.47,
+    "valuation_gap": 3.1291,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -9983,6 +9979,18 @@
         "price": 82600.0,
         "fair_value": 380.0,
         "gap": 216.3684
+      },
+      {
+        "date": "2026-08-21",
+        "price": 73300.0,
+        "fair_value": 380.0,
+        "gap": 191.8947
+      },
+      {
+        "date": "2026-08-24",
+        "price": 73000.0,
+        "fair_value": 380.0,
+        "gap": 191.1053
       }
     ],
     "qualitative": {
