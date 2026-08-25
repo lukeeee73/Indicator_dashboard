@@ -10318,30 +10318,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-18",
-      "narrative_score": -0.04,
-      "summary_kr": "VMware vCenter 취약점 실제 악용 정황과 BofA의 AI칩 금융특수목적법인(XPV) 3,700억달러 부채 전망이 겹치며 주가가 8/14 하루에만 5~6% 급락했으나, 부채는 브로드컴 직접 채무가 아니라는 후속 분석과 반도체 업종 강세에 힘입어 8/17 주가는 391~399달러선까지 일부 회복했다.",
+      "as_of": "2026-08-25",
+      "narrative_score": -0.13,
+      "summary_kr": "브로드컴이 앤트로픽 AI 칩 확장을 위해 최대 $1,000억 규모 부채 조달을 추진 중이라는 소식과, 최대 고객 구글이 경쟁사 마벨과의 협력을 넓히고 있다는 우려가 겹치며 주가가 조정받았다. 다만 과거 애플 이탈설 때도 이후 매출이 2배로 늘었던 전례가 있어 시장 반응이 과도할 수 있다는 반론도 있다.",
       "key_events": [
-        "VMware vCenter 취약점 실제 악용 확인, 주가 5% 급락(8/14)",
-        "BofA XPV 부채 3,700억달러 전망 제기, 주가 6% 급락(8/14)",
-        "8/17 주가 일부 회복"
+        "AI 칩 금융 위해 최대 $1,000억 부채 조달 추진",
+        "구글-마벨 협력 확대發 고객 집중도 리스크 재부각",
+        "반도체 업종 동반 조정에 AVGO 하락"
       ],
       "risks": [
-        "VMware 취약점發 고객 이탈·소송 가능성",
-        "XPV 금융특수목적법인 부채 확대가 향후 신용등급·조달비용에 미칠 영향",
-        "9월초 Q3 실적 발표까지 밸류에이션 불확실성 지속"
+        "부채 조달 규모 확대에 따른 재무 레버리지·신용 부담",
+        "구글의 공급사 다변화가 실제 수주 감소로 이어질 가능성",
+        "9월초 Q3 실적에서 구글向 매출 비중 축소 확인 시 밸류에이션 재평가"
       ],
       "news_count": 3,
       "competitor_context": [
         {
           "ticker": "MRVL",
-          "headline": "마벨, 신규 AI 메모리 인프라 플랫폼(Bravera SC6·Structera X·Photonic Fabric) 공개 후 주가 급등(8/10~8/12)",
-          "implication_for_target": "커스텀 AI 실리콘·메모리 인터커넥트 영역에서 브로드컴의 하이퍼스케일러 설계 수주 경쟁이 격화"
+          "headline": "Marvell expands custom chip deal with Google, tied to warrant for up to $120B of future purchases (2026-08-19)",
+          "implication_for_target": "브로드컴의 최대 고객인 구글이 두 번째 커스텀 칩 공급사를 키우면서 브로드컴의 TPU 독점 공급 지위가 희석될 위험"
         },
         {
-          "ticker": "QCOM",
-          "headline": "퀄컴, 데이터센터 CPU '드래곤플라이' 로드맵 진전 — 2029 회계연도 비휴대폰 매출 400억달러 목표",
-          "implication_for_target": "브로드컴의 커스텀 ASIC 텃밭에 자금력 있는 신규 경쟁자가 계속 진입 중"
+          "ticker": "NVDA",
+          "headline": "Nvidia stock falls 7th straight day, AI server prices to rise 15%+ on memory costs (2026-08-24)",
+          "implication_for_target": "표준 GPU 진영의 실적 불안과 매크로 위험회피 심리가 맞춤형 칩 진영인 브로드컴에도 동반 하락 압력으로 작용"
         }
       ],
       "history": [
@@ -10384,6 +10384,10 @@
         {
           "date": "2026-08-18",
           "narrative_score": -0.04
+        },
+        {
+          "date": "2026-08-25",
+          "narrative_score": -0.13
         }
       ]
     }

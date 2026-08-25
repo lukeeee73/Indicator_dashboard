@@ -1,0 +1,35 @@
+{
+  "ticker": "ASML",
+  "date": "2026-08-25",
+  "as_of_utc": "2026-08-25T12:00:00Z",
+  "news": [
+    {
+      "title": "S&P 500 falls to start the week, dragged down by a sell-off in chip stocks: Live updates",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/amp/2026/08/23/stock-market-today-live-updates.html",
+      "published": "2026-08-24T20:30:00Z",
+      "summary": "국채 금리 급등·엔비디아 실적 경계로 반도체 장비주 동반 하락, ASML도 -1.3% 동조",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "ASML stock holds in the mid-$1,700s as raised 2026 sales guidance lifts outlook",
+      "source": "ad-hoc-news.de",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/asml-stock-holds-in-the-mid-1-700s-as-raised-2026-sales-guidance-lifts/69979701",
+      "published": "2026-08-24T10:00:00Z",
+      "summary": "이미 상향된 2026 매출 가이던스(€43~45B) 덕에 섹터 셀오프 속에서도 주가 상대적으로 선방",
+      "impact": "neutral",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "AMAT", "headline": "밸류에이션 조정·차익실현으로 AMAT 8/24 -3.02% 하락", "implication_for_target": "장비 3사 공통의 섹터 리레이팅 국면 — ASML은 낙폭이 AMAT·LRCX·KLAC보다 작아 상대적으로 방어적"},
+    {"ticker": "KLAC", "headline": "美 수출규제 재발동(11/9 BIS Affiliates Rule) 우려로 KLA 주가 부진 지속", "implication_for_target": "ASML의 中 매출 비중(14%)은 KLA(~30~43%)보다 낮아 동일 규제 리스크에 대한 노출도가 상대적으로 작음"}
+  ],
+  "scores": {"earnings_outlook": 0.10, "competitive_position": 0.05, "regulatory_risk": 0.0, "macro_sensitivity": -0.35},
+  "narrative_score": 0.0,
+  "summary_kr": "회사 자체의 새 촉매는 없었지만, 금리 상승·엔비디아 실적 경계發 반도체 장비 섹터 전반의 셀오프에 ASML도 동조 하락했다. 다만 이미 상향된 가이던스 덕분에 낙폭은 경쟁사보다 작았다.",
+  "key_events": ["섹터 전반 셀오프에 ASML -1.3% 동조 하락", "2026 매출 가이던스(€43~45B) 상향 효과로 상대적 방어"],
+  "risks": ["美 상무장관 Lutnick의 EUV 中 유출 의혹 조사 지속(미해결, 6월~)", "금리 상승·밸류에이션 리레이팅 국면에서 추가 조정 가능성"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ASML%20-%20ASML%20Holding%20NV.md"
+}

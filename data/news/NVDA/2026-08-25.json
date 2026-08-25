@@ -1,0 +1,74 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-08-25",
+  "as_of_utc": "2026-08-25T12:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia customers notified about AI-related price hikes above 15%",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-22/nvidia-customers-notified-about-ai-related-price-hikes-above-15",
+      "published": "2026-08-22T19:20:00Z",
+      "summary": "메모리 가격 급등으로 엔비디아 AI 서버 가격 내년부터 15%+ 인상",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "Nvidia Stock Tumbles Another 2%—Pacing For Seventh-Straight Drop Ahead Of Earnings",
+      "source": "Forbes",
+      "url": "https://www.forbes.com/sites/zacharyfolk/2026/08/24/nvidia-stock-tumbles-another-2-pacing-for-seventh-straight-drop-ahead-of-earnings/",
+      "published": "2026-08-24T20:00:00Z",
+      "summary": "8/26 실적 앞두고 주가 7거래일 연속 하락, 필라델피아반도체지수도 동반 약세",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "NVIDIA CEO Jensen Huang at Dell Technologies World: \"Demand Is Going Parabolic, Utterly Parabolic\"",
+      "source": "NVIDIA Newsroom",
+      "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
+      "published": "2026-08-24T17:00:00Z",
+      "summary": "젠슨 황, 델과 협력 심화 발표하며 AI 수요 '포물선' 강조",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Semiconductor Stocks Slide Ahead of NVIDIA Earnings: Intel Falls 5%, AMD Slides 4%, Taiwan Semiconductor Slips 3%",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/08/24/semiconductor-stocks-slide-ahead-of-nvidia-earnings-intel-falls-5-amd-slides-4-taiwan-semiconductor-slips-3/",
+      "published": "2026-08-24T18:30:00Z",
+      "summary": "엔비디아 실적·잭슨홀 앞두고 반도체 대형주 전반 동반 조정",
+      "impact": "neutral",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "BMO Capital initiates AMD at Outperform, $550 PT, calls Helios rack 'closest rival to Nvidia' (2026-08-21)",
+      "implication_for_target": "AMD의 AI 랙 시스템 경쟁력 인정이 엔비디아 데이터센터 독점력에 대한 시장 신뢰를 서서히 흔들 수 있음"
+    },
+    {
+      "ticker": "AVGO",
+      "headline": "Broadcom in talks to raise $60-70B+ (up to $100B) in AI chip debt financing for Anthropic and others (2026-08-20~21)",
+      "implication_for_target": "맞춤형 칩(ASIC) 진영도 엔비디아 못지않은 규모로 AI 인프라 자금을 조달하며 GPU 대안으로서 입지를 넓히고 있음"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.10,
+    "competitive_position": 0.30,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.35
+  },
+  "narrative_score": -0.02,
+  "summary_kr": "8/26 실적 발표를 이틀 앞두고 메모리 가격발 서버값 인상 소식과 반도체 업종 전반의 위험회피로 주가가 7거래일 연속 하락했지만, 델과의 파트너십 심화 등 수요 펀더멘털은 여전히 견조하다. 오늘 하루는 뚜렷한 방향성 없이 실적 발표를 기다리는 잔잔한 흐름이다.",
+  "key_events": [
+    "AI 서버 가격 15%+ 인상 통보 (메모리 원가 급등)",
+    "주가 7거래일 연속 하락, 8/26 Q2 FY2027 실적 대기",
+    "델 테크놀로지스 월드 — Vera Rubin·Spectrum-6·NeMoClaw 공동개발 심화"
+  ],
+  "risks": [
+    "메모리(HBM·DRAM) 가격 인플레이션이 매출총이익률 가이던스를 낮출 가능성",
+    "8/26 실적 발표 후 주가 하락 전례(최근 4개 분기 연속) 반복 가능성",
+    "잭슨홀 연준 심포지엄(8/28) 발 금리 불확실성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}
