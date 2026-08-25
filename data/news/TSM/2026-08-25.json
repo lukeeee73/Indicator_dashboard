@@ -1,0 +1,56 @@
+{
+  "ticker": "TSM",
+  "date": "2026-08-25",
+  "as_of_utc": "2026-08-25T06:00:00Z",
+  "news": [
+    {
+      "title": "Stocks Waver as Chipmaker Rout Offsets Oil Decline: Markets Wrap",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-23/stock-market-today-dow-s-p-live-updates",
+      "published": "2026-08-23T20:00:00Z",
+      "summary": "엔비디아 실적 앞두고 반도체株 급락, TSM 포함 대형 반도체 지수 -3%",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Semiconductor Stocks Slide Ahead of NVIDIA Earnings: Intel Falls 5%, AMD Slides 4%, Taiwan Semiconductor Slips 3%",
+      "source": "Yahoo Finance (24/7 Wall St.)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/semiconductor-stocks-slide-ahead-nvidia-144350563.html",
+      "published": "2026-08-24T14:43:00Z",
+      "summary": "TSM 주가 8/24 약 3% 하락, 엔비디아 실적 대기 속 반도체 업종 전반 차익실현",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "005930.KS",
+      "headline": "Samsung Foundry reportedly hikes advanced-node (4nm/5nm) prices up to 15%, especially for Chinese and U.S. clients (TrendForce, 2026-08-21)",
+      "implication_for_target": "삼성 파운드리가 가격결정력을 회복하고 있다는 신호 — TSMC의 절대적 파운드리 우위에는 아직 못 미치지만 장기적으로 가격/캐파 경쟁 압박이 서서히 커지는 배경."
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel 18A yields reportedly climbing toward the mid-80% range, narrowing the gap with TSMC's N2 node",
+      "implication_for_target": "인텔 파운드리의 수율 개선이 계속되면 TSMC가 사실상 독점해온 첨단 노드 시장에 장기적으로 도전이 될 수 있으나, 현재 수주 물량 규모는 TSMC가 여전히 압도적으로 큼."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": 0.0,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.3
+  },
+  "narrative_score": -0.09,
+  "summary_kr": "엔비디아 실적 발표(8/26)를 앞두고 반도체 업종 전반에 차익실현 매물이 나오며 TSM도 8/24 약 3% 하락했다. 회사 펀더멘털(2nm 수주 2028년까지 완판 등) 변화는 없고, 섹터 전반의 밸류에이션 조정 성격이 짙다.",
+  "key_events": [
+    "엔비디아 실적 발표(8/26) 대기 속 반도체 섹터 전반 조정, TSM -3% (8/24)",
+    "필라델피아 반도체 지수(SOX) 계열 지수 약 -2.7~3% 동반 하락",
+    "삼성 파운드리 선단 공정 가격 최대 15% 인상 보도 (8/21, 경쟁 구도 참고)"
+  ],
+  "risks": [
+    "8/26 엔비디아 실적이 시장 기대에 못 미칠 경우 AI 밸류에이션 재조정이 TSM에도 추가 하방 압력",
+    "메모리(DRAM) 가격 급등에 따른 AI 서버 원가 상승이 하위 수요(서버 발주량)에 미칠 영향은 아직 미지수",
+    "삼성·인텔 파운드리의 점진적 추격 — 아직 규모 격차는 크나 장기 경쟁 압박 지속"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/TSM%20-%20Taiwan%20Semiconductor%20Mfg.md"
+}

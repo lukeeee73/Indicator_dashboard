@@ -1,0 +1,55 @@
+{
+  "ticker": "AMKR",
+  "date": "2026-08-25",
+  "as_of_utc": "2026-08-25T06:00:00Z",
+  "news": [
+    {
+      "title": "Semiconductor Stocks Slide Ahead of NVIDIA Earnings: Intel Falls 5%, AMD Slides 4%, Taiwan Semiconductor Slips 3%",
+      "source": "Yahoo Finance (24/7 Wall St.)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/semiconductor-stocks-slide-ahead-nvidia-144350563.html",
+      "published": "2026-08-24T14:43:00Z",
+      "summary": "엔비디아 실적 대기 속 반도체·패키징 관련주 동반 약세, Amkor도 동반 하락",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Amkor Technology (AMKR) share price closed at $47.78 on Aug 24, down from $50.23 prior close",
+      "source": "Stock Analysis",
+      "url": "https://stockanalysis.com/stocks/amkr/",
+      "published": "2026-08-24T20:00:00Z",
+      "summary": "AMKR 8/24 종가 $47.78, 전일比 -4.9% — 업종 평균보다 낙폭 큼",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "TSM",
+      "headline": "TSM shares also fell ~3% on 2026-08-24 amid the same pre-Nvidia-earnings semiconductor selloff",
+      "implication_for_target": "Amkor의 최대 파운드리 파트너(TSMC 애리조나 10년 패키징 계약)도 같은 날 동반 약세 — 개별 Amkor 이슈가 아니라 업종 전체 조정임을 시사."
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel fell about 5% in the same Aug 24 semiconductor sector pullback",
+      "implication_for_target": "경쟁 파운드리·패키징 밸류체인 전반이 동반 조정 — Amkor만의 개별 악재는 확인되지 않음."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.0,
+    "competitive_position": 0.0,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.4
+  },
+  "narrative_score": -0.06,
+  "summary_kr": "엔비디아 실적 발표를 앞둔 반도체 업종 전반의 차익실현 속에 AMKR도 8/24 -4.9%로 업종 평균보다 크게 하락했다. 회사 자체의 새로운 악재(실적·수주 변화)는 확인되지 않아 섹터 베타(민감도) 성격의 조정으로 판단된다.",
+  "key_events": [
+    "AMKR 8/24 종가 $47.78 (-4.9%), 반도체 섹터 전반 조정 속 낙폭 상대적으로 큼",
+    "TSM·INTC 등 파운드리·패키징 밸류체인 전반 동반 약세"
+  ],
+  "risks": [
+    "8/26 엔비디아 실적 결과에 따라 AI 밸류에이션 조정이 추가로 확산될 가능성",
+    "8월 초 이미 3분기 가이던스 실망 이슈가 있었던 만큼, 이번 하락이 그 여진인지 순수 섹터 베타인지 구분이 어려움",
+    "中 사업 지분 매각 검토(8/11 Bloomberg 보도)는 아직 미확정 — 진행 상황 계속 모니터링 필요"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMKR%20-%20Amkor%20Technology%2C%20Inc.md"
+}
