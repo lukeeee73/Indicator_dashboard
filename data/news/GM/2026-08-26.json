@@ -1,0 +1,59 @@
+{
+  "ticker": "GM",
+  "date": "2026-08-26",
+  "as_of_utc": "2026-08-26T12:00:00Z",
+  "news": [
+    {
+      "title": "GM 픽업·SUV 99만7,743대, 엔진 결함 재발로 NHTSA 재조사",
+      "source": "Detroit News",
+      "url": "https://www.detroitnews.com/story/business/autos/general-motors/2026/08/21/engine-failure-concerns-prompt-nhtsa-probe-of-gm-pickups-suvs/91401320007/",
+      "published": "2026-08-21T00:00:00Z",
+      "summary": "6.2리터 L87 V8 엔진 탑재 2021~2026년식 차량서 리콜 수리 후에도 엔진 고장 신고 499건 접수, NHTSA 정식 조사 착수",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "관세 확대 우려에 GM 1.1%↓ — 4사 중 낙폭 최소",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/24/trump-canada-auto-tariffs-trade-war.html",
+      "published": "2026-08-24T00:00:00Z",
+      "summary": "캐나다산 차량 관세 50% 확대 발표에 GM도 하락했지만 포드(-3.2%)·스텔란티스(-4.7%)보다 낙폭이 작음",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "GM, 45억달러 규모 부품 공급 보증 계약 체결",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/11/gm-makes-4point5-billion-parts-deal-to-bolster-supply-chain.html",
+      "published": "2026-08-11T00:00:00Z",
+      "summary": "JP모건·산탄데르 주도 은행단을 통해 반도체·D램·희토류 등 핵심 부품을 선제적으로 확보하는 계약 체결",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "F",
+      "headline": "포드 7월 美 판매 -10.2%",
+      "implication_for_target": "포드의 판매 급감과 대비해 GM은 이번 관세 충격에서 상대적으로 선방하는 모습"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.0,
+    "competitive_position": 0.05,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": -0.05
+  },
+  "narrative_score": -0.04,
+  "summary_kr": "약 100만대에 이르는 엔진 결함 재조사가 가장 큰 부담이지만, 캐나다 관세 확대 충격은 경쟁사보다 작았고 앞서 체결한 45억달러 부품 공급 계약이 공급망 리스크를 일부 상쇄한다.",
+  "key_events": [
+    "NHTSA 6.2L V8 엔진 재조사(97만대, 8/21)",
+    "관세 확대 발표에 -1.1%(4사 중 최소, 8/24)",
+    "(배경) 45억달러 부품 공급 보증 계약(8/11)"
+  ],
+  "risks": [
+    "기존 리콜 수리의 실효성 자체가 의문시되는 상황",
+    "97만대 규모 추가 리콜로 확대될 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GM%20-%20General%20Motors%20Company.md"
+}

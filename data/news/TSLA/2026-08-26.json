@@ -1,0 +1,64 @@
+{
+  "ticker": "TSLA",
+  "date": "2026-08-26",
+  "as_of_utc": "2026-08-26T12:00:00Z",
+  "news": [
+    {
+      "title": "테슬라, 수요 부진에도 사이버트럭 가격 5천달러 인상",
+      "source": "Electrek",
+      "url": "https://electrek.co/2026/08/25/tesla-cybertruck-price-increase-5000-demand/",
+      "published": "2026-08-25T00:00:00Z",
+      "summary": "듀얼모터 트림을 69,990→74,990달러로 인상. 연 25만대 생산능력에 판매는 2만대 미만인 상황에서 나온 인상",
+      "impact": "-",
+      "category": "product"
+    },
+    {
+      "title": "테슬라, 中서 히든 도어핸들 결함으로 약 300만대 리콜",
+      "source": "The Register",
+      "url": "https://www.theregister.com/offbeat/2026/08/24/tesla-to-recall-almost-three-million-vehicles-over-hidden-door-handles/5291757",
+      "published": "2026-08-24T00:00:00Z",
+      "summary": "숨은 전자식 도어핸들이 충돌시 작동 안 할 위험 — 9개사 합산 430만대 리콜의 일환, 中 사상 최대 규모",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "네바다주, 테슬라 로보택시 최대 5천대 운행 승인",
+      "source": "Tesla Oracle",
+      "url": "https://www.teslaoracle.com/2026/08/21/tesla-tsla-obtains-approval-for-robotaxi-service-in-nevada-including-las-vegas/",
+      "published": "2026-08-21T00:00:00Z",
+      "summary": "라스베이거스 포함 클라크 카운티에서 완전자율주행 로보택시 최대 5천대 운행 승인, 30일 내 상업 서비스 개시 가능",
+      "impact": "+",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "RIVN",
+      "headline": "리비안, 2분기 매출 +27%YoY·인도 가이던스 상향(R2 램프업)",
+      "implication_for_target": "리비안이 실제 물량 확대로 치고 나가는 반면 테슬라는 사이버트럭 가격만 올려 트럭 세그먼트 경쟁 압박"
+    },
+    {
+      "ticker": "GM",
+      "headline": "美-캐나다 관세 협상 결렬, 2027년부터 캐나다산 차량 관세 50%로 인상(8/24)",
+      "implication_for_target": "테슬라는 캐나다 생산기지가 없어 GM·포드·스텔란티스 대비 이번 관세 충격에서 상대적으로 자유로움"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": -0.05,
+    "regulatory_risk": 0.1,
+    "macro_sensitivity": 0.05
+  },
+  "narrative_score": -0.03,
+  "summary_kr": "사이버트럭 가격 인상은 낮은 가동률 속 수요 약세 신호로 읽히고 중국 리콜도 부담이지만, 네바다주 로보택시 5천대 운행 승인은 자율주행 사업의 규제 확장이라는 뚜렷한 호재다. 캐나다 관세 확대 충격에서는 상대적으로 자유롭다.",
+  "key_events": [
+    "사이버트럭 가격 5천달러 인상(8/25)",
+    "中 도어핸들 결함 300만대 리콜(8/24)",
+    "네바다주 로보택시 5천대 승인(8/21)"
+  ],
+  "risks": [
+    "사이버트럭 실수요 부진 지속 가능성",
+    "8/31 사이버캡 공개 행사에서 시장 기대에 못 미칠 리스크"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/TSLA%20-%20Tesla%20Inc.md"
+}
