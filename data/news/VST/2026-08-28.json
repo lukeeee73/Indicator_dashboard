@@ -1,0 +1,54 @@
+{
+  "ticker": "VST",
+  "date": "2026-08-28",
+  "as_of_utc": "2026-08-28T09:00:00Z",
+  "news": [
+    {
+      "title": "Morgan Stanley raises Vistra price target to $227 from $212",
+      "source": "Morgan Stanley (via market data)",
+      "url": "https://finance.yahoo.com/quote/VST/",
+      "published": "2026-08-21T14:00:00Z",
+      "summary": "모건스탠리, 비스트라 목표주가 212달러→227달러 상향",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Vistra says power demand growth extends beyond AI data centers",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/earnings/26/08/61051374/vistra-says-power-demand-growth-extends-beyond-ai-data-centers",
+      "published": "2026-08-21T18:00:00Z",
+      "summary": "비스트라, 산업 리쇼어링·전동화·텍사스 인구증가도 전력수요 성장 동력이라 강조",
+      "impact": "+",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CEG",
+      "headline": "콘스텔레이션, 8/6 가이던스 상향 후 주가 270달러대 안정화",
+      "implication_for_target": "같은 머천트 원전·가스 발전 대장주의 안정적 주가 흐름은 비스트라의 목표가 상향에도 우호적 배경"
+    },
+    {
+      "ticker": "SO",
+      "headline": "서던, 조지아 PSC로부터 OpenAI 3.2GW 계약 승인 확보(8/26)",
+      "implication_for_target": "규제 유틸리티의 대형 데이터센터 계약 승인 사례는 섹터 전반의 AI 전력 수요 서사를 뒷받침"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.15,
+    "competitive_position": 0.05,
+    "regulatory_risk": -0.05,
+    "macro_sensitivity": -0.05
+  },
+  "narrative_score": 0.06,
+  "summary_kr": "모건스탠리가 비스트라 목표주가를 227달러로 올렸고, 회사는 전력 수요 성장이 AI 데이터센터뿐 아니라 산업 리쇼어링·전동화·텍사스 인구 증가에서도 나온다고 강조했다. 수요 기반이 넓어진다는 서사가 재확인됐지만 펜실베이니아·텍사스 규제 리스크는 여전히 남아있다.",
+  "key_events": [
+    "모건스탠리 목표주가 212달러→227달러 상향(8/21)",
+    "ERCOT 연 4~6%, PJM 연 2~3% 부하성장 전망 재확인"
+  ],
+  "risks": [
+    "펜실베이니아 GRID 행정명령·텍사스 ERCOT 데이터센터 접속 감사 여파 지속",
+    "10년물 국채금리 상승에 따른 성장주 밸류에이션 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/VST%20-%20Vistra%20Corp.md"
+}
