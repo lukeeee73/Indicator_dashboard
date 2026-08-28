@@ -23,8 +23,69 @@ from typing import Optional
 REPO_ROOT  = Path(__file__).resolve().parent.parent
 NEWS_DIR   = REPO_ROOT / "data" / "news"
 STOCKS_DIR = REPO_ROOT / "data" / "stocks"
+INDEX_PATH = REPO_ROOT / "data" / "index.json"
 
 HISTORY_MAX_POINTS = 30  # narrative_score 누적 최대 포인트
+
+
+def build_valuation_summary(payload: dict) -> Optional[dict]:
+    """종목 payload 에서 index.json 목록용 요약 블록을 만든다.
+
+    fetch_fred.save_split_store() 와 이 모듈의 독립 실행이 **같은 함수**를 쓴다.
+    각자 만들면 뉴스 루틴이 stocks/*.json 만 갱신하고 index.json 은 그대로 둬서
+    같은 값이 두 벌로 갈라진다 (실제로 narrative_score 가 최대 일주일 어긋났다).
+    """
+    val = payload.get("valuation")
+    if not val:
+        return None
+    summary = {
+        "as_of":         val.get("as_of"),
+        "current_price": val.get("current_price"),
+        "fair_value":    val.get("fair_value"),
+        "valuation_gap": val.get("valuation_gap"),
+        "signal":        val.get("signal"),
+    }
+    qual = val.get("qualitative")
+    if qual:
+        summary["narrative_score"]   = qual.get("narrative_score")
+        summary["qualitative_as_of"] = qual.get("as_of")
+    return summary
+
+
+def refresh_index_valuation_summaries() -> int:
+    """data/index.json 의 stocks[].valuation_summary 를 stocks/*.json 기준으로 맞춘다.
+
+    index.json 의 나머지(assessment 포함)는 건드리지 않는다 — 여기서 전체를
+    재생성하면 pandas 가 필요한 assessment 재계산까지 끌고 와야 하므로,
+    이 파일이 책임지는 필드만 제자리에서 갱신한다.
+
+    반환: 실제로 값이 바뀐 종목 수.
+    """
+    index_doc = _safe_load(INDEX_PATH)
+    if not index_doc or not isinstance(index_doc.get("stocks"), list):
+        return 0
+
+    changed = 0
+    for entry in index_doc["stocks"]:
+        code = entry.get("code")
+        if not code:
+            continue
+        payload = _safe_load(STOCKS_DIR / f"{code}.json")
+        if payload is None:
+            continue
+        summary = build_valuation_summary(payload)
+        if summary is None:
+            continue
+        if entry.get("valuation_summary") != summary:
+            entry["valuation_summary"] = summary
+            changed += 1
+
+    if changed:
+        INDEX_PATH.write_text(
+            json.dumps(index_doc, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+    return changed
 
 
 def _safe_load(path: Path) -> Optional[dict]:
@@ -147,7 +208,11 @@ def _standalone_main() -> int:
         # 내용이 안 바뀐 종목 파일까지 개행 차이로 diff 가 생긴다.
         out.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
     purged = _purge_old_news_files()
-    print(f"Merged qualitative into {len(stocks)} stocks. Purged {purged} old news files.")
+    # 뉴스만 갱신하고 끝내면 index.json(→ Supabase app_meta)이 옛 narrative_score
+    # 를 그대로 들고 있게 된다. 여기서 같이 맞춘다.
+    refreshed = refresh_index_valuation_summaries()
+    print(f"Merged qualitative into {len(stocks)} stocks. Purged {purged} old news files. "
+          f"Refreshed {refreshed} index.json summaries.")
     return 0
 
 

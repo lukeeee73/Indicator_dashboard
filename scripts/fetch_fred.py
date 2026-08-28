@@ -29,7 +29,10 @@ import requests
 
 from analyze import enrich_with_assessment
 from valuation import enrich_stocks_with_valuation
-from merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
+from merge_qualitative import (
+    merge_into_stocks as merge_qualitative_into_stocks,
+    build_valuation_summary,
+)
 from competitors import get_watchlist_competitors
 
 
@@ -1088,20 +1091,11 @@ def save_split_store(output: dict) -> None:
             "group":  payload.get("group"),
             "competitors_in_watchlist": get_watchlist_competitors(code, watchlist_set),
         }
-        # valuation 블록이 있으면 요약 필드만 인덱스에 노출 (목록 카드용)
-        val = payload.get("valuation")
-        if val:
-            summary = {
-                "as_of":         val.get("as_of"),
-                "current_price": val.get("current_price"),
-                "fair_value":    val.get("fair_value"),
-                "valuation_gap": val.get("valuation_gap"),
-                "signal":        val.get("signal"),
-            }
-            qual = val.get("qualitative")
-            if qual:
-                summary["narrative_score"] = qual.get("narrative_score")
-                summary["qualitative_as_of"] = qual.get("as_of")
+        # valuation 블록이 있으면 요약 필드만 인덱스에 노출 (목록 카드용).
+        # 요약 형태는 merge_qualitative 가 단일 출처 — 뉴스 루틴이 index.json 을
+        # 갱신할 때도 같은 함수를 써야 두 경로가 갈라지지 않는다.
+        summary = build_valuation_summary(payload)
+        if summary is not None:
             entry["valuation_summary"] = summary
         stock_index_entries.append(entry)
 
