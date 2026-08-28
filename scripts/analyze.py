@@ -55,6 +55,20 @@ HIGH_THRESHOLD = 60.0           # 이 백분위 이상이면 "high"
 LOW_THRESHOLD  = 40.0           # 이 백분위 이하이면 "low"
 TRAJECTORY_MONTHS = 24          # 2D 산점도에 그릴 최근 궤적 길이
 
+# 평가 시점 기준 이 개월 수 안에 관측이 없는 지표는 "그 시점에 알 수 없는 정보"로
+# 보고 축 계산에서 제외한다.
+#
+# 없으면 발표가 끊긴 시리즈의 마지막 값이 영원히 점수에 남는다. 실제로 그랬다:
+#   - USSLIND        2020-02 이후 폐지(Philly Fed 가 state leading index 발표 중단)
+#                    인데 가중치 2.0(성장 축의 25%)으로 계속 반영 → 성장 점수 +9.4
+#   - KORCPIALLMINMEI 2023-11 이후 갱신 중단인데 한국 인플레 축의 100%
+# 두 경우 모두 "현재 국면" 이라는 이름으로 몇 년 전 값을 보여주고 있었다.
+#
+# 12개월인 이유: 분기·연간 시리즈의 정상적인 발표 지연을 통과시켜야 한다
+# (GDP ~5개월, FDHBFIN 외국인 보유 연방부채 ~11개월). 월간 시리즈 기준으로는
+# 넉넉하지만, 폐지된 시리즈(수년)와는 자릿수가 다르므로 구분에 충분하다.
+STALE_MONTHS = 12
+
 # polarity 가 반대인 지표 코드를 여기에 넣으면 백분위가 (100 - p) 로 뒤집힌다.
 # LRUNTTTTKOR156S: 실업률 — 높을수록 성장 악화이므로 역방향 적용.
 # ICSA: 신규 실업수당 청구 — 높을수록(YoY 급등) 성장 악화이므로 역방향 적용.
@@ -111,6 +125,24 @@ def _series_to_pandas(points: list[dict]) -> pd.Series:
     df = pd.DataFrame(points)
     df["date"] = pd.to_datetime(df["date"])
     return df.set_index("date")["value"].astype(float).sort_index()
+
+
+def _is_fresh(last_obs, asof) -> bool:
+    """asof 시점에서 last_obs 가 STALE_MONTHS 안에 있으면 True.
+
+    asof 를 인자로 받는 이유: 백테스트처럼 과거 시점을 걸어갈 때도 "그 시점
+    기준으로 살아있었나" 를 물어야 하기 때문. '지금' 으로 고정하면 과거 판정이
+    미래 정보로 오염된다.
+    """
+    if last_obs is None or asof is None or pd.isna(last_obs):
+        return False
+    return pd.Timestamp(last_obs) >= pd.Timestamp(asof) - pd.DateOffset(months=STALE_MONTHS)
+
+
+def _last_obs_date(series_list: list[dict]):
+    """시리즈의 마지막 관측일 (없으면 None)."""
+    s = _series_to_pandas(series_list)
+    return None if s.empty else s.index[-1]
 
 
 def _percentile_rank(sample: pd.Series, value: float) -> Optional[float]:
@@ -432,6 +464,10 @@ def compute_primary_assessment(indicators: dict) -> Optional[dict]:
             m = monthly[monthly.index <= t]
             if m.empty:
                 continue
+            # 발표가 끊긴 시리즈는 마지막 값이 잘려나가지 않으므로 여기서 막지
+            # 않으면 t 가 아무리 뒤로 가도 영원히 같은 값으로 참여한다.
+            if not _is_fresh(m.index[-1], t):
+                continue
             g_vals.append((cycle_relative_percentile(code, m),
                            INDICATOR_WEIGHTS.get(code, 1.0)))
         g_scores.append(_weighted_mean(g_vals))
@@ -440,6 +476,8 @@ def compute_primary_assessment(indicators: dict) -> Optional[dict]:
         for code, s in infl_raw.items():
             sub = s[s.index <= t]
             if sub.empty:
+                continue
+            if not _is_fresh(sub.index[-1], t):
                 continue
             full = sub[sub.index >= POSTWAR_CUTOFF]
             if full.empty:
@@ -473,6 +511,14 @@ def compute_primary_assessment(indicators: dict) -> Optional[dict]:
         "growth_label":     _label_from_percentile(g_now),
         "inflation_label":  _label_from_percentile(i_now),
         "quadrant":         _classify_quadrant(g_now, i_now),
+        # 마지막 달 기준으로 갱신이 끊겨 축에서 빠진 지표 — 가중치가 큰 지표가
+        # 빠지면 점수 해석이 달라지므로 UI 에 그대로 노출한다.
+        "stale_excluded": sorted(
+            code for code, m in
+            list(growth_monthly.items()) + [(c, s) for c, s in infl_raw.items()]
+            if not m[m.index <= end_month].empty
+            and not _is_fresh(m[m.index <= end_month].index[-1], end_month)
+        ),
         "trajectory": [
             {
                 "date": d.strftime("%Y-%m-%d"),
@@ -488,6 +534,25 @@ def compute_primary_assessment(indicators: dict) -> Optional[dict]:
 # --------------------------------------------------------------------------
 # 메인 진입점
 # --------------------------------------------------------------------------
+def _assessment_asof(output: dict, indicators: dict):
+    """staleness 판단의 기준 시점.
+
+    수집 시각(last_updated)을 쓰고, 없으면 전 지표의 마지막 관측일 중 최댓값.
+    datetime.now() 를 쓰지 않는 이유: 같은 입력을 며칠 뒤 다시 돌리면 결과가
+    달라져 재현이 안 되기 때문 (analyze.py 는 오프라인 재계산용 CLI 이기도 하다).
+    """
+    ts = output.get("last_updated")
+    if ts:
+        try:
+            t = pd.Timestamp(ts)
+            return t.tz_convert(None) if t.tzinfo is not None else t
+        except (ValueError, TypeError):
+            pass
+    dates = [d for d in (_last_obs_date(p.get("series", []))
+                         for p in indicators.values()) if d is not None]
+    return max(dates) if dates else None
+
+
 def enrich_with_assessment(output: dict) -> dict:
     """fetch_fred.py 가 만든 output dict 를 in-place 로 확장한다.
 
@@ -502,22 +567,40 @@ def enrich_with_assessment(output: dict) -> dict:
         }
     """
     indicators = output.get("indicators", {})
+    asof = _assessment_asof(output, indicators)
 
     growth_full, growth_10y = [], []
     infl_full,   infl_10y   = [], []
+    stale_us: list[dict] = []
+    stale_kr: list[dict] = []
 
     for code, payload in indicators.items():
-        cur = compute_current_stats(code, payload.get("series", []))
+        series_list = payload.get("series", [])
+        cur = compute_current_stats(code, series_list)
         if cur is None:
             continue
         payload["current"] = cur
 
+        # 발표가 끊긴 지표는 카드에는 그대로 두되(마지막 값이 언제인지 보이는 게
+        # 낫다) 4분면 점수에서는 뺀다. 여기서 막지 않으면 몇 년 전 값이 "현재
+        # 국면" 으로 집계된다 — 실제로 KR 인플레 축이 2023-11 값 하나였다.
+        cat = payload.get("category")
+        stale = not _is_fresh(_last_obs_date(series_list), asof)
+        if stale:
+            # 카드에 "갱신 중단" 배지를 띄우기 위한 표식 — 점수 대상이 아닌
+            # dollar 카테고리(예: 한국 M2, 2017 이후 중단)도 표시 대상이다.
+            payload["current"]["stale"] = True
+        scored_stale = stale and cat in ("growth", "inflation")
+        if scored_stale:
+            entry = {"code": code, "name": payload.get("name"),
+                     "category": cat, "last_obs": cur["date"]}
+            (stale_kr if payload.get("region") == "KR" else stale_us).append(entry)
+
         # exclude_assessment=True 인 지표(한국 지표 등)는 개별 카드 통계는
         # 계산하되, 미국 4분면 종합 점수에는 포함하지 않는다.
-        if payload.get("exclude_assessment"):
+        if payload.get("exclude_assessment") or scored_stale:
             continue
 
-        cat = payload.get("category")
         if cat == "growth":
             growth_full.append(cur["percentile_full"])
             growth_10y.append(cur["percentile_10y"])
@@ -535,12 +618,17 @@ def enrich_with_assessment(output: dict) -> dict:
     # 미국 4분면 assessment
     #   primary     — 백테스트 승자 모델(H) 의 종합 판정. 대시보드의 헤드라인.
     #   full/10y    — 참조용 단순 백분위 뷰 (기존 동작 그대로 유지).
+    us_trajectory = compute_trajectory(indicators)
     output["assessment"] = {
         "primary":     compute_primary_assessment(indicators),
         "full":        _make_summary(growth_full, infl_full),
         "rolling_10y": _make_summary(growth_10y, infl_10y),
         "config":      _config,
-        "trajectory":  compute_trajectory(indicators),
+        "trajectory":  us_trajectory,
+        # full/rolling_10y 가 실제로 어느 시점 값인지, 어떤 지표가 갱신 중단으로
+        # 빠졌는지 — UI 가 "현재 국면" 이라고 부를 자격이 있는지 판단할 근거.
+        "as_of":          us_trajectory[-1]["date"] if us_trajectory else None,
+        "stale_excluded": stale_us,
     }
 
     # 한국 4분면 assessment (region="KR" 인 지표만)
@@ -550,7 +638,7 @@ def enrich_with_assessment(output: dict) -> dict:
         if payload.get("region") != "KR":
             continue
         cur = payload.get("current")
-        if cur is None:
+        if cur is None or cur.get("stale"):
             continue
         cat = payload.get("category")
         if cat == "growth":
@@ -560,11 +648,14 @@ def enrich_with_assessment(output: dict) -> dict:
             kr_infl_full.append(cur["percentile_full"])
             kr_infl_10y.append(cur["percentile_10y"])
 
+    kr_trajectory = compute_trajectory(indicators, region="KR")
     output["assessment_kr"] = {
         "full":        _make_summary(kr_growth_full, kr_infl_full),
         "rolling_10y": _make_summary(kr_growth_10y, kr_infl_10y),
         "config":      _config,
-        "trajectory":  compute_trajectory(indicators, region="KR"),
+        "trajectory":  kr_trajectory,
+        "as_of":          kr_trajectory[-1]["date"] if kr_trajectory else None,
+        "stale_excluded": stale_kr,
     }
 
     return output

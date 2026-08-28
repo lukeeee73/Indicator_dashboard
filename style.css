@@ -274,6 +274,11 @@ section h2 {
   grid-template-columns: 1fr 1fr 1.4fr;
   gap: 0.75rem;
 }
+/* display 를 지정한 요소에는 hidden 속성이 먹지 않는다 (UA 의 [hidden] 규칙을
+   이 쪽 display 가 이긴다). 판정 불가일 때 빈 "—" 카드가 남는 것을 막는다. */
+.assessment-grid[hidden] {
+  display: none;
+}
 /* 종합 판정(primary) 카드가 있는 탭은 4열 — 종합 | 장기 | 단기 | 궤적 */
 .assessment-grid.has-primary {
   grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
@@ -340,6 +345,30 @@ section h2 {
   position: relative;
   flex: 1;
   min-height: 200px;
+}
+
+/* 갱신이 끊긴 지표 안내 — 판정 위쪽에 둬서 숫자보다 먼저 읽히게 한다.
+   severity=blocked 는 점수 자체를 못 내는 상태(축이 통째로 비었을 때). */
+.assessment-stale {
+  margin: 0 0 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border-left: 2px solid var(--red);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+.assessment-stale[data-severity="blocked"] {
+  background: var(--red-dim);
+  color: #fca5a5;
+  border-left-color: var(--red);
+}
+
+.badge-stale {
+  background: var(--red-dim);
+  color: #fca5a5;
+  border-color: var(--red);
 }
 
 .assessment-note {

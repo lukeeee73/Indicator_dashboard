@@ -1192,14 +1192,65 @@ function wireSectorNav(tab) {
 //   primary — 백테스트 검증 모델(scripts/compare_models.py 승자)의 종합 판정.
 //             US 에만 존재. full/rolling_10y 는 참조용 백분위 뷰.
 // tab: "US" | "KR"
+// 갱신이 끊긴 지표 목록을 "왜 이 판정을 믿으면 안 되는지" 문장으로 바꾼다.
+// 판정이 아예 불가능한 경우(축 하나가 통째로 비었을 때)와, 일부 지표만 빠진
+// 경우를 구분해서 알린다 — 전자는 숫자를 아예 보여주지 않는다.
+function renderStaleNotice(tab, assessment, scorable) {
+  const host = document.getElementById(`assessment-${tab}-stale`);
+  if (!host) return;
+
+  const dropped = assessment.stale_excluded || [];
+  const fromPrimary = (assessment.primary && assessment.primary.stale_excluded) || [];
+  const names = dropped.map((s) => `${s.name || s.code} (${s.code}, 마지막 ${s.last_obs})`);
+  const primaryOnly = fromPrimary.filter((c) => !dropped.some((s) => s.code === c));
+
+  if (!dropped.length && !primaryOnly.length) {
+    host.hidden = true;
+    host.textContent = "";
+    return;
+  }
+
+  const parts = [];
+  if (!scorable) {
+    parts.push(`판정 불가 — ${names.join(", ")} 의 발표가 중단돼 4분면 점수를 계산할 근거가 없습니다.`);
+    if (assessment.as_of) parts.push(`마지막으로 판정 가능했던 시점은 ${assessment.as_of} 입니다.`);
+  } else if (names.length) {
+    parts.push(`주의 — ${names.join(", ")} 가 갱신 중단으로 점수에서 제외됐습니다.`);
+  }
+  if (primaryOnly.length) {
+    parts.push(`종합 판정에서도 ${primaryOnly.join(", ")} 가 제외됐습니다.`);
+  }
+
+  host.textContent = parts.join(" ");
+  host.dataset.severity = scorable ? "warn" : "blocked";
+  host.hidden = false;
+}
+
 function renderAssessment(assessment, tab) {
   const section = document.getElementById(`assessment-${tab}`);
   if (!section) return;
-  if (!assessment || !assessment.full || !assessment.rolling_10y) {
+  if (!assessment) {
+    section.hidden = true;
+    return;
+  }
+
+  // 점수를 낼 수 있는가와, 알릴 것이 있는가는 별개다. 예전에는 점수가 없으면
+  // 섹션을 통째로 숨겼는데, 그러면 "왜 사라졌는지" 를 알 방법이 없었다.
+  const scorable = !!(assessment.full && assessment.rolling_10y);
+  const hasNotice = !!((assessment.stale_excluded || []).length
+    || ((assessment.primary && assessment.primary.stale_excluded) || []).length);
+  if (!scorable && !hasNotice) {
     section.hidden = true;
     return;
   }
   section.hidden = false;
+  renderStaleNotice(tab, assessment, scorable);
+
+  const gridEl = section.querySelector(".assessment-grid");
+  const noteEl = document.getElementById(`assessment-${tab}-note`);
+  if (gridEl) gridEl.hidden = !scorable;
+  if (noteEl) noteEl.hidden = !scorable;
+  if (!scorable) return;
 
   const QUADRANT_LABEL = {
     "Q1": "Q1 · 성장↑ 인플레↑",
@@ -2042,8 +2093,16 @@ function renderBadges(current) {
   };
   const fullCell = cell("장기", current.percentile_full, current.label_full);
   const rollCell = cell("10y",  current.percentile_10y, current.label_10y);
-  if (!fullCell && !rollCell) return "";
-  return `<div class="card-badges">${fullCell}${rollCell}</div>`;
+  // 발표가 끊긴 지표는 백분위가 "지금" 이 아니라 마지막 관측 시점의 값이다.
+  // 배지를 그대로 두면 최신값처럼 읽히므로 언제 멈췄는지 함께 붙인다.
+  const staleCell = current.stale
+    ? `<span class="badge badge-stale" title="이 지표는 더 이상 갱신되지 않습니다. 4분면 점수에서 제외됩니다.">
+        <span class="badge-window">갱신 중단</span>
+        <span class="badge-label">${current.date}</span>
+      </span>`
+    : "";
+  if (!fullCell && !rollCell && !staleCell) return "";
+  return `<div class="card-badges">${staleCell}${fullCell}${rollCell}</div>`;
 }
 
 function formatValue(v, meta) {
