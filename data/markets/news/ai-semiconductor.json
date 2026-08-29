@@ -1,9 +1,23 @@
 {
   "industry": "ai-semiconductor",
-  "updated": "2026-07-18",
+  "updated": "2026-08-29",
   "schema_note": "markets.<market-id> = 시장 단위 뉴스 배열(최신순). 파일당 시장별 최대 20개 보관, 웹은 최신 6개+더보기 표시. 단일 기업 뉴스는 data/news/<TICKER>/ (daily 루틴) 몫. 각 뉴스의 signals[] 는 방향성 신호 태그 — {type: supply_tightening|supply_easing|demand_up|demand_down, strength: 1~3}. scripts/market_pulse.py 가 이를 집계해 병목 압력을 산출한다. 새 뉴스를 넣을 때 반드시 태깅한다(방향성이 없으면 빈 배열).",
   "markets": {
     "hbm": [
+      {
+        "date": "2026-08-10",
+        "title": "삼성 HBM4 수율 80%로 상승 — 베라루빈 공급 경쟁 가열, SK하이닉스는 노사협상 변수",
+        "source": "TrendForce",
+        "url": "https://www.trendforce.com/news/2026/08/10/news-samsungs-hbm4-yield-reportedly-hits-80-as-race-to-supply-vera-rubin-heats-up-sk-hynix-labor-talks-add-a-twist/",
+        "impact": "+",
+        "summary": "2월 60%미만이던 수율이 목표치(연말 80%)를 조기 달성 — 3사 경쟁 구도 재편",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 2
+          }
+        ]
+      },
       {
         "date": "2026-07",
         "title": "NVIDIA, 4분기용 16단(16-Hi) HBM4 요구 — 3사 수주 경쟁 격화",
@@ -146,6 +160,20 @@
       }
     ],
     "power-grid": [
+      {
+        "date": "2026-07-22",
+        "title": "GE 버노바 가스터빈 수주잔고 100→116GW로 급증 — 2031년 인도분까지 예약",
+        "source": "Power Engineering",
+        "url": "https://www.power-eng.com/gas/turbines/data-centers-drive-record-surge-in-ge-vernova-power-equipment-orders-as-turbine-slots-tighten-through-2030/",
+        "impact": "-",
+        "summary": "가스발전 설비 수주잔고 83GW(’25말)→100GW→116GW로 3개월 새 급증, 병목은 주조·용접공·공장 슬롯",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 3
+          }
+        ]
+      },
       {
         "date": "2026-07-15",
         "title": "젠슨 황: 'AI 팩토리 매출=와트당 토큰×가용 GW'",
@@ -413,6 +441,48 @@
     ],
     "neocloud": [
       {
+        "date": "2026-08-18",
+        "title": "장기금리 급등에 네오클라우드 주가 재차 급락 — 코어위브 -12%",
+        "source": "The Motley Fool",
+        "url": "https://www.fool.com/investing/2026/08/18/why-coreweave-stock-is-down-11/",
+        "impact": "-",
+        "summary": "美 30년물 금리 19년래 최고(5.25%)로 부채조달 부담 부각, 네비우스도 동반 급락",
+        "signals": [
+          {
+            "type": "supply_tightening",
+            "strength": 2
+          }
+        ]
+      },
+      {
+        "date": "2026-08-12",
+        "title": "네비우스 2분기 클라우드 매출 +514% — 흑자 전환",
+        "source": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/technology/ai/articles/nebius-q2-2026-earnings-beat-130010966.html",
+        "impact": "+",
+        "summary": "AI클라우드 매출 5.75억달러(+6배), 조정 EBITDA 2.36억달러로 흑자전환, 10억달러+ 계약 4건 체결",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
+      },
+      {
+        "date": "2026-08-11",
+        "title": "코어위브 2분기 매출 +112%, 계약잔고 $104B로 246%↑",
+        "source": "CNBC",
+        "url": "https://www.cnbc.com/2026/08/11/coreweave-crwv-q2-earnings-report-2026.html",
+        "impact": "+",
+        "summary": "연매출 가이던스 $124~132억으로 상향, 48개월 이상 장기계약 비중 10%→21%로 확대",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 3
+          }
+        ]
+      },
+      {
         "date": "2026-07-16",
         "title": "코어위브·네비우스, 메타발 경쟁 우려로 주가 급락 지속",
         "source": "24/7 Wall St.",
@@ -531,6 +601,24 @@
     ],
     "dc-infra": [
       {
+        "date": "2026-08-11",
+        "title": "JLL 중간보고서: 북미 데이터센터 공실률 3년 연속 1%대",
+        "source": "JLL",
+        "url": "https://www.jll.com/en-us/newsroom/data-center-demand-exceeds-expectations-in-h1-2026",
+        "impact": "-",
+        "summary": "상반기 순흡수 사상최대 25GW, 건설중 66GW — 공급 확대에도 공실률 요지부동",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 2
+          },
+          {
+            "type": "supply_tightening",
+            "strength": 1
+          }
+        ]
+      },
+      {
         "date": "2026-07-15",
         "title": "엔비디아: '와트당 토큰'이 AI 팩토리 수익 좌우 — 전력이 결정변수",
         "source": "Tech Times (NVIDIA 발표 기반)",
@@ -624,6 +712,34 @@
       }
     ],
     "military-drones": [
+      {
+        "date": "2026-07-20",
+        "title": "Anduril, Archer와 자율공격 틸트로터 'Thunder' 공개",
+        "source": "Defense News",
+        "url": "https://www.defensenews.com/industry/techwatch/2026/07/20/thunderstruck-anduril-unveils-autonomous-attack-rotorcraft/",
+        "impact": "+",
+        "summary": "아파치·차세대 유무인복합 윙맨용 신형 무인공격기 — 판버러 에어쇼서 공개",
+        "signals": [
+          {
+            "type": "demand_up",
+            "strength": 1
+          }
+        ]
+      },
+      {
+        "date": "2026-07-20",
+        "title": "Kratos, Elroy Air 'Chaparral' 화물드론 독점 생산 — 새크라멘토 공장 증설",
+        "source": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/07/20/3329610/224/en/kratos-to-manufacture-elroy-air-chaparral-autonomous-cargo-aircraft-in-expanded-california-facility.html",
+        "impact": "+",
+        "summary": "연말 첫 양산기체 목표, 인력 50명+ 증원 — VTOL 화물드론도 서방 양산기지 확대",
+        "signals": [
+          {
+            "type": "supply_easing",
+            "strength": 1
+          }
+        ]
+      },
       {
         "date": "2026-04-21",
         "title": "美 국방부, FY27 드론·대드론에 $75B 사상 최대 투자 — DAWG $54.6B",
