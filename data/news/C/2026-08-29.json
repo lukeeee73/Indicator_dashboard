@@ -1,0 +1,67 @@
+{
+  "ticker": "C",
+  "date": "2026-08-29",
+  "as_of_utc": "2026-08-29T12:00:00Z",
+  "news": [
+    {
+      "title": "Citi Expects Record Korea Capital Issuance in 2026 as Deals Jump",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-26/citi-expects-record-korea-capital-issuance-in-2026-as-deals-jump",
+      "published": "2026-08-26T06:00:00Z",
+      "summary": "씨티그룹이 SK하이닉스 상장 등에 힘입어 한국발 채권·주식 발행이 사상 최대를 기록할 것으로 전망",
+      "impact": "+",
+      "category": "business"
+    },
+    {
+      "title": "Citi Says One of 2026's Best-Performing Sectors Is Ending Its Bull Run",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/stocks-investment-bull-run-citi.html",
+      "published": "2026-08-27T11:00:00Z",
+      "summary": "씨티 애널리스트들이 유럽 은행주 랠리의 모멘텀 둔화를 경고",
+      "impact": "neutral",
+      "category": "analysis"
+    },
+    {
+      "title": "US SEC Sends Subpoenas to Wall Street Banks Over Situational Awareness Hedge Fund Near-Collapse",
+      "source": "Reuters (via U.S. News)",
+      "url": "https://money.usnews.com/investing/news/articles/2026-08-24/us-sec-sends-subpoenas-to-wall-street-banks-over-situational-awareness-nyt-reports",
+      "published": "2026-08-24T20:00:00Z",
+      "summary": "SEC가 씨티그룹을 포함한 대형은행에 AI헤지펀드 관련 소환장 발부",
+      "impact": "-",
+      "category": "regulatory"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JPM",
+      "headline_kr": "JP모건, 씨티그룹 기술 IB 총괄 McDow 영입",
+      "implication_for_target_kr": "핵심 뱅커 이탈은 씨티의 기술 부문 IB 경쟁력에 단기 리스크이나, 씨티도 JPM 인력을 다수 역으로 영입 중."
+    },
+    {
+      "ticker": "BAC",
+      "headline_kr": "BofA, 연준 GSIB 자본규제 개편 갈등에 합류",
+      "implication_for_target_kr": "자본규제 결과는 씨티를 포함한 시스템적으로 중요한 은행 전반의 자본배분 전략에 영향을 줄 전망."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.05,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.02,
+  "summary_kr": "씨티그룹은 한국 자본시장 사상 최대 발행 전망과 앤트로픽 IPO 주관사단 합류로 IB 파이프라인 강세를 보였으나, 자체 애널리스트의 유럽은행 랠리 둔화 경고와 SEC의 AI헤지펀드 소환장이 균형추 역할을 했다.",
+  "key_events": [
+    "한국 자본시장 발행 사상 최대 전망",
+    "유럽은행 랠리 둔화 경고",
+    "SEC 소환장",
+    "앤트로픽 IPO 주관사단 합류"
+  ],
+  "risks": [
+    "SEC 조사 확대 가능성",
+    "유럽 등 해외 금융주 모멘텀 둔화가 IB 수익에 미칠 영향",
+    "달러 약세 전망에 따른 FX 트레이딩 변동성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/C%20-%20Citigroup%20Inc.md",
+  "note": "수집된 뉴스 중 일부는 지난주(8/22) 브리핑과 중복되거나 그 이전 시점 정보로 판단되어 제외함(원 수집 4건 → 채택 3건)."
+}

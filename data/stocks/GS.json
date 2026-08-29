@@ -10277,24 +10277,36 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-22",
-      "narrative_score": 0.12,
-      "summary_kr": "골드만삭스는 LCN 캐피털 인수(최대 4.1억달러, NEOS 인수 이후 일주일 내 두 번째 대형 자산운용 딜)로 사업을 확장했고 앤트로픽 IPO 주관사 지위도 유지했지만, JPM·MS 대비 신규 자사주매입 발표 부재는 이번 주도 지속됐다.",
+      "as_of": "2026-08-29",
+      "narrative_score": -0.07,
+      "summary_kr": "SEC의 Situational Awareness 소환장으로 단기 규제 리스크가 부각됐지만, NEOS 인수와 앤트로픽 초대형 IPO 공동 주관 등 딜메이킹 모멘텀은 견조하다. 규제 이슈는 업계 공통 리스크라 GS만의 디스카운트 요인으로 보기는 어렵다.",
       "key_events": [
-        "LCN 캐피털 파트너스 인수 발표(8/18)",
-        "앤트로픽 IPO 주관사 지위 유지 확인(8/20)",
-        "유럽 증시 낙관 코멘트(8/21)"
+        "SEC 소환장",
+        "NEOS 인수",
+        "앤트로픽 IPO 공동주관",
+        "AI 리스크 경고"
       ],
       "risks": [
-        "신규 자사주매입 프로그램 부재 지속(JPM·MS 대비 격차)",
-        "NEOS·LCN 등 연이은 인수의 통합 실행 리스크"
+        "Situational Awareness 관련 규제조사 장기화 가능성",
+        "AI 의존에 따른 인력 역량 저하 우려",
+        "테크 IB 인재 유출"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
+          "ticker": "MS",
+          "headline_kr": "모건스탠리도 앤트로픽 IPO 공동 주관사로 선정 (10월 목표, 밸류 2조달러대)",
+          "implication_for_target_kr": "IB 수수료 훈풍이 GS·MS 공동 수혜 구도라 GS만의 차별화 요인은 아님"
+        },
+        {
+          "ticker": "JPM",
+          "headline_kr": "JP모건, 씨티그룹 테크 IB 총괄 댄 맥다우 영입 (8/25)",
+          "implication_for_target_kr": "테크 IB 인재 쟁탈전 심화 - GS도 핵심 인력 유지·영입 비용 상승 압력에 노출"
+        },
+        {
           "ticker": "C",
-          "headline": "씨티가 Custody+ 출시로 기관용 비트코인 커스터디 진출 예고(8/18)",
-          "implication_for_target": "기관 디지털자산 서비스 경쟁이 씨티까지 확대돼 골드만의 디지털자산 확장 압박 커질 수 있음"
+          "headline_kr": "씨티그룹도 Situational Awareness 관련 SEC 소환장 수령",
+          "implication_for_target_kr": "규제 리스크가 GS만의 이슈가 아닌 업계 공통 리스크로, GS 개별 주가 프리미엄 훼손은 제한적일 가능성"
         }
       ],
       "history": [
@@ -10329,6 +10341,10 @@
         {
           "date": "2026-08-22",
           "narrative_score": 0.12
+        },
+        {
+          "date": "2026-08-29",
+          "narrative_score": -0.07
         }
       ]
     }

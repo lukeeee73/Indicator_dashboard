@@ -1,0 +1,77 @@
+{
+  "ticker": "JPM",
+  "date": "2026-08-29",
+  "as_of_utc": "2026-08-29T12:00:00Z",
+  "news": [
+    {
+      "title": "JPMorgan Leads $5 Billion Debt Deal to Fund Volta AI Data Centers",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-27/jpmorgan-leads-5-billion-debt-package-for-volta-ai-buildout",
+      "published": "2026-08-27T13:00:00Z",
+      "summary": "JP모건이 AI 인프라 스타트업 볼타의 데이터센터 구축용 50억달러 부채조달을 주선",
+      "impact": "+",
+      "category": "business"
+    },
+    {
+      "title": "US SEC Sends Subpoenas to Wall Street Banks Over Situational Awareness Hedge Fund Near-Collapse",
+      "source": "Reuters (via U.S. News)",
+      "url": "https://money.usnews.com/investing/news/articles/2026-08-24/us-sec-sends-subpoenas-to-wall-street-banks-over-situational-awareness-nyt-reports",
+      "published": "2026-08-24T20:00:00Z",
+      "summary": "SEC가 골드만·JP모건·씨티·BofA에 AI헤지펀드 관련 거래정보 소환장 발부",
+      "impact": "-",
+      "category": "regulatory"
+    },
+    {
+      "title": "JPMorgan Hiring Citigroup's McDow to Run East Coast Tech Investment Bank, Memo Says",
+      "source": "Reuters (via WHBL)",
+      "url": "https://whbl.com/2026/08/25/jpmorgan-hiring-citigroups-mcdow-to-run-east-coast-tech-investment-bank-memo-says/",
+      "published": "2026-08-25T14:00:00Z",
+      "summary": "JP모건이 씨티그룹 소프트웨어 IB 총괄이던 McDow를 동부지역 기술 IB 대표로 영입",
+      "impact": "+",
+      "category": "management"
+    },
+    {
+      "title": "JPMorgan Eyes Stablecoin as U.S. Banks Revisit Blockchain Payments",
+      "source": "The Crypto Times (citing WSJ)",
+      "url": "https://www.cryptotimes.io/2026/08/26/jpmorgan-eyes-stablecoin-as-u-s-banks-revisit-blockchain-payments/",
+      "published": "2026-08-26T09:00:00Z",
+      "summary": "JP모건이 자체 스테이블코인 발행 가능성을 검토 중이라고 WSJ가 보도",
+      "impact": "+",
+      "category": "strategy"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "C",
+      "headline_kr": "JP모건, 씨티그룹의 기술 IB 총괄 McDow를 영입",
+      "implication_for_target_kr": "JPM이 경쟁사 핵심 인재를 빼오며 기술 부문 IB에서 경쟁 우위를 강화하고 있음을 시사."
+    },
+    {
+      "ticker": "BAC",
+      "headline_kr": "BofA, 제프리 엡스타인 피해자 소송 7,250만 달러 합의 법원 승인",
+      "implication_for_target_kr": "경쟁 대형은행의 법적·평판 리스크 부각은 JPM을 포함한 업계 전반에 대한 시장의 소송 리스크 경계감을 높일 수 있음."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.4,
+    "competitive_position": 0.4,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.16,
+  "summary_kr": "JPM은 볼타 AI 데이터센터 부채조달 주도와 씨티 핵심 뱅커 영입 등 공격적 확장으로 경쟁우위를 다지고 있으나, SEC의 AI헤지펀드 소환장과 연준 GSIB 자본규제를 둘러싼 대형은행 갈등이 규제 불확실성을 키우고 있다.",
+  "key_events": [
+    "볼타 AI 데이터센터 50억달러 조달 주도",
+    "씨티 McDow 영입",
+    "SEC 소환장",
+    "GSIB 자본규제 갈등",
+    "스테이블코인 검토"
+  ],
+  "risks": [
+    "SEC의 Situational Awareness 조사 확대 가능성",
+    "GSIB 자본규제 개편 결과에 따른 자본요건 변화",
+    "인도 규제당국의 JPM 계열사 제재(8/20)"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/JPM%20-%20JPMorgan%20Chase%20and%20Co.md",
+  "note": "수집된 뉴스 중 일부는 지난주(8/22) 브리핑과 중복되거나 그 이전 시점 정보로 판단되어 제외함(원 수집 5건 → 채택 4건)."
+}
