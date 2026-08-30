@@ -1,0 +1,43 @@
+{
+  "ticker": "CHTR",
+  "date": "2026-08-30",
+  "as_of_utc": "2026-08-30T00:11:25Z",
+  "news": [
+    {
+      "title": "메인스트리트 스포츠그룹, 차터·컴캐스트 상대로 중계료 미지급 소송",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/24/main-street-sports-comcast-charter-lawsuit-payments.html",
+      "published": "2026-08-24T00:00:00Z",
+      "summary": "차터의 미지급 기간이 2025년 2월~2026년 5월로 더 길다고 주장",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "차터, 콕스 인수 관련 채무보증 정렬 및 채권교환 최종정산 완료",
+      "source": "SEC Form 8-K (Company Filing)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001091667/000110465926086302/tm2621145d1_ex99-2.htm",
+      "published": "2026-08-24T00:00:00Z",
+      "summary": "콕스 계열사 담보부채권 약 120억달러가 기존 담보구조에 편입",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CMCSA",
+      "headline": "메인스트리트 스포츠그룹이 컴캐스트도 동시에 제소",
+      "implication_for_target": "동일 리스크를 케이블 업계 전반이 공유하고 있어 차터만의 개별 악재는 아니나, 미지급 기간이 더 길어 배상 규모 노출이 상대적으로 클 수 있음"
+    },
+    {
+      "ticker": "VZ",
+      "headline": "버라이즌은 2분기 광대역 순증이 견조했던 것으로 알려짐",
+      "implication_for_target": "통신사의 광대역 경쟁력 강화는 콕스 인수로 몸집을 키운 차터에게도 유선 가입자 방어 부담으로 이어짐"
+    }
+  ],
+  "scores": {"earnings_outlook": 0.0, "competitive_position": 0.05, "regulatory_risk": -0.20, "macro_sensitivity": -0.10},
+  "narrative_score": -0.04,
+  "summary_kr": "차터는 콕스 인수 관련 재무 정리를 마무리하며 통합 작업을 진전시켰으나, 스포츠 중계료 미지급 소송에 피소되며 법적 리스크가 새로 부각됐다.",
+  "key_events": ["메인스트리트 스포츠그룹 소송 제기(8/24)", "콕스 채무보증 정렬 및 채권교환 최종정산(8/24)"],
+  "risks": ["약 120억달러 콕스 잔존 부채로 인한 레버리지 부담", "RSN 중계료 소송 확산 시 배상 규모 불확실성", "케이블 업계 전반 유선 가입자 이탈 지속"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/CHTR%20-%20Charter%20Communications.md"
+}
