@@ -1,0 +1,66 @@
+{
+  "ticker": "GOOGL",
+  "date": "2026-08-31",
+  "as_of_utc": "2026-08-31T12:00:00Z",
+  "news": [
+    {
+      "title": "Google to Pay £260 Million to Settle UK App Developer Class Action",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-27/google-to-pay-260-million-to-settle-app-developer-class-action",
+      "published": "2026-08-27T00:00:00Z",
+      "summary": "구글이 영국 플레이스토어 앱 개발자 집단소송에 약 3.5억 달러(2,600억원) 배상 합의",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "US FTC Probing YouTube Over Social Media Policies",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-27/us-ftc-probing-youtube-over-social-media-policies",
+      "published": "2026-08-27T00:00:00Z",
+      "summary": "미 FTC가 유튜브의 계정 정지·콘텐츠 정책 관련 소비자보호법 위반 여부 조사 중",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Waymo Expands Driverless Rides to EU with Germany Debut in 2027",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-25/waymo-expands-driverless-rides-to-eu-with-germany-debut-in-2027",
+      "published": "2026-08-25T00:00:00Z",
+      "summary": "웨이모가 2027년 말 독일 뮌헨에서 유럽 첫 무인 로보택시 서비스를 시작한다고 발표",
+      "impact": "+",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft Azure revenue growth accelerates to 43% amid record AI data center buildout",
+      "implication_for_target": "MS의 공격적인 클라우드·AI 인프라 확장이 구글 클라우드의 점유율 확대 속도에 경쟁 부담을 줄 수 있다."
+    },
+    {
+      "ticker": "META",
+      "headline": "Meta launches open-weight 'Glimmer' on-device AI model to challenge Google",
+      "implication_for_target": "메타의 저비용 온디바이스 AI 전략이 제미나이 생태계 및 안드로이드 AI 기본값 지위에 위협이 될 수 있다."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.4,
+    "competitive_position": 0.2,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.12,
+  "summary_kr": "구글은 웨이모의 독일 진출 등 신사업 확장은 긍정적이나, 영국 앱스토어 소송 합의와 FTC의 유튜브 조사가 동시에 부각되며 규제 리스크가 단기 최대 변수로 작용하고 있다.",
+  "key_events": [
+    "웨이모, 2027년 독일 뮌헨 무인택시 서비스 출시 발표(8/25)",
+    "영국 앱 개발자 집단소송 약 3.5억 달러 배상 합의(8/27)",
+    "FTC, 유튜브 소셜미디어 정책 관련 조사 착수 보도(8/27)",
+    "제미나이 엔터프라이즈 가격 인하로 AI 가격 경쟁 심화"
+  ],
+  "risks": [
+    "다건 동시다발적 규제·소송 리스크(UK 소송, FTC, 기존 DOJ 검색 독점 구제명령, EU 애드테크)",
+    "메타 등 경쟁사의 저가 온디바이스 AI 공세",
+    "대규모 AI/데이터센터 투자에 따른 자본비용 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GOOGL%20-%20Alphabet%20Inc..md"
+}
