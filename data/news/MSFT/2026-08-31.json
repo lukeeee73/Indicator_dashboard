@@ -1,0 +1,68 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-08-31",
+  "as_of_utc": "2026-08-31T12:00:00Z",
+  "news": [
+    {
+      "title": "Microsoft Addresses Employee Concerns Over AI Data Center Environmental Impact",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-28/microsoft-seeks-to-reassure-employees-about-data-centers-impact",
+      "published": "2026-08-28T00:00:00Z",
+      "summary": "MS 개발총괄이 데이터센터의 에너지·환경 영향에 대한 내부 직원 우려에 해명 메모 발송",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "Microsoft eyes another wave of layoffs that could hit 5,000 workers next week",
+      "source": "Fox Business",
+      "url": "https://www.foxbusiness.com/economy/microsoft-eyes-another-wave-layoffs-hit-5000-workers-next-week",
+      "published": "2026-08-27T00:00:00Z",
+      "summary": "MS가 Xbox·영업·컨설팅 부문에서 최대 5천명 규모 추가 감원을 검토 중이라는 보도",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Microsoft's 29% Sprint Leaves Cash Flow Behind",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/microsofts-29-sprint-leaves-cash-184905244.html",
+      "published": "2026-08-25T00:00:00Z",
+      "summary": "한 달새 29% 급등한 주가와 달리 대규모 AI 투자로 잉여현금흐름 둔화 우려 제기",
+      "impact": "neutral",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "Google slashes Gemini Enterprise AI pricing to undercut rivals",
+      "implication_for_target": "구글의 공격적인 제미나이 가격 인하가 마이크로소프트 코파일럿·애저 OpenAI 서비스의 가격 경쟁력을 압박할 수 있다."
+    },
+    {
+      "ticker": "AMZN",
+      "headline": "AWS Bedrock cuts GPT-5.6 model prices by up to 80%",
+      "implication_for_target": "AWS의 대규모 AI 모델 가격 인하는 애저 AI 서비스와의 클라우드 가격 경쟁을 더욱 심화시킨다."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.5,
+    "competitive_position": 0.2,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": 0.16,
+  "summary_kr": "마이크로소프트는 애저 43% 성장 등 FY26 4분기 실적 호조로 주가가 사상 최대 폭 상승했으나, 대규모 AI 데이터센터 투자에 대한 내부 우려, 추가 감원설, EU DMA 게이트키퍼 지정 이슈가 단기 부담 요인이다.",
+  "key_events": [
+    "FY26 4분기 실적 호조로 시가총액 사상 최대 하루 증가 기록(7/30, 이후 8월까지 랠리 지속)",
+    "애저 매출 43% 성장, 상업용 RPO 84% 증가",
+    "데이터센터 환경영향 관련 직원 우려에 회사측 해명 메모(8/28)",
+    "Xbox·영업·컨설팅 부문 최대 5천명 추가 감원설",
+    "EU, 애저·AWS를 DMA 게이트키퍼로 예비 지정(9월까지 소명 요구)"
+  ],
+  "risks": [
+    "대규모 AI 데이터센터 자본지출에 따른 잉여현금흐름 압박",
+    "추가 감원에 따른 조직 불안 및 실행 리스크",
+    "EU DMA 게이트키퍼 지정 시 규제 준수 비용",
+    "구글·아마존의 AI 가격 인하에 따른 클라우드 가격 경쟁 심화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MSFT%20-%20Microsoft%20Corporation.md"
+}

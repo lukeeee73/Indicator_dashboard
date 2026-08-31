@@ -1480,30 +1480,31 @@
     "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-08-17",
-      "narrative_score": 0.17,
-      "summary_kr": "코어위브는 2분기 매출이 전년比 112% 급증하고 가이던스를 상향하며 AI 인프라 수요 폭발을 다시 증명했지만, 부채 356억달러·레버리지 7배 수준의 재무구조가 금리 민감도를 크게 높이고 있어 신용시장은 여전히 경계하고 있다.",
+      "as_of": "2026-08-31",
+      "narrative_score": 0.21,
+      "summary_kr": "코어위브는 2분기 실적 호조(매출 +112%, 백로그 1040억달러)와 엔비디아 어닝서프라이즈발 AI 인프라 심리 개선에도, 대규모 부채(약 300억달러)로 인한 금리 민감도와 경쟁사(IREN) 대비 낮은 상승여력 평가가 주가 상단을 제한하고 있다.",
       "key_events": [
-        "8/11 2분기 실적: 매출 25.8억달러(전년比 +112%), 수주잔고 1040억달러",
-        "2026 매출 가이던스 124억~132억달러로 상향",
-        "실적 발표 후 주가 이틀간 14~19% 이상 급등"
+        "2분기 실적 서프라이즈(매출 +112%, 백로그 1040억달러)",
+        "Rescale과 AI 클라우드 파트너십 체결(8/25)",
+        "엔비디아 실적 호조로 AI 인프라 전반 심리 개선(8/27)",
+        "IREN 대비 상승여력 열세로 평가(8/29)"
       ],
       "risks": [
-        "부채 356억달러, 부채비율 7배 이상으로 업계 최고 수준",
-        "이자비용이 조정영업이익 초과",
-        "CDS 시장이 5년 내 부도확률 50%로 반영"
+        "약 300억달러 규모 장기부채로 인한 금리 민감도",
+        "소수 대형 고객에 대한 매출 집중도 리스크",
+        "AI 인프라 밸류에이션 부담 및 신용스프레드 확대 우려"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "NBIS",
-          "headline": "네비우스 2분기 매출 전년比 454% 급증",
-          "implication_for_target": "코어위브보다 낮은 부채로 빠르게 성장, '레버리지 기반 확장' 전략에 비교 압력 증가"
+          "headline": "Nebius Group (NBIS) fell 5.25% on Aug 28 amid dilution concerns from its $5.75B convertible note offering",
+          "implication_for_target": "동종업계 전환사채 희석 이슈는 코어위브의 부채성 자금조달 방식 전반에 대한 투자자 경계심을 함께 자극할 수 있음"
         },
         {
           "ticker": "ORCL",
-          "headline": "오라클, OCI에서 엔비디아 최신 모델(Nemotron 3.5) 지원 시작",
-          "implication_for_target": "대형 하이퍼스케일러 자체 AI 클라우드 강화로 중립 AI 클라우드 업체 고객 확보 경쟁 심화"
+          "headline": "Oracle's $638B RPO backlog continues to anchor the hyperscaler AI capex supercycle narrative",
+          "implication_for_target": "오라클의 대규모 계약잔고는 하이퍼스케일러의 AI 인프라 투자가 지속됨을 시사해 코어위브의 GPU 임대 수요에 우호적"
         }
       ],
       "history": [
@@ -1526,6 +1527,10 @@
         {
           "date": "2026-08-17",
           "narrative_score": 0.17
+        },
+        {
+          "date": "2026-08-31",
+          "narrative_score": 0.21
         }
       ]
     }
