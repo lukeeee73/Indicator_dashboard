@@ -4,34 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-08-22",
-      "value": 23.84
-    },
-    {
-      "date": "2016-08-23",
-      "value": 23.54
-    },
-    {
-      "date": "2016-08-24",
-      "value": 23.56
-    },
-    {
-      "date": "2016-08-25",
-      "value": 23.57
-    },
-    {
-      "date": "2016-08-26",
-      "value": 23.27
-    },
-    {
-      "date": "2016-08-29",
-      "value": 23.57
-    },
-    {
-      "date": "2016-08-30",
-      "value": 23.79
-    },
-    {
       "date": "2016-08-31",
       "value": 23.72
     },
@@ -10058,18 +10030,42 @@
     {
       "date": "2026-08-21",
       "value": 33.37
+    },
+    {
+      "date": "2026-08-24",
+      "value": 32.59
+    },
+    {
+      "date": "2026-08-25",
+      "value": 31.8
+    },
+    {
+      "date": "2026-08-26",
+      "value": 31.41
+    },
+    {
+      "date": "2026-08-27",
+      "value": 31.33
+    },
+    {
+      "date": "2026-08-28",
+      "value": 31.86
+    },
+    {
+      "date": "2026-08-31",
+      "value": 32.01
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 43298467840.0,
+      "market_cap": 41531998208.0,
       "pe_ratio": null,
-      "forward_pe": 6.7278223,
+      "forward_pe": null,
       "eps_ttm": -0.7,
-      "dividend_yield": 3.99,
+      "dividend_yield": 4.18,
       "profit_margin": -0.00754,
       "operating_margin": 0.08756,
-      "price_to_book": 0.55692965,
+      "price_to_book": 0.5352547,
       "return_on_equity": -0.0076200003
     },
     "quarterly": [
@@ -10111,19 +10107,14 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-21",
-    "current_price": 33.37,
+    "as_of": "2026-08-31",
+    "current_price": 32.01,
     "sector": "Consumer Discretionary",
-    "methods": {
-      "forward_pe_benchmark": {
-        "fair_value": 99.2,
-        "weight": 3.0,
-        "note": "내재 forward EPS × 섹터 Forward P/E (20)"
-      }
-    },
-    "fair_value": 99.2,
-    "valuation_gap": -0.6636,
-    "signal": "deep_value",
+    "methods": {},
+    "fair_value": null,
+    "valuation_gap": null,
+    "signal": "n/a",
+    "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
       "as_of": "2026-08-26",

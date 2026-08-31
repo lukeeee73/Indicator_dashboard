@@ -4,34 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-08-22",
-      "value": 120.48
-    },
-    {
-      "date": "2016-08-23",
-      "value": 120.41
-    },
-    {
-      "date": "2016-08-24",
-      "value": 118.59
-    },
-    {
-      "date": "2016-08-25",
-      "value": 116.42
-    },
-    {
-      "date": "2016-08-26",
-      "value": 115.84
-    },
-    {
-      "date": "2016-08-29",
-      "value": 116.39
-    },
-    {
-      "date": "2016-08-30",
-      "value": 116.05
-    },
-    {
       "date": "2016-08-31",
       "value": 115.36
     },
@@ -377,7 +349,7 @@
     },
     {
       "date": "2017-01-04",
-      "value": 138.46
+      "value": 138.47
     },
     {
       "date": "2017-01-05",
@@ -1961,7 +1933,7 @@
     },
     {
       "date": "2018-08-01",
-      "value": 221.47
+      "value": 221.46
     },
     {
       "date": "2018-08-02",
@@ -3993,7 +3965,7 @@
     },
     {
       "date": "2020-08-07",
-      "value": 286.1
+      "value": 286.11
     },
     {
       "date": "2020-08-10",
@@ -5221,7 +5193,7 @@
     },
     {
       "date": "2021-10-26",
-      "value": 417.91
+      "value": 417.92
     },
     {
       "date": "2021-10-27",
@@ -5241,7 +5213,7 @@
     },
     {
       "date": "2021-11-02",
-      "value": 415.52
+      "value": 415.53
     },
     {
       "date": "2021-11-03",
@@ -7797,7 +7769,7 @@
     },
     {
       "date": "2024-05-20",
-      "value": 492.32
+      "value": 492.31
     },
     {
       "date": "2024-05-21",
@@ -7865,7 +7837,7 @@
     },
     {
       "date": "2024-06-13",
-      "value": 473.34
+      "value": 473.35
     },
     {
       "date": "2024-06-14",
@@ -8229,7 +8201,7 @@
     },
     {
       "date": "2024-10-23",
-      "value": 541.63
+      "value": 541.64
     },
     {
       "date": "2024-10-24",
@@ -10058,18 +10030,42 @@
     {
       "date": "2026-08-21",
       "value": 390.11
+    },
+    {
+      "date": "2026-08-24",
+      "value": 398.76
+    },
+    {
+      "date": "2026-08-25",
+      "value": 396.59
+    },
+    {
+      "date": "2026-08-26",
+      "value": 401.01
+    },
+    {
+      "date": "2026-08-27",
+      "value": 395.05
+    },
+    {
+      "date": "2026-08-28",
+      "value": 392.95
+    },
+    {
+      "date": "2026-08-31",
+      "value": 390.6
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 350160715776.0,
-      "pe_ratio": 25.055235,
-      "forward_pe": 17.388168,
-      "eps_ttm": 15.57,
-      "dividend_yield": 2.38,
+      "market_cap": 350600527872.0,
+      "pe_ratio": 25.102827,
+      "forward_pe": 17.41001,
+      "eps_ttm": 15.56,
+      "dividend_yield": 2.36,
       "profit_margin": 0.03135,
       "operating_margin": 0.071329996,
-      "price_to_book": 3.586196,
+      "price_to_book": 3.5907006,
       "return_on_equity": 0.14152999
     },
     "quarterly": [
@@ -10111,12 +10107,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-21",
-    "current_price": 390.11,
+    "as_of": "2026-08-31",
+    "current_price": 390.6,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 280.26,
+        "fair_value": 280.08,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
@@ -10126,13 +10122,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 195.21,
+        "fair_value": 195.15,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 286.86,
-    "valuation_gap": 0.3599,
+    "fair_value": 286.76,
+    "valuation_gap": 0.3621,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10338,6 +10334,18 @@
         "price": 390.11,
         "fair_value": 238.32,
         "gap": 0.6369
+      },
+      {
+        "date": "2026-08-28",
+        "price": 392.95,
+        "fair_value": 238.32,
+        "gap": 0.6488
+      },
+      {
+        "date": "2026-08-31",
+        "price": 390.6,
+        "fair_value": 238.32,
+        "gap": 0.639
       }
     ],
     "qualitative": {

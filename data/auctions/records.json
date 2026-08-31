@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-08-13",
-  "count": 531,
-  "raw_count": 626,
+  "last_updated": "2026-08-25",
+  "count": 532,
+  "raw_count": 628,
   "excluded_cusips": 61,
   "source_fields": [
     "accruedInterestPer100",
@@ -126,15 +126,15 @@
     "xmlFilenameSpecialAnnouncement"
   ],
   "consistency": {
-    "fiscal_raw_count": 11090,
+    "fiscal_raw_count": 11097,
     "overlap_records": 104,
-    "filled_from_fiscal": 427,
+    "filled_from_fiscal": 428,
     "btc_mismatch": 0,
     "indirect_mismatch": 0,
     "btc_mismatch_sample": [],
     "indirect_mismatch_sample": [],
     "by_source": {
-      "fiscaldata": 427,
+      "fiscaldata": 428,
       "treasurydirect": 104
     }
   },
@@ -7509,9 +7509,9 @@
       "tenor": "2Y",
       "cusip": "91282CLH2",
       "security_type": "Note",
-      "source": "treasurydirect",
+      "source": "fiscaldata",
       "bid_to_cover": 2.68,
-      "offering_amount": 69000000000.0,
+      "offering_amount": null,
       "high_yield": 3.874,
       "indirect_amount": 46975079300.0,
       "direct_amount": 13016500000.0,
@@ -8103,6 +8103,21 @@
       "dealer_amount": 2866735000.0,
       "indirect_share": 66.84595477270713,
       "dealer_share": 11.510861765019548
+    },
+    {
+      "date": "2026-08-25",
+      "tenor": "2Y",
+      "cusip": "91282CRH6",
+      "security_type": "Note",
+      "source": "treasurydirect",
+      "bid_to_cover": 2.6,
+      "offering_amount": 69000000000.0,
+      "high_yield": 4.204,
+      "indirect_amount": 44958379400.0,
+      "direct_amount": 15727302400.0,
+      "dealer_amount": 7421560000.0,
+      "indirect_share": 66.0111585960599,
+      "dealer_share": 10.896873524541997
     }
   ]
 }

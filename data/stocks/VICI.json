@@ -8686,18 +8686,42 @@
     {
       "date": "2026-08-21",
       "value": 26.51
+    },
+    {
+      "date": "2026-08-24",
+      "value": 26.78
+    },
+    {
+      "date": "2026-08-25",
+      "value": 26.29
+    },
+    {
+      "date": "2026-08-26",
+      "value": 26.0
+    },
+    {
+      "date": "2026-08-27",
+      "value": 25.77
+    },
+    {
+      "date": "2026-08-28",
+      "value": 25.87
+    },
+    {
+      "date": "2026-08-31",
+      "value": 25.75
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 29189564416.0,
-      "pe_ratio": 10.275194,
-      "forward_pe": 8.86622,
+      "market_cap": 28347240448.0,
+      "pe_ratio": 9.9786825,
+      "forward_pe": 8.610368,
       "eps_ttm": 2.58,
-      "dividend_yield": 6.79,
+      "dividend_yield": 6.98,
       "profit_margin": 0.67496,
       "operating_margin": 0.70182997,
-      "price_to_book": 1.0006417,
+      "price_to_book": 0.9717662,
       "return_on_equity": 0.09849
     },
     "quarterly": [
@@ -8746,8 +8770,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-21",
-    "current_price": 26.51,
+    "as_of": "2026-08-31",
+    "current_price": 25.75,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -8756,7 +8780,7 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 47.84,
+        "fair_value": 47.85,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
@@ -8767,7 +8791,7 @@
       }
     },
     "fair_value": 45.42,
-    "valuation_gap": -0.4163,
+    "valuation_gap": -0.4331,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -8895,6 +8919,18 @@
         "price": 26.51,
         "fair_value": 46.44,
         "gap": -0.4292
+      },
+      {
+        "date": "2026-08-28",
+        "price": 25.87,
+        "fair_value": 46.44,
+        "gap": -0.4429
+      },
+      {
+        "date": "2026-08-31",
+        "price": 25.75,
+        "fair_value": 46.44,
+        "gap": -0.4455
       }
     ],
     "qualitative": {

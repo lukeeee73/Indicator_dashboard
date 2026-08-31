@@ -4,34 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-08-22",
-      "value": 20.51
-    },
-    {
-      "date": "2016-08-23",
-      "value": 20.3
-    },
-    {
-      "date": "2016-08-24",
-      "value": 20.37
-    },
-    {
-      "date": "2016-08-25",
-      "value": 20.09
-    },
-    {
-      "date": "2016-08-26",
-      "value": 20.07
-    },
-    {
-      "date": "2016-08-29",
-      "value": 20.14
-    },
-    {
-      "date": "2016-08-30",
-      "value": 20.11
-    },
-    {
       "date": "2016-08-31",
       "value": 20.15
     },
@@ -5957,7 +5929,7 @@
     },
     {
       "date": "2022-07-21",
-      "value": 41.99
+      "value": 41.98
     },
     {
       "date": "2022-07-22",
@@ -10058,18 +10030,42 @@
     {
       "date": "2026-08-21",
       "value": 103.7
+    },
+    {
+      "date": "2026-08-24",
+      "value": 106.49
+    },
+    {
+      "date": "2026-08-25",
+      "value": 105.38
+    },
+    {
+      "date": "2026-08-26",
+      "value": 104.34
+    },
+    {
+      "date": "2026-08-27",
+      "value": 102.63
+    },
+    {
+      "date": "2026-08-28",
+      "value": 103.09
+    },
+    {
+      "date": "2026-08-31",
+      "value": 104.37
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 825252773888.0,
-      "pe_ratio": 37.572464,
-      "forward_pe": 32.155037,
+      "market_cap": 830584717312.0,
+      "pe_ratio": 37.81522,
+      "forward_pe": 32.382874,
       "eps_ttm": 2.76,
-      "dividend_yield": 0.95,
+      "dividend_yield": 0.96,
       "profit_margin": 0.03,
       "operating_margin": 0.04993,
-      "price_to_book": 8.752532,
+      "price_to_book": 8.809082,
       "return_on_equity": 0.22313999
     },
     "quarterly": [
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-21",
-    "current_price": 103.7,
+    "as_of": "2026-08-31",
+    "current_price": 104.37,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10128,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 58.05,
+        "fair_value": 58.01,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
@@ -10138,8 +10134,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 53.2,
-    "valuation_gap": 0.9493,
+    "fair_value": 53.19,
+    "valuation_gap": 0.9623,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10315,6 +10311,18 @@
         "price": 103.7,
         "fair_value": 62.7,
         "gap": 0.6539
+      },
+      {
+        "date": "2026-08-28",
+        "price": 103.09,
+        "fair_value": 62.7,
+        "gap": 0.6442
+      },
+      {
+        "date": "2026-08-31",
+        "price": 104.37,
+        "fair_value": 62.7,
+        "gap": 0.6646
       }
     ],
     "qualitative": {

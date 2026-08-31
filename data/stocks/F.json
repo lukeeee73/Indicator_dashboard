@@ -4,34 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-08-22",
-      "value": 7.29
-    },
-    {
-      "date": "2016-08-23",
-      "value": 7.33
-    },
-    {
-      "date": "2016-08-24",
-      "value": 7.26
-    },
-    {
-      "date": "2016-08-25",
-      "value": 7.36
-    },
-    {
-      "date": "2016-08-26",
-      "value": 7.3
-    },
-    {
-      "date": "2016-08-29",
-      "value": 7.36
-    },
-    {
-      "date": "2016-08-30",
-      "value": 7.4
-    },
-    {
       "date": "2016-08-31",
       "value": 7.43
     },
@@ -10058,18 +10030,42 @@
     {
       "date": "2026-08-21",
       "value": 14.41
+    },
+    {
+      "date": "2026-08-24",
+      "value": 13.93
+    },
+    {
+      "date": "2026-08-25",
+      "value": 13.95
+    },
+    {
+      "date": "2026-08-26",
+      "value": 13.9
+    },
+    {
+      "date": "2026-08-27",
+      "value": 13.95
+    },
+    {
+      "date": "2026-08-28",
+      "value": 13.88
+    },
+    {
+      "date": "2026-08-31",
+      "value": 13.95
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 57461256192.0,
+      "market_cap": 55642513408.0,
       "pe_ratio": null,
-      "forward_pe": 7.53149,
+      "forward_pe": 7.293106,
       "eps_ttm": -1.87,
-      "dividend_yield": 4.16,
+      "dividend_yield": 4.32,
       "profit_margin": -0.03935,
       "operating_margin": 0.018819999,
-      "price_to_book": 1.6086179,
+      "price_to_book": 1.5577027,
       "return_on_equity": -0.18252
     },
     "quarterly": [
@@ -10118,18 +10114,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-21",
-    "current_price": 14.41,
+    "as_of": "2026-08-31",
+    "current_price": 13.95,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 38.27,
+        "fair_value": 38.26,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 38.27,
-    "valuation_gap": -0.6235,
+    "fair_value": 38.26,
+    "valuation_gap": -0.6354,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10257,6 +10253,18 @@
         "price": 14.41,
         "fair_value": 22.25,
         "gap": -0.3524
+      },
+      {
+        "date": "2026-08-28",
+        "price": 13.88,
+        "fair_value": 22.25,
+        "gap": -0.3762
+      },
+      {
+        "date": "2026-08-31",
+        "price": 13.95,
+        "fair_value": 22.25,
+        "gap": -0.373
       }
     ],
     "qualitative": {

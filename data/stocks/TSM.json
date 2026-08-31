@@ -4,34 +4,6 @@
   "group": "반도체 — 파운드리 · 패키징 · 기판",
   "series": [
     {
-      "date": "2016-08-22",
-      "value": 22.58
-    },
-    {
-      "date": "2016-08-23",
-      "value": 22.66
-    },
-    {
-      "date": "2016-08-24",
-      "value": 22.57
-    },
-    {
-      "date": "2016-08-25",
-      "value": 22.74
-    },
-    {
-      "date": "2016-08-26",
-      "value": 22.77
-    },
-    {
-      "date": "2016-08-29",
-      "value": 22.82
-    },
-    {
-      "date": "2016-08-30",
-      "value": 22.75
-    },
-    {
       "date": "2016-08-31",
       "value": 22.85
     },
@@ -3241,7 +3213,7 @@
     },
     {
       "date": "2019-11-07",
-      "value": 47.5
+      "value": 47.49
     },
     {
       "date": "2019-11-08",
@@ -4729,7 +4701,7 @@
     },
     {
       "date": "2021-05-03",
-      "value": 106.47
+      "value": 106.46
     },
     {
       "date": "2021-05-04",
@@ -10058,18 +10030,42 @@
     {
       "date": "2026-08-21",
       "value": 418.95
+    },
+    {
+      "date": "2026-08-24",
+      "value": 410.12
+    },
+    {
+      "date": "2026-08-25",
+      "value": 417.41
+    },
+    {
+      "date": "2026-08-26",
+      "value": 417.69
+    },
+    {
+      "date": "2026-08-27",
+      "value": 427.3
+    },
+    {
+      "date": "2026-08-28",
+      "value": 417.52
+    },
+    {
+      "date": "2026-08-31",
+      "value": 418.04
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 2172873342976.0,
-      "pe_ratio": 31.241611,
-      "forward_pe": 19.234417,
-      "eps_ttm": 13.41,
+      "market_cap": 2168153571328.0,
+      "pe_ratio": 31.104168,
+      "forward_pe": 19.192638,
+      "eps_ttm": 13.44,
       "dividend_yield": 1.04,
       "profit_margin": 0.49923,
       "operating_margin": 0.60344005,
-      "price_to_book": 87.37191,
+      "price_to_book": 86.05082,
       "return_on_equity": 0.39969003
     },
     "quarterly": [
@@ -10125,12 +10121,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-21",
-    "current_price": 418.95,
+    "as_of": "2026-08-31",
+    "current_price": 418.04,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 375.48,
+        "fair_value": 376.32,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10140,13 +10136,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 38.04,
+        "fair_value": 38.33,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 339.11,
-    "valuation_gap": 0.2355,
+    "fair_value": 339.58,
+    "valuation_gap": 0.231,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10274,6 +10270,18 @@
         "price": 418.95,
         "fair_value": 12077.34,
         "gap": -0.9653
+      },
+      {
+        "date": "2026-08-28",
+        "price": 417.52,
+        "fair_value": 12077.34,
+        "gap": -0.9654
+      },
+      {
+        "date": "2026-08-31",
+        "price": 418.04,
+        "fair_value": 12077.34,
+        "gap": -0.9654
       }
     ],
     "qualitative": {

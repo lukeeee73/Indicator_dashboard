@@ -4,26 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-08-24",
-      "value": 21921.55
-    },
-    {
-      "date": "2016-08-25",
-      "value": 21805.16
-    },
-    {
-      "date": "2016-08-26",
-      "value": 21261.97
-    },
-    {
-      "date": "2016-08-29",
-      "value": 21106.77
-    },
-    {
-      "date": "2016-08-30",
-      "value": 20990.37
-    },
-    {
       "date": "2016-08-31",
       "value": 21455.96
     },
@@ -9786,13 +9766,29 @@
     {
       "date": "2026-08-24",
       "value": 73000.0
+    },
+    {
+      "date": "2026-08-25",
+      "value": 80700.0
+    },
+    {
+      "date": "2026-08-26",
+      "value": 85800.0
+    },
+    {
+      "date": "2026-08-27",
+      "value": 85900.0
+    },
+    {
+      "date": "2026-08-28",
+      "value": 88200.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 46656695304192.0,
+      "market_cap": 52728457854976.0,
       "pe_ratio": null,
-      "forward_pe": 70.1944,
+      "forward_pe": 78.52989,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.01021,
@@ -9846,18 +9842,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-24",
-    "current_price": 73000.0,
+    "as_of": "2026-08-28",
+    "current_price": 88200.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 17679.47,
+        "fair_value": 19093.37,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 17679.47,
-    "valuation_gap": 3.1291,
+    "fair_value": 19093.37,
+    "valuation_gap": 3.6194,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -9987,10 +9983,10 @@
         "gap": 191.8947
       },
       {
-        "date": "2026-08-24",
-        "price": 73000.0,
+        "date": "2026-08-28",
+        "price": 88200.0,
         "fair_value": 380.0,
-        "gap": 191.1053
+        "gap": 231.1053
       }
     ],
     "qualitative": {
