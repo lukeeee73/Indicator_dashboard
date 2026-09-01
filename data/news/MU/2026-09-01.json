@@ -1,0 +1,65 @@
+{
+  "ticker": "MU",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "S&P 500 falls Friday after Fed's Warsh highlights inflation worries",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html",
+      "published": "2026-08-27T21:00:00Z",
+      "summary": "Fed 워시 이사 매파 발언에 마이크론 등 반도체주 동반 하락",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Trump Calls Micron One of the World's \"Hottest\" Companies a Day After Nvidia Disclosed $279 Billion in Supplier Commitments",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/trump-calls-micron-one-world-140150192.html",
+      "published": "2026-08-27T18:00:00Z",
+      "summary": "트럼프, 마이크론 10조원 AI연구소 투자 극찬하며 지지 표명",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Not Nvidia, Not AMD. Micron Could Be September's Biggest AI Winner or Loser.",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/08/31/not-nvidia-not-amd-micron-could-be-septembers-bigg/",
+      "published": "2026-08-31T12:00:00Z",
+      "summary": "9월30일 실적 발표 앞두고 매출 +348% 전망, 변동성 경고",
+      "impact": "neutral",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "000660.KS",
+      "headline": "SK Hynix breaks ground on $4B HBM packaging plant in Indiana (Bloomberg, 2026-08-27)",
+      "implication_for_target": "SK하이닉스가 미국 내 HBM 패키징 생산기지를 확보하며 미국 정부의 자국 공급망 우대 흐름에 올라탐 — 마이크론의 '미국 유일 선단 메모리 생산사' 프리미엄이 희석될 수 있음(다만 2029년 이후 가동이라 장기 리스크)."
+    },
+    {
+      "ticker": "005930.KS",
+      "headline": "LS Securities raises Samsung target price to 450,000 won on HBM4 yield gains (Hankyung, 2026-08-31)",
+      "implication_for_target": "삼성 HBM4 수율 개선이 애널리스트 목표가 상향으로 이어지며 HBM 시장의 공급자 다변화가 가속 — 마이크론의 HBM 가격 결정력에는 장기적으로 경쟁 압박 요인."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.30,
+    "competitive_position": 0.00,
+    "regulatory_risk": 0.00,
+    "macro_sensitivity": -0.20
+  },
+  "narrative_score": 0.09,
+  "summary_kr": "Fed의 매파적 발언으로 반도체주 전반이 눌렸지만, 트럼프의 공개 지지와 9월30일 역대급 실적(매출 +348% 전망) 기대감이 이를 상쇄하며 마이크론은 약한 순풍 국면이다.",
+  "key_events": [
+    "Fed Governor Warsh 매파 발언으로 필라델피아반도체지수 -2.7%, 마이크론 동반 하락",
+    "트럼프, 마이크론 10조원 AI연구소 투자 공개 지지",
+    "9월30일 FY2026 Q4 실적 발표 예정 — 컨센서스 매출 $50.8B(+348% YoY)"
+  ],
+  "risks": [
+    "9월 FOMC 금리인상 확률 상승(CME FedWatch 35.4%→57.5%)이 반도체주 밸류에이션에 부담",
+    "실적 기대치가 너무 높아 컨센서스 미달 시 급락 가능성",
+    "삼성 HBM4 수율 개선으로 경쟁 압박 지속"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MU%20-%20Micron%20Technology.md"
+}

@@ -1,0 +1,58 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia Q2 FY2027 revenue $96.2B (+106% YoY), beats for 15th straight quarter, guides Q3 to $108B",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/26/nvidia-nvda-earnings-report-q2-2027-live-updates.html",
+      "published": "2026-08-26T20:20:00Z",
+      "summary": "2분기 매출 106% 급증, 3분기 가이던스도 컨센서스 상회",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Nvidia guides Q3 non-GAAP gross margin to 74.0% (down from 75%), citing rising memory costs",
+      "source": "StockTitan / BigGo Finance",
+      "url": "https://finance.biggo.com/news/US_NVDA_2026-08-26",
+      "published": "2026-08-26T21:00:00Z",
+      "summary": "메모리값 급등으로 3분기 매출총이익률 가이던스 74%로 하향",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "AWS and NVIDIA to deliver 2 million additional GPUs and Vera CPU infrastructure",
+      "source": "NVIDIA Newsroom (company IR)",
+      "url": "https://nvidianews.nvidia.com/news/aws-and-nvidia-to-deliver-2-million-additional-gpus-and-next-generation-infrastructure-for-agentic-and-physical-ai",
+      "published": "2026-08-26T13:00:00Z",
+      "summary": "아마존이 엔비디아 GPU 200만개 추가 발주, 베라 CPU도 도입",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Nvidia invests $3.5B in MediaTek convertible bonds; NVDA shares fall 4.57% on renewed circular-financing worries",
+      "source": "Bloomberg / Reuters",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-31/nvidia-to-invest-3-5-billion-in-chipmaker-mediatek",
+      "published": "2026-08-31T12:00:00Z",
+      "summary": "미디어텍에 35억 달러 투자, 순환금융 우려로 엔비디아 주가 4.57% 하락",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "AVGO", "headline": "Broadcom fiscal Q3 실적 발표(9/2) 앞두고 AI·네트워킹 수요 기대, 앞서 VMware vCenter 보안 취약점 악용 이슈로 주가 압박(8월)", "implication_for_target": "브로드컴은 커스텀 ASIC 진영 대표주자로, 9/2 실적이 좋으면 AI 반도체 수요 전반에 대한 신뢰가 강화돼 NVDA에도 우호적."},
+    {"ticker": "2454.TW", "headline": "미디어텍이 엔비디아로부터 35억 달러 투자를 받으며 NVLink Fusion 플랫폼 채택을 확대 (2026-08-31)", "implication_for_target": "엔비디아 스스로가 자사 생태계 확장을 위해 파트너사에 자금을 대는 구조 — 순환금융 논란을 다시 키운 당사자이기도 하다."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.6,
+    "competitive_position": 0.15,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": 0.21,
+  "summary_kr": "2분기 실적이 매출·가이던스 모두 컨센서스를 크게 웃돌며 AI 수요 둔화 우려를 잠재웠지만, 메모리 가격 급등에 따른 마진 하향과 미디어텍 투자發 순환금융 우려로 주가가 하루 만에 4.57% 빠지며 순풍이 일부 상쇄됐다.",
+  "key_events": ["Q2 FY2027 매출 $96.2B(+106%), 15분기 연속 컨센서스 상회", "3분기 가이던스 $108B, FY2028 매출 성장률 70% 제시", "AWS 200만 GPU 추가 발주 + Vera CPU 도입", "3분기 매출총이익률 가이던스 74%로 하향(메모리 원가)", "미디어텍 35억 달러 투자發 순환금융 우려로 주가 -4.57%"],
+  "risks": ["메모리(HBM·D램) 원가 상승에 따른 마진 압박 지속", "반도체 관세 확대 검토(8/27 CNBC 보도) 현실화 시 데이터센터·소비자 제품 수요 타격 가능", "MediaTek 등 파트너사 투자 확대가 순환금융 논란 재점화"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}

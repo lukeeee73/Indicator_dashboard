@@ -1,0 +1,58 @@
+{
+  "ticker": "SNPS",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Synopsys Q3 FY2026 revenue $2.477B (+42% YoY), non-GAAP EPS $3.91 beats high-end guidance; raises FY26 outlook",
+      "source": "Synopsys (company IR) / Reuters",
+      "url": "https://news.synopsys.com/2026-08-26-Synopsys-Posts-Financial-Results-for-Third-Quarter-Fiscal-Year-2026",
+      "published": "2026-08-26T20:00:00Z",
+      "summary": "3분기 매출 42% 급증, EPS도 가이던스 상단 초과 — 연간 가이던스 상향",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Synopsys shares surge 11.2% after Q3 beat and raised guidance on AI EDA and Ansys integration progress",
+      "source": "24/7 Wall St. / Yahoo Finance",
+      "url": "https://247wallst.com/investing/2026/08/21/synopsys-could-be-set-up-to-surprise-investors-on-august-26th/",
+      "published": "2026-08-27T14:00:00Z",
+      "summary": "실적 서프라이즈에 주가 11.2% 급등",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "JPMorgan lowers Synopsys price target to $600 from $650 despite earnings beat",
+      "source": "Market analyst note (via coverage)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/synopsys-could-set-surprise-investors-181509927.html",
+      "published": "2026-08-27T16:00:00Z",
+      "summary": "실적은 좋았지만 밸류에이션 부담으로 목표주가는 오히려 하향",
+      "impact": "neutral",
+      "category": "earnings"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T15:00:00Z",
+      "summary": "미 정부, 반도체·전자기기 관세 확대 검토 — 소프트웨어 기업이라 직접 영향은 제한적",
+      "impact": "neutral",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "CDNS", "headline": "케이던스도 2분기 매출 +24%, 영업마진 45.5%로 강한 실적을 기록하며 목표주가가 잇따라 상향됨", "implication_for_target": "EDA(칩 설계 자동화) 시장 양강 구도 모두가 AI 칩 설계 수요 호황을 함께 누리고 있다는 신호 — 시놉시스 실적의 신뢰도를 뒷받침."},
+    {"ticker": "ARM", "headline": "ARM이 데이터센터 로열티 매출 2배 증가 등 record Q1 실적을 발표(7/29)", "implication_for_target": "설계 IP 생태계 전반의 AI 수요가 강하다는 방증 — 시놉시스의 IP 사업에도 긍정적 참고지표."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.5,
+    "competitive_position": 0.35,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": 0.25,
+  "summary_kr": "3분기 매출이 42% 급증하고 연간 가이던스까지 상향되며 주가가 11% 넘게 뛰었다 — AI 칩 설계 수요 호황이 숫자로 뚜렷하게 확인된 강한 실적이다.",
+  "key_events": ["Q3 매출 $2.477B(+42% YoY), 비GAAP EPS $3.91로 가이던스 상단 초과", "FY2026 매출 가이던스 $9.69~9.74B, EPS 가이던스 $15.04~15.10로 상향", "실적 발표 후 주가 +11.2%", "JPMorgan은 실적 호조에도 목표주가 $650→$600로 하향(밸류에이션 부담)"],
+  "risks": ["고밸류에이션 부담으로 일부 애널리스트 목표주가 하향", "백로그(수주잔고)가 $11.4B→$10.9B로 소폭 감소(단, 사업부 매각 영향)", "오픈소스 AI 설계 툴의 장기적 시장 잠식 가능성"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/SNPS%20-%20Synopsys%2C%20Inc.md"
+}

@@ -1,0 +1,54 @@
+{
+  "ticker": "6146.T",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Asian chip firms lifted by Nvidia forecast but broader markets struggle",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/asian-chip-firms-lifted-nvidia-024234685.html",
+      "published": "2026-08-28T02:00:00Z",
+      "summary": "엔비디아 호실적 당일 디스코는 초반 낙폭을 줄여 -1.4%로 마감",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T12:00:00Z",
+      "summary": "美 정부 반도체·기술제품 신규 관세 검토",
+      "impact": "neutral",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "6857.T",
+      "headline": "어드반테스트는 같은 날 -3.1%로 디스코보다 낙폭이 컸음",
+      "implication_for_target": "디스코가 웨이퍼 그라인딩·다이싱이라는 필수 후공정을 담당하는 만큼, 테스트 장비(어드반테스트)보다 상대적으로 방어적인 수요 기반을 가진 것으로 해석됨"
+    },
+    {
+      "ticker": "BESI.AS",
+      "headline": "BESI는 하이브리드 본딩 기대감에 8/28 +2%대 상승",
+      "implication_for_target": "하이브리드 본딩 확산이 예상보다 완만한 것으로 알려지며(SK하이닉스 HBM5 세대로 연기), 디스코 주력 공정(그라인딩·다이싱) 수요가 당분간 유지될 근거가 됨"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": 0.0,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": -0.01,
+  "summary_kr": "디스코는 엔비디아 호실적 당일 낙폭을 줄이며 -1.4%로 마감해 동종 일본 장비주 중 상대적으로 견조했지만, 7/24 가이던스 미스 이슈와 관세 불확실성은 여전히 부담이다.",
+  "key_events": [
+    "엔비디아 호실적(8/27) 당일 디스코 -1.4%(초반 낙폭 축소)",
+    "'9/1까지 7만엔대 안착' 오픈 클레임은 8/18 기준 6.2만엔대에 머물러 있어 근거 부족"
+  ],
+  "risks": [
+    "7~9월 순이익 가이던스(395억엔)가 시장 예상(473억엔) 하회한 이슈 미해소",
+    "美 신규 반도체 관세 검토로 인한 섹터 전반 불확실성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/6146.T%20-%20DISCO%20Corporation.md"
+}

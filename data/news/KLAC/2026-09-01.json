@@ -1,0 +1,54 @@
+{
+  "ticker": "KLAC",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T12:00:00Z",
+      "summary": "트럼프 행정부, 반도체·기술제품 대상 신규 관세 검토",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Nvidia earnings were monstrous. They weren't enough to drive a breakout in broader chip sector",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/28/nvidia-earnings-were-monstrous-not-enough-to-drive-a-chip-stock-breakout.html",
+      "published": "2026-08-28T14:00:00Z",
+      "summary": "엔비디아 호실적에도 장비 섹터는 돌파 랠리 없이 마감, KLA 등 계속 약세",
+      "impact": "neutral",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMAT",
+      "headline": "AMAT도 8/28 CFO 내부자 매도 여파로 -4.3%",
+      "implication_for_target": "장비 3사가 공통적으로 관세 우려·밸류에이션 조정을 겪는 중 — KLA는 11/9 BIS Affiliates Rule 재발동 리스크까지 겹쳐 규제 우려가 3사 중 가장 큼"
+    },
+    {
+      "ticker": "LRCX",
+      "headline": "LRCX는 배당 27% 인상·오리건 R&D 투자로 펀더멘털 우호적 소식도 병존",
+      "implication_for_target": "KLA도 5분기 연속 실적 서프라이즈를 냈으나 주가는 규제·밸류에이션 우려에 더 크게 눌려 있어, 실적과 주가의 괴리가 3사 중 가장 크다는 기존 판단 유지"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": -0.1,
+    "regulatory_risk": -0.35,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.01,
+  "summary_kr": "이번 조사 기간 KLA 고유의 새로운 촉매는 없었고, 관세 검토 보도와 섹터 전반의 밸류에이션 조정이 계속되는 가운데 11월 BIS 규제 재발동 리스크가 여전히 가장 큰 부담으로 남아 있다.",
+  "key_events": [
+    "美 신규 반도체 관세 검토 보도(8/27)",
+    "엔비디아 호실적에도 장비 섹터 돌파 실패, KLA 약세 지속"
+  ],
+  "risks": [
+    "11/9 BIS Affiliates Rule 자동 재발동 시 中 매출 비중(과거 30~43%)이 가장 큰 KLA에 직접 타격",
+    "신규 관세 검토로 규제 불확실성 중첩"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/KLAC%20-%20KLA%20Corporation.md"
+}

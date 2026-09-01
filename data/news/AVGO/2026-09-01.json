@@ -1,0 +1,58 @@
+{
+  "ticker": "AVGO",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Broadcom set to report Q3 FY2026 earnings Sept 2; consensus sees revenue $29.44B (+84.5% YoY), EPS $2.55",
+      "source": "Barchart / Yahoo Finance",
+      "url": "https://www.barchart.com/story/news/4355809/dear-broadcom-stock-fans-mark-your-calendars-for-august-31",
+      "published": "2026-08-31T14:00:00Z",
+      "summary": "9/2 실적 발표 예정, 컨센서스는 매출·EPS 모두 큰 폭 성장 전망",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "VMware Explore 2026 kicks off in Las Vegas, showcasing private AI clouds and agentic AI",
+      "source": "VMware/Broadcom event coverage",
+      "url": "https://www.barchart.com/story/news/4355809/dear-broadcom-stock-fans-mark-your-calendars-for-august-31",
+      "published": "2026-08-31T16:00:00Z",
+      "summary": "VMware 연례 행사서 사설 AI 클라우드·에이전트 AI 제품 대거 공개",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Marvell's expanded $120B Google custom-chip deal sends Broadcom shares down ~5% intraday",
+      "source": "Multiple (TheStreet/Quartz)",
+      "url": "https://www.thestreet.com/investing/stocks/mrvl-marvell-google-custom-chip-deal-warrant",
+      "published": "2026-08-19T18:00:00Z",
+      "summary": "경쟁사 마벨의 구글 커스텀칩 대형 수주 소식에 브로드컴 주가 5% 급락",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T15:00:00Z",
+      "summary": "미 정부, 반도체·전자기기 관세 확대 검토 — 업종 전체 리스크",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "MRVL", "headline": "마벨이 구글로부터 최대 1,220억 달러 규모 커스텀칩 워런트를 받으며 구글 TPU 생태계 내 입지를 확대 (2026-08-19)", "implication_for_target": "브로드컴의 최대 AI 고객 중 하나인 구글의 커스텀칩 물량이 마벨과도 분산되고 있다는 신호 — 독점적 지위에 대한 위협."},
+    {"ticker": "NVDA", "headline": "엔비디아 2분기 매출 962억 달러(+106%), 3분기 가이던스도 컨센서스 상회 (2026-08-26)", "implication_for_target": "AI 반도체 전체 수요가 강하다는 신호는 커스텀 ASIC 진영인 브로드컴에도 우호적 참고지표."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.35,
+    "competitive_position": 0.05,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": 0.06,
+  "summary_kr": "9/2 실적 발표를 앞두고 컨센서스는 큰 폭 성장을 예상하며 VMware Explore 행사로 AI 제품 모멘텀도 이어지지만, 마벨의 구글 대형 수주發 경쟁 위협과 VMware 보안 취약점·관세 리스크가 순풍을 상쇄하고 있다.",
+  "key_events": ["9/2 Q3 실적 발표 예정, 컨센서스 매출 $29.44B(+84.5%)·EPS $2.55", "VMware Explore 2026 개막, 사설 AI 클라우드 제품 공개", "마벨-구글 $120B 커스텀칩 딜에 AVGO -5% 급락", "美 반도체 관세 확대 검토 보도"],
+  "risks": ["구글 TPU 공급망에서 마벨과의 경쟁 심화", "VMware vCenter 보안 취약점 악용 사고 여진", "반도체 관세 확대 시 원가·공급망 부담", "9/2 실적이 컨센서스에 못 미칠 경우 밸류에이션 조정 위험"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AVGO%20-%20Broadcom%20Inc.md"
+}

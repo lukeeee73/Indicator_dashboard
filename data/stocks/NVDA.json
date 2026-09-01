@@ -10319,30 +10319,32 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-25",
-      "narrative_score": -0.02,
-      "summary_kr": "8/26 실적 발표를 이틀 앞두고 메모리 가격발 서버값 인상 소식과 반도체 업종 전반의 위험회피로 주가가 7거래일 연속 하락했지만, 델과의 파트너십 심화 등 수요 펀더멘털은 여전히 견조하다. 오늘 하루는 뚜렷한 방향성 없이 실적 발표를 기다리는 잔잔한 흐름이다.",
+      "as_of": "2026-09-01",
+      "narrative_score": 0.21,
+      "summary_kr": "2분기 실적이 매출·가이던스 모두 컨센서스를 크게 웃돌며 AI 수요 둔화 우려를 잠재웠지만, 메모리 가격 급등에 따른 마진 하향과 미디어텍 투자發 순환금융 우려로 주가가 하루 만에 4.57% 빠지며 순풍이 일부 상쇄됐다.",
       "key_events": [
-        "AI 서버 가격 15%+ 인상 통보 (메모리 원가 급등)",
-        "주가 7거래일 연속 하락, 8/26 Q2 FY2027 실적 대기",
-        "델 테크놀로지스 월드 — Vera Rubin·Spectrum-6·NeMoClaw 공동개발 심화"
+        "Q2 FY2027 매출 $96.2B(+106%), 15분기 연속 컨센서스 상회",
+        "3분기 가이던스 $108B, FY2028 매출 성장률 70% 제시",
+        "AWS 200만 GPU 추가 발주 + Vera CPU 도입",
+        "3분기 매출총이익률 가이던스 74%로 하향(메모리 원가)",
+        "미디어텍 35억 달러 투자發 순환금융 우려로 주가 -4.57%"
       ],
       "risks": [
-        "메모리(HBM·DRAM) 가격 인플레이션이 매출총이익률 가이던스를 낮출 가능성",
-        "8/26 실적 발표 후 주가 하락 전례(최근 4개 분기 연속) 반복 가능성",
-        "잭슨홀 연준 심포지엄(8/28) 발 금리 불확실성"
+        "메모리(HBM·D램) 원가 상승에 따른 마진 압박 지속",
+        "반도체 관세 확대 검토(8/27 CNBC 보도) 현실화 시 데이터센터·소비자 제품 수요 타격 가능",
+        "MediaTek 등 파트너사 투자 확대가 순환금융 논란 재점화"
       ],
       "news_count": 4,
       "competitor_context": [
         {
-          "ticker": "AMD",
-          "headline": "BMO Capital initiates AMD at Outperform, $550 PT, calls Helios rack 'closest rival to Nvidia' (2026-08-21)",
-          "implication_for_target": "AMD의 AI 랙 시스템 경쟁력 인정이 엔비디아 데이터센터 독점력에 대한 시장 신뢰를 서서히 흔들 수 있음"
+          "ticker": "AVGO",
+          "headline": "Broadcom fiscal Q3 실적 발표(9/2) 앞두고 AI·네트워킹 수요 기대, 앞서 VMware vCenter 보안 취약점 악용 이슈로 주가 압박(8월)",
+          "implication_for_target": "브로드컴은 커스텀 ASIC 진영 대표주자로, 9/2 실적이 좋으면 AI 반도체 수요 전반에 대한 신뢰가 강화돼 NVDA에도 우호적."
         },
         {
-          "ticker": "AVGO",
-          "headline": "Broadcom in talks to raise $60-70B+ (up to $100B) in AI chip debt financing for Anthropic and others (2026-08-20~21)",
-          "implication_for_target": "맞춤형 칩(ASIC) 진영도 엔비디아 못지않은 규모로 AI 인프라 자금을 조달하며 GPU 대안으로서 입지를 넓히고 있음"
+          "ticker": "2454.TW",
+          "headline": "미디어텍이 엔비디아로부터 35억 달러 투자를 받으며 NVLink Fusion 플랫폼 채택을 확대 (2026-08-31)",
+          "implication_for_target": "엔비디아 스스로가 자사 생태계 확장을 위해 파트너사에 자금을 대는 구조 — 순환금융 논란을 다시 키운 당사자이기도 하다."
         }
       ],
       "history": [
@@ -10385,6 +10387,10 @@
         {
           "date": "2026-08-25",
           "narrative_score": -0.02
+        },
+        {
+          "date": "2026-09-01",
+          "narrative_score": 0.21
         }
       ]
     }

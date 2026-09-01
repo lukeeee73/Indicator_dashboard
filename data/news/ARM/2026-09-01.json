@@ -1,0 +1,58 @@
+{
+  "ticker": "ARM",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "IBM unveils dual-architecture processor bringing Arm to IBM Z and LinuxONE mainframes",
+      "source": "IBM Newsroom (company IR) / multiple Tier-2",
+      "url": "https://newsroom.ibm.com/2026-08-24-ibm-unveils-next-generation-dual-architecture-processor-for-ibm-z-and-linuxone",
+      "published": "2026-08-24T14:00:00Z",
+      "summary": "IBM 메인프레임에 Arm 아키텍처 결합한 듀얼 프로세서 공개",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Arm shares jump on IBM mainframe tie-up and reconfirmed $2B AGI CPU backlog",
+      "source": "BigGo Finance",
+      "url": "https://finance.biggo.com/news/15d294a8-d09f-47de-acc5-f1614db7b578",
+      "published": "2026-08-24T21:00:00Z",
+      "summary": "IBM 제휴와 AGI CPU 20억 달러 수주잔고 소식에 주가 급등",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Raymond James raises Arm price target to $641 from $565, maintains Outperform",
+      "source": "Analyst note (via market coverage)",
+      "url": "https://finance.biggo.com/news/15d294a8-d09f-47de-acc5-f1614db7b578",
+      "published": "2026-08-25T13:00:00Z",
+      "summary": "레이먼드제임스, 목표주가 대폭 상향",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T15:00:00Z",
+      "summary": "미 정부, 반도체·전자기기 관세 확대 검토 — 업종 전체 리스크",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "SNPS", "headline": "시놉시스 3분기 매출 +42%, 연간 가이던스 상향 (2026-08-26)", "implication_for_target": "설계 IP·EDA 생태계 전반의 AI 수요 강세 — ARM의 로열티 매출 전망에도 우호적."},
+    {"ticker": "INTC", "headline": "AMD 서버 CPU 점유율이 34%까지 확대되며 x86 진영 전반이 흔들리는 중 (2026-08-26)", "implication_for_target": "x86 대안으로서 Arm 아키텍처(서버·AI 데이터센터)의 매력이 상대적으로 부각될 수 있는 구도."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.35,
+    "competitive_position": 0.45,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": 0.2,
+  "summary_kr": "IBM 메인프레임과의 아키텍처 제휴, AGI CPU 20억 달러 수주잔고 재확인 등으로 라이선스 모델을 넘어선 사업 확장이 뚜렷해지며 애널리스트 목표주가도 큰 폭으로 상향됐다.",
+  "key_events": ["IBM Z·LinuxONE 메인프레임에 Arm 아키텍처 결합한 듀얼 프로세서 공개", "AGI CPU(메타 공동개발) 수주잔고 $2B+ 재확인 — 35년 만의 자체 설계 칩", "레이먼드제임스 목표주가 $565→$641 상향"],
+  "risks": ["반도체 관세 확대 검토 리스크", "고밸류에이션 부담 지속(다수 증권사 목표주가 혼조)", "9월 AGM에서 보수 정책·이사진 안건 주주 반발 가능성"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ARM%20-%20Arm%20Holdings%20plc.md"
+}

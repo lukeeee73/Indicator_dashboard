@@ -1,0 +1,58 @@
+{
+  "ticker": "QCOM",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Qualcomm raising chip prices by double digits starting September 1 to pass through supplier costs",
+      "source": "MacRumors",
+      "url": "https://www.macrumors.com/2026/08/31/qualcomm-chip-price-increase/",
+      "published": "2026-08-31T15:00:00Z",
+      "summary": "9/1부터 칩 가격 두 자릿수 인상 — 원가 상승분 고객사에 전가",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "BofA cuts QCOM price target to $180 on margin risk, but flags two hyperscaler ASIC programs starting revenue in Dec quarter",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/08/61529549/qualcomm-outperforms-broader-market-slump-analysts-eye-data-center-growth-ahead-of-q4",
+      "published": "2026-08-31T13:00:00Z",
+      "summary": "BofA 목표가 하향에도 데이터센터 ASIC 2건 12월 분기 매출 시작 전망은 긍정적",
+      "impact": "neutral",
+      "category": "earnings"
+    },
+    {
+      "title": "Qualcomm unveils Horizon Ultra AI PC with HUMAIN, deepening push into PCs and enterprise AI",
+      "source": "Company announcement (via Benzinga/other coverage)",
+      "url": "https://www.benzinga.com/markets/tech/26/08/61529549/qualcomm-outperforms-broader-market-slump-analysts-eye-data-center-growth-ahead-of-q4",
+      "published": "2026-08-31T16:00:00Z",
+      "summary": "HUMAIN과 손잡고 AI PC 'Horizon Ultra' 공개 — 스마트폰 넘어 PC·엔터프라이즈 AI 확장",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T15:00:00Z",
+      "summary": "미 정부, 반도체·전자기기 관세 확대 검토 — 스마트폰 완제품까지 영향권",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "AVGO", "headline": "브로드컴이 9/2 실적 발표를 앞두고 커스텀 AI 칩 수요 기대가 커지는 중", "implication_for_target": "퀄컴의 데이터센터 ASIC 전략(Dragonfly)이 브로드컴·마벨 등 이미 자리잡은 강자들과 정면 경쟁해야 하는 구도임을 재확인."},
+    {"ticker": "INTC", "headline": "인텔이 저가형 AI칩 '가우디'로 비용 민감 고객 공략 중 (2026-08-29)", "implication_for_target": "온디바이스·엣지 AI 시장에서 인텔도 가격 경쟁력을 앞세워 진입 — 퀄컴 Snapdragon의 저가 시장 방어 부담 증가."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.25,
+    "competitive_position": 0.2,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.1,
+  "summary_kr": "칩 가격 인상으로 원가 부담을 고객사에 전가하고 데이터센터·AI PC 사업까지 넓히는 등 사업 다각화가 순조롭지만, 스마트폰 시장 둔화와 관세 리스크가 상단을 누르고 있다.",
+  "key_events": ["9/1부터 칩 가격 두 자릿수 인상 시행", "데이터센터 ASIC 2건 12월 분기 매출 시작 전망(BofA)", "HUMAIN과 AI PC 'Horizon Ultra' 공개", "美 반도체 관세 확대 검토 보도"],
+  "risks": ["가격 인상이 OEM 채택률 저하로 이어질 가능성(9/22~24 Snapdragon Summit에서 확인 예정)", "스마트폰 수요 둔화 지속", "반도체 관세 확대 시 완제품(스마트폰) 수요 타격"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/QCOM%20-%20QUALCOMM%20Incorporated.md"
+}

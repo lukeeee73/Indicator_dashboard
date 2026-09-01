@@ -1,0 +1,58 @@
+{
+  "ticker": "2454.TW",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia to invest $3.5B in MediaTek convertible bonds, deepening NVLink Fusion partnership; Google also joins record $3.9B offering",
+      "source": "Bloomberg / Reuters",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-31/nvidia-to-invest-3-5-billion-in-chipmaker-mediatek",
+      "published": "2026-08-31T12:00:00Z",
+      "summary": "엔비디아가 35억 달러 투자, 구글도 사상 최대 전환사채 발행에 참여",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "MediaTek shares fall 1.51% on Aug 31 despite Nvidia investment, amid circular-financing worries",
+      "source": "Market data (via Bloomberg coverage)",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-31/nvidia-to-invest-3-5-billion-in-chipmaker-mediatek",
+      "published": "2026-08-31T13:00:00Z",
+      "summary": "투자 소식에도 순환금융 우려로 주가는 오히려 1.5% 하락",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Apple, Qualcomm and MediaTek warn smartphone market entering more expensive, more polarized phase",
+      "source": "Industry coverage (early August)",
+      "url": "https://finance.yahoo.com/quote/2454.TW/",
+      "published": "2026-08-05T00:00:00Z",
+      "summary": "스마트폰 시장이 더 비싸지고 양극화되는 국면 진입 경고",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T15:00:00Z",
+      "summary": "미 정부, 반도체·전자기기 관세 확대 검토 — 대만 반도체 업계 전반 리스크",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "QCOM", "headline": "퀄컴이 9/1부터 칩 가격을 두 자릿수 인상하며 원가 부담을 고객사에 전가 (2026-08-31)", "implication_for_target": "동일하게 원가 압박을 받는 미디어텍도 유사한 가격 인상 압박에 직면할 가능성 — 다만 아직 공식 발표는 없음."},
+    {"ticker": "005930.KS", "headline": "삼성전자가 브로드컴과 대형 파운드리·HBM 파트너십을 확대 중", "implication_for_target": "미디어텍의 파운드리 파트너(TSMC) 의존도와 비교되는 경쟁 구도 — 삼성 파운드리 생태계 확장이 장기적으로 가격 협상력에 영향을 줄 수 있다."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": 0.35,
+    "regulatory_risk": -0.25,
+    "macro_sensitivity": -0.25
+  },
+  "narrative_score": 0.04,
+  "summary_kr": "엔비디아의 35억 달러 투자로 AI 생태계 내 입지는 강화됐지만, 순환금융 우려로 정작 주가는 하락했고 스마트폰 시장 둔화·관세 리스크가 겹치며 순풍과 역풍이 팽팽하다.",
+  "key_events": ["엔비디아 $3.5B 전환사채 투자, NVLink Fusion 채택 확대", "구글도 미디어텍 사상 최대 전환사채 발행에 참여", "투자 소식에도 주가 -1.51%(순환금융 우려)", "스마트폰 시장 고비용·양극화 국면 경고"],
+  "risks": ["순환금융 논란 확산 시 밸류에이션 재평가 압력", "스마트폰 수요 둔화·양극화", "반도체 관세 확대 시 대만 반도체 업계 전반 타격"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/2454.TW%20-%20MediaTek%20Inc.md"
+}
