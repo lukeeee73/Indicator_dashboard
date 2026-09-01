@@ -1,0 +1,65 @@
+{
+  "ticker": "000660.KS",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "SK하이닉스, 목표가 330→240만원…삼성 HBM4 경쟁 심화-LS",
+      "source": "한국경제",
+      "url": "https://www.hankyung.com/article/2026083125126",
+      "published": "2026-08-31T09:00:00Z",
+      "summary": "LS증권, 삼성 HBM4 추격에 2027년 HBM마진 전망 80%→60%로 하향",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "SK Hynix Launches Indiana Facility to Boost US AI Chip Supply Chain",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-27/sk-hynix-starts-construction-of-4-billion-memory-hub-in-indiana",
+      "published": "2026-08-27T00:00:00Z",
+      "summary": "SK하이닉스, 인디애나 40억달러 HBM 패키징 공장 착공",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "SK Hynix Plans $28.6 Billion Share Buyback as AI Demand Drives Cash Flow",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-19/sk-hynix-announces-28-6-billion-share-buy-back-on-ai-boom",
+      "published": "2026-08-19T00:00:00Z",
+      "summary": "SK하이닉스, AI 호황 현금흐름 바탕 28.6조원 자사주 매입 발표",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "005930.KS",
+      "headline": "LS Securities raises Samsung target price to 450,000 won on HBM4 yield gains; Samsung reclaims Q2 DRAM share lead at 39% (Hankyung/Counterpoint, 2026-08-31/08-04)",
+      "implication_for_target": "삼성의 HBM4 수율 개선과 D램 점유율 역전(SK하이닉스 39%→26%)은 SK하이닉스의 HBM 단독 주도 구도를 흔드는 핵심 경쟁 리스크."
+    },
+    {
+      "ticker": "MU",
+      "headline": "Micron falls 2.4% as Fed's Warsh revives higher-for-longer rate fears (CNBC, 2026-08-27)",
+      "implication_for_target": "美 금리인상 우려는 메모리 3사 전반에 공통적인 매크로 리스크로, SK하이닉스에도 동일하게 적용됨."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.05,
+    "competitive_position": -0.20,
+    "regulatory_risk": 0.00,
+    "macro_sensitivity": -0.20
+  },
+  "narrative_score": -0.10,
+  "summary_kr": "삼성의 HBM4 추격으로 증권사가 SK하이닉스의 2027년 HBM 마진 전망을 크게 낮췄고, 미국發 금리인상 우려까지 겹치며 역풍이 이어지지만, 28.6조원 자사주 매입과 미국 인디애나 신규 공장 착공은 장기 체력을 뒷받침한다.",
+  "key_events": [
+    "LS증권, SK하이닉스 목표주가 27% 하향(330만→240만원) — 삼성 HBM4 추격발 마진 정상화 반영",
+    "인디애나 40억달러 HBM 패키징 공장 착공(8/27) — 美 첫 HBM 생산기지, 가동은 2029년 이후",
+    "28.6조원(200억달러대) 규모 자사주 매입 발표(8/19)"
+  ],
+  "risks": [
+    "삼성 HBM4 수율 80% 달성 및 물량 비중 확대(2분기 35%)로 SK하이닉스의 HBM 초과수익성 잠식 지속",
+    "美 Fed 매파 기조에 따른 금리인상 우려로 코스피·반도체주 전반 밸류에이션 부담",
+    "2027년 HBM 영업이익률 전망 하향(80%→60%대)이 추가로 조정될 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/000660.KS%20-%20SK%20Hynix.md"
+}

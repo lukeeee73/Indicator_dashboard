@@ -1,0 +1,58 @@
+{
+  "ticker": "CDNS",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Synopsys Q3 FY2026 revenue beats and guidance raised — validates AI-driven EDA sector demand shared with Cadence",
+      "source": "Synopsys IR / Reuters",
+      "url": "https://news.synopsys.com/2026-08-26-Synopsys-Posts-Financial-Results-for-Third-Quarter-Fiscal-Year-2026",
+      "published": "2026-08-26T20:00:00Z",
+      "summary": "동종업계 시놉시스가 42% 매출 성장 발표 — EDA 업종 전체 호황 재확인",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Stifel reiterates Buy rating on Cadence Design Systems",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/analyst-ratings/stifel-reiterates-cadence-design-stock-rating-on-strong-margins-93CH-4817414",
+      "published": "2026-08-28T14:00:00Z",
+      "summary": "Stifel, 케이던스에 대해 매수 의견 재확인",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Cadence Design Systems (CDNS) receives consensus 'Moderate Buy' recommendation from brokerages",
+      "source": "Daily Political (via MarketBeat data)",
+      "url": "https://www.dailypolitical.com/2026/08/31/cadence-design-systems-inc-nasdaqcdns-receives-consensus-recommendation-of-moderate-buy-from-brokerages.html",
+      "published": "2026-08-31T12:00:00Z",
+      "summary": "증권사 컨센서스 투자의견 '완만한 매수' 재확인",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T15:00:00Z",
+      "summary": "미 정부, 반도체·전자기기 관세 확대 검토 — 소프트웨어 기업이라 직접 영향은 제한적",
+      "impact": "neutral",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "SNPS", "headline": "시놉시스 3분기 매출 +42%, 연간 가이던스 상향으로 주가 +11.2% (2026-08-26)", "implication_for_target": "EDA 시장 양강 구도의 다른 축인 케이던스에도 같은 AI 칩 설계 수요 호황이 적용될 가능성이 높다는 참고지표."},
+    {"ticker": "ARM", "headline": "ARM 데이터센터 로열티 매출 2배 증가 등 record Q1 실적(7/29)", "implication_for_target": "설계 IP 생태계 전반의 AI 수요 강세 — 케이던스의 검증·시뮬레이션 도구 수요에도 긍정적."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.3,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": 0.15,
+  "summary_kr": "케이던스 고유의 새 실적 발표는 없었지만, 같은 EDA 시장의 시놉시스가 강한 실적을 내며 업종 전체 AI 설계 수요 호황을 재확인시켰고 애널리스트들의 매수 의견도 이어지고 있다.",
+  "key_events": ["시놉시스 3분기 실적 서프라이즈로 EDA 업종 전체 신뢰도 상승", "Stifel, 케이던스 매수 의견 재확인", "증권사 컨센서스 '완만한 매수' 유지"],
+  "risks": ["고밸류에이션 부담(EDA 업종 전반)", "반도체 관세 확대 시 고객사(반도체 제조사) 설비투자 위축 간접 영향"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/CDNS%20-%20Cadence%20Design%20Systems.md"
+}

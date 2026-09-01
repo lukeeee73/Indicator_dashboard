@@ -1,0 +1,54 @@
+{
+  "ticker": "TOELY",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "Asian chip firms lifted by Nvidia forecast but broader markets struggle",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/asian-chip-firms-lifted-nvidia-024234685.html",
+      "published": "2026-08-28T02:00:00Z",
+      "summary": "엔비디아 호실적에도 도쿄일렉트론은 보합, 어드반테스트·디스코는 오히려 하락",
+      "impact": "neutral",
+      "category": "macro"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T12:00:00Z",
+      "summary": "트럼프 행정부, 반도체·기술제품 대상 신규 관세 검토",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "6857.T",
+      "headline": "어드반테스트, 8/28 엔비디아 호실적에도 -3.1% 하락",
+      "implication_for_target": "도쿄일렉트론은 같은 날 주가가 보합을 지켜, 일본 장비주 내에서도 상대적으로 방어적인 흐름을 보였음"
+    },
+    {
+      "ticker": "AMAT",
+      "headline": "AMAT은 8/28 CFO 매도 여파로 -4.3%, LRCX -3.84%",
+      "implication_for_target": "미국 장비 3사가 관세 검토 우려로 흔들리는 동안 TOELY는 상대적으로 안정적이었으나, TOELY는 과거 기준 中 매출 비중(약 44%)이 미국 3사보다 높아 관세·수출규제가 실제 시행될 경우 노출도가 더 클 수 있음"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.25,
+    "competitive_position": 0.15,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": 0.06,
+  "summary_kr": "엔비디아 호실적에도 도쿄일렉트론 주가는 보합에 그쳐 일본 장비주 내에서는 상대적으로 견조했지만, 미국의 신규 반도체 관세 검토는 中 매출 비중이 큰 도쿄일렉트론에 특히 부담이 될 수 있다.",
+  "key_events": [
+    "엔비디아 호실적 발표(8/27)에도 TOELY 주가 보합, 동종업계 대비 상대적 방어",
+    "美 신규 반도체 관세 검토 보도(8/27)"
+  ],
+  "risks": [
+    "신규 관세 시행 시 中 매출 비중(과거 기준 약 44%로 watchlist 내 최고 수준)이 큰 부담",
+    "10/1 시행 예정 5대1 액면분할 관련 유동성 변화 (배경 이벤트, 아직 촉매력 확인 안됨)"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/TOELY%20-%20Tokyo%20Electron%20Limited.md"
+}

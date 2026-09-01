@@ -1,0 +1,58 @@
+{
+  "ticker": "AMD",
+  "date": "2026-09-01",
+  "as_of_utc": "2026-09-01T21:00:00Z",
+  "news": [
+    {
+      "title": "AMD acquires Taalas, AI inference chip startup that etches models into silicon",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/06/amd-buys-taalas-startup-that-hardwires-ai-models-into-its-silicon.html",
+      "published": "2026-08-06T13:00:00Z",
+      "summary": "AI 모델을 아예 반도체에 새겨넣는 추론 전문 스타트업 인수",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "AMD, Cisco and HUMAIN expand Saudi Arabia's AI infrastructure as AMD Instinct systems go live",
+      "source": "AMD (company IR)",
+      "url": "https://ir.amd.com/news-events/press-releases/detail/1298/amd-cisco-and-humain-expand-saudi-arabias-ai-infrastructure-as-amd-instinct-systems-go-live",
+      "published": "2026-08-31T12:00:00Z",
+      "summary": "사우디아라비아서 AMD AI 인프라 가동 시작, 2030년까지 1GW 목표",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "AMD stock falls ~2.3-2.6% on August 28 amid rate-driven sector pullback despite record Q2 earnings",
+      "source": "ad-hoc-news.de / Eastern Herald",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/amd-stock-steadies-after-sector-selloff-as-q2-2026-ai-revenue-surge/70026862",
+      "published": "2026-08-28T20:00:00Z",
+      "summary": "실적은 견조하나 금리 부담發 반도체 업종 조정에 동반 하락",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "U.S. considers fresh round of tariffs on semiconductors, report says",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/27/trump-semiconductor-tech-tariffs.html",
+      "published": "2026-08-27T15:00:00Z",
+      "summary": "미 정부, 반도체·전자기기 관세 확대 검토 — 업종 전체 리스크",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "NVDA", "headline": "엔비디아 2분기 매출 $96.2B(+106%)로 실적 서프라이즈, 3분기 가이던스도 컨센서스 상회 (2026-08-26)", "implication_for_target": "AI 반도체 전체 수요가 여전히 강하다는 신호 — AMD의 MI 시리즈 수요 전망에도 긍정적 참고지표."},
+    {"ticker": "INTC", "headline": "인텔 서버 CPU 시장점유율이 AMD EPYC에 밀려 지속 하락, 파운드리 부문도 2분기 28억 달러 영업손실 (2026-08-26)", "implication_for_target": "AMD가 서버 CPU 시장에서 인텔 대비 점유율을 계속 넓혀가고 있다는 방증 — EPYC 경쟁력 우위 지속."}
+  ],
+  "scores": {
+    "earnings_outlook": 0.4,
+    "competitive_position": 0.3,
+    "regulatory_risk": -0.25,
+    "macro_sensitivity": -0.3
+  },
+  "narrative_score": 0.14,
+  "summary_kr": "AI 추론 전문 스타트업 인수와 사우디 AI 인프라 가동 등 사업 확장은 순조롭지만, 금리 부담發 반도체 업종 조정과 관세 리스크가 겹치며 순풍이 약화됐다.",
+  "key_events": ["Taalas 인수로 AI 추론 전용 실리콘 기술 확보", "사우디 HUMAIN·Cisco와 AMD Instinct MI355X 기반 AI 인프라 가동 개시", "8/28 반도체 업종 조정에 AMD 주가 동반 하락", "美 반도체 관세 확대 검토 보도"],
+  "risks": ["금리 상승 국면에서 고밸류에이션 성장주로서 변동성 확대", "반도체 관세 확대 시 공급망·원가 부담", "OpenAI 보유 워런트(최대 10%)發 장기 희석 우려 지속"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMD%20-%20Advanced%20Micro%20Devices.md"
+}

@@ -10326,30 +10326,32 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-25",
-      "narrative_score": -0.13,
-      "summary_kr": "브로드컴이 앤트로픽 AI 칩 확장을 위해 최대 $1,000억 규모 부채 조달을 추진 중이라는 소식과, 최대 고객 구글이 경쟁사 마벨과의 협력을 넓히고 있다는 우려가 겹치며 주가가 조정받았다. 다만 과거 애플 이탈설 때도 이후 매출이 2배로 늘었던 전례가 있어 시장 반응이 과도할 수 있다는 반론도 있다.",
+      "as_of": "2026-09-01",
+      "narrative_score": 0.06,
+      "summary_kr": "9/2 실적 발표를 앞두고 컨센서스는 큰 폭 성장을 예상하며 VMware Explore 행사로 AI 제품 모멘텀도 이어지지만, 마벨의 구글 대형 수주發 경쟁 위협과 VMware 보안 취약점·관세 리스크가 순풍을 상쇄하고 있다.",
       "key_events": [
-        "AI 칩 금융 위해 최대 $1,000억 부채 조달 추진",
-        "구글-마벨 협력 확대發 고객 집중도 리스크 재부각",
-        "반도체 업종 동반 조정에 AVGO 하락"
+        "9/2 Q3 실적 발표 예정, 컨센서스 매출 $29.44B(+84.5%)·EPS $2.55",
+        "VMware Explore 2026 개막, 사설 AI 클라우드 제품 공개",
+        "마벨-구글 $120B 커스텀칩 딜에 AVGO -5% 급락",
+        "美 반도체 관세 확대 검토 보도"
       ],
       "risks": [
-        "부채 조달 규모 확대에 따른 재무 레버리지·신용 부담",
-        "구글의 공급사 다변화가 실제 수주 감소로 이어질 가능성",
-        "9월초 Q3 실적에서 구글向 매출 비중 축소 확인 시 밸류에이션 재평가"
+        "구글 TPU 공급망에서 마벨과의 경쟁 심화",
+        "VMware vCenter 보안 취약점 악용 사고 여진",
+        "반도체 관세 확대 시 원가·공급망 부담",
+        "9/2 실적이 컨센서스에 못 미칠 경우 밸류에이션 조정 위험"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "MRVL",
-          "headline": "Marvell expands custom chip deal with Google, tied to warrant for up to $120B of future purchases (2026-08-19)",
-          "implication_for_target": "브로드컴의 최대 고객인 구글이 두 번째 커스텀 칩 공급사를 키우면서 브로드컴의 TPU 독점 공급 지위가 희석될 위험"
+          "headline": "마벨이 구글로부터 최대 1,220억 달러 규모 커스텀칩 워런트를 받으며 구글 TPU 생태계 내 입지를 확대 (2026-08-19)",
+          "implication_for_target": "브로드컴의 최대 AI 고객 중 하나인 구글의 커스텀칩 물량이 마벨과도 분산되고 있다는 신호 — 독점적 지위에 대한 위협."
         },
         {
           "ticker": "NVDA",
-          "headline": "Nvidia stock falls 7th straight day, AI server prices to rise 15%+ on memory costs (2026-08-24)",
-          "implication_for_target": "표준 GPU 진영의 실적 불안과 매크로 위험회피 심리가 맞춤형 칩 진영인 브로드컴에도 동반 하락 압력으로 작용"
+          "headline": "엔비디아 2분기 매출 962억 달러(+106%), 3분기 가이던스도 컨센서스 상회 (2026-08-26)",
+          "implication_for_target": "AI 반도체 전체 수요가 강하다는 신호는 커스텀 ASIC 진영인 브로드컴에도 우호적 참고지표."
         }
       ],
       "history": [
@@ -10392,6 +10394,10 @@
         {
           "date": "2026-08-25",
           "narrative_score": -0.13
+        },
+        {
+          "date": "2026-09-01",
+          "narrative_score": 0.06
         }
       ]
     }
