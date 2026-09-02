@@ -10122,24 +10122,31 @@
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-08-26",
-      "narrative_score": -0.14,
-      "summary_kr": "리콜, 3연속 투자의견 하향, 관세 확대 충격까지 악재가 겹친 한 주였다. 8월 들어 세 가지 부정적 이슈가 동시에 쌓이며 5개 완성차 중 가장 취약한 흐름을 보이고 있다.",
+      "as_of": "2026-09-02",
+      "narrative_score": -0.21,
+      "summary_kr": "스텔란티스는 2분기 흑자 전환에는 성공했지만 영업이익률이 1.8%에 불과할 정도로 회복이 더디고, UBS의 투자의견 하향과 캐나다발 50% 관세 위협, 반복되는 대규모 리콜까지 겹치며 5개 종목 중 가장 부정적인 뉴스 흐름을 보이고 있다.",
       "key_events": [
-        "95만5천대 리콜(8/17)",
-        "UBS·파이퍼샌들러·번스타인 3연속 하향",
-        "관세 확대 발표에 -4.7%(완성차 중 최대, 8/24)"
+        "UBS, 투자의견 매수→중립 하향(목표가 9.50→5.80유로, 8/24)",
+        "美, 캐나다산 자동차에 50% 관세 예고로 주가 4% 급락(8/24)",
+        "후방카메라 결함으로 84만8511대 리콜, 2026년 3번째 대형 리콜(8/17)",
+        "캐나다 유니포와 협상 개시, 9/11 타결 시한(8/28)"
       ],
       "risks": [
-        "美 턴어라운드 지연이 구조적 문제로 굳어질 가능성",
-        "밸류에이션 추가 하향 조정 여지"
+        "3사 중 캐나다·수입 비중이 가장 높아 관세에 가장 취약",
+        "캐나다 유니포 노조와의 협상 결렬 시 브램턴 공장 등 생산 차질 가능",
+        "반복된 품질 이슈로 브랜드 신뢰도 저하"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
+          "ticker": "F",
+          "headline": "Ford Shares Dip 0.5% After Adjusted Profit of $2.5 Billion Overshadows $1.3 Billion Loss",
+          "implication_for_target": "Ford's steadier profitability contrasts with Stellantis's thin 1.8% margin, highlighting Stellantis's turnaround gap."
+        },
+        {
           "ticker": "GM",
-          "headline": "GM -1.1%·포드 -3.2%(동일 관세 뉴스)",
-          "implication_for_target": "동일한 관세 뉴스에도 GM·포드보다 스텔란티스 낙폭이 가장 커, 시장이 스텔란티스를 가장 취약하다고 보는 신호"
+          "headline": "General Motors (GM) Lifts 2026 Outlook (Q2 EPS beat, guidance raised twice)",
+          "implication_for_target": "GM's guidance raise widens the performance gap versus Stellantis's fragile North America recovery."
         }
       ],
       "history": [
@@ -10178,6 +10185,10 @@
         {
           "date": "2026-08-26",
           "narrative_score": -0.14
+        },
+        {
+          "date": "2026-09-02",
+          "narrative_score": -0.21
         }
       ]
     }
