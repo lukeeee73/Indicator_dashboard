@@ -1,0 +1,56 @@
+{
+  "ticker": "SO",
+  "date": "2026-09-04",
+  "as_of_utc": "2026-09-04T12:00:00Z",
+  "news": [
+    {
+      "title": "Georgia Power wins approval for 3.2-GW OpenAI power deal",
+      "source": "OilPrice.com",
+      "url": "https://oilprice.com/Company-News/Georgia-Power-Wins-Approval-for-32-GW-OpenAI-Power-Deal.html",
+      "published": "2026-08-27",
+      "summary": "조지아 공공요금위원회가 조지아파워-오픈AI 간 3.2GW 데이터센터 전력공급계약을 승인했다.",
+      "impact": "+",
+      "category": "regulation"
+    },
+    {
+      "title": "Southern Company stock holds steady near recent highs as investors watch dividend and grid investment",
+      "source": "ad-hoc-news.de",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/southern-company-stock-holds-steady-near-recent-highs-as-investors-watch/70043006",
+      "published": "2026-09-02",
+      "summary": "서던컴퍼니 주가가 배당·그리드 투자 기대 속에 연중 고점 부근에서 견조하게 유지되고 있다.",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "DUK",
+      "headline": "듀크에너지, 노스캐롤라이나 요금 인상안 18%→11.6% 축소",
+      "implication_for_target": "데이터센터 요금 논란이 전국적인 가운데, 서던컴퍼니는 오픈AI 계약처럼 데이터센터가 자기 비용을 부담하는 구조를 먼저 정착시켜 상대적으로 유리."
+    },
+    {
+      "ticker": "NEE",
+      "headline": "넥스테라·도미니언 665억달러 합병, 주주 가결(9/3)",
+      "implication_for_target": "세계 최대 규제 유틸리티가 등장하면서 서던컴퍼니가 상대할 하이퍼스케일러 계약 경쟁자의 몸집이 커짐."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.35,
+    "competitive_position": 0.25,
+    "regulatory_risk": 0.15,
+    "macro_sensitivity": 0.25
+  },
+  "narrative_score": 0.27,
+  "summary_kr": "조지아파워가 오픈AI向 3.2GW 전력공급계약에 대해 규제 승인을 받아내며 서던컴퍼니의 데이터센터 파이프라인(11GW+)이 실제 매출로 이어질 근거를 확보했다. 주가도 연중 고점 부근에서 견조하다.",
+  "key_events": [
+    "조지아파워-오픈AI 3.2GW 공급계약 규제 승인(8/27)",
+    "데이터센터 계약 파이프라인 11GW+",
+    "배당 아리스토크랫 지위 유지"
+  ],
+  "risks": [
+    "듀크·도미니언 등 타주 요금 논란이 조지아로 번질 가능성",
+    "전환사채 발행에 따른 희석 우려",
+    "보그틀 원전 외 추가 발전 투자 필요성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/SO%20-%20The%20Southern%20Company.md"
+}

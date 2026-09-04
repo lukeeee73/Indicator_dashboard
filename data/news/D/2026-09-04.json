@@ -1,0 +1,65 @@
+{
+  "ticker": "D",
+  "date": "2026-09-04",
+  "as_of_utc": "2026-09-04T12:00:00Z",
+  "news": [
+    {
+      "title": "Dominion shareholders back merger with NextEra Energy",
+      "source": "WHSV",
+      "url": "https://www.whsv.com/2026/09/03/dominion-shareholders-back-merger-with-nextera-energy/",
+      "published": "2026-09-03",
+      "summary": "도미니언·넥스테라 양사 주주가 665억달러 규모 합병안을 가결했다.",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "Energy bills are up in Virginia. Now some are pushing back as Dominion Energy seeks another rate increase",
+      "source": "WTVR",
+      "url": "https://www.wtvr.com/news/local-news/dominion-energy-seeks-rate-increase-sept-3-2026",
+      "published": "2026-09-03",
+      "summary": "도미니언이 버지니아 SCC에 월 3.46달러 추가 요금 인상을 신청했다. 1년새 청구서가 이미 20달러 넘게 올랐다.",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Dominion ratepayers on the hook again as give turns into take",
+      "source": "WHRO / Virginia Center for Investigative Journalism",
+      "url": "https://www.whro.org/virginia-center-for-investigative-journalism/2026-09-02/dominion-ratepayers-on-the-hook-again-as-give-turns-into-take",
+      "published": "2026-09-02",
+      "summary": "도미니언의 연료비 예측 오차가 9억2200만달러에 달해, SCC가 9월 말까지 회수 방식을 결정해야 한다.",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "SO",
+      "headline": "조지아파워, 오픈AI 3.2GW 계약을 '데이터센터가 비용 부담' 구조로 규제 승인 획득",
+      "implication_for_target": "도미니언도 비슷한 대형부하 요금제를 확대해야 한다는 압박이 커질 수 있음."
+    },
+    {
+      "ticker": "DUK",
+      "headline": "듀크에너지, 노스캐롤라이나 요금 인상안 18%→11.6% 축소",
+      "implication_for_target": "버지니아 SCC도 도미니언에 비슷한 폭의 축소를 요구할 가능성."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.3,
+    "regulatory_risk": -0.35,
+    "macro_sensitivity": 0.3
+  },
+  "narrative_score": 0.17,
+  "summary_kr": "도미니언 에너지는 넥스테라와의 665억달러 합병안을 주주 승인받았지만, 동시에 버지니아 내 요금 인상 요청과 9억2200만달러 규모 연료비 예측 오차 논란이 겹치며 규제 리스크가 부각되는 한 주였다.",
+  "key_events": [
+    "넥스테라 합병 주주총회 가결(9/3)",
+    "버지니아 SCC에 월 3.46달러 추가 요금 인상 신청",
+    "연료비 예측 오차 9억2200만달러 확인, SCC 결정 9/29 시한"
+  ],
+  "risks": [
+    "연료비 회수 방식(1년 vs 7년)에 따라 월 최대 21달러까지 요금 충격 가능",
+    "데이터센터 전력수요發 요금 인상 책임 논쟁 지속",
+    "합병 규제승인 지연 리스크"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/D%20-%20Dominion%20Energy.md"
+}
