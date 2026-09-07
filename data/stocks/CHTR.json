@@ -4,18 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-08-31",
-      "value": 257.21
-    },
-    {
-      "date": "2016-09-01",
-      "value": 268.82
-    },
-    {
-      "date": "2016-09-02",
-      "value": 271.79
-    },
-    {
       "date": "2016-09-06",
       "value": 274.67
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-08-31",
-      "value": 151.55
+      "value": 152.44
+    },
+    {
+      "date": "2026-09-01",
+      "value": 146.19
+    },
+    {
+      "date": "2026-09-02",
+      "value": 158.97
+    },
+    {
+      "date": "2026-09-03",
+      "value": 151.38
+    },
+    {
+      "date": "2026-09-04",
+      "value": 151.99
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 20425529344.0,
-      "pe_ratio": 3.942508,
-      "forward_pe": 3.4362967,
-      "eps_ttm": 38.44,
+      "market_cap": 20484831232.0,
+      "pe_ratio": 3.9560127,
+      "forward_pe": 3.4462736,
+      "eps_ttm": 38.42,
       "dividend_yield": null,
       "profit_margin": 0.09052,
       "operating_margin": 0.23503,
-      "price_to_book": 1.0663375,
+      "price_to_book": 1.0694333,
       "return_on_equity": 0.27201998
     },
     "quarterly": [
@@ -10114,12 +10118,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-31",
-    "current_price": 151.55,
+    "as_of": "2026-09-04",
+    "current_price": 151.99,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 768.8,
+        "fair_value": 768.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10129,13 +10133,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 350.6,
+        "fair_value": 350.51,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 679.44,
-    "valuation_gap": -0.777,
+    "fair_value": 679.23,
+    "valuation_gap": -0.7762,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10271,10 +10275,10 @@
         "gap": -0.8005
       },
       {
-        "date": "2026-08-31",
-        "price": 151.55,
+        "date": "2026-09-04",
+        "price": 151.99,
         "fair_value": 770.2,
-        "gap": -0.8032
+        "gap": -0.8027
       }
     ],
     "qualitative": {

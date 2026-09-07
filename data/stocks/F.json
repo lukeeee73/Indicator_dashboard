@@ -4,18 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-08-31",
-      "value": 7.43
-    },
-    {
-      "date": "2016-09-01",
-      "value": 7.34
-    },
-    {
-      "date": "2016-09-02",
-      "value": 7.38
-    },
-    {
       "date": "2016-09-06",
       "value": 7.48
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-08-31",
-      "value": 13.95
+      "value": 13.94
+    },
+    {
+      "date": "2026-09-01",
+      "value": 13.84
+    },
+    {
+      "date": "2026-09-02",
+      "value": 14.14
+    },
+    {
+      "date": "2026-09-03",
+      "value": 14.41
+    },
+    {
+      "date": "2026-09-04",
+      "value": 14.62
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 55642513408.0,
+      "market_cap": 58298650624.0,
       "pe_ratio": null,
-      "forward_pe": 7.293106,
+      "forward_pe": 7.63303,
       "eps_ttm": -1.87,
-      "dividend_yield": 4.32,
+      "dividend_yield": 4.1,
       "profit_margin": -0.03935,
       "operating_margin": 0.018819999,
-      "price_to_book": 1.5577027,
+      "price_to_book": 1.6320606,
       "return_on_equity": -0.18252
     },
     "quarterly": [
@@ -10114,18 +10118,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-31",
-    "current_price": 13.95,
+    "as_of": "2026-09-04",
+    "current_price": 14.62,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 38.26,
+        "fair_value": 38.31,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 38.26,
-    "valuation_gap": -0.6354,
+    "fair_value": 38.31,
+    "valuation_gap": -0.6184,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10261,10 +10265,10 @@
         "gap": -0.3762
       },
       {
-        "date": "2026-08-31",
-        "price": 13.95,
+        "date": "2026-09-04",
+        "price": 14.62,
         "fair_value": 22.25,
-        "gap": -0.373
+        "gap": -0.3429
       }
     ],
     "qualitative": {

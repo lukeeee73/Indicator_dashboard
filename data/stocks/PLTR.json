@@ -5945,19 +5945,35 @@
     },
     {
       "date": "2026-08-31",
-      "value": 186.59
+      "value": 186.38
+    },
+    {
+      "date": "2026-09-01",
+      "value": 179.92
+    },
+    {
+      "date": "2026-09-02",
+      "value": 169.46
+    },
+    {
+      "date": "2026-09-03",
+      "value": 182.53
+    },
+    {
+      "date": "2026-09-04",
+      "value": 174.33
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 448374669312.0,
-      "pe_ratio": 159.47437,
-      "forward_pe": 80.62474,
+      "market_cap": 418925182976.0,
+      "pe_ratio": 149.0,
+      "forward_pe": 74.94938,
       "eps_ttm": 1.17,
       "dividend_yield": null,
       "profit_margin": 0.49005002,
       "operating_margin": 0.47120997,
-      "price_to_book": 45.866524,
+      "price_to_book": 42.853985,
       "return_on_equity": 0.38097
     },
     "quarterly": [
@@ -5966,7 +5982,7 @@
         "revenue": 1003697000.0,
         "operating_income": 269317000.0,
         "net_income": 326727000.0,
-        "eps": 0.13
+        "eps": 0.13019
       },
       {
         "date": "2025-09-30",
@@ -5999,8 +6015,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-31",
-    "current_price": 186.59,
+    "as_of": "2026-09-04",
+    "current_price": 174.33,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -6009,7 +6025,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 50.91,
+        "fair_value": 51.17,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -6019,87 +6035,87 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 33.72,
-    "valuation_gap": 4.533,
+    "fair_value": 33.8,
+    "valuation_gap": 4.1575,
     "signal": "expensive",
     "gap_series_weekly": [
       {
         "date": "2026-04-02",
         "price": 148.46,
         "fair_value": 24.93,
-        "gap": 4.9557
+        "gap": 4.9544
       },
       {
         "date": "2026-04-10",
         "price": 128.06,
         "fair_value": 24.93,
-        "gap": 4.1373
+        "gap": 4.1362
       },
       {
         "date": "2026-04-17",
         "price": 146.39,
         "fair_value": 24.93,
-        "gap": 4.8727
+        "gap": 4.8714
       },
       {
         "date": "2026-04-24",
         "price": 143.09,
         "fair_value": 24.93,
-        "gap": 4.7403
+        "gap": 4.7391
       },
       {
         "date": "2026-05-01",
         "price": 144.07,
         "fair_value": 24.93,
-        "gap": 4.7796
+        "gap": 4.7784
       },
       {
         "date": "2026-05-08",
         "price": 137.8,
         "fair_value": 24.93,
-        "gap": 4.5281
+        "gap": 4.5269
       },
       {
         "date": "2026-05-15",
         "price": 133.99,
         "fair_value": 24.93,
-        "gap": 4.3752
+        "gap": 4.3741
       },
       {
         "date": "2026-05-22",
         "price": 136.88,
         "fair_value": 24.93,
-        "gap": 4.4912
+        "gap": 4.49
       },
       {
         "date": "2026-05-29",
         "price": 156.54,
         "fair_value": 24.93,
-        "gap": 5.2798
+        "gap": 5.2785
       },
       {
         "date": "2026-06-05",
         "price": 135.53,
         "fair_value": 24.93,
-        "gap": 4.437
+        "gap": 4.4358
       },
       {
         "date": "2026-06-12",
         "price": 127.99,
         "fair_value": 24.93,
-        "gap": 4.1345
+        "gap": 4.1334
       },
       {
         "date": "2026-06-18",
         "price": 128.47,
         "fair_value": 24.93,
-        "gap": 4.1538
+        "gap": 4.1527
       },
       {
         "date": "2026-06-26",
         "price": 112.93,
         "fair_value": 24.93,
-        "gap": 3.5304
+        "gap": 3.5294
       },
       {
         "date": "2026-07-02",
@@ -6156,10 +6172,10 @@
         "gap": 4.6852
       },
       {
-        "date": "2026-08-31",
-        "price": 186.59,
+        "date": "2026-09-04",
+        "price": 174.33,
         "fair_value": 32.77,
-        "gap": 4.6944
+        "gap": 4.3202
       }
     ],
     "qualitative": {
@@ -6187,10 +6203,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-08",
-          "narrative_score": 0.46
-        },
         {
           "date": "2026-06-15",
           "narrative_score": 0.2

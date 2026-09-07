@@ -4,26 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-08-31",
-      "value": 21455.96
-    },
-    {
-      "date": "2016-09-01",
-      "value": 21960.35
-    },
-    {
-      "date": "2016-09-02",
-      "value": 22037.95
-    },
-    {
-      "date": "2016-09-05",
-      "value": 22852.73
-    },
-    {
-      "date": "2016-09-06",
-      "value": 23085.53
-    },
-    {
       "date": "2016-09-07",
       "value": 23124.33
     },
@@ -9782,13 +9762,37 @@
     {
       "date": "2026-08-28",
       "value": 88200.0
+    },
+    {
+      "date": "2026-08-31",
+      "value": 82500.0
+    },
+    {
+      "date": "2026-09-01",
+      "value": 81400.0
+    },
+    {
+      "date": "2026-09-02",
+      "value": 76600.0
+    },
+    {
+      "date": "2026-09-03",
+      "value": 79200.0
+    },
+    {
+      "date": "2026-09-04",
+      "value": 79200.0
+    },
+    {
+      "date": "2026-09-07",
+      "value": 87900.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 52728457854976.0,
+      "market_cap": 56179774455808.0,
       "pe_ratio": null,
-      "forward_pe": 78.52989,
+      "forward_pe": 86.946144,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.01021,
@@ -9798,17 +9802,10 @@
     },
     "quarterly": [
       {
-        "date": "2024-12-31",
+        "date": "2025-03-31",
         "revenue": null,
         "operating_income": null,
         "net_income": null,
-        "eps": null
-      },
-      {
-        "date": "2025-03-31",
-        "revenue": 3748574000000.0,
-        "operating_income": 142475000000.0,
-        "net_income": -68860000000.0,
         "eps": -108.0
       },
       {
@@ -9838,22 +9835,29 @@
         "operating_income": 233514000000.0,
         "net_income": 758000000.0,
         "eps": 1.0
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": 4724808000000.0,
+        "operating_income": 314260000000.0,
+        "net_income": 157619000000.0,
+        "eps": 247.0
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-08-28",
-    "current_price": 88200.0,
+    "as_of": "2026-09-07",
+    "current_price": 87900.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 19093.37,
+        "fair_value": 17186.5,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 19093.37,
-    "valuation_gap": 3.6194,
+    "fair_value": 17186.5,
+    "valuation_gap": 4.1145,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -9937,56 +9941,68 @@
       {
         "date": "2026-07-03",
         "price": 86200.0,
-        "fair_value": 380.0,
-        "gap": 225.8421
+        "fair_value": 7480.0,
+        "gap": 10.5241
       },
       {
         "date": "2026-07-10",
         "price": 78100.0,
-        "fair_value": 380.0,
-        "gap": 204.5263
+        "fair_value": 7480.0,
+        "gap": 9.4412
       },
       {
         "date": "2026-07-16",
         "price": 69700.0,
-        "fair_value": 380.0,
-        "gap": 182.4211
+        "fair_value": 7480.0,
+        "gap": 8.3182
       },
       {
         "date": "2026-07-24",
         "price": 72100.0,
-        "fair_value": 380.0,
-        "gap": 188.7368
+        "fair_value": 7480.0,
+        "gap": 8.639
       },
       {
         "date": "2026-07-31",
         "price": 67100.0,
-        "fair_value": 380.0,
-        "gap": 175.5789
+        "fair_value": 7480.0,
+        "gap": 7.9706
       },
       {
         "date": "2026-08-07",
         "price": 77100.0,
-        "fair_value": 380.0,
-        "gap": 201.8947
+        "fair_value": 7480.0,
+        "gap": 9.3075
       },
       {
         "date": "2026-08-14",
         "price": 82600.0,
-        "fair_value": 380.0,
-        "gap": 216.3684
+        "fair_value": 7480.0,
+        "gap": 10.0428
       },
       {
         "date": "2026-08-21",
         "price": 73300.0,
-        "fair_value": 380.0,
-        "gap": 191.8947
+        "fair_value": 7480.0,
+        "gap": 8.7995
       },
       {
         "date": "2026-08-28",
         "price": 88200.0,
-        "fair_value": 380.0,
-        "gap": 231.1053
+        "fair_value": 7480.0,
+        "gap": 10.7914
+      },
+      {
+        "date": "2026-09-04",
+        "price": 79200.0,
+        "fair_value": 7480.0,
+        "gap": 9.5882
+      },
+      {
+        "date": "2026-09-07",
+        "price": 87900.0,
+        "fair_value": 7480.0,
+        "gap": 10.7513
       }
     ],
     "qualitative": {

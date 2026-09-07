@@ -8009,20 +8009,36 @@
     },
     {
       "date": "2026-08-31",
-      "value": 4.34
+      "value": 4.23
+    },
+    {
+      "date": "2026-09-01",
+      "value": 4.06
+    },
+    {
+      "date": "2026-09-02",
+      "value": 3.86
+    },
+    {
+      "date": "2026-09-03",
+      "value": 3.86
+    },
+    {
+      "date": "2026-09-04",
+      "value": 3.8
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 10874595328.0,
+      "market_cap": 9521534976.0,
       "pe_ratio": null,
-      "forward_pe": 24.848068,
-      "eps_ttm": -0.56,
+      "forward_pe": 29.20787,
+      "eps_ttm": -0.26,
       "dividend_yield": null,
-      "profit_margin": -0.09086,
-      "operating_margin": -0.01209,
-      "price_to_book": 16.728249,
-      "return_on_equity": -0.83959
+      "profit_margin": -0.04168,
+      "operating_margin": -0.0108,
+      "price_to_book": 14.655942,
+      "return_on_equity": -0.45318002
     },
     "quarterly": [
       {
@@ -8034,10 +8050,10 @@
       },
       {
         "date": "2025-03-31",
-        "revenue": 12034729000.0,
-        "operating_income": -6418128000.0,
-        "net_income": -6891061000.0,
-        "eps": -3.29
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": null
       },
       {
         "date": "2025-06-30",
@@ -8066,22 +8082,29 @@
         "operating_income": -308811000.0,
         "net_income": -496008000.0,
         "eps": -0.2
+      },
+      {
+        "date": "2026-06-30",
+        "revenue": 32136861000.0,
+        "operating_income": -347219000.0,
+        "net_income": -721591000.0,
+        "eps": -0.29
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-08-31",
-    "current_price": 4.34,
+    "as_of": "2026-09-04",
+    "current_price": 3.8,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 3.49,
+        "fair_value": 2.6,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 3.49,
-    "valuation_gap": 0.2436,
+    "fair_value": 2.6,
+    "valuation_gap": 0.4615,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

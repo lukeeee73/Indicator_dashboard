@@ -4,18 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-08-31",
-      "value": 14.13
-    },
-    {
-      "date": "2016-09-01",
-      "value": 13.38
-    },
-    {
-      "date": "2016-09-02",
-      "value": 13.19
-    },
-    {
       "date": "2016-09-06",
       "value": 13.52
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-08-31",
-      "value": 364.79
+      "value": 367.95
+    },
+    {
+      "date": "2026-09-01",
+      "value": 356.09
+    },
+    {
+      "date": "2026-09-02",
+      "value": 357.01
+    },
+    {
+      "date": "2026-09-03",
+      "value": 376.37
+    },
+    {
+      "date": "2026-09-04",
+      "value": 354.08
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1440735690752.0,
-      "pe_ratio": 337.7639,
-      "forward_pe": 168.99304,
-      "eps_ttm": 1.08,
+      "market_cap": 1398455795712.0,
+      "pe_ratio": 321.8909,
+      "forward_pe": 164.03375,
+      "eps_ttm": 1.1,
       "dividend_yield": null,
       "profit_margin": 0.03671,
       "operating_margin": 0.014099999,
-      "price_to_book": 16.584906,
+      "price_to_book": 16.098204,
       "return_on_equity": 0.046669997
     },
     "quarterly": [
@@ -10121,12 +10125,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-08-31",
-    "current_price": 364.79,
+    "as_of": "2026-09-04",
+    "current_price": 354.08,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 27.0,
+        "fair_value": 27.5,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
@@ -10136,13 +10140,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
       "graham_number": {
-        "fair_value": 23.12,
+        "fair_value": 23.33,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 31.07,
-    "valuation_gap": 10.739,
+    "fair_value": 31.37,
+    "valuation_gap": 10.2883,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10278,10 +10282,10 @@
         "gap": 11.9167
       },
       {
-        "date": "2026-08-31",
-        "price": 364.79,
+        "date": "2026-09-04",
+        "price": 354.08,
         "fair_value": 27.0,
-        "gap": 12.5107
+        "gap": 12.1141
       }
     ],
     "qualitative": {
