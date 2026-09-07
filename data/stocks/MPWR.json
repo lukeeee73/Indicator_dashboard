@@ -10271,13 +10271,28 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-08-31",
-      "narrative_score": 0.0,
-      "summary_kr": "최근 24~48시간 내 MPWR에 대한 검증 가능한 의미 있는 뉴스를 찾지 못함.",
-      "key_events": [],
-      "risks": [],
-      "news_count": 0,
-      "competitor_context": [],
+      "as_of": "2026-09-07",
+      "narrative_score": 0.44,
+      "summary_kr": "2분기 실적 서프라이즈에 이어 데이터센터 전력관리 수요 가이던스가 대폭 상향되며 AI 전력반도체 대장주 입지가 강화됐다. 스톤엑스 신규 매수 개시도 긍정적이나 옵션시장은 큰 변동성을 예고한다.",
+      "key_events": [
+        "스톤엑스 매수 개시",
+        "2분기 실적 서프라이즈(EPS 6.50달러)",
+        "엔터프라이즈 데이터센터 성장 가이던스 130%로 상향"
+      ],
+      "risks": [
+        "옵션시장의 큰 변동성 예고",
+        "동종업계(TXN) 금리·설비투자 민감성 전이 가능성",
+        "밸류에이션 부담"
+      ],
+      "news_count": 3,
+      "competitor_context": [
+        {
+          "ticker": "TXN",
+          "headline": "Texas Instruments Inc Stock (TXN) Moved Down by 3.00% on Sep 1",
+          "url": "https://www.tradingkey.com/news/market-movers/262144393-market-movers-txn-20260901",
+          "implication_for_target": "TXN은 금리 상승·설비투자 우려로 하락, 아날로그 반도체 업종 전반의 금리 민감성을 보여주며 MPWR에도 매크로 리스크로 작용 가능"
+        }
+      ],
       "history": [
         {
           "date": "2026-07-06",
@@ -10302,6 +10317,10 @@
         {
           "date": "2026-08-31",
           "narrative_score": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "narrative_score": 0.44
         }
       ]
     }

@@ -1,0 +1,61 @@
+{
+  "ticker": "GOOGL",
+  "date": "2026-09-07",
+  "as_of_utc": "2026-09-07T12:00:00Z",
+  "news": [
+    {
+      "title": "Google starts September with AI momentum after longest monthly losing streak in over a decade",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/02/google-starts-september-with-ai-momentum-after-long-losing-streak.html",
+      "published": "2026-09-02T12:00:00Z",
+      "summary": "제미나이 3.8 플래시 출시 등으로 8월 부진 딛고 반등 모멘텀",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Google defeats US bid to force ad tech sale",
+      "source": "Yahoo Finance/Reuters",
+      "url": "https://finance.yahoo.com/media-advertising/articles/google-defeats-us-bid-force-143055450.html",
+      "published": "2026-09-02T14:30:00Z",
+      "summary": "법원, 구글 광고기술 사업 매각 명령 기각(분할 리스크 해소)",
+      "impact": "+",
+      "category": "regulation"
+    },
+    {
+      "title": "Justice Department to Appeal Ruling in Google Search Antitrust Case",
+      "source": "PYMNTS",
+      "url": "https://www.pymnts.com/google/2026/justice-department-to-appeal-ruling-in-google-search-antitrust-case/",
+      "published": "2026-09-03T18:00:00Z",
+      "summary": "법무부, 구글 검색 반독점 판결에 항소 방침(크롬 매각 관련)",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft to disclose Azure quarterly revenue as company consolidates units",
+      "url": "https://www.cnbc.com/2026/09/02/microsoft-to-disclose-azure-revenue-as-part-of-segment-changes.html",
+      "implication_for_target": "애저의 강한 성장 공개로 구글클라우드도 엔터프라이즈 AI 고객 유치 경쟁 압박 지속"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.4,
+    "competitive_position": 0.5,
+    "regulatory_risk": 0.1,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.29,
+  "summary_kr": "광고기술 매각 명령 기각과 제미나이 3.8 플래시 등 연이은 AI 모델 출시로 8월 부진을 딛고 반등 모멘텀을 얻었으나, 법무부의 검색 반독점 항소는 여전한 리스크다.",
+  "key_events": [
+    "광고기술 반독점 소송 승소(매각 명령 기각)",
+    "제미나이 3.8 플래시 출시",
+    "법무부 항소 방침"
+  ],
+  "risks": [
+    "검색 반독점 항소 장기화",
+    "크롬 매각 관련 후속 소송",
+    "AI 모델 경쟁 심화에 따른 마진 압박"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GOOGL%20-%20Alphabet%20Inc..md"
+}

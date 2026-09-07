@@ -1,0 +1,61 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-09-07",
+  "as_of_utc": "2026-09-07T12:00:00Z",
+  "news": [
+    {
+      "title": "Microsoft to disclose Azure quarterly revenue as company consolidates units",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/02/microsoft-to-disclose-azure-revenue-as-part-of-segment-changes.html",
+      "published": "2026-09-02T13:00:00Z",
+      "summary": "마이크로소프트, 애저 분기 매출 최초 공개하며 사업부 2개로 통합",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Microsoft to impose time limits on Xbox cloud gaming subscribers as costs rise",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/03/microsoft-xbox-game-pass-cloud-limits.html",
+      "published": "2026-09-03T15:00:00Z",
+      "summary": "엑스박스 클라우드 게이밍에 월 이용시간 제한 도입(비용 부담)",
+      "impact": "-",
+      "category": "product"
+    },
+    {
+      "title": "Microsoft consolidates business into two segments in sweeping AI-driven overhaul",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/09/61606546/microsoft-consolidates-business-into-two-segments-in-sweeping-ai-driven-overhaul",
+      "published": "2026-09-04T13:00:00Z",
+      "summary": "AI 중심 조직개편으로 사업부문을 2개로 축소",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "Google defeats US bid to force ad tech sale",
+      "url": "https://finance.yahoo.com/media-advertising/articles/google-defeats-us-bid-force-143055450.html",
+      "implication_for_target": "구글이 반독점 리스크를 일부 해소하며 AI/클라우드 투자 여력 확대, 애저와의 엔터프라이즈 AI 클라우드 경쟁 심화 가능성"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.6,
+    "competitive_position": 0.5,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.33,
+  "summary_kr": "애저 매출을 처음 공개(연 1,019억달러, +43% 성장)하며 AI 중심 조직개편을 단행해 시장의 신뢰를 얻었다. 엑스박스 클라우드 게이밍 이용제한은 부정적이나 핵심 사업 대비 영향은 제한적이다.",
+  "key_events": [
+    "애저 매출 최초 공개",
+    "사업부 2개로 통합(AI 중심)",
+    "엑스박스 클라우드 게이밍 이용시간 제한"
+  ],
+  "risks": [
+    "클라우드 대규모 투자 대비 수익화 속도",
+    "게이밍 부문 구독자 이탈 가능성",
+    "거시경제 민감도"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MSFT%20-%20Microsoft%20Corporation.md"
+}
