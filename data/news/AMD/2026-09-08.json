@@ -1,0 +1,63 @@
+{
+  "ticker": "AMD",
+  "date": "2026-09-08",
+  "as_of_utc": "2026-09-08T12:00:00Z",
+  "news": [
+    {
+      "title": "AMD stock heads into the open after a 4.7 percent jump",
+      "source": "ad-hoc-news.de",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/amd-stock-heads-into-the-open-after-a-4-7-percent-jump/70061492",
+      "published": "2026-09-04T00:00:00Z",
+      "summary": "AMD 주가 하루 만에 4.7% 급등, AI 거래 확산 수혜",
+      "impact": "+",
+      "category": "price_action"
+    },
+    {
+      "title": "AMD's AI Surge Challenges Nvidia's Dominance",
+      "source": "TechNewsWorld",
+      "url": "https://www.technewsworld.com/story/amds-ai-surge-challenges-nvidias-dominance-179781.html",
+      "published": "2026-09-05T00:00:00Z",
+      "summary": "MI450 일부 워크로드서 엔비디아 대비 우위 주장",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Semiconductor Stocks Slide as Global Bond Selloff Lifts Yields: Intel Drops 3%, NVIDIA and AMD Slip",
+      "source": "Yahoo Finance / 24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/09/01/semiconductor-stocks-slide-as-global-bond-selloff-lifts-yields-intel-drops-3-nvidia-and-amd-slip/",
+      "published": "2026-09-08T00:00:00Z",
+      "summary": "국채 금리 급등에 반도체주 동반 하락, AMD도 조정",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NVDA",
+      "headline": "엔비디아가 130억 달러에 허깅페이스(오픈소스 AI 플랫폼) 인수 발표(9/3)",
+      "implication_for_target": "엔비디아가 소프트웨어 생태계 장악력을 키우면 AMD의 ROCm(자체 AI 소프트웨어 스택) 확산 전략에는 상대적으로 불리한 비교가 될 수 있다. 다만 AMD도 자체 소프트웨어·랙 시스템(헬리오스)으로 맞서는 중."
+    },
+    {
+      "ticker": "INTC",
+      "headline": "인텔도 AI 인프라 기대감에 최근 1주일 주가 +7%, 델 서버 수요 훈풍 공유",
+      "implication_for_target": "AMD·인텔 모두 '엔비디아 이외의 AI 수혜주' 테마로 함께 오르는 동조 현상 — 서버 CPU 경쟁 구도(AMD EPYC 점유율 확대)는 그대로 유지."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.3,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.3
+  },
+  "narrative_score": 0.11,
+  "summary_kr": "AMD가 AI 랠리 확산 수혜로 9/4 4.7% 급등하고 신형 MI450이 특정 워크로드에서 엔비디아를 앞선다는 분석까지 나오며 순풍이 이어지지만, 국채 금리 상승發 반도체 업종 조정 압력도 함께 받고 있다.",
+  "key_events": [
+    "AI 거래 확산 수혜로 주가 +4.7% (2026-09-04)",
+    "MI450 시리즈, 일부 AI 워크로드서 엔비디아 대비 우위 주장 (2026-09-05)"
+  ],
+  "risks": [
+    "국채 금리 상승에 따른 고밸류에이션(연초 대비 +130%대) 조정 압력",
+    "오픈AI 보유 워런트(최대 10%)發 향후 지분 희석 우려 지속"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMD%20-%20Advanced%20Micro%20Devices.md"
+}
