@@ -1,0 +1,48 @@
+{
+  "ticker": "TSLA",
+  "date": "2026-09-09",
+  "as_of_utc": "2026-09-09T12:00:00Z",
+  "news": [
+    {
+      "title": "Tesla's stock drops as Cybercab update 'underwhelms', NHTSA opens audit query",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/04/teslas-stock-drops-as-cybercab-update-underwhelms-nhtsa-probe.html",
+      "published": "2026-09-04T00:00:00Z",
+      "summary": "사이버캡 출시 행사 실망으로 주가 6% 급락, NHTSA 안전인증 감사 착수",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Tesla China's August wholesale sales total 86,166, snapping 3-month sequential gain streak",
+      "source": "CnEVPost",
+      "url": "https://cnevpost.com/2026/09/02/tesla-china-aug-2026-wholesale-sales/",
+      "published": "2026-09-02T00:00:00Z",
+      "summary": "테슬라 중국 8월 도매판매 8.6만대, 3개월 연속 증가세 중단",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "BYD",
+      "headline": "BYD sold 440,293 NEVs in August (+17.84% YoY), record export volume of 189,500",
+      "implication_for_target": "테슬라 중국 판매 둔화와 대조적으로 BYD는 내수·수출 모두 최고치를 기록해 글로벌 EV 점유율 압박이 커짐"
+    },
+    {
+      "ticker": "RIVN",
+      "headline": "Rivian raises 2026 delivery guidance to 65,000-70,000 units, adds second shift for R2",
+      "implication_for_target": "리비안의 R2 증산은 테슬라 모델Y 하단 가격대 경쟁을 심화시키는 요인"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.15,
+    "competitive_position": -0.2,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": -0.17,
+  "summary_kr": "사이버캡 로보택시 출시 행사가 기대에 못 미쳐 주가가 급락했고 NHTSA 감사까지 겹쳤으며, 중국 도매판매도 3개월 만에 증가세가 꺾여 단기 모멘텀이 약해졌다.",
+  "key_events": ["사이버캡 출시 실망, 주가 -6%", "NHTSA 안전인증 감사 착수", "中 8월 도매판매 증가세 중단"],
+  "risks": ["NHTSA 감사가 정식 리콜·서비스 중단으로 확대될 가능성", "중국 내 BYD 등 현지 업체와의 점유율 격차 확대"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/TSLA%20-%20Tesla%20Inc.md"
+}
