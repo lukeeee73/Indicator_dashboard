@@ -1,0 +1,52 @@
+{
+  "ticker": "F",
+  "date": "2026-09-09",
+  "as_of_utc": "2026-09-09T12:00:00Z",
+  "news": [
+    {
+      "title": "Ford sales fall 10.3% in August as it ramps up F-Series production",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/02/ford-sales-f-150-production.html",
+      "published": "2026-09-02T00:00:00Z",
+      "summary": "포드 8월 미국 판매 10.3% 감소(8개월 연속 하락), 슈퍼듀티 생산은 20년래 최고",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "Automakers urge Congress to permanently ban Chinese connected vehicles",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/03/chinese-vehicles-congress.html",
+      "published": "2026-09-03T00:00:00Z",
+      "summary": "美 자동차 업계 연합, 중국산 커넥티드카 영구 금지 촉구 (포드 참여)",
+      "impact": "+",
+      "category": "regulation"
+    },
+    {
+      "title": "Ford and GM Will Have to Pay Tariffs on Cars Made in Canada",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/09/02/ford-and-gm-will-have-to-pay-tariffs-on-cars-made-in-canada/",
+      "published": "2026-09-02T00:00:00Z",
+      "summary": "캐나다산 차량에 대한 관세 부과로 포드·GM 이익 가이던스 하향 압박 우려",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GM",
+      "headline": "GM stock up 1.73% for the week, EVs still 'north star' per Mary Barra",
+      "implication_for_target": "GM은 하이브리드 병행 전략으로 유연하게 대응 중인 반면 포드는 EV 판매가 8월 -80%까지 급감해 상대적으로 전동화 전환에서 뒤처지는 모습"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": -0.15,
+    "regulatory_risk": 0.2,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.07,
+  "summary_kr": "포드의 8월 판매는 8개월 연속 감소했지만 수익성 높은 대형 트럭 생산은 호조였고, 캐나다발 관세 부담이 새로운 리스크로 떠올랐다.",
+  "key_events": ["8월 美 판매 -10.3%(8개월 연속 감소)", "슈퍼듀티 생산 20년래 최고치", "캐나다 관세로 EBIT 가이던스 하향 우려"],
+  "risks": ["캐나다 온타리오 공장(오크빌 등) 관세 직격 — 마진 여력이 경쟁사 대비 얇음", "EV 판매 급감 지속 시 전동화 전환 지연"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/F%20-%20Ford%20Motor%20Company.md"
+}
