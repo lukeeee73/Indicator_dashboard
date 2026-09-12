@@ -10282,17 +10282,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-09-05",
-      "narrative_score": -0.02,
-      "summary_kr": "지난주 사우디 합작사 인수·세인트앤드루스 제휴 이후 검증 가능한 신규 뉴스가 없는 조용한 한 주가 이어졌다. BofA·UBS가 목표주가를 소폭 낮췄지만 매수 의견은 유지했다.",
+      "as_of": "2026-09-12",
+      "narrative_score": 0.01,
+      "summary_kr": "아멕스는 이번 주 뚜렷한 개별 뉴스 없이 잔잔한 흐름을 보였고, 연준 금리인하 지연 전망과 버핏 지분 부각 정도가 배경으로 작용했다.",
       "key_events": [
-        "BofA·UBS 목표주가 소폭 하향(매수 의견 유지)"
+        "개별 촉매 뉴스 부재, 매크로(연준 금리인하 지연) 영향권",
+        "버크셔해서웨이 지분(약 22%) 재조명"
       ],
       "risks": [
-        "10/23 실적 발표 전까지는 방향성을 바꿀 만한 자체 뉴스가 부족한 상태"
+        "비자·마스터카드 대비 에이전틱 커머스·AI 결제 혁신 뉴스 흐름에서 뒤처지는 인상",
+        "금리인하 지연 장기화 시 소비자 신용 성장 둔화 가능성"
       ],
-      "news_count": 1,
-      "competitor_context": [],
+      "news_count": 2,
+      "competitor_context": [
+        {
+          "ticker": "V",
+          "headline": "Visa shares hit record highs, expanding agentic-commerce ('Visa Trust Index') and A2A fraud-prevention tools",
+          "implication_for_target": "비자가 에이전틱 커머스·핀테크 협력에서 뉴스 흐름을 주도하고 있어, 아멕스는 상대적으로 조용한 한 주를 보냄."
+        },
+        {
+          "ticker": "MA",
+          "headline": "Mastercard CFO highlighted resilient spending across travel, dining, AI subscriptions at Goldman Sachs conference",
+          "implication_for_target": "마스터카드의 프리미엄 소비 트렌드 코멘트는 아멕스의 핵심 고객군(고소득 카드회원) 소비 흐름을 가늠하는 참고 지표가 될 수 있음."
+        }
+      ],
       "history": [
         {
           "date": "2026-06-13",
@@ -10329,6 +10342,10 @@
         {
           "date": "2026-09-05",
           "narrative_score": -0.02
+        },
+        {
+          "date": "2026-09-12",
+          "narrative_score": 0.01
         }
       ]
     }
