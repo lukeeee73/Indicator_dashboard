@@ -1,0 +1,54 @@
+{
+  "ticker": "BAC",
+  "date": "2026-09-12",
+  "as_of_utc": "2026-09-12T00:00:00Z",
+  "news": [
+    {
+      "title": "Bank of America CEO says the consumer remains resilient despite rising gas prices",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/09/bank-of-america-ceo-consumer-resilient-despite-rising-gas.html",
+      "published": "2026-09-09T00:00:00Z",
+      "summary": "BofA CEO 모이니핸, 기름값 상승에도 8월 소비지출 전년비 4% 증가하며 견조하다고 발언",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "CPI inflation report August 2026",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/11/cpi-inflation-report-august-2026.html",
+      "published": "2026-09-11T12:30:00Z",
+      "summary": "8월 물가 예상보다 뜨겁게 나와 9월 금리 인상 가능성 확대",
+      "impact": "neutral",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JPM",
+      "headline": "JPMorgan nearing $1 trillion market cap, BofA Securities reiterates Buy with $420 target (Bloomberg, 2026-09-09)",
+      "implication_for_target": "업계 1위 JPM에 대한 강세 재평가는 대형은행 섹터 전반에 대한 투자심리 개선 신호로 BAC에도 우호적."
+    },
+    {
+      "ticker": "GS",
+      "headline": "Goldman Sachs posted record Q2 2026 results, IB fees +55% YoY",
+      "implication_for_target": "투자은행 업황 호조는 BAC의 글로벌뱅킹·마켓 부문 실적에도 긍정적 참고지표."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.05,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.08,
+  "summary_kr": "BofA CEO가 유가 상승에도 소비지출이 견조하다고 밝혀 자산건전성 우려를 낮췄으나, 예상보다 뜨거운 8월 물가지표로 9월 FOMC 금리 인상 가능성이 커지며 매크로 변수가 상존한다.",
+  "key_events": [
+    "모이니핸 CEO, 8월 소비지출 전년비 +4%, 신용지표 '이상 없음' 발언 (2026-09-09)",
+    "8월 CPI 전년비 3.4%, 근원CPI도 예상 상회 → 9월 16일 FOMC 금리인상 확률 상승"
+  ],
+  "risks": [
+    "유가 상승 지속 시 저소득층 소비여력 압박 가능성",
+    "금리 인상 시 예대마진 개선 기대와 신용비용 상승 리스크가 상충"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/BAC%20-%20Bank%20of%20America%20Corp.md"
+}

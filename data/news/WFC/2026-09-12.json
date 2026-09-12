@@ -1,0 +1,45 @@
+{
+  "ticker": "WFC",
+  "date": "2026-09-12",
+  "as_of_utc": "2026-09-12T00:00:00Z",
+  "news": [
+    {
+      "title": "CPI inflation report August 2026",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/11/cpi-inflation-report-august-2026.html",
+      "published": "2026-09-11T12:30:00Z",
+      "summary": "8월 물가 예상보다 뜨겁게 나와 9월 금리 인상 가능성 확대",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "note": "웰스파고 개별 기업 뉴스는 최근 며칠간 확인되지 않음(배당 인상·스트레스테스트 통과는 각각 7월·6월 발표로 이번 분석 기간 밖). 섹터 공통 매크로 뉴스만 반영.",
+  "competitor_context": [
+    {
+      "ticker": "BAC",
+      "headline": "BofA CEO Moynihan says consumer remains resilient despite rising gas prices (CNBC, 2026-09-09)",
+      "implication_for_target": "대형은행 소비자 신용지표가 양호하다는 신호로, 모기지·소비자대출 비중이 큰 WFC의 자산건전성에도 참고할 만한 우호적 신호."
+    },
+    {
+      "ticker": "JPM",
+      "headline": "JPMorgan nearing $1 trillion market cap on bullish analyst re-rating (Bloomberg, 2026-09-09)",
+      "implication_for_target": "대형은행 섹터 전반에 대한 투자심리 개선은 WFC 밸류에이션에도 우호적 참고지표이나, WFC 고유의 촉매는 부재."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": 0.0,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.15
+  },
+  "narrative_score": 0.0,
+  "summary_kr": "웰스파고 관련 개별 뉴스는 최근 확인되지 않았으며, 예상보다 뜨거운 8월 물가지표로 9월 FOMC 금리 인상 가능성이 커진 점이 모기지·대출 비중이 큰 WFC에 매크로 변수로 작용하고 있다.",
+  "key_events": [
+    "8월 CPI 전년비 3.4%, 근원CPI 예상 상회 → 9월 16일 FOMC 금리인상 확률 상승"
+  ],
+  "risks": [
+    "금리 인상 시 모기지·소비자대출 수요 둔화 가능성",
+    "WFC 개별 촉매 부재로 섹터 베타에 연동된 주가 흐름 예상"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/WFC%20-%20Wells%20Fargo%20and%20Company.md"
+}
