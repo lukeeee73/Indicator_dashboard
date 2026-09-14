@@ -4,30 +4,6 @@
   "group": "반도체 — 장비 · 소재",
   "series": [
     {
-      "date": "2016-09-06",
-      "value": 26.95
-    },
-    {
-      "date": "2016-09-07",
-      "value": 26.88
-    },
-    {
-      "date": "2016-09-08",
-      "value": 26.78
-    },
-    {
-      "date": "2016-09-09",
-      "value": 25.94
-    },
-    {
-      "date": "2016-09-12",
-      "value": 26.6
-    },
-    {
-      "date": "2016-09-13",
-      "value": 26.41
-    },
-    {
       "date": "2016-09-14",
       "value": 26.45
     },
@@ -6933,7 +6909,7 @@
     },
     {
       "date": "2023-07-26",
-      "value": 135.5
+      "value": 135.51
     },
     {
       "date": "2023-07-27",
@@ -7369,7 +7345,7 @@
     },
     {
       "date": "2023-12-29",
-      "value": 158.66
+      "value": 158.65
     },
     {
       "date": "2024-01-02",
@@ -10058,18 +10034,38 @@
     {
       "date": "2026-09-04",
       "value": 454.71
+    },
+    {
+      "date": "2026-09-08",
+      "value": 472.79
+    },
+    {
+      "date": "2026-09-09",
+      "value": 468.85
+    },
+    {
+      "date": "2026-09-10",
+      "value": 454.01
+    },
+    {
+      "date": "2026-09-11",
+      "value": 456.49
+    },
+    {
+      "date": "2026-09-14",
+      "value": 426.61
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 360856682496.0,
-      "pe_ratio": 39.199135,
-      "forward_pe": 24.639132,
-      "eps_ttm": 11.6,
-      "dividend_yield": 0.47,
+      "market_cap": 338556583936.0,
+      "pe_ratio": 36.808453,
+      "forward_pe": 23.116491,
+      "eps_ttm": 11.59,
+      "dividend_yield": 0.46,
       "profit_margin": 0.30052,
       "operating_margin": 0.33736,
-      "price_to_book": 14.081633,
+      "price_to_book": 13.21142,
       "return_on_equity": 0.41068
     },
     "quarterly": [
@@ -10118,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-04",
-    "current_price": 454.71,
+    "as_of": "2026-09-14",
+    "current_price": 426.61,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 324.8,
+        "fair_value": 324.52,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10133,13 +10129,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 91.8,
+        "fair_value": 91.76,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 302.56,
-    "valuation_gap": 0.5029,
+    "fair_value": 302.42,
+    "valuation_gap": 0.4107,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10255,6 +10251,18 @@
         "price": 454.71,
         "fair_value": 324.8,
         "gap": 0.4
+      },
+      {
+        "date": "2026-09-11",
+        "price": 456.49,
+        "fair_value": 324.8,
+        "gap": 0.4054
+      },
+      {
+        "date": "2026-09-14",
+        "price": 426.61,
+        "fair_value": 324.8,
+        "gap": 0.3135
       }
     ],
     "qualitative": {

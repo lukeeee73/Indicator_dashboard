@@ -4,30 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-09-06",
-      "value": 57.31
-    },
-    {
-      "date": "2016-09-07",
-      "value": 57.68
-    },
-    {
-      "date": "2016-09-08",
-      "value": 57.73
-    },
-    {
-      "date": "2016-09-09",
-      "value": 56.75
-    },
-    {
-      "date": "2016-09-12",
-      "value": 57.43
-    },
-    {
-      "date": "2016-09-13",
-      "value": 56.09
-    },
-    {
       "date": "2016-09-14",
       "value": 55.32
     },
@@ -249,7 +225,7 @@
     },
     {
       "date": "2016-12-01",
-      "value": 63.52
+      "value": 63.53
     },
     {
       "date": "2016-12-02",
@@ -2169,7 +2145,7 @@
     },
     {
       "date": "2018-10-29",
-      "value": 91.36
+      "value": 91.37
     },
     {
       "date": "2018-10-30",
@@ -4501,7 +4477,7 @@
     },
     {
       "date": "2021-02-24",
-      "value": 130.91
+      "value": 130.9
     },
     {
       "date": "2021-02-25",
@@ -10058,18 +10034,38 @@
     {
       "date": "2026-09-04",
       "value": 326.16
+    },
+    {
+      "date": "2026-09-08",
+      "value": 326.1
+    },
+    {
+      "date": "2026-09-09",
+      "value": 321.8
+    },
+    {
+      "date": "2026-09-10",
+      "value": 320.71
+    },
+    {
+      "date": "2026-09-11",
+      "value": 324.69
+    },
+    {
+      "date": "2026-09-14",
+      "value": 324.98
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 220259057664.0,
-      "pe_ratio": 19.80328,
-      "forward_pe": 16.215822,
-      "eps_ttm": 16.47,
+      "market_cap": 219462189056.0,
+      "pe_ratio": 19.707703,
+      "forward_pe": 16.120632,
+      "eps_ttm": 16.49,
       "dividend_yield": 1.17,
       "profit_margin": 0.16141,
       "operating_margin": 0.2032,
-      "price_to_book": 6.422369,
+      "price_to_book": 6.3991337,
       "return_on_equity": 0.34377
     },
     "quarterly": [
@@ -10118,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-04",
-    "current_price": 326.16,
+    "as_of": "2026-09-14",
+    "current_price": 324.98,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 230.58,
+        "fair_value": 230.86,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 241.36,
+        "fair_value": 241.91,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 137.18,
+        "fair_value": 137.27,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 215.13,
-    "valuation_gap": 0.5161,
+    "fair_value": 215.46,
+    "valuation_gap": 0.5083,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10279,6 +10275,18 @@
         "price": 326.16,
         "fair_value": 230.72,
         "gap": 0.4137
+      },
+      {
+        "date": "2026-09-11",
+        "price": 324.69,
+        "fair_value": 230.72,
+        "gap": 0.4073
+      },
+      {
+        "date": "2026-09-14",
+        "price": 324.98,
+        "fair_value": 230.72,
+        "gap": 0.4085
       }
     ],
     "qualitative": {

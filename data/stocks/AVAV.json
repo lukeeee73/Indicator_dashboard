@@ -4,30 +4,6 @@
   "group": "산업재 / 방산",
   "series": [
     {
-      "date": "2016-09-06",
-      "value": 24.08
-    },
-    {
-      "date": "2016-09-07",
-      "value": 24.15
-    },
-    {
-      "date": "2016-09-08",
-      "value": 24.44
-    },
-    {
-      "date": "2016-09-09",
-      "value": 23.71
-    },
-    {
-      "date": "2016-09-12",
-      "value": 24.06
-    },
-    {
-      "date": "2016-09-13",
-      "value": 23.53
-    },
-    {
       "date": "2016-09-14",
       "value": 23.19
     },
@@ -10058,19 +10034,39 @@
     {
       "date": "2026-09-04",
       "value": 144.65
+    },
+    {
+      "date": "2026-09-08",
+      "value": 148.78
+    },
+    {
+      "date": "2026-09-09",
+      "value": 140.8
+    },
+    {
+      "date": "2026-09-10",
+      "value": 147.07
+    },
+    {
+      "date": "2026-09-11",
+      "value": 146.71
+    },
+    {
+      "date": "2026-09-14",
+      "value": 153.38
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 7351491072.0,
+      "market_cap": 7794625536.0,
       "pe_ratio": null,
-      "forward_pe": 32.942753,
-      "eps_ttm": -5.4,
+      "forward_pe": 34.37329,
+      "eps_ttm": -4.06,
       "dividend_yield": null,
-      "profit_margin": -0.13411,
-      "operating_margin": 0.02812,
-      "price_to_book": 1.6574806,
-      "return_on_equity": -0.10029
+      "profit_margin": -0.10127,
+      "operating_margin": -0.02269,
+      "price_to_book": 1.7666063,
+      "return_on_equity": -0.04597
     },
     "quarterly": [
       {
@@ -10082,9 +10078,9 @@
       },
       {
         "date": "2025-04-30",
-        "revenue": 275050000.0,
-        "operating_income": 32176000.0,
-        "net_income": 16664000.0,
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
         "eps": null
       },
       {
@@ -10106,7 +10102,7 @@
         "revenue": 408045000.0,
         "operating_income": -27732000.0,
         "net_income": -243823000.0,
-        "eps": -3.15
+        "eps": -4.9
       },
       {
         "date": "2026-04-30",
@@ -10114,22 +10110,29 @@
         "operating_income": 56941000.0,
         "net_income": -24098000.0,
         "eps": 1.25
+      },
+      {
+        "date": "2026-07-31",
+        "revenue": 480490000.0,
+        "operating_income": -10871000.0,
+        "net_income": -5066000.0,
+        "eps": -0.1
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-09-04",
-    "current_price": 144.65,
+    "as_of": "2026-09-14",
+    "current_price": 153.38,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 74.65,
+        "fair_value": 75.86,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 74.65,
-    "valuation_gap": 0.9377,
+    "fair_value": 75.86,
+    "valuation_gap": 1.0219,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

@@ -4,30 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-09-06",
-      "value": 48.17
-    },
-    {
-      "date": "2016-09-07",
-      "value": 47.66
-    },
-    {
-      "date": "2016-09-08",
-      "value": 47.86
-    },
-    {
-      "date": "2016-09-09",
-      "value": 46.2
-    },
-    {
-      "date": "2016-09-12",
-      "value": 47.52
-    },
-    {
-      "date": "2016-09-13",
-      "value": 46.79
-    },
-    {
       "date": "2016-09-14",
       "value": 47.02
     },
@@ -8409,7 +8385,7 @@
     },
     {
       "date": "2025-01-14",
-      "value": 153.63
+      "value": 153.64
     },
     {
       "date": "2025-01-15",
@@ -10058,18 +10034,38 @@
     {
       "date": "2026-09-04",
       "value": 168.74
+    },
+    {
+      "date": "2026-09-08",
+      "value": 174.09
+    },
+    {
+      "date": "2026-09-09",
+      "value": 176.4
+    },
+    {
+      "date": "2026-09-10",
+      "value": 176.88
+    },
+    {
+      "date": "2026-09-11",
+      "value": 181.97
+    },
+    {
+      "date": "2026-09-14",
+      "value": 176.99
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 180224524288.0,
-      "pe_ratio": 19.262558,
-      "forward_pe": 16.513882,
-      "eps_ttm": 8.76,
-      "dividend_yield": 2.18,
+      "market_cap": 189030678528.0,
+      "pe_ratio": 20.226858,
+      "forward_pe": 17.344652,
+      "eps_ttm": 8.75,
+      "dividend_yield": 2.02,
       "profit_margin": 0.21013,
       "operating_margin": 0.18528,
-      "price_to_book": 6.4485807,
+      "price_to_book": 6.763672,
       "return_on_equity": 0.33754003
     },
     "quarterly": [
@@ -10125,28 +10121,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-04",
-    "current_price": 168.74,
+    "as_of": "2026-09-14",
+    "current_price": 176.99,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 245.28,
+        "fair_value": 245.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 224.8,
+        "fair_value": 224.49,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 71.82,
+        "fair_value": 71.78,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 204.44,
-    "valuation_gap": -0.1746,
+    "fair_value": 204.2,
+    "valuation_gap": -0.1333,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10286,6 +10282,18 @@
         "price": 168.74,
         "fair_value": 241.92,
         "gap": -0.3025
+      },
+      {
+        "date": "2026-09-11",
+        "price": 181.97,
+        "fair_value": 241.92,
+        "gap": -0.2478
+      },
+      {
+        "date": "2026-09-14",
+        "price": 176.99,
+        "fair_value": 241.92,
+        "gap": -0.2684
       }
     ],
     "qualitative": {
