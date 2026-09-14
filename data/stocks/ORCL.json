@@ -10306,27 +10306,32 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-09-07",
-      "narrative_score": -0.22,
-      "summary_kr": "실적 발표(9/9)를 앞두고 제프리스·TD코웬 등 복수 애널리스트가 목표가를 하향했으며, AI 데이터센터 실행력·부채·오픈AI 의존 리스크가 부각되는 국면이다. 다만 제프리스는 비관 심리가 극에 달했다며 저점 매수 가능성도 제기했다.",
+      "as_of": "2026-09-14",
+      "narrative_score": 0.3,
+      "summary_kr": "오라클은 AI 클라우드 수요에 힘입어 매출·수주잔고가 급증했고 엘리슨의 매도 철회로 내부자 신뢰 신호도 나왔으나, 1250억달러 부채 부담이 금리 민감도를 높이는 위험 요인.",
       "key_events": [
-        "TD코웬 목표가 하향(300→240)",
-        "제프리스 목표가 하향(320→290)하되 매수 유지",
-        "9/9 실적 발표 예정"
+        "1분기 매출 30% 성장, OCI 매출 121% 급증",
+        "RPO(수주잔고) 6640억달러로 확대",
+        "엘리슨 회장 75억달러 주식매도 계획 취소"
       ],
       "risks": [
-        "OpenAI 매출 집중 리스크",
-        "AI 데이터센터 실행력 우려",
-        "신용등급/부채 부담",
-        "애널리스트 목표가 연쇄 하향"
+        "AI 인프라 확장에 따른 부채 증가($1250억)",
+        "고평가 부담과 실적 발표 당일 주가 약보합 마감",
+        "마이크로소프트·구글 등 하이퍼스케일러와의 GPU 확보 경쟁"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Microsoft's AI Data Center Push — Azure demand exceeds available capacity, commercial RPO $627B (+99% YoY)",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/microsofts-ai-data-center-push-140800469.html",
-          "implication_for_target": "MSFT의 압도적 클라우드 확장(수요초과, RPO 급증)은 오라클 OCI의 실행력·부채 부담 우려를 상대적으로 부각시킴"
+          "headline": "Oracle vs. Microsoft: Big Tech's AI Cloud Battle Has a New Underdog",
+          "url": "https://www.barchart.com/story/news/4339635/oracle-vs-microsoft-big-techs-ai-cloud-battle-has-a-new-underdog",
+          "implication_for_target": "마이크로소프트 애저가 여전히 규모의 우위를 갖지만 오라클이 AI 인프라 계약에서 빠르게 점유율을 잠식 중이라는 서사가 형성됨"
+        },
+        {
+          "ticker": "CRM",
+          "headline": "Op-ed: Salesforce just revealed the next battleground in AI — and it's not the models",
+          "url": "https://www.cnbc.com/2026/08/29/op-ed-salesforce-revealed-next-battleground-in-ai-its-not-models.html",
+          "implication_for_target": "세일즈포스가 애플리케이션 계층의 AI 에이전트 경쟁을 주도하면서 오라클 퓨전 클라우드 애플리케이션 사업과 직접 경쟁 구도 형성"
         }
       ],
       "history": [
@@ -10369,6 +10374,10 @@
         {
           "date": "2026-09-07",
           "narrative_score": -0.22
+        },
+        {
+          "date": "2026-09-14",
+          "narrative_score": 0.3
         }
       ]
     }

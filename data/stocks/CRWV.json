@@ -1527,26 +1527,32 @@
     "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-09-07",
-      "narrative_score": 0.3,
-      "summary_kr": "트루이스트가 GPU 원가상승에도 가격결정력으로 목표가를 상향했고 허드슨리버트레이딩 등 신규 대형고객 확보가 이어진다. 다만 대규모 부채·리스 기반 확장모델과 데이터센터 규제 이슈는 매크로 민감도를 높인다.",
+      "as_of": "2026-09-14",
+      "narrative_score": 0.09,
+      "summary_kr": "코어위브는 매출 고성장과 신규 대형 계약(허드슨리버 등)이 긍정적이나, 높은 레버리지·부채 부담과 오라클·네비우스 등 경쟁 심화로 애널리스트 신용 하향이 발생.",
       "key_events": [
-        "트루이스트 목표가 165달러 상향(가격결정력 부각)",
-        "허드슨리버트레이딩과 다년 계약 체결",
-        "옵션시장 강세 베팅(9월3일)"
+        "애널리스트 신용등급 Hold 하향(9/9)",
+        "트루이스트 목표주가 165달러 상향(가격결정력 근거)",
+        "허드슨리버트레이딩과 신규 AI클라우드 계약"
       ],
       "risks": [
-        "GPU(엔비디아) 가격 인상에 따른 원가 압박",
-        "대규모 부채 의존적 확장모델",
-        "데이터센터 인허가·환경 규제 강화 움직임"
+        "과도한 레버리지(부채비율 5배 이상, 이자비용 부담 큼)",
+        "오라클·네비우스 등 자금력 우위 경쟁자의 시장잠식",
+        "엔비디아 GPU 가격 인상에 따른 원가 부담 확대"
       ],
-      "news_count": 3,
+      "news_count": 4,
       "competitor_context": [
         {
+          "ticker": "NBIS",
+          "headline": "Palantir selects Nebius as preferred sovereign AI infrastructure partner",
+          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-nebius-partner-sovereign-ai-130353486.html",
+          "implication_for_target": "네비우스가 팔란티어向 '선호 파트너' 지위를 확보하며 엔터프라이즈 고객 확보 경쟁에서 코어위브를 압박"
+        },
+        {
           "ticker": "ORCL",
-          "headline": "Oracle Announces Record Q4 and FY 2026 Results Driven by Cloud Infrastructure & Cloud Applications",
-          "url": "https://investor.oracle.com/investor-news/news-details/2026/Oracle-Announces-Record-Q4-and-FY-2026-Results-Driven-by-Cloud-Infrastructure--Cloud-Applications/default.aspx",
-          "implication_for_target": "오라클 클라우드 인프라 매출 93% 급증, 하이퍼스케일러들의 AI 인프라 확대 경쟁이 코어위브 수요에도 우호적 환경 조성"
+          "headline": "Oracle cloud revenue up 62% YoY, record $664B backlog, plans $90-95B FY27 capex",
+          "url": "https://www.cnbc.com/2026/09/11/oracle-stock-q1-earnings-ai-cloud.html",
+          "implication_for_target": "오라클의 초대형 자본투자·백로그 확대는 GPU 클라우드 시장에서 코어위브 대비 자금력 우위의 경쟁자로 부상"
         }
       ],
       "history": [
@@ -1577,6 +1583,10 @@
         {
           "date": "2026-09-07",
           "narrative_score": 0.3
+        },
+        {
+          "date": "2026-09-14",
+          "narrative_score": 0.09
         }
       ]
     }
