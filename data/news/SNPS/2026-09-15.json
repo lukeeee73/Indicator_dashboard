@@ -1,0 +1,64 @@
+{
+  "ticker": "SNPS",
+  "date": "2026-09-15",
+  "as_of_utc": "2026-09-15T12:00:00Z",
+  "news": [
+    {
+      "title": "Morgan Stanley, 시놉시스 투자의견 'Overweight' 상향·목표주가 $500",
+      "source": "StreetInsider",
+      "url": "https://www.streetinsider.com/Analyst+Comments/Morgan+Stanley+Upgrades+Synopsys+%28SNPS%29+to+Overweight/27032210.html?classic=1",
+      "published": "2026-09-08T00:00:00Z",
+      "summary": "모건스탠리, Ansys 시너지·설계IP 회복 근거로 투자의견 상향, 목표주가 $500",
+      "impact": "+",
+      "category": "analyst"
+    },
+    {
+      "title": "Wells Fargo, 시놉시스 투자의견 'Overweight' 상향·목표주가 $475",
+      "source": "GuruFocus",
+      "url": "https://www.gurufocus.com/news/9075178/snps-upgraded-by-wells-fargo-price-target-raised-to-475",
+      "published": "2026-09-10T00:00:00Z",
+      "summary": "웰스파고도 Equal Weight→Overweight 상향, 목표주가 $450→$475",
+      "impact": "+",
+      "category": "analyst"
+    },
+    {
+      "title": "AI 개발 속도 조절론發 반도체·AI주 급락, 국채 금리 5% 돌파",
+      "source": "CNN Business",
+      "url": "https://us.cnn.com/2026/09/14/business/ai-stocks-slide-slowdown-development-amodei-altman-intl",
+      "published": "2026-09-14T00:00:00Z",
+      "summary": "Anthropic CEO 등이 AI 개발 속도조절을 촉구하며 반도체 지수(SOX) -5.9% 급락",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CDNS",
+      "headline": "케이던스, 9/9 골드만삭스 Communacopia+테크 콘퍼런스에서 CEO 데브간이 AI 기반 성장세 재확인",
+      "implication_for_target": "EDA(칩 설계 자동화) 듀오폴리 파트너의 안정적 메시지는 시놉시스의 성장 서사에도 참고가 된다."
+    },
+    {
+      "ticker": "ARM",
+      "headline": "Arm, 9/14 AI 속도조절론發 매도세로 주가 -9%대 급락 — 반도체 설계 밸류체인 전반의 밸류에이션 재평가",
+      "implication_for_target": "고밸류에이션 반도체 설계 관련주 전반에 대한 경계감이 확산되고 있어, 시놉시스도 예외는 아니다."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.1,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.25
+  },
+  "narrative_score": 0.11,
+  "summary_kr": "모건스탠리·웰스파고가 연이어 시놉시스 투자의견을 상향(Ansys 통합 시너지·설계IP 회복 근거)했지만, 9/14 AI 개발 속도조절론發 반도체 섹터 급락으로 주가 상승분은 상쇄됐다.",
+  "key_events": [
+    "모건스탠리 Overweight 상향·목표주가 $500 (2026-09-08)",
+    "웰스파고 Overweight 상향·목표주가 $475 (2026-09-10)",
+    "AI 속도조절론發 반도체 섹터 급락, SOX -5.9% (2026-09-14)"
+  ],
+  "risks": [
+    "AI 인프라 투자 속도조절 우려가 EDA(칩 설계 자동화) 수요 전망에 대한 재평가로 번질 가능성",
+    "국채 금리 5% 돌파·유가 상승發 고밸류에이션 성장주 전반의 조정 압력"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/SNPS%20-%20Synopsys%2C%20Inc.md"
+}

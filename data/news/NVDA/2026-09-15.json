@@ -1,0 +1,74 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-09-15",
+  "as_of_utc": "2026-09-15T12:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia, chip stocks fall as AI CEOs call for slowdown",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/14/ai-stocks-slowdown-amodei-altman.html",
+      "published": "2026-09-14T00:00:00Z",
+      "summary": "앤트로픽 CEO의 AI 개발 속도조절 촉구에 반도체주 동반 하락, NVDA -3.36%",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "DOJ Probes Nvidia's $20 Billion License Deal With Groq on Antitrust Concerns",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-10/doj-probes-nvidia-s-license-deal-with-groq-on-antitrust-concerns",
+      "published": "2026-09-10T00:00:00Z",
+      "summary": "美 법무부, 엔비디아-Groq $170~200억 라이선스 계약 반독점 회피 여부 조사",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Nvidia May Invest Up to $10 Billion in Anthropic's $2.3 Trillion IPO",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/09/12/nvidia-may-invest-up-to-10-billion-in-anthropics-2-3-trillion-ipo/",
+      "published": "2026-09-12T00:00:00Z",
+      "summary": "엔비디아, 앤트로픽 IPO에 최대 100억달러 앵커 투자 논의 중",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "NVDA Stock Heads to $200 as Regulatory, Margin and Spending Risks Mount",
+      "source": "FX Leaders",
+      "url": "https://www.fxleaders.com/news/2026/09/14/nvda-stock-heads-to-200-as-regulatory-margin-and-spending-risks-mount/",
+      "published": "2026-09-14T00:00:00Z",
+      "summary": "규제·마진·설비투자 리스크가 겹치며 $200선까지 밀릴 수 있다는 분석",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "같은 셀오프에서 AMD가 -5.6%로 엔비디아(-3.36%)보다 더 크게 하락, CEO 리사 수 주식 매도까지 겹침",
+      "implication_for_target": "AI 슬로우다운 우려가 반도체 업종 전반에 번졌지만 엔비디아의 낙폭은 상대적으로 작아, 시장이 여전히 엔비디아를 업종 내 가장 방어적인 종목으로 보고 있음을 시사."
+    },
+    {
+      "ticker": "AVGO",
+      "headline": "브로드컴도 3분기 실적 서프라이즈에도 마진 우려·마벨 경쟁 이슈로 주가가 눌림(9/14)",
+      "implication_for_target": "표준 GPU(엔비디아)든 맞춤형 ASIC(브로드컴)이든 실적과 무관하게 AI 인프라 지출 지속가능성 자체를 시장이 재평가하는 국면임을 보여줌."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": -0.05,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.4
+  },
+  "narrative_score": -0.13,
+  "summary_kr": "앤트로픽 CEO 등 AI 리더들의 개발 속도조절 촉구로 반도체 업종 전체가 흔들린 가운데, 엔비디아는 Groq 인수형 계약에 대한 법무부 반독점 조사까지 겹쳐 주가가 5거래일 연속 하락했다. 다만 앤트로픽 IPO에 대규모 투자를 검토 중이라는 소식은 여전히 공격적인 사업 확장 의지를 보여준다.",
+  "key_events": [
+    "AI 개발 속도조절 촉구發 반도체 섹터 셀오프, NVDA -3.36% (2026-09-14)",
+    "DOJ의 Groq $170~200억 라이선스 계약 반독점 조사 (2026-09-10)",
+    "앤트로픽 IPO 최대 $100억 투자 논의 (2026-09-12)"
+  ],
+  "risks": [
+    "DOJ 반독점 조사 결과에 따른 계약 재구성·제재 가능성",
+    "AI 개발 속도조절 논쟁이 실제 하이퍼스케일러 capex 축소로 이어질 경우 수요 타격",
+    "이미 높은 밸류에이션에서 규제·마진 우려 겹칠 시 추가 조정 위험"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}

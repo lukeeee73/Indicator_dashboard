@@ -1,0 +1,65 @@
+{
+  "ticker": "INTC",
+  "date": "2026-09-15",
+  "as_of_utc": "2026-09-15T12:00:00Z",
+  "news": [
+    {
+      "title": "Intel Shares Fall 6.4% as AI Development Slowdown Debate Weighs on Chip Stocks",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/technology/ai/articles/intel-shares-fall-6-4-110350235.html",
+      "published": "2026-09-14T00:00:00Z",
+      "summary": "AI 개발 속도조절 논쟁으로 인텔 주가 프리마켓 -6.4%, 반도체 업종 동반 약세",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Apple tells Mac App Store developers they can now drop Intel support",
+      "source": "9to5Mac",
+      "url": "https://9to5mac.com/2026/09/01/apple-tells-mac-app-store-developers-they-can-now-drop-intel-support/",
+      "published": "2026-09-01T00:00:00Z",
+      "summary": "애플, macOS 13+ 요구 앱의 인텔 맥 지원 중단을 개발자 재량으로 허용",
+      "impact": "-",
+      "category": "product"
+    },
+    {
+      "title": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Drifts",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/09/11/intel-climbs-3-on-chip-price-hike-report-a-day-after-piper-sandler-went-neutral-amd-rises-2-taiwan-semiconductor-drifts/",
+      "published": "2026-09-11T00:00:00Z",
+      "summary": "10월 PC용 칩 가격 10% 인상 보도로 주가 3% 상승, 이후 오늘 셀오프로 되돌림",
+      "impact": "neutral",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "AMD도 같은 날 -5.6%로 동반 급락 — CEO 리사 수의 주식 매도 소식까지 겹침(9/14)",
+      "implication_for_target": "인텔·AMD 모두 이번 셀오프에서 낙폭이 컸다는 것은, x86 진영 전체가 AI 인프라 지출 둔화 우려에 민감하게 반응하고 있음을 보여줌."
+    },
+    {
+      "ticker": "TSM",
+      "headline": "대만 TSMC는 같은 셀오프에서 -1.2%로 상대적으로 선방(타이베이 증시, 9/15)",
+      "implication_for_target": "파운드리 1위 TSMC 대비 인텔은 낙폭이 훨씬 커, 시장이 인텔을 여전히 구조적으로 더 위험한 베팅으로 보고 있음을 시사."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": -0.15,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.5
+  },
+  "narrative_score": -0.07,
+  "summary_kr": "AI 개발 속도조절 논쟁發 반도체 셀오프로 인텔 주가가 6%대 급락했고, 애플이 인텔맥 앱 지원 중단을 허용한 소식도 상징적 악재로 겹쳤다. 다만 9/11 PC용 칩 가격 인상 보도로 한 차례 반등했던 만큼, 사업 펀더멘털 자체보다는 업종 전반의 센티먼트 조정 성격이 크다.",
+  "key_events": [
+    "AI 개발 속도조절 촉구發 반도체 섹터 셀오프, INTC -6.4% (2026-09-14)",
+    "애플, 인텔맥 앱 지원 중단 개발자 재량 허용 (2026-09-01)",
+    "PC용 칩 10% 가격 인상 보도로 주가 +3% (2026-09-11), 이후 되돌림"
+  ],
+  "risks": [
+    "섹터 센티먼트 악화가 지속될 경우 최근 랠리(YTD +160%대) 되돌림 위험",
+    "애플 등 레거시 고객 이탈이 클라이언트 PC 매출에 누적적으로 미칠 영향",
+    "서버 CPU 점유율의 AMD 잠식 지속 여부"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/INTC%20-%20Intel%20Corporation.md"
+}

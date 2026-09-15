@@ -1,0 +1,54 @@
+{
+  "ticker": "2454.TW",
+  "date": "2026-09-15",
+  "as_of_utc": "2026-09-15T12:00:00Z",
+  "news": [
+    {
+      "title": "미디어텍 8월 매출 전년비 44% 급증, AI 칩 사업이 견인",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-10/nvidia-backed-mediatek-s-sales-soar-44-with-ai-chip-momentum",
+      "published": "2026-09-10T00:00:00Z",
+      "summary": "8월 매출 NT$64.2B(약 2조원)로 급증, 구글向 AI 칩 사업이 스마트폰 부진 상쇄",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "AI 속도조절 우려로 대만 반도체주 동반 약세, 미디어텍도 소폭 하락",
+      "source": "Taipei Times",
+      "url": "https://www.taipeitimes.com/News/biz/archives/2026/09/15/2003864261",
+      "published": "2026-09-15T00:00:00Z",
+      "summary": "TSMC -1.24%, 미디어텍 -0.55%로 TAIEX 지수 46,000선 하회",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "QCOM",
+      "headline": "퀄컴, 아마존과 최대 600억달러 규모 데이터센터 AI 칩 협력 체결",
+      "implication_for_target": "스마트폰 AP 경쟁사 퀄컴도 데이터센터 AI 칩 진출을 가속화하며, 미디어텍의 커스텀 AI ASIC 선점 우위에 대한 경쟁 압박이 커짐"
+    },
+    {
+      "ticker": "005930.KS",
+      "headline": "삼성전자, 파운드리 고객사向 AI 칩 설계 툴 개방 확대",
+      "implication_for_target": "삼성 파운드리가 AI 칩 설계 생태계를 넓히는 것은 미디어텍의 파운드리 협상력(TSMC 의존 완화)에 장기적으로 참고할 변수"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.30,
+    "competitive_position": 0.10,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.10
+  },
+  "narrative_score": 0.13,
+  "summary_kr": "8월 매출이 전년비 44% 급증하며 구글向 AI 칩 사업이 스마트폰 부진을 상쇄하는 흐름이 숫자로 재확인됐다. AI 속도조절 우려로 대만 반도체주가 동반 하락했지만 미디어텍의 낙폭은 TSMC보다도 작아 상대적으로 견조했다.",
+  "key_events": [
+    "8월 매출 +44% YoY, AI 칩 사업 매출 기여 확대",
+    "AI 슬로다운 우려발 대만 반도체주 동반 하락 (미디어텍 -0.55%)"
+  ],
+  "risks": [
+    "엔비디아·구글向 AI ASIC 매출의 구체적 규모가 아직 공식 분리 공시되지 않아 성장 지속성 판단이 어려움",
+    "AI 인프라 투자 속도조절 논의가 장기화될 경우 4분기 첫 AI 가속기 양산 고객사 확보 계획에도 영향 가능"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/2454.TW%20-%20MediaTek%20Inc.md"
+}
