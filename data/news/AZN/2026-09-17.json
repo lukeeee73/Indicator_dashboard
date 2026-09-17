@@ -1,0 +1,56 @@
+{
+  "ticker": "AZN",
+  "date": "2026-09-17",
+  "as_of_utc": "2026-09-17T00:10:00Z",
+  "news": [
+    {
+      "title": "AstraZeneca shares down ~3% after Handelsbanken rating cut, paused UK investment",
+      "source": "Reuters (via Yahoo UK Finance)",
+      "url": "https://uk.finance.yahoo.com/news/astrazeneca-shares-down-3-rating-112837841.html",
+      "published": "2026-09-15T00:00:00Z",
+      "summary": "핸델스방켄 등급 강등 + 英투자 보류로 주가 3%↓",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "UBS reaffirms Buy on AstraZeneca despite clinical setbacks and merger speculation, cuts target to 15,200p",
+      "source": "MarketScreener (UBS)",
+      "url": "https://www.marketscreener.com/news/astrazeneca-ubs-maintains-a-buy-rating-ce7d5cdbd189ff25",
+      "published": "2026-09-16T00:00:00Z",
+      "summary": "UBS, 임상 실패·합병설에도 매수의견 유지·목표가는 하향",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MRK",
+      "headline": "Merck says 'all cylinders firing' at Morgan Stanley healthcare conference",
+      "implication_for_target": "AZN의 임상 실패와 대조적으로 머크가 종양학 모멘텀을 부각, 상대적으로 AZN R&D 서사 약화 위험"
+    },
+    {
+      "ticker": "ABBV",
+      "headline": "AbbVie shares up 1.8%, dividend raised",
+      "implication_for_target": "대형 제약주 전반 투자심리는 견조 — AZN 하락은 종목 특이적 요인이 크다는 신호"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": -0.1
+  },
+  "narrative_score": 0.05,
+  "summary_kr": "애널리스트 등급 강등과 영국 투자 보류로 주가가 하락했지만, UBS는 목표가만 낮추고 매수의견은 유지하며 저평가 매력을 강조했다. 단기 노이즈는 크나 펀더멘털 붕괴 신호는 아직 아니다.",
+  "key_events": [
+    "핸델스방켄 등급 강등(매수→보유)",
+    "케임브리지 투자 보류 보도",
+    "UBS 매수의견 유지·목표가 하향(17,600p→15,200p)"
+  ],
+  "risks": [
+    "영국 정부와의 투자 갈등 장기화 가능성",
+    "유방암 파이프라인 후퇴로 종양학 프리미엄 훼손",
+    "BMY 합병설 추진 시 통합 리스크"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AZN%20-%20AstraZeneca%20PLC.md"
+}
