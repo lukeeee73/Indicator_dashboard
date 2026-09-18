@@ -1,0 +1,42 @@
+{
+  "ticker": "SRE",
+  "date": "2026-09-18",
+  "as_of_utc": "2026-09-18T12:00:00Z",
+  "news": [
+    {
+      "title": "Sempra Infrastructure Announces Long-Term LNG Supply Agreement with Petrobras",
+      "source": "Sempra Newsroom",
+      "url": "https://www.sempra.com/newsroom/press-releases/sempra-infrastructure-announces-long-term-lng-supply-agreement-petrobras",
+      "published": "2026-09-14T13:00:00Z",
+      "summary": "페트로브라스와 20년 LNG 장기공급계약 체결(연 0.8Mtpa), 남미 첫 고객 확보",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Fed raises interest rates by quarter point to tackle inflation",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html",
+      "published": "2026-09-16T18:00:00Z",
+      "summary": "연준, 2023년 이후 첫 금리인상(3.75~4.00%) 단행, 금리민감 유틸리티주에 부담",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "AEP", "headline": "AEP 2분기 실적 컨센서스 하회", "implication_for_target": "SRE는 LNG 수출이라는 별도 성장축이 있어 순수 전력유틸리티 대비 차별화"},
+    {"ticker": "DUK", "headline": "듀크에너지 사우스캐롤라이나 요금 합의", "implication_for_target": "SRE의 캘리포니아·텍사스 규제환경과 비교되는 참고 사례"},
+    {"ticker": "NEE", "headline": "NextEra Duane Arnold 원전 재가동", "implication_for_target": "SRE는 원전 대신 LNG 인프라(Port Arthur)로 별도의 글로벌 에너지수요 노출 확보"}
+  ],
+  "scores": {"earnings_outlook": 0.1, "competitive_position": 0.2, "regulatory_risk": -0.1, "macro_sensitivity": -0.3},
+  "narrative_score": 0.03,
+  "summary_kr": "Sempra는 Port Arthur LNG 2단계 물량에 대해 페트로브라스와 20년 장기공급계약을 새로 체결하며 LNG 수출 포트폴리오를 넓혔지만, 최근 일부 압축기 이슈로 인한 고객 계약해지 리스크와 애널리스트 목표주가 하향, 연준 금리인상이 겹쳐 단기 투자심리는 다소 조심스럽다.",
+  "key_events": [
+    "페트로브라스와 Port Arthur LNG 2단계 20년 공급계약 체결 (9/14)",
+    "연준 2023년 이후 첫 금리인상 단행, 3.75~4.00% (9/16)"
+  ],
+  "risks": [
+    "압축기 지연 이슈로 인한 고객사 SPA 해지권 행사 및 추가 자본지출 가능성",
+    "Truist·JPMorgan 등 목표주가 하향 조정(9월 초)"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/SRE%20-%20Sempra.md"
+}

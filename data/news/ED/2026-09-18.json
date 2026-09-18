@@ -1,0 +1,42 @@
+{
+  "ticker": "ED",
+  "date": "2026-09-18",
+  "as_of_utc": "2026-09-18T12:00:00Z",
+  "news": [
+    {
+      "title": "Consolidated Edison stock holds steady after Q2 earnings and dividend support",
+      "source": "ad-hoc-news",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/consolidated-edison-stock-holds-steady-after-q2-earnings-and-dividend/70120870",
+      "published": "2026-09-16T10:00:00Z",
+      "summary": "2분기 순이익 25% 증가 등 견조한 실적과 배당 유지에도 연준 금리인상 여파로 방어주 ED 주가는 제한적 흐름",
+      "impact": "-",
+      "category": "macro"
+    },
+    {
+      "title": "Fed raises interest rates by quarter point to tackle inflation",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html",
+      "published": "2026-09-16T18:00:00Z",
+      "summary": "연준, 2023년 이후 첫 금리인상(3.75~4.00%) 단행, 고배당·금리민감 유틸리티주에 부담",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "EXC", "headline": "Exelon 경영진 개편 발표", "implication_for_target": "ED는 뉴욕 규제자산 성장에 집중하며 상대적으로 경영 안정성 부각"},
+    {"ticker": "AEP", "headline": "AEP 2분기 실적 컨센서스 하회", "implication_for_target": "ED는 2분기 순이익 25% 증가로 상대적으로 견조한 실적 흐름 유지"},
+    {"ticker": "DUK", "headline": "듀크에너지 사우스캐롤라이나 요금 합의", "implication_for_target": "ED도 뉴욕주 요금 협상에서 유사한 우호적 결과를 기대할 근거"}
+  ],
+  "scores": {"earnings_outlook": 0.3, "competitive_position": -0.1, "regulatory_risk": 0.0, "macro_sensitivity": -0.35},
+  "narrative_score": 0.04,
+  "summary_kr": "Consolidated Edison은 2분기 순이익이 전년 대비 25% 증가하는 등 견조한 실적을 이어가고 배당도 유지했지만, 고배당·저성장 방어주 특성상 연준의 금리인상에 특히 민감하게 반응하며 주가는 최근 약세권에 머물러 있다.",
+  "key_events": [
+    "연준 2023년 이후 첫 금리인상 단행에 ED 등 방어주 약세 (9/16)",
+    "(배경) 2분기 순이익 25% 증가, EPS 0.83달러 (8/6 발표)"
+  ],
+  "risks": [
+    "고배당·저베타 특성상 금리상승 국면에서 상대매력 저하",
+    "AI 데이터센터 발전 프리미엄 노출이 제한적(순수 송배전 중심)"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ED%20-%20Consolidated%20Edison.md"
+}
