@@ -1,0 +1,52 @@
+{
+  "ticker": "D",
+  "date": "2026-09-18",
+  "as_of_utc": "2026-09-18T12:00:00Z",
+  "news": [
+    {
+      "title": "NextEra, Dominion Offer Virginia Aid to Smooth $67 Billion Deal",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-14/nextera-dominion-offer-virginia-aid-to-smooth-67-billion-deal",
+      "published": "2026-09-14T13:00:00Z",
+      "summary": "버지니아 고객 청구서 크레딧을 4년간 2배로 확대하는 합병 혜택안 발표, 규제 승인 절차 진전",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "Lt. Gov. Hashmi Aims to Slow Dominion Merger Efforts",
+      "source": "The Daily Signal",
+      "url": "https://www.dailysignal.com/2026/09/17/dominion-energy-merger-under-scrutiny/",
+      "published": "2026-09-17T12:00:00Z",
+      "summary": "버지니아 부지사, 합병 관련 전력요금 청취투어 마지막 회의 예고하며 반대 여론 부각",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Fed raises interest rates by quarter point to tackle inflation",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html",
+      "published": "2026-09-16T18:00:00Z",
+      "summary": "연준, 2023년 이후 첫 금리인상(3.75~4.00%) 단행, 금리민감 유틸리티주에 부담",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "NEE", "headline": "(자기 자신의 인수자) NextEra, Duane Arnold 원전 재가동·구글 PPA로 별도 성장동력 확보", "implication_for_target": "합병이 무산될 경우 D 단독으로는 NEE 대비 AI 데이터센터向 성장 스토리가 약함"},
+    {"ticker": "SO", "headline": "조지아파워 OpenAI 대형부하 계약 승인", "implication_for_target": "D의 버지니아 데이터센터 수요(노던버지니아)와 유사한 대형부하 성장 사례"},
+    {"ticker": "DUK", "headline": "듀크에너지 사우스캐롤라이나 요금 합의", "implication_for_target": "D도 버지니아 규제당국과의 우호적 관계 구축이 합병 승인에 중요"}
+  ],
+  "scores": {"earnings_outlook": 0.1, "competitive_position": 0.1, "regulatory_risk": -0.2, "macro_sensitivity": -0.3},
+  "narrative_score": -0.02,
+  "summary_kr": "Dominion Energy는 NextEra와의 $66.8B 합병 승인을 위해 버지니아 고객혜택을 4년으로 확대하는 등 유화책을 제시했지만, 부지사 주도의 반대여론 청취투어가 마무리 국면에 접어들며 정치적 불확실성이 커지고 있고, 연준 금리인상도 주가에 부담을 주고 있다.",
+  "key_events": [
+    "NextEra-Dominion 합병, 버지니아 고객혜택 4년으로 확대 발표 (9/14)",
+    "버지니아 부지사, 합병 반대 청취투어 마지막 회의 예고 (9/17)",
+    "연준 2023년 이후 첫 금리인상 단행, 3.75~4.00% (9/16)"
+  ],
+  "risks": [
+    "버지니아주 정치권·소비자단체의 합병 반대로 승인 지연 또는 조건 강화 가능성",
+    "합병 무산 시 단독 성장전략으로의 전환 리스크"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/D%20-%20Dominion%20Energy%2C%20Inc..md"
+}

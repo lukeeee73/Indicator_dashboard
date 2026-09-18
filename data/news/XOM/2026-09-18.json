@@ -1,0 +1,54 @@
+{
+  "ticker": "XOM",
+  "date": "2026-09-18",
+  "as_of_utc": "2026-09-18T12:00:00Z",
+  "news": [
+    {
+      "title": "ExxonMobil Holds Talks to Re-Enter Venezuela Oil Fields After Years Away",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-16/exxon-is-in-talks-to-return-to-venezuela-as-us-deals-accelerate",
+      "published": "2026-09-16T00:00:00Z",
+      "summary": "엑슨모빌, 약 20년 만에 베네수엘라 중질유전(최대 500억 배럴 규모) 재진출 협상 근접.",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Oil prices fall as Saudi Arabia reportedly offers more crude via Hormuz after pipeline attack",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/17/oil-prices-today-wti-brent-hormuz-iran-war.html",
+      "published": "2026-09-17T00:00:00Z",
+      "summary": "사우디 동서 파이프라인 복구 소식에 브렌트유가 배럴당 약 102달러로 이틀 연속 하락.",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CVX",
+      "headline": "Chevron targets Argentina, Mediterranean for LNG growth, eyes India deal",
+      "implication_for_target": "쉐브론이 LNG 포트폴리오를 남미·지중해로 다변화하며 엑슨모빌의 베네수엘라 재진출과 별개로 공급 다각화 경쟁이 심화됨"
+    },
+    {
+      "ticker": "SHEL",
+      "headline": "Shell steps up capital returns with September share buy-back",
+      "implication_for_target": "쉘이 자사주 매입을 지속하며 자본배분 여력을 과시, 엑슨모빌도 주주환원 경쟁 압박"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.20,
+    "competitive_position": 0.10,
+    "regulatory_risk": -0.10,
+    "macro_sensitivity": -0.30
+  },
+  "narrative_score": 0.04,
+  "summary_kr": "엑슨모빌이 20년 만에 베네수엘라 유전 재진출을 추진하며 장기 매장량 확대 기대가 커졌지만, 사우디 파이프라인 복구 소식으로 유가가 이틀 연속 하락해 단기 매크로는 부정적이다.",
+  "key_events": [
+    "엑슨모빌, 베네수엘라 중질유전 재진출 협상 근접(약 500억 배럴 규모)",
+    "사우디 동서 파이프라인 부분 복구 소식에 브렌트유 배럴당 약 102달러로 하락"
+  ],
+  "risks": [
+    "베네수엘라 협상은 제재·재정개혁 불확실성으로 무산되거나 지연될 수 있음",
+    "유가 하락이 지속되면 업스트림 마진 압박"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/XOM%20-%20Exxon%20Mobil%20Corporation.md"
+}

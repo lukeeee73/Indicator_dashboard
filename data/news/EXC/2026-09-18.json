@@ -1,0 +1,42 @@
+{
+  "ticker": "EXC",
+  "date": "2026-09-18",
+  "as_of_utc": "2026-09-18T12:00:00Z",
+  "news": [
+    {
+      "title": "Exelon Announces Key Leadership Position Changes",
+      "source": "Exelon Newsroom",
+      "url": "https://www.exeloncorp.com/newsroom/exelon-announces-key-leadership-position-changes",
+      "published": "2026-08-25T13:00:00Z",
+      "summary": "COO 겸 PECO CEO 마이크 이노첸조 2027년 퇴임 발표 등 경영진 개편 단행",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "Fed raises interest rates by quarter point to tackle inflation",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html",
+      "published": "2026-09-16T18:00:00Z",
+      "summary": "연준, 2023년 이후 첫 금리인상(3.75~4.00%) 단행, 금리민감 유틸리티주에 부담",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "AEP", "headline": "AEP 텍사스 데이터센터 대형부하 69GW 파이프라인", "implication_for_target": "EXC(ComEd/PECO 등 순수 송배전)는 AI 데이터센터發 발전 프리미엄 노출이 상대적으로 적음"},
+    {"ticker": "ED", "headline": "ED 2분기 순이익 25% 증가", "implication_for_target": "EXC도 규제자산기반 성장에 의존하나 동북부 경쟁사 대비 밸류에이션 프리미엄은 낮음"},
+    {"ticker": "SO", "headline": "조지아파워 OpenAI 대형부하 계약", "implication_for_target": "EXC는 발전자산이 없어 AI 데이터센터 전력공급 프리미엄을 직접 누리기 어려움"}
+  ],
+  "scores": {"earnings_outlook": 0.0, "competitive_position": -0.1, "regulatory_risk": 0.0, "macro_sensitivity": -0.3},
+  "narrative_score": -0.07,
+  "summary_kr": "Exelon은 지난달 PECO CEO 이노첸조의 2027년 퇴임 등 경영진 개편을 발표한 것 외에 최근 24~48시간 내 뚜렷한 고유 뉴스가 부재하며, 순수 송배전 사업모델 특성상 동종업계 대비 AI 데이터센터 수혜 내러티브가 약하고 연준 금리인상 여파로 주가 모멘텀이 둔화되어 있다.",
+  "key_events": [
+    "COO 겸 PECO CEO 마이크 이노첸조 2027년 퇴임 발표 (8/25)",
+    "연준 2023년 이후 첫 금리인상 단행, 3.75~4.00% (9/16)"
+  ],
+  "risks": [
+    "경영진 교체에 따른 전략 실행 불확실성",
+    "발전자산 부재로 AI 데이터센터 전력수요 프리미엄 소외 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/EXC%20-%20Exelon%20Corporation.md"
+}

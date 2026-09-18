@@ -1,0 +1,43 @@
+{
+  "ticker": "SO",
+  "date": "2026-09-18",
+  "as_of_utc": "2026-09-18T12:00:00Z",
+  "news": [
+    {
+      "title": "Georgia Power's Robins Battery Storage achieves commercial operation helping to ensure reliable energy in Georgia",
+      "source": "PR Newswire",
+      "url": "https://www.prnewswire.com/news-releases/georgia-powers-robins-battery-storage-achieves-commercial-operation-helping-to-ensure-reliable-energy-in-georgia-302879345.html",
+      "published": "2026-09-15T13:00:00Z",
+      "summary": "조지아파워, 128MW 배터리저장시설 상업운전 개시로 그리드 안정성 강화",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Fed raises interest rates by quarter point to tackle inflation",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html",
+      "published": "2026-09-16T18:00:00Z",
+      "summary": "연준, 2023년 이후 첫 금리인상(3.75~4.00%) 단행, 금리민감 유틸리티주에 부담",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "DUK", "headline": "사우스캐롤라이나 요금 재검토, 이해관계자 다수 합의안 도출", "implication_for_target": "SO의 조지아/앨라배마 규제환경과 비교되는 경쟁사 요금인상 협상 사례"},
+    {"ticker": "AEP", "headline": "AEP 2분기 실적 컨센서스 하회", "implication_for_target": "SO는 상대적으로 대형 부하(OpenAI 데이터센터) 계약을 이미 확보해 실적 가시성이 높음"},
+    {"ticker": "NEE", "headline": "NextEra-Dominion 합병 버지니아 혜택안 확대", "implication_for_target": "SO는 M&A 불확실성 없이 유기적 성장(데이터센터 대형부하) 전략을 지속"}
+  ],
+  "scores": {"earnings_outlook": 0.2, "competitive_position": 0.3, "regulatory_risk": 0.2, "macro_sensitivity": -0.3},
+  "narrative_score": 0.15,
+  "summary_kr": "Southern Company는 조지아파워의 배터리저장시설 상업운전 개시 등 인프라 확충을 이어가고 있으며, 앞서 승인된 OpenAI 데이터센터 대형부하 계약이 연 9.5억달러 고객절감 효과와 함께 실적 가시성을 뒷받침하지만, 연준 금리인상은 유틸리티 전반에 부담이다.",
+  "key_events": [
+    "조지아파워 Robins 배터리저장시설(128MW) 상업운전 개시 (9/15)",
+    "연준 2023년 이후 첫 금리인상 단행, 3.75~4.00% (9/16)",
+    "(배경) 조지아파워-OpenAI 3,200MW 대형부하 계약 PSC 승인, 연 9.5억달러 고객절감 (8/27)"
+  ],
+  "risks": [
+    "금리 상승에 따른 배당주 밸류에이션 압박",
+    "대형 데이터센터 부하 계약의 수요 실현 지연 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/SO%20-%20The%20Southern%20Company.md"
+}

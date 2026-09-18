@@ -1,0 +1,42 @@
+{
+  "ticker": "AEP",
+  "date": "2026-09-18",
+  "as_of_utc": "2026-09-18T12:00:00Z",
+  "news": [
+    {
+      "title": "American Electric Power stock dips after Q2 2026 earnings miss but guidance stays intact",
+      "source": "ad-hoc-news",
+      "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/american-electric-power-stock-dips-after-q2-2026-earnings-miss-but/70112425",
+      "published": "2026-09-15T10:00:00Z",
+      "summary": "2분기 EPS 1.36달러로 컨센서스 1.48달러 하회했으나 연간 가이던스($6.25~6.55)는 유지",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Fed raises interest rates by quarter point to tackle inflation",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html",
+      "published": "2026-09-16T18:00:00Z",
+      "summary": "연준, 2023년 이후 첫 금리인상(3.75~4.00%) 단행, 금리민감 유틸리티주에 부담",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {"ticker": "DUK", "headline": "사우스캐롤라이나 요금 재검토 합의안 도출", "implication_for_target": "AEP도 텍사스·오하이오 등에서 진행 중인 요금 협상에 참고할 선례"},
+    {"ticker": "SO", "headline": "조지아파워-OpenAI 대형부하 계약 규제 승인", "implication_for_target": "AEP는 텍사스 중심 69GW 신규부하 파이프라인으로 유사한 AI 데이터센터 수요 경쟁 중"},
+    {"ticker": "NEE", "headline": "NextEra-Dominion 합병 버지니아 반대여론", "implication_for_target": "AEP는 M&A 불확실성 없이 자체 자본계획($78B)에 집중"}
+  ],
+  "scores": {"earnings_outlook": -0.1, "competitive_position": 0.3, "regulatory_risk": 0.1, "macro_sensitivity": -0.3},
+  "narrative_score": 0.01,
+  "summary_kr": "AEP는 2분기 EPS가 컨센서스를 하회했지만 연간 가이던스는 유지했고, 텍사스 데이터센터 대형부하 파이프라인(약 69GW) 확대로 중장기 성장성은 견조하나, 최근 24~48시간 내 AEP 고유의 굵직한 뉴스는 제한적이며 연준 금리인상이 주가에 부담을 주고 있다.",
+  "key_events": [
+    "2분기 EPS 1.36달러로 컨센서스 하회, 가이던스는 유지 (9/15 보도)",
+    "연준 2023년 이후 첫 금리인상 단행, 3.75~4.00% (9/16)"
+  ],
+  "risks": [
+    "텍사스·오클라호마 등 다수 관할 요금소송 동시 진행에 따른 규제 리스크",
+    "금리 상승 국면에서 대규모 자본계획($78B) 조달비용 증가 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AEP%20-%20American%20Electric%20Power.md"
+}
