@@ -1,0 +1,56 @@
+{
+  "ticker": "NFLX",
+  "date": "2026-09-20",
+  "as_of_utc": "2026-09-20T12:00:00Z",
+  "news": [
+    {
+      "title": "웰스파고, 넷플릭스를 Underweight로 하향 — 목표가 80→57달러",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/wells-fargo-downgrades-netflix-stock-180752599.html",
+      "published": "2026-09-18T00:00:00Z",
+      "summary": "시청 몰입도 하락(1인당 시청시간 상반기 -8%) 근거로 투자의견·목표가 대폭 하향",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "넷플릭스 주가 5% 하락, 웰스파고 \"올해 2022년 이후 최악\"",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/09/18/netflix-falls-4-as-wells-fargo-cuts-rating-to-underweight-with-57-target-disney-barely-budges/",
+      "published": "2026-09-18T00:00:00Z",
+      "summary": "다운그레이드 여파로 주가 급락, 디즈니 등 경쟁사는 상대적으로 영향 적어",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "DIS",
+      "headline": "넷플릭스 급락 속 디즈니 주가는 거의 움직이지 않음",
+      "implication_for_target": "시장이 스트리밍 참여도 저하 리스크를 넷플릭스에 국한된 문제로 보고 있다는 신호로, 넷플릭스에는 상대적 약세 요인이다."
+    },
+    {
+      "ticker": "SPOT",
+      "headline": "스포티파이도 같은 날 밸류에이션 부담으로 3.7% 하락",
+      "implication_for_target": "스트리밍·구독 업종 전반의 고밸류에이션 재평가 압력이 동시에 나타나고 있어, 넷플릭스 개별 이슈와 업종 전반 이슈가 겹쳐 있음을 보여준다."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.4,
+    "competitive_position": -0.25,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.05
+  },
+  "narrative_score": -0.24,
+  "summary_kr": "웰스파고가 시청 몰입도 하락을 근거로 넷플릭스를 Underweight로 하향하며 목표가를 57달러로 낮췄고, 주가는 5% 급락하며 2022년 이후 최악의 한 해가 될 수 있다는 경고가 나왔다.",
+  "key_events": [
+    "웰스파고 Underweight 하향, 목표가 80→57달러",
+    "상반기 1인당 일평균 시청시간 8% 감소",
+    "주가 5% 급락, 52명 애널리스트 중 38명은 여전히 매수 의견 유지"
+  ],
+  "risks": [
+    "시청 몰입도 하락이 광고·구독 매출 성장 둔화로 이어질 가능성",
+    "팟캐스트·게임·라이브 확장이 오리지널 콘텐츠 투자를 잠식했다는 지적",
+    "웰스파고의 비관론이 소수 의견인지, 추세 전환의 시작인지 불확실"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/NFLX%20-%20Netflix%20Inc.md"
+}
