@@ -1,0 +1,65 @@
+{
+  "ticker": "AAPL",
+  "date": "2026-09-21",
+  "as_of_utc": "2026-09-21T13:00:00Z",
+  "news": [
+    {
+      "title": "Apple's iPhone 18 goes on sale, and long lines form at stores worldwide",
+      "source": "Fox Business",
+      "url": "https://www.foxbusiness.com/technology/apples-iphone-18-goes-sale-customers-line-up-stores-worldwide",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "아이폰18 출시, 전 세계 매장에 긴 줄 형성",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Bank of America flags surprising iPhone 18 pre-order trend",
+      "source": "TheStreet",
+      "url": "https://www.thestreet.com/markets/bank-of-america-flags-iphone-18-shorter-wait-times-preorder-trend",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "BofA, 배송 대기시간 단축 포착… 견조한 수요 신호",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Italian Apple store employees strike on iPhone 18 Pro launch day",
+      "source": "Reuters (via Investing.com)",
+      "url": "https://www.investing.com/news/stock-market-news/italian-apple-store-employees-strike-on-iphone18-pro-launch-day-4907012",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "이탈리아 애플스토어 17곳 노동자, 출시일 파업",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft sets limits for future AI models as industry throttles frontier development",
+      "url": "https://www.cnbc.com/2026/09/14/microsoft-ai-model-limits-anthropic-openai.html",
+      "implication_for_target": "MS가 차세대 AI 모델 개발에 자체 제동을 걸며, 애플의 상대적으로 느린 AI 전략에 시간적 여유가 생길 수 있음"
+    },
+    {
+      "ticker": "GOOGL",
+      "headline": "Google should relax ad tech rules, appoint antitrust monitor, US judge finds",
+      "url": "https://www.investing.com/news/stock-market-news/google-should-appoint-antitrust-compliance-officer-us-judge-says-in-ad-tech-case-4904639",
+      "implication_for_target": "구글 광고사업 강제분할은 면했으나 6년 감독관제 도입 — 애플의 구글 기본검색 계약(연 수백억달러 서비스 수익) 규제 리스크는 완화된 신호"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.2,
+    "competitive_position": 0.1,
+    "regulatory_risk": 0.05,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.12,
+  "summary_kr": "아이폰18 정식 출시 첫 주말 초기 수요 신호가 견조했고(BofA 배송기간 단축 포착), 이탈리아 일부 매장 파업은 제한적 잡음에 그쳤다.",
+  "key_events": [
+    "2026-09-18 아이폰18 정식 출시, 전 세계 매장 긴 줄",
+    "2026-09-18 BofA, 짧아진 배송 대기시간으로 견조한 수요 신호 포착"
+  ],
+  "risks": [
+    "이탈리아 등 일부 매장 노동쟁의 확산 가능성",
+    "초기 프리미엄 수요가 실제 판매 지속력으로 이어질지 불확실"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AAPL%20-%20Apple%20Inc.md"
+}

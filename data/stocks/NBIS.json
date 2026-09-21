@@ -1965,32 +1965,29 @@
     "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-09-14",
-      "narrative_score": 0.25,
-      "summary_kr": "네비우스는 팔란티어 파트너십과 폭발적 매출 성장이 긍정적이나, 바인랜드 데이터센터 인허가 리스크와 대규모 설비투자에 따른 재무 부담이 상존.",
+      "as_of": "2026-09-21",
+      "narrative_score": 0.1,
+      "summary_kr": "GPU 클라우드 요금을 최대 21% 인상하며 가격결정력을 재확인했지만, 인상 발표 이전 한 달간 주가가 22% 빠질 정도로 재무 부담·희석 우려도 배경에 깔려 있다.",
       "key_events": [
-        "팔란티어 소버린 AI 파트너십 체결(9/8)",
-        "골드만삭스·씨티 투자자 컨퍼런스 참가",
-        "바인랜드 데이터센터 인허가 리스크 해소"
+        "2026-09-16 온디맨드 GPU 요금 최대 21% 인상(10/1 발효)"
       ],
       "risks": [
-        "대규모 설비투자(200~250억달러)의 자금조달 리스크",
-        "코어위브·오라클·IREN 등 GPU 클라우드 경쟁 심화",
-        "데이터센터 인허가·건설 지연 재발 가능성"
+        "대규모 설비투자發 자금조달·희석 우려 지속",
+        "가격 인상이 고객 이탈로 이어질 가능성"
       ],
-      "news_count": 4,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "CRWV",
-          "headline": "CoreWeave downgraded to Hold on leverage/margin concerns",
-          "url": "https://finance.yahoo.com/news/cisco-upgraded-coreweave-downgraded-wall-134418969.html",
-          "implication_for_target": "코어위브의 재무 리스크 부각은 상대적으로 선수금 기반의 자본구조를 가진 네비우스에 유리한 대비 효과"
+          "headline": "CoreWeave continues to contract new compute capacity at higher prices",
+          "url": "https://www.stocktitan.net/news/CRWV/core-weave-continues-to-contract-new-compute-capacity-at-higher-tdj4a0grdaxy.html",
+          "implication_for_target": "코어위브의 대규모 신규 계약·가이던스 상향은 GPU 클라우드 수요가 업계 전반에 강하다는 신호로, 네비우스에도 긍정적 참고 지표"
         },
         {
-          "ticker": "IREN",
-          "headline": "IREN delivers first 50MW liquid-cooled AI cloud deployment to Microsoft, lifts 2026 revenue target above $4B",
-          "url": "https://finance.yahoo.com/technology/ai/articles/iren-stock-jumps-microsoft-nvidia-185533310.html",
-          "implication_for_target": "비트코인 채굴사에서 전환한 IREN의 초고속 확장은 GPU 클라우드·하이퍼스케일러 수주 경쟁에서 네비우스의 새로운 경쟁자로 부상"
+          "ticker": "ORCL",
+          "headline": "Oracle signs >$30B in new AI cloud contracts, plans $90-95B FY27 capex",
+          "url": "https://www.cnbc.com/2026/09/11/oracle-stock-q1-earnings-ai-cloud.html",
+          "implication_for_target": "오라클의 초대형 AI 클라우드 투자 확대는 자본력 있는 경쟁자와의 경쟁 심화를 의미, 네비우스 밸류에이션에는 다소 부담"
         }
       ],
       "history": [
@@ -2025,6 +2022,10 @@
         {
           "date": "2026-09-14",
           "narrative_score": 0.25
+        },
+        {
+          "date": "2026-09-21",
+          "narrative_score": 0.1
         }
       ]
     }

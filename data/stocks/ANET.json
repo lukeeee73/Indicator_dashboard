@@ -10283,32 +10283,30 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-09-14",
-      "narrative_score": 0.34,
-      "summary_kr": "아리스타는 S&P100 편입과 2026년 매출 가이던스 상향(126억달러)으로 모멘텀이 강하지만, 실리콘·메모리 공급망 리스크와 시스코·브로드컴의 AI 네트워킹 경쟁 심화가 하방 요인.",
+      "as_of": "2026-09-21",
+      "narrative_score": 0.1,
+      "summary_kr": "예고됐던 S&P100 지수 편입이 오늘(9/21) 실제로 발효되는 가운데, 편입을 앞둔 최근 5거래일간 주가가 5.6% 오르며 강세가 이어졌고 AI 데이터센터 수요를 근거로 한 목표주가 상향도 나왔다.",
       "key_events": [
-        "S&P 100 지수 편입 (9/21)",
-        "2026년 매출 가이던스 126억달러 재확인",
-        "다년 부품 구매약정 97억달러로 확대"
+        "2026-09-21 S&P100 지수 편입 발효(나이키 대체)",
+        "2026-09-18 AI 데이터센터 수요 근거로 목표주가 상향"
       ],
       "risks": [
-        "실리콘·메모리 부품 공급 부족 (2028년까지 지속 전망)",
-        "시스코·브로드컴의 AI 네트워킹 경쟁 심화",
-        "고객 가시성이 2분기 앞만 확보되는 수요 예측 불확실성"
+        "지수 편입 효과 소멸 후 되돌림 가능성",
+        "실리콘·메모리 공급망 병목이 매출 상한으로 작용할 위험"
       ],
-      "news_count": 4,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "CSCO",
-          "headline": "Cisco upgraded, CoreWeave downgraded: Wall Street's top analyst calls",
-          "url": "https://finance.yahoo.com/news/cisco-upgraded-coreweave-downgraded-wall-134418969.html",
-          "implication_for_target": "시스코가 AI 네트워킹 수요 강세로 상향되며 아리스타의 클라우드/AI 스위칭 시장에서 경쟁 압력이 커질 수 있음"
+          "headline": "Cisco joins Verizon's expanded 6G Innovation Forum as core partner",
+          "url": "https://simplywall.st/stocks/us/tech/nasdaq-csco/cisco-systems/news/cisco-csco-joins-6g-forum-as-ai-native-networking-push-deepe",
+          "implication_for_target": "시스코가 차세대(6G) AI 네이티브 네트워킹으로 영역을 넓히면 아리스타의 데이터센터 네트워킹 경쟁이 심화될 수 있음"
         },
         {
           "ticker": "AVGO",
-          "headline": "Broadcom Q3 FY26 AI semiconductor revenue up 221% YoY to $16.7B, guides $21.7B for Q4",
-          "url": "https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html",
-          "implication_for_target": "브로드컴의 커스텀 AI 가속기·네트워킹 매출 급증은 AI 데이터센터 인터커넥트 시장에서 아리스타 이더넷 스위치의 경쟁 강도를 높이는 요인"
+          "headline": "Broadcom AI semiconductor revenue $16.7B in Q3 FY26 (+221% YoY)",
+          "url": "https://www.cnbc.com/quotes/AVGO",
+          "implication_for_target": "브로드컴의 AI 데이터센터 칩 매출 급증은 데이터센터 AI 투자 확대를 뒷받침, 아리스타 스위치 수요에도 긍정적"
         }
       ],
       "history": [
@@ -10343,6 +10341,10 @@
         {
           "date": "2026-09-14",
           "narrative_score": 0.34
+        },
+        {
+          "date": "2026-09-21",
+          "narrative_score": 0.1
         }
       ]
     }

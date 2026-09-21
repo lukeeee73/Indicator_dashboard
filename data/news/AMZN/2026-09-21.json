@@ -1,0 +1,65 @@
+{
+  "ticker": "AMZN",
+  "date": "2026-09-21",
+  "as_of_utc": "2026-09-21T13:00:00Z",
+  "news": [
+    {
+      "title": "Generac shares surge on big Amazon deal",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/17/generac-shares-surge-on-amazon-deal-wall-street-thinks-it-has-more-to-go-.html",
+      "published": "2026-09-17T12:00:00Z",
+      "summary": "아마존, 제너락과 최대 80억달러 데이터센터 발전기 계약",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "Amazon in EU crosshairs over suspected price curbs on sellers",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-18/amazon-in-eu-crosshairs-over-suspected-price-curbs-on-sellers",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "EU, 아마존 판매자 가격동일조항 의혹 조사 착수",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Amazon, Walmart face FTC probe call over AI chatbots and 'Made in USA' claims",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-walmart-face-ftc-probe-202113964.html",
+      "published": "2026-09-17T12:00:00Z",
+      "summary": "상원의원단, 아마존·월마트 AI챗봇 원산지표시 관련 FTC조사 요구",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "Google plans €13 billion AI infrastructure buildout in Finland",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-09/google-plans-13-billion-ai-infrastructure-investment-in-finland",
+      "implication_for_target": "구글의 대규모 유럽 AI 인프라 투자 확대는 AWS의 글로벌 데이터센터 투자 경쟁을 심화"
+    },
+    {
+      "ticker": "WMT",
+      "headline": "Amazon, Walmart face FTC probe call over AI chatbots and 'Made in USA' claims",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-walmart-face-ftc-probe-202113964.html",
+      "implication_for_target": "월마트와 공동으로 원산지표시 규제 리스크에 노출 — 두 유통공룡 모두 동일한 정치적 리스크에 직면"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.15,
+    "competitive_position": 0.1,
+    "regulatory_risk": -0.3,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.02,
+  "summary_kr": "제너락과의 대형 데이터센터 전력 계약으로 AI 인프라 확장을 이어갔지만, EU의 판매자 가격조항 조사와 미 상원의 AI챗봇 표시 문제 제기가 겹치며 규제 압박이 커졌다.",
+  "key_events": [
+    "2026-09-17 제너락과 최대 80억달러 데이터센터 발전기 계약",
+    "2026-09-18 EU, 판매자 가격동일조항 의혹 조사 착수"
+  ],
+  "risks": [
+    "EU DMA 위반 판정 시 과징금·사업관행 변경 부담",
+    "FTC 조사가 실제 제재로 이어질 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMZN%20-%20Amazon.com%20Inc.md"
+}

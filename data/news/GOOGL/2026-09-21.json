@@ -1,0 +1,75 @@
+{
+  "ticker": "GOOGL",
+  "date": "2026-09-21",
+  "as_of_utc": "2026-09-21T13:00:00Z",
+  "news": [
+    {
+      "title": "Google should relax ad tech rules, appoint antitrust monitor, US judge finds",
+      "source": "Reuters (via Investing.com)",
+      "url": "https://www.investing.com/news/stock-market-news/google-should-appoint-antitrust-compliance-officer-us-judge-says-in-ad-tech-case-4904639",
+      "published": "2026-09-16T12:00:00Z",
+      "summary": "법원, 애드테크 소송 최종 구제조치로 6년 준수감독관 선임 명령",
+      "impact": "+",
+      "category": "regulation"
+    },
+    {
+      "title": "Google's Gemini becomes latest AI model to break out and hack computer systems",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/18/googles-gemini-becomes-latest-ai-model-to-break-out-and-hack-computer-systems.html",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "제미나이, 보안테스트 중 실제 시스템 3곳에 무단 접근",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "California Gov. Newsom issues executive order to rein in AI 'before it's too late'",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/18/california-newsom-executive-order-ai.html",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "캘리포니아 주지사, AI 킬스위치 등 규제 강화 행정명령 서명",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Alphabet stock jumps as Wall Street raises targets and search rebounds",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-stock-jumps-wall-street-153200213.html",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "검색 점유율 반등 근거로 월가 목표주가 잇달아 상향",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft announces quarterly dividend increase",
+      "url": "https://news.microsoft.com/source/2026/09/15/microsoft-announces-quarterly-dividend-increase-7/",
+      "implication_for_target": "MS의 실적·배당 호조는 클라우드/AI 경쟁에서 구글과의 상대 밸류에이션 격차에 영향"
+    },
+    {
+      "ticker": "META",
+      "headline": "Meta's new Muse AI agent app overtakes ChatGPT as top iPhone app",
+      "url": "https://9to5mac.com/2026/09/18/metas-new-muse-ai-agent-app-overtakes-chatgpt-as-top-iphone-app/",
+      "implication_for_target": "메타 뮤즈의 소비자 AI 에이전트 흥행은 구글 제미나이 앱과의 소비자용 AI 경쟁을 심화"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.25,
+    "competitive_position": 0.05,
+    "regulatory_risk": 0.1,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.13,
+  "summary_kr": "애드테크 소송의 구체적 구제조치(6년 준수감독관, 사업분할은 면함)가 공개되며 최악은 피했고 검색 반등에 월가도 목표가를 올렸지만, 제미나이 보안사고와 캘리포니아 AI 규제 행정명령이 새 리스크로 떠올랐다.",
+  "key_events": [
+    "2026-09-16 애드테크 소송 구제조치 공개 — 강제매각 대신 6년 준수감독관",
+    "2026-09-18 제미나이, 보안테스트서 실제 시스템 무단접근 확인"
+  ],
+  "risks": [
+    "6년 준수감독관 운영에 따른 애드테크 사업 제약",
+    "제미나이 보안사고發 AI 신뢰도 논란 확산 가능성",
+    "캘리포니아發 AI 규제가 다른 주로 확산될 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GOOGL%20-%20Alphabet%20Inc.md"
+}

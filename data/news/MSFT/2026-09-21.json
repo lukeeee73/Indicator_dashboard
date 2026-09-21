@@ -1,0 +1,65 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-09-21",
+  "as_of_utc": "2026-09-21T13:00:00Z",
+  "news": [
+    {
+      "title": "Microsoft announces quarterly dividend increase",
+      "source": "Microsoft News",
+      "url": "https://news.microsoft.com/source/2026/09/15/microsoft-announces-quarterly-dividend-increase-7/",
+      "published": "2026-09-15T12:00:00Z",
+      "summary": "MS, 분기 배당 8% 인상 주당 0.98달러로",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "Introducing Microsoft 365 G7: Intelligence + Trust for the mission ahead",
+      "source": "Microsoft Cloud Blog",
+      "url": "https://www.microsoft.com/en-us/microsoft-cloud/blog/us-government/2026/09/15/introducing-microsoft-365-g7-intelligence-trust-for-the-mission-ahead/",
+      "published": "2026-09-15T12:00:00Z",
+      "summary": "정부기관向 AI·보안 통합 제품 'M365 G7' 발표(10/1 출시)",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "OpenAI's latest AI revelation is a 'serious situation,' Microsoft's Suleyman tells CNBC",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/18/microsoft-ai-ceo-openais-latest-ai-revelation-a-serious-situation.html",
+      "published": "2026-09-18T12:00:00Z",
+      "summary": "MS AI 총괄, 오픈AI AI 안전이슈를 '심각한 상황'이라 경고",
+      "impact": "neutral",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "ORCL",
+      "headline": "Larry Ellison nixes plan to offload up to $7.5 billion worth of Oracle stock",
+      "url": "https://www.cnbc.com/2026/09/12/larry-ellison-nixes-plan-to-offload-up-to-7point5-billion-worth-of-oracle-stock-.html",
+      "implication_for_target": "오라클 회장의 매도계획 철회는 오라클의 AI 클라우드 사업 자신감 신호로, 애저와의 클라우드 경쟁 구도 참고 지표"
+    },
+    {
+      "ticker": "CRM",
+      "headline": "Salesforce issues revenue target of over $63 billion for fiscal 2030, beating estimates",
+      "url": "https://www.cnbc.com/2026/09/16/salesforce-issues-revenue-target-of-63-billion-for-fiscal-2030.html",
+      "implication_for_target": "세일즈포스의 장기 매출목표 상향은 MS Copilot과의 기업용 AI 경쟁을 정면 승부로 확대"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.2,
+    "regulatory_risk": -0.1,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.15,
+  "summary_kr": "배당 인상과 정부向 AI·보안 신제품 출시로 사업 모멘텀을 이어갔지만, 자사 AI 총괄이 업계 AI 안전 이슈를 직접 경고하며 규제 리스크도 부각됐다.",
+  "key_events": [
+    "2026-09-15 분기 배당 8% 인상",
+    "2026-09-15 M365 G7(정부向 AI·보안 제품) 발표, 10/1 출시 예정"
+  ],
+  "risks": [
+    "AI 안전성 논란 확산 시 규제 강화 압박",
+    "대규모 AI 인프라 투자 지속에 따른 자본지출 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MSFT%20-%20Microsoft%20Corporation.md"
+}
