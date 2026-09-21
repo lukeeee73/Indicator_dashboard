@@ -1547,32 +1547,30 @@
     "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
-      "as_of": "2026-09-14",
+      "as_of": "2026-09-21",
       "narrative_score": 0.09,
-      "summary_kr": "코어위브는 매출 고성장과 신규 대형 계약(허드슨리버 등)이 긍정적이나, 높은 레버리지·부채 부담과 오라클·네비우스 등 경쟁 심화로 애널리스트 신용 하향이 발생.",
+      "summary_kr": "신규 고객 계약 250억달러를 추가 확보하며 연매출 가이던스를 상향했고 아크인베스트도 매수에 나섰지만, 대규모 전환사채 발행에 따른 희석·레버리지 우려가 동시에 불거졌다.",
       "key_events": [
-        "애널리스트 신용등급 Hold 하향(9/9)",
-        "트루이스트 목표주가 165달러 상향(가격결정력 근거)",
-        "허드슨리버트레이딩과 신규 AI클라우드 계약"
+        "2026-09-17 30억(최대 37억)달러 전환사채 발행",
+        "2026-09-18 신규 고객 계약 250억달러 확보, 가이던스 상향"
       ],
       "risks": [
-        "과도한 레버리지(부채비율 5배 이상, 이자비용 부담 큼)",
-        "오라클·네비우스 등 자금력 우위 경쟁자의 시장잠식",
-        "엔비디아 GPU 가격 인상에 따른 원가 부담 확대"
+        "전환사채 희석 및 레버리지 확대 부담",
+        "고성장을 뒷받침하는 자본조달 지속가능성"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "NBIS",
-          "headline": "Palantir selects Nebius as preferred sovereign AI infrastructure partner",
-          "url": "https://finance.yahoo.com/technology/ai/articles/palantir-nebius-partner-sovereign-ai-130353486.html",
-          "implication_for_target": "네비우스가 팔란티어向 '선호 파트너' 지위를 확보하며 엔터프라이즈 고객 확보 경쟁에서 코어위브를 압박"
+          "headline": "Nebius reportedly hikes GPU prices another 20%, stock jumps",
+          "url": "https://www.benzinga.com/markets/tech/26/09/61837011/nebius-reportedly-hikes-gpu-prices-another-20-stock-jumps",
+          "implication_for_target": "경쟁사 네비우스의 가격 인상은 GPU 클라우드 공급 부족·가격결정력 강화를 시사, 코어위브 가격 협상력에도 긍정적"
         },
         {
-          "ticker": "ORCL",
-          "headline": "Oracle cloud revenue up 62% YoY, record $664B backlog, plans $90-95B FY27 capex",
-          "url": "https://www.cnbc.com/2026/09/11/oracle-stock-q1-earnings-ai-cloud.html",
-          "implication_for_target": "오라클의 초대형 자본투자·백로그 확대는 GPU 클라우드 시장에서 코어위브 대비 자금력 우위의 경쟁자로 부상"
+          "ticker": "MSFT",
+          "headline": "Microsoft plans to more than triple datacenter capacity to 38GW by 2032",
+          "url": "https://www.bloomberg.com/news/features/2026-09-10/microsoft-ai-focused-data-center-plan-to-add-26-gigawatts-of-compute",
+          "implication_for_target": "MS조차 컴퓨팅 부족을 겪고 있다는 것은 코어위브 같은 GPU 클라우드 업체에 대한 초과수요가 지속됨을 시사"
         }
       ],
       "history": [
@@ -1606,6 +1604,10 @@
         },
         {
           "date": "2026-09-14",
+          "narrative_score": 0.09
+        },
+        {
+          "date": "2026-09-21",
           "narrative_score": 0.09
         }
       ]
