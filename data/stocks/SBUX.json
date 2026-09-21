@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-09-14",
-      "value": 43.45
-    },
-    {
-      "date": "2016-09-15",
-      "value": 43.62
-    },
-    {
-      "date": "2016-09-16",
-      "value": 43.32
-    },
-    {
-      "date": "2016-09-19",
-      "value": 42.73
-    },
-    {
-      "date": "2016-09-20",
-      "value": 42.96
-    },
-    {
       "date": "2016-09-21",
       "value": 43.51
     },
@@ -1365,7 +1345,7 @@
     },
     {
       "date": "2018-01-22",
-      "value": 50.66
+      "value": 50.65
     },
     {
       "date": "2018-01-23",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-14",
-      "value": 98.42
+      "value": 99.07
+    },
+    {
+      "date": "2026-09-15",
+      "value": 96.58
+    },
+    {
+      "date": "2026-09-16",
+      "value": 97.34
+    },
+    {
+      "date": "2026-09-17",
+      "value": 96.67
+    },
+    {
+      "date": "2026-09-18",
+      "value": 95.83
+    },
+    {
+      "date": "2026-09-21",
+      "value": 94.17
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 112198795264.0,
-      "pe_ratio": 56.89017,
-      "forward_pe": 31.53153,
+      "market_cap": 107353800704.0,
+      "pe_ratio": 54.433525,
+      "forward_pe": 30.15611,
       "eps_ttm": 1.73,
-      "dividend_yield": 2.51,
+      "dividend_yield": 2.59,
       "profit_margin": 0.05172,
       "operating_margin": 0.12919,
-      "price_to_book": -14.617556,
+      "price_to_book": -13.986336,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10107,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-14",
-    "current_price": 98.42,
+    "as_of": "2026-09-21",
+    "current_price": 94.17,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10117,13 +10117,13 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 62.43,
+        "fair_value": 62.46,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 50.44,
-    "valuation_gap": 0.9511,
+    "fair_value": 50.45,
+    "valuation_gap": 0.8665,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10271,10 +10271,16 @@
         "gap": 1.2792
       },
       {
-        "date": "2026-09-14",
-        "price": 98.42,
+        "date": "2026-09-18",
+        "price": 95.83,
         "fair_value": 43.32,
-        "gap": 1.2718
+        "gap": 1.212
+      },
+      {
+        "date": "2026-09-21",
+        "price": 94.17,
+        "fair_value": 43.32,
+        "gap": 1.1737
       }
     ],
     "qualitative": {

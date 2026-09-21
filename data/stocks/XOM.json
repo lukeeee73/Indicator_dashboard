@@ -4,26 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-09-14",
-      "value": 54.92
-    },
-    {
-      "date": "2016-09-15",
-      "value": 55.23
-    },
-    {
-      "date": "2016-09-16",
-      "value": 54.55
-    },
-    {
-      "date": "2016-09-19",
-      "value": 54.42
-    },
-    {
-      "date": "2016-09-20",
-      "value": 53.59
-    },
-    {
       "date": "2016-09-21",
       "value": 54.08
     },
@@ -6333,7 +6313,7 @@
     },
     {
       "date": "2022-12-27",
-      "value": 97.44
+      "value": 97.43
     },
     {
       "date": "2022-12-28",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-14",
-      "value": 166.57
+      "value": 165.08
+    },
+    {
+      "date": "2026-09-15",
+      "value": 169.32
+    },
+    {
+      "date": "2026-09-16",
+      "value": 163.32
+    },
+    {
+      "date": "2026-09-17",
+      "value": 163.27
+    },
+    {
+      "date": "2026-09-18",
+      "value": 163.54
+    },
+    {
+      "date": "2026-09-21",
+      "value": 159.19
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 684905529344.0,
-      "pe_ratio": 21.43709,
-      "forward_pe": 15.436131,
+      "market_cap": 654657519616.0,
+      "pe_ratio": 20.490349,
+      "forward_pe": 14.754413,
       "eps_ttm": 7.77,
-      "dividend_yield": 2.48,
+      "dividend_yield": 2.52,
       "profit_margin": 0.09072,
       "operating_margin": 0.15859,
-      "price_to_book": 2.6405547,
+      "price_to_book": 2.523938,
       "return_on_equity": 0.12584
     },
     "quarterly": [
@@ -10121,8 +10121,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-14",
-    "current_price": 166.57,
+    "as_of": "2026-09-21",
+    "current_price": 159.19,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
@@ -10131,18 +10131,18 @@
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 118.7,
+        "fair_value": 118.68,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
       "graham_number": {
-        "fair_value": 105.02,
+        "fair_value": 105.01,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
     "fair_value": 103.23,
-    "valuation_gap": 0.6135,
+    "valuation_gap": 0.5422,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10290,10 +10290,16 @@
         "gap": 0.7802
       },
       {
-        "date": "2026-09-14",
-        "price": 166.57,
+        "date": "2026-09-18",
+        "price": 163.54,
         "fair_value": 93.24,
-        "gap": 0.7865
+        "gap": 0.754
+      },
+      {
+        "date": "2026-09-21",
+        "price": 159.19,
+        "fair_value": 93.24,
+        "gap": 0.7073
       }
     ],
     "qualitative": {

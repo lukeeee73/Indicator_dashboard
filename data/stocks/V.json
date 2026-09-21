@@ -4,26 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-09-14",
-      "value": 75.94
-    },
-    {
-      "date": "2016-09-15",
-      "value": 76.42
-    },
-    {
-      "date": "2016-09-16",
-      "value": 76.48
-    },
-    {
-      "date": "2016-09-19",
-      "value": 76.89
-    },
-    {
-      "date": "2016-09-20",
-      "value": 76.86
-    },
-    {
       "date": "2016-09-21",
       "value": 77.55
     },
@@ -997,7 +977,7 @@
     },
     {
       "date": "2017-09-08",
-      "value": 98.03
+      "value": 98.04
     },
     {
       "date": "2017-09-11",
@@ -1025,7 +1005,7 @@
     },
     {
       "date": "2017-09-19",
-      "value": 98.95
+      "value": 98.96
     },
     {
       "date": "2017-09-20",
@@ -1913,7 +1893,7 @@
     },
     {
       "date": "2018-08-07",
-      "value": 132.37
+      "value": 132.36
     },
     {
       "date": "2018-08-08",
@@ -3237,7 +3217,7 @@
     },
     {
       "date": "2019-11-29",
-      "value": 175.79
+      "value": 175.8
     },
     {
       "date": "2019-12-02",
@@ -3341,7 +3321,7 @@
     },
     {
       "date": "2020-01-08",
-      "value": 182.85
+      "value": 182.86
     },
     {
       "date": "2020-01-09",
@@ -4137,7 +4117,7 @@
     },
     {
       "date": "2020-10-21",
-      "value": 189.93
+      "value": 189.94
     },
     {
       "date": "2020-10-22",
@@ -4493,7 +4473,7 @@
     },
     {
       "date": "2021-03-02",
-      "value": 207.17
+      "value": 207.16
     },
     {
       "date": "2021-03-03",
@@ -5813,7 +5793,7 @@
     },
     {
       "date": "2022-06-22",
-      "value": 187.6
+      "value": 187.61
     },
     {
       "date": "2022-06-23",
@@ -8889,7 +8869,7 @@
     },
     {
       "date": "2025-07-17",
-      "value": 346.43
+      "value": 346.42
     },
     {
       "date": "2025-07-18",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-14",
-      "value": 374.78
+      "value": 375.28
+    },
+    {
+      "date": "2026-09-15",
+      "value": 375.62
+    },
+    {
+      "date": "2026-09-16",
+      "value": 370.93
+    },
+    {
+      "date": "2026-09-17",
+      "value": 369.93
+    },
+    {
+      "date": "2026-09-18",
+      "value": 368.29
+    },
+    {
+      "date": "2026-09-21",
+      "value": 368.32
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 699732000768.0,
-      "pe_ratio": 31.92334,
-      "forward_pe": 24.978172,
-      "eps_ttm": 11.74,
-      "dividend_yield": 0.72,
+      "market_cap": 691467517952.0,
+      "pe_ratio": 31.346384,
+      "forward_pe": 24.54763,
+      "eps_ttm": 11.75,
+      "dividend_yield": 0.73,
       "profit_margin": 0.50782,
       "operating_margin": 0.66130996,
-      "price_to_book": 19.861155,
+      "price_to_book": 19.518812,
       "return_on_equity": 0.6119
     },
     "quarterly": [
@@ -10114,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-14",
-    "current_price": 374.78,
+    "as_of": "2026-09-21",
+    "current_price": 368.32,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 164.36,
+        "fair_value": 164.5,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
@@ -10129,13 +10129,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 70.6,
+        "fair_value": 70.63,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 150.32,
-    "valuation_gap": 1.4933,
+    "fair_value": 150.39,
+    "valuation_gap": 1.4491,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10283,10 +10283,16 @@
         "gap": 1.2501
       },
       {
-        "date": "2026-09-14",
-        "price": 374.78,
+        "date": "2026-09-18",
+        "price": 368.29,
         "fair_value": 164.64,
-        "gap": 1.2764
+        "gap": 1.2369
+      },
+      {
+        "date": "2026-09-21",
+        "price": 368.32,
+        "fair_value": 164.64,
+        "gap": 1.2371
       }
     ],
     "qualitative": {

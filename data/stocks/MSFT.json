@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-09-14",
-      "value": 49.96
-    },
-    {
-      "date": "2016-09-15",
-      "value": 50.78
-    },
-    {
-      "date": "2016-09-16",
-      "value": 50.84
-    },
-    {
-      "date": "2016-09-19",
-      "value": 50.55
-    },
-    {
-      "date": "2016-09-20",
-      "value": 50.45
-    },
-    {
       "date": "2016-09-21",
       "value": 51.29
     },
@@ -1277,7 +1257,7 @@
     },
     {
       "date": "2017-12-18",
-      "value": 78.94
+      "value": 78.95
     },
     {
       "date": "2017-12-19",
@@ -3193,7 +3173,7 @@
     },
     {
       "date": "2019-11-13",
-      "value": 138.51
+      "value": 138.52
     },
     {
       "date": "2019-11-14",
@@ -3397,7 +3377,7 @@
     },
     {
       "date": "2020-01-29",
-      "value": 158.54
+      "value": 158.55
     },
     {
       "date": "2020-01-30",
@@ -3593,7 +3573,7 @@
     },
     {
       "date": "2020-04-08",
-      "value": 156.23
+      "value": 156.22
     },
     {
       "date": "2020-04-09",
@@ -7545,7 +7525,7 @@
     },
     {
       "date": "2024-03-13",
-      "value": 407.18
+      "value": 407.17
     },
     {
       "date": "2024-03-14",
@@ -7941,7 +7921,7 @@
     },
     {
       "date": "2024-08-05",
-      "value": 388.31
+      "value": 388.3
     },
     {
       "date": "2024-08-06",
@@ -8577,7 +8557,7 @@
     },
     {
       "date": "2025-03-25",
-      "value": 390.57
+      "value": 390.58
     },
     {
       "date": "2025-03-26",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-14",
-      "value": 503.66
+      "value": 505.41
+    },
+    {
+      "date": "2026-09-15",
+      "value": 497.12
+    },
+    {
+      "date": "2026-09-16",
+      "value": 490.3
+    },
+    {
+      "date": "2026-09-17",
+      "value": 497.75
+    },
+    {
+      "date": "2026-09-18",
+      "value": 493.78
+    },
+    {
+      "date": "2026-09-21",
+      "value": 492.55
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 3740061663232.0,
-      "pe_ratio": 28.075527,
-      "forward_pe": 21.366623,
-      "eps_ttm": 17.94,
-      "dividend_yield": 0.73,
+      "market_cap": 3657415524352.0,
+      "pe_ratio": 27.409294,
+      "forward_pe": 20.877028,
+      "eps_ttm": 17.97,
+      "dividend_yield": 0.79,
       "profit_margin": 0.40305,
       "operating_margin": 0.45111,
-      "price_to_book": 8.455889,
+      "price_to_book": 8.269034,
       "return_on_equity": 0.34039003
     },
     "quarterly": [
@@ -10107,28 +10107,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-14",
-    "current_price": 503.66,
+    "as_of": "2026-09-21",
+    "current_price": 492.55,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 502.32,
+        "fair_value": 503.16,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 518.59,
+        "fair_value": 519.04,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 155.06,
+        "fair_value": 155.19,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 437.75,
-    "valuation_gap": 0.1506,
+    "fair_value": 438.33,
+    "valuation_gap": 0.1237,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10276,10 +10276,16 @@
         "gap": -0.0144
       },
       {
-        "date": "2026-09-14",
-        "price": 503.66,
+        "date": "2026-09-18",
+        "price": 493.78,
         "fair_value": 502.88,
-        "gap": 0.0016
+        "gap": -0.0181
+      },
+      {
+        "date": "2026-09-21",
+        "price": 492.55,
+        "fair_value": 502.88,
+        "gap": -0.0205
       }
     ],
     "qualitative": {
@@ -10310,10 +10316,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-22",
-          "narrative_score": -0.23
-        },
         {
           "date": "2026-06-29",
           "narrative_score": 0.14

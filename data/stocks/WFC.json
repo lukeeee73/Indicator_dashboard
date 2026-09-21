@@ -4,26 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-09-14",
-      "value": 35.32
-    },
-    {
-      "date": "2016-09-15",
-      "value": 35.04
-    },
-    {
-      "date": "2016-09-16",
-      "value": 34.5
-    },
-    {
-      "date": "2016-09-19",
-      "value": 34.94
-    },
-    {
-      "date": "2016-09-20",
-      "value": 35.35
-    },
-    {
       "date": "2016-09-21",
       "value": 34.8
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-14",
-      "value": 88.72
+      "value": 88.71
+    },
+    {
+      "date": "2026-09-15",
+      "value": 89.72
+    },
+    {
+      "date": "2026-09-16",
+      "value": 87.05
+    },
+    {
+      "date": "2026-09-17",
+      "value": 86.89
+    },
+    {
+      "date": "2026-09-18",
+      "value": 86.12
+    },
+    {
+      "date": "2026-09-21",
+      "value": 86.47
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 268289212416.0,
-      "pe_ratio": 12.895349,
-      "forward_pe": 11.227594,
+      "market_cap": 261485215744.0,
+      "pe_ratio": 12.568314,
+      "forward_pe": 10.942855,
       "eps_ttm": 6.88,
-      "dividend_yield": 2.22,
+      "dividend_yield": 2.32,
       "profit_margin": 0.27232,
       "operating_margin": 0.37387002,
-      "price_to_book": 1.6678573,
+      "price_to_book": 1.6255593,
       "return_on_equity": 0.12575
     },
     "quarterly": [
@@ -10121,8 +10121,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-14",
-    "current_price": 88.72,
+    "as_of": "2026-09-21",
+    "current_price": 86.47,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10142,7 +10142,7 @@
       }
     },
     "fair_value": 94.75,
-    "valuation_gap": -0.0637,
+    "valuation_gap": -0.0874,
     "signal": "undervalued",
     "gap_series_weekly": [
       {
@@ -10290,10 +10290,16 @@
         "gap": -0.0626
       },
       {
-        "date": "2026-09-14",
-        "price": 88.72,
+        "date": "2026-09-18",
+        "price": 86.12,
         "fair_value": 96.32,
-        "gap": -0.0789
+        "gap": -0.1059
+      },
+      {
+        "date": "2026-09-21",
+        "price": 86.47,
+        "fair_value": 96.32,
+        "gap": -0.1023
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "빅테크 / 소프트웨어",
   "series": [
     {
-      "date": "2016-09-14",
-      "value": 126.66
-    },
-    {
-      "date": "2016-09-15",
-      "value": 127.23
-    },
-    {
-      "date": "2016-09-16",
-      "value": 127.95
-    },
-    {
-      "date": "2016-09-19",
-      "value": 127.53
-    },
-    {
-      "date": "2016-09-20",
-      "value": 127.52
-    },
-    {
       "date": "2016-09-21",
       "value": 128.81
     },
@@ -4417,7 +4397,7 @@
     },
     {
       "date": "2021-02-02",
-      "value": 264.75
+      "value": 264.76
     },
     {
       "date": "2021-02-03",
@@ -4861,7 +4841,7 @@
     },
     {
       "date": "2021-07-13",
-      "value": 349.02
+      "value": 349.03
     },
     {
       "date": "2021-07-14",
@@ -6269,7 +6249,7 @@
     },
     {
       "date": "2022-12-02",
-      "value": 122.41
+      "value": 122.42
     },
     {
       "date": "2022-12-05",
@@ -7373,7 +7353,7 @@
     },
     {
       "date": "2024-01-10",
-      "value": 367.24
+      "value": 367.25
     },
     {
       "date": "2024-01-11",
@@ -7553,7 +7533,7 @@
     },
     {
       "date": "2024-03-15",
-      "value": 480.4
+      "value": 480.39
     },
     {
       "date": "2024-03-18",
@@ -8245,7 +8225,7 @@
     },
     {
       "date": "2024-11-20",
-      "value": 562.29
+      "value": 562.28
     },
     {
       "date": "2024-11-21",
@@ -8981,7 +8961,7 @@
     },
     {
       "date": "2025-08-19",
-      "value": 749.02
+      "value": 749.03
     },
     {
       "date": "2025-08-20",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-14",
-      "value": 655.25
+      "value": 665.6
+    },
+    {
+      "date": "2026-09-15",
+      "value": 670.24
+    },
+    {
+      "date": "2026-09-16",
+      "value": 673.31
+    },
+    {
+      "date": "2026-09-17",
+      "value": 682.31
+    },
+    {
+      "date": "2026-09-18",
+      "value": 665.75
+    },
+    {
+      "date": "2026-09-21",
+      "value": 710.76
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1669253431296.0,
-      "pe_ratio": 24.661272,
-      "forward_pe": 18.74303,
-      "eps_ttm": 26.57,
+      "market_cap": 1810652725248.0,
+      "pe_ratio": 26.760355,
+      "forward_pe": 20.330719,
+      "eps_ttm": 26.56,
       "dividend_yield": 0.32,
       "profit_margin": 0.29834998,
       "operating_margin": 0.34827,
-      "price_to_book": 6.391436,
+      "price_to_book": 6.9328427,
       "return_on_equity": 0.29848
     },
     "quarterly": [
@@ -10121,28 +10121,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-14",
-    "current_price": 655.25,
+    "as_of": "2026-09-21",
+    "current_price": 710.76,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 531.4,
+        "fair_value": 531.2,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 594.31,
+        "fair_value": 594.32,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 247.57,
+        "fair_value": 247.52,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 493.51,
-    "valuation_gap": 0.3277,
+    "fair_value": 493.4,
+    "valuation_gap": 0.4405,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10290,10 +10290,16 @@
         "gap": 0.2204
       },
       {
-        "date": "2026-09-14",
-        "price": 655.25,
+        "date": "2026-09-18",
+        "price": 665.75,
         "fair_value": 531.0,
-        "gap": 0.234
+        "gap": 0.2538
+      },
+      {
+        "date": "2026-09-21",
+        "price": 710.76,
+        "fair_value": 531.0,
+        "gap": 0.3385
       }
     ],
     "qualitative": {
@@ -10324,10 +10330,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-22",
-          "narrative_score": 0.23
-        },
         {
           "date": "2026-06-29",
           "narrative_score": 0.14

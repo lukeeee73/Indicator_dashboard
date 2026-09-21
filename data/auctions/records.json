@@ -126,16 +126,16 @@
     "xmlFilenameSpecialAnnouncement"
   ],
   "consistency": {
-    "fiscal_raw_count": 11114,
-    "overlap_records": 104,
-    "filled_from_fiscal": 428,
+    "fiscal_raw_count": 11124,
+    "overlap_records": 103,
+    "filled_from_fiscal": 429,
     "btc_mismatch": 0,
     "indirect_mismatch": 0,
     "btc_mismatch_sample": [],
     "indirect_mismatch_sample": [],
     "by_source": {
-      "fiscaldata": 428,
-      "treasurydirect": 104
+      "fiscaldata": 429,
+      "treasurydirect": 103
     }
   },
   "records": [
@@ -3684,9 +3684,9 @@
       "tenor": "30Y",
       "cusip": "912810QW1",
       "security_type": "Bond",
-      "source": "treasurydirect",
+      "source": "fiscaldata",
       "bid_to_cover": 2.73,
-      "offering_amount": 16000000000.0,
+      "offering_amount": null,
       "high_yield": 3.09,
       "indirect_amount": 5394875600.0,
       "direct_amount": 2463688600.0,

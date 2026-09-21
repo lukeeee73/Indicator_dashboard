@@ -3605,19 +3605,39 @@
     },
     {
       "date": "2026-09-14",
-      "value": 17.27
+      "value": 17.06
+    },
+    {
+      "date": "2026-09-15",
+      "value": 16.49
+    },
+    {
+      "date": "2026-09-16",
+      "value": 16.67
+    },
+    {
+      "date": "2026-09-17",
+      "value": 16.92
+    },
+    {
+      "date": "2026-09-18",
+      "value": 16.52
+    },
+    {
+      "date": "2026-09-21",
+      "value": 16.92
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 21717053440.0,
-      "pe_ratio": 34.55,
-      "forward_pe": 18.748386,
+      "market_cap": 21270769664.0,
+      "pe_ratio": 33.84,
+      "forward_pe": 18.328056,
       "eps_ttm": 0.5,
       "dividend_yield": null,
       "profit_margin": 0.14929,
       "operating_margin": 0.0025499999,
-      "price_to_book": 2.0309265,
+      "price_to_book": 1.9891912,
       "return_on_equity": 0.074889995
     },
     "quarterly": [
@@ -3659,8 +3679,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-14",
-    "current_price": 17.27,
+    "as_of": "2026-09-21",
+    "current_price": 16.92,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -3669,7 +3689,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 20.27,
+        "fair_value": 20.31,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -3679,8 +3699,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 15.04,
-    "valuation_gap": 0.1485,
+    "fair_value": 15.05,
+    "valuation_gap": 0.1243,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -3828,10 +3848,16 @@
         "gap": -0.8092
       },
       {
-        "date": "2026-09-14",
-        "price": 17.27,
+        "date": "2026-09-18",
+        "price": 16.52,
         "fair_value": 90.72,
-        "gap": -0.8096
+        "gap": -0.8179
+      },
+      {
+        "date": "2026-09-21",
+        "price": 16.92,
+        "fair_value": 90.72,
+        "gap": -0.8135
       }
     ],
     "qualitative": {
