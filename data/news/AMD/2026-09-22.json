@@ -1,0 +1,64 @@
+{
+  "ticker": "AMD",
+  "date": "2026-09-22",
+  "as_of_utc": "2026-09-22T21:00:00Z",
+  "news": [
+    {
+      "title": "AMD Hits $1 Trillion Market Cap for the First Time as Stock Rides 5-Day Rally",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/21/amd-stock-1-trillion-value.html",
+      "published": "2026-09-21T00:00:00Z",
+      "summary": "AMD, 사상 최초로 시가총액 1조달러 돌파",
+      "impact": "+",
+      "category": "other"
+    },
+    {
+      "title": "AMD, Intel Soar as Meta's Muse AI Agent Spurs Chip Stock Rally",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-21/amd-set-to-top-1-trillion-in-market-value-as-chip-stocks-soar",
+      "published": "2026-09-21T00:00:00Z",
+      "summary": "메타 AI 에이전트 '뮤즈' 흥행 신호에 AMD·인텔 등 반도체株 급등",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Nebius Hikes AI Cloud Prices Again as Demand for Computing Power Soars",
+      "source": "Reuters (via Investing.com)",
+      "url": "https://www.investing.com/news/stock-market-news/nebius-hikes-ai-cloud-prices-again-as-demand-for-computing-power-soars-4906125",
+      "published": "2026-09-17T00:00:00Z",
+      "summary": "클라우드업체 네비우스, AMD·인텔 CPU 임대료 25% 인상 — 수요 강세 반영",
+      "impact": "+",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "NVDA",
+      "headline": "엔비디아, 젠슨 황의 '내년 칩 판매량 2배' 전망에도 9/21 랠리에서는 상대적으로 소외",
+      "implication_for_target": "AI 랠리 무게중심이 GPU에서 CPU·범용 반도체로 옮겨가는 신호 — AMD에 유리."
+    },
+    {
+      "ticker": "INTC",
+      "headline": "인텔도 같은 날(9/21) 12% 급등, SK하이닉스와 오하이오 메모리 생산 논의",
+      "implication_for_target": "CPU 진영 전반에 대한 재평가 랠리로, AMD 단독 호재가 아니라 업종 전체가 함께 수혜받는 구도."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.3,
+    "competitive_position": 0.6,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": 0.1
+  },
+  "narrative_score": 0.29,
+  "summary_kr": "메타의 AI 에이전트 '뮤즈' 흥행 신호에 AI 투자 심리가 GPU를 넘어 CPU로 넓게 퍼지며 AMD가 사상 최초로 시가총액 1조달러를 돌파했다. 클라우드업체 네비우스가 AMD·인텔 CPU 임대료를 25% 올린 것도 실수요 강세를 뒷받침한다.",
+  "key_events": [
+    "AMD 시가총액 사상 최초 1조달러 돌파 (9/21)",
+    "메타 뮤즈發 반도체 랠리로 5거래일간 +24% 상승",
+    "네비우스, AMD·인텔 CPU 클라우드 가격 25% 인상 (9/17)"
+  ],
+  "risks": [
+    "5거래일 급등에 따른 단기 밸류에이션 부담·되돌림 가능성",
+    "AI 개발 속도 논쟁發 반도체 업종 전반 조정 리스크"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AMD%20-%20Advanced%20Micro%20Devices.md"
+}

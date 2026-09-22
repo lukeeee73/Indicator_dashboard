@@ -1,0 +1,68 @@
+{
+  "ticker": "NVDA",
+  "date": "2026-09-22",
+  "as_of_utc": "2026-09-22T21:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia's Huang Expects to Sell Twice as Many Chips Next Year",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/17/nvidia-huang-ai-chip-guidance.html",
+      "published": "2026-09-17T00:00:00Z",
+      "summary": "젠슨 황, 내년 칩 판매량이 올해의 2배가 될 것이라 전망",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Nvidia CEO Says There's '0% Chance' That World Will End in 2030",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-18/nvidia-ceo-says-there-s-0-chance-that-world-will-end-in-2030",
+      "published": "2026-09-18T00:00:00Z",
+      "summary": "젠슨 황, AI 종말론 일축 — 앤트로픽·오픈AI와 노선차 부각",
+      "impact": "neutral",
+      "category": "regulation"
+    },
+    {
+      "title": "AMD Hits $1 Trillion Market Cap: 3 Reasons Nvidia Sat Out the AI Rally",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/amd-hits-1-trillion-market-191855355.html",
+      "published": "2026-09-21T00:00:00Z",
+      "summary": "AMD 시총 1조달러 돌파 랠리에서 엔비디아는 상대적으로 소외",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "AMD",
+      "headline": "AMD, 메타 '뮤즈' AI 에이전트發 랠리 속 시가총액 1조달러 첫 돌파 (9/21)",
+      "implication_for_target": "AI 투자심리가 GPU 대장주 엔비디아를 넘어 CPU 진영으로 넓게 퍼지는 신호 — 엔비디아의 상대적 프리미엄이 계속 옅어질 위험."
+    },
+    {
+      "ticker": "AVGO",
+      "headline": "브로드컴, 'AI 개발 속도를 늦춰야 한다'는 빅테크 경영진 논쟁 여파로 주가 -3.2% (9/21)",
+      "implication_for_target": "업계 전반의 AI 성장 속도 논쟁이 반도체 대형주 밸류에이션 부담으로 번질 경우 엔비디아도 예외가 아니다."
+    },
+    {
+      "ticker": "INTC",
+      "headline": "인텔 주가 하루 12% 급등, SK하이닉스와 오하이오 메모리 생산 협력 논의 (9/16~21)",
+      "implication_for_target": "AI 랠리 자금이 CPU·파운드리 진영으로도 분산되는 흐름의 연장선."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.45,
+    "competitive_position": -0.2,
+    "regulatory_risk": 0.05,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.14,
+  "summary_kr": "젠슨 황이 내년 칩 판매량이 두 배로 늘 것이라 밝히며 성장 스토리는 여전히 강하지만, 9/21 메타 뮤즈發 반도체 랠리에서는 AMD·인텔에 비해 상대적으로 소외되며 'AI 랠리 확산' 국면에서 엔비디아의 독점적 프리미엄이 옅어지는 조짐이 보인다.",
+  "key_events": [
+    "젠슨 황, 내년 칩 판매량 2배 전망 (9/17)",
+    "메타 뮤즈發 반도체 랠리에서 AMD·인텔 대비 상대적으로 소외 (9/21)"
+  ],
+  "risks": [
+    "AI 랠리 자금의 CPU·경쟁사 분산 지속 여부",
+    "AI 개발 속도 논쟁發 반도체 업종 전반 밸류에이션 조정 압력"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/NVDA%20-%20NVIDIA%20Corporation.md"
+}

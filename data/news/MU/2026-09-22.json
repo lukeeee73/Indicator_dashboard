@@ -1,0 +1,70 @@
+{
+  "ticker": "MU",
+  "date": "2026-09-22",
+  "as_of_utc": "2026-09-22T09:00:00Z",
+  "news": [
+    {
+      "title": "인텔 CEO \"메모리 가격 5~7배 폭등, 내년 부족 더 심해질 것\" — 마이크론 주가 장중 5%↑",
+      "source": "Yahoo Finance (Benzinga)",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/micron-jumps-5-intel-ceo-153804720.html",
+      "published": "2026-09-21T15:38:00Z",
+      "summary": "인텔 CEO의 메모리 부족 심화 발언에 마이크론 주가 5%↑",
+      "impact": "+",
+      "category": "macro"
+    },
+    {
+      "title": "마이크론 주가 $1,000 재돌파, 스티펠 목표주가 $1,500 유지 — 9/30 실적 기대감 고조",
+      "source": "The Motley Fool",
+      "url": "https://www.fool.com/investing/2026/09/21/micron-stock-is-back-above-usd1-000-is-a-stock-split-coming/",
+      "published": "2026-09-21T13:00:00Z",
+      "summary": "주가 $1,000 회복, 스티펠 목표가 $1,500 재확인, 실적 기대 상승",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "대만 타오위안 노조 2차 조정도 결렬 — 파업투표 절차 착수 선언",
+      "source": "Reuters (via TradingView)",
+      "url": "https://www.tradingview.com/news/reuters.com,2026:newsml_P8N44P08V:0-micron-s-taoyuan-union-in-taiwan-says-it-plans-to-hold-strike-vote-after-mediation-ended-without-agreement/",
+      "published": "2026-09-21T21:00:00Z",
+      "summary": "대만 노조 2차 조정 결렬, 파업투표 절차 예고",
+      "impact": "-",
+      "category": "regulatory"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "005930.KS",
+      "headline": "Samsung shares surge ~5% to a 10-session high as Korea posts record semiconductor exports; supplier SFA Semiconductor up 74% in a month on rising Samsung HBM4 back-end outsourcing volume (Korea Times / Hankyung, 2026-09-21/22)",
+      "implication_for_target": "삼성의 HBM4 램프업이 빨라질수록 마이크론의 HBM 가격 결정력·물량 확보 경쟁이 더 치열해질 수 있음."
+    },
+    {
+      "ticker": "000660.KS",
+      "headline": "SK Hynix keeps reviewing new fabs in the US/Japan to cope with tariff pressure, still unconfirmed (Global Economic, 2026-09-21)",
+      "implication_for_target": "SK하이닉스가 해외 생산기지를 다변화하면 장기적으로 마이크론의 '美 유일 선단 메모리 생산사' 프리미엄이 희석될 수 있음."
+    },
+    {
+      "ticker": "INTC",
+      "headline": "Intel CEO Lip-Bu Tan says memory prices have surged 5-7x and the shortage will worsen into next year (Yahoo Finance/Benzinga, 2026-09-21)",
+      "implication_for_target": "메모리 최대 고객군 중 하나인 인텔 CEO의 공개 발언이 마이크론의 가격·수요 강세 서사를 뒷받침."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.4,
+    "competitive_position": -0.05,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": 0.05
+  },
+  "narrative_score": 0.13,
+  "summary_kr": "인텔 CEO의 메모리 부족 심화 발언과 스티펠의 목표주가 유지로 마이크론 주가가 $1,000을 재돌파했지만, 대만 노조의 2차 조정 결렬과 파업투표 예고가 새로운 부담으로 남았다.",
+  "key_events": [
+    "인텔 CEO, 메모리 가격 5~7배 폭등·내년 부족 심화 발언 — 마이크론 5%↑",
+    "마이크론 주가 $1,000 재돌파, 스티펠 목표주가 $1,500 유지",
+    "대만 타오위안 노조 2차 조정 결렬, 파업투표 절차 착수 선언"
+  ],
+  "risks": [
+    "대만 노조 파업이 실제로 현실화되면 전세계 생산의 약 60%가 몰린 대만 공장 가동 차질 가능",
+    "9/30 실적 기대치가 이미 매우 높아 컨센서스 소폭 미달에도 급락 위험",
+    "DRAM 가격담합 집단소송 — 3사 기각 신청 제출, 법원 판단 대기"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MU%20-%20Micron%20Technology.md"
+}
