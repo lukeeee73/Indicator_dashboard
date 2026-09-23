@@ -1,0 +1,64 @@
+{
+  "ticker": "F",
+  "date": "2026-09-23",
+  "as_of_utc": "2026-09-23T12:00:00Z",
+  "news": [
+    {
+      "title": "Ford's August 2026 US sales fall 10.3% YoY; EV sales collapse 79%",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/09/02/ford-sales-f-150-production.html",
+      "published": "2026-09-02T00:00:00Z",
+      "summary": "8월 미국 판매 10.3% 감소, 8개월 연속 하락, EV 판매 79% 급감, F-시리즈 픽업은 호조",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "US Transportation Secretary blasts Ford's ties to China's CATL, Geely, BYD",
+      "source": "Reuters/US News",
+      "url": "https://www.usnews.com/news/top-news/articles/2026-09-08/trump-administration-blasts-ford-business-deals-with-chinese-firms",
+      "published": "2026-09-08T00:00:00Z",
+      "summary": "美교통부, 포드의 中CATL 배터리 기술 의존을 강하게 비판, 관계 단절 압박",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Ford recalls 148,663 Mustangs over wiring-harness ground-connection fatigue cracks",
+      "source": "Detroit News",
+      "url": "https://www.detroitnews.com/story/business/autos/ford/2026/09/01/recall-over-power-loss-affects-149000-ford-vehicles/91559299007/",
+      "published": "2026-09-01T00:00:00Z",
+      "summary": "머스탱 약 14.9만대 리콜, 배선 접지 결함으로 주행 중 전력 손실 위험",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GM",
+      "headline": "GM unveils new 2027 Silverado/Sierra engine lineup, doubling down on profitable ICE trucks",
+      "implication_for_target": "GM의 강력한 픽업 라인업 강화는 포드의 트럭 부문 경쟁을 심화"
+    },
+    {
+      "ticker": "TSLA",
+      "headline": "Tesla Cybercab stumble and NHTSA probe",
+      "implication_for_target": "EV 리더십 경쟁 구도 변화의 참고 지표"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.3,
+    "competitive_position": -0.3,
+    "regulatory_risk": -0.4,
+    "macro_sensitivity": -0.3
+  },
+  "narrative_score": -0.32,
+  "summary_kr": "포드는 8개월 연속 판매 감소(EV -79%)와 트럼프 행정부의 中CATL 배터리 관계 압박, 대규모 리콜이 겹치며 단기 악재가 집중된 상태다.",
+  "key_events": [
+    "8월 미국 판매 10.3% 감소, EV 판매 79% 급감(9/2)",
+    "美교통부, 포드의 中CATL 의존 비판(9/8)",
+    "머스탱 14.9만대 리콜(9/1)"
+  ],
+  "risks": [
+    "中배터리 공급망 관련 정치적/규제 리스크 지속 가능성",
+    "EV/하이브리드 판매 급감이 장기 전략 신뢰도에 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/F%20-%20Ford%20Motor%20Company.md"
+}
