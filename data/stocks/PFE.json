@@ -4,26 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-09-21",
-      "value": 20.65
-    },
-    {
-      "date": "2016-09-22",
-      "value": 20.57
-    },
-    {
-      "date": "2016-09-23",
-      "value": 20.64
-    },
-    {
-      "date": "2016-09-26",
-      "value": 20.26
-    },
-    {
-      "date": "2016-09-27",
-      "value": 20.38
-    },
-    {
       "date": "2016-09-28",
       "value": 20.47
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-21",
-      "value": 27.62
+      "value": 27.74
+    },
+    {
+      "date": "2026-09-22",
+      "value": 27.93
+    },
+    {
+      "date": "2026-09-23",
+      "value": 28.18
+    },
+    {
+      "date": "2026-09-24",
+      "value": 28.41
+    },
+    {
+      "date": "2026-09-25",
+      "value": 28.67
+    },
+    {
+      "date": "2026-09-28",
+      "value": 28.68
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 157453484032.0,
-      "pe_ratio": 36.348686,
-      "forward_pe": 9.535727,
+      "market_cap": 163495133184.0,
+      "pe_ratio": 37.74342,
+      "forward_pe": 9.902168,
       "eps_ttm": 0.76,
-      "dividend_yield": 6.22,
+      "dividend_yield": 6.0,
       "profit_margin": 0.06804,
       "operating_margin": 0.27877,
-      "price_to_book": 1.8480734,
+      "price_to_book": 1.9189858,
       "return_on_equity": 0.05014
     },
     "quarterly": [
@@ -10121,8 +10121,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-21",
-    "current_price": 27.62,
+    "as_of": "2026-09-28",
+    "current_price": 28.68,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10142,7 +10142,7 @@
       }
     },
     "fair_value": 23.94,
-    "valuation_gap": 0.1537,
+    "valuation_gap": 0.198,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10296,10 +10296,16 @@
         "gap": 1.0219
       },
       {
-        "date": "2026-09-21",
-        "price": 27.62,
+        "date": "2026-09-25",
+        "price": 28.67,
         "fair_value": 13.68,
-        "gap": 1.019
+        "gap": 1.0958
+      },
+      {
+        "date": "2026-09-28",
+        "price": 28.68,
+        "fair_value": 13.68,
+        "gap": 1.0965
       }
     ],
     "qualitative": {
@@ -10330,10 +10336,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-25",
-          "narrative_score": -0.03
-        },
         {
           "date": "2026-07-02",
           "narrative_score": -0.14

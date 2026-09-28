@@ -4,26 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-09-21",
-      "value": 21339.56
-    },
-    {
-      "date": "2016-09-22",
-      "value": 20951.57
-    },
-    {
-      "date": "2016-09-23",
-      "value": 20757.58
-    },
-    {
-      "date": "2016-09-26",
-      "value": 20214.39
-    },
-    {
-      "date": "2016-09-27",
-      "value": 20253.19
-    },
-    {
       "date": "2016-09-28",
       "value": 19632.4
     },
@@ -9794,13 +9774,29 @@
     {
       "date": "2026-09-18",
       "value": 84900.0
+    },
+    {
+      "date": "2026-09-21",
+      "value": 85300.0
+    },
+    {
+      "date": "2026-09-22",
+      "value": 86500.0
+    },
+    {
+      "date": "2026-09-23",
+      "value": 81700.0
+    },
+    {
+      "date": "2026-09-28",
+      "value": 82000.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 54518028959744.0,
+      "market_cap": 52408889638912.0,
       "pe_ratio": null,
-      "forward_pe": 84.93593,
+      "forward_pe": 81.65001,
       "eps_ttm": null,
       "dividend_yield": null,
       "profit_margin": 0.01021,
@@ -9854,18 +9850,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-18",
-    "current_price": 84900.0,
+    "as_of": "2026-09-28",
+    "current_price": 82000.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 16992.81,
+        "fair_value": 17072.87,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 16992.81,
-    "valuation_gap": 3.9962,
+    "fair_value": 17072.87,
+    "valuation_gap": 3.8029,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10017,6 +10013,18 @@
         "price": 84900.0,
         "fair_value": 7480.0,
         "gap": 10.3503
+      },
+      {
+        "date": "2026-09-23",
+        "price": 81700.0,
+        "fair_value": 7480.0,
+        "gap": 9.9225
+      },
+      {
+        "date": "2026-09-28",
+        "price": 82000.0,
+        "fair_value": 7480.0,
+        "gap": 9.9626
       }
     ],
     "qualitative": {

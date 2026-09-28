@@ -4,26 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-09-21",
-      "value": 135.82
-    },
-    {
-      "date": "2016-09-22",
-      "value": 136.63
-    },
-    {
-      "date": "2016-09-23",
-      "value": 134.28
-    },
-    {
-      "date": "2016-09-26",
-      "value": 131.31
-    },
-    {
-      "date": "2016-09-27",
-      "value": 132.46
-    },
-    {
       "date": "2016-09-28",
       "value": 132.91
     },
@@ -1873,7 +1853,7 @@
     },
     {
       "date": "2018-07-31",
-      "value": 197.35
+      "value": 197.36
     },
     {
       "date": "2018-08-01",
@@ -4389,7 +4369,7 @@
     },
     {
       "date": "2021-01-29",
-      "value": 237.33
+      "value": 237.32
     },
     {
       "date": "2021-02-01",
@@ -5293,7 +5273,7 @@
     },
     {
       "date": "2021-12-21",
-      "value": 338.69
+      "value": 338.7
     },
     {
       "date": "2021-12-22",
@@ -5933,7 +5913,7 @@
     },
     {
       "date": "2022-08-11",
-      "value": 316.96
+      "value": 316.97
     },
     {
       "date": "2022-08-12",
@@ -6481,7 +6461,7 @@
     },
     {
       "date": "2023-02-28",
-      "value": 321.43
+      "value": 321.42
     },
     {
       "date": "2023-03-01",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-21",
-      "value": 948.73
+      "value": 959.39
+    },
+    {
+      "date": "2026-09-22",
+      "value": 949.49
+    },
+    {
+      "date": "2026-09-23",
+      "value": 936.36
+    },
+    {
+      "date": "2026-09-24",
+      "value": 923.29
+    },
+    {
+      "date": "2026-09-25",
+      "value": 935.45
+    },
+    {
+      "date": "2026-09-28",
+      "value": 919.66
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 276243021824.0,
-      "pe_ratio": 14.658992,
-      "forward_pe": 12.815058,
-      "eps_ttm": 64.72,
-      "dividend_yield": 2.12,
+      "market_cap": 267778670592.0,
+      "pe_ratio": 14.20763,
+      "forward_pe": 12.50744,
+      "eps_ttm": 64.73,
+      "dividend_yield": 2.14,
       "profit_margin": 0.31039,
       "operating_margin": 0.42176998,
-      "price_to_book": 2.6204462,
+      "price_to_book": 2.5401533,
       "return_on_equity": 0.16902
     },
     "quarterly": [
@@ -10074,13 +10074,6 @@
         "revenue": null,
         "operating_income": null,
         "net_income": null,
-        "eps": null
-      },
-      {
-        "date": "2025-03-31",
-        "revenue": 15062000000.0,
-        "operating_income": null,
-        "net_income": 4738000000.0,
         "eps": null
       },
       {
@@ -10113,36 +10106,36 @@
       },
       {
         "date": "2026-06-30",
-        "revenue": null,
+        "revenue": 20338000000.0,
         "operating_income": null,
-        "net_income": null,
+        "net_income": 6628000000.0,
         "eps": 20.98
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-09-21",
-    "current_price": 948.73,
+    "as_of": "2026-09-28",
+    "current_price": 919.66,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 906.08,
+        "fair_value": 906.22,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 888.39,
+        "fair_value": 882.35,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 726.1,
+        "fair_value": 726.15,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 864.78,
-    "valuation_gap": 0.0971,
+    "fair_value": 863.05,
+    "valuation_gap": 0.0656,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10296,10 +10289,16 @@
         "gap": 0.0385
       },
       {
-        "date": "2026-09-21",
-        "price": 948.73,
+        "date": "2026-09-25",
+        "price": 935.45,
         "fair_value": 907.06,
-        "gap": 0.0459
+        "gap": 0.0313
+      },
+      {
+        "date": "2026-09-28",
+        "price": 919.66,
+        "fair_value": 907.06,
+        "gap": 0.0139
       }
     ],
     "qualitative": {
