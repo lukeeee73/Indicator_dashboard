@@ -4,26 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-09-28",
-      "value": 52.39
-    },
-    {
-      "date": "2016-09-29",
-      "value": 52.06
-    },
-    {
-      "date": "2016-09-30",
-      "value": 53.32
-    },
-    {
-      "date": "2016-10-03",
-      "value": 53.45
-    },
-    {
-      "date": "2016-10-04",
-      "value": 52.19
-    },
-    {
       "date": "2016-10-05",
       "value": 53.18
     },
@@ -10053,22 +10033,49 @@
     },
     {
       "date": "2026-09-28",
-      "value": 428.16
+      "value": 431.41
+    },
+    {
+      "date": "2026-09-29",
+      "value": 433.27
+    },
+    {
+      "date": "2026-09-30",
+      "value": 429.71
+    },
+    {
+      "date": "2026-10-01",
+      "value": 437.28
+    },
+    {
+      "date": "2026-10-02",
+      "value": 436.11
+    },
+    {
+      "date": "2026-10-05",
+      "value": 437.16
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 166297337856.0,
-      "pe_ratio": 43.64526,
-      "forward_pe": 26.5647,
-      "eps_ttm": 9.81,
-      "dividend_yield": 1.0,
+      "market_cap": 169749233664.0,
+      "pe_ratio": 44.472027,
+      "forward_pe": 26.953539,
+      "eps_ttm": 9.83,
+      "dividend_yield": 1.01,
       "profit_margin": 0.12752,
       "operating_margin": 0.16563,
-      "price_to_book": 8.210635,
+      "price_to_book": 8.3832245,
       "return_on_equity": 0.19684
     },
     "quarterly": [
+      {
+        "date": "2025-03-31",
+        "revenue": 6377000000.0,
+        "operating_income": 1201000000.0,
+        "net_income": 964000000.0,
+        "eps": null
+      },
       {
         "date": "2025-06-30",
         "revenue": 7028000000.0,
@@ -10099,36 +10106,36 @@
       },
       {
         "date": "2026-06-30",
-        "revenue": 8531000000.0,
-        "operating_income": 1392000000.0,
-        "net_income": 821000000.0,
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
         "eps": 2.11
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 428.16,
+    "as_of": "2026-10-05",
+    "current_price": 437.16,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 196.2,
+        "fair_value": 196.6,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 274.0,
+        "fair_value": 275.72,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 107.29,
+        "fair_value": 107.39,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 201.76,
-    "valuation_gap": 1.1221,
+    "fair_value": 202.49,
+    "valuation_gap": 1.1589,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10288,10 +10295,16 @@
         "gap": 1.2379
       },
       {
-        "date": "2026-09-28",
-        "price": 428.16,
+        "date": "2026-10-02",
+        "price": 436.11,
         "fair_value": 196.6,
-        "gap": 1.1778
+        "gap": 1.2183
+      },
+      {
+        "date": "2026-10-05",
+        "price": 437.16,
+        "fair_value": 196.6,
+        "gap": 1.2236
       }
     ],
     "qualitative": {

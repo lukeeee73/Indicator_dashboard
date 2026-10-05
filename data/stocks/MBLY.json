@@ -3934,28 +3934,41 @@
     {
       "date": "2026-09-28",
       "value": 7.8
+    },
+    {
+      "date": "2026-09-29",
+      "value": 7.57
+    },
+    {
+      "date": "2026-09-30",
+      "value": 7.39
+    },
+    {
+      "date": "2026-10-01",
+      "value": 7.35
+    },
+    {
+      "date": "2026-10-02",
+      "value": 7.42
+    },
+    {
+      "date": "2026-10-05",
+      "value": 7.59
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 6635714048.0,
+      "market_cap": 6448672768.0,
       "pe_ratio": null,
-      "forward_pe": 15.832927,
-      "eps_ttm": -5.02,
-      "dividend_yield": null,
+      "forward_pe": 15.45625,
+      "eps_ttm": -4.97,
+      "dividend_yield": 0.0,
       "profit_margin": -2.0148802,
       "operating_margin": -0.05906,
-      "price_to_book": 0.79854715,
+      "price_to_book": 0.77603847,
       "return_on_equity": -0.40067002
     },
     "quarterly": [
-      {
-        "date": "2024-12-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2025-06-30",
         "revenue": 506000000.0,
@@ -3994,18 +4007,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 7.8,
+    "as_of": "2026-10-05",
+    "current_price": 7.59,
     "sector": "Technology",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 10.84,
+        "fair_value": 10.8,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       }
     },
-    "fair_value": 10.84,
-    "valuation_gap": -0.2804,
+    "fair_value": 10.8,
+    "valuation_gap": -0.2972,
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {

@@ -6301,29 +6301,42 @@
     },
     {
       "date": "2026-09-28",
-      "value": 46.52
+      "value": 46.45
+    },
+    {
+      "date": "2026-09-29",
+      "value": 45.43
+    },
+    {
+      "date": "2026-09-30",
+      "value": 47.29
+    },
+    {
+      "date": "2026-10-01",
+      "value": 46.09
+    },
+    {
+      "date": "2026-10-02",
+      "value": 46.97
+    },
+    {
+      "date": "2026-10-05",
+      "value": 46.76
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 8285285888.0,
+      "market_cap": 8328920576.0,
       "pe_ratio": null,
-      "forward_pe": 53.232025,
+      "forward_pe": 56.819836,
       "eps_ttm": -0.33,
-      "dividend_yield": null,
+      "dividend_yield": 0.0,
       "profit_margin": -0.14563,
       "operating_margin": -0.1472,
-      "price_to_book": 4.231784,
+      "price_to_book": 4.2540708,
       "return_on_equity": -0.03585
     },
     "quarterly": [
-      {
-        "date": "2024-12-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2025-03-31",
         "revenue": null,
@@ -6369,18 +6382,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 46.52,
+    "as_of": "2026-10-05",
+    "current_price": 46.76,
     "sector": "Materials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 12.23,
+        "fair_value": 11.52,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (14)"
       }
     },
-    "fair_value": 12.23,
-    "valuation_gap": 2.8038,
+    "fair_value": 11.52,
+    "valuation_gap": 3.059,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

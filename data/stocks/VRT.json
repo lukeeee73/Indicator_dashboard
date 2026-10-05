@@ -2757,7 +2757,7 @@
     },
     {
       "date": "2021-04-28",
-      "value": 22.88
+      "value": 22.87
     },
     {
       "date": "2021-04-29",
@@ -8197,29 +8197,42 @@
     },
     {
       "date": "2026-09-28",
-      "value": 243.97
+      "value": 244.04
+    },
+    {
+      "date": "2026-09-29",
+      "value": 248.34
+    },
+    {
+      "date": "2026-09-30",
+      "value": 241.31
+    },
+    {
+      "date": "2026-10-01",
+      "value": 246.12
+    },
+    {
+      "date": "2026-10-02",
+      "value": 252.18
+    },
+    {
+      "date": "2026-10-05",
+      "value": 254.95
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 93925564416.0,
-      "pe_ratio": 55.07224,
-      "forward_pe": 26.744175,
-      "eps_ttm": 4.43,
+      "market_cap": 98150809600.0,
+      "pe_ratio": 57.679867,
+      "forward_pe": 27.776297,
+      "eps_ttm": 4.42,
       "dividend_yield": 0.1,
       "profit_margin": 0.15088001,
       "operating_margin": 0.20362,
-      "price_to_book": 19.74027,
+      "price_to_book": 20.628288,
       "return_on_equity": 0.43943
     },
     "quarterly": [
-      {
-        "date": "2024-12-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2025-03-31",
         "revenue": null,
@@ -8265,28 +8278,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 243.97,
+    "as_of": "2026-10-05",
+    "current_price": 254.95,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 88.6,
+        "fair_value": 88.4,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 155.08,
+        "fair_value": 156.04,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 35.1,
+        "fair_value": 35.06,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 97.84,
-    "valuation_gap": 1.4935,
+    "fair_value": 98.02,
+    "valuation_gap": 1.6009,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8446,10 +8459,16 @@
         "gap": 1.8652
       },
       {
-        "date": "2026-09-28",
-        "price": 243.97,
+        "date": "2026-10-02",
+        "price": 252.18,
         "fair_value": 88.4,
-        "gap": 1.7598
+        "gap": 1.8527
+      },
+      {
+        "date": "2026-10-05",
+        "price": 254.95,
+        "fair_value": 88.4,
+        "gap": 1.884
       }
     ],
     "qualitative": {

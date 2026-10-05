@@ -4,26 +4,6 @@
   "group": "산업재 / 방산",
   "series": [
     {
-      "date": "2016-09-28",
-      "value": 89.92
-    },
-    {
-      "date": "2016-09-29",
-      "value": 89.18
-    },
-    {
-      "date": "2016-09-30",
-      "value": 89.49
-    },
-    {
-      "date": "2016-10-03",
-      "value": 89.55
-    },
-    {
-      "date": "2016-10-04",
-      "value": 88.64
-    },
-    {
       "date": "2016-10-05",
       "value": 88.94
     },
@@ -1701,7 +1681,7 @@
     },
     {
       "date": "2018-06-06",
-      "value": 120.81
+      "value": 120.8
     },
     {
       "date": "2018-06-07",
@@ -4137,7 +4117,7 @@
     },
     {
       "date": "2020-11-04",
-      "value": 156.84
+      "value": 156.83
     },
     {
       "date": "2020-11-05",
@@ -4477,7 +4457,7 @@
     },
     {
       "date": "2021-03-10",
-      "value": 188.35
+      "value": 188.34
     },
     {
       "date": "2021-03-11",
@@ -4505,7 +4485,7 @@
     },
     {
       "date": "2021-03-19",
-      "value": 188.35
+      "value": 188.34
     },
     {
       "date": "2021-03-22",
@@ -4537,7 +4517,7 @@
     },
     {
       "date": "2021-03-31",
-      "value": 192.03
+      "value": 192.02
     },
     {
       "date": "2021-04-01",
@@ -4697,7 +4677,7 @@
     },
     {
       "date": "2021-05-27",
-      "value": 205.45
+      "value": 205.46
     },
     {
       "date": "2021-05-28",
@@ -8625,7 +8605,7 @@
     },
     {
       "date": "2025-04-25",
-      "value": 191.11
+      "value": 191.1
     },
     {
       "date": "2025-04-28",
@@ -10053,29 +10033,42 @@
     },
     {
       "date": "2026-09-28",
-      "value": 210.58
+      "value": 211.52
+    },
+    {
+      "date": "2026-09-29",
+      "value": 210.13
+    },
+    {
+      "date": "2026-09-30",
+      "value": 210.94
+    },
+    {
+      "date": "2026-10-01",
+      "value": 213.8
+    },
+    {
+      "date": "2026-10-02",
+      "value": 213.99
+    },
+    {
+      "date": "2026-10-05",
+      "value": 213.07
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 66741227520.0,
-      "pe_ratio": 8.093005,
-      "forward_pe": 21.291052,
-      "eps_ttm": 26.02,
-      "dividend_yield": 1.32,
+      "market_cap": 67530407936.0,
+      "pe_ratio": 7.865264,
+      "forward_pe": 21.615234,
+      "eps_ttm": 27.09,
+      "dividend_yield": 1.31,
       "profit_margin": 0.21581,
       "operating_margin": 0.20249,
-      "price_to_book": 3.6004584,
+      "price_to_book": 3.6430318,
       "return_on_equity": 0.46577
     },
     "quarterly": [
-      {
-        "date": "2024-12-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": null
-      },
       {
         "date": "2025-03-31",
         "revenue": null,
@@ -10121,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 210.58,
+    "as_of": "2026-10-05",
+    "current_price": 213.07,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 520.4,
+        "fair_value": 541.8,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 168.14,
+        "fair_value": 167.58,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 185.04,
+        "fair_value": 188.81,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 347.65,
-    "valuation_gap": -0.3943,
+    "fair_value": 358.94,
+    "valuation_gap": -0.4064,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10302,10 +10295,16 @@
         "gap": -0.6071
       },
       {
-        "date": "2026-09-28",
-        "price": 210.58,
+        "date": "2026-10-02",
+        "price": 213.99,
         "fair_value": 541.0,
-        "gap": -0.6108
+        "gap": -0.6045
+      },
+      {
+        "date": "2026-10-05",
+        "price": 213.07,
+        "fair_value": 541.0,
+        "gap": -0.6062
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-09-28",
-      "value": 100.3
-    },
-    {
-      "date": "2016-09-29",
-      "value": 100.74
-    },
-    {
-      "date": "2016-09-30",
-      "value": 102.41
-    },
-    {
-      "date": "2016-10-03",
-      "value": 102.75
-    },
-    {
-      "date": "2016-10-04",
-      "value": 102.01
-    },
-    {
       "date": "2016-10-05",
       "value": 102.01
     },
@@ -2485,7 +2465,7 @@
     },
     {
       "date": "2019-03-19",
-      "value": 155.59
+      "value": 155.58
     },
     {
       "date": "2019-03-20",
@@ -2553,7 +2533,7 @@
     },
     {
       "date": "2019-04-11",
-      "value": 161.21
+      "value": 161.2
     },
     {
       "date": "2019-04-12",
@@ -4041,7 +4021,7 @@
     },
     {
       "date": "2020-10-01",
-      "value": 214.25
+      "value": 214.26
     },
     {
       "date": "2020-10-02",
@@ -4073,7 +4053,7 @@
     },
     {
       "date": "2020-10-13",
-      "value": 217.28
+      "value": 217.27
     },
     {
       "date": "2020-10-14",
@@ -5277,7 +5257,7 @@
     },
     {
       "date": "2021-12-22",
-      "value": 314.46
+      "value": 314.45
     },
     {
       "date": "2021-12-23",
@@ -6221,7 +6201,7 @@
     },
     {
       "date": "2022-11-30",
-      "value": 319.27
+      "value": 319.26
     },
     {
       "date": "2022-12-01",
@@ -7645,7 +7625,7 @@
     },
     {
       "date": "2024-05-02",
-      "value": 406.26
+      "value": 406.27
     },
     {
       "date": "2024-05-03",
@@ -7669,7 +7649,7 @@
     },
     {
       "date": "2024-05-10",
-      "value": 420.57
+      "value": 420.56
     },
     {
       "date": "2024-05-13",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-28",
-      "value": 471.24
+      "value": 472.04
+    },
+    {
+      "date": "2026-09-29",
+      "value": 473.37
+    },
+    {
+      "date": "2026-09-30",
+      "value": 474.65
+    },
+    {
+      "date": "2026-10-01",
+      "value": 469.45
+    },
+    {
+      "date": "2026-10-02",
+      "value": 479.48
+    },
+    {
+      "date": "2026-10-05",
+      "value": 484.57
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 217232293888.0,
-      "pe_ratio": 30.382978,
-      "forward_pe": 24.09365,
-      "eps_ttm": 15.51,
-      "dividend_yield": 1.36,
+      "market_cap": 223377162240.0,
+      "pe_ratio": 31.282764,
+      "forward_pe": 24.76644,
+      "eps_ttm": 15.49,
+      "dividend_yield": 1.33,
       "profit_margin": 0.20435,
       "operating_margin": 0.28119,
-      "price_to_book": 5.5585175,
+      "price_to_book": 5.7157516,
       "return_on_equity": 0.18400998
     },
     "quarterly": [
@@ -10114,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 471.24,
+    "as_of": "2026-10-05",
+    "current_price": 484.57,
     "sector": "Materials",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 248.16,
+        "fair_value": 247.84,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 273.82,
+        "fair_value": 273.92,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (14)"
       },
       "graham_number": {
-        "fair_value": 172.0,
+        "fair_value": 171.89,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 240.63,
-    "valuation_gap": 0.9584,
+    "fair_value": 240.47,
+    "valuation_gap": 1.0151,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10295,10 +10295,16 @@
         "gap": 0.8972
       },
       {
-        "date": "2026-09-28",
-        "price": 471.24,
+        "date": "2026-10-02",
+        "price": 479.48,
         "fair_value": 247.68,
-        "gap": 0.9026
+        "gap": 0.9359
+      },
+      {
+        "date": "2026-10-05",
+        "price": 484.57,
+        "fair_value": 247.68,
+        "gap": 0.9564
       }
     ],
     "qualitative": {

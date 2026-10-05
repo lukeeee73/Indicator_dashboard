@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-09-28",
-      "value": 7.13
-    },
-    {
-      "date": "2016-09-29",
-      "value": 7.06
-    },
-    {
-      "date": "2016-09-30",
-      "value": 7.12
-    },
-    {
-      "date": "2016-10-03",
-      "value": 7.14
-    },
-    {
-      "date": "2016-10-04",
-      "value": 7.2
-    },
-    {
       "date": "2016-10-05",
       "value": 7.36
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-09-28",
-      "value": 12.31
+      "value": 12.38
+    },
+    {
+      "date": "2026-09-29",
+      "value": 12.3
+    },
+    {
+      "date": "2026-09-30",
+      "value": 12.06
+    },
+    {
+      "date": "2026-10-01",
+      "value": 12.27
+    },
+    {
+      "date": "2026-10-02",
+      "value": 12.1
+    },
+    {
+      "date": "2026-10-05",
+      "value": 12.11
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 49106046976.0,
+      "market_cap": 48289783808.0,
       "pe_ratio": null,
-      "forward_pe": 6.3019805,
-      "eps_ttm": -1.82,
-      "dividend_yield": 4.72,
+      "forward_pe": 6.1905417,
+      "eps_ttm": -1.88,
+      "dividend_yield": 4.96,
       "profit_margin": -0.03935,
       "operating_margin": 0.018819999,
-      "price_to_book": 1.3747153,
+      "price_to_book": 1.3518642,
       "return_on_equity": -0.18252
     },
     "quarterly": [
@@ -10114,18 +10114,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 12.31,
+    "as_of": "2026-10-05",
+    "current_price": 12.11,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 39.07,
+        "fair_value": 39.12,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 39.07,
-    "valuation_gap": -0.6849,
+    "fair_value": 39.12,
+    "valuation_gap": -0.6904,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10285,10 +10285,16 @@
         "gap": -0.4288
       },
       {
-        "date": "2026-09-28",
-        "price": 12.31,
+        "date": "2026-10-02",
+        "price": 12.1,
         "fair_value": 22.25,
-        "gap": -0.4467
+        "gap": -0.4562
+      },
+      {
+        "date": "2026-10-05",
+        "price": 12.11,
+        "fair_value": 22.25,
+        "gap": -0.4557
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-09-28",
-      "value": 54.04
-    },
-    {
-      "date": "2016-09-29",
-      "value": 53.52
-    },
-    {
-      "date": "2016-09-30",
-      "value": 53.34
-    },
-    {
-      "date": "2016-10-03",
-      "value": 52.71
-    },
-    {
-      "date": "2016-10-04",
-      "value": 51.62
-    },
-    {
       "date": "2016-10-05",
       "value": 51.37
     },
@@ -3549,7 +3529,7 @@
     },
     {
       "date": "2020-04-07",
-      "value": 62.08
+      "value": 62.09
     },
     {
       "date": "2020-04-08",
@@ -3853,7 +3833,7 @@
     },
     {
       "date": "2020-07-27",
-      "value": 63.74
+      "value": 63.73
     },
     {
       "date": "2020-07-28",
@@ -4173,7 +4153,7 @@
     },
     {
       "date": "2020-11-17",
-      "value": 74.43
+      "value": 74.44
     },
     {
       "date": "2020-11-18",
@@ -4357,7 +4337,7 @@
     },
     {
       "date": "2021-01-26",
-      "value": 74.43
+      "value": 74.44
     },
     {
       "date": "2021-01-27",
@@ -10053,27 +10033,47 @@
     },
     {
       "date": "2026-09-28",
-      "value": 113.51
+      "value": 113.41
+    },
+    {
+      "date": "2026-09-29",
+      "value": 114.21
+    },
+    {
+      "date": "2026-09-30",
+      "value": 114.01
+    },
+    {
+      "date": "2026-10-01",
+      "value": 113.74
+    },
+    {
+      "date": "2026-10-02",
+      "value": 114.13
+    },
+    {
+      "date": "2026-10-05",
+      "value": 113.97
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 88507891712.0,
-      "pe_ratio": 17.095633,
-      "forward_pe": 15.828914,
+      "market_cap": 88862662656.0,
+      "pe_ratio": 17.164158,
+      "forward_pe": 15.892361,
       "eps_ttm": 6.64,
-      "dividend_yield": 3.83,
+      "dividend_yield": 3.8,
       "profit_margin": 0.15995,
       "operating_margin": 0.27503002,
-      "price_to_book": 1.6464335,
+      "price_to_book": 1.6530329,
       "return_on_equity": 0.098570004
     },
     "quarterly": [
       {
-        "date": "2024-12-31",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
+        "date": "2025-03-31",
+        "revenue": 8249000000.0,
+        "operating_income": 2337000000.0,
+        "net_income": 1379000000.0,
         "eps": null
       },
       {
@@ -10106,16 +10106,16 @@
       },
       {
         "date": "2026-06-30",
-        "revenue": 7592000000.0,
-        "operating_income": 2088000000.0,
-        "net_income": 1092000000.0,
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
         "eps": 1.38
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-09-28",
-    "current_price": 113.51,
+    "as_of": "2026-10-05",
+    "current_price": 113.97,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10135,7 +10135,7 @@
       }
     },
     "fair_value": 105.69,
-    "valuation_gap": 0.074,
+    "valuation_gap": 0.0784,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10295,10 +10295,16 @@
         "gap": 0.0637
       },
       {
-        "date": "2026-09-28",
-        "price": 113.51,
+        "date": "2026-10-02",
+        "price": 114.13,
         "fair_value": 106.56,
-        "gap": 0.0652
+        "gap": 0.071
+      },
+      {
+        "date": "2026-10-05",
+        "price": 113.97,
+        "fair_value": 106.56,
+        "gap": 0.0695
       }
     ],
     "qualitative": {
