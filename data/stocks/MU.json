@@ -4,26 +4,6 @@
   "group": "반도체 — 메모리 (HBM·DRAM)",
   "series": [
     {
-      "date": "2016-10-05",
-      "value": 17.26
-    },
-    {
-      "date": "2016-10-06",
-      "value": 17.29
-    },
-    {
-      "date": "2016-10-07",
-      "value": 17.17
-    },
-    {
-      "date": "2016-10-10",
-      "value": 17.06
-    },
-    {
-      "date": "2016-10-11",
-      "value": 16.44
-    },
-    {
       "date": "2016-10-12",
       "value": 16.36
     },
@@ -6809,7 +6789,7 @@
     },
     {
       "date": "2023-07-12",
-      "value": 63.09
+      "value": 63.08
     },
     {
       "date": "2023-07-13",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-05",
-      "value": 1065.23
+      "value": 1063.96
+    },
+    {
+      "date": "2026-10-06",
+      "value": 1045.56
+    },
+    {
+      "date": "2026-10-07",
+      "value": 1088.0
+    },
+    {
+      "date": "2026-10-08",
+      "value": 1035.84
+    },
+    {
+      "date": "2026-10-09",
+      "value": 1029.0
+    },
+    {
+      "date": "2026-10-12",
+      "value": 991.64
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1203063488512.0,
-      "pe_ratio": 14.331091,
-      "forward_pe": 5.1721625,
+      "market_cap": 1121964523520.0,
+      "pe_ratio": 13.341046,
+      "forward_pe": 4.8060308,
       "eps_ttm": 74.33,
       "dividend_yield": 0.06,
       "profit_margin": 0.63796,
       "operating_margin": 0.80678004,
-      "price_to_book": 11.940033,
+      "price_to_book": 11.115171,
       "return_on_equity": 0.8826
     },
     "quarterly": [
@@ -10107,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-05",
-    "current_price": 1065.23,
+    "as_of": "2026-10-12",
+    "current_price": 991.64,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10117,7 +10117,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 4531.0,
+        "fair_value": 4539.31,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -10127,8 +10127,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 2477.17,
-    "valuation_gap": -0.57,
+    "fair_value": 2479.67,
+    "valuation_gap": -0.6001,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10318,10 +10318,16 @@
         "gap": -0.1309
       },
       {
-        "date": "2026-10-05",
-        "price": 1065.23,
+        "date": "2026-10-09",
+        "price": 1029.0,
         "fair_value": 1236.76,
-        "gap": -0.1387
+        "gap": -0.168
+      },
+      {
+        "date": "2026-10-12",
+        "price": 991.64,
+        "fair_value": 1236.76,
+        "gap": -0.1982
       }
     ],
     "qualitative": {
