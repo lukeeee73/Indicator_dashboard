@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 42.85
-    },
-    {
-      "date": "2016-10-13",
-      "value": 42.68
-    },
-    {
-      "date": "2016-10-14",
-      "value": 42.79
-    },
-    {
-      "date": "2016-10-17",
-      "value": 42.53
-    },
-    {
-      "date": "2016-10-18",
-      "value": 42.41
-    },
-    {
       "date": "2016-10-19",
       "value": 42.84
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-12",
-      "value": 91.8
+      "value": 92.29
+    },
+    {
+      "date": "2026-10-13",
+      "value": 92.0
+    },
+    {
+      "date": "2026-10-14",
+      "value": 93.25
+    },
+    {
+      "date": "2026-10-15",
+      "value": 96.88
+    },
+    {
+      "date": "2026-10-16",
+      "value": 97.52
+    },
+    {
+      "date": "2026-10-19",
+      "value": 97.83
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 104652005376.0,
-      "pe_ratio": 53.063583,
-      "forward_pe": 29.374214,
+      "market_cap": 111526199296.0,
+      "pe_ratio": 56.549133,
+      "forward_pe": 31.270277,
       "eps_ttm": 1.73,
-      "dividend_yield": 2.78,
+      "dividend_yield": 2.58,
       "profit_margin": 0.05172,
       "operating_margin": 0.12919,
-      "price_to_book": -13.634339,
+      "price_to_book": -14.529928,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10107,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-12",
-    "current_price": 91.8,
+    "as_of": "2026-10-19",
+    "current_price": 97.83,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10117,13 +10117,13 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 62.5,
+        "fair_value": 62.57,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 50.47,
-    "valuation_gap": 0.8189,
+    "fair_value": 50.5,
+    "valuation_gap": 0.9374,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10295,10 +10295,16 @@
         "gap": 1.0947
       },
       {
-        "date": "2026-10-12",
-        "price": 91.8,
+        "date": "2026-10-16",
+        "price": 97.52,
         "fair_value": 43.32,
-        "gap": 1.119
+        "gap": 1.251
+      },
+      {
+        "date": "2026-10-19",
+        "price": 97.83,
+        "fair_value": 43.32,
+        "gap": 1.2582
       }
     ],
     "qualitative": {

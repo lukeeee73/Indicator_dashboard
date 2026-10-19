@@ -4,26 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 61.51
-    },
-    {
-      "date": "2016-10-13",
-      "value": 61.58
-    },
-    {
-      "date": "2016-10-14",
-      "value": 61.42
-    },
-    {
-      "date": "2016-10-17",
-      "value": 61.16
-    },
-    {
-      "date": "2016-10-18",
-      "value": 61.47
-    },
-    {
       "date": "2016-10-19",
       "value": 63.02
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-12",
-      "value": 48.84
+      "value": 48.77
+    },
+    {
+      "date": "2026-10-13",
+      "value": 48.77
+    },
+    {
+      "date": "2026-10-14",
+      "value": 48.51
+    },
+    {
+      "date": "2026-10-15",
+      "value": 48.37
+    },
+    {
+      "date": "2026-10-16",
+      "value": 49.5
+    },
+    {
+      "date": "2026-10-19",
+      "value": 49.16
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 72478130176.0,
-      "pe_ratio": 23.591787,
-      "forward_pe": 15.225586,
+      "market_cap": 72960483328.0,
+      "pe_ratio": 23.748793,
+      "forward_pe": 15.480832,
       "eps_ttm": 2.07,
-      "dividend_yield": 2.41,
+      "dividend_yield": 2.38,
       "profit_margin": 0.08527,
       "operating_margin": 0.12706,
-      "price_to_book": 2.77977,
+      "price_to_book": 2.7982695,
       "return_on_equity": 0.12909001
     },
     "quarterly": [
@@ -10107,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-12",
-    "current_price": 48.84,
+    "as_of": "2026-10-19",
+    "current_price": 49.16,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
@@ -10117,18 +10117,18 @@
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 35.29,
+        "fair_value": 34.93,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
       "graham_number": {
-        "fair_value": 28.61,
+        "fair_value": 28.6,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 28.73,
-    "valuation_gap": 0.7,
+    "fair_value": 28.62,
+    "valuation_gap": 0.7177,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10300,10 +10300,16 @@
         "gap": 0.9706
       },
       {
-        "date": "2026-10-12",
-        "price": 48.84,
+        "date": "2026-10-16",
+        "price": 49.5,
         "fair_value": 24.84,
-        "gap": 0.9662
+        "gap": 0.9928
+      },
+      {
+        "date": "2026-10-19",
+        "price": 49.16,
+        "fair_value": 24.84,
+        "gap": 0.9791
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 22.67
-    },
-    {
-      "date": "2016-10-13",
-      "value": 22.64
-    },
-    {
-      "date": "2016-10-14",
-      "value": 22.77
-    },
-    {
-      "date": "2016-10-17",
-      "value": 22.57
-    },
-    {
-      "date": "2016-10-18",
-      "value": 22.86
-    },
-    {
       "date": "2016-10-19",
       "value": 22.67
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-12",
-      "value": 32.76
+      "value": 32.66
+    },
+    {
+      "date": "2026-10-13",
+      "value": 33.33
+    },
+    {
+      "date": "2026-10-14",
+      "value": 33.45
+    },
+    {
+      "date": "2026-10-15",
+      "value": 34.06
+    },
+    {
+      "date": "2026-10-16",
+      "value": 34.28
+    },
+    {
+      "date": "2026-10-19",
+      "value": 34.13
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 42511736832.0,
+      "market_cap": 44284592128.0,
       "pe_ratio": null,
-      "forward_pe": null,
+      "forward_pe": 6.8810487,
       "eps_ttm": -0.72,
-      "dividend_yield": 4.07,
+      "dividend_yield": 3.88,
       "profit_margin": -0.00754,
       "operating_margin": 0.08756,
-      "price_to_book": 0.5436376,
+      "price_to_book": 0.5672689,
       "return_on_equity": -0.0076200003
     },
     "quarterly": [
@@ -10107,14 +10107,19 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-12",
-    "current_price": 32.76,
+    "as_of": "2026-10-19",
+    "current_price": 34.13,
     "sector": "Consumer Discretionary",
-    "methods": {},
-    "fair_value": null,
-    "valuation_gap": null,
-    "signal": "n/a",
-    "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
+    "methods": {
+      "forward_pe_benchmark": {
+        "fair_value": 99.2,
+        "weight": 3.0,
+        "note": "내재 forward EPS × 섹터 Forward P/E (20)"
+      }
+    },
+    "fair_value": 99.2,
+    "valuation_gap": -0.6559,
+    "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {
       "as_of": "2026-09-23",

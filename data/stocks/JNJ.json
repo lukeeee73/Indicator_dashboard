@@ -4,26 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 89.88
-    },
-    {
-      "date": "2016-10-13",
-      "value": 90.1
-    },
-    {
-      "date": "2016-10-14",
-      "value": 89.57
-    },
-    {
-      "date": "2016-10-17",
-      "value": 90.28
-    },
-    {
-      "date": "2016-10-18",
-      "value": 87.93
-    },
-    {
       "date": "2016-10-19",
       "value": 87.31
     },
@@ -2405,7 +2385,7 @@
     },
     {
       "date": "2019-03-05",
-      "value": 112.93
+      "value": 112.94
     },
     {
       "date": "2019-03-06",
@@ -2765,7 +2745,7 @@
     },
     {
       "date": "2019-07-12",
-      "value": 110.04
+      "value": 110.05
     },
     {
       "date": "2019-07-15",
@@ -4985,7 +4965,7 @@
     },
     {
       "date": "2021-09-23",
-      "value": 143.37
+      "value": 143.38
     },
     {
       "date": "2021-09-24",
@@ -5417,7 +5397,7 @@
     },
     {
       "date": "2022-02-28",
-      "value": 144.99
+      "value": 144.98
     },
     {
       "date": "2022-03-01",
@@ -5617,7 +5597,7 @@
     },
     {
       "date": "2022-05-10",
-      "value": 156.02
+      "value": 156.01
     },
     {
       "date": "2022-05-11",
@@ -5961,7 +5941,7 @@
     },
     {
       "date": "2022-09-13",
-      "value": 144.0
+      "value": 144.01
     },
     {
       "date": "2022-09-14",
@@ -6113,7 +6093,7 @@
     },
     {
       "date": "2022-11-04",
-      "value": 153.06
+      "value": 153.07
     },
     {
       "date": "2022-11-07",
@@ -9113,7 +9093,7 @@
     },
     {
       "date": "2025-11-03",
-      "value": 182.15
+      "value": 182.16
     },
     {
       "date": "2025-11-04",
@@ -10053,20 +10033,40 @@
     },
     {
       "date": "2026-10-12",
-      "value": 263.01
+      "value": 263.73
+    },
+    {
+      "date": "2026-10-13",
+      "value": 248.61
+    },
+    {
+      "date": "2026-10-14",
+      "value": 253.91
+    },
+    {
+      "date": "2026-10-15",
+      "value": 253.28
+    },
+    {
+      "date": "2026-10-16",
+      "value": 255.56
+    },
+    {
+      "date": "2026-10-19",
+      "value": 252.05
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 633815367680.0,
-      "pe_ratio": 30.475666,
-      "forward_pe": 21.242098,
-      "eps_ttm": 8.63,
-      "dividend_yield": 2.05,
-      "profit_margin": 0.21482,
-      "operating_margin": 0.2919,
-      "price_to_book": 7.453945,
-      "return_on_equity": 0.25742
+      "market_cap": 607414910976.0,
+      "pe_ratio": 38.247345,
+      "forward_pe": 21.530901,
+      "eps_ttm": 6.59,
+      "dividend_yield": 2.1,
+      "profit_margin": 0.16203,
+      "operating_margin": 0.25059998,
+      "price_to_book": 7.1434646,
+      "return_on_equity": null
     },
     "quarterly": [
       {
@@ -10114,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-12",
-    "current_price": 263.01,
+    "as_of": "2026-10-19",
+    "current_price": 252.05,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 155.34,
+        "fair_value": 118.62,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 198.1,
+        "fair_value": 187.3,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 82.77,
+        "fair_value": 72.33,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 153.65,
-    "valuation_gap": 0.7117,
+    "fair_value": 129.97,
+    "valuation_gap": 0.9394,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10307,10 +10307,16 @@
         "gap": 0.683
       },
       {
-        "date": "2026-10-12",
-        "price": 263.01,
+        "date": "2026-10-16",
+        "price": 255.56,
         "fair_value": 155.34,
-        "gap": 0.6931
+        "gap": 0.6452
+      },
+      {
+        "date": "2026-10-19",
+        "price": 252.05,
+        "fair_value": 155.34,
+        "gap": 0.6226
       }
     ],
     "qualitative": {

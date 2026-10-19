@@ -4,26 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 20602.38
-    },
-    {
-      "date": "2016-10-13",
-      "value": 20253.19
-    },
-    {
-      "date": "2016-10-14",
-      "value": 20330.79
-    },
-    {
-      "date": "2016-10-17",
-      "value": 20369.59
-    },
-    {
-      "date": "2016-10-18",
-      "value": 20214.39
-    },
-    {
       "date": "2016-10-19",
       "value": 19632.4
     },
@@ -9782,13 +9762,33 @@
     {
       "date": "2026-10-08",
       "value": 78000.0
+    },
+    {
+      "date": "2026-10-12",
+      "value": 71500.0
+    },
+    {
+      "date": "2026-10-13",
+      "value": 70200.0
+    },
+    {
+      "date": "2026-10-14",
+      "value": 69400.0
+    },
+    {
+      "date": "2026-10-15",
+      "value": 63300.0
+    },
+    {
+      "date": "2026-10-16",
+      "value": 64600.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 45697994850304.0,
+      "market_cap": 42566246465536.0,
       "pe_ratio": null,
-      "forward_pe": 69.03777,
+      "forward_pe": 64.30651,
       "eps_ttm": null,
       "dividend_yield": 0.0,
       "profit_margin": 0.01021,
@@ -9842,18 +9842,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-08",
-    "current_price": 78000.0,
+    "as_of": "2026-10-16",
+    "current_price": 64600.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 19206.88,
+        "fair_value": 17077.59,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 19206.88,
-    "valuation_gap": 3.061,
+    "fair_value": 17077.59,
+    "valuation_gap": 2.7827,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10023,6 +10023,12 @@
         "price": 78000.0,
         "fair_value": 7480.0,
         "gap": 9.4278
+      },
+      {
+        "date": "2026-10-16",
+        "price": 64600.0,
+        "fair_value": 7480.0,
+        "gap": 7.6364
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 14.86
-    },
-    {
-      "date": "2016-10-13",
-      "value": 14.87
-    },
-    {
-      "date": "2016-10-14",
-      "value": 14.82
-    },
-    {
-      "date": "2016-10-17",
-      "value": 14.84
-    },
-    {
-      "date": "2016-10-18",
-      "value": 14.87
-    },
-    {
       "date": "2016-10-19",
       "value": 14.88
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-12",
-      "value": 22.5
+      "value": 22.49
+    },
+    {
+      "date": "2026-10-13",
+      "value": 22.85
+    },
+    {
+      "date": "2026-10-14",
+      "value": 23.05
+    },
+    {
+      "date": "2026-10-15",
+      "value": 23.5
+    },
+    {
+      "date": "2026-10-16",
+      "value": 23.44
+    },
+    {
+      "date": "2026-10-19",
+      "value": 23.15
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 154212941824.0,
-      "pe_ratio": 7.4273925,
-      "forward_pe": 8.761752,
+      "market_cap": 158598479872.0,
+      "pe_ratio": 7.638614,
+      "forward_pe": 9.00426,
       "eps_ttm": 3.03,
-      "dividend_yield": 5.0,
+      "dividend_yield": 4.74,
       "profit_margin": 0.16943,
       "operating_margin": 0.24786,
-      "price_to_book": 1.4016566,
+      "price_to_book": 1.4415172,
       "return_on_equity": 0.18339
     },
     "quarterly": [
@@ -10114,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-12",
-    "current_price": 22.5,
+    "as_of": "2026-10-19",
+    "current_price": 23.15,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10124,18 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 43.66,
+        "fair_value": 43.71,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 33.08,
+        "fair_value": 33.09,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 50.01,
-    "valuation_gap": -0.5501,
+    "fair_value": 50.03,
+    "valuation_gap": -0.5373,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10307,10 +10307,16 @@
         "gap": -0.6328
       },
       {
-        "date": "2026-10-12",
-        "price": 22.5,
+        "date": "2026-10-16",
+        "price": 23.44,
         "fair_value": 60.4,
-        "gap": -0.6275
+        "gap": -0.6119
+      },
+      {
+        "date": "2026-10-19",
+        "price": 23.15,
+        "fair_value": 60.4,
+        "gap": -0.6167
       }
     ],
     "qualitative": {

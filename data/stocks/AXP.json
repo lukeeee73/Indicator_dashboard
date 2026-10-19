@@ -4,26 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 52.99
-    },
-    {
-      "date": "2016-10-13",
-      "value": 52.75
-    },
-    {
-      "date": "2016-10-14",
-      "value": 52.52
-    },
-    {
-      "date": "2016-10-17",
-      "value": 52.3
-    },
-    {
-      "date": "2016-10-18",
-      "value": 52.46
-    },
-    {
       "date": "2016-10-19",
       "value": 53.48
     },
@@ -985,7 +965,7 @@
     },
     {
       "date": "2017-10-03",
-      "value": 80.81
+      "value": 80.8
     },
     {
       "date": "2017-10-04",
@@ -6141,7 +6121,7 @@
     },
     {
       "date": "2022-11-15",
-      "value": 146.61
+      "value": 146.6
     },
     {
       "date": "2022-11-16",
@@ -8177,7 +8157,7 @@
     },
     {
       "date": "2024-11-25",
-      "value": 298.6
+      "value": 298.59
     },
     {
       "date": "2024-11-26",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-12",
-      "value": 312.27
+      "value": 311.53
+    },
+    {
+      "date": "2026-10-13",
+      "value": 309.84
+    },
+    {
+      "date": "2026-10-14",
+      "value": 306.95
+    },
+    {
+      "date": "2026-10-15",
+      "value": 313.87
+    },
+    {
+      "date": "2026-10-16",
+      "value": 313.59
+    },
+    {
+      "date": "2026-10-19",
+      "value": 314.11
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 210878988288.0,
-      "pe_ratio": 18.948421,
-      "forward_pe": 15.477706,
+      "market_cap": 212124942336.0,
+      "pe_ratio": 19.060375,
+      "forward_pe": 15.585454,
       "eps_ttm": 16.48,
-      "dividend_yield": 1.23,
+      "dividend_yield": 1.21,
       "profit_margin": 0.16141,
       "operating_margin": 0.2032,
-      "price_to_book": 6.148863,
+      "price_to_book": 6.185192,
       "return_on_equity": 0.34377
     },
     "quarterly": [
@@ -10107,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-12",
-    "current_price": 312.27,
+    "as_of": "2026-10-19",
+    "current_price": 314.11,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10117,7 +10117,7 @@
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 242.11,
+        "fair_value": 241.85,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
@@ -10127,8 +10127,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 215.44,
-    "valuation_gap": 0.4495,
+    "fair_value": 215.36,
+    "valuation_gap": 0.4585,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10300,10 +10300,16 @@
         "gap": 0.3357
       },
       {
-        "date": "2026-10-12",
-        "price": 312.27,
+        "date": "2026-10-16",
+        "price": 313.59,
         "fair_value": 230.72,
-        "gap": 0.3535
+        "gap": 0.3592
+      },
+      {
+        "date": "2026-10-19",
+        "price": 314.11,
+        "fair_value": 230.72,
+        "gap": 0.3614
       }
     ],
     "qualitative": {

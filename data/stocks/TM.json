@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-10-12",
-      "value": 90.91
-    },
-    {
-      "date": "2016-10-13",
-      "value": 90.55
-    },
-    {
-      "date": "2016-10-14",
-      "value": 90.86
-    },
-    {
-      "date": "2016-10-17",
-      "value": 91.13
-    },
-    {
-      "date": "2016-10-18",
-      "value": 90.83
-    },
-    {
       "date": "2016-10-19",
       "value": 90.7
     },
@@ -1105,7 +1085,7 @@
     },
     {
       "date": "2017-11-14",
-      "value": 101.84
+      "value": 101.85
     },
     {
       "date": "2017-11-15",
@@ -2233,7 +2213,7 @@
     },
     {
       "date": "2018-12-31",
-      "value": 97.69
+      "value": 97.7
     },
     {
       "date": "2019-01-02",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-12",
-      "value": 185.07
+      "value": 184.72
+    },
+    {
+      "date": "2026-10-13",
+      "value": 188.71
+    },
+    {
+      "date": "2026-10-14",
+      "value": 188.6
+    },
+    {
+      "date": "2026-10-15",
+      "value": 191.94
+    },
+    {
+      "date": "2026-10-16",
+      "value": 194.61
+    },
+    {
+      "date": "2026-10-19",
+      "value": 193.57
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 219156938752.0,
-      "pe_ratio": 8.131375,
-      "forward_pe": 11.728144,
+      "market_cap": 227982131200.0,
+      "pe_ratio": 8.504613,
+      "forward_pe": 12.266477,
       "eps_ttm": 22.76,
-      "dividend_yield": 3.38,
+      "dividend_yield": 3.22,
       "profit_margin": 0.0863,
       "operating_margin": 0.07863,
-      "price_to_book": 15.049812,
+      "price_to_book": 15.539066,
       "return_on_equity": 0.12404
     },
     "quarterly": [
@@ -10114,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-12",
-    "current_price": 185.07,
+    "as_of": "2026-10-19",
+    "current_price": 193.57,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10124,18 +10124,18 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 315.6,
+        "fair_value": 315.61,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
       "graham_number": {
-        "fair_value": 79.36,
+        "fair_value": 79.87,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 395.05,
-    "valuation_gap": -0.5315,
+    "fair_value": 395.16,
+    "valuation_gap": -0.5101,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10229,10 +10229,16 @@
         "gap": -0.9976
       },
       {
-        "date": "2026-10-12",
-        "price": 185.07,
+        "date": "2026-10-16",
+        "price": 194.61,
         "fair_value": 77092.5,
-        "gap": -0.9976
+        "gap": -0.9975
+      },
+      {
+        "date": "2026-10-19",
+        "price": 193.57,
+        "fair_value": 77092.5,
+        "gap": -0.9975
       }
     ],
     "qualitative": {
