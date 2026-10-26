@@ -8257,19 +8257,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 211.26
+      "value": 206.08
+    },
+    {
+      "date": "2026-10-20",
+      "value": 203.56
+    },
+    {
+      "date": "2026-10-21",
+      "value": 212.15
+    },
+    {
+      "date": "2026-10-22",
+      "value": 195.59
+    },
+    {
+      "date": "2026-10-23",
+      "value": 194.32
+    },
+    {
+      "date": "2026-10-26",
+      "value": 200.23
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 81309499392.0,
-      "pe_ratio": 47.782803,
-      "forward_pe": 22.974476,
+      "market_cap": 77086179328.0,
+      "pe_ratio": 45.300903,
+      "forward_pe": 21.777197,
       "eps_ttm": 4.42,
-      "dividend_yield": 0.12,
+      "dividend_yield": 0.13,
       "profit_margin": 0.15088001,
       "operating_margin": 0.20362,
-      "price_to_book": 17.08876,
+      "price_to_book": 16.201149,
       "return_on_equity": 0.43943
     },
     "quarterly": [
@@ -8318,8 +8338,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 211.26,
+    "as_of": "2026-10-26",
+    "current_price": 200.23,
     "sector": "Industrials",
     "methods": {
       "pe_benchmark": {
@@ -8328,7 +8348,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 156.32,
+        "fair_value": 156.31,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -8339,7 +8359,7 @@
       }
     },
     "fair_value": 98.11,
-    "valuation_gap": 1.1533,
+    "valuation_gap": 1.041,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8517,10 +8537,16 @@
         "gap": 1.3351
       },
       {
-        "date": "2026-10-19",
-        "price": 211.26,
+        "date": "2026-10-23",
+        "price": 194.32,
         "fair_value": 88.4,
-        "gap": 1.3898
+        "gap": 1.1982
+      },
+      {
+        "date": "2026-10-26",
+        "price": 200.23,
+        "fair_value": 88.4,
+        "gap": 1.265
       }
     ],
     "qualitative": {

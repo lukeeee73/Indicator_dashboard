@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-10-19",
-      "value": 19.43
-    },
-    {
-      "date": "2016-10-20",
-      "value": 19.39
-    },
-    {
-      "date": "2016-10-21",
-      "value": 19.28
-    },
-    {
-      "date": "2016-10-24",
-      "value": 19.52
-    },
-    {
-      "date": "2016-10-25",
-      "value": 19.56
-    },
-    {
       "date": "2016-10-26",
       "value": 19.63
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 118.32
+      "value": 118.7
+    },
+    {
+      "date": "2026-10-20",
+      "value": 117.85
+    },
+    {
+      "date": "2026-10-21",
+      "value": 117.8
+    },
+    {
+      "date": "2026-10-22",
+      "value": 121.12
+    },
+    {
+      "date": "2026-10-23",
+      "value": 119.89
+    },
+    {
+      "date": "2026-10-26",
+      "value": 120.46
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 938720821248.0,
-      "pe_ratio": 42.869564,
-      "forward_pe": 36.704987,
+      "market_cap": 958669979648.0,
+      "pe_ratio": 43.646736,
+      "forward_pe": 37.33624,
       "eps_ttm": 2.76,
       "dividend_yield": 0.83,
       "profit_margin": 0.03,
       "operating_margin": 0.0345,
-      "price_to_book": 9.565849,
+      "price_to_book": 9.739267,
       "return_on_equity": 0.22313999
     },
     "quarterly": [
@@ -10114,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 118.32,
+    "as_of": "2026-10-26",
+    "current_price": 120.46,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10124,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 58.02,
+        "fair_value": 58.07,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
@@ -10134,8 +10134,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 53.31,
-    "valuation_gap": 1.2196,
+    "fair_value": 53.32,
+    "valuation_gap": 1.2591,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10289,10 +10289,16 @@
         "gap": 0.9496
       },
       {
-        "date": "2026-10-19",
-        "price": 118.32,
+        "date": "2026-10-23",
+        "price": 119.89,
         "fair_value": 60.94,
-        "gap": 0.9416
+        "gap": 0.9673
+      },
+      {
+        "date": "2026-10-26",
+        "price": 120.46,
+        "fair_value": 60.94,
+        "gap": 0.9767
       }
     ],
     "qualitative": {

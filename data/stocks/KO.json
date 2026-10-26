@@ -4,26 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-10-19",
-      "value": 30.84
-    },
-    {
-      "date": "2016-10-20",
-      "value": 30.75
-    },
-    {
-      "date": "2016-10-21",
-      "value": 30.9
-    },
-    {
-      "date": "2016-10-24",
-      "value": 31.22
-    },
-    {
-      "date": "2016-10-25",
-      "value": 31.2
-    },
-    {
       "date": "2016-10-26",
       "value": 31.13
     },
@@ -1261,7 +1241,7 @@
     },
     {
       "date": "2018-01-19",
-      "value": 36.06
+      "value": 36.05
     },
     {
       "date": "2018-01-22",
@@ -1381,7 +1361,7 @@
     },
     {
       "date": "2018-03-05",
-      "value": 33.55
+      "value": 33.56
     },
     {
       "date": "2018-03-06",
@@ -2357,7 +2337,7 @@
     },
     {
       "date": "2019-02-22",
-      "value": 35.82
+      "value": 35.81
     },
     {
       "date": "2019-02-25",
@@ -2393,7 +2373,7 @@
     },
     {
       "date": "2019-03-07",
-      "value": 35.82
+      "value": 35.81
     },
     {
       "date": "2019-03-08",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 93.56
+      "value": 93.42
+    },
+    {
+      "date": "2026-10-20",
+      "value": 93.49
+    },
+    {
+      "date": "2026-10-21",
+      "value": 92.68
+    },
+    {
+      "date": "2026-10-22",
+      "value": 95.34
+    },
+    {
+      "date": "2026-10-23",
+      "value": 92.71
+    },
+    {
+      "date": "2026-10-26",
+      "value": 92.13
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 402546458624.0,
-      "pe_ratio": 28.096096,
-      "forward_pe": 26.55548,
+      "market_cap": 396393840640.0,
+      "pe_ratio": 27.666666,
+      "forward_pe": 26.141657,
       "eps_ttm": 3.33,
-      "dividend_yield": 2.26,
+      "dividend_yield": 2.29,
       "profit_margin": 0.28558,
       "operating_margin": 0.34873,
-      "price_to_book": 11.136769,
+      "price_to_book": 10.966551,
       "return_on_equity": 0.42054
     },
     "quarterly": [
@@ -10114,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 93.56,
+    "as_of": "2026-10-26",
+    "current_price": 92.13,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10124,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 63.42,
+        "fair_value": 63.44,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
@@ -10134,8 +10134,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 60.67,
-    "valuation_gap": 0.542,
+    "fair_value": 60.68,
+    "valuation_gap": 0.5183,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10313,10 +10313,16 @@
         "gap": 0.2817
       },
       {
-        "date": "2026-10-19",
-        "price": 93.56,
+        "date": "2026-10-23",
+        "price": 92.71,
         "fair_value": 73.26,
-        "gap": 0.2771
+        "gap": 0.2655
+      },
+      {
+        "date": "2026-10-26",
+        "price": 92.13,
+        "fair_value": 73.26,
+        "gap": 0.2576
       }
     ],
     "qualitative": {

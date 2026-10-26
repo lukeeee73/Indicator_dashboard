@@ -4,26 +4,6 @@
   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
   "series": [
     {
-      "date": "2016-10-19",
-      "value": 5.12
-    },
-    {
-      "date": "2016-10-20",
-      "value": 5.12
-    },
-    {
-      "date": "2016-10-21",
-      "value": 5.22
-    },
-    {
-      "date": "2016-10-24",
-      "value": 5.25
-    },
-    {
-      "date": "2016-10-25",
-      "value": 5.27
-    },
-    {
       "date": "2016-10-26",
       "value": 5.26
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 185.3
+      "value": 182.95
+    },
+    {
+      "date": "2026-10-20",
+      "value": 181.19
+    },
+    {
+      "date": "2026-10-21",
+      "value": 184.33
+    },
+    {
+      "date": "2026-10-22",
+      "value": 171.07
+    },
+    {
+      "date": "2026-10-23",
+      "value": 172.37
+    },
+    {
+      "date": "2026-10-26",
+      "value": 178.18
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 233704947712.0,
-      "pe_ratio": 58.454258,
-      "forward_pe": 35.51945,
+      "market_cap": 224725008384.0,
+      "pe_ratio": 56.2082,
+      "forward_pe": 34.11854,
       "eps_ttm": 3.17,
       "dividend_yield": 0.0,
       "profit_margin": 0.38371,
       "operating_margin": 0.45393002,
-      "price_to_book": 15.793063,
+      "price_to_book": 15.186227,
       "return_on_equity": 0.31476
     },
     "quarterly": [
@@ -10107,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 185.3,
+    "as_of": "2026-10-26",
+    "current_price": 178.18,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10117,7 +10117,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 114.77,
+        "fair_value": 114.89,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -10127,8 +10127,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 84.6,
-    "valuation_gap": 1.1904,
+    "fair_value": 84.63,
+    "valuation_gap": 1.1053,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10306,10 +10306,16 @@
         "gap": 0.9939
       },
       {
-        "date": "2026-10-19",
-        "price": 185.3,
+        "date": "2026-10-23",
+        "price": 172.37,
         "fair_value": 88.76,
-        "gap": 1.0877
+        "gap": 0.942
+      },
+      {
+        "date": "2026-10-26",
+        "price": 178.18,
+        "fair_value": 88.76,
+        "gap": 1.0074
       }
     ],
     "qualitative": {

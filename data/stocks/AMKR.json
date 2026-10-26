@@ -4,26 +4,6 @@
   "group": "반도체 — 파운드리 · 패키징 · 기판",
   "series": [
     {
-      "date": "2016-10-19",
-      "value": 8.8
-    },
-    {
-      "date": "2016-10-20",
-      "value": 9.0
-    },
-    {
-      "date": "2016-10-21",
-      "value": 8.92
-    },
-    {
-      "date": "2016-10-24",
-      "value": 9.06
-    },
-    {
-      "date": "2016-10-25",
-      "value": 8.96
-    },
-    {
       "date": "2016-10-26",
       "value": 8.79
     },
@@ -4637,7 +4617,7 @@
     },
     {
       "date": "2021-05-27",
-      "value": 19.61
+      "value": 19.6
     },
     {
       "date": "2021-05-28",
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 42.67
+      "value": 41.89
+    },
+    {
+      "date": "2026-10-20",
+      "value": 41.7
+    },
+    {
+      "date": "2026-10-21",
+      "value": 43.73
+    },
+    {
+      "date": "2026-10-22",
+      "value": 39.05
+    },
+    {
+      "date": "2026-10-23",
+      "value": 39.3
+    },
+    {
+      "date": "2026-10-26",
+      "value": 38.42
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 10576719872.0,
-      "pe_ratio": 19.13453,
-      "forward_pe": 15.2048025,
+      "market_cap": 9545543680.0,
+      "pe_ratio": 17.228699,
+      "forward_pe": 13.668705,
       "eps_ttm": 2.23,
-      "dividend_yield": 0.8,
+      "dividend_yield": 0.85,
       "profit_margin": 0.07448,
       "operating_margin": 0.10532,
-      "price_to_book": 2.2753692,
+      "price_to_book": 2.0487387,
       "return_on_equity": 0.12514
     },
     "quarterly": [
@@ -10107,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 42.67,
+    "as_of": "2026-10-26",
+    "current_price": 38.42,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10117,7 +10117,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 61.74,
+        "fair_value": 61.84,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -10127,8 +10127,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 55.88,
-    "valuation_gap": -0.2363,
+    "fair_value": 55.91,
+    "valuation_gap": -0.3128,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10306,10 +10306,16 @@
         "gap": -0.3302
       },
       {
-        "date": "2026-10-19",
-        "price": 42.67,
+        "date": "2026-10-23",
+        "price": 39.3,
         "fair_value": 62.44,
-        "gap": -0.3166
+        "gap": -0.3706
+      },
+      {
+        "date": "2026-10-26",
+        "price": 38.42,
+        "fair_value": 62.44,
+        "gap": -0.3847
       }
     ],
     "qualitative": {

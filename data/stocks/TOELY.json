@@ -241,23 +241,51 @@
       "dividend_yield": 0.0121,
       "profit_margin": 0.23645,
       "operating_margin": 0.28866,
-      "price_to_book": 11.221022,
+      "price_to_book": 11.695301,
       "return_on_equity": 0.30929002
     },
     "quarterly": [
       {
-        "date": "2025-06-30",
+        "date": "2025-03-31",
         "revenue": null,
         "operating_income": null,
         "net_income": null,
-        "eps": 128.245
+        "eps": null
+      },
+      {
+        "date": "2025-06-30",
+        "revenue": 549586000000.0,
+        "operating_income": 144695000000.0,
+        "net_income": 117801000000.0,
+        "eps": 25.649
+      },
+      {
+        "date": "2025-09-30",
+        "revenue": 630082000000.0,
+        "operating_income": 158459000000.0,
+        "net_income": 123825000000.0,
+        "eps": null
+      },
+      {
+        "date": "2025-12-31",
+        "revenue": 552047000000.0,
+        "operating_income": 116139000000.0,
+        "net_income": 118538000000.0,
+        "eps": null
+      },
+      {
+        "date": "2026-03-31",
+        "revenue": 711818000000.0,
+        "operating_income": 205644000000.0,
+        "net_income": 214290000000.0,
+        "eps": null
       },
       {
         "date": "2026-06-30",
-        "revenue": null,
-        "operating_income": null,
-        "net_income": null,
-        "eps": 180.075
+        "revenue": 732388000000.0,
+        "operating_income": 211409000000.0,
+        "net_income": 164341000000.0,
+        "eps": 36.015
       }
     ]
   },
@@ -272,13 +300,13 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "graham_number": {
-        "fair_value": 18.05,
+        "fair_value": 17.68,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 86.16,
-    "valuation_gap": -0.5346,
+    "fair_value": 86.05,
+    "valuation_gap": -0.534,
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {

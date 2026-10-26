@@ -1433,7 +1433,7 @@
     },
     {
       "date": "2023-06-22",
-      "value": 87.32
+      "value": 87.31
     },
     {
       "date": "2023-06-23",
@@ -2197,7 +2197,7 @@
     },
     {
       "date": "2024-03-26",
-      "value": 182.66
+      "value": 182.65
     },
     {
       "date": "2024-03-27",
@@ -4769,19 +4769,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 267.23
+      "value": 263.19
+    },
+    {
+      "date": "2026-10-20",
+      "value": 258.84
+    },
+    {
+      "date": "2026-10-21",
+      "value": 270.74
+    },
+    {
+      "date": "2026-10-22",
+      "value": 255.21
+    },
+    {
+      "date": "2026-10-23",
+      "value": 253.45
+    },
+    {
+      "date": "2026-10-26",
+      "value": 253.71
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 94683332608.0,
-      "pe_ratio": 26.122679,
-      "forward_pe": 20.107748,
+      "market_cap": 89893101568.0,
+      "pe_ratio": 24.801077,
+      "forward_pe": 19.063745,
       "eps_ttm": 10.23,
-      "dividend_yield": 0.63,
+      "dividend_yield": 0.67,
       "profit_margin": 0.110810004,
       "operating_margin": 0.086619996,
-      "price_to_book": 2.9693105,
+      "price_to_book": 2.8190868,
       "return_on_equity": 0.15055001
     },
     "quarterly": [
@@ -4830,8 +4850,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 267.23,
+    "as_of": "2026-10-26",
+    "current_price": 253.71,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -4840,7 +4860,7 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 199.35,
+        "fair_value": 199.63,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
@@ -4850,8 +4870,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 170.43,
-    "valuation_gap": 0.568,
+    "fair_value": 170.52,
+    "valuation_gap": 0.4879,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -5029,10 +5049,16 @@
         "gap": 0.6531
       },
       {
-        "date": "2026-10-19",
-        "price": 267.23,
+        "date": "2026-10-23",
+        "price": 253.45,
         "fair_value": 164.16,
-        "gap": 0.6279
+        "gap": 0.5439
+      },
+      {
+        "date": "2026-10-26",
+        "price": 253.71,
+        "fair_value": 164.16,
+        "gap": 0.5455
       }
     ],
     "qualitative": {

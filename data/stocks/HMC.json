@@ -4,26 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-10-19",
-      "value": 22.67
-    },
-    {
-      "date": "2016-10-20",
-      "value": 22.97
-    },
-    {
-      "date": "2016-10-21",
-      "value": 23.07
-    },
-    {
-      "date": "2016-10-24",
-      "value": 22.99
-    },
-    {
-      "date": "2016-10-25",
-      "value": 23.17
-    },
-    {
       "date": "2016-10-26",
       "value": 23.18
     },
@@ -10053,19 +10033,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 34.13
+      "value": 34.06
+    },
+    {
+      "date": "2026-10-20",
+      "value": 34.25
+    },
+    {
+      "date": "2026-10-21",
+      "value": 33.97
+    },
+    {
+      "date": "2026-10-22",
+      "value": 34.58
+    },
+    {
+      "date": "2026-10-23",
+      "value": 34.15
+    },
+    {
+      "date": "2026-10-26",
+      "value": 34.56
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 44284592128.0,
+      "market_cap": 44847554560.0,
       "pe_ratio": null,
-      "forward_pe": 6.8810487,
-      "eps_ttm": -0.72,
-      "dividend_yield": 3.88,
+      "forward_pe": null,
+      "eps_ttm": -0.73,
+      "dividend_yield": 3.9,
       "profit_margin": -0.00754,
       "operating_margin": 0.08756,
-      "price_to_book": 0.5672689,
+      "price_to_book": 0.57377994,
       "return_on_equity": -0.0076200003
     },
     "quarterly": [
@@ -10107,19 +10107,14 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 34.13,
+    "as_of": "2026-10-26",
+    "current_price": 34.56,
     "sector": "Consumer Discretionary",
-    "methods": {
-      "forward_pe_benchmark": {
-        "fair_value": 99.2,
-        "weight": 3.0,
-        "note": "내재 forward EPS × 섹터 Forward P/E (20)"
-      }
-    },
-    "fair_value": 99.2,
-    "valuation_gap": -0.6559,
-    "signal": "deep_value",
+    "methods": {},
+    "fair_value": null,
+    "valuation_gap": null,
+    "signal": "n/a",
+    "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
       "as_of": "2026-09-23",

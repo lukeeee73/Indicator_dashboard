@@ -8145,19 +8145,39 @@
     },
     {
       "date": "2026-10-19",
-      "value": 3.4
+      "value": 3.39
+    },
+    {
+      "date": "2026-10-20",
+      "value": 3.43
+    },
+    {
+      "date": "2026-10-21",
+      "value": 3.36
+    },
+    {
+      "date": "2026-10-22",
+      "value": 3.31
+    },
+    {
+      "date": "2026-10-23",
+      "value": 3.29
+    },
+    {
+      "date": "2026-10-26",
+      "value": 3.32
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 8519268352.0,
+      "market_cap": 8306286592.0,
       "pe_ratio": null,
-      "forward_pe": 26.714516,
+      "forward_pe": 26.619963,
       "eps_ttm": -0.25,
       "dividend_yield": 0.0,
       "profit_margin": -0.04168,
       "operating_margin": -0.0108,
-      "price_to_book": 13.974908,
+      "price_to_book": 13.598419,
       "return_on_equity": -0.45318002
     },
     "quarterly": [
@@ -8206,17 +8226,17 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-19",
-    "current_price": 3.4,
+    "as_of": "2026-10-26",
+    "current_price": 3.32,
     "sector": "Consumer Discretionary",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 2.55,
+        "fair_value": 2.49,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       }
     },
-    "fair_value": 2.55,
+    "fair_value": 2.49,
     "valuation_gap": 0.3333,
     "signal": "expensive",
     "gap_series_weekly": [],
