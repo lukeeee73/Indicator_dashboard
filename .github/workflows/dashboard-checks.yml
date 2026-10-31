@@ -1,0 +1,34 @@
+name: Dashboard checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - claude/build-indicators-pipeline-QFtLk
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Python regressions
+        run: python -m unittest discover -s tests -v
+      - name: JavaScript regressions
+        run: node --test tests/test_*.js
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check scripts/build_static.js
+      - name: Build static artifact without changing source data
+        run: |
+          node scripts/build_static.js
+          git diff --exit-code -- data

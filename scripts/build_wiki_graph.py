@@ -221,6 +221,23 @@ def git_branch(vault: Path) -> str | None:
         return None
 
 
+def _write_graph(out: Path, graph: dict) -> None:
+    """내용이 같으면 기존 generated와 파일 바이트를 유지한다."""
+    payload = json.dumps(graph, ensure_ascii=False, separators=(",", ":"))
+    try:
+        previous = json.loads(out.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        previous = None
+    if isinstance(previous, dict) and isinstance(previous.get("generated"), str) and previous["generated"]:
+        # tuple/list와 객체 키 순서를 맞추되 bool/숫자는 구별한다.
+        # 노드/엣지의 배열 순서는 인덱스의 의미가 있으므로 유지한다.
+        old_content = {k: v for k, v in previous.items() if k != "generated"}
+        new_content = {k: v for k, v in graph.items() if k != "generated"}
+        if json.dumps(old_content, sort_keys=True) == json.dumps(new_content, sort_keys=True):
+            return
+    out.write_text(payload, encoding="utf-8")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--vault", required=True, help="Obsidian vault 디렉토리")
@@ -366,7 +383,7 @@ def main() -> int:
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    _write_graph(out, graph)
 
     # 노트 본문 — 노드 인덱스별 개별 파일 (뷰어가 필요할 때만 fetch)
     notes_dir = out.parent / "notes"

@@ -69,14 +69,21 @@ def _check_margin(snapshot: dict) -> dict:
     return {"ok": v is not None and v >= OP_MARGIN_MIN, "value": round(v, 4) if v is not None else None}
 
 
+def _recent_net_incomes(quarterly: list) -> list[float] | None:
+    """최근 분기를 먼저 고른다. 개수·순이익 누락은 과거 분기로 대체하지 않는다."""
+    recent = sorted(quarterly, key=lambda q: q.get("date") or "")[-PROFIT_QUARTERS:]
+    incomes = [q.get("net_income") for q in recent]
+    if len(incomes) < PROFIT_QUARTERS or any(v is None for v in incomes):
+        return None
+    return incomes
+
+
 def _check_profit(quarterly: list) -> dict:
-    """최근 PROFIT_QUARTERS 개 분기의 순이익이 모두 흑자인지. 분기 데이터가 모자라면 탈락."""
-    rows = [q for q in quarterly if q.get("net_income") is not None]
-    rows.sort(key=lambda q: q.get("date") or "")
-    recent = rows[-PROFIT_QUARTERS:]
-    if len(recent) < PROFIT_QUARTERS:
+    """최근 PROFIT_QUARTERS 개 분기의 순이익이 모두 흑자인지. 데이터 누락은 탈락."""
+    incomes = _recent_net_incomes(quarterly)
+    if incomes is None:
         return {"ok": False, "value": None}
-    streak = sum(1 for q in recent if q["net_income"] > 0)
+    streak = sum(1 for v in incomes if v > 0)
     return {"ok": streak == PROFIT_QUARTERS, "value": streak}
 
 
@@ -105,6 +112,13 @@ def screen_stock(payload: dict) -> dict:
     }
 
 
+def classify_results(results: dict[str, dict]) -> tuple[list[str], list[str]]:
+    """통과·기준 1개 미충족 후보를 분류한다. 미충족 기준은 질·가격 모두 가능."""
+    passed = sorted(t for t, r in results.items() if r["pass"])
+    near_miss = sorted(t for t, r in results.items() if r["passed_count"] == len(CRITERIA) - 1)
+    return passed, near_miss
+
+
 def main() -> None:
     now = datetime.now(timezone.utc)
     results: dict[str, dict] = {}
@@ -117,8 +131,7 @@ def main() -> None:
             continue
         results[ticker] = screen_stock(payload)
 
-    passed = sorted(t for t, r in results.items() if r["pass"])
-    near_miss = sorted(t for t, r in results.items() if r["passed_count"] == len(CRITERIA) - 1)
+    passed, near_miss = classify_results(results)
 
     out = {
         "as_of": now.strftime("%Y-%m-%d"),
