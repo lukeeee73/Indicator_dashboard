@@ -4092,7 +4092,7 @@ function renderValuePicks(vs, stocks) {
       <span>기준일 <b>${escapeHtml(vs.as_of || "—")}</b></span>
       <span>대상 <b>${total}</b>종목</span>
       <span>통과 <b class="vs-meta-pass">${passed.length}</b></span>
-      <span>가격만 남은 기업 <b>${nearMiss.length}</b></span>
+      <span>기준 3개 통과 <b>${nearMiss.length}</b></span>
     </div>
 
     <div class="section-title">4가지 기준 — 전부 통과해야 한다</div>
@@ -4111,7 +4111,7 @@ function renderValuePicks(vs, stocks) {
 
     ${nearMiss.length > 0 ? `
       <div class="section-title">아깝게 탈락 — 기준 3개는 통과 (지켜볼 후보)</div>
-      <p class="category-desc">대부분 <strong>'좋은 기업인데 아직 비싼'</strong> 경우다. 가격 기준이 채워지는 달을 기다린다.</p>
+      <p class="category-desc">사업의 질 또는 가격 기준 중 한 가지가 아직 충족되지 않았다. 각 기업의 미충족 기준을 확인하며 지켜본다.</p>
       <div class="vs-near" id="vs-near"></div>
     ` : ""}
   `;
