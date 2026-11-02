@@ -4013,20 +4013,40 @@
     },
     {
       "date": "2026-10-26",
-      "value": 6.7
+      "value": 6.66
+    },
+    {
+      "date": "2026-10-27",
+      "value": 6.87
+    },
+    {
+      "date": "2026-10-28",
+      "value": 7.06
+    },
+    {
+      "date": "2026-10-29",
+      "value": 6.41
+    },
+    {
+      "date": "2026-10-30",
+      "value": 5.96
+    },
+    {
+      "date": "2026-11-02",
+      "value": 5.68
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 5692005888.0,
+      "market_cap": 4833226752.0,
       "pe_ratio": null,
-      "forward_pe": 13.6532345,
-      "eps_ttm": -4.97,
+      "forward_pe": 11.800971,
+      "eps_ttm": -4.92,
       "dividend_yield": 0.0,
-      "profit_margin": -2.0148802,
-      "operating_margin": -0.05906,
-      "price_to_book": 0.6849806,
-      "return_on_equity": -0.40067002
+      "profit_margin": -2.01248,
+      "operating_margin": -0.16667,
+      "price_to_book": 0.56924,
+      "return_on_equity": -0.40002
     },
     "quarterly": [
       {
@@ -4034,7 +4054,7 @@
         "revenue": 506000000.0,
         "operating_income": -74000000.0,
         "net_income": -67000000.0,
-        "eps": -0.08
+        "eps": null
       },
       {
         "date": "2025-09-30",
@@ -4063,22 +4083,29 @@
         "operating_income": -30000000.0,
         "net_income": -21000000.0,
         "eps": -0.03
+      },
+      {
+        "date": "2026-09-30",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": -0.08
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-10-26",
-    "current_price": 6.7,
+    "as_of": "2026-11-02",
+    "current_price": 5.68,
     "sector": "Technology",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 10.8,
+        "fair_value": 10.59,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       }
     },
-    "fair_value": 10.8,
-    "valuation_gap": -0.3796,
+    "fair_value": 10.59,
+    "valuation_gap": -0.4636,
     "signal": "deep_value",
     "gap_series_weekly": [],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-10-26",
-      "value": 68.69
-    },
-    {
-      "date": "2016-10-27",
-      "value": 65.47
-    },
-    {
-      "date": "2016-10-28",
-      "value": 65.89
-    },
-    {
-      "date": "2016-10-31",
-      "value": 66.47
-    },
-    {
-      "date": "2016-11-01",
-      "value": 63.88
-    },
-    {
       "date": "2016-11-02",
       "value": 62.76
     },
@@ -309,7 +289,7 @@
     },
     {
       "date": "2017-02-15",
-      "value": 74.98
+      "value": 74.99
     },
     {
       "date": "2017-02-16",
@@ -997,7 +977,7 @@
     },
     {
       "date": "2017-10-20",
-      "value": 90.82
+      "value": 90.83
     },
     {
       "date": "2017-10-23",
@@ -10053,20 +10033,40 @@
     },
     {
       "date": "2026-10-26",
-      "value": 173.0
+      "value": 174.53
+    },
+    {
+      "date": "2026-10-27",
+      "value": 179.01
+    },
+    {
+      "date": "2026-10-28",
+      "value": 179.77
+    },
+    {
+      "date": "2026-10-29",
+      "value": 182.91
+    },
+    {
+      "date": "2026-10-30",
+      "value": 180.7
+    },
+    {
+      "date": "2026-11-02",
+      "value": 174.44
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 65335820288.0,
-      "pe_ratio": 83.98058,
-      "forward_pe": 62.633957,
-      "eps_ttm": 2.06,
-      "dividend_yield": 2.83,
-      "profit_margin": 0.11825,
-      "operating_margin": 0.25882,
-      "price_to_book": 2.3971844,
-      "return_on_equity": 0.02912
+      "market_cap": 65879658496.0,
+      "pe_ratio": 73.60338,
+      "forward_pe": 57.48388,
+      "eps_ttm": 2.37,
+      "dividend_yield": 2.7,
+      "profit_margin": 0.13086,
+      "operating_margin": 0.17211,
+      "price_to_book": 2.3883784,
+      "return_on_equity": 0.03339
     },
     "quarterly": [
       {
@@ -10081,7 +10081,7 @@
         "revenue": 1493150000.0,
         "operating_income": 234243000.0,
         "net_income": 1032156000.0,
-        "eps": 0.735
+        "eps": null
       },
       {
         "date": "2025-09-30",
@@ -10110,112 +10110,41 @@
         "operating_income": null,
         "net_income": null,
         "eps": 1.21
+      },
+      {
+        "date": "2026-09-30",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": 0.48
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-10-26",
-    "current_price": 173.0,
+    "as_of": "2026-11-02",
+    "current_price": 174.44,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 37.08,
+        "fair_value": 42.66,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 44.19,
+        "fair_value": 48.55,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 57.84,
+        "fair_value": 62.41,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 43.36,
-    "valuation_gap": 2.9894,
+    "fair_value": 48.38,
+    "valuation_gap": 2.6058,
     "signal": "expensive",
     "gap_series_weekly": [
-      {
-        "date": "2026-04-02",
-        "price": 179.26,
-        "fair_value": 20.29,
-        "gap": 7.8327
-      },
-      {
-        "date": "2026-04-10",
-        "price": 186.34,
-        "fair_value": 20.29,
-        "gap": 8.1816
-      },
-      {
-        "date": "2026-04-17",
-        "price": 200.89,
-        "fair_value": 20.29,
-        "gap": 8.8985
-      },
-      {
-        "date": "2026-04-24",
-        "price": 197.32,
-        "fair_value": 20.29,
-        "gap": 8.7226
-      },
-      {
-        "date": "2026-05-01",
-        "price": 198.01,
-        "fair_value": 20.29,
-        "gap": 8.7566
-      },
-      {
-        "date": "2026-05-08",
-        "price": 192.7,
-        "fair_value": 20.29,
-        "gap": 8.4949
-      },
-      {
-        "date": "2026-05-15",
-        "price": 185.99,
-        "fair_value": 20.29,
-        "gap": 8.1643
-      },
-      {
-        "date": "2026-05-22",
-        "price": 189.46,
-        "fair_value": 20.29,
-        "gap": 8.3353
-      },
-      {
-        "date": "2026-05-29",
-        "price": 187.46,
-        "fair_value": 20.29,
-        "gap": 8.2368
-      },
-      {
-        "date": "2026-06-05",
-        "price": 184.29,
-        "fair_value": 20.29,
-        "gap": 8.0806
-      },
-      {
-        "date": "2026-06-12",
-        "price": 181.73,
-        "fair_value": 20.29,
-        "gap": 7.9544
-      },
-      {
-        "date": "2026-06-18",
-        "price": 186.87,
-        "fair_value": 20.29,
-        "gap": 8.2077
-      },
-      {
-        "date": "2026-06-26",
-        "price": 191.69,
-        "fair_value": 20.29,
-        "gap": 8.4452
-      },
       {
         "date": "2026-07-02",
         "price": 172.12,
@@ -10297,32 +10226,38 @@
       {
         "date": "2026-10-02",
         "price": 178.55,
-        "fair_value": 28.84,
-        "gap": 5.19
+        "fair_value": 36.81,
+        "gap": 3.8506
       },
       {
         "date": "2026-10-09",
         "price": 178.76,
-        "fair_value": 28.84,
-        "gap": 5.1973
+        "fair_value": 36.81,
+        "gap": 3.8563
       },
       {
         "date": "2026-10-16",
         "price": 175.97,
-        "fair_value": 28.84,
-        "gap": 5.1005
+        "fair_value": 36.81,
+        "gap": 3.7805
       },
       {
         "date": "2026-10-23",
         "price": 172.37,
-        "fair_value": 28.84,
-        "gap": 4.9757
+        "fair_value": 36.81,
+        "gap": 3.6827
       },
       {
-        "date": "2026-10-26",
-        "price": 173.0,
-        "fair_value": 28.84,
-        "gap": 4.9976
+        "date": "2026-10-30",
+        "price": 180.7,
+        "fair_value": 36.81,
+        "gap": 3.909
+      },
+      {
+        "date": "2026-11-02",
+        "price": 174.44,
+        "fair_value": 36.81,
+        "gap": 3.7389
       }
     ],
     "qualitative": {

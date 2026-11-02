@@ -4,26 +4,6 @@
   "group": "로보틱스 / 피지컬 AI",
   "series": [
     {
-      "date": "2016-10-26",
-      "value": 20.88
-    },
-    {
-      "date": "2016-10-27",
-      "value": 21.63
-    },
-    {
-      "date": "2016-10-28",
-      "value": 21.88
-    },
-    {
-      "date": "2016-10-31",
-      "value": 22.08
-    },
-    {
-      "date": "2016-11-01",
-      "value": 22.02
-    },
-    {
       "date": "2016-11-02",
       "value": 21.78
     },
@@ -7853,7 +7833,7 @@
     },
     {
       "date": "2024-08-15",
-      "value": 130.73
+      "value": 130.74
     },
     {
       "date": "2024-08-16",
@@ -7865,7 +7845,7 @@
     },
     {
       "date": "2024-08-20",
-      "value": 130.73
+      "value": 130.74
     },
     {
       "date": "2024-08-21",
@@ -10053,20 +10033,40 @@
     },
     {
       "date": "2026-10-26",
-      "value": 317.98
+      "value": 309.0
+    },
+    {
+      "date": "2026-10-27",
+      "value": 323.68
+    },
+    {
+      "date": "2026-10-28",
+      "value": 313.24
+    },
+    {
+      "date": "2026-10-29",
+      "value": 296.23
+    },
+    {
+      "date": "2026-10-30",
+      "value": 274.37
+    },
+    {
+      "date": "2026-11-02",
+      "value": 262.2
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 49713233920.0,
-      "pe_ratio": 43.67857,
-      "forward_pe": 27.737606,
-      "eps_ttm": 7.28,
-      "dividend_yield": 0.17,
-      "profit_margin": 0.25766,
-      "operating_margin": 0.33161,
-      "price_to_book": 14.466789,
-      "return_on_equity": 0.36465
+      "market_cap": 40935911424.0,
+      "pe_ratio": 30.137934,
+      "forward_pe": 21.866547,
+      "eps_ttm": 8.7,
+      "dividend_yield": 0.19,
+      "profit_margin": 0.27457002,
+      "operating_margin": 0.30872,
+      "price_to_book": 11.101703,
+      "return_on_equity": 0.42723998
     },
     "quarterly": [
       {
@@ -10074,7 +10074,7 @@
         "revenue": 651797000.0,
         "operating_income": 93115000.0,
         "net_income": 78372000.0,
-        "eps": 0.49
+        "eps": null
       },
       {
         "date": "2025-09-30",
@@ -10103,112 +10103,41 @@
         "operating_income": 440842000.0,
         "net_income": 374533000.0,
         "eps": 2.38
+      },
+      {
+        "date": "2026-09-30",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": 2.17
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-10-26",
-    "current_price": 317.98,
+    "as_of": "2026-11-02",
+    "current_price": 262.2,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 203.84,
+        "fair_value": 243.6,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 252.2,
+        "fair_value": 263.8,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 60.0,
+        "fair_value": 67.99,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 189.58,
-    "valuation_gap": 0.6773,
+    "fair_value": 214.54,
+    "valuation_gap": 0.2222,
     "signal": "expensive",
     "gap_series_weekly": [
-      {
-        "date": "2026-04-02",
-        "price": 309.37,
-        "fair_value": 151.2,
-        "gap": 1.0461
-      },
-      {
-        "date": "2026-04-10",
-        "price": 367.71,
-        "fair_value": 151.2,
-        "gap": 1.4319
-      },
-      {
-        "date": "2026-04-17",
-        "price": 380.09,
-        "fair_value": 151.2,
-        "gap": 1.5138
-      },
-      {
-        "date": "2026-04-24",
-        "price": 417.76,
-        "fair_value": 151.2,
-        "gap": 1.763
-      },
-      {
-        "date": "2026-05-01",
-        "price": 345.16,
-        "fair_value": 151.2,
-        "gap": 1.2828
-      },
-      {
-        "date": "2026-05-08",
-        "price": 359.5,
-        "fair_value": 151.2,
-        "gap": 1.3776
-      },
-      {
-        "date": "2026-05-15",
-        "price": 337.62,
-        "fair_value": 151.2,
-        "gap": 1.2329
-      },
-      {
-        "date": "2026-05-22",
-        "price": 358.3,
-        "fair_value": 151.2,
-        "gap": 1.3697
-      },
-      {
-        "date": "2026-05-29",
-        "price": 374.17,
-        "fair_value": 151.2,
-        "gap": 1.4747
-      },
-      {
-        "date": "2026-06-05",
-        "price": 357.79,
-        "fair_value": 151.2,
-        "gap": 1.3663
-      },
-      {
-        "date": "2026-06-12",
-        "price": 403.05,
-        "fair_value": 151.2,
-        "gap": 1.6657
-      },
-      {
-        "date": "2026-06-18",
-        "price": 437.75,
-        "fair_value": 151.2,
-        "gap": 1.8952
-      },
-      {
-        "date": "2026-06-26",
-        "price": 436.69,
-        "fair_value": 151.2,
-        "gap": 1.8882
-      },
       {
         "date": "2026-07-02",
         "price": 368.95,
@@ -10290,32 +10219,38 @@
       {
         "date": "2026-10-02",
         "price": 449.04,
-        "fair_value": 204.12,
-        "gap": 1.1999
+        "fair_value": 243.88,
+        "gap": 0.8412
       },
       {
         "date": "2026-10-09",
         "price": 402.68,
-        "fair_value": 204.12,
-        "gap": 0.9728
+        "fair_value": 243.88,
+        "gap": 0.6511
       },
       {
         "date": "2026-10-16",
         "price": 325.0,
-        "fair_value": 204.12,
-        "gap": 0.5922
+        "fair_value": 243.88,
+        "gap": 0.3326
       },
       {
         "date": "2026-10-23",
         "price": 308.85,
-        "fair_value": 204.12,
-        "gap": 0.5131
+        "fair_value": 243.88,
+        "gap": 0.2664
       },
       {
-        "date": "2026-10-26",
-        "price": 317.98,
-        "fair_value": 204.12,
-        "gap": 0.5578
+        "date": "2026-10-30",
+        "price": 274.37,
+        "fair_value": 243.88,
+        "gap": 0.125
+      },
+      {
+        "date": "2026-11-02",
+        "price": 262.2,
+        "fair_value": 243.88,
+        "gap": 0.0751
       }
     ],
     "qualitative": {

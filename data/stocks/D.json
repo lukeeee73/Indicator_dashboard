@@ -4,26 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-10-26",
-      "value": 47.87
-    },
-    {
-      "date": "2016-10-27",
-      "value": 47.52
-    },
-    {
-      "date": "2016-10-28",
-      "value": 47.65
-    },
-    {
-      "date": "2016-10-31",
-      "value": 48.75
-    },
-    {
-      "date": "2016-11-01",
-      "value": 48.27
-    },
-    {
       "date": "2016-11-02",
       "value": 48.04
     },
@@ -1141,7 +1121,7 @@
     },
     {
       "date": "2017-12-12",
-      "value": 56.7
+      "value": 56.69
     },
     {
       "date": "2017-12-13",
@@ -2621,7 +2601,7 @@
     },
     {
       "date": "2019-06-05",
-      "value": 55.97
+      "value": 55.98
     },
     {
       "date": "2019-06-06",
@@ -5025,11 +5005,11 @@
     },
     {
       "date": "2021-10-21",
-      "value": 61.72
+      "value": 61.71
     },
     {
       "date": "2021-10-22",
-      "value": 61.72
+      "value": 61.71
     },
     {
       "date": "2021-10-25",
@@ -10053,20 +10033,40 @@
     },
     {
       "date": "2026-10-26",
-      "value": 65.29
+      "value": 65.1
+    },
+    {
+      "date": "2026-10-27",
+      "value": 65.36
+    },
+    {
+      "date": "2026-10-28",
+      "value": 64.28
+    },
+    {
+      "date": "2026-10-29",
+      "value": 65.12
+    },
+    {
+      "date": "2026-10-30",
+      "value": 66.62
+    },
+    {
+      "date": "2026-11-02",
+      "value": 67.81
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 57424248832.0,
-      "pe_ratio": 22.591696,
-      "forward_pe": 17.112589,
-      "eps_ttm": 2.89,
-      "dividend_yield": 4.1,
-      "profit_margin": 0.13984999,
-      "operating_margin": 0.29219,
-      "price_to_book": 2.057026,
-      "return_on_equity": 0.08281
+      "market_cap": 59643375616.0,
+      "pe_ratio": 22.379538,
+      "forward_pe": 17.767914,
+      "eps_ttm": 3.03,
+      "dividend_yield": 4.01,
+      "profit_margin": 0.13993,
+      "operating_margin": 0.35072,
+      "price_to_book": 2.1217809,
+      "return_on_equity": 0.08821
     },
     "quarterly": [
       {
@@ -10114,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-26",
-    "current_price": 65.29,
+    "as_of": "2026-11-02",
+    "current_price": 67.81,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 46.24,
+        "fair_value": 48.48,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 57.23,
+        "fair_value": 57.25,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
       "graham_number": {
-        "fair_value": 45.43,
+        "fair_value": 46.68,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 49.38,
-    "valuation_gap": 0.3223,
+    "fair_value": 50.75,
+    "valuation_gap": 0.3361,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10319,10 +10319,16 @@
         "gap": 0.4223
       },
       {
-        "date": "2026-10-26",
-        "price": 65.29,
+        "date": "2026-10-30",
+        "price": 66.62,
         "fair_value": 45.84,
-        "gap": 0.4243
+        "gap": 0.4533
+      },
+      {
+        "date": "2026-11-02",
+        "price": 67.81,
+        "fair_value": 45.84,
+        "gap": 0.4792
       }
     ],
     "qualitative": {

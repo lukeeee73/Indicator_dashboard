@@ -8617,19 +8617,39 @@
     },
     {
       "date": "2026-10-26",
-      "value": 569.65
+      "value": 572.36
+    },
+    {
+      "date": "2026-10-27",
+      "value": 555.45
+    },
+    {
+      "date": "2026-10-28",
+      "value": 538.4
+    },
+    {
+      "date": "2026-10-29",
+      "value": 557.24
+    },
+    {
+      "date": "2026-10-30",
+      "value": 593.44
+    },
+    {
+      "date": "2026-11-02",
+      "value": 598.97
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 117111046144.0,
-      "pe_ratio": 34.713593,
-      "forward_pe": 33.164593,
+      "market_cap": 123138793472.0,
+      "pe_ratio": 36.50031,
+      "forward_pe": 34.991302,
       "eps_ttm": 16.41,
       "dividend_yield": 0.0,
       "profit_margin": 0.15726,
       "operating_margin": 0.13524,
-      "price_to_book": 11.922589,
+      "price_to_book": 12.536249,
       "return_on_equity": 0.35811
     },
     "quarterly": [
@@ -8671,8 +8691,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-26",
-    "current_price": 569.65,
+    "as_of": "2026-11-02",
+    "current_price": 598.97,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -8681,7 +8701,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 292.0,
+        "fair_value": 291.0,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -8691,8 +8711,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 278.26,
-    "valuation_gap": 1.0472,
+    "fair_value": 277.96,
+    "valuation_gap": 1.1548,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8798,10 +8818,16 @@
         "gap": 1.2522
       },
       {
-        "date": "2026-10-26",
-        "price": 569.65,
+        "date": "2026-10-30",
+        "price": 593.44,
         "fair_value": 259.4,
-        "gap": 1.196
+        "gap": 1.2877
+      },
+      {
+        "date": "2026-11-02",
+        "price": 598.97,
+        "fair_value": 259.4,
+        "gap": 1.3091
       }
     ],
     "qualitative": {
