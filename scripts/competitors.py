@@ -5,7 +5,7 @@
 이 매핑은 두 곳에서 참조된다:
     1) Claude Code Routine (.claude/routines/daily-market-analysis.md) 이
        경쟁사 동향을 비교할 때
-    2) 프론트엔드(app.js) 가 경쟁사 비교 뷰를 그릴 때 (data/index.json 에 노출)
+    2) 프론트엔드(js/stocks.js) 가 경쟁사 비교 뷰를 그릴 때 (data/index.json 에 노출)
 
 새 종목을 watchlist 에 추가하면 여기에도 경쟁사 목록을 한 줄 추가할 것.
 """

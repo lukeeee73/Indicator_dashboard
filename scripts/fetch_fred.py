@@ -27,10 +27,18 @@ from typing import Optional
 import pandas as pd
 import requests
 
-from analyze import enrich_with_assessment
-from valuation import enrich_stocks_with_valuation
-from merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
-from competitors import get_watchlist_competitors
+if __package__:
+    from .analyze import enrich_with_assessment
+    from .valuation import enrich_stocks_with_valuation
+    from .merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
+    from .competitors import get_watchlist_competitors
+    from .data_io import read_json, write_json
+else:
+    from analyze import enrich_with_assessment
+    from valuation import enrich_stocks_with_valuation
+    from merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
+    from competitors import get_watchlist_competitors
+    from data_io import read_json, write_json
 
 
 # --------------------------------------------------------------------------
@@ -376,16 +384,16 @@ ASSETS: dict[str, dict] = {
 # Yahoo Finance 티커 기준.
 #   - name:   카드에 표시할 영문 정식명
 #   - sector: valuation.py 의 섹터 P/E 벤치마크 키 (영문, GICS 분류 기반)
-#   - group:  대시보드 카드 묶음 헤더 (한국어). app.js STOCK_META 와 동일해야 함.
+#   - group:  대시보드 카드 묶음 헤더 (한국어). js/watchlist.js STOCK_META 와 동일해야 함.
 #
 # 새 종목을 추가할 때:
 #   1) 여기에 한 줄 추가
 #   2) scripts/competitors.py 에 경쟁사 목록 한 줄 추가
-#   3) app.js STOCK_META 에 displayName / business / group / color 등 한 줄 추가
+#   3) js/watchlist.js STOCK_META 에 displayName / business / group / color 등 한 줄 추가
 #   4) Luke_wiki 의 wiki/news/{TICKER}.md 와 wiki/news/_dashboard.md 갱신
 #
 # 한국 상장 종목은 Yahoo Finance 의 ".KS" 접미사를 사용한다 (예: 329180.KS).
-# 가격은 KRW 단위이므로 app.js STOCK_META 에서 currency: "KRW" 로 표시한다.
+# 가격은 KRW 단위이므로 js/watchlist.js STOCK_META 에서 currency: "KRW" 로 표시한다.
 STOCKS: dict[str, dict] = {
     # ── 빅테크 / 소프트웨어 ─────────────────────────────────────
     "AAPL":   {"name": "Apple Inc.",                      "sector": "Technology",             "group": "빅테크 / 소프트웨어"},
@@ -711,18 +719,8 @@ TRANSFORMS = {
 # --------------------------------------------------------------------------
 # Yahoo Finance 수집 (FRED에 없는 지수)
 # --------------------------------------------------------------------------
-def fetch_yahoo_monthly(symbol: str) -> list[dict]:
-    """Yahoo Finance에서 월별 종가(Close) 시계열을 [{date, value}, ...] 로 반환.
-
-    실패 시 빈 리스트 반환 — 호출부에서 기존값을 유지한다.
-    """
-    try:
-        import yfinance as yf  # noqa: PLC0415
-    except ImportError as e:
-        raise RuntimeError("yfinance 가 설치되지 않았습니다. pip install yfinance") from e
-
-    ticker = yf.Ticker(symbol)
-    hist = ticker.history(period="max", interval="1mo", auto_adjust=True)
+def _history_to_series(hist: pd.DataFrame) -> list[dict]:
+    """Normalize Yahoo closing prices without changing each fetcher's history options."""
     if hist.empty:
         return []
 
@@ -740,6 +738,21 @@ def fetch_yahoo_monthly(symbol: str) -> list[dict]:
             continue
         series.append({"date": date_str, "value": round(val, 2)})
     return sorted(series, key=lambda x: x["date"])
+
+
+def fetch_yahoo_monthly(symbol: str) -> list[dict]:
+    """Yahoo Finance에서 월별 종가(Close) 시계열을 [{date, value}, ...] 로 반환.
+
+    실패 시 빈 리스트 반환 — 호출부에서 기존값을 유지한다.
+    """
+    try:
+        import yfinance as yf  # noqa: PLC0415
+    except ImportError as e:
+        raise RuntimeError("yfinance 가 설치되지 않았습니다. pip install yfinance") from e
+
+    ticker = yf.Ticker(symbol)
+    hist = ticker.history(period="max", interval="1mo", auto_adjust=True)
+    return _history_to_series(hist)
 
 
 # --------------------------------------------------------------------------
@@ -782,23 +795,7 @@ def fetch_yahoo_index(symbol: str) -> list[dict]:
 
     ticker = yf.Ticker(symbol)
     hist = ticker.history(period="20y", interval="1d", auto_adjust=False)
-    if hist.empty:
-        return []
-
-    series: list[dict] = []
-    for idx, row in hist.iterrows():
-        date_str = (
-            idx.tz_localize(None).strftime("%Y-%m-%d")
-            if idx.tzinfo else idx.strftime("%Y-%m-%d")
-        )
-        try:
-            val = float(row["Close"])
-        except (TypeError, ValueError, KeyError):
-            continue
-        if pd.isna(val):
-            continue
-        series.append({"date": date_str, "value": round(val, 2)})
-    return sorted(series, key=lambda x: x["date"])
+    return _history_to_series(hist)
 
 
 def fetch_yahoo_stock(symbol: str) -> list[dict]:
@@ -813,23 +810,7 @@ def fetch_yahoo_stock(symbol: str) -> list[dict]:
 
     ticker = yf.Ticker(symbol)
     hist = ticker.history(period="10y", interval="1d", auto_adjust=True)
-    if hist.empty:
-        return []
-
-    series: list[dict] = []
-    for idx, row in hist.iterrows():
-        date_str = (
-            idx.tz_localize(None).strftime("%Y-%m-%d")
-            if idx.tzinfo else idx.strftime("%Y-%m-%d")
-        )
-        try:
-            val = float(row["Close"])
-        except (TypeError, ValueError, KeyError):
-            continue
-        if pd.isna(val):
-            continue
-        series.append({"date": date_str, "value": round(val, 2)})
-    return sorted(series, key=lambda x: x["date"])
+    return _history_to_series(hist)
 
 
 # --------------------------------------------------------------------------
@@ -913,10 +894,19 @@ def fetch_yahoo_financials(symbol: str, max_quarters: int = 20) -> dict:
 # --------------------------------------------------------------------------
 def _read_json(path: Path) -> Optional[dict]:
     try:
-        with path.open("r", encoding="utf-8") as f:
-            return json.load(f)
+        return read_json(path)
     except (json.JSONDecodeError, OSError):
         return None
+
+
+def _load_indexed_group(entries: list[dict], directory: Path) -> dict:
+    """Load code-named payloads, skipping files the collector cannot read."""
+    payloads = {}
+    for code in [entry["code"] for entry in entries if "code" in entry]:
+        payload = _read_json(directory / f"{code}.json")
+        if payload is not None:
+            payloads[code] = payload
+    return payloads
 
 
 def load_split_store() -> dict:
@@ -930,21 +920,9 @@ def load_split_store() -> dict:
 
     if INDEX_PATH.exists():
         idx = _read_json(INDEX_PATH) or {}
-        indicators: dict[str, dict] = {}
-        for code in [entry["code"] for entry in idx.get("indicators", []) if "code" in entry]:
-            payload = _read_json(INDICATORS_DIR / f"{code}.json")
-            if payload is not None:
-                indicators[code] = payload
-        assets: dict[str, dict] = {}
-        for code in [entry["code"] for entry in idx.get("assets", []) if "code" in entry]:
-            payload = _read_json(ASSETS_DIR / f"{code}.json")
-            if payload is not None:
-                assets[code] = payload
-        stocks: dict[str, dict] = {}
-        for code in [entry["code"] for entry in idx.get("stocks", []) if "code" in entry]:
-            payload = _read_json(STOCKS_DIR / f"{code}.json")
-            if payload is not None:
-                stocks[code] = payload
+        indicators = _load_indexed_group(idx.get("indicators", []), INDICATORS_DIR)
+        assets = _load_indexed_group(idx.get("assets", []), ASSETS_DIR)
+        stocks = _load_indexed_group(idx.get("stocks", []), STOCKS_DIR)
         indices: dict[str, dict] = {}
         for entry in idx.get("indices", []):
             code = entry.get("code")
@@ -1016,10 +994,7 @@ def collect_group(group: dict, api_key: str, label: str) -> tuple[dict, int]:
 
 
 def save_json(path: Path, data: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")  # 파일 끝 개행 (POSIX 관례)
+    write_json(path, data)
 
 
 def _clean_stale_files(directory: Path, keep_codes: set[str]) -> None:

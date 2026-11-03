@@ -35,6 +35,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+if __package__:
+    from .analytics_series import points_to_series
+else:
+    from analytics_series import points_to_series
+
 ROOT = Path(__file__).resolve().parent.parent
 INDICATORS_DIR = ROOT / "data" / "indicators"
 LABELS_DIR = ROOT / "data" / "labels"
@@ -81,9 +86,7 @@ def _load_series(code: str) -> pd.Series:
     path = INDICATORS_DIR / f"{code}.json"
     with path.open() as f:
         payload = json.load(f)
-    df = pd.DataFrame(payload["series"])
-    df["date"] = pd.to_datetime(df["date"])
-    s = df.set_index("date")["value"].astype(float).sort_index()
+    s = points_to_series(payload["series"])
     # 월 단위로 통일 — 모든 인플레 시리즈는 이미 월간이지만 안전을 위해 month-start 정규화.
     s.index = s.index.to_period("M").to_timestamp()
     return s

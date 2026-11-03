@@ -20,6 +20,11 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 
+if __package__:
+    from .data_io import read_json
+else:
+    from data_io import read_json
+
 REPO_ROOT  = Path(__file__).resolve().parent.parent
 NEWS_DIR   = REPO_ROOT / "data" / "news"
 STOCKS_DIR = REPO_ROOT / "data" / "stocks"
@@ -29,7 +34,7 @@ HISTORY_MAX_POINTS = 30  # narrative_score 누적 최대 포인트
 
 def _safe_load(path: Path) -> Optional[dict]:
     try:
-        return json.loads(path.read_text())
+        return read_json(path, encoding=None)
     except Exception:  # noqa: BLE001
         return None
 
@@ -139,7 +144,7 @@ def _standalone_main() -> int:
     if not STOCKS_DIR.is_dir():
         print(f"ERROR: {STOCKS_DIR} not found.")
         return 1
-    stocks = {f.stem: json.loads(f.read_text()) for f in sorted(STOCKS_DIR.glob("*.json"))}
+    stocks = {f.stem: read_json(f, encoding=None) for f in sorted(STOCKS_DIR.glob("*.json"))}
     merge_into_stocks(stocks)
     for ticker, payload in stocks.items():
         out = STOCKS_DIR / f"{ticker}.json"

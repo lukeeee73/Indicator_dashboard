@@ -6,7 +6,7 @@ scripts/watchlist_data.py (single source of truth).
 Updates:
   - scripts/fetch_fred.py     : STOCKS dict
   - scripts/competitors.py    : COMPETITORS dict
-  - app.js                    : STOCK_META, STOCK_GROUPS, PEER_COMPETITORS
+  - js/watchlist.js           : STOCK_META, STOCK_GROUPS, PEER_COMPETITORS
 
 Usage:
   python scripts/gen_watchlist.py
@@ -344,12 +344,12 @@ def main() -> int:
     f.write_text(src)
     print(f"✓ {f.relative_to(ROOT)} : COMPETITORS regenerated ({len(W.COMPETITORS)} entries)")
 
-    # JS — app.js: STOCK_META + STOCK_GROUPS + PEER_COMPETITORS
-    f = ROOT / "app.js"
+    # JS — browser metadata module; declaration markers stay unchanged.
+    f = ROOT / "js" / "watchlist.js"
     src = f.read_text()
-    src = replace_block(src, r"const STOCK_META = \{", "};", gen_js_stock_meta(), "app.js STOCK_META")
-    src = replace_block(src, r"const STOCK_GROUPS = \[", "];", gen_js_stock_groups(), "app.js STOCK_GROUPS")
-    src = replace_block(src, r"const PEER_COMPETITORS = \{", "};", gen_js_peer_competitors(), "app.js PEER_COMPETITORS")
+    src = replace_block(src, r"const STOCK_META = \{", "};", gen_js_stock_meta(), "js/watchlist.js STOCK_META")
+    src = replace_block(src, r"const STOCK_GROUPS = \[", "];", gen_js_stock_groups(), "js/watchlist.js STOCK_GROUPS")
+    src = replace_block(src, r"const PEER_COMPETITORS = \{", "};", gen_js_peer_competitors(), "js/watchlist.js PEER_COMPETITORS")
     f.write_text(src)
     print(f"✓ {f.relative_to(ROOT)} : STOCK_META + STOCK_GROUPS + PEER_COMPETITORS regenerated")
 

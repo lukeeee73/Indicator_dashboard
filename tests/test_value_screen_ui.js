@@ -1,10 +1,6 @@
 const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
 const test = require("node:test");
-const vm = require("node:vm");
-
-const source = fs.readFileSync(path.join(__dirname, "..", "app.js"), "utf8");
+const { createBrowser } = require("./browser_helpers.js");
 
 function render(vs) {
   const picks = { innerHTML: "" };
@@ -17,14 +13,12 @@ function render(vs) {
       return null;
     },
   };
-  const context = vm.createContext({
+  const context = createBrowser({
     document: {
       addEventListener() {}, // Keep startup dormant; no data sources are contacted.
       getElementById: (id) => id === "value-screen-host" ? host : null,
     },
-    window: { addEventListener() {} },
   });
-  vm.runInContext(source, context);
   context.renderValuePicks(vs, {});
   return { host, picks, near };
 }

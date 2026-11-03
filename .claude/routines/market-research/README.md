@@ -33,7 +33,7 @@
                                     · 루틴이 다음 주기에 검증 후 구조 파일에 반영 (자동 반영 아님)
                                         │
                                         ▼
-              웹 대시보드  주식 탭 → '시장 지도' (app.js renderMarketCascade)
+              웹 대시보드  주식 탭 → '시장 지도' (js/market-map.js renderMarketCascade)
               뉴스는 ① 노드 배지 ② 클릭 상세 ③ 하단 통합 피드 세 곳에 표시
               자동 신호는 ① 노드 ▲▼ ② 보드 상단 스트립 ③ 상세 게이지에 표시
 ```
@@ -59,7 +59,7 @@
 
 ## 데이터 모델 — `data/markets/{industry}.json`
 
-웹(`app.js`)이 읽는 **단일 진실 공급원(SSOT)**. 이 파일만 고치면 시각화가 바뀐다.
+웹(`js/market-map.js`)이 읽는 **단일 진실 공급원(SSOT)**. 이 파일만 고치면 시각화가 바뀐다.
 
 ```jsonc
 {
@@ -179,7 +179,7 @@
 | `power-ai.md` → `data/markets/power-ai.json` (+ `news/` · `criteria/` · `analysis/`) | 전력 · AI 인프라 (BTM vs 그리드) | 14 |
 | `pharma-bio.md` → `data/markets/pharma-bio.json` (+ `data/markets/news/pharma-bio.json`) | 제약 · 바이오 | 18 |
 
-웹의 '시장 지도' 탭은 `app.js` 의 `MARKET_MAPS` 레지스트리(`{ id, label }`)로
+웹의 '시장 지도' 탭은 `js/market-map.js` 의 `MARKET_MAPS` 레지스트리(`{ id, label }`)로
 산업을 전환한다. 새 산업 맵을 추가하면 여기에 한 줄, `MARKET_MAPS` 에 한 줄을 넣는다.
 
 새 산업 추가 절차는 각 산업 md 의 "새 산업 맵 만들기" 절을 따른다.

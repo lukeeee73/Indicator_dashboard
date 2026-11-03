@@ -28,14 +28,18 @@ FRED 에는 없는 "수요" 데이터. 재무부가 국채를 팔 때마다 누�
 
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 from typing import Any, Optional
 
 import requests
 
-from analyze import compute_current_stats
+if __package__:
+    from .analyze import compute_current_stats
+    from .data_io import read_json, write_json
+else:
+    from analyze import compute_current_stats
+    from data_io import read_json, write_json
 
 
 REPO_ROOT      = Path(__file__).resolve().parents[1]
@@ -475,10 +479,7 @@ def build_indicator_payloads(records: list[dict]) -> dict[str, dict]:
 # 저장
 # --------------------------------------------------------------------------
 def _write_json(path: Path, data: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    write_json(path, data)
 
 
 def merge_into_index(payloads: dict[str, dict]) -> None:
@@ -487,8 +488,7 @@ def merge_into_index(payloads: dict[str, dict]) -> None:
         print("data/index.json 이 없다 — fetch_fred.py 를 먼저 실행해야 한다.", file=sys.stderr)
         return
 
-    with INDEX_PATH.open("r", encoding="utf-8") as f:
-        index = json.load(f)
+    index = read_json(INDEX_PATH)
 
     entries: list[dict] = index.get("indicators", []) or []
     # 재실행 시 중복되지 않도록 기존 AUCT_* 항목을 걷어내고 새로 넣는다.
