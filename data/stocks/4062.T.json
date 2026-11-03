@@ -593,7 +593,7 @@
     },
     {
       "date": "2017-06-09",
-      "value": 450.07
+      "value": 450.08
     },
     {
       "date": "2017-06-12",
@@ -729,7 +729,7 @@
     },
     {
       "date": "2017-07-27",
-      "value": 450.07
+      "value": 450.08
     },
     {
       "date": "2017-07-28",
@@ -745,7 +745,7 @@
     },
     {
       "date": "2017-08-02",
-      "value": 450.07
+      "value": 450.08
     },
     {
       "date": "2017-08-03",
@@ -3517,7 +3517,7 @@
     },
     {
       "date": "2020-05-12",
-      "value": 704.98
+      "value": 704.99
     },
     {
       "date": "2020-05-13",
@@ -3777,7 +3777,7 @@
     },
     {
       "date": "2020-08-14",
-      "value": 876.45
+      "value": 876.46
     },
     {
       "date": "2020-08-17",
@@ -5233,7 +5233,7 @@
     },
     {
       "date": "2022-02-09",
-      "value": 1399.76
+      "value": 1399.75
     },
     {
       "date": "2022-02-10",
@@ -5529,7 +5529,7 @@
     },
     {
       "date": "2022-06-02",
-      "value": 1093.14
+      "value": 1093.13
     },
     {
       "date": "2022-06-03",
@@ -5633,7 +5633,7 @@
     },
     {
       "date": "2022-07-08",
-      "value": 941.82
+      "value": 941.81
     },
     {
       "date": "2022-07-11",
@@ -7673,7 +7673,7 @@
     },
     {
       "date": "2024-08-06",
-      "value": 1148.7
+      "value": 1148.69
     },
     {
       "date": "2024-08-07",
@@ -7753,7 +7753,7 @@
     },
     {
       "date": "2024-09-04",
-      "value": 1148.7
+      "value": 1148.69
     },
     {
       "date": "2024-09-05",
@@ -9846,6 +9846,10 @@
     {
       "date": "2026-10-30",
       "value": 8359.0
+    },
+    {
+      "date": "2026-11-02",
+      "value": 8045.0
     }
   ],
   "financials": {
@@ -9854,7 +9858,7 @@
       "pe_ratio": 59.40777,
       "forward_pe": 26.03897,
       "eps_ttm": 135.42,
-      "dividend_yield": 0.21,
+      "dividend_yield": 0.22,
       "profit_margin": 0.16599001,
       "operating_margin": 0.23255,
       "price_to_book": 7.540927,
@@ -9906,8 +9910,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-10-30",
-    "current_price": 8359.0,
+    "as_of": "2026-11-02",
+    "current_price": 8045.0,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -9916,18 +9920,18 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 7062.41,
+        "fair_value": 6797.12,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 1837.8,
+        "fair_value": 1802.95,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 4382.16,
-    "valuation_gap": 0.9075,
+    "fair_value": 4295.61,
+    "valuation_gap": 0.8728,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

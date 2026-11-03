@@ -4,10 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-11-02",
-      "value": 32.0
-    },
-    {
       "date": "2016-11-03",
       "value": 31.93
     },
@@ -10053,19 +10049,19 @@
     },
     {
       "date": "2026-11-02",
-      "value": 104.97
+      "value": 104.94
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 298004217856.0,
-      "pe_ratio": 9.111979,
-      "forward_pe": 9.576969,
-      "eps_ttm": 11.52,
-      "dividend_yield": 2.88,
+      "market_cap": 297551527936.0,
+      "pe_ratio": 11.582781,
+      "forward_pe": 9.57737,
+      "eps_ttm": 9.06,
+      "dividend_yield": 2.98,
       "profit_margin": 0.1018,
       "operating_margin": 0.18763,
-      "price_to_book": 1.5154184,
+      "price_to_book": 1.6168495,
       "return_on_equity": 0.17432
     },
     "quarterly": [
@@ -10122,28 +10118,28 @@
   },
   "valuation": {
     "as_of": "2026-11-02",
-    "current_price": 104.97,
+    "current_price": 104.94,
     "sector": "Energy",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 138.24,
+        "fair_value": 108.72,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (12)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 120.57,
+        "fair_value": 120.53,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (11)"
       },
       "graham_number": {
-        "fair_value": 133.99,
+        "fair_value": 115.02,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 132.09,
-    "valuation_gap": -0.2053,
-    "signal": "deep_value",
+    "fair_value": 113.52,
+    "valuation_gap": -0.0756,
+    "signal": "undervalued",
     "gap_series_weekly": [
       {
         "date": "2026-07-02",
@@ -10255,9 +10251,9 @@
       },
       {
         "date": "2026-11-02",
-        "price": 104.97,
+        "price": 104.94,
         "fair_value": 138.24,
-        "gap": -0.2407
+        "gap": -0.2409
       }
     ],
     "qualitative": {
