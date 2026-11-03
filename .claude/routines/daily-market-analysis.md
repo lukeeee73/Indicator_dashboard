@@ -21,7 +21,7 @@
 > 일관되게 재생성된다:
 >   - `scripts/fetch_fred.py` 의 `STOCKS`
 >   - `scripts/competitors.py` 의 `COMPETITORS`
->   - `app.js` 의 `STOCK_META` / `STOCK_GROUPS` / `PEER_COMPETITORS`
+>   - `js/watchlist.js` 의 `STOCK_META` / `STOCK_GROUPS` / `PEER_COMPETITORS`
 >
 > 루틴은 그 결과물인 `data/index.json` 의 `stocks[]` 배열을 watchlist 의
 > 진실 공급원으로 사용한다.
@@ -259,7 +259,7 @@ watchlist 외부 경쟁사 (예: NVDA 입장의 `INTC`, JNJ 입장의 `PFE`) 도
 ### 5.5 ⚠️ 뉴스를 stocks JSON 으로 병합 (대시보드 반영의 핵심 단계)
 
 > **이 단계를 건너뛰면 뉴스가 대시보드에 절대 보이지 않는다.** 대시보드
-> (`app.js`) 는 `data/stocks/{TICKER}.json` 의 `valuation.qualitative` 블록만
+> (`js/stocks.js`) 는 `data/stocks/{TICKER}.json` 의 `valuation.qualitative` 블록만
 > 읽는다. `data/news/` 에 JSON 을 쓰는 것만으로는 대시보드가 갱신되지 않는다.
 > (과거에 이 병합이 주간 GitHub Actions (`update.yml`, 월요일 1회) 에서만
 > 돌아서, 화~일요일에 수집한 뉴스가 다음 월요일까지 대시보드에 반영되지 않는
@@ -570,7 +570,7 @@ git push -u origin "$SESSION_BRANCH"
    이 한 줄이 다음을 모두 갱신한다:
    - `scripts/fetch_fred.py` 의 `STOCKS`
    - `scripts/competitors.py` 의 `COMPETITORS`
-   - `app.js` 의 `STOCK_META` / `STOCK_GROUPS` / `PEER_COMPETITORS`
+   - `js/watchlist.js` 의 `STOCK_META` / `STOCK_GROUPS` / `PEER_COMPETITORS`
 
 4. **Luke_wiki 의 `wiki/news/{TICKER} - {Company}.md` 신규 생성**
    루틴이 다음 실행에서 자동으로 만들어주지만, 미리 만들어두고 싶다면

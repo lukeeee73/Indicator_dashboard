@@ -4,8 +4,17 @@ const path = require("node:path");
 // Time series and documents are served by Supabase. Wiki JSON is the app's
 // static-first source, so keep it and every note body alongside the UI assets.
 function buildStatic(root = path.resolve(__dirname, "..")) {
-  const required = ["index.html", "app.js", "style.css", "vendor"];
+  const required = ["index.html", "app.js", "style.css", "js", "vendor"];
   for (const relative of required) fs.accessSync(path.join(root, relative));
+
+  // index.html owns browser script order. Validate every referenced local asset
+  // before replacing dist so a missing split module cannot erase a good build.
+  const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  for (const match of html.matchAll(/<(?:script|link)\b[^>]*\b(?:src|href)=["']([^"']+)["']/g)) {
+    const asset = match[1];
+    if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(asset)) continue;
+    fs.accessSync(path.join(root, asset.split(/[?#]/)[0]));
+  }
 
   const output = path.join(root, "dist");
   fs.rmSync(output, { recursive: true, force: true });

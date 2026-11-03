@@ -41,6 +41,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from analyze import _classify_quadrant  # noqa: E402
 from backtest import load_indicators, BACKTEST_START  # noqa: E402
 from compare_models import walk_model  # noqa: E402
+from analytics_series import monthly_last as _monthly_last, points_to_series  # noqa: E402
 
 DATA_DIR = ROOT / "data"
 OUT_DIR = DATA_DIR / "principles"
@@ -105,9 +106,7 @@ def build_quadrant_timeline() -> pd.DataFrame:
 def load_series(path: Path) -> pd.Series:
     with path.open(encoding="utf-8") as f:
         payload = json.load(f)
-    df = pd.DataFrame(payload["series"])
-    df["date"] = pd.to_datetime(df["date"])
-    return df.set_index("date")["value"].astype(float).sort_index()
+    return points_to_series(payload["series"])
 
 
 def load_series_optional(path: Path) -> pd.Series | None:
@@ -132,7 +131,7 @@ def asof_value(s: pd.Series | None, d: pd.Timestamp, digits: int = 2) -> float |
 
 
 def monthly_last(s: pd.Series) -> pd.Series:
-    return s.resample("ME").last().dropna()
+    return _monthly_last(s)
 
 
 def build_bond_total_return_index(dgs10_pct_monthly: pd.Series) -> pd.Series:

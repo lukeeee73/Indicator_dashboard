@@ -4,13 +4,16 @@ const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 const { buildStatic } = require("../scripts/build_static.js");
+const { appScriptPaths } = require("./browser_helpers.js");
 
 function fixture(t) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "dashboard-static-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   for (const [relative, content] of Object.entries({
-    "index.html": '<link href="style.css"><script src="vendor/chart.js"></script><script src="app.js"></script>',
+    "index.html": '<link href="style.css"><script src="vendor/chart.js"></script><script src="js/metadata.js"></script><script src="js/features/view.js"></script><script src="app.js"></script>',
     "app.js": "/* application */",
+    "js/metadata.js": "const META = {};",
+    "js/features/view.js": "function renderView() {}",
     "style.css": "body {}",
     "vendor/chart.js": "/* library */",
     "vendor/chart-LICENSE.md": "library license",
@@ -32,7 +35,7 @@ function fixture(t) {
 test("bundle keeps runtime assets and note bodies while preserving pipeline sources", (t) => {
   const root = fixture(t);
   const output = buildStatic(root);
-  for (const relative of ["index.html", "app.js", "style.css", "vendor/chart.js",
+  for (const relative of ["index.html", "app.js", "js/metadata.js", "js/features/view.js", "style.css", "vendor/chart.js",
     "vendor/chart-LICENSE.md", "data/wiki/graph.json", "data/wiki/notes/0.json"]) {
     assert.deepEqual(fs.readFileSync(path.join(output, relative)), fs.readFileSync(path.join(root, relative)));
   }
@@ -71,14 +74,23 @@ test("absent static wiki retains the app's supported database fallback", (t) => 
   assert.equal(fs.existsSync(path.join(output, "data/wiki")), false);
 });
 
+test("a missing referenced module fails before replacing a working artifact", (t) => {
+  const root = fixture(t);
+  const output = buildStatic(root);
+  const before = fs.readFileSync(path.join(output, "js/features/view.js"));
+  fs.unlinkSync(path.join(root, "js/features/view.js"));
+  assert.throws(() => buildStatic(root), /ENOENT/);
+  assert.deepEqual(fs.readFileSync(path.join(output, "js/features/view.js")), before);
+});
+
 test("current HTML and local fetch contracts are covered by the artifact inputs", () => {
   const repo = path.resolve(__dirname, "..");
   const html = fs.readFileSync(path.join(repo, "index.html"), "utf8");
-  const app = fs.readFileSync(path.join(repo, "app.js"), "utf8");
+  const app = appScriptPaths(repo).map((file) => fs.readFileSync(path.join(repo, file), "utf8")).join("\n");
   const assets = [...html.matchAll(/<(?:script|link)\b[^>]*(?:src|href)="([^"#]+)"/g)].map((m) => m[1]);
   assert.ok(assets.length > 0);
   for (const asset of assets.filter((value) => !/^https?:/.test(value))) {
-    assert.ok(["app.js", "style.css"].includes(asset) || asset.startsWith("vendor/"), asset);
+    assert.ok(["app.js", "style.css"].includes(asset) || /^(?:js|vendor)\//.test(asset), asset);
     assert.ok(fs.existsSync(path.join(repo, asset)), asset);
   }
   const localFetches = [...app.matchAll(/fetch\(\s*["'`]((?:\.\/)?data\/[^"'`]+)/g)].map((m) => m[1]);

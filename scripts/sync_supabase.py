@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-import json
 import os
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterator
 
 from supabase import Client, create_client
+
+if __package__:
+    from .data_io import read_json as load_json
+else:
+    from data_io import read_json as load_json
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -37,8 +41,7 @@ def read_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         raise FileNotFoundError(f"JSON 파일을 찾을 수 없습니다: {path}")
 
-    with path.open("r", encoding="utf-8") as file:
-        payload = json.load(file)
+    payload = load_json(path)
 
     if not isinstance(payload, dict):
         raise TypeError(f"JSON 최상위 값이 객체가 아닙니다: {path}")
@@ -66,6 +69,17 @@ def chunk_rows(
 ) -> Iterator[list[dict[str, Any]]]:
     for start in range(0, len(rows), size):
         yield rows[start:start + size]
+
+
+def _upsert_rows(
+    client: Client,
+    table: str,
+    rows: list[dict[str, Any]],
+    on_conflict: str,
+) -> None:
+    """Use the same batching and conflict contract for each collection table."""
+    for batch in chunk_rows(rows):
+        client.table(table).upsert(batch, on_conflict=on_conflict).execute()
 
 
 def optional_details(payload: dict[str, Any]) -> dict[str, Any] | None:
@@ -149,13 +163,7 @@ def sync_series_metadata(
     client: Client,
     rows: list[dict[str, Any]],
 ) -> None:
-    for batch in chunk_rows(rows):
-        (
-            client
-            .table("series")
-            .upsert(batch, on_conflict="code")
-            .execute()
-        )
+    _upsert_rows(client, "series", rows, "code")
 
 
 def latest_observed_at(client: Client, code: str) -> date | None:
@@ -210,16 +218,7 @@ def sync_observations(
         cutoff = None if latest is None else latest - timedelta(days=LOOKBACK_DAYS)
         rows = observation_rows_since(code, points, cutoff)
 
-        for batch in chunk_rows(rows):
-            (
-                client
-                .table("observations")
-                .upsert(
-                    batch,
-                    on_conflict="series_code,observed_at",
-                )
-                .execute()
-            )
+        _upsert_rows(client, "observations", rows, "series_code,observed_at")
 
         total += len(rows)
         mode = "전체" if cutoff is None else f"{cutoff.isoformat()} 이후"
@@ -281,13 +280,7 @@ def sync_documents(client: Client, synced_at: str) -> int:
         for kind, key, path in document_specs()
     ]
 
-    for batch in chunk_rows(rows):
-        (
-            client
-            .table("documents")
-            .upsert(batch, on_conflict="kind,key")
-            .execute()
-        )
+    _upsert_rows(client, "documents", rows, "kind,key")
 
     return len(rows)
 
@@ -307,13 +300,7 @@ def sync_news(client: Client, synced_at: str) -> int:
                 }
             )
 
-    for batch in chunk_rows(rows):
-        (
-            client
-            .table("news")
-            .upsert(batch, on_conflict="ticker,date")
-            .execute()
-        )
+    _upsert_rows(client, "news", rows, "ticker,date")
 
     return len(rows)
 

@@ -45,6 +45,11 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
+if __package__:
+    from .analytics_series import monthly_last, midpoint_percentile, points_to_series, smooth_scores
+else:
+    from analytics_series import monthly_last, midpoint_percentile, points_to_series, smooth_scores
+
 
 # --------------------------------------------------------------------------
 # 상수
@@ -108,20 +113,12 @@ PRIMARY_EWMA_WARMUP = 12   # 궤적 앞에 붙이는 워밍업 개월 수 (EWMA 
 def _series_to_pandas(points: list[dict]) -> pd.Series:
     if not points:
         return pd.Series(dtype=float)
-    df = pd.DataFrame(points)
-    df["date"] = pd.to_datetime(df["date"])
-    return df.set_index("date")["value"].astype(float).sort_index()
+    return points_to_series(points)
 
 
 def _percentile_rank(sample: pd.Series, value: float) -> Optional[float]:
     """value 가 sample 분포 안에서 차지하는 백분위 (midpoint 방식, 0~100)."""
-    sample = sample.dropna()
-    n = len(sample)
-    if n == 0 or pd.isna(value):
-        return None
-    below = float((sample < value).sum())
-    equal = float((sample == value).sum())
-    return (below + 0.5 * equal) / n * 100.0
+    return midpoint_percentile(sample, value)
 
 
 def _label_from_percentile(p: Optional[float]) -> Optional[str]:
@@ -195,6 +192,21 @@ def cycle_relative_percentile(code: str, monthly: pd.Series) -> Optional[float]:
 # --------------------------------------------------------------------------
 # 지표별 "현재" 통계
 # --------------------------------------------------------------------------
+def _level_percentiles(code: str, s: pd.Series) -> tuple[Optional[float], Optional[float]]:
+    """정렬된 시계열의 full/10y 백분위. 혼합 모델을 위해 반올림하지 않는다."""
+    if s.empty:
+        return None, None
+    latest_date = s.index[-1]
+    latest_value = float(s.iloc[-1])
+    full = s[s.index >= POSTWAR_CUTOFF]
+    cutoff = latest_date - pd.DateOffset(years=ROLLING_YEARS)
+    window = s[(s.index >= cutoff) & (s.index <= latest_date)]
+    return (
+        _apply_polarity(code, _percentile_rank(full, latest_value)),
+        _apply_polarity(code, _percentile_rank(window, latest_value)),
+    )
+
+
 def compute_current_stats(code: str, series_list: list[dict]) -> Optional[dict]:
     """각 지표의 최신값 + 두 창(full/10y) 에서의 백분위·레이블."""
     s = _series_to_pandas(series_list)
@@ -203,16 +215,7 @@ def compute_current_stats(code: str, series_list: list[dict]) -> Optional[dict]:
     latest_date = s.index[-1]
     latest_value = float(s.iloc[-1])
 
-    # Full (post-WW2)
-    full = s[s.index >= POSTWAR_CUTOFF]
-    p_full_raw = _percentile_rank(full, latest_value)
-    p_full = _apply_polarity(code, p_full_raw)
-
-    # Rolling 10y (최신 관측일 기준 역산)
-    cutoff = latest_date - pd.DateOffset(years=ROLLING_YEARS)
-    window = s[(s.index >= cutoff) & (s.index <= latest_date)]
-    p_10y_raw = _percentile_rank(window, latest_value)
-    p_10y = _apply_polarity(code, p_10y_raw)
+    p_full, p_10y = _level_percentiles(code, s)
 
     return {
         "value": round(latest_value, 4),
@@ -275,7 +278,7 @@ def _monthly_last(series_list: list[dict]) -> pd.Series:
     s = _series_to_pandas(series_list)
     if s.empty:
         return s
-    return s.resample("ME").last().dropna()
+    return monthly_last(s)
 
 
 def compute_trajectory(indicators: dict, region: str | None = None) -> list[dict]:
@@ -309,15 +312,7 @@ def compute_trajectory(indicators: dict, region: str | None = None) -> list[dict
         if monthly.empty:
             continue
         # 각 월말 값의 백분위를 full 분포에서 구한다 (midpoint rank).
-        values = full.values
-        n = len(values)
-
-        def rank(v: float) -> float:
-            below = float((values < v).sum())
-            equal = float((values == v).sum())
-            return (below + 0.5 * equal) / n * 100.0
-
-        ranks = monthly.apply(lambda v: rank(float(v)))
+        ranks = monthly.apply(lambda v: midpoint_percentile(full, float(v), dropna=False))
         if code in INVERTED_CODES:
             ranks = 100.0 - ranks
         (growth_ranks if cat == "growth" else infl_ranks)[code] = ranks
@@ -406,7 +401,7 @@ def compute_primary_assessment(indicators: dict) -> Optional[dict]:
         if s.empty:
             continue
         if cat == "growth":
-            monthly = s.resample("ME").last().dropna()
+            monthly = monthly_last(s)
             if not monthly.empty:
                 growth_monthly[code] = monthly
         else:
@@ -452,7 +447,7 @@ def compute_primary_assessment(indicators: dict) -> Optional[dict]:
     if df.empty:
         return None
 
-    smoothed = df.ewm(span=EWMA_SPAN, min_periods=1).mean().round(1)
+    smoothed = smooth_scores(df, EWMA_SPAN)
     tail = smoothed.tail(TRAJECTORY_MONTHS)
 
     g_now = float(smoothed["g"].iloc[-1])

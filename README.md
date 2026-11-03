@@ -96,9 +96,10 @@ python scripts/compare_models.py   # 모델 A~H 비교 → data/eval/comparison.
 dalio-dashboard/
 ├── README.md
 ├── .gitignore
-├── index.html               # 대시보드 진입점 (Chart.js CDN 로드)
+├── index.html               # vendor + js/ 스크립트를 의존 순서대로 로드
 ├── style.css                # 다크 테마 + 반응형 카드 레이아웃
-├── app.js                   # data/ fetch & 차트 렌더링 (국가 탭 + 섹터 서브탭)
+├── app.js                   # DOMContentLoaded 시작 코드
+├── js/                      # 데이터 클라이언트·공통 함수·기능별 화면 코드
 ├── vercel.json              # Vercel 배포 설정 (JSON 캐시 정책)
 ├── data/
 │   ├── index.json           # 메타데이터 + assessment (4분면 판정) 요약
@@ -111,6 +112,9 @@ dalio-dashboard/
 ├── scripts/
 │   ├── fetch_fred.py        # FRED API → data/ 분할 저장
 │   ├── analyze.py           # percentile/label/quadrant 재계산 (CLI)
+│   ├── analytics_series.py  # 시계열 변환·월말 집계·백분위·EWMA 공통 함수
+│   ├── data_io.py           # 수집 스크립트의 JSON 입출력 공통 함수
+│   ├── build_static.js      # 배포용 dist/ 생성 (UI + vendor + 정적 위키)
 │   ├── build_principles.py  # 원칙 탭용 국면·자산수익률 타임라인 생성
 │   └── requirements.txt
 └── .github/workflows/
@@ -118,6 +122,41 @@ dalio-dashboard/
 ```
 
 > 각 지표/자산의 시계열은 **개별 JSON 파일**로 분리 저장됩니다. 개별 파일을 직접 열어서 편집·가공한 뒤 `python scripts/analyze.py` 를 돌리면 `current`(백분위·레이블) 와 `assessment` 를 재계산해 반영합니다.
+
+### 프런트엔드 모듈 구성
+
+`index.html`은 일반 브라우저 스크립트를 순서대로 로드하고 마지막에 `app.js`가 화면을 시작합니다.
+기존 인라인 이벤트 핸들러가 호출하는 전역 함수는 유지합니다. 모듈을 추가하거나 순서를 바꿀 때는
+`index.html`과 스크립트 로드 회귀 테스트를 함께 확인합니다.
+
+| 파일 | 책임 |
+|---|---|
+| `js/data-client.js` | API 요청 제한·타임아웃·재시도·문서 조회 |
+| `js/metadata.js`, `js/watchlist.js` | 지표 표시 정보와 자동 생성 종목·경쟁사 목록 |
+| `js/helpers.js`, `js/charts.js` | 표시 함수와 공통 차트 렌더링 |
+| `js/dashboard.js`, `js/sidebar.js` | 탭별 지연 로딩·지표 카드·내비게이션 |
+| `js/stocks.js`, `js/value-screen.js` | 종목·재무·가치 발굴 화면 |
+| `js/market-map.js`, `js/player-map.js` | 시장 지도와 기업 지도 |
+| `js/principles.js` | 자산 배분 시뮬레이션·원칙 저널 |
+| `js/wiki-notes.js`, `js/wiki-graph.js` | 위키 데이터·본문 뷰어·지식 그래프 |
+
+`js/watchlist.js`의 생성 구간은 `scripts/watchlist_data.py`를 수정한 뒤
+`python scripts/gen_watchlist.py`로 갱신합니다.
+
+### 리팩터링 회귀 검증
+
+```bash
+python -m pip install -r scripts/requirements.txt
+python -m unittest discover -s tests -v
+node --test --test-isolation=none tests/test_*.js
+python -m compileall -q scripts
+for source in app.js js/*.js scripts/*.js; do node --check "$source"; done
+node scripts/build_static.js
+git diff --exit-code -- data
+```
+
+회귀 테스트는 외부 데이터 API 호출 없이 임시 파일과 모의 응답을 사용합니다.
+정적 빌드는 원본 `data/`를 수정하지 않으며, `dist/`에는 화면 코드·라이브러리·위키 JSON만 복사합니다.
 
 ---
 
@@ -134,7 +173,7 @@ pip install -r scripts/requirements.txt
 python scripts/fetch_fred.py
 ```
 
-실행이 끝나면 `data/indicators.json` 이 갱신되고, 각 지표별로 `Fetching T10Y2Y... OK (520 points)` 형태의 로그가 찍힙니다.
+실행이 끝나면 `data/index.json`과 지표·자산·종목별 JSON이 갱신되고, 각 지표별로 `Fetching T10Y2Y... OK (520 points)` 형태의 로그가 찍힙니다.
 
 ### 대시보드 미리보기 (로컬)
 
@@ -145,7 +184,7 @@ python -m http.server 8000
 # 브라우저에서 http://localhost:8000 접속
 ```
 
-> ⚠️ `file://` 로 직접 `index.html` 을 열면 `fetch("data/indicators.json")` 이 CORS 정책에 막혀 데이터가 안 보입니다. 반드시 HTTP 서버로 띄우세요.
+> `file://` 대신 HTTP 서버로 실행하세요. 위키는 로컬 `data/wiki/`를 우선 사용하고, 지표·종목 등은 `js/data-client.js`의 원격 데이터 소스를 조회합니다.
 
 ---
 
@@ -165,7 +204,7 @@ Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 �
 
 ## Vercel 배포
 
-정적 사이트라 **빌드 단계가 없고**, Vercel 이 자동으로 감지해 루트를 그대로 서빙합니다.
+`vercel.json`의 설정에 따라 `node scripts/build_static.js`로 정적 산출물을 만들고 `dist/`를 서빙합니다.
 
 ### 최초 배포
 
@@ -174,8 +213,8 @@ Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 �
 3. **Import Git Repository** 에서 `lukeeee73/Indicator_dashboard` 선택 → **Import**
 4. 설정 화면에서:
    - **Framework Preset**: `Other` (자동으로 잡힐 것)
-   - **Build Command**: 비워두기
-   - **Output Directory**: 비워두기 (루트 그대로)
+   - **Build Command**: `node scripts/build_static.js` (`vercel.json`에 정의)
+   - **Output Directory**: `dist` (`vercel.json`에 정의)
    - **Install Command**: 비워두기
 5. **Deploy** 클릭 → 30초 내외로 `https://<프로젝트명>.vercel.app` URL 발급
 
@@ -183,13 +222,13 @@ Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 �
 
 Vercel 이 GitHub 의 default branch 를 감시하므로,
 - 내가 코드를 푸시하거나
-- GitHub Actions 가 `data/indicators.json` 을 자동 커밋하면
+- GitHub Actions 가 `data/` 갱신 결과를 자동 커밋하면
 
 **자동으로 재배포**됩니다. 별도 동작 필요 없음.
 
 ### 캐시 정책 (`vercel.json`)
 
-`data/indicators.json` 은 Vercel Edge CDN 에서 최대 5분만 캐시되도록 설정되어 있어, 주간 갱신이 곧바로 반영됩니다. 나머지 정적 파일은 기본 캐시 정책을 따릅니다.
+`vercel.json`에는 기존 `/data/index.json`·`/data/indicators/*`·`/data/assets/*` 경로의 5분 CDN 캐시 설정이 남아 있습니다. 현재 정적 산출물에는 위키 JSON만 포함되며, 지표·자산·종목 시계열은 원격 데이터 소스에서 조회합니다.
 
 ---
 
@@ -400,7 +439,7 @@ fine-grained PAT 를 넣는다 (repository_dispatch 호출에 필요).
 대시보드의 **주식 탭 → 개별 종목** 에서 섹터별로 묶인 모든 종목 카드를 확인할 수 있다.
 종목 정의는 `scripts/watchlist_data.py` 한 파일에 모여 있으며, 변경 후
 `python scripts/gen_watchlist.py` 한 줄로 `fetch_fred.py` / `competitors.py` /
-`app.js` 가 일관되게 재생성된다. 자세한 절차는
+`js/watchlist.js` 가 일관되게 재생성된다. 자세한 절차는
 [.claude/routines/daily-market-analysis.md](.claude/routines/daily-market-analysis.md)
 "종목·섹터 추가 가이드" 참고.
 

@@ -53,7 +53,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from analyze import (  # noqa: E402
     POSTWAR_CUTOFF, ROLLING_YEARS,
     _series_to_pandas, _percentile_rank, _apply_polarity, _label_from_percentile,
-    _weighted_mean, compute_current_stats, cycle_relative_percentile,
+    _weighted_mean, _level_percentiles, compute_current_stats, cycle_relative_percentile,
     # 사전 등록 하이퍼파라미터 — 프로덕션(analyze.py) 과 단일 출처 공유
     INDICATOR_WEIGHTS, EWMA_SPAN,
     CYCLE_YEARS, LONG_YEARS, CYCLE_DIFF_MONTHS,
@@ -65,6 +65,7 @@ from backtest import (  # noqa: E402
     load_inflation_episodes, evaluate_signal,
     RELEASE_LAG_DAYS, DEFAULT_LAG_DAYS, BACKTEST_START,
 )
+from analytics_series import monthly_last, smooth_scores  # noqa: E402
 
 EVAL_DIR = ROOT / "data" / "eval"
 
@@ -95,7 +96,7 @@ def _blend(level: float | None, diff: float | None) -> float | None:
 def _diff_percentile(code: str, s: pd.Series) -> float | None:
     """최신 6개월 변화량의 백분위. s 는 pre-parsed pd.Series."""
     full = s[s.index >= POSTWAR_CUTOFF]
-    monthly = full.resample("ME").last().dropna()
+    monthly = monthly_last(full)
     if len(monthly) < DIFF_MONTHS + 10:
         return None
     diffs = monthly.diff(DIFF_MONTHS).dropna()
@@ -118,12 +119,7 @@ def _stats_B(code: str, sliced: list[dict]) -> tuple[float | None, float | None]
     s = _series_to_pandas(sliced)
     if s.empty:
         return None, None
-    latest = float(s.iloc[-1])
-    latest_date = s.index[-1]
-    full_s = s[s.index >= POSTWAR_CUTOFF]
-    p_full = _apply_polarity(code, _percentile_rank(full_s, latest))
-    cutoff = latest_date - pd.DateOffset(years=ROLLING_YEARS)
-    p_10y = _apply_polarity(code, _percentile_rank(s[(s.index >= cutoff) & (s.index <= latest_date)], latest))
+    p_full, p_10y = _level_percentiles(code, s)
     dp = _diff_percentile(code, s)
     return _blend(p_full, dp), _blend(p_10y, dp)
 
@@ -139,7 +135,7 @@ def _stats_E(code: str, sliced: list[dict]) -> tuple[float | None, None]:
     s = _series_to_pandas(sliced)
     if s.empty:
         return None, None
-    monthly = s.resample("ME").last().dropna()
+    monthly = monthly_last(s)
     if monthly.empty:
         return None, None
     return cycle_relative_percentile(code, monthly), None
@@ -209,43 +205,47 @@ def walk_model(model: str, indicators: dict,
     return df
 
 
+def _hysteresis_labels(smoothed: pd.Series) -> list[str | None]:
+    labels = []
+    prev = "neutral"
+    for v in smoothed:
+        if pd.isna(v):
+            labels.append(None)
+            continue
+        if v >= ENTRY_HIGH:
+            prev = "high"
+        elif v <= ENTRY_LOW:
+            prev = "low"
+        elif prev == "high" and v < EXIT_HIGH:
+            prev = "neutral"
+        elif prev == "low" and v > EXIT_LOW:
+            prev = "neutral"
+        labels.append(prev)
+    return labels
+
+
+def _smooth_axes(df: pd.DataFrame, *, hysteresis: bool) -> pd.DataFrame:
+    """full 축만 평활하고 라벨을 재산출한다. 입력과 10y 축은 보존한다."""
+    df = df.copy()
+    for axis, label_prefix in (("growth", "g"), ("infl", "i")):
+        col = f"{axis}_full"
+        smoothed = smooth_scores(df[col], EWMA_SPAN)
+        df[col] = smoothed
+        df[f"{label_prefix}_lab_full"] = (
+            _hysteresis_labels(smoothed) if hysteresis
+            else smoothed.map(_label_from_percentile)
+        )
+    return df
+
+
 def _apply_smooth_only(df: pd.DataFrame) -> pd.DataFrame:
     """EWMA 평활만 적용, 라벨은 60/40 임계 재산출 (히스테리시스 없음)."""
-    df = df.copy()
-    for axis in ("growth", "infl"):
-        col = f"{axis}_full"
-        smoothed = df[col].ewm(span=EWMA_SPAN, min_periods=1).mean().round(1)
-        df[col] = smoothed
-        lab_col = f"{'g' if axis == 'growth' else 'i'}_lab_full"
-        df[lab_col] = smoothed.map(_label_from_percentile)
-    return df
+    return _smooth_axes(df, hysteresis=False)
 
 
 def _apply_smooth_hysteresis(df: pd.DataFrame) -> pd.DataFrame:
     """EWMA 평활 → 히스테리시스 라벨 재산출 (in-place copy)."""
-    df = df.copy()
-    for axis in ("growth", "infl"):
-        col = f"{axis}_full"
-        smoothed = df[col].ewm(span=EWMA_SPAN, min_periods=1).mean().round(1)
-        df[f"{axis}_full"] = smoothed
-
-        lab_col = f"{'g' if axis == 'growth' else 'i'}_lab_full"
-        labels = []
-        prev = "neutral"
-        for v in smoothed:
-            if pd.isna(v):
-                labels.append(None); continue
-            if v >= ENTRY_HIGH:
-                prev = "high"
-            elif v <= ENTRY_LOW:
-                prev = "low"
-            elif prev == "high" and v < EXIT_HIGH:
-                prev = "neutral"
-            elif prev == "low"  and v > EXIT_LOW:
-                prev = "neutral"
-            labels.append(prev)
-        df[lab_col] = labels
-    return df
+    return _smooth_axes(df, hysteresis=True)
 
 
 # ── 비교 실행 ─────────────────────────────────────────────────────────────────

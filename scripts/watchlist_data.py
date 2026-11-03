@@ -2,7 +2,7 @@
 Single source of truth for the watchlist used by:
   - scripts/fetch_fred.py  (STOCKS)
   - scripts/competitors.py (COMPETITORS)
-  - app.js                 (STOCK_META, STOCK_GROUPS, PEER_COMPETITORS)
+  - js/watchlist.js        (STOCK_META, STOCK_GROUPS, PEER_COMPETITORS)
   - Luke_wiki/wiki/news/*  (per-ticker logs)
 
 Run scripts/gen_watchlist.py to regenerate the dependent blocks.

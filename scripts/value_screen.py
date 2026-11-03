@@ -34,7 +34,7 @@ OP_MARGIN_MIN = 0.15    # 영업이익률 ≥ 15%
 PROFIT_QUARTERS = 4     # 최근 4개 분기 연속 순이익 흑자
 GAP_MAX = -0.20         # valuation_gap ≤ -20% (deep_value 기준선과 동일)
 
-# 웹 UI 가 그대로 표시하는 기준 정의 (SSOT — app.js 는 이 배열을 렌더만 한다)
+# 웹 UI 가 그대로 표시하는 기준 정의 (SSOT — js/value-screen.js 는 이 배열을 렌더만 한다)
 CRITERIA = [
     {
         "key": "roe",
