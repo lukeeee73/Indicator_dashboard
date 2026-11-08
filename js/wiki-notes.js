@@ -2,29 +2,13 @@
 // Classic browser script: index.html defines dependency order; functions stay global for inline handlers.
 
 // ════════════════════════════════════════════════════════════════
-// 위키 지식 좌표계 — luke_wiki (Obsidian vault) 시각화
-//
-// data/wiki/graph.json (scripts/build_wiki_graph.py 가 생성) 을 읽어
-// 노트=노드, [[위키링크]]=엣지인 3D 지식 지도를 캔버스에 그린다.
-// X=검증 강도, Y=판단 비중, Z=나의 개입도. 색=도메인, 크기=연결 수.
+// 주식 시장·기업 지도에서 사용하는 연구 노트 색인과 본문 뷰어.
+// data/wiki/graph.json (scripts/build_wiki_graph.py 가 생성)의 노드를
+// 경로와 티커로 찾고, 연결된 노트 본문을 모달 또는 인라인으로 읽는다.
 // ════════════════════════════════════════════════════════════════
 
-// 폴더별 카테고리 색 — 다크 배경(#121212) 기준 CVD 검증 통과 팔레트, 순서 고정
-const WIKI_FOLDER_COLORS = ["#3987e5", "#199e70", "#c98500", "#9085e9", "#e66767", "#d55181"];
-const WIKI_OTHER_COLOR   = "#8a8a8a";
-const WIKI_OTHER_LABEL   = "기타";
-const WIKI_DOMAIN_COLORS = {
-  finance: "#d6a14b",
-  ai: "#8d8de8",
-  design: "#4fa9c6",
-  multi: "#d56f91",
-  meta: "#7f9b8a",
-  other: "#8a8a8a",
-};
-
 // ── 공유 노트 뷰어 ──────────────────────────────────────────────
-// graph.json 로드·색인과 노트 본문 모달은 위키 탭 전용이 아니라 전역이다:
-// 시장 지도의 '위키 노트' 버튼도 같은 뷰어로 노트를 연다.
+// 시장·기업 지도의 '위키 노트' 버튼은 같은 색인과 본문 뷰어를 공유한다.
 //  - wnLoadGraph(): graph.json 1회 로드 + (경로→노드, 티커→뉴스 로그) 색인
 //  - wnOpenByIdx(idx): data/wiki/notes/<idx>.json 본문을 모달로 렌더
 const WN_STATE = { promise: null, graph: null, source: null, byPath: null, byTicker: null, overlay: null };

@@ -35,7 +35,7 @@ function fixture(t) {
 test("bundle keeps runtime assets and note bodies while preserving pipeline sources", (t) => {
   const root = fixture(t);
   const output = buildStatic(root);
-  for (const relative of ["index.html", "app.js", "js/metadata.js", "js/features/view.js", "style.css", "vendor/chart.js",
+  for (const relative of ["app.js", "js/metadata.js", "js/features/view.js", "style.css", "vendor/chart.js",
     "vendor/chart-LICENSE.md", "data/wiki/graph.json", "data/wiki/notes/0.json"]) {
     assert.deepEqual(fs.readFileSync(path.join(output, relative)), fs.readFileSync(path.join(root, relative)));
   }
@@ -44,6 +44,34 @@ test("bundle keeps runtime assets and note bodies while preserving pipeline sour
     assert.ok(fs.existsSync(path.join(root, relative)), relative);
     assert.equal(fs.existsSync(path.join(output, relative)), false, relative);
   }
+});
+
+test("built pages bypass stale script caches and change URLs only when their asset changes", (t) => {
+  const root = fixture(t);
+  const source = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  const urls = () => [...fs.readFileSync(path.join(root, "dist/index.html"), "utf8")
+    .matchAll(/(?:src|href)="([^"]+)"/g)].map((match) => match[1]);
+  buildStatic(root);
+  const first = urls();
+  assert.ok(first.every((url) => /\?v=[a-f\d]{16}$/.test(url)));
+  buildStatic(root);
+  assert.deepEqual(urls(), first);
+  fs.appendFileSync(path.join(root, "app.js"), "\n/* new startup */");
+  buildStatic(root);
+  const next = urls();
+  assert.deepEqual(next.slice(0, -1), first.slice(0, -1));
+  assert.notEqual(next.at(-1), first.at(-1));
+  assert.equal(fs.readFileSync(path.join(root, "index.html"), "utf8"), source);
+});
+
+test("asset versions preserve existing query arguments, fragments and external URLs", (t) => {
+  const root = fixture(t);
+  fs.writeFileSync(path.join(root, "index.html"),
+    '<script src="app.js?mode=preview&v=old#start"></script><script src="https://example.com/script.js"></script>');
+  const output = buildStatic(root);
+  const html = fs.readFileSync(path.join(output, "index.html"), "utf8");
+  assert.match(html, /app\.js\?mode=preview&v=[a-f\d]{16}#start/);
+  assert.match(html, /src="https:\/\/example\.com\/script\.js"/);
 });
 
 test("rebuild removes stale output without changing source files", (t) => {
@@ -99,4 +127,19 @@ test("current HTML and local fetch contracts are covered by the artifact inputs"
   const config = JSON.parse(fs.readFileSync(path.join(repo, "vercel.json"), "utf8"));
   assert.equal(config.buildCommand, "node scripts/build_static.js");
   assert.equal(config.outputDirectory, "dist");
+});
+
+test("production bundle omits removed feature modules and retains the shared stock note viewer", (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "dashboard-production-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const repo = path.resolve(__dirname, "..");
+  for (const relative of ["index.html", "app.js", "style.css", "js", "vendor"]) {
+    fs.cpSync(path.join(repo, relative), path.join(root, relative), { recursive: true });
+  }
+  const output = buildStatic(root);
+  assert.deepEqual(appScriptPaths(output), appScriptPaths(repo));
+  assert.ok(fs.existsSync(path.join(output, "js/wiki-notes.js")));
+  for (const relative of ["js/wiki-graph.js", "js/principles.js"]) {
+    assert.equal(fs.existsSync(path.join(output, relative)), false, relative);
+  }
 });

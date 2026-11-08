@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """luke_wiki (Obsidian vault) → data/wiki/graph.json
 
-대시보드 '위키' 탭의 지식 그래프 데이터를 생성한다.
+Stocks 시장·플레이어 지도에서 사용하는 공유 연구 노트와 연결 정보를 생성한다.
 
   - 노드: vault 안의 모든 .md 노트 (숨김 폴더 · .obsidian · .trash 제외)
   - 엣지: [[위키링크]] (Obsidian 방식 — 파일명 기준, 대소문자 무시)
@@ -12,7 +12,7 @@
                나의 개입도(agency, 명시 필드가 없으면 휴리스틱 추정)
 
 노트 본문도 함께 내보낸다 (--no-content 로 끌 수 있음):
-  data/wiki/notes/{노드 인덱스}.json — 대시보드 '이 화면에서 읽기' 뷰어가 사용.
+  data/wiki/notes/{노드 인덱스}.json — Stocks 상세 패널의 노트 뷰어가 사용.
   주의: 본문을 내보내면 대시보드가 공개일 경우 노트 내용도 공개된다.
 
 사용법:
@@ -32,7 +32,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SKIP_DIRS = {".git", ".obsidian", ".trash", ".github", "node_modules"}
-MAX_NODES = 3000        # 안전 상한 — 이보다 크면 프론트 force 시뮬레이션이 버겁다
+MAX_NODES = 3000        # 공유 연구 노트 내보내기의 노드 수 안전 상한
 MAX_CONTENT = 120_000   # 노트 1개당 본문 상한 (문자) — 초과분은 잘라낸다
 
 # [[Target]] · [[Target|별칭]] · [[Target#헤딩]] — Target 만 추출

@@ -249,7 +249,6 @@ def sync_app_meta(
 
 def document_specs() -> Iterator[tuple[str, str, Path]]:
     explicit = (
-        ("principles", "timeline", DATA_ROOT / "principles" / "timeline.json"),
         ("value_screen", "latest", DATA_ROOT / "value_screen.json"),
         ("wiki", "graph", DATA_ROOT / "wiki" / "graph.json"),
     )

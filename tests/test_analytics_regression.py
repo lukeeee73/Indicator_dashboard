@@ -21,8 +21,8 @@ from unittest.mock import patch
 import numpy as np
 import pandas as pd
 
-from scripts import analyze, backtest, build_labels, build_principles, compare_models
-from scripts.analytics_series import midpoint_percentile, points_to_series, smooth_scores
+from scripts import analyze, backtest, build_labels, compare_models
+from scripts.analytics_series import midpoint_percentile, monthly_last, points_to_series, smooth_scores
 
 
 def digest(payload):
@@ -273,7 +273,7 @@ class AnalyticsSeriesBoundaryTests(unittest.TestCase):
         before = copy.deepcopy(points)
         parsed = points_to_series(points)
         pd.testing.assert_series_equal(analyze._series_to_pandas(points), parsed)
-        monthly = build_principles.monthly_last(s=parsed)
+        monthly = monthly_last(parsed)
         self.assertEqual(monthly.tolist(), [2.0, 5.0])
         self.assertEqual(monthly.index.strftime("%Y-%m-%d").tolist(),
                          ["2020-01-31", "2020-03-31"])
@@ -309,7 +309,7 @@ class AnalyticsBuilderRegressionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "CPIAUCSL.json"
             path.write_text(json.dumps({"series": points}), encoding="utf-8")
-            raw = build_principles.load_series(path)
+            raw = points_to_series(points)
             with patch.object(build_labels, "INDICATORS_DIR", path.parent):
                 labels = build_labels._load_series("CPIAUCSL")
             self.assertEqual(raw.index.strftime("%Y-%m-%d").tolist(),
@@ -318,30 +318,10 @@ class AnalyticsBuilderRegressionTests(unittest.TestCase):
                              ["2020-01-01", "2020-01-01", "2020-03-01"])
             np.testing.assert_equal(raw.to_numpy(), [1, np.nan, 3])
             np.testing.assert_equal(labels.to_numpy(), raw.to_numpy())
-            self.assertIsNone(build_principles.load_series_optional(path.parent / "absent.json"))
             path.write_text('{"series": []}', encoding="utf-8")
-            with self.assertRaises(KeyError):
-                build_principles.load_series(path)
-            self.assertIsNone(build_principles.load_series_optional(path))
-
-    def test_market_snapshots_use_only_observations_at_or_before_the_month(self):
-        series = pd.Series([1.2345, 9], index=pd.to_datetime(["2020-01-31", "2020-03-31"]))
-        self.assertIsNone(build_principles.asof_value(series, pd.Timestamp("2020-01-30")))
-        self.assertIsNone(build_principles.asof_value(None, pd.Timestamp("2020-03-31")))
-        self.assertEqual(build_principles.asof_value(series, pd.Timestamp("2020-02-29"), 3), 1.234)
-        self.assertEqual(build_principles.asof_value(series, pd.Timestamp("2020-03-31")), 9)
-
-    def test_asset_index_arithmetic_keeps_original_compounding_and_rounding(self):
-        monthly = pd.Series([4, 4.2, 3.8, 4], index=pd.date_range("2020-01-31", periods=4,
-                                                               freq="ME"))
-        bond = build_principles.build_bond_total_return_index(monthly)
-        self.assertEqual(build_principles.series_to_index_list(bond), [
-            {"date": "2020-01-31", "value": 100.0},
-            {"date": "2020-02-29", "value": 98.9333},
-            {"date": "2020-03-31", "value": 102.0497},
-            {"date": "2020-04-30", "value": 100.9442},
-        ])
-        self.assertEqual(build_principles.build_price_index(monthly).tolist(), [100, 105, 95, 100])
+            with patch.object(build_labels, "INDICATORS_DIR", path.parent):
+                with self.assertRaises(KeyError):
+                    build_labels._load_series("CPIAUCSL")
 
     def test_label_rule_and_consensus_json_are_frozen_from_original_builder(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -383,7 +363,6 @@ with patch.object(socket.socket, 'connect', side_effect=AssertionError('network 
             ('analyze', 'enrich_with_assessment'),
             ('compare_models', 'walk_model'),
             ('build_labels', 'main'),
-            ('build_principles', 'main'),
         ):
             module = importlib.import_module(prefix + name)
             assert callable(getattr(module, function))
