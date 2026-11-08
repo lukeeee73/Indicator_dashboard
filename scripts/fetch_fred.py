@@ -333,8 +333,8 @@ ASSETS: dict[str, dict] = {
     # 금(Gold)은 FRED 의 LBMA 시세(GOLDAMGBD228NLBM 등)가 라이선스 문제로 제공
     # 중단되어 여기 없다 — main() 에서 stooq/Yahoo 경유로 "GOLD" 자산을 수집한다.
     "FEDFUNDS": {
-        # 미국 기준금리(실효 연방기금금리, 1954년~). 원칙 탭의 진입/청산 시점
-        # 시장 지표와 과거 국면 비교에 쓰인다.
+        # 미국 기준금리(실효 연방기금금리, 1954년~).
+        # 환율·물가·다른 자산과의 금리 수준 및 변화 비교에 쓰인다.
         "name": "US Federal Funds Effective Rate",
         "unit": "percent",
         "transform": None,

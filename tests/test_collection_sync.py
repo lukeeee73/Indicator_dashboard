@@ -186,7 +186,7 @@ class SupabaseCollectionTests(unittest.TestCase):
         query.execute.return_value.data = []
         self.assertIsNone(sync_supabase.latest_observed_at(client, "A"))
 
-    def test_documents_and_news_keep_discovery_order_payload_and_conflict_keys(self):
+    def test_documents_skip_retired_timeline_and_keep_stock_notes_news_and_conflict_keys(self):
         paths = [
             "principles/timeline.json",
             "value_screen.json",
@@ -200,10 +200,9 @@ class SupabaseCollectionTests(unittest.TestCase):
         for path in paths:
             data_io.write_json(self.root / path, {"file": path})
         client = Mock()
-        self.assertEqual(sync_supabase.sync_documents(client, "timestamp"), 6)
+        self.assertEqual(sync_supabase.sync_documents(client, "timestamp"), 5)
         client.table.assert_called_once_with("documents")
         specs = [
-            ("principles", "timeline", paths[0]),
             ("value_screen", "latest", paths[1]),
             ("wiki", "graph", paths[2]),
             ("market", "au", paths[4]),

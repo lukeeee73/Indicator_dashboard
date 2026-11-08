@@ -249,7 +249,7 @@ const INDICATOR_META = {
   // ── 한국 지표 ─────────────────────────────────────────────────────────
   KORCPIALLMINMEI: {
     displayName: "🇰🇷 한국 CPI YoY",
-    description: "한국 소비자물가의 전년 대비 상승률. 국내 물가 흐름을 직접 보여주는 지표로 미국 4분면 점수에는 포함되지 않는다.",
+    description: "한국 소비자물가의 전년 대비 상승률. 국내 물가의 변화를 보여준다.",
     unit: "%",
     decimals: 2,
     region: "KR",
@@ -304,18 +304,25 @@ const METRIC_GLOSSARY = {
 // fetch_fred.py 의 ASSETS 와 대응.
 const ASSET_META = {
   GOLD: { displayName: "금 (Gold)",              unit: "$", decimals: 0, color: "#d4af37" },
-  DTWEXBGS:         { displayName: "달러 지수",              unit: "",  decimals: 2, color: "#7dd3fc" },
+  DTWEXBGS: {
+    displayName: "무역가중 달러 지수 (광의)",
+    description: "교역 상대국 통화에 대한 달러의 가치를 무역 비중으로 가중한 광의 지수. 환율 수준을 지수로 나타내며, 전년 대비 상승률(%)이 아니다.",
+    unit: "", valueLabel: "지수", decimals: 2, color: "#7dd3fc",
+  },
   SP500:            { displayName: "S&P 500",                unit: "",  decimals: 2, color: "#c084fc" },
   DGS10:            { displayName: "10년 국채금리",          unit: "%", decimals: 2, color: "#fb923c" },
   VIXCLS:           { displayName: "VIX (공포지수)",         unit: "",  decimals: 2, color: "#f87171" },
-  DEXKOUS:          { displayName: "원/달러 환율",           unit: "₩", decimals: 2, color: "#86efac" },
+  DEXKOUS: {
+    displayName: "원/달러 환율",
+    description: "미국 달러 1달러당 원화 금액. 환율이 오르면 달러 대비 원화 가치가 낮아지고, 내리면 높아진다.",
+    unit: "₩", valueLabel: "원/달러", decimals: 2, color: "#86efac", region: "KR",
+  },
   BAMLH0A0HYM2:     { displayName: "미국 하이일드 스프레드", unit: "%", decimals: 2, color: "#fca5a5" },
   IRLTLT01KRM156N:  { displayName: "한국 국채 10년",         unit: "%", decimals: 2, color: "#4c9ef7" },
   KOSPI:            { displayName: "코스피 (원시)",          unit: "",  decimals: 0, color: "#a78bfa" },
 };
 
-// 지표별 "추천 비교 대상". 4분면 프레임워크 논리에 따라 1/2순위 구성.
-// primary 는 select 의 "추천" optgroup 에 표시, secondary 는 "관련".
+// 지표별 비교 대상. primary 는 "주요 비교", secondary 는 "관련" 그룹에 표시.
 const COMPARE_RECOMMENDATIONS = {
   T10Y2Y: {
     primary:   ["SP500", "BAMLH0A0HYM2", "VIXCLS"],

@@ -1106,7 +1106,7 @@ function mcHideMarketNote() {
 // 두 경로로 노트를 모은다:
 //   1) 큐레이션 — 시장 JSON 의 markets[].wiki: [{path, label}] (vault 상대 경로)
 //   2) 자동     — players[].ticker 와 루틴 뉴스 로그(wiki/news/tickers/) 매칭
-// graph.json 이 아직 동기화 전이면 섹션을 통째로 숨긴다 (위키 탭에 안내 있음).
+// graph.json 이 아직 동기화 전이면 노트 섹션을 숨기고 시장 지도는 유지한다.
 
 const MC_WIKI_KIND = {
   "wiki/principles": "원칙", "wiki/concepts": "개념", "wiki/topics": "주제",

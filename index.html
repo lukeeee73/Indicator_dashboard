@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Luke Dashboard — 경제 지표 모니터링</title>
-  <meta name="description" content="성장 × 인플레이션 4분면 기반 경제 지표 개인 대시보드">
+  <title>Luke Dashboard — 통화 가치·환율·물가</title>
+  <meta name="description" content="한국과 미국의 통화 가치·환율·물가를 살펴보는 개인 대시보드">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,26 +20,20 @@
       <div class="sidebar-head">
         <div class="sidebar-brand">
           <span class="sidebar-title">Luke Dashboard</span>
-          <span class="sidebar-sub">성장 × 인플레이션 4분면</span>
+          <span class="sidebar-sub">통화 가치 · 환율 · 물가</span>
         </div>
         <button class="sidebar-close-btn" id="sidebar-close" aria-label="사이드바 닫기" title="사이드바 닫기">✕</button>
       </div>
 
       <nav class="sidebar-nav" aria-label="대시보드 섹션">
-        <button class="tab-btn active" data-tab="WIKI">
-          <span class="tab-icon">🕸️</span><span class="tab-label">위키</span>
-        </button>
-        <button class="tab-btn" data-tab="STOCKS">
-          <span class="tab-icon">📈</span><span class="tab-label">주식</span>
+        <button class="tab-btn active" data-tab="KR">
+          <span class="tab-icon">🇰🇷</span><span class="tab-label">한국</span>
         </button>
         <button class="tab-btn" data-tab="US">
           <span class="tab-icon">🇺🇸</span><span class="tab-label">미국</span>
         </button>
-        <button class="tab-btn" data-tab="KR">
-          <span class="tab-icon">🇰🇷</span><span class="tab-label">한국</span>
-        </button>
-        <button class="tab-btn" data-tab="PRINCIPLES">
-          <span class="tab-icon">🧭</span><span class="tab-label">원칙</span>
+        <button class="tab-btn" data-tab="STOCKS">
+          <span class="tab-icon">📈</span><span class="tab-label">주식</span>
         </button>
       </nav>
 
@@ -89,9 +83,89 @@
 
   <main>
 
-    <!-- ══════════════════════════════════════════════════════
-         미국 패널
-    ══════════════════════════════════════════════════════ -->
+    <!-- 한국: 통화 가치·환율을 먼저, 물가를 다음으로 표시 -->
+    <div class="tab-panel" id="panel-KR">
+
+      <section class="assessment" id="assessment-KR" hidden>
+        <h2>현재 국면 (자동 판정)</h2>
+        <div class="assessment-grid">
+          <div class="assessment-card" data-window="full">
+            <div class="aw-header">
+              <span class="aw-title">장기 기준</span>
+              <span class="aw-sub">가용 전체 분포</span>
+            </div>
+            <div class="aw-quadrant" id="assessment-KR-full-quadrant">—</div>
+            <div class="aw-scores">
+              <span class="aw-score">성장 <b id="assessment-KR-full-growth">—</b></span>
+              <span class="aw-score">인플레 <b id="assessment-KR-full-inflation">—</b></span>
+            </div>
+          </div>
+
+          <div class="assessment-card" data-window="rolling_10y">
+            <div class="aw-header">
+              <span class="aw-title">단기 기준</span>
+              <span class="aw-sub">최근 10년 분포</span>
+            </div>
+            <div class="aw-quadrant" id="assessment-KR-10y-quadrant">—</div>
+            <div class="aw-scores">
+              <span class="aw-score">성장 <b id="assessment-KR-10y-growth">—</b></span>
+              <span class="aw-score">인플레 <b id="assessment-KR-10y-inflation">—</b></span>
+            </div>
+          </div>
+
+          <div class="assessment-scatter">
+            <div class="aw-header">
+              <span class="aw-title">궤적 (최근 24개월, 장기 기준)</span>
+              <span class="aw-sub">X: 인플레 · Y: 성장 · 경계 40/60</span>
+            </div>
+            <div class="scatter-chart"><canvas id="assessment-scatter-KR"></canvas></div>
+          </div>
+        </div>
+        <p class="assessment-note" id="assessment-KR-note"></p>
+      </section>
+
+      <!-- 4분면 참조 카드 -->
+      <section class="framework">
+        <h2>4분면 프레임워크</h2>
+        <div class="quadrant-grid">
+          <div class="quadrant" data-quadrant="Q1">
+            <span class="label">Q1 · 성장 ↑ · 인플레 ↑</span>
+            <span class="hint">원자재 · 신흥국 주식 · 인플레 연동채</span>
+          </div>
+          <div class="quadrant" data-quadrant="Q2">
+            <span class="label">Q2 · 성장 ↑ · 인플레 ↓</span>
+            <span class="hint">선진국 주식 · 회사채</span>
+          </div>
+          <div class="quadrant" data-quadrant="Q3">
+            <span class="label">Q3 · 성장 ↓ · 인플레 ↑</span>
+            <span class="hint">금 · 인플레 연동채 · 원자재</span>
+          </div>
+          <div class="quadrant" data-quadrant="Q4">
+            <span class="label">Q4 · 성장 ↓ · 인플레 ↓</span>
+            <span class="hint">장기 국채 · 현금</span>
+          </div>
+        </div>
+      </section>
+
+      <nav class="sector-nav" data-country="KR" role="tablist" aria-label="한국 지표">
+        <button class="sector-btn active" data-sector="dollar" role="tab" aria-selected="true">원화 가치·환율</button>
+        <button class="sector-btn" data-sector="inflation" role="tab" aria-selected="false">물가·인플레이션</button>
+      </nav>
+
+      <section class="category sector-panel category--dollar" data-sector="dollar">
+        <h2>원화 가치·환율</h2>
+        <p class="category-desc">원/달러 환율 · 한국 국채 수익률 · 통화량 · 정부 부채</p>
+        <div class="cards" id="dollar-cards-KR"></div>
+      </section>
+
+      <section class="category sector-panel" data-sector="inflation" hidden>
+        <h2>물가·인플레이션</h2>
+        <div class="cards" id="inflation-cards-KR"></div>
+      </section>
+    </div><!-- /panel-KR -->
+
+
+    <!-- 미국: 통화 가치·환율을 먼저, 물가를 다음으로 표시 -->
     <div class="tab-panel" id="panel-US" hidden>
 
       <section class="assessment" id="assessment-US" hidden>
@@ -168,96 +242,22 @@
         </div>
       </section>
 
-      <!-- 섹터 서브탭 — 스크롤 대신 클릭으로 섹터 전환 -->
-      <nav class="sector-nav" data-country="US" role="tablist" aria-label="섹터">
-        <button class="sector-btn active" data-sector="growth"    role="tab" aria-selected="true">성장</button>
-        <button class="sector-btn"        data-sector="inflation" role="tab" aria-selected="false">인플레이션</button>
-        <button class="sector-btn"        data-sector="dollar"    role="tab" aria-selected="false">달러 가치</button>
+      <nav class="sector-nav" data-country="US" role="tablist" aria-label="미국 지표">
+        <button class="sector-btn active" data-sector="dollar" role="tab" aria-selected="true">달러 가치·환율</button>
+        <button class="sector-btn" data-sector="inflation" role="tab" aria-selected="false">물가·인플레이션</button>
       </nav>
 
-      <section class="category sector-panel" data-sector="growth">
-        <h2>성장 지표</h2>
-        <div class="cards" id="growth-cards-US"></div>
-      </section>
-
-      <section class="category sector-panel" data-sector="inflation" hidden>
-        <h2>인플레이션 지표</h2>
-        <div class="cards" id="inflation-cards-US"></div>
-      </section>
-
-      <section class="category sector-panel category--dollar" data-sector="dollar" hidden>
-        <h2>달러 가치 분석</h2>
-        <p class="category-desc">국채 수익률 · 통화량 · 정부 부채 — 달러의 상대 가치를 판단하는 핵심 지표</p>
+      <section class="category sector-panel category--dollar" data-sector="dollar">
+        <h2>달러 가치·환율</h2>
+        <p class="category-desc">무역가중 달러 지수 · 미국 국채 수익률 · 통화량 · 정부 부채</p>
         <div class="cards" id="dollar-cards-US"></div>
       </section>
-    </div><!-- /panel-US -->
-
-
-    <!-- ══════════════════════════════════════════════════════
-         한국 패널
-    ══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="panel-KR" hidden>
-
-      <section class="assessment" id="assessment-KR" hidden>
-        <h2>현재 국면 (자동 판정)</h2>
-        <div class="assessment-grid">
-          <div class="assessment-card" data-window="full">
-            <div class="aw-header">
-              <span class="aw-title">장기 기준</span>
-              <span class="aw-sub">가용 전체 분포</span>
-            </div>
-            <div class="aw-quadrant" id="assessment-KR-full-quadrant">—</div>
-            <div class="aw-scores">
-              <span class="aw-score">성장 <b id="assessment-KR-full-growth">—</b></span>
-              <span class="aw-score">인플레 <b id="assessment-KR-full-inflation">—</b></span>
-            </div>
-          </div>
-
-          <div class="assessment-card" data-window="rolling_10y">
-            <div class="aw-header">
-              <span class="aw-title">단기 기준</span>
-              <span class="aw-sub">최근 10년 분포</span>
-            </div>
-            <div class="aw-quadrant" id="assessment-KR-10y-quadrant">—</div>
-            <div class="aw-scores">
-              <span class="aw-score">성장 <b id="assessment-KR-10y-growth">—</b></span>
-              <span class="aw-score">인플레 <b id="assessment-KR-10y-inflation">—</b></span>
-            </div>
-          </div>
-
-          <div class="assessment-scatter">
-            <div class="aw-header">
-              <span class="aw-title">궤적 (최근 24개월, 장기 기준)</span>
-              <span class="aw-sub">X: 인플레 · Y: 성장 · 경계 40/60</span>
-            </div>
-            <div class="scatter-chart"><canvas id="assessment-scatter-KR"></canvas></div>
-          </div>
-        </div>
-        <p class="assessment-note" id="assessment-KR-note"></p>
-      </section>
-
-      <nav class="sector-nav" data-country="KR" role="tablist" aria-label="섹터">
-        <button class="sector-btn active" data-sector="growth"    role="tab" aria-selected="true">성장</button>
-        <button class="sector-btn"        data-sector="inflation" role="tab" aria-selected="false">인플레이션</button>
-        <button class="sector-btn"        data-sector="dollar"    role="tab" aria-selected="false">달러 가치</button>
-      </nav>
-
-      <section class="category sector-panel" data-sector="growth">
-        <h2>성장 지표</h2>
-        <div class="cards" id="growth-cards-KR"></div>
-      </section>
 
       <section class="category sector-panel" data-sector="inflation" hidden>
-        <h2>인플레이션 지표</h2>
-        <div class="cards" id="inflation-cards-KR"></div>
+        <h2>물가·인플레이션</h2>
+        <div class="cards" id="inflation-cards-US"></div>
       </section>
-
-      <section class="category sector-panel category--dollar" data-sector="dollar" hidden>
-        <h2>달러 가치 분석</h2>
-        <p class="category-desc">국채 수익률 · 통화량 · 정부 부채 — 원/달러 환율과 자본 흐름을 판단하는 핵심 지표</p>
-        <div class="cards" id="dollar-cards-KR"></div>
-      </section>
-    </div><!-- /panel-KR -->
+    </div><!-- /panel-US -->
 
 
     <!-- ══════════════════════════════════════════════════════
@@ -311,159 +311,6 @@
       </section>
     </div><!-- /panel-STOCKS -->
 
-
-    <!-- ══════════════════════════════════════════════════════
-         원칙 (Principles) 패널 — 레이 달리오식 시나리오 시뮬레이터
-    ══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="panel-PRINCIPLES" hidden>
-      <section class="principles-intro">
-        <h2>나만의 투자 원칙 실험실</h2>
-        <p class="category-desc">
-          레이 달리오의 <strong>성장 × 인플레이션 4분면</strong> 프레임워크로 만든 타임머신
-          시뮬레이터. 과거의 한 시점으로 돌아가 <strong>그 때 실제로 알 수 있었던 정보만</strong>
-          (발표 지연을 반영한 국면 판정)으로 자산배분을 정하고, 나중에 팔았다면 수익률이
-          어땠을지 확인한다. 결과를 반복해서 쌓아가며 나만의 투자 원칙을 만드는 것이 목표다.
-          <em>주의: 국면 판정과 자산 수익률 모두 레포에 있는 데이터로 만든 근사치이며, 투자
-          조언이 아니다.</em>
-        </p>
-      </section>
-
-      <section class="principles-setup" id="principles-setup" hidden>
-        <div class="ps-row">
-          <div class="ps-field">
-            <label for="pr-entry-date">진입 시점 (그 때로 돌아간다)</label>
-            <input type="month" id="pr-entry-date">
-          </div>
-          <div class="ps-field">
-            <label for="pr-exit-date">청산 시점 (여기서 팔았다면)</label>
-            <input type="month" id="pr-exit-date">
-          </div>
-        </div>
-
-        <div class="pr-snapshot" id="pr-entry-snapshot"></div>
-
-        <div class="pr-allocation">
-          <h3>자산배분 — 진입 시점에 무엇을 샀는가?</h3>
-          <div class="pr-preset-row" id="pr-preset-row"></div>
-          <div class="pr-alloc-grid" id="pr-alloc-grid"></div>
-          <div class="pr-alloc-total">합계 <b id="pr-alloc-total-val">100</b>% (100%이어야 계산 가능)</div>
-        </div>
-
-        <button class="pr-run-btn" id="pr-run-btn">🕰️ 타임머신 시작 → 수익률 계산</button>
-        <p class="pr-error" id="pr-error" hidden></p>
-      </section>
-
-      <section class="principles-result" id="pr-result" hidden>
-        <h2>결과</h2>
-        <div class="pr-result-grid">
-          <div class="pr-metric-card">
-            <span class="pr-metric-label">보유 기간</span>
-            <span class="pr-metric-value" id="pr-metric-months">—</span>
-          </div>
-          <div class="pr-metric-card">
-            <span class="pr-metric-label">총수익률 (내 배분)</span>
-            <span class="pr-metric-value" id="pr-metric-total">—</span>
-          </div>
-          <div class="pr-metric-card">
-            <span class="pr-metric-label">연환산수익률</span>
-            <span class="pr-metric-value" id="pr-metric-cagr">—</span>
-          </div>
-          <div class="pr-metric-card">
-            <span class="pr-metric-label">실질(물가반영) 수익률</span>
-            <span class="pr-metric-value" id="pr-metric-real">—</span>
-          </div>
-        </div>
-
-        <div class="pr-benchmarks" id="pr-benchmarks"></div>
-
-        <!-- 진입/청산 시점의 시장 지표(기준금리·미 10년물·금·CPI) 비교 — app.js 가 채움 -->
-        <div class="pr-indicator-compare" id="pr-indicator-compare"></div>
-
-        <div class="pr-quadrant-path">
-          <h3>보유 기간 중 국면 경로</h3>
-          <p class="category-desc">각 칸이 한 달이다. 색은 그 달의 국면(Q1~Q4), 위쪽 붉은 눈금은
-            NBER 침체·아래쪽 눈금은 고인플레 episode 구간을 뜻한다.</p>
-          <div class="pr-path-strip" id="pr-path-strip"></div>
-          <div class="pr-path-chart"><canvas id="pr-path-canvas"></canvas></div>
-        </div>
-
-        <div class="pr-insight" id="pr-insight"></div>
-
-        <button class="pr-save-btn" id="pr-save-btn">💾 이 시나리오를 원칙 저널에 저장</button>
-      </section>
-
-      <!-- 4분면 필터 — 내 상황과 같은 분면이었던 과거 구간을 찾아 비교 -->
-      <section class="principles-similar" id="pr-similar" hidden>
-        <h2>비슷한 과거 국면 찾기</h2>
-        <p class="category-desc">
-          내가 지금 <strong>Q1</strong>에 있다면 과거의 Q1들은 어떻게 흘러갔을까?
-          4분면 필터로 같은 국면이었던 과거 구간을 모두 찾아, 각 구간의
-          <strong>기준금리·채권(10년물) 수익률·금 시세·CPI</strong> 변화와 자산 성과,
-          그리고 <strong>국면이 끝난 뒤 12개월</strong>에 무슨 일이 있었는지 비교한다.
-        </p>
-        <div class="pr-quad-filter" id="pr-quad-filter" role="tablist" aria-label="4분면 필터"></div>
-        <div class="pr-quad-summary" id="pr-quad-summary"></div>
-        <div class="pr-episode-list" id="pr-episode-list"></div>
-      </section>
-
-      <section class="principles-journal">
-        <h2>나의 원칙 저널</h2>
-        <p class="category-desc">저장한 시나리오가 쌓여 나만의 투자 원칙이 된다. 이 브라우저에만
-          저장되므로(localStorage), 다른 기기에서 보려면 내보내기로 백업해야 한다.</p>
-        <div class="pr-journal-actions">
-          <button type="button" id="pr-journal-export">JSON 내보내기</button>
-          <button type="button" id="pr-journal-clear">전체 삭제</button>
-        </div>
-        <div class="pr-journal-list" id="pr-journal-list"></div>
-      </section>
-    </div><!-- /panel-PRINCIPLES -->
-
-
-    <!-- ══════════════════════════════════════════════════════
-         위키 패널 — luke_wiki (Obsidian vault) 지식 그래프
-    ══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="panel-WIKI">
-      <section class="category">
-        <h2>루크 위키 — 지식 좌표계</h2>
-        <p class="category-desc">
-          링크가 많은 노트만 커지는 평면 그래프 대신, frontmatter와 문장별 인식론 표식을
-          세 축에 배치한다. <strong>위로 갈수록 내 판단·개입에 가깝고, 앞으로 나올수록
-          판단의 핵심이며, 오른쪽일수록 근거가 강하다.</strong> 좌표는 진실 판정이 아니라
-          <code>confidence</code>·<code>weight</code>·<code>type</code>·출처·callout을 조합한 지도다.
-        </p>
-
-        <div class="wiki-axis-guide" aria-label="지식 좌표축 설명">
-          <div class="wiki-axis-item wiki-axis-x"><span>X</span><strong>검증 강도</strong><small>가로 · 주장·미검증 → 사실·검증</small></div>
-          <div class="wiki-axis-item wiki-axis-y"><span>Y</span><strong>판단 비중</strong><small>깊이 · 참고 → 핵심 원칙</small></div>
-          <div class="wiki-axis-item wiki-axis-z"><span>Z</span><strong>나의 개입도</strong><small>세로 · AI·루틴 → 내 판단·원칙</small></div>
-        </div>
-
-        <div class="wiki-toolbar" id="wiki-toolbar" hidden>
-          <input type="search" id="wiki-search" placeholder="노트 검색…" aria-label="노트 검색">
-          <div class="wiki-presets" id="wiki-presets" aria-label="지식 레이어">
-            <button type="button" class="wiki-preset active" data-preset="all" aria-pressed="true">전체</button>
-            <button type="button" class="wiki-preset" data-preset="mine" aria-pressed="false">내 판단</button>
-            <button type="button" class="wiki-preset" data-preset="core" aria-pressed="false">핵심 원칙</button>
-            <button type="button" class="wiki-preset" data-preset="evidence" aria-pressed="false">검증된 지식</button>
-          </div>
-          <button type="button" class="wiki-reset" id="wiki-reset">시점 초기화</button>
-          <div class="wiki-legend" id="wiki-legend" aria-label="도메인 범례"></div>
-        </div>
-
-        <div class="wiki-layout" id="wiki-layout" hidden>
-          <div class="wiki-graph-wrap">
-            <canvas id="wiki-canvas" role="img" aria-label="검증 강도, 판단 비중, 나의 개입도로 배치한 3차원 위키 그래프"></canvas>
-            <p class="wiki-canvas-help">드래그 회전 · 휠 확대 · 노드 선택 · 더블클릭 초기화</p>
-          </div>
-          <aside class="wiki-detail" id="wiki-detail">
-            <p class="vc-detail-hint">노드를 클릭하면 frontmatter와 좌표 근거가 표시됩니다.</p>
-          </aside>
-        </div>
-
-        <div class="wiki-empty" id="wiki-empty" hidden></div>
-      </section>
-    </div><!-- /panel-WIKI -->
-
   </main>
 
   <!-- 플레이어 지도 오버레이 — 세부 시장(예: HBM)을 기업 단위로 펼친 전용 화면 (app.js pmOpen) -->
@@ -493,12 +340,10 @@
   <script src="js/charts.js"></script>
   <script src="js/sidebar.js"></script>
   <script src="js/wiki-notes.js"></script>
-  <script src="js/wiki-graph.js"></script>
   <script src="js/value-screen.js"></script>
   <script src="js/market-map.js"></script>
   <script src="js/player-map.js"></script>
   <script src="js/stocks.js"></script>
-  <script src="js/principles.js"></script>
   <script src="js/dashboard.js"></script>
   <script src="app.js"></script>
 </body>

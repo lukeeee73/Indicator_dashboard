@@ -1,4 +1,4 @@
-// Tab state, lazy data groups, indicator cards and assessments. Startup lives in app.js.
+// Tab state, lazy data groups, current-regime charts and currency/inflation cards. Startup lives in app.js.
 // Classic browser script: index.html defines dependency order; functions stay global for inline handlers.
 
 // 전역 상태: 이벤트 마커 표시 여부 + 각 카드의 "redraw" 콜백.
@@ -11,6 +11,48 @@ const APP_STATE = {
 // 탭 상태 관리
 let _cachedData = null;
 const _renderedTabs = new Set();
+const _dirtyTabs = new Set();
+
+// 실패한 부분 렌더와 이전 로드의 카드만 비운다. 섹터 선택과 공유 노트는 유지한다.
+function resetTabContent(tab) {
+  _renderedTabs.delete(tab);
+  if (tab === "KR" || tab === "US") clearAssessment(tab);
+  if (!_dirtyTabs.has(tab)) return;
+  const hostIds = tab === "STOCKS"
+    ? ["index-cards", "stock-cards", "value-screen-host"]
+    : [`dollar-cards-${tab}`, `inflation-cards-${tab}`];
+  for (const id of hostIds) {
+    const host = document.getElementById(id);
+    if (!host) continue;
+    APP_STATE.cardRedraws = APP_STATE.cardRedraws.filter((redraw) =>
+      !redraw.card || !host.contains(redraw.card));
+    for (const canvas of host.querySelectorAll("canvas")) {
+      if (typeof Chart !== "undefined" && typeof Chart.getChart === "function") {
+        Chart.getChart(canvas)?.destroy();
+      }
+    }
+    host.replaceChildren();
+  }
+  // 주식 검색 핸들러는 당시 종목을 캡처하므로 새 카드에 맞게 다시 연결한다.
+  if (tab === "STOCKS") {
+    for (const id of ["stock-search", "stock-expand-all"]) {
+      const control = document.getElementById(id);
+      if (!control) continue;
+      const replacement = control.cloneNode(true);
+      delete replacement.dataset.wired;
+      if (id === "stock-search") replacement.value = "";
+      else replacement.textContent = "전체 펼치기";
+      control.replaceWith(replacement);
+    }
+  }
+  _dirtyTabs.delete(tab);
+}
+
+function resetGroupContent(group) {
+  for (const [tab, tabGroup] of Object.entries(TAB_GROUP)) {
+    if (tabGroup === group) resetTabContent(tab);
+  }
+}
 
 // 데이터 그룹별 로드 상태 — 각 탭은 자기가 쓰는 그룹만 기다린다.
 // 예전에는 지표·자산·종목·지수를 하나의 Promise.all 로 묶어 20MB 남짓을
@@ -20,8 +62,8 @@ const _renderedTabs = new Set();
 //   indicators : 지표 + 자산  → 미국 / 한국 탭   (약 2MB, 바로 받는다)
 //   stocks     : 종목 + 지수  → 주식 탭        (약 19MB, 탭 열 때 받는다)
 //
-// 종목 그룹은 154개 종목의 전체 일별 히스토리라 압축 전 19MB 다. 첫 화면인
-// 위키에서는 쓰지 않으므로 페이지 로드와 함께 받을 이유가 없다. "idle" 로
+// 종목 그룹은 154개 종목의 전체 일별 히스토리라 압축 전 19MB 다.
+// 국가별 화면에서는 쓰지 않으므로 페이지 로드와 함께 받을 이유가 없다. "idle" 로
 // 두고 주식 탭을 처음 열 때 받으면 초기 전송량이 1/10 로 줄어든다.
 const TAB_GROUP = { US: "indicators", KR: "indicators", STOCKS: "stocks" };
 const DATA_GROUPS = {
@@ -41,9 +83,13 @@ function ensureGroupLoaded(group) {
 }
 
 function switchToTab(tab) {
+  // 폐기된 탭이나 잘못된 이름은 현재 선택을 그대로 둔다.
+  if (!Object.prototype.hasOwnProperty.call(TAB_GROUP, tab)) return;
+  const panel = document.getElementById(`panel-${tab}`);
+  if (!panel) return;
   // 패널 전환은 데이터와 무관하게 항상 먼저 — 로딩 중에도 탭은 살아 있어야 한다
   document.querySelectorAll(".tab-panel").forEach(p => { p.hidden = true; });
-  document.getElementById(`panel-${tab}`).hidden = false;
+  panel.hidden = false;
   document.querySelectorAll(".tab-btn").forEach(b => {
     b.classList.toggle("active", b.dataset.tab === tab);
   });
@@ -53,25 +99,24 @@ function switchToTab(tab) {
 // 탭 컨텐츠는 첫 방문 때 지연 렌더링한다.
 // 아직 데이터가 없으면 빈 화면 대신 로딩/실패 상태를 보여준다.
 function renderTabIfReady(tab) {
-  // 위키(정적 graph.json)와 원칙(자체 documents 행)은 지표 로드와 무관하다.
-  if (tab === "WIKI" || tab === "PRINCIPLES") {
-    if (_renderedTabs.has(tab)) return;
-    _renderedTabs.add(tab);
-    if (tab === "WIKI") renderWikiTab();
-    else renderPrinciplesTab();
-    return;
-  }
-
+  if (!Object.prototype.hasOwnProperty.call(TAB_GROUP, tab)) return;
   const group = TAB_GROUP[tab];
   ensureGroupLoaded(group);      // 지연 로드 그룹이면 지금 받기 시작한다
   const { state, error } = DATA_GROUPS[group];
   if (state !== "ready") { setTabStatus(tab, state, error); return; }
 
-  clearTabStatus(tab);
   if (_renderedTabs.has(tab)) return;
-  _renderedTabs.add(tab);
-  if (tab === "STOCKS") renderStocksTab(_cachedData);
-  else renderTabContent(tab, _cachedData);
+  try {
+    resetTabContent(tab);
+    _dirtyTabs.add(tab);
+    if (tab === "STOCKS") renderStocksTab(_cachedData);
+    else renderTabContent(tab, _cachedData);
+    _renderedTabs.add(tab);
+    clearTabStatus(tab);
+  } catch (err) {
+    // 렌더 도중 실패한 탭을 완료로 캐시하지 않는다. 재시도 시 부분 카드를 정리한다.
+    setGroupState(group, "error", err);
+  }
 }
 
 // 패널 맨 위에 붙는 로딩/실패 안내 줄.
@@ -103,6 +148,7 @@ function setTabStatus(tab, state, err) {
 // 탭의 재시도는 그 탭이 쓰는 그룹만 다시 받는다 — 지표가 이미 떠 있는데
 // 주식 때문에 전체를 다시 받게 하지 않는다. 메타부터 실패한 경우엔 전체 재시도.
 function retryTab(tab) {
+  if (!Object.prototype.hasOwnProperty.call(TAB_GROUP, tab)) return;
   const group = TAB_GROUP[tab];
   const load = _groupLoaders[group];
   if (!load) { loadDashboardData(); return; }
@@ -133,7 +179,7 @@ function setGroupState(group, state, err = null) {
 // ---------- 진입점 ------------------------------------------
 //
 // 데이터 저장 구조 (2026-07 이후 — Supabase):
-//   app_meta('index')   — 메타데이터 + assessment (기존 index.json 과 동일 구조)
+//   app_meta('index')   — 수집 메타데이터 (기존 index.json 과 동일 구조)
 //   series/observations — 지표·자산·종목·지수별 시계열 + 부가정보
 //
 // get_payload_map RPC 가 기존 data/<종류>/<CODE>.json 과 같은 모양의
@@ -146,79 +192,123 @@ let _loadSeq = 0;
 
 async function loadDashboardData() {
   const seq = ++_loadSeq;
-  clearGlobalError();
-  setGroupState("indicators", "loading");
-  setGroupState("stocks", "loading");
+  // 새 메타를 기다리는 동안 이전 세대 로더를 재사용하지 않는다.
+  for (const group of Object.keys(_groupLoaders)) delete _groupLoaders[group];
+  _cachedData = null;
 
-  let idx;
   try {
-    idx = await sbRpc("get_app_meta");
-    if (!idx) throw new Error("app_meta 가 비어 있습니다");
+    clearGlobalError();
+    resetGroupContent("indicators");
+    resetGroupContent("stocks");
+    setGroupState("indicators", "loading");
+    setGroupState("stocks", "loading");
+
+    const idx = await sbRpc("get_app_meta");
+    if (seq !== _loadSeq) return;
+    if (!idx || typeof idx !== "object" || Array.isArray(idx)) {
+      throw new Error("app_meta 형식이 올바르지 않습니다");
+    }
+
+    const target = {
+      last_updated: idx.last_updated,
+      assessment: idx.assessment || null,
+      assessment_kr: idx.assessment_kr || null,
+      indicators: {}, assets: {}, stocks: {}, indices: {},
+    };
+    _cachedData = target;
+    renderLastUpdated(idx.last_updated);
+
+    const codesOf = (list, label) => {
+      if (list == null) return [];
+      if (!Array.isArray(list) || list.some((entry) =>
+        !entry || typeof entry.code !== "string" || !entry.code.trim())) {
+        throw new Error(`${label} 메타데이터의 코드 목록 형식이 올바르지 않습니다`);
+      }
+      return list.map((entry) => entry.code);
+    };
+    // 잘못된 메타는 로더를 설치하기 전에 거부한다. 재시도는 교정된 메타부터 받는다.
+    const codes = {
+      indicators: codesOf(idx.indicators, "지표"),
+      assets: codesOf(idx.assets, "자산"),
+      stocks: codesOf(idx.stocks, "종목"),
+      indices: codesOf(idx.indices, "지수"),
+    };
+    const currencyCodes = new Set(Object.values(CURRENCY_ASSET_CODES).flat());
+    const groupAttempts = {};
+
+    // parts = [[키, 코드목록, 필수여부, RPC 추가인자], …]
+    // 준비·요청·후처리 오류는 해당 그룹의 재시도로 복구한다.
+    const loadGroup = async (group, prepareParts) => {
+      const attempt = (groupAttempts[group] || 0) + 1;
+      groupAttempts[group] = attempt;
+      const isCurrent = () => seq === _loadSeq && groupAttempts[group] === attempt;
+      try {
+        resetGroupContent(group);
+        const parts = prepareParts();
+        const results = await Promise.allSettled(
+          parts.map(([, codes, , extraArgs]) => fetchPayloadMap(codes, extraArgs)));
+        if (!isCurrent()) return;
+
+        const missing = [];
+        let fatal = null;
+        results.forEach((result, i) => {
+          const [key, codes, required] = parts[i];
+          if (result.status === "fulfilled") {
+            const payload = result.value;
+            if (!payload || !payload.map || typeof payload.map !== "object"
+                || Array.isArray(payload.map) || !Array.isArray(payload.missing)) {
+              throw new Error(`${key} 응답 형식이 올바르지 않습니다`);
+            }
+            target[key] = { ...payload.map };
+            missing.push(...payload.missing);
+          } else {
+            target[key] = {};
+            if (required) fatal = result.reason || new Error(`${key} 데이터를 불러오지 못했습니다`);
+            else missing.push(...codes);
+          }
+        });
+
+        // 광고된 핵심 환율은 이번 시도에서 실제 시계열을 받아야 한다.
+        // 비교용 자산 누락은 허용하며, 이전 시도의 데이터로 성공 처리하지 않는다.
+        if (group === "indicators") {
+          const requiredCurrencyAssets = parts.find(([key]) => key === "assets")[1]
+            .filter((code) => currencyCodes.has(code));
+          const unavailable = requiredCurrencyAssets.filter((code) =>
+            !Array.isArray(target.assets[code]?.series) || !target.assets[code].series.length);
+          if (unavailable.length && !fatal) {
+            fatal = new Error(`필수 통화·환율 데이터를 불러오지 못했습니다: ${unavailable.join(", ")}`);
+          }
+        }
+        if (fatal) throw fatal;
+        setGroupState(group, "ready");
+        if (missing.length) {
+          console.warn(`${group}: ${missing.length}개 코드를 불러오지 못했습니다`, missing);
+        }
+      } catch (err) {
+        if (isCurrent()) setGroupState(group, "error", err);
+      }
+    };
+
+    _groupLoaders.indicators = () => loadGroup("indicators", () =>
+      [["indicators", codes.indicators, true],
+       ["assets", codes.assets, false]]);
+    _groupLoaders.stocks = () => loadGroup("stocks", () =>
+      [["stocks", codes.stocks, true, STOCK_SERIES_ARGS()],
+       ["indices", codes.indices, false]]);
+
+    // 주식은 첫 방문까지 미룬다. 이미 주식 탭에 있다면 상태 변경이 로드를 시작한다.
+    setGroupState("stocks", "idle");
+    await _groupLoaders.indicators();
   } catch (err) {
     if (seq !== _loadSeq) return;
-    // 메타가 없으면 지표·종목 어느 쪽도 그릴 수 없다 — 배너 + 탭별 재시도 안내
+    // 메타 조회뿐 아니라 갱신 표시·로더 구성 중 발생한 예외도 오류로 전환한다.
+    for (const group of Object.keys(_groupLoaders)) delete _groupLoaders[group];
     const stamp = document.getElementById("last-updated");
     if (stamp) stamp.textContent = "갱신 정보를 불러오지 못했습니다";
-    renderError(err);
     setGroupState("indicators", "error", err);
     setGroupState("stocks", "error", err);
-    return;
+    renderError(err);
   }
-  if (seq !== _loadSeq) return;
-
-  const target = {
-    last_updated:  idx.last_updated,
-    indicators: {}, assets: {}, stocks: {}, indices: {},
-    assessment:    idx.assessment    || null,
-    assessment_kr: idx.assessment_kr || null,
-  };
-  _cachedData = target;
-  renderLastUpdated(idx.last_updated);
-
-  const codesOf = (list) => (list || []).map((e) => e.code);
-
-  // parts = [[키, 코드목록, 필수여부, RPC 추가인자], …]
-  // 필수 목록이 통째로 실패하면 그룹을 실패로 본다. 보조 목록(자산·지수)이
-  // 빠져도 렌더러는 각 섹션의 "데이터 없음" 안내로 처리하므로 탭은 살린다.
-  const loadGroup = async (group, parts) => {
-    const results = await Promise.allSettled(
-      parts.map(([, codes, , extraArgs]) => fetchPayloadMap(codes, extraArgs)));
-    if (seq !== _loadSeq) return;   // 이미 새 로드가 시작됐으면 결과를 버린다
-
-    const missing = [];
-    let fatal = null;
-    results.forEach((r, i) => {
-      const [key, , required] = parts[i];
-      if (r.status === "fulfilled") {
-        Object.assign(target[key], r.value.map);
-        missing.push(...r.value.missing);
-      } else if (required) {
-        fatal = r.reason;
-      } else {
-        missing.push(...parts[i][1]);
-      }
-    });
-
-    if (fatal) { setGroupState(group, "error", fatal); return; }
-    setGroupState(group, "ready");
-    if (missing.length) {
-      console.warn(`${group}: ${missing.length}개 코드를 불러오지 못했습니다`, missing);
-    }
-  };
-
-  _groupLoaders.indicators = () => loadGroup("indicators",
-    [["indicators", codesOf(idx.indicators), true],
-     ["assets",     codesOf(idx.assets),     false]]);
-  // 지수는 4개뿐이라 전체 일별을 그대로 받고, 154개인 종목만 다운샘플링한다.
-  _groupLoaders.stocks = () => loadGroup("stocks",
-    [["stocks",     codesOf(idx.stocks),     true,  STOCK_SERIES_ARGS()],
-     ["indices",    codesOf(idx.indices),    false]]);
-
-  // 종목(다운샘플링 후 약 4MB)은 주식 탭을 처음 열 때까지 미룬다.
-  // setGroupState 가 활성 탭을 다시 판단하므로, 메타를 기다리는 동안 사용자가
-  // 이미 주식 탭에 들어와 있었다면 이 한 줄에서 곧바로 로드가 시작된다.
-  setGroupState("stocks", "idle");
-  await _groupLoaders.indicators();
 }
 
 function wireEventsToggle() {
@@ -233,53 +323,58 @@ function wireEventsToggle() {
 
 
 // ---------- 렌더링 -----------------------------------------
-// tab: "US" | "KR" — 해당 탭의 지표와 assessment를 렌더링한다.
+// tab: "US" | "KR" — 기존 환율 자산을 먼저, 통화·물가 지표를 이어서 표시한다.
+const CURRENCY_ASSET_CODES = { KR: ["DEXKOUS"], US: ["DTWEXBGS"] };
+
 function renderTabContent(tab, data) {
+  renderAssessment(tab === "US" ? data.assessment : data.assessment_kr, tab);
   const indicators = data.indicators || {};
-  const assets     = data.assets     || {};
+  const assets = data.assets || {};
+  const hosts = {
+    dollar: document.getElementById(`dollar-cards-${tab}`),
+    inflation: document.getElementById(`inflation-cards-${tab}`),
+  };
+  const rendered = new Set();
+  const counts = { dollar: 0, inflation: 0 };
+  const appendCard = (code, payload, category) => {
+    const host = hosts[category];
+    if (!host || !payload?.series?.length || rendered.has(code)) return;
+    // 카드 하나가 실패해도 다른 시계열과 섹터 전환은 계속 동작한다.
+    try {
+      host.appendChild(renderCard(code, { ...payload, category }, assets));
+      rendered.add(code);
+      counts[category]++;
+    } catch (err) {
+      console.error(`${code} 카드를 그리지 못했습니다`, err);
+    }
+  };
 
-  // 탭에 맞는 assessment 선택
-  const assessment = tab === "US"
-    ? (data.assessment    || null)
-    : (data.assessment_kr || null);
-  renderAssessment(assessment, tab);
-
-  const growthHost    = document.getElementById(`growth-cards-${tab}`);
-  const inflationHost = document.getElementById(`inflation-cards-${tab}`);
-  const dollarHost    = document.getElementById(`dollar-cards-${tab}`);
-
-  // 지표가 하나도 없으면 안내 메시지
-  if (Object.keys(indicators).length === 0) {
-    if (growthHost) growthHost.innerHTML = emptyMessage("아직 데이터가 없습니다. GitHub Actions 를 실행해 주세요.");
-    wireSectorNav(tab);
-    return;
-  }
-
-  for (const [code, payload] of Object.entries(indicators)) {
-    if (!payload.series || payload.series.length === 0) continue;
-    const region = payload.region ?? "US";
-    // US 탭: KR 이 아닌 지표, KR 탭: KR 지표만
-    const belongsHere = tab === "US" ? region !== "KR" : region === tab;
-    if (!belongsHere) continue;
-    let host;
-    if (payload.category === "growth") host = growthHost;
-    else if (payload.category === "dollar") host = dollarHost;
-    else host = inflationHost;
-    // 카드 하나가 터져도 나머지는 그린다 — 예외를 그대로 올리면 이 루프가
-    // 중단되고 탭 전체가 빈 화면이 된다.
-    if (host) {
-      try {
-        host.appendChild(renderCard(code, payload, assets));
-      } catch (err) {
-        console.error(`${code} 카드를 그리지 못했습니다`, err);
-      }
+  for (const code of CURRENCY_ASSET_CODES[tab] || []) {
+    appendCard(code, assets[code], "dollar");
+    if (!rendered.has(code) && hosts.dollar) {
+      const message = document.createElement("p");
+      message.className = "empty";
+      message.textContent = `${ASSET_META[code].displayName} 데이터가 없습니다.`;
+      hosts.dollar.appendChild(message);
     }
   }
 
+  for (const [code, payload] of Object.entries(indicators)) {
+    const region = payload.region ?? "US";
+    const belongsHere = tab === "US" ? region !== "KR" : region === tab;
+    if (!belongsHere || !Object.prototype.hasOwnProperty.call(hosts, payload.category)) continue;
+    appendCard(code, payload, payload.category);
+  }
+
+  for (const [category, host] of Object.entries(hosts)) {
+    if (host && !counts[category] && !host.children.length) {
+      host.innerHTML = emptyMessage("아직 데이터가 없습니다.");
+    }
+  }
   wireSectorNav(tab);
 }
 
-/** 섹터 서브탭(성장/인플레/달러) 버튼 클릭 → 해당 sector-panel 만 보이도록 토글. */
+/** 국가별 통화·물가 및 주식 서브탭의 sector-panel 표시를 전환한다. */
 function wireSectorNav(tab) {
   const panel = document.getElementById(`panel-${tab}`);
   if (!panel) return;
@@ -307,6 +402,22 @@ function wireSectorNav(tab) {
   });
 }
 
+// 차트 인스턴스만 해제한다. 요약 패널·캔버스 등 정적 마크업은 남긴다.
+function destroyAssessmentChart(tab) {
+  const canvas = document.getElementById(`assessment-scatter-${tab}`);
+  if (!canvas) return;
+  const chart = canvas._chart || (typeof Chart !== "undefined" && typeof Chart.getChart === "function"
+    ? Chart.getChart(canvas) : null);
+  canvas._chart = null;
+  if (chart) chart.destroy();
+}
+
+function clearAssessment(tab) {
+  const section = document.getElementById(`assessment-${tab}`);
+  if (section) section.hidden = true;
+  destroyAssessmentChart(tab);
+}
+
 // 현재 국면 자동 판정 패널.
 // assessment = { primary?, full, rolling_10y, config, trajectory }
 //   primary — 백테스트 검증 모델(scripts/compare_models.py 승자)의 종합 판정.
@@ -314,9 +425,8 @@ function wireSectorNav(tab) {
 // tab: "US" | "KR"
 function renderAssessment(assessment, tab) {
   const section = document.getElementById(`assessment-${tab}`);
-  if (!section) return;
-  if (!assessment || !assessment.full || !assessment.rolling_10y) {
-    section.hidden = true;
+  if (!section || !assessment || !assessment.full || !assessment.rolling_10y) {
+    clearAssessment(tab);
     return;
   }
   section.hidden = false;
@@ -354,7 +464,7 @@ function renderAssessment(assessment, tab) {
   fillPanel("10y",  assessment.rolling_10y);
 
   // 종합 판정 (primary) — 존재하는 탭(US)에서만 카드 표시
-  const primary = assessment.primary || null;
+  const primary = tab === "US" ? (assessment.primary || null) : null;
   const primaryCard = document.getElementById(`assessment-${tab}-primary-card`);
   if (primaryCard) {
     primaryCard.hidden = !primary;
@@ -400,11 +510,15 @@ function renderAssessment(assessment, tab) {
 }
 
 function renderScatter(assessment, tab) {
+  if (!assessment || !assessment.full) {
+    clearAssessment(tab);
+    return;
+  }
   const canvas = document.getElementById(`assessment-scatter-${tab}`);
   if (!canvas) return;
 
   // primary(종합 판정) 가 있으면 그 궤적·현재값을 그린다. 없으면 장기 기준.
-  const primary  = assessment.primary || null;
+  const primary  = tab === "US" ? (assessment.primary || null) : null;
   const usePrimary = !!(primary && primary.trajectory && primary.trajectory.length);
   const traj = usePrimary ? primary.trajectory : (assessment.trajectory || []);
   const cur  = usePrimary ? primary : assessment.full;
@@ -457,7 +571,7 @@ function renderScatter(assessment, tab) {
   };
 
   // 기존 차트 파괴 후 재생성
-  if (canvas._chart) { canvas._chart.destroy(); canvas._chart = null; }
+  destroyAssessmentChart(tab);
 
   // 40/60 경계선
   const bandAnnotations = {
@@ -511,11 +625,16 @@ function renderScatter(assessment, tab) {
 
 function renderLastUpdated(iso) {
   const el = document.getElementById("last-updated");
+  if (!el) return;
   if (!iso) {
     el.textContent = "아직 갱신되지 않았습니다";
     return;
   }
   const d = new Date(iso);
+  if (!Number.isFinite(d.getTime())) {
+    el.textContent = "갱신 시간을 확인할 수 없습니다";
+    return;
+  }
   const kst = new Intl.DateTimeFormat("ko-KR", {
     year: "numeric", month: "2-digit", day: "2-digit",
     hour: "2-digit", minute: "2-digit",
@@ -525,7 +644,7 @@ function renderLastUpdated(iso) {
 }
 
 function renderCard(code, payload, assets) {
-  const meta = INDICATOR_META[code] ?? {
+  const meta = INDICATOR_META[code] ?? ASSET_META[code] ?? {
     displayName: code, description: "", unit: "", decimals: 2,
   };
   const series   = payload.series;
@@ -539,7 +658,10 @@ function renderCard(code, payload, assets) {
   card.className = "card";
   if (meta.region) card.dataset.region = meta.region;
 
-  const changeStr   = formatChange(change, meta);
+  const changeStr   = formatChange(change, meta) + (change != null && meta.unit === "₩" ? "원" : "");
+  const valueStr = meta.unit === "₩"
+    ? formatWithUnit(latest.value, meta.decimals, meta.unit)
+    : formatValue(latest.value, meta);
   const changeClass = change == null ? "" : change >= 0 ? "up" : "down";
 
   // 실제로 선택 가능한 타임프레임만 버튼으로 노출한다.
@@ -549,8 +671,8 @@ function renderCard(code, payload, assets) {
     return `<button type="button" class="tf-btn${active}" data-tf="${tf.key}">${tf.label}</button>`;
   }).join("");
 
-  // 비교 자산 select: 추천 / 관련 / 기타로 그룹화. assets 에 존재하는 코드만 옵션으로 노출.
-  const compareSelectHtml = buildCompareSelectHtml(recs, assets);
+  // 비교 자산 select: 주요 비교 / 관련 / 기타로 그룹화. 자기 자신은 제외한다.
+  const compareSelectHtml = buildCompareSelectHtml(recs, assets, code);
 
   const badgesHtml = renderBadges(payload.current);
 
@@ -560,7 +682,7 @@ function renderCard(code, payload, assets) {
       <span class="card-code">${code}</span>
     </header>
     <div>
-      <span class="card-value">${formatValue(latest.value, meta)}</span>
+      <span class="card-value">${valueStr}</span>${meta.valueLabel ? `<span class="card-unit">${escapeHtml(meta.valueLabel)}</span>` : ""}
       <span class="card-change ${changeClass}" title="약 ${CHANGE_WINDOW_DAYS}일 전 대비">${changeStr}</span>
     </div>
     ${badgesHtml}
@@ -708,24 +830,25 @@ function renderCard(code, payload, assets) {
 
   // 최초 렌더링 + 전역 이벤트 토글에 반응할 수 있도록 등록
   redraw();
+  redraw.card = card;
   APP_STATE.cardRedraws.push(redraw);
 
   return card;
 }
 
-/** 비교 자산 select 의 <option> HTML 을 조립한다. 추천/관련/기타 순으로 그룹화. */
-function buildCompareSelectHtml(recs, assets) {
+/** 비교 자산 select 의 <option> HTML 을 조립한다. 주요 비교/관련/기타 순으로 그룹화. */
+function buildCompareSelectHtml(recs, assets, primaryCode = null) {
   const availableCodes = new Set(
     Object.entries(assets)
-      .filter(([, p]) => p.series && p.series.length > 0)
+      .filter(([code, p]) => code !== primaryCode && p.series && p.series.length > 0)
       .map(([code]) => code),
   );
   if (availableCodes.size === 0) {
     return `<option value="">비교 자산 데이터 없음</option>`;
   }
 
-  const primary   = (recs.primary   || []).filter((c) => availableCodes.has(c));
-  const secondary = (recs.secondary || []).filter((c) => availableCodes.has(c));
+  const primary   = [...new Set(recs.primary || [])].filter((c) => availableCodes.has(c));
+  const secondary = [...new Set(recs.secondary || [])].filter((c) => availableCodes.has(c) && !primary.includes(c));
   const listed    = new Set([...primary, ...secondary]);
   const others    = [...availableCodes].filter((c) => !listed.has(c));
 
@@ -738,15 +861,14 @@ function buildCompareSelectHtml(recs, assets) {
 
   return [
     `<option value="">— 비교하지 않음 —</option>`,
-    group("추천 (4분면 프레임워크 기반)", primary),
+    group("주요 비교", primary),
     group("관련", secondary),
     group("기타 자산", others),
   ].join("");
 }
 
 function renderError(err) {
-  // main 전체를 지우지 않는다 — 첫 화면인 위키 그래프는 지표 데이터와
-  // 무관하게 동작하므로, 지표 로드 실패는 상단 배너로만 알린다.
+  // 탭 탐색과 재시도 버튼이 유지되도록 실패 안내는 상단 배너에 표시한다.
   clearGlobalError();   // 재시도할 때마다 배너가 쌓이지 않게 한다
   const main = document.querySelector("main");
   if (!main) return;

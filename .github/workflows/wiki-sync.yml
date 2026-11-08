@@ -1,7 +1,7 @@
-name: Sync Wiki Graph
+name: Sync Stock Research Notes
 
-# luke_wiki 의 변경을 대시보드에 빠르게 반영하는 경량 워크플로.
-# 지표 수집 없이 위키 그래프(data/wiki/)만 재생성한다 — 1분 내 완료.
+# luke_wiki 의 변경을 Stocks 시장·플레이어 지도에 반영하는 경량 워크플로.
+# 지표 수집 없이 공유 연구 노트와 연결 정보(data/wiki/)만 재생성한다.
 #
 # 트리거 3가지:
 #   1) repository_dispatch (event_type: wiki-updated)
@@ -47,7 +47,7 @@ jobs:
           path: .luke_wiki_src
           fetch-depth: 0   # 노트별 마지막 수정일을 git log 에서 뽑기 위해 전체 이력
 
-      - name: Build wiki knowledge graph
+      - name: Export stock research notes and relationships
         if: steps.wiki_checkout.outcome == 'success'
         run: python scripts/build_wiki_graph.py --vault .luke_wiki_src --out data/wiki/graph.json --repo lukeeee73/luke_wiki
 
@@ -61,6 +61,6 @@ jobs:
             echo "No changes under data/wiki/ — skipping commit."
           else
             git add data/wiki/
-            git commit -m "chore: sync wiki graph ($(date -u +%Y-%m-%dT%H:%M))"
+            git commit -m "chore: sync stock research notes ($(date -u +%Y-%m-%dT%H:%M))"
             git push
           fi

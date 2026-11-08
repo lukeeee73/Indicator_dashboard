@@ -7,7 +7,8 @@ const ROOT = path.resolve(__dirname, "..");
 // Read the production entry point instead of maintaining a second script list.
 function scriptPaths(root = ROOT) {
   const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
-  return [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["']/g)].map((match) => match[1]);
+  return [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["']/g)]
+    .map((match) => match[1].split(/[?#]/)[0]);
 }
 
 function appScriptPaths(root = ROOT) {
