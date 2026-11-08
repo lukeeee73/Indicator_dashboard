@@ -8638,18 +8638,34 @@
     {
       "date": "2026-11-02",
       "value": 594.04
+    },
+    {
+      "date": "2026-11-03",
+      "value": 600.09
+    },
+    {
+      "date": "2026-11-04",
+      "value": 627.66
+    },
+    {
+      "date": "2026-11-05",
+      "value": 614.41
+    },
+    {
+      "date": "2026-11-06",
+      "value": 603.01
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 122146537472.0,
-      "pe_ratio": 36.19988,
-      "forward_pe": 34.70329,
+      "market_cap": 123969331200.0,
+      "pe_ratio": 36.7465,
+      "forward_pe": 35.23094,
       "eps_ttm": 16.41,
       "dividend_yield": 0.0,
       "profit_margin": 0.15726,
       "operating_margin": 0.13524,
-      "price_to_book": 12.4330635,
+      "price_to_book": 12.620803,
       "return_on_equity": 0.35811
     },
     "quarterly": [
@@ -8691,8 +8707,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-02",
-    "current_price": 594.04,
+    "as_of": "2026-11-06",
+    "current_price": 603.01,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
@@ -8701,7 +8717,7 @@
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 291.0,
+        "fair_value": 290.97,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
@@ -8711,8 +8727,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 277.96,
-    "valuation_gap": 1.1371,
+    "fair_value": 277.95,
+    "valuation_gap": 1.1695,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8824,10 +8840,10 @@
         "gap": 1.2877
       },
       {
-        "date": "2026-11-02",
-        "price": 594.04,
+        "date": "2026-11-06",
+        "price": 603.01,
         "fair_value": 259.4,
-        "gap": 1.2901
+        "gap": 1.3246
       }
     ],
     "qualitative": {

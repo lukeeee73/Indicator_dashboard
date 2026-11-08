@@ -4,14 +4,6 @@
   "group": "에너지 / 원자재",
   "series": [
     {
-      "date": "2016-11-03",
-      "value": 9.64
-    },
-    {
-      "date": "2016-11-04",
-      "value": 9.93
-    },
-    {
       "date": "2016-11-07",
       "value": 10.15
     },
@@ -6289,7 +6281,7 @@
     },
     {
       "date": "2023-02-02",
-      "value": 41.65
+      "value": 41.64
     },
     {
       "date": "2023-02-03",
@@ -10050,18 +10042,34 @@
     {
       "date": "2026-11-02",
       "value": 62.97
+    },
+    {
+      "date": "2026-11-03",
+      "value": 61.77
+    },
+    {
+      "date": "2026-11-04",
+      "value": 62.6
+    },
+    {
+      "date": "2026-11-05",
+      "value": 57.9
+    },
+    {
+      "date": "2026-11-06",
+      "value": 59.42
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 90426023936.0,
-      "pe_ratio": 26.457983,
-      "forward_pe": 14.711071,
+      "market_cap": 85328158720.0,
+      "pe_ratio": 24.966385,
+      "forward_pe": 13.987824,
       "eps_ttm": 2.38,
-      "dividend_yield": 0.95,
+      "dividend_yield": 1.01,
       "profit_margin": 0.13029,
       "operating_margin": 0.35264,
-      "price_to_book": 4.201922,
+      "price_to_book": 3.965034,
       "return_on_equity": 0.15719
     },
     "quarterly": [
@@ -10110,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-02",
-    "current_price": 62.97,
+    "as_of": "2026-11-06",
+    "current_price": 59.42,
     "sector": "Materials",
     "methods": {
       "pe_benchmark": {
@@ -10120,7 +10128,7 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 59.93,
+        "fair_value": 59.47,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (14)"
       },
@@ -10130,8 +10138,8 @@
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 42.68,
-    "valuation_gap": 0.4752,
+    "fair_value": 42.55,
+    "valuation_gap": 0.3966,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10243,10 +10251,10 @@
         "gap": 0.6405
       },
       {
-        "date": "2026-11-02",
-        "price": 62.97,
+        "date": "2026-11-06",
+        "price": 59.42,
         "fair_value": 38.08,
-        "gap": 0.6536
+        "gap": 0.5604
       }
     ],
     "qualitative": {

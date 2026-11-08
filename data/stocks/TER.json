@@ -4,14 +4,6 @@
   "group": "로보틱스 / 피지컬 AI",
   "series": [
     {
-      "date": "2016-11-03",
-      "value": 21.78
-    },
-    {
-      "date": "2016-11-04",
-      "value": 21.64
-    },
-    {
       "date": "2016-11-07",
       "value": 22.13
     },
@@ -10050,18 +10042,34 @@
     {
       "date": "2026-11-02",
       "value": 261.01
+    },
+    {
+      "date": "2026-11-03",
+      "value": 269.35
+    },
+    {
+      "date": "2026-11-04",
+      "value": 250.99
+    },
+    {
+      "date": "2026-11-05",
+      "value": 212.74
+    },
+    {
+      "date": "2026-11-06",
+      "value": 218.22
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 40750125056.0,
-      "pe_ratio": 30.001152,
-      "forward_pe": 21.767305,
+      "market_cap": 34068762624.0,
+      "pe_ratio": 25.082184,
+      "forward_pe": 18.198353,
       "eps_ttm": 8.7,
-      "dividend_yield": 0.2,
+      "dividend_yield": 0.24,
       "profit_margin": 0.27457002,
       "operating_margin": 0.30872,
-      "price_to_book": 11.051317,
+      "price_to_book": 9.239351,
       "return_on_equity": 0.42723998
     },
     "quarterly": [
@@ -10110,8 +10118,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-02",
-    "current_price": 261.01,
+    "as_of": "2026-11-06",
+    "current_price": 218.22,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10120,19 +10128,19 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 263.8,
+        "fair_value": 263.81,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 67.99,
+        "fair_value": 68.0,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
     "fair_value": 214.54,
-    "valuation_gap": 0.2166,
-    "signal": "expensive",
+    "valuation_gap": 0.0171,
+    "signal": "fair",
     "gap_series_weekly": [
       {
         "date": "2026-07-02",
@@ -10243,10 +10251,10 @@
         "gap": 0.125
       },
       {
-        "date": "2026-11-02",
-        "price": 261.01,
+        "date": "2026-11-06",
+        "price": 218.22,
         "fair_value": 243.88,
-        "gap": 0.0702
+        "gap": -0.1052
       }
     ],
     "qualitative": {

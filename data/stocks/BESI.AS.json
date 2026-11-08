@@ -4,14 +4,6 @@
   "group": "반도체 — 장비 · 소재",
   "series": [
     {
-      "date": "2016-11-03",
-      "value": 10.36
-    },
-    {
-      "date": "2016-11-04",
-      "value": 10.46
-    },
-    {
       "date": "2016-11-07",
       "value": 10.81
     },
@@ -10237,19 +10229,31 @@
     },
     {
       "date": "2026-11-03",
-      "value": 157.7
+      "value": 156.1
+    },
+    {
+      "date": "2026-11-04",
+      "value": 152.0
+    },
+    {
+      "date": "2026-11-05",
+      "value": 140.9
+    },
+    {
+      "date": "2026-11-06",
+      "value": 143.4
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 12475216896.0,
-      "pe_ratio": 43.443523,
-      "forward_pe": 24.251762,
+      "market_cap": 11340384256.0,
+      "pe_ratio": 39.504128,
+      "forward_pe": 22.053633,
       "eps_ttm": 3.63,
-      "dividend_yield": 1.03,
+      "dividend_yield": 1.1,
       "profit_margin": 0.32852,
       "operating_margin": 0.45758,
-      "price_to_book": 19.24344,
+      "price_to_book": 17.498474,
       "return_on_equity": 0.56796
     },
     "quarterly": [
@@ -10298,8 +10302,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-03",
-    "current_price": 157.7,
+    "as_of": "2026-11-06",
+    "current_price": 143.4,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10308,7 +10312,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 143.06,
+        "fair_value": 143.05,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -10319,7 +10323,7 @@
       }
     },
     "fair_value": 98.91,
-    "valuation_gap": 0.5943,
+    "valuation_gap": 0.4498,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10509,10 +10513,10 @@
         "gap": 0.8836
       },
       {
-        "date": "2026-11-03",
-        "price": 157.7,
+        "date": "2026-11-06",
+        "price": 143.4,
         "fair_value": 81.76,
-        "gap": 0.9288
+        "gap": 0.7539
       }
     ],
     "qualitative": {
