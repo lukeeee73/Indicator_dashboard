@@ -4,14 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-11-07",
-      "value": 88.89
-    },
-    {
-      "date": "2016-11-08",
-      "value": 89.18
-    },
-    {
       "date": "2016-11-09",
       "value": 91.67
     },
@@ -2021,7 +2013,7 @@
     },
     {
       "date": "2018-11-07",
-      "value": 116.29
+      "value": 116.28
     },
     {
       "date": "2018-11-08",
@@ -5345,7 +5337,7 @@
     },
     {
       "date": "2022-02-28",
-      "value": 144.98
+      "value": 144.99
     },
     {
       "date": "2022-03-01",
@@ -5405,7 +5397,7 @@
     },
     {
       "date": "2022-03-21",
-      "value": 154.9
+      "value": 154.91
     },
     {
       "date": "2022-03-22",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-06",
       "value": 276.22
+    },
+    {
+      "date": "2026-11-09",
+      "value": 281.64
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 664947261440.0,
-      "pe_ratio": 41.915024,
-      "forward_pe": 23.775463,
+      "market_cap": 677999673344.0,
+      "pe_ratio": 42.73778,
+      "forward_pe": 24.242159,
       "eps_ttm": 6.59,
       "dividend_yield": 1.94,
       "profit_margin": 0.16203,
       "operating_margin": 0.25737,
-      "price_to_book": 8.1553,
+      "price_to_book": 8.315383,
       "return_on_equity": 0.20018
     },
     "quarterly": [
@@ -10125,8 +10121,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 276.22,
+    "as_of": "2026-11-09",
+    "current_price": 281.64,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
@@ -10135,7 +10131,7 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 185.89,
+        "fair_value": 185.88,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
@@ -10146,7 +10142,7 @@
       }
     },
     "fair_value": 129.25,
-    "valuation_gap": 1.1371,
+    "valuation_gap": 1.1791,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10262,6 +10258,12 @@
         "price": 276.22,
         "fair_value": 118.75,
         "gap": 1.3261
+      },
+      {
+        "date": "2026-11-09",
+        "price": 281.64,
+        "fair_value": 118.75,
+        "gap": 1.3717
       }
     ],
     "qualitative": {

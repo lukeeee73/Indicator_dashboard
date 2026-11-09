@@ -4,14 +4,6 @@
   "group": "유틸리티 / 전력",
   "series": [
     {
-      "date": "2016-11-07",
-      "value": 33.55
-    },
-    {
-      "date": "2016-11-08",
-      "value": 33.65
-    },
-    {
       "date": "2016-11-09",
       "value": 32.63
     },
@@ -1765,7 +1757,7 @@
     },
     {
       "date": "2018-08-08",
-      "value": 33.83
+      "value": 33.84
     },
     {
       "date": "2018-08-09",
@@ -6393,7 +6385,7 @@
     },
     {
       "date": "2023-03-15",
-      "value": 59.82
+      "value": 59.81
     },
     {
       "date": "2023-03-16",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-06",
       "value": 92.34
+    },
+    {
+      "date": "2026-11-09",
+      "value": 93.85
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 107507859456.0,
-      "pe_ratio": 21.08219,
-      "forward_pe": 18.718302,
+      "market_cap": 109260070912.0,
+      "pe_ratio": 21.425798,
+      "forward_pe": 19.02099,
       "eps_ttm": 4.38,
       "dividend_yield": 3.29,
       "profit_margin": 0.16003999,
       "operating_margin": 0.36922002,
-      "price_to_book": 2.5563366,
+      "price_to_book": 2.5980012,
       "return_on_equity": 0.11897001
     },
     "quarterly": [
@@ -10111,8 +10107,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 92.34,
+    "as_of": "2026-11-09",
+    "current_price": 93.85,
     "sector": "Utilities",
     "methods": {
       "pe_benchmark": {
@@ -10121,18 +10117,18 @@
         "note": "EPS_TTM × 섹터 P/E (16)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 74.0,
+        "fair_value": 74.01,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (15)"
       },
       "graham_number": {
-        "fair_value": 59.66,
+        "fair_value": 59.67,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 69.17,
-    "valuation_gap": 0.3349,
+    "fair_value": 69.18,
+    "valuation_gap": 0.3567,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10248,6 +10244,12 @@
         "price": 92.34,
         "fair_value": 69.92,
         "gap": 0.3207
+      },
+      {
+        "date": "2026-11-09",
+        "price": 93.85,
+        "fair_value": 69.92,
+        "gap": 0.3422
       }
     ],
     "qualitative": {

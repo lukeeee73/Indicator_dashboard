@@ -4,14 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-11-07",
-      "value": 32.81
-    },
-    {
-      "date": "2016-11-08",
-      "value": 33.09
-    },
-    {
       "date": "2016-11-09",
       "value": 32.19
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-06",
       "value": 76.12
+    },
+    {
+      "date": "2026-11-09",
+      "value": 75.78
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 126620819456.0,
-      "pe_ratio": 15.694846,
-      "forward_pe": 12.8537445,
+      "market_cap": 126071889920.0,
+      "pe_ratio": 15.626804,
+      "forward_pe": 12.798019,
       "eps_ttm": 4.85,
       "dividend_yield": 5.83,
       "profit_margin": 0.39333,
       "operating_margin": 0.61478,
-      "price_to_book": -56.933434,
+      "price_to_book": -56.68661,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 76.12,
+    "as_of": "2026-11-09",
+    "current_price": 75.78,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
@@ -10128,13 +10124,13 @@
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 106.6,
+        "fair_value": 106.58,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       }
     },
     "fair_value": 106.66,
-    "valuation_gap": -0.2863,
+    "valuation_gap": -0.2895,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10250,6 +10246,12 @@
         "price": 76.12,
         "fair_value": 122.98,
         "gap": -0.381
+      },
+      {
+        "date": "2026-11-09",
+        "price": 75.78,
+        "fair_value": 122.98,
+        "gap": -0.3838
       }
     ],
     "qualitative": {

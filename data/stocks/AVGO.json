@@ -4,14 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-11-07",
-      "value": 13.58
-    },
-    {
-      "date": "2016-11-08",
-      "value": 13.58
-    },
-    {
       "date": "2016-11-09",
       "value": 13.31
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-06",
       "value": 293.69
+    },
+    {
+      "date": "2026-11-09",
+      "value": 318.55
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1401967345664.0,
-      "pe_ratio": 37.5083,
-      "forward_pe": 15.088052,
+      "market_cap": 1520592093184.0,
+      "pe_ratio": 40.681995,
+      "forward_pe": 16.364698,
       "eps_ttm": 7.83,
       "dividend_yield": 0.89,
       "profit_margin": 0.42944,
       "operating_margin": 0.54307,
-      "price_to_book": 14.064266,
+      "price_to_book": 15.254287,
       "return_on_equity": 0.44245
     },
     "quarterly": [
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 293.69,
+    "as_of": "2026-11-09",
+    "current_price": 318.55,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10128,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 428.23,
+        "fair_value": 428.24,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
@@ -10139,8 +10135,8 @@
       }
     },
     "fair_value": 250.22,
-    "valuation_gap": 0.1737,
-    "signal": "overvalued",
+    "valuation_gap": 0.2731,
+    "signal": "expensive",
     "gap_series_weekly": [
       {
         "date": "2026-05-01",
@@ -10309,6 +10305,12 @@
         "price": 293.69,
         "fair_value": 219.24,
         "gap": 0.3396
+      },
+      {
+        "date": "2026-11-09",
+        "price": 318.55,
+        "fair_value": 219.24,
+        "gap": 0.453
       }
     ],
     "qualitative": {

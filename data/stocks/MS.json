@@ -4,14 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-11-07",
-      "value": 25.66
-    },
-    {
-      "date": "2016-11-08",
-      "value": 25.74
-    },
-    {
       "date": "2016-11-09",
       "value": 27.56
     },
@@ -9177,7 +9169,7 @@
     },
     {
       "date": "2025-12-22",
-      "value": 175.78
+      "value": 175.77
     },
     {
       "date": "2025-12-23",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-06",
       "value": 181.44
+    },
+    {
+      "date": "2026-11-09",
+      "value": 188.49
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 283598684160.0,
-      "pe_ratio": 14.388581,
-      "forward_pe": 13.272744,
+      "market_cap": 294618136576.0,
+      "pe_ratio": 14.947661,
+      "forward_pe": 13.788467,
       "eps_ttm": 12.61,
       "dividend_yield": 2.54,
       "profit_margin": 0.25634,
       "operating_margin": 0.39004,
-      "price_to_book": 2.6452448,
+      "price_to_book": 2.748028,
       "return_on_equity": 0.18035
     },
     "quarterly": [
@@ -10078,13 +10074,6 @@
         "revenue": null,
         "operating_income": null,
         "net_income": null,
-        "eps": null
-      },
-      {
-        "date": "2025-06-30",
-        "revenue": 15604000000.0,
-        "operating_income": null,
-        "net_income": 3539000000.0,
         "eps": null
       },
       {
@@ -10117,16 +10106,16 @@
       },
       {
         "date": "2026-09-30",
-        "revenue": null,
+        "revenue": 18871000000.0,
         "operating_income": null,
-        "net_income": null,
+        "net_income": 4909000000.0,
         "eps": 3.03
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 181.44,
+    "as_of": "2026-11-09",
+    "current_price": 188.49,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
@@ -10146,7 +10135,7 @@
       }
     },
     "fair_value": 165.38,
-    "valuation_gap": 0.0971,
+    "valuation_gap": 0.1397,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10262,6 +10251,12 @@
         "price": 181.44,
         "fair_value": 176.4,
         "gap": 0.0286
+      },
+      {
+        "date": "2026-11-09",
+        "price": 188.49,
+        "fair_value": 176.4,
+        "gap": 0.0685
       }
     ],
     "qualitative": {

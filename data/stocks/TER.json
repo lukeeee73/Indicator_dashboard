@@ -4,14 +4,6 @@
   "group": "로보틱스 / 피지컬 AI",
   "series": [
     {
-      "date": "2016-11-07",
-      "value": 22.13
-    },
-    {
-      "date": "2016-11-08",
-      "value": 22.22
-    },
-    {
       "date": "2016-11-09",
       "value": 22.33
     },
@@ -7821,7 +7813,7 @@
     },
     {
       "date": "2024-08-15",
-      "value": 130.74
+      "value": 130.73
     },
     {
       "date": "2024-08-16",
@@ -7833,7 +7825,7 @@
     },
     {
       "date": "2024-08-20",
-      "value": 130.74
+      "value": 130.73
     },
     {
       "date": "2024-08-21",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-06",
       "value": 218.22
+    },
+    {
+      "date": "2026-11-09",
+      "value": 239.87
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 34068762624.0,
-      "pe_ratio": 25.082184,
-      "forward_pe": 18.198353,
+      "market_cap": 37449641984.0,
+      "pe_ratio": 27.571264,
+      "forward_pe": 20.004303,
       "eps_ttm": 8.7,
       "dividend_yield": 0.24,
       "profit_margin": 0.27457002,
       "operating_margin": 0.30872,
-      "price_to_book": 9.239351,
+      "price_to_book": 10.156237,
       "return_on_equity": 0.42723998
     },
     "quarterly": [
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 218.22,
+    "as_of": "2026-11-09",
+    "current_price": 239.87,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
@@ -10128,19 +10124,19 @@
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 263.81,
+        "fair_value": 263.8,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 68.0,
+        "fair_value": 67.99,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
     "fair_value": 214.54,
-    "valuation_gap": 0.0171,
-    "signal": "fair",
+    "valuation_gap": 0.1181,
+    "signal": "overvalued",
     "gap_series_weekly": [
       {
         "date": "2026-07-02",
@@ -10255,6 +10251,12 @@
         "price": 218.22,
         "fair_value": 243.88,
         "gap": -0.1052
+      },
+      {
+        "date": "2026-11-09",
+        "price": 239.87,
+        "fair_value": 243.88,
+        "gap": -0.0164
       }
     ],
     "qualitative": {

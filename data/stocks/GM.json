@@ -4,14 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-11-07",
-      "value": 26.56
-    },
-    {
-      "date": "2016-11-08",
-      "value": 26.32
-    },
-    {
       "date": "2016-11-09",
       "value": 25.68
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-06",
       "value": 86.16
+    },
+    {
+      "date": "2026-11-09",
+      "value": 89.54
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 73149841408.0,
-      "pe_ratio": 18.853392,
-      "forward_pe": 5.8204346,
+      "market_cap": 76015214592.0,
+      "pe_ratio": 19.591904,
+      "forward_pe": 6.0484285,
       "eps_ttm": 4.57,
       "dividend_yield": 0.84,
       "profit_margin": 0.021170001,
       "operating_margin": 0.07334,
-      "price_to_book": 1.1647022,
+      "price_to_book": 1.210325,
       "return_on_equity": 0.06282
     },
     "quarterly": [
@@ -10118,8 +10114,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 86.16,
+    "as_of": "2026-11-09",
+    "current_price": 89.54,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
@@ -10128,7 +10124,7 @@
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 296.06,
+        "fair_value": 296.08,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
@@ -10139,7 +10135,7 @@
       }
     },
     "fair_value": 163.39,
-    "valuation_gap": -0.4727,
+    "valuation_gap": -0.452,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10255,6 +10251,12 @@
         "price": 86.16,
         "fair_value": 232.75,
         "gap": -0.6298
+      },
+      {
+        "date": "2026-11-09",
+        "price": 89.54,
+        "fair_value": 232.75,
+        "gap": -0.6153
       }
     ],
     "qualitative": {
