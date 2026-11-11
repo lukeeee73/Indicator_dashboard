@@ -278,6 +278,63 @@ const INDICATOR_META = {
     region: "KR",
     zeroline: true,
   },
+
+  // ── 한국은행 ECOS ─────────────────────────────────────────────────────
+  // 죽은 FRED/OECD 계열의 후속. 파일이 생기기 전에는 카드가 나오지 않는다.
+  KR_CPI: {
+    displayName: "🇰🇷 한국 CPI YoY",
+    description: "한국은행 ECOS 소비자물가지수(901Y009, 총지수, 2020=100)의 전년 동월 대비 상승률. 한국 물가 국면의 헤드라인.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+    zeroline: true,
+  },
+  KR_CPI_CORE: {
+    displayName: "🇰🇷 한국 근원 CPI YoY",
+    description: "식료품·에너지 제외 소비자물가(901Y010 항목 DB, 2020=100)의 전년 동월 대비 상승률. 농산물·유가 충격을 뺀 기조 물가이며, 미국 Core CPI와 같은 역할로 한국 물가 점수에 들어간다.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+    zeroline: true,
+  },
+  KR_M2: {
+    displayName: "🇰🇷 한국 M2 통화량 YoY",
+    description: "M2 평잔 원계열(161Y006 항목 BBHA00)의 전년 동월 대비 증가율. 한국은행이 발표하는 광의통화 증가율과 같은 정의다.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+    zeroline: true,
+  },
+  KR_IP: {
+    displayName: "🇰🇷 한국 산업생산 YoY",
+    description: "광공업생산지수 원계열(901Y033, 광공업/원계열, 2020=100)의 전년 동월 대비 변화율. 한국 성장 국면에 들어가며, 별도 성장 카드 섹터는 두지 않는다.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+    zeroline: true,
+  },
+  KR_UNRATE: {
+    displayName: "🇰🇷 한국 실업률",
+    description: "경제활동인구조사 실업률의 계절조정 계열(901Y027, 항목 I61BC/I28B). 높을수록 성장 약화라 역방향으로 국면에 반영된다.",
+    unit: "%",
+    decimals: 1,
+    region: "KR",
+  },
+  KR_POLICY_RATE: {
+    displayName: "🇰🇷 한국 기준금리",
+    description: "한국은행 기준금리(722Y001 항목 0101000, 월). 환율·국채금리와 함께 원화 가치 판단에 쓴다. 성장/물가 국면 점수에는 넣지 않는다.",
+    unit: "%",
+    decimals: 2,
+    region: "KR",
+  },
+  KR_FISCAL_BAL: {
+    displayName: "🇰🇷 한국 통합재정수지 (연간 누적)",
+    description: "통합재정수지(901Y013 항목 C)의 연간 누적액, 조 원. ECOS에는 GDP 대비 국가채무 시계열이 없어 이 수지를 재정 대리 지표로 쓴다. 매년 1월에 다시 시작하며 음수는 적자다. 국면 점수에는 넣지 않는다.",
+    unit: "조원",
+    decimals: 1,
+    region: "KR",
+    zeroline: true,
+  },
 };
 
 // 시장 지수 UI 메타데이터. summary 는 부제, description 은 한 줄 설명.
@@ -457,6 +514,41 @@ const COMPARE_RECOMMENDATIONS = {
     primary:   ["SP500", "DEXKOUS"],
     secondary: ["GOLD", "BAMLH0A0HYM2"],
     note: "코스피 YoY 상승기엔 원화 강세·글로벌 위험 선호. S&P 500 과의 동조화/디커플링 비교.",
+  },
+  KR_CPI: {
+    primary:   ["DEXKOUS", "DCOILWTICO"],
+    secondary: ["KR_CPI_CORE", "IRLTLT01KRM156N", "GOLD"],
+    note: "수입 의존도가 높은 한국은 원/달러 약세·유가 상승이 CPI 선행 지표. 근원 CPI와 벌어지면 식품·에너지 충격이다.",
+  },
+  KR_CPI_CORE: {
+    primary:   ["KR_CPI", "KR_POLICY_RATE"],
+    secondary: ["DEXKOUS", "GOLD"],
+    note: "식료품·에너지를 뺀 기조 물가. 헤드라인만 움직이면 일시 충격, 근원이 따라오면 물가 고착이다.",
+  },
+  KR_M2: {
+    primary:   ["DEXKOUS", "IRLTLT01KRM156N", "KOSPI"],
+    secondary: ["GOLD", "SP500"],
+    note: "한국 M2 팽창 속도를 미국 M2와 비교해 상대 통화 공급을 본다. 원/달러와 동행하는지 확인.",
+  },
+  KR_IP: {
+    primary:   ["KOSPI", "DEXKOUS"],
+    secondary: ["SP500", "BAMLH0A0HYM2"],
+    note: "광공업 생산 YoY. 수출 경기와 코스피·원화의 동행, S&P 500 과의 동조화를 본다.",
+  },
+  KR_UNRATE: {
+    primary:   ["KOSPI", "KR_IP"],
+    secondary: ["DEXKOUS", "VIXCLS"],
+    note: "계절조정 실업률. 상승은 내수 위축 신호이며 백분위는 역방향(높을수록 성장 약화).",
+  },
+  KR_POLICY_RATE: {
+    primary:   ["DEXKOUS", "IRLTLT01KRM156N", "DGS10"],
+    secondary: ["KR_CPI", "GOLD"],
+    note: "기준금리와 미국 금리의 차이가 원/달러 압력이다. 물가와의 실질금리 비교에도 쓴다.",
+  },
+  KR_FISCAL_BAL: {
+    primary:   ["IRLTLT01KRM156N", "DEXKOUS", "KOSPI"],
+    secondary: ["GOLD", "DGS10"],
+    note: "연간 누적 통합재정수지. 적자가 깊어지는 구간에서 장기금리·원화 방향을 본다. GDP 대비 부채 잔액이 아니다.",
   },
 };
 

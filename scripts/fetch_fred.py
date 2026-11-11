@@ -261,55 +261,12 @@ INDICATORS: dict[str, dict] = {
     },
 
     # ── 달러 가치 분석 지표 (한국) ──────────────────────────────────────
+    # M2·정부부채·CPI·산업생산·실업률은 OECD MEI/폐기 FRED ID 라 여기서 받지 않는다.
+    # scripts/fetch_ecos.py 가 한국은행 ECOS 로 갱신하고, 성공한 계열의 옛 파일을 지운다.
+    # 키가 없으면 이 목록에 없는 기존 파일은 load → save 로 그대로 남는다.
     "IRLTLT01KRM156N": {
         "name": "Korea 10-Year Government Bond Yield",
         "category": "dollar",
-        "unit": "percent",
-        "transform": None,
-        "region": "KR",
-        "exclude_assessment": True,
-    },
-    "MYAGM2KRM189S": {
-        "name": "Korea M2 Money Supply YoY",
-        "category": "dollar",
-        "unit": "percent",
-        "transform": "yoy_pct",
-        "region": "KR",
-        "exclude_assessment": True,
-    },
-    "DEBTTLKRQ052N": {
-        # 분기 데이터, IMF/World Bank 경유 — GDP 대비 % 원시값 사용
-        "name": "Korea General Government Debt (% of GDP)",
-        "category": "dollar",
-        "unit": "percent",
-        "transform": None,
-        "region": "KR",
-        "exclude_assessment": True,
-    },
-
-    # ── 한국 지표 (OECD / FRED) ──────────────────────────────────────────
-    # exclude_assessment=True: 개별 카드 백분위는 계산하되,
-    # 미국 4분면 종합 점수(assessment)에는 포함하지 않는다.
-    "KORCPIALLMINMEI": {
-        "name": "Korea CPI YoY",
-        "category": "inflation",
-        "unit": "percent",
-        "transform": "yoy_pct",
-        "region": "KR",
-        "exclude_assessment": True,
-    },
-    "KORPROINDMISMEI": {
-        "name": "Korea Industrial Production YoY",
-        "category": "growth",
-        "unit": "percent",
-        "transform": "yoy_pct",
-        "region": "KR",
-        "exclude_assessment": True,
-    },
-    "LRUNTTTTKOR156S": {
-        # 실업률은 역방향 폴라리티 — 높을수록 성장 악화. analyze.py INVERTED_CODES 에 등록됨.
-        "name": "Korea Unemployment Rate",
-        "category": "growth",
         "unit": "percent",
         "transform": None,
         "region": "KR",

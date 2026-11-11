@@ -24,17 +24,19 @@
 
 ## 데이터와 지표
 
-| 화면 | 주요 기존 자료 | 코드 예시 |
+| 화면 | 주요 자료 | 코드 예시 |
 |---|---|---|
-| 한국 통화 가치·환율 | 원/달러 환율, 10년 국채금리, M2, GDP 대비 정부부채 | `DEXKOUS`, `IRLTLT01KRM156N`, `MYAGM2KRM189S`, `DEBTTLKRQ052N` |
-| 한국 인플레이션 | CPI 전년 대비 변화율 | `KORCPIALLMINMEI` |
+| 한국 통화 가치·환율 | 원/달러 환율, 10년 국채금리, 기준금리, M2, 통합재정수지(연간 누적) | `DEXKOUS`, `IRLTLT01KRM156N`, `KR_POLICY_RATE`, `KR_M2`, `KR_FISCAL_BAL` |
+| 한국 인플레이션 | CPI·근원 CPI 전년 대비 변화율 | `KR_CPI`, `KR_CPI_CORE` |
+| 한국 국면(카드 없음) | 광공업생산 YoY, 계절조정 실업률, 코스피 YoY | `KR_IP`, `KR_UNRATE`, `KOSPI_YOY` |
 | 미국 통화 가치·환율 | 광의 무역가중 달러 지수, 국채금리, M2, 부채·국채 수요 | `DTWEXBGS`, `DGS10`, `M2SL`, `GFDEBTN`, `TREAST` |
 | 미국 인플레이션 | CPI·Core CPI·PCE, 기대 인플레이션, 생산자물가·원유 | `CPIAUCSL`, `CPILFESL`, `PCEPI`, `T10YIE`, `T5YIFR`, `DCOILWTICO` |
 
 환율과 달러 지수는 이미 수집하는 `assets` 시계열을 사용합니다. 기존 지표의 기간 선택,
 비교 차트, 주요 이벤트 표시는 유지합니다. 종목 데이터는 주식 탭을 처음 열 때 불러옵니다.
 
-지표 정의는 `scripts/fetch_fred.py`의 `INDICATORS`와 `ASSETS`에 있습니다.
+미국 지표 정의는 `scripts/fetch_fred.py`의 `INDICATORS`와 `ASSETS`에 있습니다.
+한국 CPI·근원 CPI·M2·산업생산·실업률·기준금리·통합재정수지 정의는 `scripts/fetch_ecos.py`의 `SERIES`에 있습니다.
 성장 지표는 기존 수집·분석 자료로 보관하고, `assessment`·`assessment_kr`는
 국가별 현재 국면 패널과 4분면 차트에서 사용합니다. 개별 성장 지표 섹터는 표시하지 않습니다.
 `scripts/analyze.py`, `scripts/backtest.py`, `scripts/compare_models.py`는 기존 자료를
@@ -63,6 +65,7 @@ Indicator_dashboard/
 │   └── wiki/               # 주식 시장 지도에서 사용하는 노트 색인·본문
 ├── scripts/
 │   ├── fetch_fred.py        # FRED API → data/ 분할 저장
+│   ├── fetch_ecos.py        # 한국은행 ECOS → 한국 거시 지표 병합
 │   ├── analyze.py           # percentile/label/quadrant 재계산 (CLI)
 │   ├── analytics_series.py  # 시계열 변환·월말 집계·백분위·EWMA 공통 함수
 │   ├── data_io.py           # 수집 스크립트의 JSON 입출력 공통 함수
@@ -130,14 +133,20 @@ python tests/browser_currency_smoke.py
 # 1. FRED API 키 발급: https://fred.stlouisfed.org/docs/api/api_key.html
 export FRED_API_KEY="your_api_key_here"
 
-# 2. 의존성 설치
+# 2. 한국은행 ECOS 인증키 (한국 지표 갱신용, 없으면 해당 단계만 건너뜀)
+#    발급: https://ecos.bok.or.kr/api/  → 인증키 신청 (무료)
+export ECOS_API_KEY="your_ecos_api_key"
+
+# 3. 의존성 설치
 pip install -r scripts/requirements.txt
 
-# 3. 수집 실행
+# 4. 수집 실행
 python scripts/fetch_fred.py
+python scripts/fetch_ecos.py
 ```
 
 실행이 끝나면 `data/index.json`과 지표·자산·종목별 JSON이 갱신되고, 각 지표별로 `Fetching T10Y2Y... OK (520 points)` 형태의 로그가 찍힙니다.
+`ECOS_API_KEY`가 없으면 `fetch_ecos.py`는 파일을 쓰지 않고 끝납니다.
 
 ### 대시보드 미리보기 (로컬)
 
@@ -155,12 +164,27 @@ python -m http.server 8000 --bind 0.0.0.0 --directory dist
 
 ## GitHub Secrets 설정
 
-자동 수집을 위해 리포지토리에 FRED API 키를 Secret 으로 등록해야 합니다.
+자동 수집을 위해 리포지토리에 API 키를 Secret 으로 등록합니다.
 
 1. GitHub 리포지토리 → **Settings** → **Secrets and variables** → **Actions**
 2. **New repository secret** 클릭
-3. Name: `FRED_API_KEY`, Value: 발급받은 API 키
-4. **Add secret** 저장
+3. FRED: Name `FRED_API_KEY`, Value 는 [FRED API 키](https://fred.stlouisfed.org/docs/api/api_key.html)
+4. 한국은행: Name `ECOS_API_KEY`, Value 는 [ECOS Open API 인증키](https://ecos.bok.or.kr/api/) (페이지의 **인증키 신청**, 무료)
+5. **Add secret** 저장
+
+`ECOS_API_KEY`가 없으면 주간 워크플로의 ECOS 단계만 건너뛰고, 이미 받아 둔 한국 파일은 유지합니다. 키가 생기면 다음 실행부터 아래 계열을 갱신하고, 성공한 계열이 대체하는 중단된 FRED 코드(`KORCPIALLMINMEI`, `KORPROINDMISMEI`, `MYAGM2KRM189S`, `LRUNTTTTKOR156S`, `DEBTTLKRQ052N`)는 저장소에서 제거합니다.
+
+| 코드 | ECOS 통계표 / 항목 | 저장 값 |
+|---|---|---|
+| `KR_CPI` | `901Y009` / `0` 총지수 | 전년 동월비 % |
+| `KR_CPI_CORE` | `901Y010` / `DB` 식료품 및 에너지제외 | 전년 동월비 % |
+| `KR_M2` | `161Y006` / `BBHA00` M2 평잔 원계열 | 전년 동월비 % |
+| `KR_IP` | `901Y033` / `AB00`+`1` 광공업 원계열 | 전년 동월비 % |
+| `KR_UNRATE` | `901Y027` / `I61BC`+`I28B` 실업률 계절조정 | 실업률 % (역방향) |
+| `KR_POLICY_RATE` | `722Y001` / `0101000` 한국은행 기준금리 | 연 % |
+| `KR_FISCAL_BAL` | `901Y013` / `C` 통합재정수지 | 연간 누적, 조 원 |
+
+ECOS에는 GDP 대비 국가채무 시계열이 없습니다. IMF 계열 `GGGDTAKRA188N`(FRED)은 2023년에서 멈춰 있어, 갱신되는 재정 대리 지표로 통합재정수지를 씁니다. 이 값은 매년 1월에 다시 시작하는 누적 수지이며 부채 잔액이 아닙니다.
 
 이후 `.github/workflows/update.yml` 이 매주 월요일 09:00 UTC (한국시간 월요일 18:00) 에 자동 실행되며, 데이터가 바뀌었을 때만 `chore: update indicators (YYYY-MM-DD)` 커밋을 생성합니다.
 Actions 탭의 **"Update FRED Indicators"** → **Run workflow** 버튼으로 수동 실행도 가능합니다.

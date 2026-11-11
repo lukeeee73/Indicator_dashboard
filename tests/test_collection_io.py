@@ -174,7 +174,7 @@ root = Path(sys.argv[1])
 sys.path[:0] = [str(root), str(root / 'scripts')]
 with patch.object(socket.socket, 'connect', side_effect=AssertionError('network forbidden')):
     for name, entrypoint in (
-        ('fetch_fred', 'main'), ('fetch_auctions', 'main'),
+        ('fetch_fred', 'main'), ('fetch_auctions', 'main'), ('fetch_ecos', 'main'),
         ('merge_qualitative', '_standalone_main'), ('sync_supabase', 'main'),
     ):
         for prefix in ('scripts.', ''):
@@ -208,6 +208,24 @@ with patch.object(socket.socket, 'connect', side_effect=AssertionError('network 
                 self.assertEqual(result.returncode, 1, result.stderr)
                 self.assertEqual(result.stdout, "")
                 self.assertIn("FRED_API_KEY 환경변수가 설정되지 않았습니다", result.stderr)
+
+    def test_ecos_script_and_module_cli_skip_when_the_key_is_absent(self):
+        env = dict(os.environ)
+        env.pop("ECOS_API_KEY", None)
+        for arguments in ([str(ROOT / "scripts" / "fetch_ecos.py")], ["-m", "scripts.fetch_ecos"]):
+            with self.subTest(arguments=arguments):
+                result = subprocess.run(
+                    [sys.executable, *arguments],
+                    cwd=ROOT,
+                    env=env,
+                    capture_output=True,
+                    text=True,
+                    timeout=30,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout, "")
+                self.assertIn("ECOS_API_KEY", result.stderr)
+                self.assertIn("기존 데이터", result.stderr)
 
 
 if __name__ == "__main__":

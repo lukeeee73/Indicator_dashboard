@@ -61,9 +61,11 @@ LOW_THRESHOLD  = 40.0           # 이 백분위 이하이면 "low"
 TRAJECTORY_MONTHS = 24          # 2D 산점도에 그릴 최근 궤적 길이
 
 # polarity 가 반대인 지표 코드를 여기에 넣으면 백분위가 (100 - p) 로 뒤집힌다.
-# LRUNTTTTKOR156S: 실업률 — 높을수록 성장 악화이므로 역방향 적용.
+# KR_UNRATE: ECOS 실업률 — 높을수록 성장 악화이므로 역방향 적용.
+# LRUNTTTTKOR156S: 같은 실업률의 옛 FRED 코드. 키가 없어 옛 파일이 남아 있는 동안과
+#   회귀 테스트 픽스처가 같은 방향으로 계산되도록 남겨 둔다.
 # ICSA: 신규 실업수당 청구 — 높을수록(YoY 급등) 성장 악화이므로 역방향 적용.
-INVERTED_CODES: set[str] = {"LRUNTTTTKOR156S", "ICSA"}
+INVERTED_CODES: set[str] = {"KR_UNRATE", "LRUNTTTTKOR156S", "ICSA"}
 
 # --------------------------------------------------------------------------
 # Primary 모델 (백테스트 승자 H) 하이퍼파라미터

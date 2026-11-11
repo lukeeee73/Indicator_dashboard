@@ -108,6 +108,27 @@ class SupabaseCollectionTests(unittest.TestCase):
         self.assertEqual(observations, {"DGS10": point, "^I": [], "A": point})
         self.assertEqual(counts, {"assets": 1, "indices": 1, "stocks": 1, "indicators": 1})
 
+    def test_payload_source_overrides_the_group_default_without_duplicating_details(self):
+        data_io.write_json(
+            self.root / "indicators" / "KR_CPI.json",
+            {
+                "name": "Korea CPI YoY",
+                "unit": "percent",
+                "category": "inflation",
+                "region": "KR",
+                "source": "ECOS",
+                "ecos": {"stat_code": "901Y009", "cycle": "M", "item_codes": ["0"]},
+                "series": [{"date": "2026-01-01", "value": 2.0}],
+            },
+        )
+        metadata, _, _ = sync_supabase.build_series_data(
+            {"indicators": [{"code": "KR_CPI", "exclude_assessment": True}]},
+            "timestamp",
+        )
+        self.assertEqual(metadata[0]["source"], "ECOS")
+        self.assertEqual(metadata[0]["details"]["ecos"]["stat_code"], "901Y009")
+        self.assertNotIn("source", metadata[0]["details"])
+
     def test_invalid_group_and_series_raise_the_existing_diagnostics(self):
         with self.assertRaisesRegex(TypeError, "index.json의 assets가 배열이 아닙니다"):
             sync_supabase.build_series_data({"assets": {}}, "timestamp")

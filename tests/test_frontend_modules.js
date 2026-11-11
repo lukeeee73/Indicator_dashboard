@@ -192,6 +192,22 @@ test("navigation exposes exactly KR, US and STOCKS with only currency and inflat
   }
 });
 
+test("Korea ECOS series keep display metadata on the Korea panel", () => {
+  const context = createBrowser();
+  const meta = vm.runInContext("INDICATOR_META", context);
+  for (const code of ["KR_CPI", "KR_CPI_CORE", "KR_M2", "KR_IP", "KR_UNRATE", "KR_POLICY_RATE", "KR_FISCAL_BAL"]) {
+    assert.equal(meta[code].region, "KR", code);
+    assert.equal(typeof meta[code].displayName, "string", code);
+  }
+  assert.equal(meta.KR_FISCAL_BAL.unit, "조원");
+  assert.equal(meta.KR_UNRATE.decimals, 1);
+  const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+  const korea = html.split('id="panel-KR"')[1].split("<!-- /panel-KR -->")[0];
+  assert.match(korea, /기준금리/);
+  assert.match(korea, /통합재정수지/);
+  assert.match(korea, /근원물가/);
+});
+
 test("HTML loads retained feature scripts once, in classic dependency order, before startup", () => {
   const scripts = scriptPaths();
   const app = appScriptPaths();
