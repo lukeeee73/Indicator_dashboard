@@ -2271,3 +2271,8 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .rr-block ul { margin: 0; padding-left: 1.1rem; font-size: 0.82rem; }
 .rr-sources a { color: var(--accent-link); }
 .rr-meta { margin: 1rem 0 0; font-size: 0.72rem; color: var(--text-dim); }
+/* 카드 마지막 관측일 — 갱신이 멈춘 계열은 경고색 */
+.card-asof { margin-left: 0.5rem; font-size: 0.72rem; color: var(--text-dim); white-space: nowrap; }
+.card-asof.stale { color: #f59e0b; }
+/* 섹터 서브탭이 늘어나 가로 스크롤될 때 라벨이 두 줄로 꺾이지 않게 */
+.sector-btn { white-space: nowrap; }

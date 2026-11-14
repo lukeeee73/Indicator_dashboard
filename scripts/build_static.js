@@ -1,10 +1,11 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { createHash } = require("node:crypto");
+const { prepareDashboardSnapshot, writeDashboardSnapshot } = require("./dashboard_snapshot.js");
 
 // Time series and documents are served by Supabase. Stocks research notes use
 // static-first wiki JSON, so keep it and every note body alongside the UI assets.
-function buildStatic(root = path.resolve(__dirname, "..")) {
+function buildStatic(root = path.resolve(__dirname, ".."), options = {}) {
   const required = ["index.html", "app.js", "style.css", "js", "vendor"];
   for (const relative of required) fs.accessSync(path.join(root, relative));
 
@@ -26,6 +27,9 @@ function buildStatic(root = path.resolve(__dirname, "..")) {
     },
   );
 
+  // First-screen data for the country tabs, read before dist/ is replaced.
+  const snapshot = prepareDashboardSnapshot(root, options);
+
   const output = path.join(root, "dist");
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
@@ -38,12 +42,13 @@ function buildStatic(root = path.resolve(__dirname, "..")) {
     fs.cpSync(source, destination, { recursive: true });
   }
   fs.writeFileSync(path.join(output, "index.html"), builtHtml);
+  if (snapshot) writeDashboardSnapshot(output, snapshot);
   return output;
 }
 
 if (require.main === module) {
   buildStatic();
-  console.log("Built dist/: dashboard UI, vendor libraries and stock research note JSON only.");
+  console.log("Built dist/: dashboard UI, vendor libraries, stock research note JSON and the country-tab data snapshot.");
 }
 
 module.exports = { buildStatic };

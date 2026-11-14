@@ -53,6 +53,35 @@ function sliceSeriesByMonths(series, months) {
   return start === -1 ? series.slice(-1) : series.slice(start);
 }
 
+// 다운샘플된 시계열은 최근 1년만 일별이고 그 앞은 주·월별이다(SERIES_DOWNSAMPLE_ARGS).
+// Chart.js 카테고리 축은 점마다 같은 간격을 주므로 밀도가 섞인 구간을 그대로 그리면
+// 최근 1년이 가로축 대부분을 차지해 장기 추세가 찌그러진다. 표시 구간이 1년을 넘으면
+// 서버와 같은 규칙으로 구간 전체를 주(5년 이하) 또는 월 단위로 맞춰 간격을 고르게 한다.
+// 각 단위의 마지막 관측치를 남기므로 최신값은 그대로다.
+function isoWeekKey(isoDate) {
+  const d = new Date(`${isoDate.slice(0, 10)}T00:00:00Z`);
+  const weekday = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - weekday);
+  const week = Math.ceil(((d - Date.UTC(d.getUTCFullYear(), 0, 1)) / 86400000 + 1) / 7);
+  return `${d.getUTCFullYear()}-${String(week).padStart(2, "0")}`;
+}
+
+function evenDensityForChart(series) {
+  if (!series || series.length < 3) return series;
+  const spanDays = (Date.parse(series[series.length - 1].date) - Date.parse(series[0].date)) / 86400000;
+  if (!(spanDays > 400)) return series;
+  const bucketOf = spanDays <= 5 * 366 + 31 ? isoWeekKey : (date) => date.slice(0, 7);
+  const out = [];
+  let last = null;
+  for (const point of series) {
+    const bucket = bucketOf(point.date);
+    if (bucket === last) out[out.length - 1] = point;
+    else out.push(point);
+    last = bucket;
+  }
+  return out;
+}
+
 function spansOverAYear(labels) {
   if (labels.length < 2) return false;
   const first = new Date(labels[0]);
