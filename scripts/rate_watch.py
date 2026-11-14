@@ -77,6 +77,8 @@ STARTER_RUBRIC = f"""# Rate-change report rubric (starter — tune as needed)
 - sections has 3 to 5 entries, each with non-empty title and body, and one title is exactly "{REQUIRED_SECTION}".
 - Every number in market_reaction comes from the FRED snapshot in the kickoff message, or from a page listed in sources.
 - The FOMC statement for the decision date on federalreserve.gov is cited in sources; every source has an https URL.
+- verdict exists: stance is one of hawkish/neutral/dovish, conclusion is one Korean sentence of at most 40 characters, confidence is a number from 0 to 1,
+  key_metrics has 3 to 5 entries that repeat numbers from market_reaction, and vs_previous is filled in (or says there is no earlier report).
 - No string contains Markdown or HTML markup, and the report gives no buy/sell recommendation.
 - If the snapshot has no observation after the decision date, the report says reaction data is not yet available instead of describing a reaction.
 """
@@ -156,7 +158,15 @@ def summarize_series(series: list[dict], decision_date: str) -> dict:
     }
 
 
-def build_kickoff(change: dict, snapshot: dict[str, dict]) -> str:
+def previous_verdict(index: dict, change_date: str) -> Optional[dict]:
+    """직전 리포트의 판단(index 항목) — 새 리포트가 '이전 대비'를 쓰도록 킥오프에 넣는다."""
+    for r in index.get("reports", []):
+        if r.get("date", "") < change_date and r.get("stance"):
+            return {k: r.get(k) for k in ("date", "new_range", "stance", "conclusion", "confidence")}
+    return None
+
+
+def build_kickoff(change: dict, snapshot: dict[str, dict], previous: Optional[dict] = None) -> str:
     lines = [
         f"The US federal funds target range changed, effective {change['date']} "
         "(FRED dates the range on its effective date, usually the day after the FOMC announcement; "
@@ -175,6 +185,9 @@ def build_kickoff(change: dict, snapshot: dict[str, dict]) -> str:
             ensure_ascii=False, indent=1,
         ),
         "",
+        "Previous report's verdict (for verdict.vs_previous): "
+        + (json.dumps(previous, ensure_ascii=False) if previous else "none - this is the first report with a verdict."),
+        "",
         "Write the report described in your instructions to /mnt/session/outputs/report.json.",
     ]
     return "\n".join(lines)
@@ -185,6 +198,43 @@ def build_kickoff(change: dict, snapshot: dict[str, dict]) -> str:
 # --------------------------------------------------------------------------
 REQUIRED_KEYS = ("decision_date", "headline", "summary", "decision",
                  "sections", "market_reaction", "watch_next", "sources")
+
+
+STANCES = ("hawkish", "neutral", "dovish")
+STANCE_LABELS = {"hawkish": "매파", "neutral": "중립", "dovish": "비둘기"}
+
+
+def validate_verdict(verdict: Any) -> list[str]:
+    """verdict 블록 검사. 대시보드 카드·필터가 이 필드만 읽는다."""
+    if not isinstance(verdict, dict):
+        return ["verdict must be an object"]
+    errors = []
+    if verdict.get("stance") not in STANCES:
+        errors.append(f"verdict.stance must be one of {STANCES}")
+    if not isinstance(verdict.get("conclusion"), str) or not verdict["conclusion"].strip():
+        errors.append("verdict.conclusion must be a non-empty string")
+    conf = verdict.get("confidence")
+    if isinstance(conf, bool) or not isinstance(conf, (int, float)) or not 0 <= conf <= 1:
+        errors.append("verdict.confidence must be a number between 0 and 1")
+    metrics = verdict.get("key_metrics")
+    if not isinstance(metrics, list) or not metrics or not all(
+        isinstance(m, dict) and isinstance(m.get("label"), str)
+        and isinstance(m.get("value"), (int, float)) and not isinstance(m.get("value"), bool)
+        for m in metrics
+    ):
+        errors.append("verdict.key_metrics must be a non-empty list of {label, value, unit, change}")
+    vs = verdict.get("vs_previous")
+    if not isinstance(vs, dict) or not isinstance(vs.get("delta"), str):
+        errors.append("verdict.vs_previous must be an object with a delta string")
+    return errors
+
+
+def report_tags(change_bp: Any, verdict: Optional[dict]) -> list[str]:
+    """index 필터 칩용 태그: 방향(인상·인하·동결) + 판단(매파·중립·비둘기)."""
+    tags = ["동결" if not change_bp else ("인상" if change_bp > 0 else "인하")]
+    if verdict and verdict.get("stance") in STANCE_LABELS:
+        tags.append(STANCE_LABELS[verdict["stance"]])
+    return tags
 
 
 def validate_report(report: Any) -> list[str]:
@@ -207,6 +257,9 @@ def validate_report(report: Any) -> list[str]:
         errors.append("sections must be a list of {title, body}")
     elif REQUIRED_SECTION not in {s["title"] for s in sections}:
         errors.append(f"sections must include '{REQUIRED_SECTION}'")
+    # verdict 는 선택 — 에이전트를 다시 apply 하기 전에도 파이프라인이 멈추지 않게 한다.
+    if "verdict" in report:
+        errors.extend(validate_verdict(report["verdict"]))
     for key in ("market_reaction", "watch_next", "sources"):
         if not isinstance(report[key], list):
             errors.append(f"{key} must be a list")
@@ -227,8 +280,13 @@ def record_report(index: dict, change: dict, report: dict, session_id: str) -> d
         "new_range": fmt_range(change["current"]),
         "file": f"{change['date']}.json",
         "session_id": session_id,
+        "tags": report_tags(change["change_bp"], report.get("verdict")),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
+    verdict = report.get("verdict")
+    if isinstance(verdict, dict):
+        entry.update(stance=verdict["stance"], conclusion=verdict["conclusion"],
+                     confidence=verdict["confidence"])
     reports = [r for r in index.get("reports", []) if r.get("date") != change["date"]]
     return {**index, "last_change": change, "reports": [entry, *reports]}
 
@@ -393,7 +451,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     announced = (date.fromisoformat(change["date"]) - timedelta(days=1)).isoformat()
     snapshot = {sid: summarize_series(fetch_series(sid, fred_key, since), announced)
                 for sid in SNAPSHOT_SERIES}
-    kickoff = build_kickoff(change, snapshot)
+    kickoff = build_kickoff(change, snapshot, previous_verdict(index, change["date"]))
     if args.dry_run:
         print(kickoff)
         return 0
@@ -415,6 +473,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         print("Report failed validation:\n  " + "\n  ".join(errors), file=sys.stderr)
         return 1
 
+    if "verdict" not in report:
+        print("Warning: report has no verdict (run `ant apply` to update the agent).", file=sys.stderr)
     write_json(REPORTS_DIR / f"{change['date']}.json",
                {**report, "session_id": session_id, "change": change})
     write_json(INDEX_PATH, record_report(index, change, report, session_id))
