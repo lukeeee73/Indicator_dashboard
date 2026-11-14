@@ -80,6 +80,42 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(out["last_change"], change)
 
 
+VERDICT = {"stance": "hawkish", "conclusion": "추가 인상 무게", "confidence": 0.7,
+           "key_metrics": [{"label": "미 2년", "value": 4.67, "unit": "%", "change": -0.07}],
+           "vs_previous": {"stance_changed": False, "delta": "이전 리포트 없음"}}
+
+
+class VerdictTests(unittest.TestCase):
+    def test_report_without_verdict_still_valid(self):
+        self.assertEqual(rate_watch.validate_report(GOOD_REPORT), [])
+
+    def test_valid_verdict_passes_and_bad_ones_fail(self):
+        self.assertEqual(rate_watch.validate_report({**GOOD_REPORT, "verdict": VERDICT}), [])
+        for bad in ({**VERDICT, "stance": "angry"}, {**VERDICT, "confidence": 1.5},
+                    {**VERDICT, "key_metrics": []}, {**VERDICT, "vs_previous": None}, "x"):
+            self.assertTrue(rate_watch.validate_report({**GOOD_REPORT, "verdict": bad}), bad)
+
+    def test_record_report_stores_verdict_summary_and_tags(self):
+        change = rate_watch.find_latest_change(UPPER, LOWER)
+        out = rate_watch.record_report({"reports": []}, change, {**GOOD_REPORT, "verdict": VERDICT}, "s")
+        e = out["reports"][0]
+        self.assertEqual((e["stance"], e["confidence"]), ("hawkish", 0.7))
+        self.assertEqual(e["tags"], ["인하", "매파"])
+        plain = rate_watch.record_report({"reports": []}, change, GOOD_REPORT, "s")["reports"][0]
+        self.assertNotIn("stance", plain)
+        self.assertEqual(plain["tags"], ["인하"])
+
+    def test_previous_verdict_skips_entries_without_stance_and_newer_dates(self):
+        index = {"reports": [{"date": "2026-11-01", "stance": "dovish"},
+                             {"date": "2026-09-17", "stance": "hawkish", "conclusion": "c", "confidence": 0.5},
+                             {"date": "2026-07-30"}]}
+        self.assertEqual(rate_watch.previous_verdict(index, "2026-10-01")["stance"], "hawkish")
+        self.assertIsNone(rate_watch.previous_verdict({"reports": [{"date": "2026-07-30"}]}, "2026-10-01"))
+        change = rate_watch.find_latest_change(UPPER, LOWER)
+        kick = rate_watch.build_kickoff(change, {}, rate_watch.previous_verdict(index, "2026-10-01"))
+        self.assertIn('"stance": "hawkish"', kick)
+
+
 class MainFlowTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

@@ -2229,6 +2229,26 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .rr-chip-label { color: var(--text-dim); }
 .rr-chip-val { font-weight: 700; font-variant-numeric: tabular-nums; }
 .rr-full { padding: 0.2rem 1.1rem 1rem; border-top: 1px solid var(--border); }
+.rr-verdict { display: flex; flex-direction: column; gap: 0.3rem; margin: 0.4rem 0 0.2rem; }
+.rr-verdict-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; }
+.rr-conclusion { font-size: 1rem; }
+.rr-badges { display: inline-flex; align-items: center; gap: 0.4rem; }
+.rr-stance { font-size: 0.72rem; font-weight: 700; padding: 0.05rem 0.5rem; border-radius: 99px; border: 1px solid currentColor; }
+.rr-stance-hawkish { color: var(--red-bright); }
+.rr-stance-dovish { color: var(--up); }
+.rr-stance-neutral { color: var(--text-dim); }
+.rr-meter { width: 3.5rem; height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; display: inline-block; }
+.rr-meter i { display: block; height: 100%; background: var(--text-dim); }
+.rr-conf { font-size: 0.72rem; color: var(--text-dim); }
+.rr-vs { font-size: 0.8rem; border-top: 1px dashed var(--border); padding-top: 0.35rem; }
+.rr-vs-label { color: var(--text-dim); margin-right: 0.3rem; }
+.rr-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0.4rem 0; }
+.rr-search { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); padding: 0.3rem 0.6rem; font: inherit; font-size: 0.8rem; min-width: 12rem; }
+.rr-filters { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.rr-filter { background: none; border: 1px solid var(--border); border-radius: 99px; color: var(--text-dim); padding: 0.1rem 0.6rem; font: inherit; font-size: 0.75rem; cursor: pointer; }
+.rr-filter[aria-pressed="true"] { color: var(--text); border-color: var(--text); background: var(--bg-card); }
+.rr-latest.has-verdict > summary .rr-badges, .rr-latest.has-verdict > summary .rr-headline { display: none; }
+.rr-card[hidden] { display: none; }
 .rr-vote { margin: -0.5rem 0 1rem; font-size: 0.78rem; color: var(--text-dim); }
 .rr-archive > summary { cursor: pointer; font-size: 0.82rem; color: var(--text-dim); padding: 0.3rem 0.2rem; }
 .rr-older { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.4rem; }

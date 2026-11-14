@@ -57,16 +57,43 @@ function rrReactionRows(rows) {
     <tbody>${body}</tbody></table></div>`;
 }
 
-// 요약(결정·헤드라인·핵심 수치)은 항상 보이고, 전문은 <details> 로 접는다.
-function rrKeyNumbers(rows) {
+// 요약(결정·판단·핵심 수치)은 항상 보이고, 전문은 <details> 로 접는다.
+// verdict 필드가 없는 예전 리포트는 market_reaction 칩과 헤드라인으로 대신 보여 준다.
+const RR_STANCE = { hawkish: "매파", neutral: "중립", dovish: "비둘기" };
+
+function rrChip(label, value, change, unit) {
+  const n = Number(change);
+  const cls = !Number.isFinite(n) || n === 0 ? "" : (n > 0 ? "rr-up" : "rr-down");
+  const shown = value !== undefined && value !== null && !Number.isFinite(n)
+    ? rrNum(value) : `${n > 0 ? "+" : ""}${rrNum(n)}${escapeHtml(unit || "")}`;
+  return `<span class="rr-chip"><span class="rr-chip-label">${escapeHtml(label || "")}</span>
+    <span class="rr-chip-val ${cls}">${shown}</span></span>`;
+}
+
+function rrKeyNumbers(report) {
+  const vm = report.verdict?.key_metrics;
+  const rows = Array.isArray(vm) && vm.length ? vm : report.market_reaction;
   if (!Array.isArray(rows) || rows.length === 0) return "";
-  const chips = rows.slice(0, 4).map(r => {
-    const change = Number(r.change);
-    const cls = !Number.isFinite(change) || change === 0 ? "" : (change > 0 ? "rr-up" : "rr-down");
-    return `<span class="rr-chip"><span class="rr-chip-label">${escapeHtml(r.label || r.series || "")}</span>
-      <span class="rr-chip-val ${cls}">${Number.isFinite(change) && change > 0 ? "+" : ""}${rrNum(r.change)}${escapeHtml(r.unit || "")}</span></span>`;
-  }).join("");
-  return `<div class="rr-chips">${chips}</div>`;
+  return `<div class="rr-chips">${rows.slice(0, 5).map(r =>
+    rrChip(r.label || r.series, r.value, r.change, r.unit)).join("")}</div>`;
+}
+
+function rrStanceBadge(stance, confidence) {
+  if (!RR_STANCE[stance]) return "";
+  const pct = Number.isFinite(Number(confidence)) ? Math.round(Number(confidence) * 100) : null;
+  return `<span class="rr-stance rr-stance-${escapeHtml(stance)}">${RR_STANCE[stance]}</span>` +
+    (pct === null ? "" : `<span class="rr-meter" title="확신도 ${pct}%"><i style="width:${pct}%"></i></span>
+      <span class="rr-conf">확신 ${pct}%</span>`);
+}
+
+function rrVerdictBlock(report) {
+  const v = report.verdict;
+  if (!v) return "";
+  const vs = v.vs_previous?.delta;
+  return `<div class="rr-verdict">
+    <div class="rr-verdict-line"><b class="rr-conclusion">${escapeHtml(v.conclusion || "")}</b>${rrStanceBadge(v.stance, v.confidence)}</div>
+    ${vs ? `<div class="rr-vs"><span class="rr-vs-label">직전 대비${v.vs_previous.stance_changed ? " · 판단 변경" : ""}</span> ${escapeHtml(vs)}</div>` : ""}
+  </div>`;
 }
 
 function rrRenderFull(report) {
@@ -88,10 +115,51 @@ function rrRenderFull(report) {
     <p class="rr-meta">Claude Managed Agent 가 작성 · 해석은 참고용입니다.</p>`;
 }
 
+function rrTags(r) {
+  if (Array.isArray(r.tags) && r.tags.length) return r.tags;
+  const bp = Number(r.change_bp);
+  return [!Number.isFinite(bp) || bp === 0 ? "동결" : (bp > 0 ? "인상" : "인하")];
+}
+
 function rrCardHead(r) {
   return `<span class="rr-date">${escapeHtml(r.date)}</span>
     <span class="rr-change">${escapeHtml(rrBp(r.change_bp))} → ${escapeHtml(r.new_range || "")}</span>
-    <span class="rr-headline">${escapeHtml(r.headline || "")}</span>`;
+    ${r.stance ? `<span class="rr-badges">${rrStanceBadge(r.stance, r.confidence)}</span>` : ""}
+    <span class="rr-headline">${escapeHtml(r.conclusion || r.headline || "")}</span>`;
+}
+
+function rrToolbar(older) {
+  const tags = [...new Set(older.flatMap(rrTags))];
+  return `<div class="rr-tools">
+    <input type="search" class="rr-search" id="rr-search" placeholder="헤드라인·결론 검색" aria-label="리포트 검색">
+    <div class="rr-filters">${tags.map(t =>
+      `<button type="button" class="rr-filter" data-tag="${escapeHtml(t)}" aria-pressed="false">${escapeHtml(t)}</button>`).join("")}</div>
+  </div>`;
+}
+
+function rrBindFilters(feed, older) {
+  const search = feed.querySelector(".rr-search");
+  if (!search) return;
+  const active = new Set();
+  const apply = () => {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    feed.querySelectorAll(".rr-older .rr-card").forEach(el => {
+      const r = older.find(o => o.file === el.dataset.file);
+      const text = `${r.date} ${r.headline || ""} ${r.conclusion || ""}`.toLowerCase();
+      const ok = (!q || text.includes(q)) && [...active].every(t => rrTags(r).includes(t));
+      el.hidden = !ok;
+      if (ok) shown++;
+    });
+    feed.querySelector(".rr-none").hidden = shown > 0;
+  };
+  search.addEventListener("input", apply);
+  feed.querySelectorAll(".rr-filter").forEach(btn => btn.addEventListener("click", () => {
+    const on = !active.has(btn.dataset.tag);
+    on ? active.add(btn.dataset.tag) : active.delete(btn.dataset.tag);
+    btn.setAttribute("aria-pressed", String(on));
+    apply();
+  }));
 }
 
 // <details> 를 처음 펼칠 때만 전문 JSON 을 받아 채운다.
@@ -128,13 +196,16 @@ async function renderRateReports() {
       </summary>
       <div class="rr-full"></div>
     </details>
-    ${older.length ? `<details class="rr-archive"><summary>이전 리포트 ${older.length}건</summary>
+    ${older.length ? `<details class="rr-archive"><summary>이전 리포트 <span class="rr-count">${older.length}</span>건</summary>
+      ${older.length >= 3 ? rrToolbar(older) : ""}
+      <p class="empty rr-none" hidden>조건에 맞는 리포트가 없습니다.</p>
       <div class="rr-older">${older.map(r => `
         <details class="rr-card" data-file="${escapeHtml(r.file)}">
           <summary>${rrCardHead(r)}<span class="rr-toggle" aria-hidden="true"></span></summary>
           <div class="rr-full"></div>
         </details>`).join("")}</div></details>` : ""}`;
 
+  rrBindFilters(feed, older);
   feed.querySelectorAll("details.rr-card").forEach(d => {
     const entry = reports.find(r => r.file === d.dataset.file);
     d.addEventListener("toggle", () => { if (d.open) rrFill(d, entry); });
@@ -143,7 +214,8 @@ async function renderRateReports() {
   const latestEl = feed.querySelector(".rr-latest");
   try {
     const rep = await rrLoadReport(latest);
-    latestEl.querySelector(".rr-key").innerHTML = rrKeyNumbers(rep.market_reaction);
+    latestEl.classList.toggle("has-verdict", Boolean(rep.verdict));  // 헤드 중복 제거
+    latestEl.querySelector(".rr-key").innerHTML = rrVerdictBlock(rep) + rrKeyNumbers(rep);
   } catch (_) { /* 전문을 펼칠 때 오류 표시 */ }
   host.hidden = false;
 }

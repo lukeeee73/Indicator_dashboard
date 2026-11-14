@@ -38,10 +38,17 @@ Output: write exactly one file, `/mnt/session/outputs/report.json`, UTF-8, match
   "headline": "한 줄 요약 (60자 이내)",
   "summary": "3~5문장 요약",
   "decision": {"previous_range": "a.aa–b.bb%", "new_range": "c.cc–d.dd%", "change_bp": -25, "vote": "투표 결과 또는 null"},
+  "verdict": {
+    "stance": "hawkish | neutral | dovish",
+    "conclusion": "결론 한 문장 (40자 이내)",
+    "confidence": 0.7,
+    "key_metrics": [{"label": "미 국채 2년", "value": 4.67, "unit": "%", "change": -0.07}],
+    "vs_previous": {"stance_changed": false, "delta": "직전 리포트 대비 달라진 판단을 한 문장으로"}
+  },
   "sections": [{"title": "...", "body": "..."}],
   "market_reaction": [{"series": "DGS10", "label": "미 국채 10년", "before": 4.10, "after": 4.02, "change": -0.08, "unit": "%p", "note": "..."}],
   "watch_next": ["다음에 볼 일정·지표 ..."],
   "sources": [{"title": "...", "url": "https://..."}]
 }
 
-`sections` has 3 to 5 entries and must include one titled "원화·한국 영향". Plain text only in every string: no Markdown, no HTML. When the file is written and valid JSON, stop.
+`verdict` is what the dashboard shows first, so make it self-contained. `stance` is your reading of the Fed's policy direction after this decision. `confidence` (0 to 1) is how sure you are of that reading given the evidence you found; use lower values when sources disagree or reaction data is missing. `key_metrics` has 3 to 5 entries whose numbers repeat `market_reaction` entries. `vs_previous` compares with the previous verdict given in the kickoff message; if the kickoff says there is none, set `stance_changed` to false and write "이전 리포트 없음" in `delta`. `sections` has 3 to 5 entries and must include one titled "원화·한국 영향". Plain text only in every string: no Markdown, no HTML. When the file is written and valid JSON, stop.
