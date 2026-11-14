@@ -1,4 +1,5 @@
-// Supabase request queue, retries, payload batches and document reads. No requests run at load time.
+// Supabase request queue, retries, payload batches, document reads and the static first-screen snapshot.
+// No requests run at load time.
 // Classic browser script: index.html defines dependency order; functions stay global for inline handlers.
 
 // ---------- Supabase 데이터 소스 ------------------------------
@@ -118,13 +119,14 @@ async function fetchPayloadMap(codes, extraArgs = null, chunkSize = 25) {
   return { map, missing };
 }
 
-// 종목 시계열 다운샘플링 경계 — get_payload_map 의 p_daily_since / p_weekly_since.
+// 시계열 다운샘플링 경계 — get_payload_map 의 p_daily_since / p_weekly_since.
 // 최근 1년은 일별 그대로, 그 앞 4년은 주당 1개, 그보다 오래된 구간은 월당 1개만
 // 받는다. 서버가 각 구간의 '마지막' 관측치를 고르므로 최신값은 항상 살아있고
-// 장기 추세선도 눈으로는 차이가 없다. 154개 종목 기준 36만 → 7.7만 포인트.
-// 인자를 빼면 예전처럼 전체 일별이 오므로, 지표·자산·지수는 그대로 둔다.
-const STOCK_DAILY_YEARS  = 1;
-const STOCK_WEEKLY_YEARS = 5;
+// 장기 추세선도 눈으로는 차이가 없다. 154개 종목 기준 36만 → 7.7만 포인트,
+// 지표·자산 45개 기준 4.5MB → 1MB. 지수는 인자를 빼서 전체 일별로 받는다.
+// scripts/dashboard_snapshot.js 가 배포 때 같은 규칙으로 첫 화면 스냅샷을 만든다.
+const SERIES_DAILY_YEARS  = 1;
+const SERIES_WEEKLY_YEARS = 5;
 
 function _isoYearsAgo(years) {
   const d = new Date();
@@ -133,10 +135,50 @@ function _isoYearsAgo(years) {
 }
 
 // 호출 시점에 계산한다 — 탭을 안 열고 자정을 넘겨도 경계가 따라간다.
-const STOCK_SERIES_ARGS = () => ({
-  p_daily_since:  _isoYearsAgo(STOCK_DAILY_YEARS),
-  p_weekly_since: _isoYearsAgo(STOCK_WEEKLY_YEARS),
+const SERIES_DOWNSAMPLE_ARGS = () => ({
+  p_daily_since:  _isoYearsAgo(SERIES_DAILY_YEARS),
+  p_weekly_since: _isoYearsAgo(SERIES_WEEKLY_YEARS),
 });
+
+// ---------- 첫 화면 스냅샷 (정적 파일) ----------------------
+// 배포 때 만든 국가 탭용 데이터(메타 + 지표·자산 다운샘플)를 CDN 에서 한 번에 읽는다.
+// DB 집계를 기다리지 않으므로 첫 화면이 바로 뜬다. 어떤 이유로든 읽지 못하면 null 을
+// 돌려주고, 호출측은 예전처럼 Supabase 에서 받는다.
+const DASHBOARD_SNAPSHOT_URL = "data/snapshot/dashboard.json";
+const DASHBOARD_SNAPSHOT_VERSION = 1;
+const SNAPSHOT_TIMEOUT_MS = 5000;
+
+const _isPlainObject = (v) => !!v && typeof v === "object" && !Array.isArray(v);
+
+function isValidDashboardSnapshot(snapshot) {
+  return _isPlainObject(snapshot)
+    && snapshot.version === DASHBOARD_SNAPSHOT_VERSION
+    && _isPlainObject(snapshot.meta)
+    && _isPlainObject(snapshot.indicators)
+    && _isPlainObject(snapshot.assets);
+}
+
+async function fetchDashboardSnapshot() {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), SNAPSHOT_TIMEOUT_MS);
+  try {
+    const res = await fetch(DASHBOARD_SNAPSHOT_URL, { signal: ctl.signal });
+    if (!res || !res.ok) return null;
+    const snapshot = await res.json();
+    return isValidDashboardSnapshot(snapshot) ? snapshot : null;
+  } catch (err) {
+    return null;   // 파일 없음·네트워크 오류·잘못된 JSON — Supabase 로 대체
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// ISO 시각 문자열 비교. 둘 다 해석될 때만 "더 새롭다"고 판단한다.
+function isNewerTimestamp(candidate, baseline) {
+  const a = Date.parse(candidate);
+  const b = Date.parse(baseline);
+  return Number.isFinite(a) && Number.isFinite(b) && a > b;
+}
 
 // documents 테이블에서 문서 하나를 통째로 가져온다.
 // (markets · wiki · principles · value_screen 등 비시계열 데이터)
