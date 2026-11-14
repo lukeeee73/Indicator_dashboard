@@ -225,7 +225,8 @@ test("HTML loads retained feature scripts once, in classic dependency order, bef
   assert.deepEqual(registered, ["keydown", "DOMContentLoaded"]);
   for (const name of ["sbRpc", "sbDoc", "fetchPayloadMap", "renderChart", "switchToTab", "loadDashboardData",
     "renderStockCard", "renderValuePicks", "mcSwitchMap", "mcToggleFull", "pmOpen", "pmClose",
-    "wnOpenByIdx", "wnCloseNote", "wnFillInlineNote", "wnWireNoteLinks", "renderAssessment", "renderScatter"]) {
+    "wnOpenByIdx", "wnCloseNote", "wnFillInlineNote", "wnWireNoteLinks", "renderAssessment", "renderScatter",
+    "renderRateReports"]) {
     assert.equal(typeof context[name], "function", `${name} remains callable as a browser global`);
     assert.equal(vm.runInContext(`window.${name} === ${name}`, context), true);
   }
@@ -251,9 +252,10 @@ test("the entry point waits for DOM ready, wires navigation, then opens KR and l
   context.wireEventsToggle = () => steps.push("events");
   context.switchToTab = (tab) => steps.push(tab);
   context.loadDashboardData = () => steps.push("data");
+  context.renderRateReports = () => steps.push("reports");
   assert.deepEqual(steps, []);
   ready();
-  assert.deepEqual(steps, ["sidebar", "events", "KR", "data"]);
+  assert.deepEqual(steps, ["sidebar", "events", "KR", "data", "reports"]);
   click();
   assert.equal(steps.at(-1), "STOCKS");
 });
