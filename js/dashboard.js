@@ -20,7 +20,7 @@ function resetTabContent(tab) {
   if (!_dirtyTabs.has(tab)) return;
   const hostIds = tab === "STOCKS"
     ? ["index-cards", "stock-cards", "value-screen-host"]
-    : [`dollar-cards-${tab}`, `inflation-cards-${tab}`];
+    : Object.keys(SECTOR_META).map((sector) => `${sector}-cards-${tab}`);
   for (const id of hostIds) {
     const host = document.getElementById(id);
     if (!host) continue;
@@ -400,19 +400,65 @@ function wireEventsToggle() {
 
 
 // ---------- 렌더링 -----------------------------------------
-// tab: "US" | "KR" — 기존 환율 자산을 먼저, 통화·물가 지표를 이어서 표시한다.
+// tab: 국가 코드("KR" | "US" …) — 기존 환율 자산을 먼저, 지표를 섹터별로 이어서 표시한다.
 const CURRENCY_ASSET_CODES = { KR: ["DEXKOUS"], US: ["DTWEXBGS"] };
+
+/** 지표가 표시될 섹터. 메타의 sector 가 수집 category 보다 우선한다. */
+function indicatorSector(code, payload) {
+  return INDICATOR_META[code]?.sector || payload.category;
+}
+
+/** 섹터 카드 호스트를 찾고, 없으면 국가 패널에 서브탭 버튼과 패널을 새로 만든다. */
+function ensureSectorHost(tab, sector) {
+  const id = `${sector}-cards-${tab}`;
+  const existing = document.getElementById(id);
+  if (existing) return existing;
+  const panel = document.getElementById(`panel-${tab}`);
+  const nav = panel?.querySelector(".sector-nav");
+  const meta = SECTOR_META[sector];
+  if (!panel || !nav || !meta) return null;
+
+  const activeSector = nav.querySelector(".sector-btn.active")?.dataset.sector;
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "sector-btn";
+  btn.dataset.sector = sector;
+  btn.setAttribute("role", "tab");
+  btn.setAttribute("aria-selected", "false");
+  btn.textContent = meta.label;
+  nav.appendChild(btn);
+
+  const section = document.createElement("section");
+  section.className = `category sector-panel category--${sector}`;
+  section.dataset.sector = sector;
+  section.hidden = activeSector !== sector;
+  section.innerHTML = `<h2>${escapeHtml(meta.label)}</h2>`
+    + (meta.desc ? `<p class="category-desc">${escapeHtml(meta.desc)}</p>` : "")
+    + `<div class="cards" id="${id}"></div>`;
+  const panels = panel.querySelectorAll(".sector-panel");
+  if (panels.length) panels[panels.length - 1].after(section);
+  else panel.appendChild(section);
+  return section.querySelector(".cards");
+}
 
 function renderTabContent(tab, data) {
   renderAssessment(tab === "US" ? data.assessment : data.assessment_kr, tab);
   const indicators = data.indicators || {};
   const assets = data.assets || {};
-  const hosts = {
-    dollar: document.getElementById(`dollar-cards-${tab}`),
-    inflation: document.getElementById(`inflation-cards-${tab}`),
-  };
+  const bySector = {};
+  for (const [code, payload] of Object.entries(indicators)) {
+    if ((payload.region ?? "US") !== tab || !payload?.series?.length) continue;
+    const sector = indicatorSector(code, payload);
+    if (!Object.prototype.hasOwnProperty.call(SECTOR_META, sector)) continue;
+    (bySector[sector] ||= []).push([code, payload]);
+  }
+  const hosts = {};
+  for (const sector of Object.keys(SECTOR_META)) {
+    hosts[sector] = document.getElementById(`${sector}-cards-${tab}`)
+      || (bySector[sector] ? ensureSectorHost(tab, sector) : null);
+  }
   const rendered = new Set();
-  const counts = { dollar: 0, inflation: 0 };
+  const counts = Object.fromEntries(Object.keys(SECTOR_META).map((sector) => [sector, 0]));
   const appendCard = (code, payload, category) => {
     const host = hosts[category];
     if (!host || !payload?.series?.length || rendered.has(code)) return;
@@ -436,11 +482,8 @@ function renderTabContent(tab, data) {
     }
   }
 
-  for (const [code, payload] of Object.entries(indicators)) {
-    const region = payload.region ?? "US";
-    const belongsHere = tab === "US" ? region !== "KR" : region === tab;
-    if (!belongsHere || !Object.prototype.hasOwnProperty.call(hosts, payload.category)) continue;
-    appendCard(code, payload, payload.category);
+  for (const [sector, entries] of Object.entries(bySector)) {
+    for (const [code, payload] of entries) appendCard(code, payload, sector);
   }
 
   for (const [category, host] of Object.entries(hosts)) {
@@ -720,6 +763,18 @@ function renderLastUpdated(iso) {
   el.textContent = `마지막 갱신: ${kst} (KST)`;
 }
 
+// 마지막 관측일이 이보다 오래되면 갱신 중단 가능성을 경고한다. 분기 계열은 발표가 6~9개월
+// 늦고 날짜가 분기 첫날로 찍히므로 1년보다 넉넉하게 잡는다.
+const STALE_AFTER_DAYS = 540;
+
+function renderAsOf(date) {
+  const ageDays = (Date.now() - Date.parse(date)) / 86_400_000;
+  const stale = Number.isFinite(ageDays) && ageDays > STALE_AFTER_DAYS;
+  const title = stale ? "원천 데이터 갱신이 늦거나 중단된 계열입니다" : "마지막 관측일";
+  return `<span class="card-asof${stale ? " stale" : ""}" title="${title}">`
+    + `${stale ? "⚠ " : ""}${escapeHtml(date)} 기준</span>`;
+}
+
 function renderCard(code, payload, assets) {
   const meta = INDICATOR_META[code] ?? ASSET_META[code] ?? {
     displayName: code, description: "", unit: "", decimals: 2,
@@ -761,6 +816,7 @@ function renderCard(code, payload, assets) {
     <div>
       <span class="card-value">${valueStr}</span>${meta.valueLabel ? `<span class="card-unit">${escapeHtml(meta.valueLabel)}</span>` : ""}
       <span class="card-change ${changeClass}" title="약 ${CHANGE_WINDOW_DAYS}일 전 대비">${changeStr}</span>
+      ${renderAsOf(latest.date)}
     </div>
     ${badgesHtml}
     <p class="card-desc">${meta.description}</p>

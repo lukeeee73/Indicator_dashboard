@@ -13,6 +13,7 @@ on:
     paths:
       - "scripts/watchlist_data.py"
       - "scripts/fetch_fred.py"
+      - "scripts/fetch_ecos.py"
 
 permissions:
   contents: write
@@ -37,6 +38,8 @@ jobs:
       - name: Fetch FRED data
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          # 한국은행 ECOS — secret 이 없으면 fetch_fred.py 가 ECOS 수집만 건너뛴다.
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
         run: python scripts/fetch_fred.py
 
       # 국채 입찰 결과(응찰률·낙찰 배분) — TreasuryDirect, API 키 불필요.

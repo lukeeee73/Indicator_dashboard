@@ -33,12 +33,14 @@ if __package__:
     from .merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
     from .competitors import get_watchlist_competitors
     from .data_io import read_json, write_json
+    from .fetch_ecos import collect_ecos, drop_replaced, ECOS_INDICATORS
 else:
     from analyze import enrich_with_assessment
     from valuation import enrich_stocks_with_valuation
     from merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
     from competitors import get_watchlist_competitors
     from data_io import read_json, write_json
+    from fetch_ecos import collect_ecos, drop_replaced, ECOS_INDICATORS
 
 
 # --------------------------------------------------------------------------
@@ -51,6 +53,27 @@ else:
 #   - transform: None        → 원시값 그대로
 #                "yoy_pct"   → 월간 시계열의 전년 동월 대비 상승률(%) 로 변환
 #                "yoy_pct_daily" → 일간 시계열을 월말 last 로 리샘플 후 YoY(%)
+def _context_indicators(specs: dict[str, tuple], region: Optional[str] = None) -> dict[str, dict]:
+    """(name, category, unit[, transform]) 튜플을 INDICATORS 항목으로 펼친다.
+
+    생활·실물 관점 지표는 모두 4분면 점수에서 제외(exclude_assessment)하므로
+    반복되는 필드를 여기서 채운다.
+    """
+    out: dict[str, dict] = {}
+    for code, (name, category, unit, *rest) in specs.items():
+        entry = {
+            "name": name,
+            "category": category,
+            "unit": unit,
+            "transform": rest[0] if rest else None,
+            "exclude_assessment": True,
+        }
+        if region:
+            entry["region"] = region
+        out[code] = entry
+    return out
+
+
 INDICATORS: dict[str, dict] = {
     "T10Y2Y": {
         "name": "10Y-2Y Treasury Spread",
@@ -277,9 +300,9 @@ INDICATORS: dict[str, dict] = {
         "region": "KR",
         "exclude_assessment": True,
     },
-    "DEBTTLKRQ052N": {
-        # 분기 데이터, IMF/World Bank 경유 — GDP 대비 % 원시값 사용
-        "name": "Korea General Government Debt (% of GDP)",
+    "GGGDTAKRA188N": {
+        # 연간, IMF WEO 경유 — GDP 대비 % 원시값. (구 DEBTTLKRQ052N 은 FRED 에서 삭제됨)
+        "name": "Korea General Government Gross Debt (% of GDP)",
         "category": "dollar",
         "unit": "percent",
         "transform": None,
@@ -306,15 +329,49 @@ INDICATORS: dict[str, dict] = {
         "region": "KR",
         "exclude_assessment": True,
     },
-    "LRUNTTTTKOR156S": {
-        # 실업률은 역방향 폴라리티 — 높을수록 성장 악화. analyze.py INVERTED_CODES 에 등록됨.
-        "name": "Korea Unemployment Rate",
-        "category": "growth",
-        "unit": "percent",
-        "transform": None,
-        "region": "KR",
-        "exclude_assessment": True,
-    },
+
+    # ── 생활·실물 관점 지표 (미국/한국) ─────────────────────────────────
+    # 통화·물가 외에 에너지·고용·소비·주거·신용·무역을 객관적으로 보기 위한 계열.
+    # category 는 대시보드 국가 탭의 섹터(서브탭) 키가 된다 — js/metadata.js SECTOR_META.
+    # growth/inflation 이 아니므로 4분면 점수에는 어떤 경우에도 들어가지 않는다.
+    **_context_indicators({
+        # 에너지·연료 — 가계가 체감하는 가격 그대로(수준값)를 본다.
+        "GASREGW":       ("US Regular Gasoline Retail Price", "energy", "usd_per_gallon"),
+        "GASDESW":       ("US Diesel Retail Price", "energy", "usd_per_gallon"),
+        "DHHNGSP":       ("Henry Hub Natural Gas Spot Price", "energy", "usd_per_mmbtu"),
+        "APU000072610":  ("US Average Electricity Price per kWh", "energy", "usd_per_kwh"),
+        # 고용·임금
+        "UNRATE":        ("US Unemployment Rate", "labor", "percent"),
+        "LNS12300060":   ("US Prime-Age (25-54) Employment-Population Ratio", "labor", "percent"),
+        "JTSJOL":        ("US Job Openings (JOLTS)", "labor", "million", "thousand_to_million"),
+        "CES0500000003": ("US Average Hourly Earnings YoY", "labor", "percent", "yoy_pct"),
+        # 소비·소득
+        "RSAFS":         ("US Retail Sales YoY", "consumer", "percent", "yoy_pct"),
+        "DSPIC96":       ("US Real Disposable Personal Income YoY", "consumer", "percent", "yoy_pct"),
+        "PSAVERT":       ("US Personal Saving Rate", "consumer", "percent"),
+        # 주거
+        "CSUSHPINSA":    ("Case-Shiller US National Home Price YoY", "housing", "percent", "yoy_pct"),
+        "MORTGAGE30US":  ("US 30-Year Fixed Mortgage Rate", "housing", "percent"),
+        "HOUST":         ("US Housing Starts", "housing", "thousand_units_saar"),
+        "CUSR0000SAH1":  ("US CPI Shelter YoY", "housing", "percent", "yoy_pct"),
+        # 신용·금융여건
+        "DRCCLACBS":     ("US Credit Card Delinquency Rate", "credit", "percent"),
+        "DRTSCILM":      ("SLOOS: Banks Tightening C&I Loan Standards", "credit", "percent"),
+        "NFCI":          ("Chicago Fed National Financial Conditions Index", "credit", "index"),
+        # 무역·대외
+        "BOPGSTB":       ("US Trade Balance (Goods & Services)", "trade", "billion_usd", "million_to_billion"),
+        "IR":            ("US Import Price Index YoY", "trade", "percent", "yoy_pct"),
+    }),
+    **_context_indicators({
+        # FRED 에서 아직 갱신되는 한국 계열만 고른다. OECD MEI 계열(CPI·산업생산·
+        # 심리 등)은 2023~2024 년에 갱신이 끊겼으므로 ECOS 등 국내 소스로 대체 예정.
+        "LRHUTTTTKRM156S": ("Korea Unemployment Rate (Harmonized)", "labor", "percent"),
+        "QKRR628BIS":      ("Korea Real Residential Property Prices (BIS)", "housing", "index"),
+        "QKRHAM770A":      ("Korea Household Debt (% of GDP, BIS)", "credit", "percent"),
+        "XTEXVA01KRM667S": ("Korea Exports (USD) YoY", "trade", "percent", "yoy_pct"),
+        "XTIMVA01KRM667S": ("Korea Imports (USD) YoY", "trade", "percent", "yoy_pct"),
+        "RBKRBIS":         ("Korea Real Effective Exchange Rate (BIS)", "dollar", "index"),
+    }, region="KR"),
 }
 
 
@@ -708,11 +765,32 @@ def billion_to_trillion(series: list[dict]) -> list[dict]:
     return _rescale(series, 1_000.0)
 
 
+def compute_yoy_diff(series: list[dict]) -> list[dict]:
+    """월간 시계열의 전년 동월 대비 증감(차이). 한국 취업자 수처럼 '몇 명 늘었나'로 읽는 계열용."""
+    s = _series_to_pandas(series)
+    if s.empty:
+        return []
+    return _pandas_to_series(s.diff(periods=12).dropna())
+
+
+def thousand_to_million(series: list[dict]) -> list[dict]:
+    """천 단위 → 백만 단위. JOLTS 구인건수(천 건)를 '백만 건'으로 읽기 쉽게."""
+    return _rescale(series, 1_000.0)
+
+
+def million_to_billion(series: list[dict]) -> list[dict]:
+    """백만 달러 → 십억 달러. 무역수지(BOPGSTB) 표기용."""
+    return _rescale(series, 1_000.0)
+
+
 TRANSFORMS = {
     "yoy_pct":       compute_yoy_pct,
     "yoy_pct_daily": compute_yoy_pct_daily,
     "million_to_trillion": million_to_trillion,
     "billion_to_trillion": billion_to_trillion,
+    "yoy_diff":      compute_yoy_diff,
+    "thousand_to_million": thousand_to_million,
+    "million_to_billion":  million_to_billion,
 }
 
 
@@ -1134,6 +1212,17 @@ def main() -> int:
     new_indicators, ok_ind = collect_group(INDICATORS, api_key, "indicator")
     new_assets,    ok_ast  = collect_group(ASSETS,    api_key, "asset")
 
+    # 한국은행 ECOS — 키가 없으면 건너뛰고 기존 값을 유지한다.
+    ecos_key = os.environ.get("ECOS_API_KEY")
+    ecos_total = 0
+    if ecos_key:
+        new_ecos, ok_ecos = collect_ecos(ecos_key, TRANSFORMS)
+        new_indicators.update(new_ecos)
+        ok_ind += ok_ecos
+        ecos_total = len(ECOS_INDICATORS)
+    else:
+        print("ECOS_API_KEY 가 없어 한국은행 ECOS 지표 수집을 건너뜁니다 (기존 값 유지).")
+
     # KOSPI YoY — Yahoo Finance 경유 (FRED 미제공)
     print("Fetching indicator KOSPI_YOY (Yahoo Finance ^KS11)...", end=" ", flush=True)
     try:
@@ -1260,8 +1349,13 @@ def main() -> int:
     merged_stocks.update(new_stocks)
     merged_indices.update(new_indices)
 
+    # ECOS 대체 계열이 확보되면 갱신이 멈춘 FRED(OECD MEI) 한국 계열은 내보내지 않는다.
+    dropped = drop_replaced(merged_indicators)
+    if dropped:
+        print(f"Replaced stale FRED series with ECOS: {', '.join(dropped)}")
+
     success_count = ok_ind + ok_ast + ok_stk + ok_idx
-    total_count   = len(INDICATORS) + len(ASSETS) + 3 + len(STOCKS) + len(INDICES)  # +3: KOSPI_YOY, KOSPI, GOLD
+    total_count   = len(INDICATORS) + ecos_total + len(ASSETS) + 3 + len(STOCKS) + len(INDICES)  # +3: KOSPI_YOY, KOSPI, GOLD
 
     if success_count == 0:
         # 전부 실패하면 기존 파일을 건드리지 않는다 (데이터 보존)
@@ -1296,7 +1390,7 @@ def main() -> int:
 
     print(
         f"\nDone. {success_count}/{total_count} series updated "
-        f"(indicators: {ok_ind}/{len(INDICATORS) + 1}, "
+        f"(indicators: {ok_ind}/{len(INDICATORS) + ecos_total + 1}, "
         f"assets: {ok_ast}/{len(ASSETS) + 1}) "
         f"-> {DATA_DIR.relative_to(REPO_ROOT)}/ (index.json + indicators/*.json + assets/*.json + stocks/*.json)"
     )
