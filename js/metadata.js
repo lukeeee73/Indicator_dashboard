@@ -28,6 +28,7 @@ const INDICATOR_META = {
     zeroline: true,
   },
   PAYEMS: {
+    sector: "labor",
     displayName: "비농업 고용 YoY",
     description: "비농업 일자리의 전년 대비 증감. 경기가 좋으면 고용이 늘고 나쁘면 줄어드는 동행 지표.",
     unit: "%",
@@ -49,6 +50,7 @@ const INDICATOR_META = {
     zeroline: true,
   },
   UMCSENT: {
+    sector: "consumer",
     displayName: "미시간대 소비자심리",
     description: "미시간대가 매달 측정하는 소비자 낙관도. GDP의 70%인 소비를 이끄는 가계 심리를 가장 빠르게 반영하는 선행 지표.",
     unit: "index",
@@ -238,9 +240,9 @@ const INDICATOR_META = {
     region: "KR",
     zeroline: true,
   },
-  DEBTTLKRQ052N: {
-    displayName: "🇰🇷 한국 정부 부채 (% of GDP)",
-    description: "한국 정부 부채의 GDP 대비 비율 (IMF/World Bank). 미국과 함께 보면 두 나라의 재정 여력을 비교할 수 있다. 분기 발표.",
+  GGGDTAKRA188N: {
+    displayName: "🇰🇷 한국 일반정부 부채 (% of GDP)",
+    description: "한국 일반정부(중앙+지방) 총부채의 GDP 대비 비율 (IMF WEO). 미국과 함께 보면 두 나라의 재정 여력을 비교할 수 있다. 연간 발표라 1~2년 늦게 반영된다.",
     unit: "% GDP",
     decimals: 1,
     region: "KR",
@@ -263,12 +265,139 @@ const INDICATOR_META = {
     region: "KR",
     zeroline: true,
   },
-  LRUNTTTTKOR156S: {
+  // ── 생활·실물 관점 (미국) ─────────────────────────────────────────────
+  // sector 를 따로 적지 않으면 수집 payload 의 category 가 곧 섹터다.
+  GASREGW: {
+    displayName: "미국 휘발유 소매가격",
+    description: "미국 일반 휘발유의 주간 전국 평균 소매가격(갤런당 달러, EIA). 가계가 주유소에서 체감하는 물가 그 자체로, 원유가격이 몇 주 시차로 전가된다.",
+    unit: "$", decimals: 3, valueLabel: "갤런당",
+  },
+  GASDESW: {
+    displayName: "미국 경유 소매가격",
+    description: "미국 경유(디젤)의 주간 전국 평균 소매가격(갤런당 달러, EIA). 트럭·농기계·물류 원가에 직결돼 휘발유보다 기업 비용과 운송 물가를 더 잘 보여준다.",
+    unit: "$", decimals: 3, valueLabel: "갤런당",
+  },
+  DHHNGSP: {
+    displayName: "천연가스 (헨리허브)",
+    description: "미국 천연가스 현물 가격(MMBtu당 달러). 난방비·발전 단가와 비료·화학 원가에 영향을 준다. 날씨에 따라 크게 출렁인다.",
+    unit: "$", decimals: 2, valueLabel: "MMBtu당",
+  },
+  APU000072610: {
+    displayName: "미국 가정용 전기요금",
+    description: "도시 가구가 실제 내는 전기 1kWh당 평균 가격(BLS). 데이터센터 수요·발전 연료비가 가계 전기료로 어떻게 넘어오는지 볼 수 있다.",
+    unit: "$", decimals: 3, valueLabel: "kWh당",
+  },
+  UNRATE: {
+    displayName: "미국 실업률",
+    description: "경제활동인구 중 일자리를 찾고 있지만 구하지 못한 사람의 비율. 저점에서 0.5%p 이상 오르기 시작하면 침체 경고로 읽힌다(삼 룰).",
+    unit: "%", decimals: 1,
+  },
+  LNS12300060: {
+    displayName: "핵심연령(25~54세) 고용률",
+    description: "25~54세 인구 중 실제로 일하는 사람의 비율. 은퇴·학업 같은 인구구조 효과를 걸러내 실업률보다 노동시장의 실제 체력을 객관적으로 보여준다.",
+    unit: "%", decimals: 1,
+  },
+  JTSJOL: {
+    displayName: "미국 구인 건수 (JOLTS)",
+    description: "기업이 채우려고 내놓은 빈 일자리 수(백만 건). 실업자 수보다 많으면 노동자 우위 시장이며, 빠르게 줄면 고용 둔화가 뒤따른다.",
+    unit: "백만", decimals: 2, valueLabel: "백만 건",
+  },
+  CES0500000003: {
+    displayName: "미국 시간당 임금 YoY",
+    description: "민간 근로자 평균 시간당 임금의 전년 대비 상승률. CPI보다 높으면 실질임금이 오르는 중이다.",
+    unit: "%", decimals: 2, zeroline: true,
+  },
+  RSAFS: {
+    displayName: "미국 소매판매 YoY",
+    description: "소매·외식 판매액의 전년 대비 증가율(명목). 물가 상승률을 빼고 봐야 실제 소비량의 변화가 보인다.",
+    unit: "%", decimals: 2, zeroline: true,
+  },
+  DSPIC96: {
+    displayName: "미국 실질 가처분소득 YoY",
+    description: "세금을 내고 물가를 감안한 뒤 가계가 실제로 쓸 수 있는 소득의 전년 대비 변화. 소비 여력의 근본 체력.",
+    unit: "%", decimals: 2, zeroline: true,
+  },
+  PSAVERT: {
+    displayName: "미국 개인 저축률",
+    description: "가처분소득 중 저축으로 남기는 비율. 낮으면 소비가 저축을 깎아 유지되고 있다는 뜻으로, 충격에 대한 완충력이 약하다.",
+    unit: "%", decimals: 1,
+  },
+  CSUSHPINSA: {
+    displayName: "미국 집값 YoY (케이스-실러)",
+    description: "케이스-실러 전국 주택가격지수의 전년 대비 상승률. 같은 집의 반복 거래로 측정해 거래 구성 변화에 덜 흔들린다. 약 2개월 늦게 발표된다.",
+    unit: "%", decimals: 2, zeroline: true,
+  },
+  MORTGAGE30US: {
+    displayName: "미국 30년 고정 모기지 금리",
+    description: "주택 구입자가 받는 30년 고정금리 평균(프레디맥, 주간). 10년 국채금리에 가산금리를 얹은 값이라 주거비 부담과 주택 거래량을 좌우한다.",
+    unit: "%", decimals: 2,
+  },
+  HOUST: {
+    displayName: "미국 주택 착공",
+    description: "새로 공사를 시작한 주택 수(연율, 천 호). 금리에 가장 민감한 실물 활동으로, 미래 주택 공급과 건설 고용의 선행 신호.",
+    unit: "천호", decimals: 0, valueLabel: "천 호(연율)",
+  },
+  CUSR0000SAH1: {
+    displayName: "미국 주거비 CPI YoY",
+    description: "CPI에서 임대료·자가주거비 등 주거 항목의 전년 대비 상승률. CPI 비중이 약 1/3로 가장 크고, 시장 임대료를 1년가량 늦게 따라간다.",
+    unit: "%", decimals: 2, zeroline: true,
+  },
+  DRCCLACBS: {
+    displayName: "미국 신용카드 연체율",
+    description: "상업은행 신용카드 대출 중 30일 이상 연체된 비율(분기). 가계의 상환 여력이 한계에 다가가는지를 보여준다.",
+    unit: "%", decimals: 2,
+  },
+  DRTSCILM: {
+    displayName: "은행 기업대출 기준 강화 비율",
+    description: "연준 대출 담당자 설문(SLOOS)에서 대·중견기업 대출 기준을 '강화했다'에서 '완화했다'를 뺀 순비율(분기). 플러스로 크게 오르면 신용 경색이 시작된다는 신호.",
+    unit: "%", decimals: 1, zeroline: true,
+  },
+  NFCI: {
+    displayName: "시카고 연은 금융여건지수",
+    description: "금리·신용·주식·레버리지 등 105개 지표로 만든 금융여건지수(주간). 0보다 크면 평균보다 빡빡, 작으면 느슨한 상태.",
+    unit: "", decimals: 2, zeroline: true, valueLabel: "지수",
+  },
+  BOPGSTB: {
+    displayName: "미국 무역수지",
+    description: "상품·서비스 수출에서 수입을 뺀 값(월, 십억 달러). 마이너스가 클수록 해외에서 사오는 것이 더 많다는 뜻이며, 관세 정책 효과를 직접 확인할 수 있다.",
+    unit: "십억$", decimals: 1, zeroline: true, valueLabel: "십억 달러",
+  },
+  IR: {
+    displayName: "미국 수입물가 YoY",
+    description: "미국이 수입하는 상품 가격의 전년 대비 변화. 달러 가치·관세·해외 물가가 미국 소비자물가로 들어오는 입구다.",
+    unit: "%", decimals: 2, zeroline: true,
+  },
+
+  // ── 생활·실물 관점 (한국, FRED 경유) ──────────────────────────────────
+  LRHUTTTTKRM156S: {
     displayName: "🇰🇷 한국 실업률",
-    description: "한국 15세 이상 실업률. 높을수록 성장 약화를 의미해 역방향으로 계산된다. 미국 4분면 점수에는 포함되지 않는다.",
-    unit: "%",
-    decimals: 1,
-    region: "KR",
+    description: "OECD 기준으로 맞춘 한국 실업률(계절조정). 국제 비교가 가능하도록 정의를 통일한 값이다. 한국은 구직단념자가 실업자에서 빠져 수치가 낮게 나오므로 고용률과 함께 봐야 한다.",
+    unit: "%", decimals: 1, region: "KR",
+  },
+  QKRR628BIS: {
+    displayName: "🇰🇷 한국 실질 주택가격 (BIS)",
+    description: "물가 상승분을 뺀 한국 주택가격 지수(2010=100, 분기, BIS). 명목 집값이 올라도 이 값이 제자리면 물가만큼만 오른 것이다.",
+    unit: "", decimals: 1, region: "KR", valueLabel: "지수(2010=100)",
+  },
+  QKRHAM770A: {
+    displayName: "🇰🇷 가계부채 (% of GDP, BIS)",
+    description: "한국 가계부채의 GDP 대비 비율(분기, BIS). 주요국 중 최상위권으로, 금리 인상기에 소비를 짓누르는 구조적 부담이다.",
+    unit: "% GDP", decimals: 1, region: "KR",
+  },
+  XTEXVA01KRM667S: {
+    displayName: "🇰🇷 한국 수출 YoY",
+    description: "달러 기준 한국 수출액(계절조정)의 전년 대비 증가율(OECD). 반도체 업황과 글로벌 수요를 가장 빨리 반영하는 한국 경기의 핵심 지표.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  XTIMVA01KRM667S: {
+    displayName: "🇰🇷 한국 수입 YoY",
+    description: "달러 기준 한국 수입액(계절조정)의 전년 대비 증가율(OECD). 에너지 수입 비중이 커서 유가와 내수 경기가 함께 반영된다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  RBKRBIS: {
+    displayName: "🇰🇷 원화 실질실효환율 (BIS)",
+    description: "교역 상대국 통화 바스켓 대비 원화 가치를 물가 차이까지 감안해 지수화한 값(2020=100, BIS). 원/달러 하나만 볼 때보다 원화의 실제 대외 구매력을 객관적으로 보여준다. 높을수록 원화 강세.",
+    unit: "", decimals: 1, region: "KR", valueLabel: "지수(2020=100)",
   },
   KOSPI_YOY: {
     displayName: "🇰🇷 코스피 YoY",
@@ -431,7 +560,7 @@ const COMPARE_RECOMMENDATIONS = {
     secondary: ["GOLD", "SP500"],
     note: "한국 M2 팽창 속도를 미국 M2와 비교해 상대 통화 공급 과잉을 파악. 원/달러와 동행 확인.",
   },
-  DEBTTLKRQ052N: {
+  GGGDTAKRA188N: {
     primary:   ["IRLTLT01KRM156N", "DEXKOUS", "KOSPI"],
     secondary: ["BAMLH0A0HYM2", "GOLD"],
     note: "한국 재정 건전성 추이. 부채 확대 시 장기금리·원화 방향성과의 관계를 확인.",
@@ -448,10 +577,10 @@ const COMPARE_RECOMMENDATIONS = {
     secondary: ["SP500", "BAMLH0A0HYM2"],
     note: "수출 의존 경제구조상 글로벌 수요와 동행. 코스피·원화와의 상관, S&P 500 과의 동조화 확인.",
   },
-  LRUNTTTTKOR156S: {
-    primary:   ["KOSPI", "KORPROINDMISMEI"],
-    secondary: ["DEXKOUS", "VIXCLS"],
-    note: "실업률 상승은 내수 위축 신호. 코스피 하락과 동행 경향. 백분위는 역방향(높을수록 성장 약화).",
+  LRHUTTTTKRM156S: {
+    primary:   ["KOSPI", "DEXKOUS"],
+    secondary: ["VIXCLS", "SP500"],
+    note: "실업률 상승은 내수 위축 신호. 코스피 하락과 동행하는지 확인.",
   },
   KOSPI_YOY: {
     primary:   ["SP500", "DEXKOUS"],
@@ -485,6 +614,27 @@ const CATEGORY_COLOR = {
   growth:    "#c8d8ea",   // 스틸 블루-화이트
   inflation: "#cc2424",   // 레드
   dollar:    "#f5c842",   // 골드-옐로우 (달러 상징색)
+  energy:    "#fb923c",
+  labor:     "#60a5fa",
+  consumer:  "#a78bfa",
+  housing:   "#34d399",
+  credit:    "#f472b6",
+  trade:     "#2dd4bf",
+};
+
+// 국가 탭(KR·US, 이후 CN·JP …) 안의 섹터 서브탭. 이 순서대로 표시한다.
+// dollar/inflation 은 index.html 에 정적으로 있고(환율 카드가 항상 먼저 보여야 함),
+// 나머지는 해당 국가에 데이터가 있을 때만 dashboard.js 가 버튼과 패널을 만든다.
+// 새 국가 탭은 panel-<CODE> 와 .sector-nav 만 있으면 같은 섹터 구성을 그대로 쓴다.
+const SECTOR_META = {
+  dollar:    { label: "통화 가치·환율" },
+  inflation: { label: "물가·인플레이션" },
+  energy:    { label: "에너지·연료",   desc: "휘발유·경유·가스·전기 — 가계와 기업이 실제로 내는 에너지 가격" },
+  labor:     { label: "고용·임금",     desc: "실업률·고용률·구인·임금 — 일자리의 양과 질" },
+  consumer:  { label: "소비·소득",     desc: "소매판매·실질소득·저축률·소비심리 — 가계의 지출 여력" },
+  housing:   { label: "주거·부동산",   desc: "집값·주택담보대출 금리·착공·주거비 — 주거 부담과 부동산 경기" },
+  credit:    { label: "신용·금융여건", desc: "연체율·대출 기준·가계부채·금융여건 — 빚과 돈줄의 상태" },
+  trade:     { label: "무역·대외",     desc: "수출입·무역수지·수입물가 — 바깥 세계와의 거래" },
 };
 
 // 최근 변화 계산 기준 (일)
