@@ -140,25 +140,35 @@ def fmt_range(r: dict) -> str:
 
 
 def summarize_series(series: list[dict], decision_date: str) -> dict:
-    """결정일 직전 값(before)과 최신 값(after), 최근 관측 10개."""
+    """결정일 직전 값, 결정일부터 5개 관측(즉각 반응), 최신 값, 최근 관측 10개.
+
+    변경을 며칠 늦게 처리해도(--force 재생성 등) 결정 직후 반응을 볼 수 있게
+    after_decision 을 따로 둔다.
+    """
     before = [p for p in series if p["date"] < decision_date]
+    after = [p for p in series if p["date"] >= decision_date]
     return {
         "before": before[-1] if before else None,
+        "after_decision": after[:5],
         "latest": series[-1] if series else None,
-        "has_post_decision_data": any(p["date"] >= decision_date for p in series),
+        "has_post_decision_data": bool(after),
         "recent": series[-10:],
     }
 
 
 def build_kickoff(change: dict, snapshot: dict[str, dict]) -> str:
     lines = [
-        f"The US federal funds target range changed on {change['date']}:",
+        f"The US federal funds target range changed, effective {change['date']} "
+        "(FRED dates the range on its effective date, usually the day after the FOMC announcement; "
+        "check the statement for the actual announcement date):",
         f"  previous {fmt_range(change['previous'])} -> new {fmt_range(change['current'])}"
         f" ({change['change_bp']:+d} bp). Source: FRED DFEDTARL/DFEDTARU.",
         "",
         "FRED market snapshot, fetched just now "
         f"({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}).",
-        "'before' is the last observation before the decision date; 'recent' is the last 10 observations.",
+        "'before' is the last observation before the likely announcement day "
+        "(effective date minus one day); 'after_decision' is the first 5 observations from that day (the immediate reaction); 'latest' and 'recent' (last 10) "
+        "show where each series stands now.",
         "",
         json.dumps(
             {sid: {**SNAPSHOT_SERIES[sid], **data} for sid, data in snapshot.items()},
@@ -310,6 +320,24 @@ def set_output(name: str, value: str) -> None:
             f.write(f"{name}={value}\n")
 
 
+LOCK_PATH = REPO_ROOT / "managed_agents" / "claude-lock.json"
+
+
+def resolve_resource_ids() -> tuple[Optional[str], Optional[str]]:
+    """환경 변수 우선, 없으면 ant apply 가 쓴 claude-lock.json 에서 읽는다 (로컬 실행용)."""
+    agent_id = os.environ.get("RATE_WATCH_AGENT_ID")
+    env_id = os.environ.get("RATE_WATCH_ENVIRONMENT_ID")
+    if agent_id and env_id:
+        return agent_id, env_id
+    try:
+        resources = read_json(LOCK_PATH).get("resources", {})
+    except (FileNotFoundError, ValueError):
+        return agent_id, env_id
+    agent_id = agent_id or resources.get("./agents/rate-watch.md", {}).get("id")
+    env_id = env_id or resources.get("./environments/rate-watch.yaml", {}).get("id")
+    return agent_id, env_id
+
+
 def load_index() -> dict:
     try:
         return read_json(INDEX_PATH)
@@ -360,15 +388,17 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     since = (date.fromisoformat(change["date"])
              - timedelta(days=SNAPSHOT_LOOKBACK_DAYS)).isoformat()
-    snapshot = {sid: summarize_series(fetch_series(sid, fred_key, since), change["date"])
+    # FRED 는 목표 범위를 '시행일'(보통 FOMC 발표 다음 날)에 기록한다. 발표 당일 종가는
+    # 이미 결정이 반영된 값이므로, 발표 추정일(시행일 - 1일) 이전을 '결정 전'으로 자른다.
+    announced = (date.fromisoformat(change["date"]) - timedelta(days=1)).isoformat()
+    snapshot = {sid: summarize_series(fetch_series(sid, fred_key, since), announced)
                 for sid in SNAPSHOT_SERIES}
     kickoff = build_kickoff(change, snapshot)
     if args.dry_run:
         print(kickoff)
         return 0
 
-    agent_id = os.environ.get("RATE_WATCH_AGENT_ID")
-    env_id = os.environ.get("RATE_WATCH_ENVIRONMENT_ID")
+    agent_id, env_id = resolve_resource_ids()
     if not agent_id or not env_id:
         print("RATE_WATCH_AGENT_ID / RATE_WATCH_ENVIRONMENT_ID are not set "
               "(see managed_agents/README.md)", file=sys.stderr)

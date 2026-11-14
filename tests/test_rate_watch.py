@@ -53,6 +53,7 @@ class DetectionTests(unittest.TestCase):
         summary = rate_watch.summarize_series(s, "2026-09-17")
         self.assertEqual(summary["before"]["value"], 4.0)
         self.assertEqual(summary["latest"]["value"], 3.9)
+        self.assertEqual([p["value"] for p in summary["after_decision"]], [3.9])
         self.assertTrue(summary["has_post_decision_data"])
 
 
