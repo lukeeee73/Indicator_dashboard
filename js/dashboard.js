@@ -184,7 +184,14 @@ function setGroupState(group, state, err = null) {
 //
 // get_payload_map RPC 가 기존 data/<종류>/<CODE>.json 과 같은 모양의
 // payload 를 { code: payload } 맵으로 돌려주므로 이후 렌더링 로직은 동일하다.
-// 메타를 먼저 받아 화면을 살린 뒤, 시계열은 그룹별로 따로 채워 넣는다.
+//
+// 첫 화면 (2026-11 이후): 국가 탭 데이터는 배포 때 만든 정적 스냅샷
+// (data/snapshot/dashboard.json — 메타 + 지표·자산 다운샘플)에서 먼저 그린다.
+// get_payload_map 은 방문마다 DB 에서 수십 년치 JSON 을 조립해 2~3초(최대 수십 초)가
+// 걸렸다. 스냅샷을 그린 뒤 가벼운 get_app_meta 로 DB 가 더 새로운지 확인하고,
+// 그렇다면 화면을 비우지 않은 채 DB 데이터로 바꾼다. 스냅샷이 없거나 깨졌으면
+// 예전처럼 메타 → 시계열 순서로 Supabase 에서 받는다.
+//
 // 재시도 버튼을 연달아 누르면 로드가 겹친다. 뒤늦게 끝난 이전 로드가
 // 새 로드의 _cachedData 를 덮어써 "ready 인데 내용은 빈" 상태가 되는 것을
 // 세대 번호로 막는다 — 항상 마지막 로드만 화면에 반영한다.
@@ -203,7 +210,9 @@ async function loadDashboardData() {
     setGroupState("indicators", "loading");
     setGroupState("stocks", "loading");
 
-    const idx = await sbRpc("get_app_meta");
+    const snapshot = await fetchDashboardSnapshot();
+    if (seq !== _loadSeq) return;
+    const idx = snapshot ? snapshot.meta : await sbRpc("get_app_meta");
     if (seq !== _loadSeq) return;
     if (!idx || typeof idx !== "object" || Array.isArray(idx)) {
       throw new Error("app_meta 형식이 올바르지 않습니다");
@@ -227,28 +236,36 @@ async function loadDashboardData() {
       return list.map((entry) => entry.code);
     };
     // 잘못된 메타는 로더를 설치하기 전에 거부한다. 재시도는 교정된 메타부터 받는다.
-    const codes = {
-      indicators: codesOf(idx.indicators, "지표"),
-      assets: codesOf(idx.assets, "자산"),
-      stocks: codesOf(idx.stocks, "종목"),
-      indices: codesOf(idx.indices, "지수"),
-    };
+    const codesFromMeta = (meta) => ({
+      indicators: codesOf(meta.indicators, "지표"),
+      assets: codesOf(meta.assets, "자산"),
+      stocks: codesOf(meta.stocks, "종목"),
+      indices: codesOf(meta.indices, "지수"),
+    });
+    const codes = codesFromMeta(idx);
     const currencyCodes = new Set(Object.values(CURRENCY_ASSET_CODES).flat());
     const groupAttempts = {};
 
     // parts = [[키, 코드목록, 필수여부, RPC 추가인자], …]
     // 준비·요청·후처리 오류는 해당 그룹의 재시도로 복구한다.
-    const loadGroup = async (group, prepareParts) => {
+    // opts.source(part) 를 주면 요청 대신 그 결과(Promise.allSettled 모양)를 쓴다.
+    // opts.quiet 이면 지금 화면을 지우지 않고 받아 두었다가 성공했을 때만 바꾼다.
+    // 실패해도 오류 상태로 바꾸지 않고 false 를 돌려준다 (호출측이 대체 경로를 고른다).
+    // opts.onCommit 은 검증을 통과한 뒤 화면을 다시 그리기 직전에 한 번 불린다.
+    const loadGroup = async (group, prepareParts, opts = {}) => {
       const attempt = (groupAttempts[group] || 0) + 1;
       groupAttempts[group] = attempt;
       const isCurrent = () => seq === _loadSeq && groupAttempts[group] === attempt;
       try {
-        resetGroupContent(group);
+        if (!opts.quiet) resetGroupContent(group);
         const parts = prepareParts();
-        const results = await Promise.allSettled(
-          parts.map(([, codes, , extraArgs]) => fetchPayloadMap(codes, extraArgs)));
-        if (!isCurrent()) return;
+        const results = opts.source
+          ? parts.map(opts.source)
+          : await Promise.allSettled(
+            parts.map(([, codes, , extraArgs]) => fetchPayloadMap(codes, extraArgs)));
+        if (!isCurrent()) return false;
 
+        const next = {};
         const missing = [];
         let fatal = null;
         results.forEach((result, i) => {
@@ -259,10 +276,10 @@ async function loadDashboardData() {
                 || Array.isArray(payload.map) || !Array.isArray(payload.missing)) {
               throw new Error(`${key} 응답 형식이 올바르지 않습니다`);
             }
-            target[key] = { ...payload.map };
+            next[key] = { ...payload.map };
             missing.push(...payload.missing);
           } else {
-            target[key] = {};
+            next[key] = {};
             if (required) fatal = result.reason || new Error(`${key} 데이터를 불러오지 못했습니다`);
             else missing.push(...codes);
           }
@@ -274,30 +291,75 @@ async function loadDashboardData() {
           const requiredCurrencyAssets = parts.find(([key]) => key === "assets")[1]
             .filter((code) => currencyCodes.has(code));
           const unavailable = requiredCurrencyAssets.filter((code) =>
-            !Array.isArray(target.assets[code]?.series) || !target.assets[code].series.length);
+            !Array.isArray(next.assets[code]?.series) || !next.assets[code].series.length);
           if (unavailable.length && !fatal) {
             fatal = new Error(`필수 통화·환율 데이터를 불러오지 못했습니다: ${unavailable.join(", ")}`);
           }
         }
         if (fatal) throw fatal;
+        if (opts.onCommit) opts.onCommit();
+        if (opts.quiet) resetGroupContent(group);   // 새 데이터가 준비된 뒤에만 지운다
+        Object.assign(target, next);
         setGroupState(group, "ready");
         if (missing.length) {
           console.warn(`${group}: ${missing.length}개 코드를 불러오지 못했습니다`, missing);
         }
+        return true;
       } catch (err) {
+        if (opts.quiet) {
+          if (isCurrent()) console.warn(`${group}: 지금 화면을 유지합니다`, err);
+          return false;
+        }
         if (isCurrent()) setGroupState(group, "error", err);
+        return false;
       }
     };
 
-    _groupLoaders.indicators = () => loadGroup("indicators", () =>
-      [["indicators", codes.indicators, true],
-       ["assets", codes.assets, false]]);
+    const indicatorParts = (list = codes) =>
+      [["indicators", list.indicators, true, SERIES_DOWNSAMPLE_ARGS()],
+       ["assets", list.assets, false, SERIES_DOWNSAMPLE_ARGS()]];
+    _groupLoaders.indicators = () => loadGroup("indicators", () => indicatorParts());
     _groupLoaders.stocks = () => loadGroup("stocks", () =>
-      [["stocks", codes.stocks, true, STOCK_SERIES_ARGS()],
+      [["stocks", codes.stocks, true, SERIES_DOWNSAMPLE_ARGS()],
        ["indices", codes.indices, false]]);
 
     // 주식은 첫 방문까지 미룬다. 이미 주식 탭에 있다면 상태 변경이 로드를 시작한다.
     setGroupState("stocks", "idle");
+
+    // 스냅샷에 없는 코드는 누락으로 다룬다 — 필수 환율이 빠졌으면 Supabase 로 받는다.
+    const fromSnapshot = ([key, list]) => {
+      const source = snapshot[key];
+      const map = {};
+      const absent = [];
+      for (const code of list) {
+        if (Object.prototype.hasOwnProperty.call(source, code)) map[code] = source[code];
+        else absent.push(code);
+      }
+      return { status: "fulfilled", value: { map, missing: absent } };
+    };
+    if (snapshot && await loadGroup("indicators", () => indicatorParts(), { source: fromSnapshot, quiet: true })) {
+      revalidateSnapshot(seq, idx.last_updated, async (live) => {
+        // DB 가 더 새롭다 — 메타를 바꾸고 지표 그룹을 화면 유지한 채 다시 받는다.
+        let nextCodes;
+        try { nextCodes = codesFromMeta(live); } catch (err) {
+          console.warn("DB 메타 형식이 올바르지 않아 스냅샷을 유지합니다", err);
+          return;
+        }
+        if (seq !== _loadSeq) return;
+        // 새 코드로 받되, 시계열이 모두 검증된 뒤에만 메타(평가 패널 포함)를 바꾼다.
+        await loadGroup("indicators", () => indicatorParts(nextCodes), {
+          quiet: true,
+          onCommit: () => {
+            Object.assign(codes, nextCodes);
+            target.last_updated = live.last_updated;
+            target.assessment = live.assessment || null;
+            target.assessment_kr = live.assessment_kr || null;
+            renderLastUpdated(live.last_updated);
+          },
+        });
+      });
+      return;
+    }
     await _groupLoaders.indicators();
   } catch (err) {
     if (seq !== _loadSeq) return;
@@ -308,6 +370,21 @@ async function loadDashboardData() {
     setGroupState("indicators", "error", err);
     setGroupState("stocks", "error", err);
     renderError(err);
+  }
+}
+
+// 스냅샷을 그린 뒤 DB 메타(가벼운 단일 행 조회)와 갱신 시각을 비교한다.
+// 배포가 DB 동기화보다 앞선 경우처럼 스냅샷이 같거나 더 새로우면 아무것도 하지 않는다.
+// 확인에 실패해도 이미 그린 스냅샷은 그대로 둔다.
+async function revalidateSnapshot(seq, snapshotUpdated, refresh) {
+  try {
+    const live = await sbRpc("get_app_meta");
+    if (seq !== _loadSeq) return;
+    if (!live || typeof live !== "object" || Array.isArray(live)) return;
+    if (!isNewerTimestamp(live.last_updated, snapshotUpdated)) return;
+    await refresh(live);
+  } catch (err) {
+    console.warn("최신 데이터 확인에 실패해 스냅샷을 유지합니다", err);
   }
 }
 
@@ -728,7 +805,8 @@ function renderCard(code, payload, assets) {
 
   function redraw() {
     const tf = TIMEFRAMES.find((t) => t.key === state.tfKey) ?? TIMEFRAMES[TIMEFRAMES.length - 1];
-    const mainSliced = sliceSeriesByMonths(series, tf.months);
+    // 다운샘플 데이터의 밀도를 고르게 맞춘다 — 장기 구간에서 최근 1년이 늘어나지 않도록.
+    const mainSliced = evenDensityForChart(sliceSeriesByMonths(series, tf.months));
 
     // 표시 범위 내 이벤트만 추출해서 annotation 으로 전달
     const rangeStart = mainSliced[0]?.date;
@@ -788,7 +866,7 @@ function renderCard(code, payload, assets) {
 
       if (cmpPayload && state.compareMode === "stacked") {
         // 나란히 보기: 메인과 같은 기간으로 잘라 별도 차트
-        const cmpSliced = sliceByDateRange(cmpPayload.series, rangeStart, rangeEnd);
+        const cmpSliced = evenDensityForChart(sliceByDateRange(cmpPayload.series, rangeStart, rangeEnd));
         compareBox.hidden = false;
         chartState.compare = renderChart(compareCanvas, cmpSliced, null, {
           events,
