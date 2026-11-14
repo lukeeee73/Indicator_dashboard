@@ -1,0 +1,20 @@
+# rate-watch 에이전트가 도는 클라우드 샌드박스.
+# limited 네트워킹: web_search/web_fetch 와 샌드박스 모두 아래 호스트만 닿는다.
+# 패키지 설치는 필요 없으므로 막아 둔다.
+name: rate-watch-env
+config:
+  type: cloud
+  networking:
+    type: limited
+    allow_package_managers: false
+    allow_mcp_servers: false
+    allowed_hosts:
+      - federalreserve.gov
+      - "*.federalreserve.gov"
+      - stlouisfed.org
+      - "*.stlouisfed.org"
+      - cnbc.com
+      - "*.cnbc.com"
+      - bloomberg.com
+      - "*.bloomberg.com"
+      - finance.yahoo.com

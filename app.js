@@ -23,4 +23,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // 첫 화면은 한국의 원화 가치·환율
   switchToTab("KR");
   loadDashboardData();
+  renderRateReports();  // 정적 리포트 파일 — 지표 데이터 로드와 독립
 });

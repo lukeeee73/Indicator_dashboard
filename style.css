@@ -2196,3 +2196,60 @@ a.mc-feed-title:hover { text-decoration: underline; }
 .wn-deadlink { opacity: 0.55; cursor: default; text-decoration: line-through; }
 .mc-note { margin-top: 0.2rem; }
 .pm-note { margin-top: 0.1rem; flex: 0 0 auto; }  /* flex 압축 방지 — 본문 높이 유지 */
+
+/* ---------- 금리 변동 리포트 (js/rate-reports.js) ---------- */
+.rate-reports[hidden] { display: none !important; }
+.rr-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 0.75rem;
+}
+.rr-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.rr-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--red-dim);
+  border-radius: var(--radius);
+  color: var(--text);
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+.rr-item:hover { border-color: var(--border-mid); }
+.rr-item.active { border-left-color: var(--red-bright); background: var(--bg-card); }
+.rr-date { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.04em; }
+.rr-change { font-size: 0.85rem; font-weight: 700; }
+.rr-headline { font-size: 0.78rem; color: var(--text-dim); }
+.rr-body {
+  min-width: 0;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+}
+.rr-summary { margin: 0 0 1rem; font-size: 0.92rem; }
+.rr-table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+.rr-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.rr-table th, .rr-table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.rr-table th { color: var(--text-dim); font-weight: 600; }
+.rr-num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rr-up { color: var(--up); }
+.rr-down { color: var(--down); }
+.rr-note { color: var(--text-dim); }
+.rr-section h4, .rr-block h4 { margin: 0.9rem 0 0.3rem; font-size: 0.82rem; }
+.rr-section p { margin: 0; font-size: 0.85rem; white-space: pre-line; }
+.rr-block ul { margin: 0; padding-left: 1.1rem; font-size: 0.82rem; }
+.rr-sources a { color: var(--accent-link); }
+.rr-meta { margin: 1rem 0 0; font-size: 0.72rem; color: var(--text-dim); }
+@media (max-width: 720px) {
+  .rr-layout { grid-template-columns: minmax(0, 1fr); }
+}

@@ -29,7 +29,7 @@ function buildStatic(root = path.resolve(__dirname, "..")) {
   const output = path.join(root, "dist");
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(output, { recursive: true });
-  for (const relative of [...required, "data/wiki"]) {
+  for (const relative of [...required, "data/wiki", "data/reports"]) {
     const source = path.join(root, relative);
     // A missing wiki export keeps the existing Supabase fallback available.
     if (!fs.existsSync(source)) continue;

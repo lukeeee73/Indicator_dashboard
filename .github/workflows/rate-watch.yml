@@ -1,0 +1,60 @@
+name: Rate Watch (FOMC → Managed Agent report)
+
+# 매일 FRED 의 FOMC 목표 범위(DFEDTARU/DFEDTARL)를 확인한다. LLM 호출 없음.
+# 범위가 바뀌었을 때만 Claude Managed Agent(managed_agents/agents/rate-watch.md)
+# 세션을 열어 시장 상황 리포트를 받아 data/reports/rates/ 에 커밋한다.
+# FRED 는 결정 당일 저녁~다음 날 반영하므로 화~토 13:30 UTC(= 한국 22:30)에 돈다.
+on:
+  schedule:
+    - cron: "30 13 * * 2-6"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "이미 보고한 최신 변경이라도 리포트를 다시 생성"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rate-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Check for a target-range change and report it
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RATE_WATCH_AGENT_ID: ${{ vars.RATE_WATCH_AGENT_ID }}
+          RATE_WATCH_ENVIRONMENT_ID: ${{ vars.RATE_WATCH_ENVIRONMENT_ID }}
+          RATE_WATCH_BUDGET_CENTS: ${{ vars.RATE_WATCH_BUDGET_CENTS || '500' }}
+        run: python scripts/rate_watch.py ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit & push if a report was written
+        run: |
+          if [ -z "$(git status --porcelain -- data/reports/)" ]; then
+            echo "No report changes."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/reports/
+          git commit -m "chore: rate watch report ($(date -u +%Y-%m-%d))"
+          git pull --rebase
+          git push
