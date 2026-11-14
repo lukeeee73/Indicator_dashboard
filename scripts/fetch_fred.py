@@ -33,12 +33,14 @@ if __package__:
     from .merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
     from .competitors import get_watchlist_competitors
     from .data_io import read_json, write_json
+    from .fetch_ecos import collect_ecos, drop_replaced, ECOS_INDICATORS
 else:
     from analyze import enrich_with_assessment
     from valuation import enrich_stocks_with_valuation
     from merge_qualitative import merge_into_stocks as merge_qualitative_into_stocks
     from competitors import get_watchlist_competitors
     from data_io import read_json, write_json
+    from fetch_ecos import collect_ecos, drop_replaced, ECOS_INDICATORS
 
 
 # --------------------------------------------------------------------------
@@ -763,6 +765,14 @@ def billion_to_trillion(series: list[dict]) -> list[dict]:
     return _rescale(series, 1_000.0)
 
 
+def compute_yoy_diff(series: list[dict]) -> list[dict]:
+    """월간 시계열의 전년 동월 대비 증감(차이). 한국 취업자 수처럼 '몇 명 늘었나'로 읽는 계열용."""
+    s = _series_to_pandas(series)
+    if s.empty:
+        return []
+    return _pandas_to_series(s.diff(periods=12).dropna())
+
+
 def thousand_to_million(series: list[dict]) -> list[dict]:
     """천 단위 → 백만 단위. JOLTS 구인건수(천 건)를 '백만 건'으로 읽기 쉽게."""
     return _rescale(series, 1_000.0)
@@ -778,6 +788,7 @@ TRANSFORMS = {
     "yoy_pct_daily": compute_yoy_pct_daily,
     "million_to_trillion": million_to_trillion,
     "billion_to_trillion": billion_to_trillion,
+    "yoy_diff":      compute_yoy_diff,
     "thousand_to_million": thousand_to_million,
     "million_to_billion":  million_to_billion,
 }
@@ -1201,6 +1212,17 @@ def main() -> int:
     new_indicators, ok_ind = collect_group(INDICATORS, api_key, "indicator")
     new_assets,    ok_ast  = collect_group(ASSETS,    api_key, "asset")
 
+    # 한국은행 ECOS — 키가 없으면 건너뛰고 기존 값을 유지한다.
+    ecos_key = os.environ.get("ECOS_API_KEY")
+    ecos_total = 0
+    if ecos_key:
+        new_ecos, ok_ecos = collect_ecos(ecos_key, TRANSFORMS)
+        new_indicators.update(new_ecos)
+        ok_ind += ok_ecos
+        ecos_total = len(ECOS_INDICATORS)
+    else:
+        print("ECOS_API_KEY 가 없어 한국은행 ECOS 지표 수집을 건너뜁니다 (기존 값 유지).")
+
     # KOSPI YoY — Yahoo Finance 경유 (FRED 미제공)
     print("Fetching indicator KOSPI_YOY (Yahoo Finance ^KS11)...", end=" ", flush=True)
     try:
@@ -1327,8 +1349,13 @@ def main() -> int:
     merged_stocks.update(new_stocks)
     merged_indices.update(new_indices)
 
+    # ECOS 대체 계열이 확보되면 갱신이 멈춘 FRED(OECD MEI) 한국 계열은 내보내지 않는다.
+    dropped = drop_replaced(merged_indicators)
+    if dropped:
+        print(f"Replaced stale FRED series with ECOS: {', '.join(dropped)}")
+
     success_count = ok_ind + ok_ast + ok_stk + ok_idx
-    total_count   = len(INDICATORS) + len(ASSETS) + 3 + len(STOCKS) + len(INDICES)  # +3: KOSPI_YOY, KOSPI, GOLD
+    total_count   = len(INDICATORS) + ecos_total + len(ASSETS) + 3 + len(STOCKS) + len(INDICES)  # +3: KOSPI_YOY, KOSPI, GOLD
 
     if success_count == 0:
         # 전부 실패하면 기존 파일을 건드리지 않는다 (데이터 보존)
@@ -1363,7 +1390,7 @@ def main() -> int:
 
     print(
         f"\nDone. {success_count}/{total_count} series updated "
-        f"(indicators: {ok_ind}/{len(INDICATORS) + 1}, "
+        f"(indicators: {ok_ind}/{len(INDICATORS) + ecos_total + 1}, "
         f"assets: {ok_ast}/{len(ASSETS) + 1}) "
         f"-> {DATA_DIR.relative_to(REPO_ROOT)}/ (index.json + indicators/*.json + assets/*.json + stocks/*.json)"
     )

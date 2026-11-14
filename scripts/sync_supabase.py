@@ -92,6 +92,7 @@ def optional_details(payload: dict[str, Any]) -> dict[str, Any] | None:
         "sector",
         "group",
         "region",
+        "source",
     }
     details = {
         key: value
@@ -142,7 +143,8 @@ def build_series_data(
                 "category": payload.get("category") or item.get("category"),
                 "unit": payload.get("unit") or item.get("unit"),
                 "region": payload.get("region") or item.get("region", "US"),
-                "source": source,
+                # 같은 그룹 안에서도 원천이 다를 수 있다 (예: 한국 지표의 ECOS).
+                "source": payload.get("source") or source,
                 "exclude_assessment": item.get("exclude_assessment", False),
                 "current_data": current_data,
                 "sector": payload.get("sector") or item.get("sector"),

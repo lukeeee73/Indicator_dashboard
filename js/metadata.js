@@ -399,6 +399,92 @@ const INDICATOR_META = {
     description: "교역 상대국 통화 바스켓 대비 원화 가치를 물가 차이까지 감안해 지수화한 값(2020=100, BIS). 원/달러 하나만 볼 때보다 원화의 실제 대외 구매력을 객관적으로 보여준다. 높을수록 원화 강세.",
     unit: "", decimals: 1, region: "KR", valueLabel: "지수(2020=100)",
   },
+  // ── 한국은행 ECOS (scripts/fetch_ecos.py) ────────────────────────────
+  KR_CPI: {
+    displayName: "🇰🇷 소비자물가 YoY",
+    description: "통계청 소비자물가지수의 전년 동월 대비 상승률(ECOS). 한국은행 물가안정목표는 2%다. 갱신이 멈춘 OECD 계열(KORCPIALLMINMEI)을 대체한다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_CORE_CPI: {
+    displayName: "🇰🇷 근원물가 YoY (농산물·석유류 제외)",
+    description: "날씨와 국제유가에 크게 흔들리는 농산물·석유류를 뺀 소비자물가 상승률. 물가가 기조적으로 얼마나 끈적한지 보여준다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_PPI: {
+    displayName: "🇰🇷 생산자물가 YoY",
+    description: "국내 생산자가 출하하는 상품·서비스 가격의 전년 대비 변화. 원가 부담이 소비자물가로 넘어오기 전에 먼저 움직인다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_PETROLEUM_CPI: {
+    displayName: "🇰🇷 석유류 소비자물가 YoY",
+    description: "휘발유·경유·등유·LPG 등 석유류 소비자물가의 전년 대비 상승률. 국제유가와 원/달러 환율, 유류세 조정이 함께 반영된 가계의 연료비 체감치다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_BASE_RATE: {
+    displayName: "🇰🇷 한국은행 기준금리",
+    description: "한국은행 금융통화위원회가 정하는 정책금리(월말 기준). 미국 기준금리와의 차이가 원/달러 환율과 자본 유출입에 영향을 준다.",
+    unit: "%", decimals: 2, region: "KR",
+  },
+  KR_M2: {
+    displayName: "🇰🇷 M2 통화량 YoY",
+    description: "광의통화(M2, 평잔·원계열)의 전년 대비 증가율(ECOS). 미국 M2와 비교해 어느 쪽이 더 빠르게 돈을 풀고 있는지 볼 수 있다. 갱신이 멈춘 OECD 계열을 대체한다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_JPYKRW: {
+    displayName: "🇰🇷 원/엔 환율 (100엔)",
+    description: "100엔당 원화 금액(월평균 매매기준율). 수출 경쟁국 일본과의 가격 경쟁력을 보여준다. 오르면 원화가 엔화보다 약해진 것이다.",
+    unit: "₩", decimals: 2, region: "KR", valueLabel: "원/100엔",
+  },
+  KR_CNYKRW: {
+    displayName: "🇰🇷 원/위안 환율",
+    description: "1위안당 원화 금액(월평균 매매기준율). 최대 교역국 중국과의 교역 조건을 보여준다.",
+    unit: "₩", decimals: 2, region: "KR", valueLabel: "원/위안",
+  },
+  KR_EMP_RATE: {
+    displayName: "🇰🇷 고용률 (계절조정)",
+    description: "15세 이상 인구 중 취업자 비율. 구직을 포기한 사람이 실업자에서 빠지는 문제를 피할 수 있어 한국에서는 실업률보다 고용 상황을 객관적으로 보여준다.",
+    unit: "%", decimals: 1, region: "KR",
+  },
+  KR_EMPLOYED_YOY: {
+    displayName: "🇰🇷 취업자 수 전년 대비 증감",
+    description: "취업자 수가 1년 전보다 몇 명 늘었는지(천 명). 매달 고용동향 발표에서 가장 먼저 보도되는 숫자다.",
+    unit: "천명", decimals: 0, region: "KR", zeroline: true, valueLabel: "천 명",
+  },
+  KR_CCSI: {
+    displayName: "🇰🇷 소비자심리지수 (CCSI)",
+    description: "한국은행 소비자동향조사의 종합 심리지수. 100보다 크면 장기 평균보다 낙관적이라는 뜻이다. 갱신이 멈춘 OECD 소비자신뢰 계열 대신 쓴다.",
+    unit: "", decimals: 1, region: "KR", valueLabel: "지수",
+  },
+  KR_KB_APT: {
+    displayName: "🇰🇷 아파트 매매가격 YoY (전국, KB)",
+    description: "KB국민은행 아파트 매매가격지수의 전년 대비 상승률. BIS 분기 지수보다 빨리, 월 단위로 주택 경기를 보여준다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_KB_APT_SEOUL: {
+    displayName: "🇰🇷 아파트 매매가격 YoY (서울, KB)",
+    description: "서울 아파트 매매가격지수의 전년 대비 상승률. 전국과의 격차가 커지면 수도권 쏠림이 심해지고 있다는 신호다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_HH_LOANS: {
+    displayName: "🇰🇷 가계대출 YoY",
+    description: "예금취급기관 가계대출 잔액의 전년 대비 증가율. 소득보다 빨리 늘면 가계부채 부담이 커지고 있다는 뜻이다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
+  KR_LOAN_RATE: {
+    displayName: "🇰🇷 은행 대출금리 (신규취급)",
+    description: "예금은행이 새로 내준 대출의 평균 금리. 기준금리 변화가 실제 가계·기업의 이자 부담으로 얼마나 전달되는지 보여준다.",
+    unit: "%", decimals: 2, region: "KR",
+  },
+  KR_GOODS_BALANCE: {
+    displayName: "🇰🇷 상품수지",
+    description: "국제수지 기준 상품 수출에서 수입을 뺀 값(월, 십억 달러). 반도체 업황과 에너지 수입 비용이 함께 드러나며, 원화 수급의 기초가 된다.",
+    unit: "", decimals: 1, region: "KR", zeroline: true, valueLabel: "십억 달러",
+  },
+  KR_IMPORT_PRICE: {
+    displayName: "🇰🇷 수입물가 YoY (원화 기준)",
+    description: "원화로 환산한 수입물가의 전년 대비 변화. 국제 원자재 가격과 환율이 합쳐진 값이라 몇 달 뒤 생산자·소비자물가로 이어진다.",
+    unit: "%", decimals: 1, region: "KR", zeroline: true,
+  },
   KOSPI_YOY: {
     displayName: "🇰🇷 코스피 YoY",
     description: "코스피 지수의 전년 동월 대비 수익률. 한국 증시가 경기를 어떻게 반영하는지 한눈에 보여준다. 미국 4분면 점수에는 포함되지 않는다.",

@@ -34,6 +34,17 @@
 | 미국 에너지·연료 | 휘발유·경유 소매가, 천연가스, 가정용 전기요금 | `GASREGW`, `GASDESW`, `DHHNGSP`, `APU000072610` |
 | 미국 고용·소비·주거·신용·무역 | 실업률·핵심연령 고용률·구인·임금, 소매판매·실질소득·저축률, 집값·모기지·착공, 연체율·금융여건, 무역수지·수입물가 | `UNRATE`, `JTSJOL`, `RSAFS`, `CSUSHPINSA`, `MORTGAGE30US`, `NFCI`, `BOPGSTB` |
 
+### 한국은행 ECOS
+
+한국 지표는 `scripts/fetch_ecos.py`가 한국은행 ECOS Open API에서 받습니다. FRED에 있는
+OECD MEI 한국 계열(CPI·M2·산업생산·심리 등)은 2023~2024년에 갱신이 멈췄기 때문입니다.
+`fetch_fred.py`가 실행될 때 `ECOS_API_KEY` 환경변수가 있으면 함께 수집하고, 없으면 ECOS만
+건너뛰어 기존 값을 유지합니다. 키는 https://ecos.bok.or.kr/api/ 에서 무료로 발급되며 GitHub
+secret `ECOS_API_KEY`로 등록합니다(`update.yml`이 전달). ECOS 계열이 확보되면 `replaces`에
+적힌 낡은 FRED 계열(`KORCPIALLMINMEI`, `MYAGM2KRM189S`, `KORPROINDMISMEI`)은 출력에서 빠집니다.
+`category`가 `growth`/`inflation`인 ECOS 계열(산업생산·선행지수 순환변동치·BSI, CPI·근원물가·PPI)은
+한국 4분면 점수에 들어갑니다.
+
 국가 탭 안의 섹터 서브탭은 `js/metadata.js`의 `SECTOR_META` 순서를 따릅니다. 통화·물가
 두 섹터는 `index.html`에 고정돼 있고, 나머지(에너지·고용·소비·주거·신용·무역)는 그 국가에
 데이터가 있을 때만 화면이 자동으로 만듭니다. 지표의 섹터는 수집 시의 `category`이며,
