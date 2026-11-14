@@ -3169,19 +3169,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 185.54
+      "value": 186.3
+    },
+    {
+      "date": "2026-11-10",
+      "value": 181.49
+    },
+    {
+      "date": "2026-11-11",
+      "value": 203.36
+    },
+    {
+      "date": "2026-11-12",
+      "value": 199.78
+    },
+    {
+      "date": "2026-11-13",
+      "value": 190.53
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 198527795200.0,
-      "pe_ratio": 213.26436,
-      "forward_pe": 60.290565,
-      "eps_ttm": 0.87,
+      "market_cap": 203867095040.0,
+      "pe_ratio": 229.55421,
+      "forward_pe": 61.962994,
+      "eps_ttm": 0.83,
       "dividend_yield": 0.0,
       "profit_margin": 0.1713,
-      "operating_margin": 0.13929,
-      "price_to_book": 21.846226,
+      "operating_margin": 0.1702,
+      "price_to_book": 22.43377,
       "return_on_equity": 0.11349
     },
     "quarterly": [
@@ -3223,28 +3239,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 185.54,
+    "as_of": "2026-11-13",
+    "current_price": 190.53,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 24.36,
+        "fair_value": 23.24,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 67.7,
+        "fair_value": 67.65,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 12.89,
+        "fair_value": 12.59,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 35.07,
-    "valuation_gap": 4.2909,
+    "fair_value": 34.43,
+    "valuation_gap": 4.5334,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -3362,10 +3378,10 @@
         "gap": 6.1683
       },
       {
-        "date": "2026-11-09",
-        "price": 185.54,
+        "date": "2026-11-13",
+        "price": 190.53,
         "fair_value": 24.36,
-        "gap": 6.6166
+        "gap": 6.8214
       }
     ],
     "qualitative": {

@@ -2061,27 +2061,43 @@
     },
     {
       "date": "2026-11-09",
-      "value": 139.21
+      "value": 141.45
+    },
+    {
+      "date": "2026-11-10",
+      "value": 134.0
+    },
+    {
+      "date": "2026-11-11",
+      "value": 154.69
+    },
+    {
+      "date": "2026-11-12",
+      "value": 128.64
+    },
+    {
+      "date": "2026-11-13",
+      "value": 115.88
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 37844967424.0,
-      "pe_ratio": 108.75782,
-      "forward_pe": -40.025417,
-      "eps_ttm": 1.28,
+      "market_cap": 29421721600.0,
+      "pe_ratio": null,
+      "forward_pe": -40.18992,
+      "eps_ttm": -0.23,
       "dividend_yield": 0.0,
       "profit_margin": 0.03129,
-      "operating_margin": -0.00223,
-      "price_to_book": 3.6904194,
+      "operating_margin": -0.37436,
+      "price_to_book": 6.4363475,
       "return_on_equity": 0.00601
     },
     "quarterly": [
       {
         "date": "2025-06-30",
-        "revenue": 105100000.0,
-        "operating_income": -111200000.0,
-        "net_income": 584400000.0,
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
         "eps": 2.38
       },
       {
@@ -2111,114 +2127,26 @@
         "operating_income": -175900000.0,
         "net_income": -190400000.0,
         "eps": -0.68
+      },
+      {
+        "date": "2026-09-30",
+        "revenue": 980800000.0,
+        "operating_income": 50400000.0,
+        "net_income": -37500000.0,
+        "eps": null
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 139.21,
+    "as_of": "2026-11-13",
+    "current_price": 115.88,
     "sector": "Technology",
-    "methods": {
-      "pe_benchmark": {
-        "fair_value": 35.84,
-        "weight": 5.0,
-        "note": "EPS_TTM × 섹터 P/E (28)"
-      },
-      "graham_number": {
-        "fair_value": 32.96,
-        "weight": 2.0,
-        "note": "sqrt(22.5 × EPS × 주당순자산)"
-      }
-    },
-    "fair_value": 35.02,
-    "valuation_gap": 2.9755,
-    "signal": "expensive",
-    "gap_series_weekly": [
-      {
-        "date": "2026-04-02",
-        "price": 108.82,
-        "fair_value": 84.1,
-        "gap": 0.294
-      },
-      {
-        "date": "2026-04-10",
-        "price": 144.97,
-        "fair_value": 84.1,
-        "gap": 0.7238
-      },
-      {
-        "date": "2026-04-17",
-        "price": 157.14,
-        "fair_value": 84.1,
-        "gap": 0.8685
-      },
-      {
-        "date": "2026-04-24",
-        "price": 147.16,
-        "fair_value": 84.1,
-        "gap": 0.7499
-      },
-      {
-        "date": "2026-05-01",
-        "price": 154.49,
-        "fair_value": 84.1,
-        "gap": 0.837
-      },
-      {
-        "date": "2026-05-08",
-        "price": 177.05,
-        "fair_value": 84.1,
-        "gap": 1.1053
-      },
-      {
-        "date": "2026-05-15",
-        "price": 219.94,
-        "fair_value": 84.1,
-        "gap": 1.6153
-      },
-      {
-        "date": "2026-05-22",
-        "price": 214.77,
-        "fair_value": 84.1,
-        "gap": 1.5538
-      },
-      {
-        "date": "2026-05-29",
-        "price": 231.09,
-        "fair_value": 84.1,
-        "gap": 1.7479
-      },
-      {
-        "date": "2026-06-05",
-        "price": 227.81,
-        "fair_value": 84.1,
-        "gap": 1.7089
-      },
-      {
-        "date": "2026-06-12",
-        "price": 232.36,
-        "fair_value": 84.1,
-        "gap": 1.763
-      },
-      {
-        "date": "2026-06-18",
-        "price": 286.69,
-        "fair_value": 84.1,
-        "gap": 2.409
-      },
-      {
-        "date": "2026-06-26",
-        "price": 240.3,
-        "fair_value": 84.1,
-        "gap": 1.8574
-      },
-      {
-        "date": "2026-06-29",
-        "price": 261.15,
-        "fair_value": 84.1,
-        "gap": 2.1053
-      }
-    ],
+    "methods": {},
+    "fair_value": null,
+    "valuation_gap": null,
+    "signal": "n/a",
+    "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
+    "gap_series_weekly": [],
     "qualitative": {
       "as_of": "2026-09-21",
       "narrative_score": 0.1,

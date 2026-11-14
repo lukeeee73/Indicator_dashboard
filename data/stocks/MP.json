@@ -6421,19 +6421,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 37.27
+      "value": 37.75
+    },
+    {
+      "date": "2026-11-10",
+      "value": 36.46
+    },
+    {
+      "date": "2026-11-11",
+      "value": 36.73
+    },
+    {
+      "date": "2026-11-12",
+      "value": 37.45
+    },
+    {
+      "date": "2026-11-13",
+      "value": 38.76
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 6644047360.0,
+      "market_cap": 6909666304.0,
       "pe_ratio": null,
-      "forward_pe": 63.09464,
-      "eps_ttm": -0.2,
+      "forward_pe": 83.08325,
+      "eps_ttm": -0.21,
       "dividend_yield": 0.0,
       "profit_margin": -0.07628,
-      "operating_margin": -0.13112001,
-      "price_to_book": 3.406453,
+      "operating_margin": -0.12724,
+      "price_to_book": 3.5426376,
       "return_on_equity": -0.01668
     },
     "quarterly": [
@@ -6446,10 +6462,10 @@
       },
       {
         "date": "2025-06-30",
-        "revenue": 57393000.0,
-        "operating_income": -43121000.0,
-        "net_income": -30872000.0,
-        "eps": -0.19
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": null
       },
       {
         "date": "2025-09-30",
@@ -6478,22 +6494,29 @@
         "operating_income": -17601000.0,
         "net_income": -20296000.0,
         "eps": -0.11
+      },
+      {
+        "date": "2026-09-30",
+        "revenue": 147655000.0,
+        "operating_income": -7906000.0,
+        "net_income": -20710000.0,
+        "eps": -0.12
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 37.27,
+    "as_of": "2026-11-13",
+    "current_price": 38.76,
     "sector": "Materials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 8.27,
+        "fair_value": 6.53,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (14)"
       }
     },
-    "fair_value": 8.27,
-    "valuation_gap": 3.5067,
+    "fair_value": 6.53,
+    "valuation_gap": 4.9357,
     "signal": "expensive",
     "gap_series_weekly": [],
     "qualitative": {

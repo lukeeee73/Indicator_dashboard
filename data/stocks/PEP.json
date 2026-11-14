@@ -4,18 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-11-09",
-      "value": 78.68
-    },
-    {
-      "date": "2016-11-10",
-      "value": 75.75
-    },
-    {
-      "date": "2016-11-11",
-      "value": 75.7
-    },
-    {
       "date": "2016-11-14",
       "value": 74.38
     },
@@ -6721,7 +6709,7 @@
     },
     {
       "date": "2023-07-17",
-      "value": 165.42
+      "value": 165.41
     },
     {
       "date": "2023-07-18",
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 142.95
+      "value": 141.88
+    },
+    {
+      "date": "2026-11-10",
+      "value": 143.61
+    },
+    {
+      "date": "2026-11-11",
+      "value": 143.94
+    },
+    {
+      "date": "2026-11-12",
+      "value": 142.26
+    },
+    {
+      "date": "2026-11-13",
+      "value": 145.44
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 194803843072.0,
-      "pe_ratio": 17.981133,
-      "forward_pe": 16.547417,
-      "eps_ttm": 7.95,
-      "dividend_yield": 4.19,
+      "market_cap": 198197067776.0,
+      "pe_ratio": 17.8893,
+      "forward_pe": 16.86791,
+      "eps_ttm": 8.13,
+      "dividend_yield": 4.16,
       "profit_margin": 0.11091,
-      "operating_margin": 0.16882999,
-      "price_to_book": 8.746863,
+      "operating_margin": 0.16046,
+      "price_to_book": 8.899222,
       "return_on_equity": 0.52187
     },
     "quarterly": [
@@ -10114,28 +10118,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 142.95,
+    "as_of": "2026-11-13",
+    "current_price": 145.44,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 174.9,
+        "fair_value": 178.86,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 155.5,
+        "fair_value": 155.2,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       },
       "graham_number": {
-        "fair_value": 54.07,
+        "fair_value": 54.68,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 144.91,
-    "valuation_gap": -0.0136,
+    "fair_value": 146.93,
+    "valuation_gap": -0.0101,
     "signal": "fair",
     "gap_series_weekly": [
       {
@@ -10253,10 +10257,10 @@
         "gap": -0.1929
       },
       {
-        "date": "2026-11-09",
-        "price": 142.95,
+        "date": "2026-11-13",
+        "price": 145.44,
         "fair_value": 175.12,
-        "gap": -0.1837
+        "gap": -0.1695
       }
     ],
     "qualitative": {

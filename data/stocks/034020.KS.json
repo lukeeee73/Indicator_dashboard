@@ -4,18 +4,6 @@
   "group": "전력 인프라 (AI)",
   "series": [
     {
-      "date": "2016-11-09",
-      "value": 18740.02
-    },
-    {
-      "date": "2016-11-10",
-      "value": 20602.38
-    },
-    {
-      "date": "2016-11-11",
-      "value": 21688.76
-    },
-    {
       "date": "2016-11-14",
       "value": 22270.75
     },
@@ -9782,17 +9770,37 @@
     {
       "date": "2026-11-06",
       "value": 44700.0
+    },
+    {
+      "date": "2026-11-09",
+      "value": 43350.0
+    },
+    {
+      "date": "2026-11-10",
+      "value": 46950.0
+    },
+    {
+      "date": "2026-11-11",
+      "value": 47350.0
+    },
+    {
+      "date": "2026-11-12",
+      "value": 47200.0
+    },
+    {
+      "date": "2026-11-13",
+      "value": 46850.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 27706406207488.0,
+      "market_cap": 29943371137024.0,
       "pe_ratio": null,
-      "forward_pe": 45.595078,
+      "forward_pe": 49.276344,
       "eps_ttm": null,
       "dividend_yield": 0.0,
       "profit_margin": 0.01021,
-      "operating_margin": 0.06576,
+      "operating_margin": 0.04715,
       "price_to_book": null,
       "return_on_equity": 0.025940001
     },
@@ -9842,18 +9850,18 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-06",
-    "current_price": 44700.0,
+    "as_of": "2026-11-13",
+    "current_price": 46850.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 16666.27,
+        "fair_value": 16162.93,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 16666.27,
-    "valuation_gap": 1.6821,
+    "fair_value": 16162.93,
+    "valuation_gap": 1.8986,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10047,6 +10055,12 @@
         "price": 44700.0,
         "fair_value": 7480.0,
         "gap": 4.9759
+      },
+      {
+        "date": "2026-11-13",
+        "price": 46850.0,
+        "fair_value": 7480.0,
+        "gap": 5.2634
       }
     ],
     "qualitative": {

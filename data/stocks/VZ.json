@@ -4,18 +4,6 @@
   "group": "통신 / 미디어",
   "series": [
     {
-      "date": "2016-11-09",
-      "value": 27.83
-    },
-    {
-      "date": "2016-11-10",
-      "value": 27.15
-    },
-    {
-      "date": "2016-11-11",
-      "value": 27.15
-    },
-    {
       "date": "2016-11-14",
       "value": 26.85
     },
@@ -397,7 +385,7 @@
     },
     {
       "date": "2017-04-03",
-      "value": 28.9
+      "value": 28.91
     },
     {
       "date": "2017-04-04",
@@ -4129,7 +4117,7 @@
     },
     {
       "date": "2020-12-15",
-      "value": 42.08
+      "value": 42.07
     },
     {
       "date": "2020-12-16",
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 46.17
+      "value": 46.06
+    },
+    {
+      "date": "2026-11-10",
+      "value": 46.31
+    },
+    {
+      "date": "2026-11-11",
+      "value": 46.6
+    },
+    {
+      "date": "2026-11-12",
+      "value": 46.55
+    },
+    {
+      "date": "2026-11-13",
+      "value": 46.36
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 191376818176.0,
-      "pe_ratio": 11.779336,
-      "forward_pe": 8.702133,
-      "eps_ttm": 3.92,
-      "dividend_yield": 6.19,
+      "market_cap": 192143572992.0,
+      "pe_ratio": 11.887179,
+      "forward_pe": 8.736999,
+      "eps_ttm": 3.9,
+      "dividend_yield": 6.08,
       "profit_margin": 0.1178,
-      "operating_margin": 0.25113,
-      "price_to_book": 1.8056859,
+      "operating_margin": 0.23365,
+      "price_to_book": 1.8129203,
       "return_on_equity": 0.15787
     },
     "quarterly": [
@@ -10107,12 +10111,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 46.17,
+    "as_of": "2026-11-13",
+    "current_price": 46.36,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 78.4,
+        "fair_value": 78.0,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -10122,13 +10126,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 47.49,
+        "fair_value": 47.37,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 75.76,
-    "valuation_gap": -0.3906,
+    "fair_value": 75.53,
+    "valuation_gap": -0.3862,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10246,10 +10250,10 @@
         "gap": -0.4172
       },
       {
-        "date": "2026-11-09",
-        "price": 46.17,
+        "date": "2026-11-13",
+        "price": 46.36,
         "fair_value": 78.4,
-        "gap": -0.4111
+        "gap": -0.4087
       }
     ],
     "qualitative": {

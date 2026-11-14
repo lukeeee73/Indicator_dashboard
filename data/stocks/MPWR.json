@@ -4,18 +4,6 @@
   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
   "series": [
     {
-      "date": "2016-11-09",
-      "value": 73.58
-    },
-    {
-      "date": "2016-11-10",
-      "value": 71.76
-    },
-    {
-      "date": "2016-11-11",
-      "value": 73.14
-    },
-    {
       "date": "2016-11-14",
       "value": 73.64
     },
@@ -2361,7 +2349,7 @@
     },
     {
       "date": "2019-03-18",
-      "value": 132.64
+      "value": 132.63
     },
     {
       "date": "2019-03-19",
@@ -4093,7 +4081,7 @@
     },
     {
       "date": "2020-12-02",
-      "value": 307.44
+      "value": 307.43
     },
     {
       "date": "2020-12-03",
@@ -4317,7 +4305,7 @@
     },
     {
       "date": "2021-02-24",
-      "value": 372.19
+      "value": 372.2
     },
     {
       "date": "2021-02-25",
@@ -5101,7 +5089,7 @@
     },
     {
       "date": "2021-12-02",
-      "value": 534.52
+      "value": 534.51
     },
     {
       "date": "2021-12-03",
@@ -6357,7 +6345,7 @@
     },
     {
       "date": "2023-03-06",
-      "value": 483.54
+      "value": 483.53
     },
     {
       "date": "2023-03-07",
@@ -6377,7 +6365,7 @@
     },
     {
       "date": "2023-03-13",
-      "value": 472.93
+      "value": 472.92
     },
     {
       "date": "2023-03-14",
@@ -6529,7 +6517,7 @@
     },
     {
       "date": "2023-05-05",
-      "value": 400.78
+      "value": 400.77
     },
     {
       "date": "2023-05-08",
@@ -6673,7 +6661,7 @@
     },
     {
       "date": "2023-06-28",
-      "value": 513.81
+      "value": 513.82
     },
     {
       "date": "2023-06-29",
@@ -6749,7 +6737,7 @@
     },
     {
       "date": "2023-07-26",
-      "value": 516.29
+      "value": 516.28
     },
     {
       "date": "2023-07-27",
@@ -8537,7 +8525,7 @@
     },
     {
       "date": "2025-05-07",
-      "value": 630.01
+      "value": 630.02
     },
     {
       "date": "2025-05-08",
@@ -9009,7 +8997,7 @@
     },
     {
       "date": "2025-10-24",
-      "value": 1067.74
+      "value": 1067.75
     },
     {
       "date": "2025-10-27",
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 1368.19
+      "value": 1388.05
+    },
+    {
+      "date": "2026-11-10",
+      "value": 1357.6
+    },
+    {
+      "date": "2026-11-11",
+      "value": 1478.69
+    },
+    {
+      "date": "2026-11-12",
+      "value": 1447.4
+    },
+    {
+      "date": "2026-11-13",
+      "value": 1390.54
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 66723885056.0,
-      "pe_ratio": 75.010414,
-      "forward_pe": 29.52206,
-      "eps_ttm": 18.24,
-      "dividend_yield": 0.67,
+      "market_cap": 67813855232.0,
+      "pe_ratio": 79.36872,
+      "forward_pe": 29.808987,
+      "eps_ttm": 17.52,
+      "dividend_yield": 0.55,
       "profit_margin": 0.23893999,
-      "operating_margin": 0.29748,
-      "price_to_book": 17.879227,
+      "operating_margin": 0.29496,
+      "price_to_book": 18.171293,
       "return_on_equity": 0.24466999
     },
     "quarterly": [
@@ -10114,28 +10118,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 1368.19,
+    "as_of": "2026-11-13",
+    "current_price": 1390.54,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 510.72,
+        "fair_value": 490.56,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 1019.58,
+        "fair_value": 1026.26,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 177.22,
+        "fair_value": 173.68,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 596.68,
-    "valuation_gap": 1.293,
+    "fair_value": 587.89,
+    "valuation_gap": 1.3653,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10253,10 +10257,10 @@
         "gap": 1.3476
       },
       {
-        "date": "2026-11-09",
-        "price": 1368.19,
+        "date": "2026-11-13",
+        "price": 1390.54,
         "fair_value": 507.08,
-        "gap": 1.6982
+        "gap": 1.7422
       }
     ],
     "qualitative": {

@@ -8657,19 +8657,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 605.07
+      "value": 609.1
+    },
+    {
+      "date": "2026-11-10",
+      "value": 606.22
+    },
+    {
+      "date": "2026-11-11",
+      "value": 609.12
+    },
+    {
+      "date": "2026-11-12",
+      "value": 598.51
+    },
+    {
+      "date": "2026-11-13",
+      "value": 612.63
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 124391809024.0,
-      "pe_ratio": 36.871723,
-      "forward_pe": 35.351006,
-      "eps_ttm": 16.41,
+      "market_cap": 125911064576.0,
+      "pe_ratio": 36.48779,
+      "forward_pe": 35.79299,
+      "eps_ttm": 16.79,
       "dividend_yield": 0.0,
       "profit_margin": 0.15726,
-      "operating_margin": 0.13524,
-      "price_to_book": 12.663814,
+      "operating_margin": 0.14583,
+      "price_to_book": 12.822146,
       "return_on_equity": 0.35811
     },
     "quarterly": [
@@ -8711,12 +8727,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 605.07,
+    "as_of": "2026-11-13",
+    "current_price": 612.63,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 328.2,
+        "fair_value": 335.8,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -8726,13 +8742,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 132.82,
+        "fair_value": 134.35,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 277.95,
-    "valuation_gap": 1.1769,
+    "fair_value": 282.06,
+    "valuation_gap": 1.172,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8850,10 +8866,10 @@
         "gap": 1.3246
       },
       {
-        "date": "2026-11-09",
-        "price": 605.07,
+        "date": "2026-11-13",
+        "price": 612.63,
         "fair_value": 259.4,
-        "gap": 1.3326
+        "gap": 1.3617
       }
     ],
     "qualitative": {

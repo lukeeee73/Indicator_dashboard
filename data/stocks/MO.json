@@ -4,18 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-11-09",
-      "value": 32.19
-    },
-    {
-      "date": "2016-11-10",
-      "value": 31.02
-    },
-    {
-      "date": "2016-11-11",
-      "value": 31.04
-    },
-    {
       "date": "2016-11-14",
       "value": 30.76
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 75.78
+      "value": 75.81
+    },
+    {
+      "date": "2026-11-10",
+      "value": 76.34
+    },
+    {
+      "date": "2026-11-11",
+      "value": 77.39
+    },
+    {
+      "date": "2026-11-12",
+      "value": 77.92
+    },
+    {
+      "date": "2026-11-13",
+      "value": 78.64
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 126071889920.0,
-      "pe_ratio": 15.626804,
-      "forward_pe": 12.798019,
-      "eps_ttm": 4.85,
-      "dividend_yield": 5.83,
+      "market_cap": 130812682240.0,
+      "pe_ratio": 16.0818,
+      "forward_pe": 13.279275,
+      "eps_ttm": 4.89,
+      "dividend_yield": 5.65,
       "profit_margin": 0.39333,
-      "operating_margin": 0.61478,
-      "price_to_book": -56.68661,
+      "operating_margin": 0.61244,
+      "price_to_book": -58.81825,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10114,23 +10118,23 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 75.78,
+    "as_of": "2026-11-13",
+    "current_price": 78.64,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 106.7,
+        "fair_value": 107.58,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 106.58,
+        "fair_value": 106.6,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       }
     },
-    "fair_value": 106.66,
-    "valuation_gap": -0.2895,
+    "fair_value": 107.21,
+    "valuation_gap": -0.2665,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10248,10 +10252,10 @@
         "gap": -0.381
       },
       {
-        "date": "2026-11-09",
-        "price": 75.78,
+        "date": "2026-11-13",
+        "price": 78.64,
         "fair_value": 122.98,
-        "gap": -0.3838
+        "gap": -0.3605
       }
     ],
     "qualitative": {

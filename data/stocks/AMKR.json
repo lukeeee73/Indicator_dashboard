@@ -4,18 +4,6 @@
   "group": "반도체 — 파운드리 · 패키징 · 기판",
   "series": [
     {
-      "date": "2016-11-09",
-      "value": 10.38
-    },
-    {
-      "date": "2016-11-10",
-      "value": 10.35
-    },
-    {
-      "date": "2016-11-11",
-      "value": 10.66
-    },
-    {
       "date": "2016-11-14",
       "value": 10.54
     },
@@ -10053,19 +10041,35 @@
     },
     {
       "date": "2026-11-09",
-      "value": 34.72
+      "value": 35.0
+    },
+    {
+      "date": "2026-11-10",
+      "value": 34.47
+    },
+    {
+      "date": "2026-11-11",
+      "value": 38.1
+    },
+    {
+      "date": "2026-11-12",
+      "value": 37.12
+    },
+    {
+      "date": "2026-11-13",
+      "value": 36.11
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 8603970560.0,
-      "pe_ratio": 14.0,
-      "forward_pe": 12.507971,
-      "eps_ttm": 2.48,
-      "dividend_yield": 1.02,
+      "market_cap": 8948425728.0,
+      "pe_ratio": 14.983402,
+      "forward_pe": 13.008721,
+      "eps_ttm": 2.41,
+      "dividend_yield": 0.9,
       "profit_margin": 0.08303001,
-      "operating_margin": 0.1129,
-      "price_to_book": 1.7925552,
+      "operating_margin": 0.09508,
+      "price_to_book": 1.8643193,
       "return_on_equity": 0.13559
     },
     "quarterly": [
@@ -10107,12 +10111,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-09",
-    "current_price": 34.72,
+    "as_of": "2026-11-13",
+    "current_price": 36.11,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 69.44,
+        "fair_value": 67.48,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10122,13 +10126,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 32.88,
+        "fair_value": 32.41,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 59.62,
-    "valuation_gap": -0.4176,
+    "fair_value": 58.54,
+    "valuation_gap": -0.3832,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10246,10 +10250,10 @@
         "gap": -0.5274
       },
       {
-        "date": "2026-11-09",
-        "price": 34.72,
+        "date": "2026-11-13",
+        "price": 36.11,
         "fair_value": 69.44,
-        "gap": -0.5
+        "gap": -0.48
       }
     ],
     "qualitative": {
