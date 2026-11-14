@@ -25,7 +25,7 @@ const SERIES_GROUPS = [
 ];
 
 // Fields sync_supabase.optional_details() leaves out of series.details.
-const NON_DETAIL_KEYS = new Set(["name", "unit", "series", "category", "current", "sector", "group", "region"]);
+const NON_DETAIL_KEYS = new Set(["name", "unit", "series", "category", "current", "sector", "group", "region", "source"]);
 
 // Python truthiness, so `a or b` from sync_supabase.py resolves the same way here.
 function pyTruthy(value) {

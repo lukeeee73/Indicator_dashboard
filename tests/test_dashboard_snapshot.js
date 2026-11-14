@@ -76,7 +76,9 @@ test("snapshot payloads follow get_payload_map and sync_supabase rules", (t) => 
       series: [{ date: "2026-11-04", value: 4.7 }, { date: "2026-11-02", value: 4.6 },
         { date: "2026-11-03", value: null }, { date: "2026-11-05T00:00:00", value: 4.8 }],
     },
-    "data/indicators/KRCPI.json": { name: "Korea CPI", unit: "%", category: "inflation", current: null, series: [] },
+    "data/indicators/KRCPI.json": {
+      name: "Korea CPI", unit: "%", category: "inflation", current: null, source: "ECOS", series: [],
+    },
     "data/assets/DEXKOUS.json": { name: "", unit: "KRW", series: [{ date: "2026-11-01", value: 1300 }] },
     "data/assets/DGS10.json": { name: "asset copy", series: [{ date: "2020-01-01", value: 1 }] },
     "data/assets/GOLD.json": { unit: "USD", series: [{ date: "2026-11-01", value: 4000 }] },
@@ -95,6 +97,7 @@ test("snapshot payloads follow get_payload_map and sync_supabase rules", (t) => 
     exclude_assessment: false, note: "kept as a detail",
     series: [{ date: "2026-11-02", value: 4.6 }, { date: "2026-11-04", value: 4.7 }, { date: "2026-11-05", value: 4.8 }],
   });
+  // A collector's source tag stays in the series row, not in the payload (sync_supabase.optional_details).
   assert.deepEqual(snapshot.indicators.KRCPI, {
     name: "Korea CPI", unit: "%", category: "inflation", region: "KR", series: [],
   });
