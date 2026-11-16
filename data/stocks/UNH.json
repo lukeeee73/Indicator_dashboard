@@ -4,14 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 128.92
-    },
-    {
-      "date": "2016-11-15",
-      "value": 128.88
-    },
-    {
       "date": "2016-11-16",
       "value": 128.26
     },
@@ -1969,7 +1961,7 @@
     },
     {
       "date": "2018-10-26",
-      "value": 225.05
+      "value": 225.04
     },
     {
       "date": "2018-10-29",
@@ -2225,7 +2217,7 @@
     },
     {
       "date": "2019-01-31",
-      "value": 236.27
+      "value": 236.28
     },
     {
       "date": "2019-02-01",
@@ -3249,7 +3241,7 @@
     },
     {
       "date": "2020-02-06",
-      "value": 260.07
+      "value": 260.06
     },
     {
       "date": "2020-02-07",
@@ -5205,7 +5197,7 @@
     },
     {
       "date": "2022-01-13",
-      "value": 428.43
+      "value": 428.44
     },
     {
       "date": "2022-01-14",
@@ -5653,7 +5645,7 @@
     },
     {
       "date": "2022-06-27",
-      "value": 466.5
+      "value": 466.51
     },
     {
       "date": "2022-06-28",
@@ -5921,7 +5913,7 @@
     },
     {
       "date": "2022-09-30",
-      "value": 467.4
+      "value": 467.39
     },
     {
       "date": "2022-10-03",
@@ -6097,7 +6089,7 @@
     },
     {
       "date": "2022-12-02",
-      "value": 497.72
+      "value": 497.73
     },
     {
       "date": "2022-12-05",
@@ -7733,7 +7725,7 @@
     },
     {
       "date": "2024-07-23",
-      "value": 526.97
+      "value": 526.98
     },
     {
       "date": "2024-07-24",
@@ -8045,7 +8037,7 @@
     },
     {
       "date": "2024-11-11",
-      "value": 596.11
+      "value": 596.1
     },
     {
       "date": "2024-11-12",
@@ -8101,7 +8093,7 @@
     },
     {
       "date": "2024-12-02",
-      "value": 580.15
+      "value": 580.16
     },
     {
       "date": "2024-12-03",
@@ -8253,7 +8245,7 @@
     },
     {
       "date": "2025-01-29",
-      "value": 514.98
+      "value": 514.99
     },
     {
       "date": "2025-01-30",
@@ -8433,7 +8425,7 @@
     },
     {
       "date": "2025-04-03",
-      "value": 519.44
+      "value": 519.43
     },
     {
       "date": "2025-04-04",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 407.46
+    },
+    {
+      "date": "2026-11-16",
+      "value": 410.23
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 365093355520.0,
-      "pe_ratio": 23.124857,
-      "forward_pe": 17.464527,
-      "eps_ttm": 17.62,
+      "market_cap": 367575433216.0,
+      "pe_ratio": 23.414959,
+      "forward_pe": 17.58326,
+      "eps_ttm": 17.52,
       "dividend_yield": 2.28,
       "profit_margin": 0.03529,
       "operating_margin": 0.058530003,
-      "price_to_book": 3.7217076,
+      "price_to_book": 3.7470095,
       "return_on_equity": 0.15773
     },
     "quarterly": [
@@ -10111,12 +10107,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 407.46,
+    "as_of": "2026-11-16",
+    "current_price": 410.23,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 317.16,
+        "fair_value": 315.36,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
@@ -10126,13 +10122,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 208.34,
+        "fair_value": 207.74,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 312.24,
-    "valuation_gap": 0.305,
+    "fair_value": 311.22,
+    "valuation_gap": 0.3182,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10254,6 +10250,12 @@
         "price": 407.46,
         "fair_value": 315.18,
         "gap": 0.2928
+      },
+      {
+        "date": "2026-11-16",
+        "price": 410.23,
+        "fair_value": 315.18,
+        "gap": 0.3016
       }
     ],
     "qualitative": {
@@ -10284,30 +10286,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-07-02",
-          "narrative_score": 0.17
-        },
-        {
-          "date": "2026-07-09",
-          "narrative_score": 0.15
-        },
-        {
-          "date": "2026-07-16",
-          "narrative_score": 0.15
-        },
-        {
-          "date": "2026-07-23",
-          "narrative_score": 0.41
-        },
-        {
-          "date": "2026-07-30",
-          "narrative_score": 0.17
-        },
-        {
-          "date": "2026-08-06",
-          "narrative_score": 0.1
-        },
         {
           "date": "2026-08-20",
           "narrative_score": -0.02

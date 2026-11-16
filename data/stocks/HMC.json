@@ -4,14 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 22.08
-    },
-    {
-      "date": "2016-11-15",
-      "value": 22.17
-    },
-    {
       "date": "2016-11-16",
       "value": 22.1
     },
@@ -3049,7 +3041,7 @@
     },
     {
       "date": "2019-11-22",
-      "value": 23.51
+      "value": 23.5
     },
     {
       "date": "2019-11-25",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 34.3
+    },
+    {
+      "date": "2026-11-16",
+      "value": 34.34
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 44510158848.0,
+      "market_cap": 44562067456.0,
       "pe_ratio": null,
-      "forward_pe": 6.9153223,
+      "forward_pe": null,
       "eps_ttm": -0.95,
       "dividend_yield": 3.88,
       "profit_margin": -0.00944,
       "operating_margin": -0.0067000003,
-      "price_to_book": 0.5848261,
+      "price_to_book": 0.58550817,
       "return_on_equity": -0.01154
     },
     "quarterly": [
@@ -10118,19 +10114,14 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 34.3,
+    "as_of": "2026-11-16",
+    "current_price": 34.34,
     "sector": "Consumer Discretionary",
-    "methods": {
-      "forward_pe_benchmark": {
-        "fair_value": 99.2,
-        "weight": 3.0,
-        "note": "내재 forward EPS × 섹터 Forward P/E (20)"
-      }
-    },
-    "fair_value": 99.2,
-    "valuation_gap": -0.6542,
-    "signal": "deep_value",
+    "methods": {},
+    "fair_value": null,
+    "valuation_gap": null,
+    "signal": "n/a",
+    "note": "EPS 적자 또는 필수 재무 지표 결손으로 fair value 산출 불가",
     "gap_series_weekly": [],
     "qualitative": {
       "as_of": "2026-09-23",
@@ -10159,26 +10150,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-07-01",
-          "narrative_score": 0.12
-        },
-        {
-          "date": "2026-07-15",
-          "narrative_score": -0.26
-        },
-        {
-          "date": "2026-07-22",
-          "narrative_score": -0.16
-        },
-        {
-          "date": "2026-08-05",
-          "narrative_score": 0.05
-        },
-        {
-          "date": "2026-08-12",
-          "narrative_score": 0.17
-        },
         {
           "date": "2026-08-19",
           "narrative_score": 0.02

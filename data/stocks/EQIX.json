@@ -4,14 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 273.67
-    },
-    {
-      "date": "2016-11-15",
-      "value": 278.76
-    },
-    {
       "date": "2016-11-16",
       "value": 278.46
     },
@@ -3609,7 +3601,7 @@
     },
     {
       "date": "2020-06-16",
-      "value": 619.35
+      "value": 619.36
     },
     {
       "date": "2020-06-17",
@@ -3841,7 +3833,7 @@
     },
     {
       "date": "2020-09-08",
-      "value": 660.59
+      "value": 660.58
     },
     {
       "date": "2020-09-09",
@@ -4973,7 +4965,7 @@
     },
     {
       "date": "2021-10-21",
-      "value": 733.37
+      "value": 733.36
     },
     {
       "date": "2021-10-22",
@@ -5589,7 +5581,7 @@
     },
     {
       "date": "2022-06-02",
-      "value": 636.85
+      "value": 636.84
     },
     {
       "date": "2022-06-03",
@@ -6433,7 +6425,7 @@
     },
     {
       "date": "2023-04-05",
-      "value": 654.4
+      "value": 654.39
     },
     {
       "date": "2023-04-06",
@@ -6441,7 +6433,7 @@
     },
     {
       "date": "2023-04-10",
-      "value": 656.64
+      "value": 656.65
     },
     {
       "date": "2023-04-11",
@@ -6613,7 +6605,7 @@
     },
     {
       "date": "2023-06-09",
-      "value": 694.72
+      "value": 694.73
     },
     {
       "date": "2023-06-12",
@@ -6653,7 +6645,7 @@
     },
     {
       "date": "2023-06-26",
-      "value": 709.9
+      "value": 709.91
     },
     {
       "date": "2023-06-27",
@@ -8285,7 +8277,7 @@
     },
     {
       "date": "2025-02-10",
-      "value": 908.15
+      "value": 908.14
     },
     {
       "date": "2025-02-11",
@@ -8409,7 +8401,7 @@
     },
     {
       "date": "2025-03-26",
-      "value": 804.37
+      "value": 804.38
     },
     {
       "date": "2025-03-27",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 1053.79
+    },
+    {
+      "date": "2026-11-16",
+      "value": 1045.62
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 104312905728.0,
-      "pe_ratio": 64.41259,
-      "forward_pe": 50.920033,
-      "eps_ttm": 16.36,
-      "dividend_yield": 1.92,
+      "market_cap": 103504166912.0,
+      "pe_ratio": 62.800003,
+      "forward_pe": 50.52525,
+      "eps_ttm": 16.65,
+      "dividend_yield": 1.96,
       "profit_margin": 0.16240999,
       "operating_margin": 0.24539,
-      "price_to_book": 7.1756687,
+      "price_to_book": 7.1200356,
       "return_on_equity": 0.1145
     },
     "quarterly": [
@@ -10118,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 1053.79,
+    "as_of": "2026-11-16",
+    "current_price": 1045.62,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 294.48,
+        "fair_value": 299.7,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
@@ -10133,13 +10129,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 232.5,
+        "fair_value": 234.55,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 293.08,
-    "valuation_gap": 2.5956,
+    "fair_value": 296.1,
+    "valuation_gap": 2.5314,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10261,6 +10257,12 @@
         "price": 1053.79,
         "fair_value": 299.7,
         "gap": 2.5161
+      },
+      {
+        "date": "2026-11-16",
+        "price": 1045.62,
+        "fair_value": 299.7,
+        "gap": 2.4889
       }
     ],
     "qualitative": {
@@ -10290,26 +10292,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-27",
-          "narrative_score": 0.27
-        },
-        {
-          "date": "2026-07-25",
-          "narrative_score": 0.33
-        },
-        {
-          "date": "2026-08-01",
-          "narrative_score": 0.47
-        },
-        {
-          "date": "2026-08-08",
-          "narrative_score": 0.12
-        },
-        {
-          "date": "2026-08-15",
-          "narrative_score": 0.29
-        },
         {
           "date": "2026-08-22",
           "narrative_score": 0.22

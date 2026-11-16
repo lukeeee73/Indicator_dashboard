@@ -3782,18 +3782,22 @@
     {
       "date": "2026-11-13",
       "value": 14.42
+    },
+    {
+      "date": "2026-11-16",
+      "value": 13.31
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 2273200640.0,
-      "pe_ratio": 48.066666,
-      "forward_pe": 18.361704,
-      "eps_ttm": 0.3,
+      "market_cap": 2098217856.0,
+      "pe_ratio": 45.896553,
+      "forward_pe": 17.248756,
+      "eps_ttm": 0.29,
       "dividend_yield": 0.0,
       "profit_margin": 0.089420006,
       "operating_margin": -0.009,
-      "price_to_book": 1.6751254,
+      "price_to_book": 1.5461802,
       "return_on_equity": 0.03615
     },
     "quarterly": [
@@ -3835,28 +3839,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 14.42,
+    "as_of": "2026-11-16",
+    "current_price": 13.31,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 8.4,
+        "fair_value": 8.12,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 17.28,
+        "fair_value": 16.98,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 7.62,
+        "fair_value": 7.49,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 10.91,
-    "valuation_gap": 0.322,
+    "fair_value": 10.65,
+    "valuation_gap": 0.2495,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -3978,6 +3982,12 @@
         "price": 14.42,
         "fair_value": 54.04,
         "gap": -0.7332
+      },
+      {
+        "date": "2026-11-16",
+        "price": 13.31,
+        "fair_value": 54.04,
+        "gap": -0.7537
       }
     ],
     "qualitative": {
@@ -4007,26 +4017,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-30",
-          "narrative_score": 0.3
-        },
-        {
-          "date": "2026-07-15",
-          "narrative_score": 0.39
-        },
-        {
-          "date": "2026-07-22",
-          "narrative_score": -0.05
-        },
-        {
-          "date": "2026-08-05",
-          "narrative_score": 0.05
-        },
-        {
-          "date": "2026-08-12",
-          "narrative_score": 0.03
-        },
         {
           "date": "2026-08-19",
           "narrative_score": -0.03

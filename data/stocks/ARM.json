@@ -3186,18 +3186,22 @@
     {
       "date": "2026-11-13",
       "value": 190.53
+    },
+    {
+      "date": "2026-11-16",
+      "value": 176.78
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 203867095040.0,
-      "pe_ratio": 229.55421,
-      "forward_pe": 61.962994,
-      "eps_ttm": 0.83,
+      "market_cap": 189154590720.0,
+      "pe_ratio": 203.1954,
+      "forward_pe": 57.491302,
+      "eps_ttm": 0.87,
       "dividend_yield": 0.0,
       "profit_margin": 0.1713,
       "operating_margin": 0.1702,
-      "price_to_book": 22.43377,
+      "price_to_book": 20.814789,
       "return_on_equity": 0.11349
     },
     "quarterly": [
@@ -3239,12 +3243,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 190.53,
+    "as_of": "2026-11-16",
+    "current_price": 176.78,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 23.24,
+        "fair_value": 24.36,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -3254,13 +3258,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 12.59,
+        "fair_value": 12.89,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 34.43,
-    "valuation_gap": 4.5334,
+    "fair_value": 35.05,
+    "valuation_gap": 4.0432,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -3382,6 +3386,12 @@
         "price": 190.53,
         "fair_value": 24.36,
         "gap": 6.8214
+      },
+      {
+        "date": "2026-11-16",
+        "price": 176.78,
+        "fair_value": 24.36,
+        "gap": 6.257
       }
     ],
     "qualitative": {
@@ -3415,14 +3425,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-07-21",
-          "narrative_score": 0.13
-        },
-        {
-          "date": "2026-07-28",
-          "narrative_score": 0.03
-        },
         {
           "date": "2026-08-18",
           "narrative_score": 0.08

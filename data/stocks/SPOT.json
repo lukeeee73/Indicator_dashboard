@@ -8674,18 +8674,22 @@
     {
       "date": "2026-11-13",
       "value": 612.63
+    },
+    {
+      "date": "2026-11-16",
+      "value": 614.27
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 125911064576.0,
-      "pe_ratio": 36.48779,
-      "forward_pe": 35.79299,
-      "eps_ttm": 16.79,
+      "market_cap": 126247100416.0,
+      "pe_ratio": 37.432358,
+      "forward_pe": 35.888515,
+      "eps_ttm": 16.41,
       "dividend_yield": 0.0,
       "profit_margin": 0.15726,
       "operating_margin": 0.14583,
-      "price_to_book": 12.822146,
+      "price_to_book": 12.856366,
       "return_on_equity": 0.35811
     },
     "quarterly": [
@@ -8727,12 +8731,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 612.63,
+    "as_of": "2026-11-16",
+    "current_price": 614.27,
     "sector": "Communication Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 335.8,
+        "fair_value": 328.2,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (20)"
       },
@@ -8742,13 +8746,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       },
       "graham_number": {
-        "fair_value": 134.35,
+        "fair_value": 132.82,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 282.06,
-    "valuation_gap": 1.172,
+    "fair_value": 277.95,
+    "valuation_gap": 1.21,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -8870,6 +8874,12 @@
         "price": 612.63,
         "fair_value": 259.4,
         "gap": 1.3617
+      },
+      {
+        "date": "2026-11-16",
+        "price": 614.27,
+        "fair_value": 259.4,
+        "gap": 1.368
       }
     ],
     "qualitative": {
@@ -8893,14 +8903,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-28",
-          "narrative_score": 0.18
-        },
-        {
-          "date": "2026-08-09",
-          "narrative_score": 0.11
-        },
         {
           "date": "2026-08-23",
           "narrative_score": 0.31

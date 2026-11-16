@@ -4,14 +4,6 @@
   "group": "소비재",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 30.76
-    },
-    {
-      "date": "2016-11-15",
-      "value": 31.07
-    },
-    {
       "date": "2016-11-16",
       "value": 31.49
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 78.64
+    },
+    {
+      "date": "2026-11-16",
+      "value": 78.88
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 130812682240.0,
-      "pe_ratio": 16.0818,
-      "forward_pe": 13.279275,
-      "eps_ttm": 4.89,
+      "market_cap": 131211902976.0,
+      "pe_ratio": 16.263918,
+      "forward_pe": 13.319801,
+      "eps_ttm": 4.85,
       "dividend_yield": 5.65,
       "profit_margin": 0.39333,
       "operating_margin": 0.61244,
-      "price_to_book": -58.81825,
+      "price_to_book": -58.997753,
       "return_on_equity": null
     },
     "quarterly": [
@@ -10118,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 78.64,
+    "as_of": "2026-11-16",
+    "current_price": 78.88,
     "sector": "Consumer Staples",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 107.58,
+        "fair_value": 106.7,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (22)"
       },
@@ -10133,8 +10129,8 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (18)"
       }
     },
-    "fair_value": 107.21,
-    "valuation_gap": -0.2665,
+    "fair_value": 106.66,
+    "valuation_gap": -0.2605,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10256,6 +10252,12 @@
         "price": 78.64,
         "fair_value": 122.98,
         "gap": -0.3605
+      },
+      {
+        "date": "2026-11-16",
+        "price": 78.88,
+        "fair_value": 122.98,
+        "gap": -0.3586
       }
     ],
     "qualitative": {
@@ -10279,14 +10281,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-28",
-          "narrative_score": -0.08
-        },
-        {
-          "date": "2026-08-09",
-          "narrative_score": -0.16
-        },
         {
           "date": "2026-08-23",
           "narrative_score": 0.0

@@ -4,14 +4,6 @@
   "group": "로보틱스 / 피지컬 AI",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 22.78
-    },
-    {
-      "date": "2016-11-15",
-      "value": 23.02
-    },
-    {
       "date": "2016-11-16",
       "value": 23.2
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 249.55
+    },
+    {
+      "date": "2026-11-16",
+      "value": 232.96
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 38960930816.0,
-      "pe_ratio": 30.321995,
-      "forward_pe": 20.730034,
-      "eps_ttm": 8.23,
+      "market_cap": 36370825216.0,
+      "pe_ratio": 26.777014,
+      "forward_pe": 19.351908,
+      "eps_ttm": 8.7,
       "dividend_yield": 0.21,
       "profit_margin": 0.27457002,
       "operating_margin": 0.32512,
-      "price_to_book": 10.566093,
+      "price_to_book": 9.863664,
       "return_on_equity": 0.42723998
     },
     "quarterly": [
@@ -10118,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 249.55,
+    "as_of": "2026-11-16",
+    "current_price": 232.96,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 230.44,
+        "fair_value": 243.6,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10133,14 +10129,14 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 66.13,
+        "fair_value": 67.99,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 207.9,
-    "valuation_gap": 0.2003,
-    "signal": "expensive",
+    "fair_value": 214.85,
+    "valuation_gap": 0.0843,
+    "signal": "overvalued",
     "gap_series_weekly": [
       {
         "date": "2026-07-02",
@@ -10261,6 +10257,12 @@
         "price": 249.55,
         "fair_value": 243.88,
         "gap": 0.0232
+      },
+      {
+        "date": "2026-11-16",
+        "price": 232.96,
+        "fair_value": 243.88,
+        "gap": -0.0448
       }
     ],
     "qualitative": {
@@ -10290,26 +10292,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-30",
-          "narrative_score": 0.44
-        },
-        {
-          "date": "2026-07-15",
-          "narrative_score": 0.45
-        },
-        {
-          "date": "2026-07-22",
-          "narrative_score": 0.05
-        },
-        {
-          "date": "2026-08-05",
-          "narrative_score": 0.22
-        },
-        {
-          "date": "2026-08-12",
-          "narrative_score": 0.08
-        },
         {
           "date": "2026-08-19",
           "narrative_score": 0.16

@@ -4,14 +4,6 @@
   "group": "금융",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 63.23
-    },
-    {
-      "date": "2016-11-15",
-      "value": 63.28
-    },
-    {
       "date": "2016-11-16",
       "value": 62.59
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 320.6
+    },
+    {
+      "date": "2026-11-16",
+      "value": 318.04
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 214978969600.0,
-      "pe_ratio": 17.920628,
-      "forward_pe": 15.858953,
-      "eps_ttm": 17.89,
+      "market_cap": 213259010048.0,
+      "pe_ratio": 17.917465,
+      "forward_pe": 15.732072,
+      "eps_ttm": 17.75,
       "dividend_yield": 1.19,
       "profit_margin": 0.16823,
       "operating_margin": 0.19356,
-      "price_to_book": 6.009485,
+      "price_to_book": 5.9614053,
       "return_on_equity": 0.35933998
     },
     "quarterly": [
@@ -10118,12 +10114,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 320.6,
+    "as_of": "2026-11-16",
+    "current_price": 318.04,
     "sector": "Financial Services",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 250.46,
+        "fair_value": 248.5,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (14)"
       },
@@ -10133,13 +10129,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (12)"
       },
       "graham_number": {
-        "fair_value": 146.54,
+        "fair_value": 145.97,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 227.31,
-    "valuation_gap": 0.4104,
+    "fair_value": 226.22,
+    "valuation_gap": 0.4059,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10261,6 +10257,12 @@
         "price": 320.6,
         "fair_value": 248.64,
         "gap": 0.2894
+      },
+      {
+        "date": "2026-11-16",
+        "price": 318.04,
+        "fair_value": 248.64,
+        "gap": 0.2791
       }
     ],
     "qualitative": {
@@ -10290,26 +10292,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-27",
-          "narrative_score": 0.2
-        },
-        {
-          "date": "2026-07-25",
-          "narrative_score": 0.02
-        },
-        {
-          "date": "2026-08-01",
-          "narrative_score": -0.05
-        },
-        {
-          "date": "2026-08-08",
-          "narrative_score": -0.01
-        },
-        {
-          "date": "2026-08-15",
-          "narrative_score": 0.16
-        },
         {
           "date": "2026-08-22",
           "narrative_score": 0.03

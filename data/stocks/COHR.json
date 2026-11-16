@@ -4,14 +4,6 @@
   "group": "AI 인프라 — 네트워킹 · 광 · 네오클라우드",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 28.8
-    },
-    {
-      "date": "2016-11-15",
-      "value": 28.65
-    },
-    {
       "date": "2016-11-16",
       "value": 29.05
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 218.15
+    },
+    {
+      "date": "2026-11-16",
+      "value": 204.51
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 42966532096.0,
-      "pe_ratio": 48.05066,
-      "forward_pe": 13.816721,
-      "eps_ttm": 4.54,
+      "market_cap": 40280018944.0,
+      "pe_ratio": 42.341614,
+      "forward_pe": 12.952819,
+      "eps_ttm": 4.83,
       "dividend_yield": 0.0,
       "profit_margin": 0.121829994,
       "operating_margin": 0.14109999,
-      "price_to_book": 3.7917368,
+      "price_to_book": 3.5546556,
       "return_on_equity": 0.092709996
     },
     "quarterly": [
@@ -10125,12 +10121,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 218.15,
+    "as_of": "2026-11-16",
+    "current_price": 204.51,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 127.12,
+        "fair_value": 135.24,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
@@ -10140,13 +10136,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 76.66,
+        "fair_value": 79.07,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 183.1,
-    "valuation_gap": 0.1914,
+    "fair_value": 187.64,
+    "valuation_gap": 0.0899,
     "signal": "overvalued",
     "gap_series_weekly": [
       {
@@ -10268,6 +10264,12 @@
         "price": 218.15,
         "fair_value": 134.96,
         "gap": 0.6164
+      },
+      {
+        "date": "2026-11-16",
+        "price": 204.51,
+        "fair_value": 134.96,
+        "gap": 0.5153
       }
     ],
     "qualitative": {
@@ -10292,26 +10294,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-07-06",
-          "narrative_score": 0.27
-        },
-        {
-          "date": "2026-07-27",
-          "narrative_score": 0.0
-        },
-        {
-          "date": "2026-08-03",
-          "narrative_score": 0.14
-        },
-        {
-          "date": "2026-08-10",
-          "narrative_score": 0.11
-        },
-        {
-          "date": "2026-08-17",
-          "narrative_score": 0.36
-        },
         {
           "date": "2026-08-31",
           "narrative_score": 0.33

@@ -4,14 +4,6 @@
   "group": "자동차 / 모빌리티",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 12.1
-    },
-    {
-      "date": "2016-11-15",
-      "value": 12.25
-    },
-    {
       "date": "2016-11-16",
       "value": 12.26
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 390.22
+    },
+    {
+      "date": "2026-11-16",
+      "value": 378.22
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 1542445203456.0,
-      "pe_ratio": 438.44943,
-      "forward_pe": 180.72267,
-      "eps_ttm": 0.89,
+      "market_cap": 1495012081664.0,
+      "pe_ratio": 415.62637,
+      "forward_pe": 175.16512,
+      "eps_ttm": 0.91,
       "dividend_yield": 0.0,
       "profit_margin": 0.031070001,
       "operating_margin": 0.03026,
-      "price_to_book": 17.275545,
+      "price_to_book": 16.74429,
       "return_on_equity": 0.03844
     },
     "quarterly": [
@@ -10125,12 +10121,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 390.22,
+    "as_of": "2026-11-16",
+    "current_price": 378.22,
     "sector": "Consumer Discretionary",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 22.25,
+        "fair_value": 22.75,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (25)"
       },
@@ -10140,13 +10136,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (20)"
       },
       "graham_number": {
-        "fair_value": 21.27,
+        "fair_value": 21.51,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 28.33,
-    "valuation_gap": 12.7726,
+    "fair_value": 28.63,
+    "valuation_gap": 12.2102,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10268,6 +10264,12 @@
         "price": 390.22,
         "fair_value": 22.75,
         "gap": 16.1525
+      },
+      {
+        "date": "2026-11-16",
+        "price": 378.22,
+        "fair_value": 22.75,
+        "gap": 15.6251
       }
     ],
     "qualitative": {
@@ -10297,26 +10299,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-07-01",
-          "narrative_score": -0.21
-        },
-        {
-          "date": "2026-07-15",
-          "narrative_score": 0.11
-        },
-        {
-          "date": "2026-07-22",
-          "narrative_score": -0.05
-        },
-        {
-          "date": "2026-08-05",
-          "narrative_score": 0.08
-        },
-        {
-          "date": "2026-08-12",
-          "narrative_score": -0.03
-        },
         {
           "date": "2026-08-19",
           "narrative_score": 0.06

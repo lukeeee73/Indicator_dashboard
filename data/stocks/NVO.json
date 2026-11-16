@@ -4,14 +4,6 @@
   "group": "바이오 / 제약 / 헬스케어",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 13.06
-    },
-    {
-      "date": "2016-11-15",
-      "value": 13.22
-    },
-    {
       "date": "2016-11-16",
       "value": 13.02
     },
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 41.63
+    },
+    {
+      "date": "2026-11-16",
+      "value": 41.69
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 183519838208.0,
-      "pe_ratio": 10.253695,
-      "forward_pe": 12.10376,
-      "eps_ttm": 4.06,
+      "market_cap": 183784325120.0,
+      "pe_ratio": 10.527778,
+      "forward_pe": 11.869239,
+      "eps_ttm": 3.96,
       "dividend_yield": 4.32,
       "profit_margin": 0.33921,
       "operating_margin": 0.50778997,
-      "price_to_book": 5.608069,
+      "price_to_book": 5.6161513,
       "return_on_equity": 0.58384
     },
     "quarterly": [
@@ -10118,28 +10114,28 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 41.63,
+    "as_of": "2026-11-16",
+    "current_price": 41.69,
     "sector": "Healthcare",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 73.08,
+        "fair_value": 71.28,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 55.03,
+        "fair_value": 56.2,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 26.04,
+        "fair_value": 25.72,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 58.26,
-    "valuation_gap": -0.2854,
+    "fair_value": 57.64,
+    "valuation_gap": -0.2768,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -10261,6 +10257,12 @@
         "price": 41.63,
         "fair_value": 458.64,
         "gap": -0.9092
+      },
+      {
+        "date": "2026-11-16",
+        "price": 41.69,
+        "fair_value": 458.64,
+        "gap": -0.9091
       }
     ],
     "qualitative": {
@@ -10291,30 +10293,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-07-02",
-          "narrative_score": 0.05
-        },
-        {
-          "date": "2026-07-09",
-          "narrative_score": -0.12
-        },
-        {
-          "date": "2026-07-16",
-          "narrative_score": 0.06
-        },
-        {
-          "date": "2026-07-23",
-          "narrative_score": 0.08
-        },
-        {
-          "date": "2026-07-30",
-          "narrative_score": -0.05
-        },
-        {
-          "date": "2026-08-06",
-          "narrative_score": -0.17
-        },
         {
           "date": "2026-08-20",
           "narrative_score": -0.12

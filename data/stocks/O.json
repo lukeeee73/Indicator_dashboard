@@ -4,14 +4,6 @@
   "group": "부동산 (REITs)",
   "series": [
     {
-      "date": "2016-11-14",
-      "value": 33.39
-    },
-    {
-      "date": "2016-11-15",
-      "value": 33.42
-    },
-    {
       "date": "2016-11-16",
       "value": 33.71
     },
@@ -3253,7 +3245,7 @@
     },
     {
       "date": "2020-02-07",
-      "value": 54.87
+      "value": 54.88
     },
     {
       "date": "2020-02-10",
@@ -10058,18 +10050,22 @@
     {
       "date": "2026-11-13",
       "value": 58.82
+    },
+    {
+      "date": "2026-11-16",
+      "value": 58.69
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 56095387648.0,
-      "pe_ratio": 40.565517,
-      "forward_pe": 37.87459,
-      "eps_ttm": 1.45,
-      "dividend_yield": 5.55,
+      "market_cap": 55976177664.0,
+      "pe_ratio": 40.202053,
+      "forward_pe": 37.794106,
+      "eps_ttm": 1.46,
+      "dividend_yield": 5.59,
       "profit_margin": 0.21809,
       "operating_margin": 0.46783,
-      "price_to_book": 1.4163938,
+      "price_to_book": 1.4133837,
       "return_on_equity": 0.03479
     },
     "quarterly": [
@@ -10125,12 +10121,12 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 58.82,
+    "as_of": "2026-11-16",
+    "current_price": 58.69,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 26.1,
+        "fair_value": 26.28,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
@@ -10140,13 +10136,13 @@
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 36.81,
+        "fair_value": 36.93,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 27.87,
-    "valuation_gap": 1.1107,
+    "fair_value": 27.98,
+    "valuation_gap": 1.0975,
     "signal": "expensive",
     "gap_series_weekly": [
       {
@@ -10268,6 +10264,12 @@
         "price": 58.82,
         "fair_value": 26.1,
         "gap": 1.2536
+      },
+      {
+        "date": "2026-11-16",
+        "price": 58.69,
+        "fair_value": 26.1,
+        "gap": 1.2487
       }
     ],
     "qualitative": {
@@ -10297,26 +10299,6 @@
         }
       ],
       "history": [
-        {
-          "date": "2026-06-27",
-          "narrative_score": 0.22
-        },
-        {
-          "date": "2026-07-25",
-          "narrative_score": 0.08
-        },
-        {
-          "date": "2026-08-01",
-          "narrative_score": 0.12
-        },
-        {
-          "date": "2026-08-08",
-          "narrative_score": 0.16
-        },
-        {
-          "date": "2026-08-15",
-          "narrative_score": 0.22
-        },
         {
           "date": "2026-08-22",
           "narrative_score": 0.03
