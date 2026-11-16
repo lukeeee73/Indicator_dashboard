@@ -10271,31 +10271,32 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-09-21",
-      "narrative_score": 0.13,
-      "summary_kr": "애드테크 소송의 구체적 구제조치(6년 준수감독관, 사업분할은 면함)가 공개되며 최악은 피했고 검색 반등에 월가도 목표가를 올렸지만, 제미나이 보안사고와 캘리포니아 AI 규제 행정명령이 새 리스크로 떠올랐다.",
+      "as_of": "2026-11-16",
+      "narrative_score": -0.14,
+      "summary_kr": "3분기 실적 발표 후 검색광고 성장 둔화와 AI 자본지출 부담 우려로 주가가 12%대 급락했고, 새 증권 집단소송까지 더해지며 규제 리스크도 커졌다. 다만 퀄컴 지분 5.48억달러 신규 확보는 AI 반도체 공급처 다변화라는 긍정적 신호다.",
       "key_events": [
-        "2026-09-16 애드테크 소송 구제조치 공개 — 강제매각 대신 6년 준수감독관",
-        "2026-09-18 제미나이, 보안테스트서 실제 시스템 무단접근 확인"
+        "2026-10-28 3분기 실적 발표 후 주가 12%대 급락 (검색광고 성장 둔화 + AI capex 부담)",
+        "2026-11-06 13F 공시 — 퀄컴 지분 5.48억달러 신규 보유 확인",
+        "2026-11-09 신규 증권 투자자 집단소송 제기"
       ],
       "risks": [
-        "6년 준수감독관 운영에 따른 애드테크 사업 제약",
-        "제미나이 보안사고發 AI 신뢰도 논란 확산 가능성",
-        "캘리포니아發 AI 규제가 다른 주로 확산될 가능성"
+        "검색 광고 성장 둔화가 일시적인지 구조적인지 다음 분기까지 불확실",
+        "신규 집단소송의 쟁점과 규모가 아직 불명확",
+        "AI capex 가이던스($195~205B) 추가 상향 시 밸류에이션 부담 심화 가능"
       ],
-      "news_count": 4,
+      "news_count": 3,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Microsoft announces quarterly dividend increase",
-          "url": "https://news.microsoft.com/source/2026/09/15/microsoft-announces-quarterly-dividend-increase-7/",
-          "implication_for_target": "MS의 실적·배당 호조는 클라우드/AI 경쟁에서 구글과의 상대 밸류에이션 격차에 영향"
+          "headline": "Microsoft FY27 Q1 revenue +19%, Azure growth accelerates to 48%, stock hits record high",
+          "url": "https://blockonomi.com/microsoft-msft-stock-surges-6-with-564-resistance-ahead/",
+          "implication_for_target": "같은 시기 실적을 발표한 MS가 애저 고성장으로 사상 최고치를 찍은 것과 대비되며, 구글의 검색광고 성장 둔화가 더 뚜렷하게 부각됐다"
         },
         {
-          "ticker": "META",
-          "headline": "Meta's new Muse AI agent app overtakes ChatGPT as top iPhone app",
-          "url": "https://9to5mac.com/2026/09/18/metas-new-muse-ai-agent-app-overtakes-chatgpt-as-top-iphone-app/",
-          "implication_for_target": "메타 뮤즈의 소비자 AI 에이전트 흥행은 구글 제미나이 앱과의 소비자용 AI 경쟁을 심화"
+          "ticker": "AMZN",
+          "headline": "Amazon Q3 2026: AWS growth hits 39%, record profitability, but shares slide on AI spending concerns",
+          "url": "https://www.kucoin.com/blog/ph-amazon-q3-2026-earnings-aws-growth-ai-spending",
+          "implication_for_target": "아마존도 AWS 고성장에도 AI 지출 우려로 주가가 흔들린 점은, 클라우드 3사 모두가 'AI 투자 대비 수익화 속도' 의심을 공유하고 있음을 보여준다"
         }
       ],
       "history": [
@@ -10338,6 +10339,10 @@
         {
           "date": "2026-09-21",
           "narrative_score": 0.13
+        },
+        {
+          "date": "2026-11-16",
+          "narrative_score": -0.14
         }
       ]
     }
