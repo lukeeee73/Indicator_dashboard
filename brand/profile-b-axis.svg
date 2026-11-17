@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <!-- B · 축 L: Luke의 L이 곧 차트의 세로축·가로축, 그 안에 붉은 지표선 -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0" stop-color="#1a1a1a"/>
+      <stop offset="1" stop-color="#080808"/>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <!-- L = 축 -->
+  <path d="M 290 230 H 400 V 740 H 800 V 850 H 290 Z" fill="#f2f2f2"/>
+  <!-- 지표선 -->
+  <polyline points="485,640 580,535 660,600 790,372"
+            fill="none" stroke="#e63030" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="790" cy="372" r="56" fill="#e63030"/>
+</svg>

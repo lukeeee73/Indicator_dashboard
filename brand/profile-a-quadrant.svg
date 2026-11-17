@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <!-- A · 4분면 궤적: 성장 × 인플레이션 4분면 위를 움직인 궤적과 현재 위치(붉은 점) -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0" stop-color="#1a1a1a"/>
+      <stop offset="1" stop-color="#080808"/>
+    </radialGradient>
+    <linearGradient id="trail" gradientUnits="userSpaceOnUse" x1="300" y1="640" x2="760" y2="380">
+      <stop offset="0" stop-color="#f2f2f2" stop-opacity="0.3"/>
+      <stop offset="0.6" stop-color="#f2f2f2" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f2f2f2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <!-- 현재 국면이 속한 분면 -->
+  <rect x="540" y="200" width="340" height="340" fill="#cc2424" opacity="0.28"/>
+  <!-- 4분면 경계 -->
+  <g stroke="#7a7a7a" stroke-width="20" stroke-linecap="square">
+    <line x1="540" y1="200" x2="540" y2="880"/>
+    <line x1="200" y1="540" x2="880" y2="540"/>
+  </g>
+  <!-- 궤적: 좌하 → 우하 → 우상 -->
+  <path d="M 300 610 C 300 790, 560 850, 690 740 C 800 646, 800 470, 722 372"
+        fill="none" stroke="url(#trail)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 현재 위치 -->
+  <circle cx="716" cy="364" r="66" fill="#e63030" stroke="#080808" stroke-width="14"/>
+</svg>
