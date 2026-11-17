@@ -1,0 +1,66 @@
+{
+  "ticker": "MRVL",
+  "date": "2026-11-17",
+  "as_of_utc": "2026-11-17T21:00:00Z",
+  "news": [
+    {
+      "title": "Marvell to buy Lumentum in $115 billion deal in AI data-center bet",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/02/marvell-to-buy-lumentum-in-115-billion-deal-in-ai-data-center-bet-.html",
+      "published": "2026-11-02T00:00:00Z",
+      "summary": "광학부품사 루멘텀을 1150억달러 전액주식으로 인수, AI 데이터센터 베팅",
+      "impact": "neutral",
+      "category": "m&a"
+    },
+    {
+      "title": "Marvell Technology could plunge on latest multibillion-dollar acquisition",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/03/acquisition-marvell-lumentum-acquisition-bofa-downgrade.html",
+      "published": "2026-11-03T00:00:00Z",
+      "summary": "BofA, 희석·규제 리스크 우려로 매수→중립 하향(목표가 $400→$225), 주가 -13%",
+      "impact": "-",
+      "category": "m&a"
+    },
+    {
+      "title": "Nvidia CEO Jensen Huang resigns: Live updates",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html",
+      "published": "2026-11-12T00:00:00Z",
+      "summary": "NVDA CEO 사임 당일 마벨도 인텔과 함께 -4% 이상 동반 하락",
+      "impact": "-",
+      "category": "other"
+    }
+  ],
+  "note": "마벨 고유 뉴스가 최근 72시간 내로는 확인되지 않아 11월 초 루멘텀 인수 및 NVDA 사태 연동 하락까지 범위를 넓혀 정리함.",
+  "competitor_context": [
+    {
+      "ticker": "AVGO",
+      "headline": "브로드컴, Redburn 하향(매수→중립)에도 NVDA 리더십 위기 속 커스텀 ASIC 대안주로 동반 반등",
+      "implication_for_target": "같은 커스텀 AI 반도체 경쟁사의 반등은 마벨의 루멘텀 인수 불확실성이 상대적 약세 요인으로 부각됨을 시사."
+    },
+    {
+      "ticker": "NVDA",
+      "headline": "엔비디아 CEO 젠슨 황 사임 스캔들로 AI 밸류체인 전반 흔들림",
+      "implication_for_target": "NVDA와 연계된 공급망·고객 불확실성이 마벨의 데이터센터 매출 전망에도 간접적 리스크로 작용."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.2,
+    "competitive_position": -0.15,
+    "regulatory_risk": -0.2,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.19,
+  "summary_kr": "마벨은 1150억달러 규모 루멘텀 인수 발표 이후 BofA의 하향과 희석·규제 우려로 주가가 13% 급락했고, 이어진 NVDA CEO 사태발 반도체 전반 매도세에도 동반 하락하며 이중의 악재를 맞았다.",
+  "key_events": [
+    "루멘텀 1150억달러 전액주식 인수 발표(11/2), 주가 -13%(11/3)",
+    "BofA 매수→중립 하향, 목표가 $400→$225(11/3)",
+    "NVDA CEO 사임 당일 -4% 이상 동반 하락(11/12)"
+  ],
+  "risks": [
+    "루멘텀 인수에 대한 반독점·각국 규제 심사(특히 중국)",
+    "전액주식 인수에 따른 기존 주주 지분 희석",
+    "AI 반도체 섹터 전반의 매크로 동조화로 개별 펀더멘털과 무관한 변동성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MRVL%20-%20Marvell%20Technology%2C%20Inc.md"
+}
