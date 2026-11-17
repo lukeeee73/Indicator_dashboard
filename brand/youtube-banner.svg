@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <!-- 유튜브 채널 배너 (2560×1440)
+       모든 기기 공통 안전 영역: 가운데 1546×423 (x 507–2053, y 508.5–931.5) — 로고·글자는 이 안에만 둔다.
+       데스크톱: 가운데 2560×423 띠 / TV: 전체.
+       글꼴: Pretendard (없으면 Inter·시스템 산세리프로 대체) -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#191919"/>
+      <stop offset="1" stop-color="#080808"/>
+    </radialGradient>
+    <pattern id="grid" width="160" height="160" patternUnits="userSpaceOnUse">
+      <path d="M 160 0 H 0 V 160" fill="none" stroke="#1d1d1d" stroke-width="2"/>
+    </pattern>
+    <linearGradient id="fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="2000" y2="0">
+      <stop offset="0" stop-color="#e63030" stop-opacity="0.25"/>
+      <stop offset="0.75" stop-color="#e63030" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#e63030"/>
+    </linearGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#bg)"/>
+  <rect width="2560" height="1440" fill="url(#grid)"/>
+
+  <!-- 배경 보조 계열 (TV·데스크톱에서만 보이는 질감) -->
+  <g fill="none" stroke="#2c2c2c" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <polyline points="0,330 180,300 340,350 520,280 700,320 880,250 1060,300 1240,240 1420,290 1600,220 1780,270 1960,190 2140,240 2320,170 2560,210"/>
+    <polyline points="0,1180 200,1210 380,1150 560,1190 760,1120 940,1170 1120,1110 1320,1160 1500,1090 1700,1150 1880,1080 2080,1130 2260,1060 2420,1100 2560,1050"/>
+  </g>
+
+  <!-- '현재' 기준선 -->
+  <line x1="2000" y1="0" x2="2000" y2="1440" stroke="#3a3a3a" stroke-width="3" stroke-dasharray="10 14"/>
+
+  <!-- 붉은 지표선: 왼쪽 끝에서 흘러와 현재 지점에서 끝난다 -->
+  <polyline points="0,902 150,884 280,912 420,878 560,904 700,886 840,908 980,888 1120,906 1260,884 1400,900 1540,880 1650,896 1740,846 1810,872 1900,736 1950,768 2000,612"
+            fill="none" stroke="url(#fade)" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="2000" cy="612" r="46" fill="#e63030" opacity="0.2"/>
+  <circle cx="2000" cy="612" r="24" fill="#e63030"/>
+
+  <!-- 마크 (프로필 B · 축 L) -->
+  <g transform="translate(473.85 484.95) scale(0.435)">
+    <path d="M 290 230 H 400 V 740 H 800 V 850 H 290 Z" fill="#f2f2f2"/>
+    <polyline points="485,640 580,535 660,600 790,372"
+              fill="none" stroke="#e63030" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="790" cy="372" r="56" fill="#e63030"/>
+  </g>
+
+  <!-- 워드마크 -->
+  <g font-family="Pretendard, Inter, 'Noto Sans KR', sans-serif" fill="#f2f2f2">
+    <text x="912" y="676" font-size="96" font-weight="800" letter-spacing="12">LUKE</text>
+    <text x="912" y="780" font-size="96" font-weight="800" letter-spacing="12">DASHBOARD</text>
+    <text x="916" y="846" font-size="34" font-weight="500" letter-spacing="2" fill="#9c9c9c">한국과 미국의 통화 가치 · 환율 · 물가</text>
+  </g>
+</svg>
