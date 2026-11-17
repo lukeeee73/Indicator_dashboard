@@ -1,0 +1,66 @@
+{
+  "ticker": "ARM",
+  "date": "2026-11-17",
+  "as_of_utc": "2026-11-17T21:00:00Z",
+  "news": [
+    {
+      "title": "Nvidia CEO: Search firm not yet selected for Huang replacement",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/11/13/nvidia-huang-ceo-replacement-search.html",
+      "published": "2026-11-13T00:00:00Z",
+      "summary": "FT 보도: 엔비디아 이사회가 Arm CEO 르네 하스를 후임 후보로 접촉했다는 보도(양사 미확인)",
+      "impact": "neutral",
+      "category": "other"
+    },
+    {
+      "title": "Delaware jury awards Qualcomm $2 in damages, finds Arm breached license agreement",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/10/13/delaware-jury-qualcomm-arm-license-agreement.html",
+      "published": "2026-10-13T00:00:00Z",
+      "summary": "델라웨어 배심원단, Arm이 퀄컴과의 아키텍처 라이선스 계약을 위반했다고 판결(배상액은 명목상 $2)",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "Arm shares fall 5% after hours despite Q2 beat as outlook only edges past forecasts",
+      "source": "InvestingLive",
+      "url": "https://investinglive.com/stocks/arm-shares-fall-5-after-hours-despite-q2-beat-as-outlook-only-edges-past-forecasts/",
+      "published": "2026-11-04T00:00:00Z",
+      "summary": "2분기 매출 YoY +27% 등 서프라이즈에도 가이던스가 기대치를 소폭 상회에 그쳐 애프터마켓 -5%",
+      "impact": "-",
+      "category": "earnings"
+    }
+  ],
+  "note": "Arm 고유 뉴스가 최근 72시간 내로는 확인되지 않아 11월 초 실적·소송 이슈 및 CEO 후보설까지 범위를 넓혀 정리함.",
+  "competitor_context": [
+    {
+      "ticker": "INTC",
+      "headline": "인텔, 엔비디아 지분 매각 공시 및 PC 수요 둔화로 약세 지속",
+      "implication_for_target": "PC·엣지 디바이스 수요 둔화 신호는 Arm의 로열티 매출 성장(스마트폰 의존도 높음)에도 부담 요인."
+    },
+    {
+      "ticker": "AMD",
+      "headline": "AMD, NVDA 리더십 공백 수혜 전망으로 급등, 데이터센터 매출 급증",
+      "implication_for_target": "AMD·NVDA 등 GPU 진영의 변동성 확대는 Arm의 데이터센터 CPU·라이선스 전략(AI 칩 자체 설계)에 기회와 불확실성을 동시에 제공."
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.1,
+    "competitive_position": -0.15,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": -0.2
+  },
+  "narrative_score": -0.14,
+  "summary_kr": "Arm은 2분기 매출 27% 성장을 냈지만 로열티 성장이 라이선스 성장에 못 미쳐 가이던스가 기대치를 소폭 상회하는 데 그쳤고, 퀄컴과의 라이선스 소송에서도 패소 판결을 받았다. 최근에는 CEO 르네 하스가 엔비디아 후임 CEO 후보로 거론된다는 FT 보도로 리더십 불확실성도 추가됐다.",
+  "key_events": [
+    "2분기 매출 YoY +27%, EPS 서프라이즈에도 가이던스 미흡으로 애프터마켓 -5%(11/4)",
+    "퀄컴과의 라이선스 계약 위반 소송에서 패소(명목 배상 $2, 10/13)",
+    "FT: 엔비디아 이사회가 CEO 르네 하스를 후임 후보로 접촉했다는 보도(11/13 전후, 양사 미확인)"
+  ],
+  "risks": [
+    "SoftBank 관계사向 매출 비중에 따른 '순환 자금조달' 우려(BofA 지적)",
+    "CEO 르네 하스의 엔비디아行 가능성에 따른 리더십 공백 리스크",
+    "스마트폰 로열티 성장 정체 장기화"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ARM%20-%20Arm%20Holdings%20plc.md"
+}
