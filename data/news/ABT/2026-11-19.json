@@ -1,0 +1,66 @@
+{
+  "ticker": "ABT",
+  "date": "2026-11-19",
+  "as_of_utc": "2026-11-19T00:09:19Z",
+  "note": "직전 루틴 실행이 2026-09-24였던 약 8주 공백 구간을 메우기 위해, 그 사이 발생한 가장 중요한 두 사건(Q3 실적·영양사업 분사 발표, 2026-10-21)을 오늘자로 보강 기록함.",
+  "news": [
+    {
+      "title": "애벗 3분기 실적: 매출 130.1억달러(+14.5%), 비교기준 성장 +7.0%, 조정EPS 1.42달러로 컨센서스 부합",
+      "source": "Reuters/SEC 8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000001800/000162828026066601/abt-2026q3xexhibitx991.htm",
+      "published": "2026-10-21T12:00:00Z",
+      "summary": "매출 +14.5%, 조정EPS 컨센서스 부합. GAAP 순이익은 소송비용·상각 증가로 급감",
+      "impact": "neutral",
+      "category": "earnings"
+    },
+    {
+      "title": "애벗, 연매출 85억달러 영양사업(시밀락·앙슈어 등)을 2027년 말까지 독립 상장사로 분사하기로 결정",
+      "source": "Food Dive / MedTech Dive / SEC 8-K",
+      "url": "https://www.medtechdive.com/news/abbott-plans-to-spin-out-its-nutrition-business/833601/",
+      "published": "2026-10-21T13:00:00Z",
+      "summary": "영양사업(연 매출 85억달러) 분사, 2027년말 목표, 세금 비과세 분할",
+      "impact": "+",
+      "category": "m&a"
+    },
+    {
+      "title": "전기생리·당뇨(CGM) 부문 성장 둔화 우려로 연간 매출성장 가이던스 하향, 발표 당일 주가 약 3% 하락",
+      "source": "StockStory / Trefis / Barchart",
+      "url": "https://www.trefis.com/articles/620098/is-abbott-stock-about-to-rebound/2026-10-23",
+      "published": "2026-10-23T14:00:00Z",
+      "summary": "EP·당뇨 부문 둔화 우려로 연간 가이던스 하향, 발표일 주가 -3%",
+      "impact": "-",
+      "category": "earnings"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "JNJ",
+      "headline": "JNJ·써모피셔 등 헬스케어 대형주, 같은 시기 안정적 실적 흐름 유지",
+      "implication_for_target": "애벗만 가이던스 하향으로 상대적으로 약세 — 섹터 내 상대적 밸류에이션 압박"
+    },
+    {
+      "ticker": "TMO",
+      "headline": "써모피셔, 진단·생명과학 분야 포트폴리오 집중 전략 지속",
+      "implication_for_target": "애벗의 Exact Sciences 기반 진단 확장과 경쟁 구도 지속"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": 0.05,
+    "regulatory_risk": 0.10,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.05,
+  "summary_kr": "3분기 매출·조정EPS는 컨센서스를 충족했지만 전기생리·당뇨 부문 둔화로 연간 가이던스를 낮췄고, 같은 날 영양사업을 2027년까지 분사하기로 결정하며 포트폴리오를 재편했다. 단기 혼재, 중장기 구조적 긍정.",
+  "key_events": [
+    "Q3 매출 +14.5%, 비교기준 +7.0%, 조정EPS 컨센서스 부합",
+    "영양사업(85억달러) 2027년말까지 분사 결정",
+    "전기생리·당뇨 부문 둔화로 가이던스 하향, 주가 -3%"
+  ],
+  "risks": [
+    "전기생리·CGM(당뇨) 부문 성장 둔화가 구조적 추세로 굳어질 가능성",
+    "영양사업 분사 과정에서의 소송(NEC) 책임 분배 불확실성",
+    "GAAP 순이익이 소송비용·무형자산상각으로 계속 압박받을 가능성"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/ABT%20-%20Abbott%20Laboratories.md"
+}
