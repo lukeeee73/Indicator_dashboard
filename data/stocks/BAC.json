@@ -10273,30 +10273,29 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-09-19",
-      "narrative_score": -0.07,
-      "summary_kr": "BofA는 3분기 투자은행 수수료가 10% 넘게 줄어들 것이라는 모이니핸 CEO의 경고로 주가가 5% 급락했으나, 같은 자리에서 소비지출 견조·순이자이익(NII) 성장 전망도 함께 제시해 신호가 엇갈렸고, 연준의 금리인상까지 겹치며 이번 주는 약한 역풍으로 판단된다.",
+      "as_of": "2026-11-21",
+      "narrative_score": -0.22,
+      "summary_kr": "뱅크오브아메리카는 자금세탁·제재법 위반으로 美재무부로부터 12.1억달러의 대규모 벌금을 부과받아 3분기 순이익이 전년 대비 급감했다. 매출 자체는 8% 늘었지만 규제 리스크가 이번 분기 실적을 크게 끌어내렸다.",
       "key_events": [
-        "모이니핸 CEO, 3분기 IB 수수료 $16-18억(전년 $20억)으로 10%+ 감소 경고, 주가 -5% (9/14)",
-        "같은 컨퍼런스에서 8월 소비지출 +4% YoY, 예금 코스트·NII 성장 전망 제시 (9/14)",
-        "연준 25bp 금리인상(3.75~4.00%) (9/16)"
+        "美재무부, BofA에 자금세탁방지·제재법 위반으로 12.1억달러 벌금(FinCEN 12억+OCC 7.5억+OFAC 1160만달러, 역대 3번째 규모)",
+        "3분기 순이익 69억달러(EPS 0.91달러)로 전년(83억달러) 대비 급감 — 조정EPS 1.08달러는 예상치(1.10달러)에 근접",
+        "매출 300억달러(+3%), 순이자수익 8% 증가, 순상각비율 0.44%로 개선"
       ],
       "risks": [
-        "IB·트레이딩 업황 둔화가 실제 3분기 실적에 반영되는 정도가 예상보다 클 가능성",
-        "금리인상에 따른 예금 코스트 상승이 NII 개선을 상쇄할 가능성",
-        "OCC 자금세탁방지 벌금 합의가 여전히 미확정(시한 9/30)"
+        "중국계 자금세탁 네트워크·의심거래 지연보고 관련 추가 조사·제재 가능성",
+        "경쟁사 신용손실충당금 증가 추세가 BofA에도 소비자신용 경계감으로 확산될 가능성"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
-          "ticker": "GS",
-          "headline": "Solomon warns FICC softer in Q3 and non-comp expenses to jump $500M; GS stock -4% same week (Reuters, 2026-09-16)",
-          "implication_for_target": "IB 수수료 둔화가 BAC만의 문제가 아니라 업계 공통 현상임을 보여줘, 개별 종목 디스카운트 우려를 다소 완화시켜줄 참고지표다."
+          "ticker": "JPM",
+          "headline": "JP모건 3분기 순이익 153억달러(+6%)이나 EPS는 예상치 하회, 주식 트레이딩 매출 49% 급증",
+          "implication_for_target": "업계 트레이딩 호조는 BofA Global Markets 부문에도 긍정적이나, JPM 비용증가 경고는 BofA에도 비용압박 우려를 시사."
         },
         {
-          "ticker": "WFC",
-          "headline": "Wells Fargo CFO Santomassimo signals stronger 2026 loan growth than prior guidance (Reuters, 2026-09-15)",
-          "implication_for_target": "경쟁 소비자금융 은행의 대출 성장 가속 신호는 BAC의 유사 소비자·상업대출 부문 실적 기대에도 참고할 만한 우호적 지표다."
+          "ticker": "C",
+          "headline": "씨티그룹 3분기 신용손실충당금 26억달러로 증가, CET1 비율 12.8%(전년 13.3%)로 하락",
+          "implication_for_target": "신용손실충당금 증가 추세는 BofA를 포함한 대형은행 전반의 소비자신용 경계감이 커지고 있음을 시사."
         }
       ],
       "history": [
@@ -10319,6 +10318,10 @@
         {
           "date": "2026-09-19",
           "narrative_score": -0.07
+        },
+        {
+          "date": "2026-11-21",
+          "narrative_score": -0.22
         }
       ]
     }
