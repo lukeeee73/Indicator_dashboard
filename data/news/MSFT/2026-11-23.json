@@ -1,0 +1,55 @@
+{
+  "ticker": "MSFT",
+  "date": "2026-11-23",
+  "as_of_utc": "2026-11-23T12:00:00Z",
+  "news": [
+    {
+      "title": "Microsoft 365 global outage knocks out Outlook, Teams, Exchange Online for nearly 24 hours",
+      "source": "MacRumors",
+      "url": "https://macrumors.com/2026/11/13/microsoft-365-outage-resolving",
+      "published": "2026-11-13T00:00:00Z",
+      "summary": "마이크로소프트365 글로벌 장애, 아웃룩·팀즈·익스체인지온라인 거의 24시간 마비",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "Microsoft restores Microsoft 365 services after two-day global outage, traces cause to network upgrade fault",
+      "source": "Computerworld / cryptobriefing.com (aggregated)",
+      "url": "https://cryptobriefing.com/microsoft-restores-services-after-global-outage/",
+      "published": "2026-11-14T00:00:00Z",
+      "summary": "서비스 복구 완료, 원인은 네트워크 용량 업그레이드 오류(사이버공격 아님)로 확인",
+      "impact": "neutral",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "Google launches two new 8th-gen TPU chip systems, nears 100 AI chip customers",
+      "implication_for_target": "구글이 자체 AI칩 고객 기반을 넓히는 동안 MS는 애저 장애로 신뢰도에 일시적 타격 — 엔터프라이즈 클라우드 선택에서 안정성 이슈가 재부각될 수 있음"
+    },
+    {
+      "ticker": "AMZN",
+      "headline": "AWS pushes ahead with new Washington state data center campuses despite local pushback",
+      "implication_for_target": "AWS가 인프라 확장을 지속하는 가운데 MS는 이번 주 안정성 이슈로 비교당할 소지가 있음"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.10,
+    "competitive_position": 0.0,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": -0.04,
+  "summary_kr": "마이크로소프트365가 거의 24시간 이어진 글로벌 장애를 겪으며 아웃룩·팀즈가 마비됐지만, 사이버공격이 아닌 네트워크 업그레이드 오류로 확인됐고 복구도 완료됐다.",
+  "key_events": [
+    "M365 글로벌 장애(11/12~14), 아웃룩 다운디텍터 신고 최대 13.8만건",
+    "원인은 네트워크 용량 업그레이드 오류로 확인, 사이버공격 아님",
+    "서비스 복구 완료 발표(11/14)"
+  ],
+  "risks": [
+    "엔터프라이즈 고객의 SLA(서비스수준협약) 배상 요구나 신뢰도 영향 가능성",
+    "재발 방지 대책의 구체적 발표 여부"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/MSFT%20-%20Microsoft%20Corporation.md"
+}

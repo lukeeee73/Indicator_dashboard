@@ -1,0 +1,54 @@
+{
+  "ticker": "GOOGL",
+  "date": "2026-11-23",
+  "as_of_utc": "2026-11-23T12:00:00Z",
+  "news": [
+    {
+      "title": "Google unveils two new 8th-gen TPU systems, AI chip customer base nears 100, shares rise 2%",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/google-expands-ai-hardware-push-with-2-new-tpu-chips-targets-secure-inference-doubles-compute/cNGrQ6JR9ey",
+      "published": "2026-11-09T00:00:00Z",
+      "summary": "구글, 8세대 TPU 신규 2종 공개 — AI칩 고객 100곳 육박, 주가 2%↑",
+      "impact": "+",
+      "category": "product"
+    },
+    {
+      "title": "Stewart v. Alphabet securities class action: lead plaintiff motion deadline set for Dec 1, 2026",
+      "source": "BusinessWire (law firm notice, citing court filing)",
+      "url": "https://www.webull.com/news/15895153971741696",
+      "published": "2026-11-17T00:00:00Z",
+      "summary": "증권 집단소송(Stewart v. Alphabet) 리드원고 선임 시한 12/1 확정 — 제미나이 3.5 프로 개발 지연 관련 허위진술 의혹",
+      "impact": "-",
+      "category": "regulation"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "MSFT",
+      "headline": "Microsoft 365 suffers nearly 24-hour global outage",
+      "implication_for_target": "MS가 안정성 이슈로 신뢰도에 타격을 입는 동안, 구글은 TPU 신제품 공개로 AI 인프라 경쟁에서 긍정적 뉴스 사이클을 탐"
+    },
+    {
+      "ticker": "AMZN",
+      "headline": "AWS advances new Washington state data center campuses amid local pushback",
+      "implication_for_target": "클라우드 3사 모두 인프라 확장을 이어가는 가운데, 구글은 자체 칩(TPU) 차별화로 엔비디아 의존도가 낮다는 점이 부각됨"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.0,
+    "competitive_position": 0.30,
+    "regulatory_risk": -0.15,
+    "macro_sensitivity": 0.0
+  },
+  "narrative_score": 0.05,
+  "summary_kr": "구글이 8세대 TPU 신규 2종을 공개하며 AI 칩 고객 기반을 100곳 가까이 넓히는 등 엔비디아 대항마로서의 입지를 강화했다. 다만 제미나이 개발 지연 관련 증권 집단소송의 리드원고 선임 시한(12/1)이 다가오며 법적 불확실성은 남아있다.",
+  "key_events": [
+    "8세대 TPU 신규 2종 공개(보안 추론용·연산 2배), AI 칩 고객 100곳 육박",
+    "Stewart v. Alphabet 증권 집단소송 리드원고 선임 시한 12/1 확정"
+  ],
+  "risks": [
+    "리드원고 선임 이후 소송이 본격화되면 제미나이 개발 지연 관련 추가 폭로 가능성",
+    "TPU 신규 고객 확보가 실제 매출로 이어지는 속도"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/GOOGL%20-%20Alphabet%20Inc.md"
+}
