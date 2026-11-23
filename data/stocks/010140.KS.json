@@ -4,26 +4,6 @@
   "group": "조선 (한국)",
   "series": [
     {
-      "date": "2016-11-16",
-      "value": 7783.78
-    },
-    {
-      "date": "2016-11-17",
-      "value": 7775.35
-    },
-    {
-      "date": "2016-11-18",
-      "value": 7674.26
-    },
-    {
-      "date": "2016-11-21",
-      "value": 7674.26
-    },
-    {
-      "date": "2016-11-22",
-      "value": 7564.75
-    },
-    {
       "date": "2016-11-23",
       "value": 7488.94
     },
@@ -9782,13 +9762,33 @@
     {
       "date": "2026-11-13",
       "value": 16610.0
+    },
+    {
+      "date": "2026-11-16",
+      "value": 16700.0
+    },
+    {
+      "date": "2026-11-17",
+      "value": 16000.0
+    },
+    {
+      "date": "2026-11-18",
+      "value": 15760.0
+    },
+    {
+      "date": "2026-11-19",
+      "value": 16150.0
+    },
+    {
+      "date": "2026-11-20",
+      "value": 15120.0
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 14264312004608.0,
+      "market_cap": 12257058619392.0,
       "pe_ratio": null,
-      "forward_pe": 9.777708,
+      "forward_pe": 8.387807,
       "eps_ttm": null,
       "dividend_yield": 0.0,
       "profit_margin": 0.048699997,
@@ -9802,13 +9802,13 @@
         "revenue": null,
         "operating_income": null,
         "net_income": null,
-        "eps": 108.0
+        "eps": null
       },
       {
         "date": "2025-06-30",
-        "revenue": 2682977392290.0,
-        "operating_income": 204816240860.0,
-        "net_income": 214109640710.0,
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
         "eps": 250.0
       },
       {
@@ -9838,102 +9838,31 @@
         "operating_income": 325023819850.0,
         "net_income": 224332623920.0,
         "eps": 263.0
+      },
+      {
+        "date": "2026-09-30",
+        "revenue": 3150415921000.0,
+        "operating_income": 486659187000.0,
+        "net_income": 470591066000.0,
+        "eps": 550.946364
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-11-13",
-    "current_price": 16610.0,
+    "as_of": "2026-11-20",
+    "current_price": 15120.0,
     "sector": "Industrials",
     "methods": {
       "forward_pe_benchmark": {
-        "fair_value": 28878.96,
+        "fair_value": 30644.48,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (17)"
       }
     },
-    "fair_value": 28878.96,
-    "valuation_gap": -0.4248,
+    "fair_value": 30644.48,
+    "valuation_gap": -0.5066,
     "signal": "deep_value",
     "gap_series_weekly": [
-      {
-        "date": "2026-04-03",
-        "price": 27900.0,
-        "fair_value": 12880.0,
-        "gap": 1.1661
-      },
-      {
-        "date": "2026-04-10",
-        "price": 28550.0,
-        "fair_value": 12880.0,
-        "gap": 1.2166
-      },
-      {
-        "date": "2026-04-17",
-        "price": 29050.0,
-        "fair_value": 12880.0,
-        "gap": 1.2554
-      },
-      {
-        "date": "2026-04-24",
-        "price": 34400.0,
-        "fair_value": 12880.0,
-        "gap": 1.6708
-      },
-      {
-        "date": "2026-04-30",
-        "price": 32350.0,
-        "fair_value": 12880.0,
-        "gap": 1.5116
-      },
-      {
-        "date": "2026-05-08",
-        "price": 31950.0,
-        "fair_value": 12880.0,
-        "gap": 1.4806
-      },
-      {
-        "date": "2026-05-15",
-        "price": 29300.0,
-        "fair_value": 12880.0,
-        "gap": 1.2748
-      },
-      {
-        "date": "2026-05-22",
-        "price": 29500.0,
-        "fair_value": 12880.0,
-        "gap": 1.2904
-      },
-      {
-        "date": "2026-05-29",
-        "price": 27950.0,
-        "fair_value": 12880.0,
-        "gap": 1.17
-      },
-      {
-        "date": "2026-06-05",
-        "price": 27750.0,
-        "fair_value": 12880.0,
-        "gap": 1.1545
-      },
-      {
-        "date": "2026-06-12",
-        "price": 26900.0,
-        "fair_value": 12880.0,
-        "gap": 1.0885
-      },
-      {
-        "date": "2026-06-19",
-        "price": 27550.0,
-        "fair_value": 12880.0,
-        "gap": 1.139
-      },
-      {
-        "date": "2026-06-26",
-        "price": 23000.0,
-        "fair_value": 12880.0,
-        "gap": 0.7857
-      },
       {
         "date": "2026-07-03",
         "price": 23500.0,
@@ -10015,44 +9944,50 @@
       {
         "date": "2026-10-02",
         "price": 19960.0,
-        "fair_value": 15980.0,
-        "gap": 0.2491
+        "fair_value": 21998.93,
+        "gap": -0.0927
       },
       {
         "date": "2026-10-08",
         "price": 18860.0,
-        "fair_value": 15980.0,
-        "gap": 0.1802
+        "fair_value": 21998.93,
+        "gap": -0.1427
       },
       {
         "date": "2026-10-16",
         "price": 18400.0,
-        "fair_value": 15980.0,
-        "gap": 0.1514
+        "fair_value": 21998.93,
+        "gap": -0.1636
       },
       {
         "date": "2026-10-23",
         "price": 16830.0,
-        "fair_value": 15980.0,
-        "gap": 0.0532
+        "fair_value": 21998.93,
+        "gap": -0.235
       },
       {
         "date": "2026-10-30",
         "price": 15880.0,
-        "fair_value": 15980.0,
-        "gap": -0.0063
+        "fair_value": 21998.93,
+        "gap": -0.2781
       },
       {
         "date": "2026-11-06",
         "price": 16200.0,
-        "fair_value": 15980.0,
-        "gap": 0.0138
+        "fair_value": 21998.93,
+        "gap": -0.2636
       },
       {
         "date": "2026-11-13",
         "price": 16610.0,
-        "fair_value": 15980.0,
-        "gap": 0.0394
+        "fair_value": 21998.93,
+        "gap": -0.245
+      },
+      {
+        "date": "2026-11-20",
+        "price": 15120.0,
+        "fair_value": 21998.93,
+        "gap": -0.3127
       }
     ],
     "qualitative": {

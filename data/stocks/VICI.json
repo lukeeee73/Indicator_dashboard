@@ -901,7 +901,7 @@
     },
     {
       "date": "2018-11-20",
-      "value": 13.67
+      "value": 13.68
     },
     {
       "date": "2018-11-21",
@@ -8925,19 +8925,39 @@
     },
     {
       "date": "2026-11-16",
-      "value": 25.05
+      "value": 24.85
+    },
+    {
+      "date": "2026-11-17",
+      "value": 24.51
+    },
+    {
+      "date": "2026-11-18",
+      "value": 24.39
+    },
+    {
+      "date": "2026-11-19",
+      "value": 24.19
+    },
+    {
+      "date": "2026-11-20",
+      "value": 24.2
+    },
+    {
+      "date": "2026-11-23",
+      "value": 24.18
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 27576688640.0,
-      "pe_ratio": 11.594907,
-      "forward_pe": 8.43266,
+      "market_cap": 26629754880.0,
+      "pe_ratio": 11.196758,
+      "forward_pe": 8.143097,
       "eps_ttm": 2.16,
-      "dividend_yield": 7.36,
+      "dividend_yield": 7.6,
       "profit_margin": 0.56459,
       "operating_margin": 0.77351,
-      "price_to_book": 0.95054656,
+      "price_to_book": 0.91790646,
       "return_on_equity": 0.08281
     },
     "quarterly": [
@@ -8979,8 +8999,8 @@
     ]
   },
   "valuation": {
-    "as_of": "2026-11-16",
-    "current_price": 25.05,
+    "as_of": "2026-11-23",
+    "current_price": 24.18,
     "sector": "Real Estate",
     "methods": {
       "pe_benchmark": {
@@ -8989,18 +9009,18 @@
         "note": "EPS_TTM × 섹터 P/E (18)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 47.53,
+        "fair_value": 47.51,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (16)"
       },
       "graham_number": {
-        "fair_value": 35.79,
+        "fair_value": 35.78,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 40.86,
-    "valuation_gap": -0.3869,
+    "fair_value": 40.85,
+    "valuation_gap": -0.4081,
     "signal": "deep_value",
     "gap_series_weekly": [
       {
@@ -9124,10 +9144,16 @@
         "gap": -0.3626
       },
       {
-        "date": "2026-11-16",
-        "price": 25.05,
+        "date": "2026-11-20",
+        "price": 24.2,
         "fair_value": 39.24,
-        "gap": -0.3616
+        "gap": -0.3833
+      },
+      {
+        "date": "2026-11-23",
+        "price": 24.18,
+        "fair_value": 39.24,
+        "gap": -0.3838
       }
     ],
     "qualitative": {

@@ -4,26 +4,6 @@
   "group": "반도체 — AI 칩 · 설계",
   "series": [
     {
-      "date": "2016-11-16",
-      "value": 2.25
-    },
-    {
-      "date": "2016-11-17",
-      "value": 2.27
-    },
-    {
-      "date": "2016-11-18",
-      "value": 2.29
-    },
-    {
-      "date": "2016-11-21",
-      "value": 2.28
-    },
-    {
-      "date": "2016-11-22",
-      "value": 2.3
-    },
-    {
       "date": "2016-11-23",
       "value": 2.31
     },
@@ -7945,7 +7925,7 @@
     },
     {
       "date": "2024-10-09",
-      "value": 132.29
+      "value": 132.3
     },
     {
       "date": "2024-10-10",
@@ -8729,7 +8709,7 @@
     },
     {
       "date": "2025-07-24",
-      "value": 173.32
+      "value": 173.31
     },
     {
       "date": "2025-07-25",
@@ -8869,7 +8849,7 @@
     },
     {
       "date": "2025-09-12",
-      "value": 177.4
+      "value": 177.39
     },
     {
       "date": "2025-09-15",
@@ -9077,7 +9057,7 @@
     },
     {
       "date": "2025-11-25",
-      "value": 177.4
+      "value": 177.39
     },
     {
       "date": "2025-11-26",
@@ -10053,20 +10033,40 @@
     },
     {
       "date": "2026-11-16",
-      "value": 156.2
+      "value": 156.14
+    },
+    {
+      "date": "2026-11-17",
+      "value": 155.46
+    },
+    {
+      "date": "2026-11-18",
+      "value": 150.96
+    },
+    {
+      "date": "2026-11-19",
+      "value": 145.98
+    },
+    {
+      "date": "2026-11-20",
+      "value": 125.53
+    },
+    {
+      "date": "2026-11-23",
+      "value": 165.66
     }
   ],
   "financials": {
     "snapshot": {
-      "market_cap": 3772485468160.0,
-      "pe_ratio": 19.750948,
-      "forward_pe": 9.861124,
-      "eps_ttm": 7.91,
-      "dividend_yield": 0.61,
-      "profit_margin": 0.63663,
-      "operating_margin": 0.65213996,
-      "price_to_book": 16.474745,
-      "return_on_equity": 1.17211
+      "market_cap": 4001278459904.0,
+      "pe_ratio": 17.798603,
+      "forward_pe": 9.979055,
+      "eps_ttm": 9.31,
+      "dividend_yield": 0.8,
+      "profit_margin": 0.62535,
+      "operating_margin": 0.66082,
+      "price_to_book": 14.97966,
+      "return_on_equity": 1.17364
     },
     "quarterly": [
       {
@@ -10074,7 +10074,7 @@
         "revenue": 46743000000.0,
         "operating_income": 28440000000.0,
         "net_income": 26422000000.0,
-        "eps": 1.08
+        "eps": null
       },
       {
         "date": "2025-10-31",
@@ -10103,112 +10103,41 @@
         "operating_income": 63734000000.0,
         "net_income": 59688000000.0,
         "eps": 2.46
+      },
+      {
+        "date": "2026-10-31",
+        "revenue": null,
+        "operating_income": null,
+        "net_income": null,
+        "eps": 2.7
       }
     ]
   },
   "valuation": {
-    "as_of": "2026-11-16",
-    "current_price": 156.2,
+    "as_of": "2026-11-23",
+    "current_price": 165.66,
     "sector": "Technology",
     "methods": {
       "pe_benchmark": {
-        "fair_value": 221.48,
+        "fair_value": 260.68,
         "weight": 5.0,
         "note": "EPS_TTM × 섹터 P/E (28)"
       },
       "forward_pe_benchmark": {
-        "fair_value": 348.48,
+        "fair_value": 365.22,
         "weight": 3.0,
         "note": "내재 forward EPS × 섹터 Forward P/E (22)"
       },
       "graham_number": {
-        "fair_value": 41.08,
+        "fair_value": 48.13,
         "weight": 2.0,
         "note": "sqrt(22.5 × EPS × 주당순자산)"
       }
     },
-    "fair_value": 223.5,
-    "valuation_gap": -0.3011,
+    "fair_value": 249.53,
+    "valuation_gap": -0.3361,
     "signal": "deep_value",
     "gap_series_weekly": [
-      {
-        "date": "2026-05-01",
-        "price": 198.0,
-        "fair_value": 182.84,
-        "gap": 0.0829
-      },
-      {
-        "date": "2026-05-08",
-        "price": 214.71,
-        "fair_value": 182.84,
-        "gap": 0.1743
-      },
-      {
-        "date": "2026-05-15",
-        "price": 224.81,
-        "fair_value": 182.84,
-        "gap": 0.2295
-      },
-      {
-        "date": "2026-05-22",
-        "price": 214.84,
-        "fair_value": 182.84,
-        "gap": 0.175
-      },
-      {
-        "date": "2026-05-29",
-        "price": 210.66,
-        "fair_value": 182.84,
-        "gap": 0.1522
-      },
-      {
-        "date": "2026-06-05",
-        "price": 204.87,
-        "fair_value": 182.84,
-        "gap": 0.1205
-      },
-      {
-        "date": "2026-06-12",
-        "price": 204.96,
-        "fair_value": 182.84,
-        "gap": 0.121
-      },
-      {
-        "date": "2026-06-18",
-        "price": 210.45,
-        "fair_value": 182.84,
-        "gap": 0.151
-      },
-      {
-        "date": "2026-06-26",
-        "price": 192.31,
-        "fair_value": 182.84,
-        "gap": 0.0518
-      },
-      {
-        "date": "2026-07-02",
-        "price": 194.61,
-        "fair_value": 182.84,
-        "gap": 0.0644
-      },
-      {
-        "date": "2026-07-10",
-        "price": 210.72,
-        "fair_value": 182.84,
-        "gap": 0.1525
-      },
-      {
-        "date": "2026-07-17",
-        "price": 202.58,
-        "fair_value": 182.84,
-        "gap": 0.108
-      },
-      {
-        "date": "2026-07-24",
-        "price": 206.61,
-        "fair_value": 182.84,
-        "gap": 0.13
-      },
       {
         "date": "2026-07-31",
         "price": 200.53,
@@ -10296,20 +10225,26 @@
       {
         "date": "2026-11-06",
         "price": 186.64,
-        "fair_value": 221.48,
-        "gap": -0.1573
+        "fair_value": 260.68,
+        "gap": -0.284
       },
       {
         "date": "2026-11-13",
         "price": 162.85,
-        "fair_value": 221.48,
-        "gap": -0.2647
+        "fair_value": 260.68,
+        "gap": -0.3753
       },
       {
-        "date": "2026-11-16",
-        "price": 156.2,
-        "fair_value": 221.48,
-        "gap": -0.2947
+        "date": "2026-11-20",
+        "price": 125.53,
+        "fair_value": 260.68,
+        "gap": -0.5185
+      },
+      {
+        "date": "2026-11-23",
+        "price": 165.66,
+        "fair_value": 260.68,
+        "gap": -0.3645
       }
     ],
     "qualitative": {
