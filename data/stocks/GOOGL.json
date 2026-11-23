@@ -10273,32 +10273,28 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-11-16",
-      "narrative_score": -0.14,
-      "summary_kr": "3분기 실적 발표 후 검색광고 성장 둔화와 AI 자본지출 부담 우려로 주가가 12%대 급락했고, 새 증권 집단소송까지 더해지며 규제 리스크도 커졌다. 다만 퀄컴 지분 5.48억달러 신규 확보는 AI 반도체 공급처 다변화라는 긍정적 신호다.",
+      "as_of": "2026-11-23",
+      "narrative_score": 0.05,
+      "summary_kr": "구글이 8세대 TPU 신규 2종을 공개하며 AI 칩 고객 기반을 100곳 가까이 넓히는 등 엔비디아 대항마로서의 입지를 강화했다. 다만 제미나이 개발 지연 관련 증권 집단소송의 리드원고 선임 시한(12/1)이 다가오며 법적 불확실성은 남아있다.",
       "key_events": [
-        "2026-10-28 3분기 실적 발표 후 주가 12%대 급락 (검색광고 성장 둔화 + AI capex 부담)",
-        "2026-11-06 13F 공시 — 퀄컴 지분 5.48억달러 신규 보유 확인",
-        "2026-11-09 신규 증권 투자자 집단소송 제기"
+        "8세대 TPU 신규 2종 공개(보안 추론용·연산 2배), AI 칩 고객 100곳 육박",
+        "Stewart v. Alphabet 증권 집단소송 리드원고 선임 시한 12/1 확정"
       ],
       "risks": [
-        "검색 광고 성장 둔화가 일시적인지 구조적인지 다음 분기까지 불확실",
-        "신규 집단소송의 쟁점과 규모가 아직 불명확",
-        "AI capex 가이던스($195~205B) 추가 상향 시 밸류에이션 부담 심화 가능"
+        "리드원고 선임 이후 소송이 본격화되면 제미나이 개발 지연 관련 추가 폭로 가능성",
+        "TPU 신규 고객 확보가 실제 매출로 이어지는 속도"
       ],
-      "news_count": 3,
+      "news_count": 2,
       "competitor_context": [
         {
           "ticker": "MSFT",
-          "headline": "Microsoft FY27 Q1 revenue +19%, Azure growth accelerates to 48%, stock hits record high",
-          "url": "https://blockonomi.com/microsoft-msft-stock-surges-6-with-564-resistance-ahead/",
-          "implication_for_target": "같은 시기 실적을 발표한 MS가 애저 고성장으로 사상 최고치를 찍은 것과 대비되며, 구글의 검색광고 성장 둔화가 더 뚜렷하게 부각됐다"
+          "headline": "Microsoft 365 suffers nearly 24-hour global outage",
+          "implication_for_target": "MS가 안정성 이슈로 신뢰도에 타격을 입는 동안, 구글은 TPU 신제품 공개로 AI 인프라 경쟁에서 긍정적 뉴스 사이클을 탐"
         },
         {
           "ticker": "AMZN",
-          "headline": "Amazon Q3 2026: AWS growth hits 39%, record profitability, but shares slide on AI spending concerns",
-          "url": "https://www.kucoin.com/blog/ph-amazon-q3-2026-earnings-aws-growth-ai-spending",
-          "implication_for_target": "아마존도 AWS 고성장에도 AI 지출 우려로 주가가 흔들린 점은, 클라우드 3사 모두가 'AI 투자 대비 수익화 속도' 의심을 공유하고 있음을 보여준다"
+          "headline": "AWS advances new Washington state data center campuses amid local pushback",
+          "implication_for_target": "클라우드 3사 모두 인프라 확장을 이어가는 가운데, 구글은 자체 칩(TPU) 차별화로 엔비디아 의존도가 낮다는 점이 부각됨"
         }
       ],
       "history": [
@@ -10321,6 +10317,10 @@
         {
           "date": "2026-11-16",
           "narrative_score": -0.14
+        },
+        {
+          "date": "2026-11-23",
+          "narrative_score": 0.05
         }
       ]
     }

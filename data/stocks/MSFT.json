@@ -10259,31 +10259,29 @@
       }
     ],
     "qualitative": {
-      "as_of": "2026-11-16",
-      "narrative_score": 0.18,
-      "summary_kr": "FY27 1분기 실적에서 애저 성장률이 48%로 가속되며 주가가 사상 최고치를 찍었고, 앤트로픽이 애저 지출 약정을 449억달러로 확대하며 멀티모델 클라우드 허브 지위를 강화했다.",
+      "as_of": "2026-11-23",
+      "narrative_score": -0.04,
+      "summary_kr": "마이크로소프트365가 거의 24시간 이어진 글로벌 장애를 겪으며 아웃룩·팀즈가 마비됐지만, 사이버공격이 아닌 네트워크 업그레이드 오류로 확인됐고 복구도 완료됐다.",
       "key_events": [
-        "2026-10-28 FY27 1분기 실적: 매출 923억달러(+19%), 애저 +48%",
-        "2026-11-04 중간선거 랠리·실적 호조로 주가 사상최고치($555.80, +6.68%)",
-        "앤트로픽, 애저 지출 약정 449억달러로 확대(2033년까지)"
+        "M365 글로벌 장애(11/12~14), 아웃룩 다운디텍터 신고 최대 13.8만건",
+        "원인은 네트워크 용량 업그레이드 오류로 확인, 사이버공격 아님",
+        "서비스 복구 완료 발표(11/14)"
       ],
       "risks": [
-        "급등 이후 밸류에이션 부담 — 대규모 capex 지속에 따른 잉여현금흐름 압박 우려",
-        "앤트로픽 440억달러 약정이 실제 집행으로 이어지는 속도가 불확실"
+        "엔터프라이즈 고객의 SLA(서비스수준협약) 배상 요구나 신뢰도 영향 가능성",
+        "재발 방지 대책의 구체적 발표 여부"
       ],
       "news_count": 2,
       "competitor_context": [
         {
           "ticker": "GOOGL",
-          "headline": "Alphabet shares drop ~12% after Q3 2026 earnings on search growth slowdown and AI capex concerns",
-          "url": "https://www.barchart.com/story/news/2589677/why-alphabet-googl-shares-are-getting-obliterated-today",
-          "implication_for_target": "구글이 AI 투자 부담 우려로 급락한 반면 MS는 같은 분기 실적에서 오히려 사상 최고치를 찍어, 클라우드/AI 3파전에서 애저의 상대적 우위가 부각됐다"
+          "headline": "Google launches two new 8th-gen TPU chip systems, nears 100 AI chip customers",
+          "implication_for_target": "구글이 자체 AI칩 고객 기반을 넓히는 동안 MS는 애저 장애로 신뢰도에 일시적 타격 — 엔터프라이즈 클라우드 선택에서 안정성 이슈가 재부각될 수 있음"
         },
         {
-          "ticker": "AAPL",
-          "headline": "Apple is borrowing $7.5 billion, its first bond sale since 2025",
-          "url": "https://247wallst.com/investing/2026/11/06/apple-is-borrowing-7-5-billion-its-first-bond-sale-since-2025/",
-          "implication_for_target": "애플이 메모리 원가 부담과 채권 발행으로 수세적인 모습을 보이는 동안, MS는 AI 수요 증명과 앤트로픽 대형 계약으로 공격적 확장을 이어갔다"
+          "ticker": "AMZN",
+          "headline": "AWS pushes ahead with new Washington state data center campuses despite local pushback",
+          "implication_for_target": "AWS가 인프라 확장을 지속하는 가운데 MS는 이번 주 안정성 이슈로 비교당할 소지가 있음"
         }
       ],
       "history": [
@@ -10306,6 +10304,10 @@
         {
           "date": "2026-11-16",
           "narrative_score": 0.18
+        },
+        {
+          "date": "2026-11-23",
+          "narrative_score": -0.04
         }
       ]
     }

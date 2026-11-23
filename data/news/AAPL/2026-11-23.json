@@ -1,0 +1,74 @@
+{
+  "ticker": "AAPL",
+  "date": "2026-11-23",
+  "as_of_utc": "2026-11-23T12:00:00Z",
+  "news": [
+    {
+      "title": "Apple warns holiday-quarter margin will fall to 45-46% as memory costs turn 'unprecedented'",
+      "source": "The Next Web (citing CNBC)",
+      "url": "https://thenextweb.com/news/apple-earnings-q4-2026-memory-costs-margins",
+      "published": "2026-11-03T00:00:00Z",
+      "summary": "12월분기 마진 가이던스 45~46%로 하향, 메모리 원가 '사상 초강도' 언급",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Apple's services growth guidance (8-9%) falls short of the 10.7% analysts expected",
+      "source": "The Next Web (citing CNBC)",
+      "url": "https://thenextweb.com/news/apple-earnings-q4-2026-memory-costs-margins",
+      "published": "2026-11-03T00:00:00Z",
+      "summary": "서비스 매출 성장 가이던스 8~9%로 시장 기대(10.7%) 하회",
+      "impact": "-",
+      "category": "earnings"
+    },
+    {
+      "title": "Apple's inventory jumps to $14.5B as it stockpiles memory ahead of further price hikes",
+      "source": "TechCrunch (via search aggregation)",
+      "url": "https://techcrunch.com/?p=3184456",
+      "published": "2026-11-03T00:00:00Z",
+      "summary": "메모리 재고 145억달러로 급증, 가격 추가 인상 전 비축 정황",
+      "impact": "neutral",
+      "category": "earnings"
+    },
+    {
+      "title": "Apple reportedly reaches DRAM supply agreement with Samsung starting early 2027",
+      "source": "DigiTimes (citing Jiemian News)",
+      "url": "https://digitaltrends.com/computing/apple-issues-a-grim-warning-as-memory-costs-soar-it-seems-pricey-iphones-and-macs-are-here-to-stay/",
+      "published": "2026-11-19T00:00:00Z",
+      "summary": "애플, 2027년 초부터 삼성과 D램 공급계약 체결 보도(단일 소스)",
+      "impact": "+",
+      "category": "product"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "GOOGL",
+      "headline": "Google unveils two new 8th-gen TPU systems, AI chip customer base nears 100",
+      "implication_for_target": "구글·MS 등 경쟁사가 자체 AI 칩·데이터센터로 capex를 늘리는 반면, 애플은 저capex·온디바이스 AI 전략을 고수 — 메모리 원가 부담을 자체 칩으로 상쇄할 수단이 상대적으로 적음"
+    },
+    {
+      "ticker": "MSFT",
+      "headline": "Anthropic expands Azure spend commitment to at least $44.9B through 2033",
+      "implication_for_target": "클라우드 3사가 AI 모델사 대형 계약으로 매출 가시성을 높이는 동안, 애플은 하드웨어 마진 압박을 가격 인상으로만 방어해야 하는 처지가 대비됨"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": -0.25,
+    "competitive_position": -0.05,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.35
+  },
+  "narrative_score": -0.17,
+  "summary_kr": "애플이 12월분기 마진 가이던스를 45~46%로 낮추고 메모리 원가를 '사상 초강도'라고 표현하며, 서비스 매출 성장 가이던스도 시장 기대에 못 미쳤다. 다만 삼성과의 2027년 D램 공급계약 보도는 완만한 완화 신호다.",
+  "key_events": [
+    "12월분기(홀리데이 쿼터) 마진 가이던스 45~46%로 하향",
+    "서비스 매출 성장 가이던스 8~9% (시장 기대 10.7% 하회)",
+    "메모리 재고 145억달러로 급증 (전년 57억달러)",
+    "삼성과 2027년 초 D램 공급계약 보도(단일 소스, 미확인)"
+  ],
+  "risks": [
+    "메모리(D램·낸드) 원가가 다음 분기에도 계속 오를 것으로 예고됨",
+    "서비스 매출 성장 둔화가 일시적 환율 요인인지 구조적 둔화인지 불명확"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/AAPL%20-%20Apple%20Inc.md"
+}
