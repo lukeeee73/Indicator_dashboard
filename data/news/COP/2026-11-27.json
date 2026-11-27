@@ -1,0 +1,43 @@
+{
+  "ticker": "COP",
+  "date": "2026-11-27",
+  "as_of_utc": "2026-11-27T12:00:00Z",
+  "news": [
+    {
+      "title": "ConocoPhillips raises quarterly dividend 11% to $0.93 per share",
+      "source": "Energy-Pedia (company results reprint)",
+      "url": "https://www.energy-pedia.com/news/general/conocophillips-announces-third-quarter-2026-results-and-increases-quarterly-ordinary-dividend-by-11pc-205988",
+      "published": "2026-11-05T00:00:00Z",
+      "summary": "코노코필립스가 3분기 실적과 함께 정기 분기배당을 11% 올려 주당 0.93달러로 확정(기준일 11/16, 지급일 12/1)",
+      "impact": "+",
+      "category": "earnings"
+    },
+    {
+      "title": "Oil prices near one-month lows as US crude stocks rise ahead of OPEC+ meeting",
+      "source": "Khaleej Times",
+      "url": "https://www.khaleejtimes.com/business/oil-down-1-as-us-oil-stocks-post-larger-than-expected-rise",
+      "published": "2026-11-18T00:00:00Z",
+      "summary": "미국 원유재고 증가로 유가가 한 달 최저 수준까지 하락, 순수 업스트림 COP에 직접적 부담",
+      "impact": "-",
+      "category": "macro"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "CVX",
+      "headline": "통합 메이저 쉐브론은 정제·화학 부문이 유가 하락 충격을 일부 상쇄",
+      "implication_for_target": "정유시설이 없는 순수 업스트림 COP는 동일 유가 하락에서 메이저보다 더 직접적으로 노출됨"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.1,
+    "competitive_position": 0.0,
+    "regulatory_risk": 0.0,
+    "macro_sensitivity": -0.3
+  },
+  "narrative_score": -0.01,
+  "summary_kr": "코노코필립스가 배당을 11% 올려 주주환원 기조를 재확인했지만, 11/29 OPEC+ 회의를 앞두고 유가가 한 달 최저로 내려간 매크로 역풍이 순수 업스트림 특성상 더 직접적으로 작용했다.",
+  "key_events": ["분기배당 11% 인상(주당 0.93달러)", "유가 한 달 최저", "4분기 생산 가이던스 232만~236만 boe/d"],
+  "risks": ["11/29 OPEC+ 회의 결과에 따른 유가 추가 하락", "순수 업스트림 구조의 유가 민감도"],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/COP%20-%20ConocoPhillips.md"
+}
