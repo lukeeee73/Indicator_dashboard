@@ -1,0 +1,64 @@
+{
+  "ticker": "JPM",
+  "date": "2026-11-28",
+  "as_of_utc": "2026-11-28T06:00:00Z",
+  "news": [
+    {
+      "title": "JPMorgan Chase, 외부 벤더발 고객정보 유출 확인 — 체이스 리저브카드 약 1.6만건",
+      "source": "SecureWorld / ABC News",
+      "url": "https://www.secureworld.io/industry-news/vendor-breaches-jpmorgan-visa-mastercard-customers",
+      "published": "2026-11-19T00:00:00Z",
+      "summary": "제3자 벤더 공격으로 체이스 고객 이메일·계정ID 약 1.6만건 유출, 랜섬웨어단체 n0n 공개",
+      "impact": "-",
+      "category": "regulation"
+    },
+    {
+      "title": "체이스 주도로 美 주요은행 전산장애 발생 — 당일 해소",
+      "source": "OPB / AP",
+      "url": "https://www.opb.org/article/2026/11/16/a-technical-issue-at-jpmorgan-chase-triggers-online-banking-delays-across-major-us-banks/",
+      "published": "2026-11-16T00:00:00Z",
+      "summary": "소프트웨어 버그로 체이스 등 로그인·이체 지연, 사이버공격 아니라고 해명",
+      "impact": "-",
+      "category": "other"
+    },
+    {
+      "title": "JPM 리서치, AI 수퍼사이클 근거로 2027년 S&P500 목표 8200 상향",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/quotes/JPM",
+      "published": "2026-11-25T00:00:00Z",
+      "summary": "자사 전략팀이 AI 수익화 기대로 내년 지수 목표를 올려 시장 낙관론 재확인",
+      "impact": "+",
+      "category": "other"
+    }
+  ],
+  "competitor_context": [
+    {
+      "ticker": "BAC",
+      "headline": "Bank of America도 11/16 전국 전산장애에 함께 노출, 버크셔 지분 축소 겹쳐 주간 7.8% 하락",
+      "implication_for_target": "기술 리스크가 JPM만의 개별 문제가 아니라 업계 공동 리스크임을 시사"
+    },
+    {
+      "ticker": "V",
+      "headline": "Visa도 같은 주 APAC 지역 벤더발 데이터 유출을 별도로 공시(결제데이터 미포함)",
+      "implication_for_target": "결제·카드 생태계 전반의 제3자 벤더 보안 리스크가 동시에 부각된 사례"
+    }
+  ],
+  "scores": {
+    "earnings_outlook": 0.05,
+    "competitive_position": 0.0,
+    "regulatory_risk": -0.25,
+    "macro_sensitivity": 0.05
+  },
+  "narrative_score": -0.02,
+  "summary_kr": "JP모건은 외부 벤더발 고객정보 유출과 전국 은행 전산장애를 동시에 겪었지만, 자체 리서치팀은 AI 수퍼사이클을 근거로 내년 S&P500 목표를 8200으로 올리며 자신감을 보였다.",
+  "key_events": [
+    "체이스 리저브카드 관련 벤더발 고객정보 유출 (약 1.6만건)",
+    "11/16 美 주요은행 동시 전산장애 (당일 해소)",
+    "JPM리서치 S&P500 2027 목표 8200 상향"
+  ],
+  "risks": [
+    "벤더발 데이터 유출 확산 시 추가 규제조사·평판 리스크 가능성",
+    "반복되는 전산장애로 기술 안정성에 대한 시장 신뢰 부담"
+  ],
+  "wiki_url": "https://github.com/lukeeee73/luke_wiki/blob/claude/create-knowledge-repo-2LeNp/wiki/news/tickers/JPM%20-%20JPMorgan%20Chase%20and%20Co.md"
+}
